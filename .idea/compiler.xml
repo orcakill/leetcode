@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="leetcode1" />
         <module name="idea_java_project" />
+        <module name="leetcode" />
       </profile>
     </annotationProcessing>
   </component>
