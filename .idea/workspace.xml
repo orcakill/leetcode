@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcb04c81-fa2b-44e8-89b3-48bb9f7f9922" name="默认的" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet64.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet64.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/two_number_add.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +24,8 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -112,6 +110,7 @@
       <workItem from="1595466191113" duration="7000" />
       <workItem from="1595473662367" duration="5640000" />
       <workItem from="1595514042589" duration="3269000" />
+      <workItem from="1595600077447" duration="574000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1595514228282</created>
@@ -131,7 +130,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
