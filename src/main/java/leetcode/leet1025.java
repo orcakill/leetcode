@@ -1,6 +1,13 @@
 package leetcode;
 
+import static leetcode.leet1025.Solution.divisorGame;
+
 public class leet1025 {
+    public static void main(String[] args) {/*leet1025*/
+        System.out.println(divisorGame(1));
+    }
+
+
     static class Solution {
         public static boolean divisorGame(int N) {
             boolean als = false;
