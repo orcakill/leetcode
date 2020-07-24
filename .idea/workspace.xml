@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcb04c81-fa2b-44e8-89b3-48bb9f7f9922" name="默认的" comment="leetcode">
-      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet1025.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/App.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -45,8 +41,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/leet1025.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+            <state relative-caret-position="171">
+              <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -211,7 +207,7 @@
       <workItem from="1595463113219" duration="1044000" />
       <workItem from="1595466191113" duration="7000" />
       <workItem from="1595473662367" duration="6921000" />
-      <workItem from="1595549937937" duration="9930000" />
+      <workItem from="1595549937937" duration="10282000" />
     </task>
     <task id="LOCAL-00001" summary="leetcode">
       <created>1595481844638</created>
@@ -220,15 +216,28 @@
       <option name="project" value="LOCAL" />
       <updated>1595481844639</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="leetcode">
+      <created>1595571418710</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1595571418710</updated>
+    </task>
+    <task id="LOCAL-00003" summary="leetcode">
+      <created>1595571487692</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1595571487692</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31732000" />
+    <option name="totallyTimeSpent" value="32084000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1567" y="51" width="1346" height="688" extended-state="1" />
-    <editor active="true" />
+    <frame x="-1567" y="51" width="1346" height="688" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19129083" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -317,8 +326,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/leet1025.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        <state relative-caret-position="171">
+          <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
         </state>
       </provider>
     </entry>
