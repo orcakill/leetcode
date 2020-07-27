@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class leet392 {
     public static void main(String[] args) {
         String s = "acb";
@@ -11,44 +14,47 @@ public class leet392 {
 
     static class Solution {
         public boolean isSubsequence(String s, String t) {
+            int num=0;
+            Map<Integer, Integer> map = new HashMap<>();
             for (int i = 0; i < s.length(); i++) {
                 String s1 = String.valueOf(s.charAt(i));
 
-
-                int j1 = 0;
-                int j2 = 0;
                 if (t.contains(s1) == false) {
                     return false;
 
                 }
                 for (int j = 0; j < t.length(); j++) {
+
                     String t1 = String.valueOf(t.charAt(j));
 
-                    if (t1.equals(s1)) {
-                        System.out.println(t1);
-                        j1 = i;
-                        System.out.println(j1);
-                        System.out.println(j2);
-                        if (t.length() > 1) {
-                            if (j2 >j1) {
-                                return false;
-                            }
-                            j2=i;
-                        }
-                        else{
-                            return  true;
-                        }
-
-
-
+                    if(s1.equals(t1)==true) {
+                        map.put(j, num);
+                        num = num + 1;
                     }
+                }
+            }
+            for(int i=0;i<num;i++){
+                int tt1=map.get(i);
+                System.out.println(tt1);
+                int tt2=map.get(i+1);
 
-
+                if(tt1>tt2){
+                    return  false;
                 }
 
             }
+
 
             return true;
         }
     }
 }
+
+
+
+
+
+
+
+
+
