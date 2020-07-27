@@ -1,8 +1,14 @@
 package leetcode;
 
+import static leetcode.leet1025.Solution.divisorGame;
+
 public class leet64 {
     static class Solution {
 
+        public static void main(String[] args) {
+            int a[][]={{1,3,1},{1,5,1},{4,2,1}};
+            System.out.println(minPathSum(a));
+        }
                 public static int minPathSum(int[][] grid) {
                     if (grid == null || grid.length == 0 || grid[0].length == 0) {
                         return 0;
