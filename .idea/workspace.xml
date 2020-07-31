@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcb04c81-fa2b-44e8-89b3-48bb9f7f9922" name="默认的" comment="默认的">
-      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leetcoe343.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -170,7 +169,7 @@
       <workItem from="1595601941219" duration="232000" />
       <workItem from="1595817302556" duration="2728000" />
       <workItem from="1595829621299" duration="5009000" />
-      <workItem from="1596117727202" duration="627000" />
+      <workItem from="1596117727202" duration="1282000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1595514228282</created>
@@ -193,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596117856688</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="默认的">
+      <created>1596118526924</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1596118526924</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
