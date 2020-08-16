@@ -1,6 +1,6 @@
 package leetcode;
 
-public class leetcoe343 {
+public class leet343 {
     public static void main(String[] args) {
         Solution c = new Solution();
         /*   System.out.println(1);*/
