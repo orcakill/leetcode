@@ -1,0 +1,642 @@
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"Encoding\">\r\n    <file url=\"file://$PROJECT_DIR$\" charset=\"UTF-8\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/encodings.xml	(revision 3f08fd6e1009f28fb0e9c159ef8e5efefd6afed1)
++++ .idea/encodings.xml	(date 1596164655930)
+@@ -2,5 +2,6 @@
+ <project version="4">
+   <component name="Encoding">
+     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"dcb04c81-fa2b-44e8-89b3-48bb9f7f9922\" name=\"默认的\" comment=\"默认的\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/leetcode/leet392.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/leetcode/leet392.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"EXCLUDED_CONVERTED_TO_IGNORED\" value=\"true\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"DefaultGradleProjectSettings\">\r\n    <option name=\"isMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"FileEditorManager\">\r\n    <leaf SIDE_TABS_SIZE_LIMIT_KEY=\"300\">\r\n      <file pinned=\"false\" current-in-tab=\"false\">\r\n        <entry file=\"file://$PROJECT_DIR$/pom.xml\">\r\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n            <state relative-caret-position=\"462\">\r\n              <caret line=\"25\" selection-start-line=\"25\" selection-start-column=\"4\" selection-end-line=\"25\" selection-end-column=\"29\" />\r\n            </state>\r\n          </provider>\r\n        </entry>\r\n      </file>\r\n      <file pinned=\"false\" current-in-tab=\"false\">\r\n        <entry file=\"file://$PROJECT_DIR$/src/main/java/leetcode/App.java\">\r\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n            <state relative-caret-position=\"266\">\r\n              <caret line=\"14\" column=\"1\" selection-start-line=\"14\" selection-start-column=\"1\" selection-end-line=\"14\" selection-end-column=\"1\" />\r\n              <folding>\r\n                <element signature=\"imports\" expanded=\"true\" />\r\n              </folding>\r\n            </state>\r\n          </provider>\r\n        </entry>\r\n      </file>\r\n      <file pinned=\"false\" current-in-tab=\"false\">\r\n        <entry file=\"file://$PROJECT_DIR$/src/main/java/leetcode/leet1025.java\">\r\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n            <state relative-caret-position=\"38\">\r\n              <caret line=\"5\" selection-start-line=\"5\" selection-end-line=\"7\" selection-end-column=\"5\" />\r\n              <folding>\r\n                <element signature=\"e#141#142#0\" expanded=\"true\" />\r\n                <element signature=\"e#203#204#0\" expanded=\"true\" />\r\n              </folding>\r\n            </state>\r\n          </provider>\r\n        </entry>\r\n      </file>\r\n      <file pinned=\"false\" current-in-tab=\"false\">\r\n        <entry file=\"file://$PROJECT_DIR$/src/main/java/leetcode/leet64.java\">\r\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n            <state relative-caret-position=\"19\">\r\n              <caret line=\"7\" selection-start-line=\"7\" selection-end-line=\"10\" selection-end-column=\"9\" />\r\n            </state>\r\n          </provider>\r\n        </entry>\r\n      </file>\r\n      <file pinned=\"false\" current-in-tab=\"true\">\r\n        <entry file=\"file://$PROJECT_DIR$/src/main/java/leetcode/leet392.java\">\r\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n            <state relative-caret-position=\"277\">\r\n              <caret line=\"37\" column=\"40\" selection-start-line=\"37\" selection-start-column=\"40\" selection-end-line=\"37\" selection-end-column=\"40\" />\r\n              <folding>\r\n                <element signature=\"imports\" expanded=\"true\" />\r\n              </folding>\r\n            </state>\r\n          </provider>\r\n        </entry>\r\n      </file>\r\n      <file pinned=\"false\" current-in-tab=\"false\">\r\n        <entry file=\"file://$PROJECT_DIR$/src/main/java/leetcode/leet1.java\">\r\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n            <state relative-caret-position=\"158\">\r\n              <caret line=\"10\" selection-start-line=\"10\" selection-end-line=\"10\" selection-end-column=\"32\" />\r\n            </state>\r\n          </provider>\r\n        </entry>\r\n      </file>\r\n    </leaf>\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"ROOT_SYNC\" value=\"DONT_SYNC\" />\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"IdeDocumentHistory\">\r\n    <option name=\"CHANGED_PATHS\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/src/main/java/leetcode/leet64.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/main/java/leetcode/leet392.java\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"importingSettings\">\r\n      <MavenImportingSettings>\r\n        <option name=\"importAutomatically\" value=\"true\" />\r\n      </MavenImportingSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectFrameBounds\">\r\n    <option name=\"x\" value=\"-1579\" />\r\n    <option name=\"y\" value=\"50\" />\r\n    <option name=\"width\" value=\"1346\" />\r\n    <option name=\"height\" value=\"687\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1f5hp2Yu82KuvLNZO3Tt5kn6tOI\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectView\">\r\n    <navigator proportions=\"\" version=\"1\">\r\n      <foldersAlwaysOnTop value=\"true\" />\r\n    </navigator>\r\n    <panes>\r\n      <pane id=\"ProjectPane\">\r\n        <subPane>\r\n          <expand>\r\n            <path>\r\n              <item name=\"leetcode1\" type=\"b2602c69:ProjectViewProjectNode\" />\r\n              <item name=\"leetcode\" type=\"462c0819:PsiDirectoryNode\" />\r\n            </path>\r\n            <path>\r\n              <item name=\"leetcode1\" type=\"b2602c69:ProjectViewProjectNode\" />\r\n              <item name=\"leetcode\" type=\"462c0819:PsiDirectoryNode\" />\r\n              <item name=\"src\" type=\"462c0819:PsiDirectoryNode\" />\r\n            </path>\r\n            <path>\r\n              <item name=\"leetcode1\" type=\"b2602c69:ProjectViewProjectNode\" />\r\n              <item name=\"leetcode\" type=\"462c0819:PsiDirectoryNode\" />\r\n              <item name=\"src\" type=\"462c0819:PsiDirectoryNode\" />\r\n              <item name=\"main\" type=\"462c0819:PsiDirectoryNode\" />\r\n            </path>\r\n            <path>\r\n              <item name=\"leetcode1\" type=\"b2602c69:ProjectViewProjectNode\" />\r\n              <item name=\"leetcode\" type=\"462c0819:PsiDirectoryNode\" />\r\n              <item name=\"src\" type=\"462c0819:PsiDirectoryNode\" />\r\n              <item name=\"main\" type=\"462c0819:PsiDirectoryNode\" />\r\n              <item name=\"java\" type=\"462c0819:PsiDirectoryNode\" />\r\n            </path>\r\n            <path>\r\n              <item name=\"leetcode1\" type=\"b2602c69:ProjectViewProjectNode\" />\r\n              <item name=\"leetcode\" type=\"462c0819:PsiDirectoryNode\" />\r\n              <item name=\"src\" type=\"462c0819:PsiDirectoryNode\" />\r\n              <item name=\"main\" type=\"462c0819:PsiDirectoryNode\" />\r\n              <item name=\"java\" type=\"462c0819:PsiDirectoryNode\" />\r\n              <item name=\"leetcode\" type=\"462c0819:PsiDirectoryNode\" />\r\n            </path>\r\n          </expand>\r\n          <select />\r\n        </subPane>\r\n      </pane>\r\n      <pane id=\"PackagesPane\" />\r\n      <pane id=\"Scope\" />\r\n    </panes>\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"aspect.path.notification.shown\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"nodejs_interpreter_path.stuck_in_default_project\" value=\"undefined stuck path\" />\r\n    <property name=\"nodejs_npm_path_reset_for_default_project\" value=\"true\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Project\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.0\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.0\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"preferences.pluginManager\" />\r\n  </component>\r\n  <component name=\"RunDashboard\">\r\n    <option name=\"ruleStates\">\r\n      <list>\r\n        <RuleState>\r\n          <option name=\"name\" value=\"ConfigurationTypeDashboardGroupingRule\" />\r\n        </RuleState>\r\n        <RuleState>\r\n          <option name=\"name\" value=\"StatusDashboardGroupingRule\" />\r\n        </RuleState>\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.leet392\">\r\n    <configuration name=\"App\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"leetcode.App\" />\r\n      <module name=\"leetcode\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"leetcode.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"App\" type=\"Application\" factoryName=\"应用程序\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"leetcode.App\" />\r\n      <module name=\"idea_java_project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"leetcode.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"leet1025\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"leetcode.leet1025\" />\r\n      <module name=\"leetcode\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"leetcode.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"leet392\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"leetcode.leet392\" />\r\n      <module name=\"leetcode1\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"leetcode.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"leet64$Solution\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"leetcode.leet64$Solution\" />\r\n      <module name=\"leetcode1\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"leetcode.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.leet392\" />\r\n        <item itemvalue=\"Application.leet64$Solution\" />\r\n        <item itemvalue=\"Application.leet1025\" />\r\n        <item itemvalue=\"Application.App\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SvnConfiguration\">\r\n    <configuration />\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"dcb04c81-fa2b-44e8-89b3-48bb9f7f9922\" name=\"默认的\" comment=\"\" />\r\n      <created>1594889987940</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1594889987940</updated>\r\n      <workItem from=\"1594889995673\" duration=\"1693000\" />\r\n      <workItem from=\"1594949767685\" duration=\"7051000\" />\r\n      <workItem from=\"1595235811047\" duration=\"1940000\" />\r\n      <workItem from=\"1595290836112\" duration=\"1390000\" />\r\n      <workItem from=\"1595297410291\" duration=\"548000\" />\r\n      <workItem from=\"1595389894229\" duration=\"1208000\" />\r\n      <workItem from=\"1595463113219\" duration=\"1044000\" />\r\n      <workItem from=\"1595466191113\" duration=\"7000\" />\r\n      <workItem from=\"1595473662367\" duration=\"5640000\" />\r\n      <workItem from=\"1595514042589\" duration=\"3269000\" />\r\n      <workItem from=\"1595600077447\" duration=\"1791000\" />\r\n      <workItem from=\"1595601941219\" duration=\"232000\" />\r\n      <workItem from=\"1595817302556\" duration=\"2728000\" />\r\n      <workItem from=\"1595829621299\" duration=\"5305000\" />\r\n      <workItem from=\"1595835632658\" duration=\"2868000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"默认的\">\r\n      <created>1595514228282</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1595514228283</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"默认的\">\r\n      <created>1595600687787</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1595600687788</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"默认的\">\r\n      <created>1595835409396</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1595835409397</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TimeTrackingManager\">\r\n    <option name=\"totallyTimeSpent\" value=\"14156000\" />\r\n  </component>\r\n  <component name=\"ToolWindowManager\">\r\n    <frame x=\"-1579\" y=\"50\" width=\"1346\" height=\"687\" extended-state=\"1\" />\r\n    <editor active=\"true\" />\r\n    <layout>\r\n      <window_info content_ui=\"combo\" id=\"Project\" order=\"0\" visible=\"true\" weight=\"0.2037325\" />\r\n      <window_info id=\"Structure\" order=\"1\" side_tool=\"true\" weight=\"0.25\" />\r\n      <window_info id=\"Image Layers\" order=\"2\" />\r\n      <window_info id=\"Capture Tool\" order=\"3\" />\r\n      <window_info id=\"UI Designer\" order=\"4\" />\r\n      <window_info id=\"Favorites\" order=\"5\" side_tool=\"true\" />\r\n      <window_info id=\"设计师\" order=\"6\" />\r\n      <window_info id=\"Designer\" order=\"7\" />\r\n      <window_info anchor=\"bottom\" id=\"Message\" order=\"0\" />\r\n      <window_info anchor=\"bottom\" id=\"Find\" order=\"1\" />\r\n      <window_info active=\"true\" anchor=\"bottom\" id=\"Run\" order=\"2\" visible=\"true\" weight=\"0.32730561\" />\r\n      <window_info anchor=\"bottom\" id=\"Debug\" order=\"3\" weight=\"0.4\" />\r\n      <window_info anchor=\"bottom\" id=\"Cvs\" order=\"4\" weight=\"0.25\" />\r\n      <window_info anchor=\"bottom\" id=\"Inspection\" order=\"5\" weight=\"0.4\" />\r\n      <window_info anchor=\"bottom\" id=\"TODO\" order=\"6\" />\r\n      <window_info anchor=\"bottom\" id=\"Terminal\" order=\"7\" />\r\n      <window_info anchor=\"bottom\" id=\"Docker\" order=\"8\" show_stripe_button=\"false\" />\r\n      <window_info anchor=\"bottom\" id=\"Event Log\" order=\"9\" side_tool=\"true\" />\r\n      <window_info anchor=\"bottom\" id=\"消息\" order=\"10\" />\r\n      <window_info anchor=\"bottom\" id=\"运行\" order=\"11\" weight=\"0.2\" />\r\n      <window_info anchor=\"bottom\" id=\"Database Changes\" order=\"12\" />\r\n      <window_info anchor=\"bottom\" id=\"Version Control\" order=\"13\" weight=\"0.32851985\" />\r\n      <window_info anchor=\"bottom\" id=\"调试\" order=\"14\" />\r\n      <window_info anchor=\"bottom\" id=\"Messages\" order=\"15\" weight=\"0.32851985\" />\r\n      <window_info anchor=\"right\" id=\"Commander\" internal_type=\"SLIDING\" order=\"0\" type=\"SLIDING\" weight=\"0.4\" />\r\n      <window_info anchor=\"right\" id=\"Ant Build\" order=\"1\" weight=\"0.25\" />\r\n      <window_info anchor=\"right\" content_ui=\"combo\" id=\"Hierarchy\" order=\"2\" weight=\"0.25\" />\r\n      <window_info anchor=\"right\" id=\"Maven\" order=\"3\" />\r\n      <window_info anchor=\"right\" id=\"控制板\" order=\"4\" />\r\n      <window_info anchor=\"right\" id=\"Capture Analysis\" order=\"5\" />\r\n      <window_info anchor=\"right\" id=\"Database\" order=\"6\" />\r\n      <window_info anchor=\"right\" id=\"Palette&#9;\" order=\"7\" />\r\n      <window_info anchor=\"right\" id=\"Theme Preview\" order=\"8\" />\r\n      <window_info anchor=\"right\" id=\"Palette\" order=\"9\" />\r\n    </layout>\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"1\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"RECENTLY_FILTERED_USER_GROUPS\">\r\n                <collection />\r\n              </option>\r\n              <option name=\"RECENTLY_FILTERED_BRANCH_GROUPS\">\r\n                <collection />\r\n              </option>\r\n              <option name=\"COLUMN_ORDER\" />\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_FILTERS\">\r\n      <map>\r\n        <entry key=\"Branch\">\r\n          <value>\r\n            <list />\r\n          </value>\r\n        </entry>\r\n        <entry key=\"User\">\r\n          <value>\r\n            <list />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"默认的\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"默认的\" />\r\n  </component>\r\n  <component name=\"editorHistoryManager\">\r\n    <entry file=\"file://$PROJECT_DIR$/pom.xml\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"462\">\r\n          <caret line=\"25\" selection-start-line=\"25\" selection-start-column=\"4\" selection-end-line=\"25\" selection-end-column=\"29\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/main/java/leetcode/App.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"266\">\r\n          <caret line=\"14\" column=\"1\" selection-start-line=\"14\" selection-start-column=\"1\" selection-end-line=\"14\" selection-end-column=\"1\" />\r\n          <folding>\r\n            <element signature=\"imports\" expanded=\"true\" />\r\n          </folding>\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"jar://$PROJECT_DIR$/../../jdk/lib/src.zip!/java.base/java/lang/StringLatin1.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"114\">\r\n          <caret line=\"47\" column=\"18\" selection-start-line=\"47\" selection-start-column=\"18\" selection-end-line=\"47\" selection-end-column=\"18\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"jar://$PROJECT_DIR$/../../jdk/lib/src.zip!/java.base/java/lang/String.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"106\">\r\n          <caret line=\"710\" column=\"32\" selection-start-line=\"710\" selection-start-column=\"32\" selection-end-line=\"710\" selection-end-column=\"32\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/main/java/leetcode/leet1.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"158\">\r\n          <caret line=\"10\" selection-start-line=\"10\" selection-end-line=\"10\" selection-end-column=\"32\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/main/java/leetcode/leet64.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"19\">\r\n          <caret line=\"7\" selection-start-line=\"7\" selection-end-line=\"10\" selection-end-column=\"9\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/main/java/leetcode/leet1025.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"38\">\r\n          <caret line=\"5\" selection-start-line=\"5\" selection-end-line=\"7\" selection-end-column=\"5\" />\r\n          <folding>\r\n            <element signature=\"e#141#142#0\" expanded=\"true\" />\r\n            <element signature=\"e#203#204#0\" expanded=\"true\" />\r\n          </folding>\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/main/java/leetcode/leet392.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"277\">\r\n          <caret line=\"37\" column=\"40\" selection-start-line=\"37\" selection-start-column=\"40\" selection-end-line=\"37\" selection-end-column=\"40\" />\r\n          <folding>\r\n            <element signature=\"imports\" expanded=\"true\" />\r\n          </folding>\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n  </component>\r\n  <component name=\"masterDetails\">\r\n    <states>\r\n      <state key=\"ArtifactsStructureConfigurable.UI\">\r\n        <settings>\r\n          <artifact-editor />\r\n          <splitter-proportions>\r\n            <option name=\"proportions\">\r\n              <list>\r\n                <option value=\"0.2\" />\r\n              </list>\r\n            </option>\r\n          </splitter-proportions>\r\n        </settings>\r\n      </state>\r\n      <state key=\"FacetStructureConfigurable.UI\">\r\n        <settings>\r\n          <splitter-proportions>\r\n            <option name=\"proportions\">\r\n              <list>\r\n                <option value=\"0.2\" />\r\n              </list>\r\n            </option>\r\n          </splitter-proportions>\r\n        </settings>\r\n      </state>\r\n      <state key=\"GlobalLibrariesConfigurable.UI\">\r\n        <settings>\r\n          <splitter-proportions>\r\n            <option name=\"proportions\">\r\n              <list>\r\n                <option value=\"0.2\" />\r\n              </list>\r\n            </option>\r\n          </splitter-proportions>\r\n        </settings>\r\n      </state>\r\n      <state key=\"JdkListConfigurable.UI\">\r\n        <settings>\r\n          <splitter-proportions>\r\n            <option name=\"proportions\">\r\n              <list>\r\n                <option value=\"0.2\" />\r\n              </list>\r\n            </option>\r\n          </splitter-proportions>\r\n        </settings>\r\n      </state>\r\n      <state key=\"ModuleStructureConfigurable.UI\">\r\n        <settings>\r\n          <splitter-proportions>\r\n            <option name=\"proportions\">\r\n              <list>\r\n                <option value=\"0.2\" />\r\n              </list>\r\n            </option>\r\n          </splitter-proportions>\r\n        </settings>\r\n      </state>\r\n      <state key=\"ProjectLibrariesConfigurable.UI\">\r\n        <settings>\r\n          <splitter-proportions>\r\n            <option name=\"proportions\">\r\n              <list>\r\n                <option value=\"0.2\" />\r\n              </list>\r\n            </option>\r\n          </splitter-proportions>\r\n        </settings>\r\n      </state>\r\n    </states>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision 3f08fd6e1009f28fb0e9c159ef8e5efefd6afed1)
++++ .idea/workspace.xml	(date 1597635683424)
+@@ -1,538 +1,46 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="dcb04c81-fa2b-44e8-89b3-48bb9f7f9922" name="默认的" comment="默认的">
++    <list default="true" id="5d05f87d-448c-446d-b147-f8c85a7797da" name="默认的" comment="">
++      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet415.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet392.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet392.java" afterDir="false" />
+     </list>
+-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+-  </component>
+-  <component name="DefaultGradleProjectSettings">
+-    <option name="isMigrated" value="true" />
+-  </component>
+-  <component name="FileEditorManager">
+-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+-      <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/pom.xml">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="462">
+-              <caret line="25" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="29" />
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+-      <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/App.java">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="266">
+-              <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+-              <folding>
+-                <element signature="imports" expanded="true" />
+-              </folding>
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+-      <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/leet1025.java">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="38">
+-              <caret line="5" selection-start-line="5" selection-end-line="7" selection-end-column="5" />
+-              <folding>
+-                <element signature="e#141#142#0" expanded="true" />
+-                <element signature="e#203#204#0" expanded="true" />
+-              </folding>
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+-      <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/leet64.java">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="19">
+-              <caret line="7" selection-start-line="7" selection-end-line="10" selection-end-column="9" />
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+-      <file pinned="false" current-in-tab="true">
+-        <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/leet392.java">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="277">
+-              <caret line="37" column="40" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
+-              <folding>
+-                <element signature="imports" expanded="true" />
+-              </folding>
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+-      <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/leet1.java">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="158">
+-              <caret line="10" selection-start-line="10" selection-end-line="10" selection-end-column="32" />
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+-    </leaf>
+-  </component>
+-  <component name="FileTemplateManagerImpl">
+-    <option name="RECENT_TEMPLATES">
+-      <list>
+-        <option value="Class" />
+-      </list>
+-    </option>
+   </component>
+   <component name="Git.Settings">
+-    <option name="ROOT_SYNC" value="DONT_SYNC" />
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+-  <component name="IdeDocumentHistory">
+-    <option name="CHANGED_PATHS">
+-      <list>
+-        <option value="$PROJECT_DIR$/src/main/java/leetcode/leet64.java" />
+-        <option value="$PROJECT_DIR$/src/main/java/leetcode/leet392.java" />
+-      </list>
+-    </option>
+-  </component>
+-  <component name="MavenImportPreferences">
+-    <option name="importingSettings">
+-      <MavenImportingSettings>
+-        <option name="importAutomatically" value="true" />
+-      </MavenImportingSettings>
+-    </option>
+-  </component>
+-  <component name="ProjectFrameBounds">
+-    <option name="x" value="-1579" />
+-    <option name="y" value="50" />
+-    <option name="width" value="1346" />
+-    <option name="height" value="687" />
+-  </component>
+-  <component name="ProjectId" id="1f5hp2Yu82KuvLNZO3Tt5kn6tOI" />
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+-    <ConfirmationsSetting value="2" id="Add" />
+-  </component>
+-  <component name="ProjectView">
+-    <navigator proportions="" version="1">
+-      <foldersAlwaysOnTop value="true" />
+-    </navigator>
+-    <panes>
+-      <pane id="ProjectPane">
+-        <subPane>
+-          <expand>
+-            <path>
+-              <item name="leetcode1" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="leetcode" type="462c0819:PsiDirectoryNode" />
+-            </path>
+-            <path>
+-              <item name="leetcode1" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="leetcode" type="462c0819:PsiDirectoryNode" />
+-              <item name="src" type="462c0819:PsiDirectoryNode" />
+-            </path>
+-            <path>
+-              <item name="leetcode1" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="leetcode" type="462c0819:PsiDirectoryNode" />
+-              <item name="src" type="462c0819:PsiDirectoryNode" />
+-              <item name="main" type="462c0819:PsiDirectoryNode" />
+-            </path>
+-            <path>
+-              <item name="leetcode1" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="leetcode" type="462c0819:PsiDirectoryNode" />
+-              <item name="src" type="462c0819:PsiDirectoryNode" />
+-              <item name="main" type="462c0819:PsiDirectoryNode" />
+-              <item name="java" type="462c0819:PsiDirectoryNode" />
+-            </path>
+-            <path>
+-              <item name="leetcode1" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="leetcode" type="462c0819:PsiDirectoryNode" />
+-              <item name="src" type="462c0819:PsiDirectoryNode" />
+-              <item name="main" type="462c0819:PsiDirectoryNode" />
+-              <item name="java" type="462c0819:PsiDirectoryNode" />
+-              <item name="leetcode" type="462c0819:PsiDirectoryNode" />
+-            </path>
+-          </expand>
+-          <select />
+-        </subPane>
+-      </pane>
+-      <pane id="PackagesPane" />
+-      <pane id="Scope" />
+-    </panes>
++  <component name="ProjectId" id="1gD32c5Zct6Ew2PsCEGXNjv2M8h" />
++  <component name="ProjectViewState">
++    <option name="hideEmptyMiddlePackages" value="true" />
++    <option name="showLibraryContents" value="true" />
+   </component>
+   <component name="PropertiesComponent">
+-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
++    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
++    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+     <property name="aspect.path.notification.shown" value="true" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+-    <property name="project.structure.last.edited" value="Project" />
+-    <property name="project.structure.proportion" value="0.0" />
+-    <property name="project.structure.side.proportion" value="0.0" />
+-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+-  </component>
+-  <component name="RunDashboard">
+-    <option name="ruleStates">
+-      <list>
+-        <RuleState>
+-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+-        </RuleState>
+-        <RuleState>
+-          <option name="name" value="StatusDashboardGroupingRule" />
+-        </RuleState>
+-      </list>
+-    </option>
+-  </component>
+-  <component name="RunManager" selected="Application.leet392">
+-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="leetcode.App" />
+-      <module name="leetcode" />
+-      <extension name="coverage">
+-        <pattern>
+-          <option name="PATTERN" value="leetcode.*" />
+-          <option name="ENABLED" value="true" />
+-        </pattern>
+-      </extension>
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-    <configuration name="App" type="Application" factoryName="应用程序" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="leetcode.App" />
+-      <module name="idea_java_project" />
+-      <extension name="coverage">
+-        <pattern>
+-          <option name="PATTERN" value="leetcode.*" />
+-          <option name="ENABLED" value="true" />
+-        </pattern>
+-      </extension>
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-    <configuration name="leet1025" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="leetcode.leet1025" />
+-      <module name="leetcode" />
+-      <extension name="coverage">
+-        <pattern>
+-          <option name="PATTERN" value="leetcode.*" />
+-          <option name="ENABLED" value="true" />
+-        </pattern>
+-      </extension>
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-    <configuration name="leet392" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="leetcode.leet392" />
+-      <module name="leetcode1" />
+-      <extension name="coverage">
+-        <pattern>
+-          <option name="PATTERN" value="leetcode.*" />
+-          <option name="ENABLED" value="true" />
+-        </pattern>
+-      </extension>
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-    <configuration name="leet64$Solution" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="leetcode.leet64$Solution" />
+-      <module name="leetcode1" />
+-      <extension name="coverage">
+-        <pattern>
+-          <option name="PATTERN" value="leetcode.*" />
+-          <option name="ENABLED" value="true" />
+-        </pattern>
+-      </extension>
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-    <recent_temporary>
+-      <list>
+-        <item itemvalue="Application.leet392" />
+-        <item itemvalue="Application.leet64$Solution" />
+-        <item itemvalue="Application.leet1025" />
+-        <item itemvalue="Application.App" />
+-      </list>
+-    </recent_temporary>
+   </component>
+   <component name="SvnConfiguration">
+     <configuration />
+   </component>
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+-      <changelist id="dcb04c81-fa2b-44e8-89b3-48bb9f7f9922" name="默认的" comment="" />
+-      <created>1594889987940</created>
++      <changelist id="5d05f87d-448c-446d-b147-f8c85a7797da" name="默认的" comment="" />
++      <created>1597635138405</created>
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+-      <updated>1594889987940</updated>
+-      <workItem from="1594889995673" duration="1693000" />
+-      <workItem from="1594949767685" duration="7051000" />
+-      <workItem from="1595235811047" duration="1940000" />
+-      <workItem from="1595290836112" duration="1390000" />
+-      <workItem from="1595297410291" duration="548000" />
+-      <workItem from="1595389894229" duration="1208000" />
+-      <workItem from="1595463113219" duration="1044000" />
+-      <workItem from="1595466191113" duration="7000" />
+-      <workItem from="1595473662367" duration="5640000" />
+-      <workItem from="1595514042589" duration="3269000" />
+-      <workItem from="1595600077447" duration="1791000" />
+-      <workItem from="1595601941219" duration="232000" />
+-      <workItem from="1595817302556" duration="2728000" />
+-      <workItem from="1595829621299" duration="5305000" />
+-      <workItem from="1595835632658" duration="2868000" />
+-    </task>
+-    <task id="LOCAL-00001" summary="默认的">
+-      <created>1595514228282</created>
+-      <option name="number" value="00001" />
+-      <option name="presentableId" value="LOCAL-00001" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1595514228283</updated>
+-    </task>
+-    <task id="LOCAL-00002" summary="默认的">
+-      <created>1595600687787</created>
+-      <option name="number" value="00002" />
+-      <option name="presentableId" value="LOCAL-00002" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1595600687788</updated>
+-    </task>
+-    <task id="LOCAL-00003" summary="默认的">
+-      <created>1595835409396</created>
+-      <option name="number" value="00003" />
+-      <option name="presentableId" value="LOCAL-00003" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1595835409397</updated>
++      <updated>1597635138405</updated>
++      <workItem from="1597635170698" duration="510000" />
+     </task>
+-    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+-  <component name="TimeTrackingManager">
+-    <option name="totallyTimeSpent" value="14156000" />
+-  </component>
+-  <component name="ToolWindowManager">
+-    <frame x="-1579" y="50" width="1346" height="687" extended-state="1" />
+-    <editor active="true" />
+-    <layout>
+-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2037325" />
+-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+-      <window_info id="Image Layers" order="2" />
+-      <window_info id="Capture Tool" order="3" />
+-      <window_info id="UI Designer" order="4" />
+-      <window_info id="Favorites" order="5" side_tool="true" />
+-      <window_info id="设计师" order="6" />
+-      <window_info id="Designer" order="7" />
+-      <window_info anchor="bottom" id="Message" order="0" />
+-      <window_info anchor="bottom" id="Find" order="1" />
+-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32730561" />
+-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+-      <window_info anchor="bottom" id="TODO" order="6" />
+-      <window_info anchor="bottom" id="Terminal" order="7" />
+-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+-      <window_info anchor="bottom" id="消息" order="10" />
+-      <window_info anchor="bottom" id="运行" order="11" weight="0.2" />
+-      <window_info anchor="bottom" id="Database Changes" order="12" />
+-      <window_info anchor="bottom" id="Version Control" order="13" weight="0.32851985" />
+-      <window_info anchor="bottom" id="调试" order="14" />
+-      <window_info anchor="bottom" id="Messages" order="15" weight="0.32851985" />
+-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+-      <window_info anchor="right" id="Maven" order="3" />
+-      <window_info anchor="right" id="控制板" order="4" />
+-      <window_info anchor="right" id="Capture Analysis" order="5" />
+-      <window_info anchor="right" id="Database" order="6" />
+-      <window_info anchor="right" id="Palette&#9;" order="7" />
+-      <window_info anchor="right" id="Theme Preview" order="8" />
+-      <window_info anchor="right" id="Palette" order="9" />
+-    </layout>
+-  </component>
+   <component name="TypeScriptGeneratedFilesManager">
+-    <option name="version" value="1" />
+-  </component>
+-  <component name="Vcs.Log.Tabs.Properties">
+-    <option name="TAB_STATES">
+-      <map>
+-        <entry key="MAIN">
+-          <value>
+-            <State>
+-              <option name="RECENTLY_FILTERED_USER_GROUPS">
+-                <collection />
+-              </option>
+-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+-                <collection />
+-              </option>
+-              <option name="COLUMN_ORDER" />
+-            </State>
+-          </value>
+-        </entry>
+-      </map>
+-    </option>
+-    <option name="RECENT_FILTERS">
+-      <map>
+-        <entry key="Branch">
+-          <value>
+-            <list />
+-          </value>
+-        </entry>
+-        <entry key="User">
+-          <value>
+-            <list />
+-          </value>
+-        </entry>
+-      </map>
+-    </option>
+-  </component>
+-  <component name="VcsManagerConfiguration">
+-    <MESSAGE value="默认的" />
+-    <option name="LAST_COMMIT_MESSAGE" value="默认的" />
+-  </component>
+-  <component name="editorHistoryManager">
+-    <entry file="file://$PROJECT_DIR$/pom.xml">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="462">
+-          <caret line="25" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="29" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/App.java">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="266">
+-          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+-          <folding>
+-            <element signature="imports" expanded="true" />
+-          </folding>
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="jar://$PROJECT_DIR$/../../jdk/lib/src.zip!/java.base/java/lang/StringLatin1.java">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="114">
+-          <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="jar://$PROJECT_DIR$/../../jdk/lib/src.zip!/java.base/java/lang/String.java">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="106">
+-          <caret line="710" column="32" selection-start-line="710" selection-start-column="32" selection-end-line="710" selection-end-column="32" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/leet1.java">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="158">
+-          <caret line="10" selection-start-line="10" selection-end-line="10" selection-end-column="32" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/leet64.java">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="19">
+-          <caret line="7" selection-start-line="7" selection-end-line="10" selection-end-column="9" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/leet1025.java">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="38">
+-          <caret line="5" selection-start-line="5" selection-end-line="7" selection-end-column="5" />
+-          <folding>
+-            <element signature="e#141#142#0" expanded="true" />
+-            <element signature="e#203#204#0" expanded="true" />
+-          </folding>
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/leet392.java">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="277">
+-          <caret line="37" column="40" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
+-          <folding>
+-            <element signature="imports" expanded="true" />
+-          </folding>
+-        </state>
+-      </provider>
+-    </entry>
+-  </component>
+-  <component name="masterDetails">
+-    <states>
+-      <state key="ArtifactsStructureConfigurable.UI">
+-        <settings>
+-          <artifact-editor />
+-          <splitter-proportions>
+-            <option name="proportions">
+-              <list>
+-                <option value="0.2" />
+-              </list>
+-            </option>
+-          </splitter-proportions>
+-        </settings>
+-      </state>
+-      <state key="FacetStructureConfigurable.UI">
+-        <settings>
+-          <splitter-proportions>
+-            <option name="proportions">
+-              <list>
+-                <option value="0.2" />
+-              </list>
+-            </option>
+-          </splitter-proportions>
+-        </settings>
+-      </state>
+-      <state key="GlobalLibrariesConfigurable.UI">
+-        <settings>
+-          <splitter-proportions>
+-            <option name="proportions">
+-              <list>
+-                <option value="0.2" />
+-              </list>
+-            </option>
+-          </splitter-proportions>
+-        </settings>
+-      </state>
+-      <state key="JdkListConfigurable.UI">
+-        <settings>
+-          <splitter-proportions>
+-            <option name="proportions">
+-              <list>
+-                <option value="0.2" />
+-              </list>
+-            </option>
+-          </splitter-proportions>
+-        </settings>
+-      </state>
+-      <state key="ModuleStructureConfigurable.UI">
+-        <settings>
+-          <splitter-proportions>
+-            <option name="proportions">
+-              <list>
+-                <option value="0.2" />
+-              </list>
+-            </option>
+-          </splitter-proportions>
+-        </settings>
+-      </state>
+-      <state key="ProjectLibrariesConfigurable.UI">
+-        <settings>
+-          <splitter-proportions>
+-            <option name="proportions">
+-              <list>
+-                <option value="0.2" />
+-              </list>
+-            </option>
+-          </splitter-proportions>
+-        </settings>
+-      </state>
+-    </states>
++    <option name="version" value="2" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/main/java/leetcode/leet415.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/leetcode/leet415.java	(date 1596517891755)
++++ src/main/java/leetcode/leet415.java	(date 1596517891755)
+@@ -0,0 +1,33 @@
++package leetcode;
++
++
++
++public class leet415 {
++    public static void main(String[] args) {
++        String num1= new String();
++        String  num2= new String();
++        num1="1";
++        num2="2";
++        System.out.println(Solution.addStrings(num1,num2));
++    }
++    static class Solution {
++        public static String addStrings(String num1, String num2) {
++            int i = num1.length() - 1, j = num2.length() - 1, add = 0;
++            StringBuffer ans = new StringBuffer();
++            while (i >= 0 || j >= 0 || add != 0) {
++                int x = i >= 0 ? num1.charAt(i) - '0' : 0;
++                int y = j >= 0 ? num2.charAt(j) - '0' : 0;
++                int result = x + y + add;
++                ans.append(result % 10);
++                add = result / 10;
++                i--;
++                j--;
++            }
++            // 计算完以后的答案需要翻转过来
++            ans.reverse();
++            return ans.toString();
++        }
++
++
++    }
++}
+Index: src/main/java/leetcode/leet392.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package leetcode;\r\n\r\nimport java.util.HashMap;\r\nimport java.util.Map;\r\n\r\npublic class leet392 {\r\n    public static void main(String[] args) {\r\n        String s = \"acb\";\r\n        String t = \"ahbgdc\";\r\n        Solution c = new Solution();\r\n        System.out.println(c.isSubsequence(s, t));\r\n    }\r\n\r\n\r\n    static class Solution {\r\n        public boolean isSubsequence(String s, String t) {\r\n            int num=0;\r\n            Map<Integer, Integer> map = new HashMap<>();\r\n            for (int i = 0; i < s.length(); i++) {\r\n                String s1 = String.valueOf(s.charAt(i));\r\n\r\n                if (t.contains(s1) == false) {\r\n                    return false;\r\n\r\n                }\r\n                for (int j = 0; j < t.length(); j++) {\r\n\r\n                    String t1 = String.valueOf(t.charAt(j));\r\n\r\n                    if(s1.equals(t1)==true) {\r\n                        map.put(j, num);\r\n                        num = num + 1;\r\n                    }\r\n                }\r\n            }\r\n            for(int i=0;i<num;i++){\r\n                int tt1=map.get(i);\r\n                System.out.println(tt1);\r\n                int tt2=map.get(i+1);\r\n\r\n                if(tt1>tt2){\r\n                    return  false;\r\n                }\r\n\r\n            }\r\n\r\n\r\n            return true;\r\n        }\r\n    }\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/leetcode/leet392.java	(revision 3f08fd6e1009f28fb0e9c159ef8e5efefd6afed1)
++++ src/main/java/leetcode/leet392.java	(date 1595840368970)
+@@ -33,6 +33,11 @@
+                     }
+                 }
+             }
++            for(Integer key : map.keySet()){
++                Integer value = map.get(key);
++                System.out.println(key+"  "+value);
++            }
++
+             for(int i=0;i<num;i++){
+                 int tt1=map.get(i);
+                 System.out.println(tt1);
