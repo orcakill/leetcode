@@ -188,7 +188,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.leet392">
+  <component name="RunManager" selected="应用程序.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="leetcode.App" />
       <module name="leetcode" />
@@ -254,14 +254,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.leet392" />
-        <item itemvalue="Application.leet64$Solution" />
-        <item itemvalue="Application.leet1025" />
-        <item itemvalue="Application.App" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
