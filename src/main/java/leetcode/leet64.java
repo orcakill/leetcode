@@ -3,6 +3,12 @@ package leetcode;
 import static leetcode.leet1025.Solution.divisorGame;
 
 public class leet64 {
+    public static void main(String[] args) {/*leet1025*/
+        int A[][]={{1,3,1},{1,5,1},{4,2,1}};
+        System.out.println(Solution.minPathSum(A));
+    }
+
+
     static class Solution {
 
         public static void main(String[] args) {
