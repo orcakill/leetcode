@@ -1,16 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="dcb04c81-fa2b-44e8-89b3-48bb9f7f9922" name="默认的" comment="默认的">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet546.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/leetclass/TreeNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/leetclass/listNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet110.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leetcoe343.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet343.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/leetcode/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet1025$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet1025$Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet1025.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet1025.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet392$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet392$Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet392.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet392.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet415$Solution.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet415.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet64$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet64$Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet64.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet64.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/leetcode/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/leetcode/AppTest.class" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +62,6 @@
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
         <option name="vmOptionsForImporter" value="-Xmx768m" />
       </MavenImportingSettings>
     </option>
@@ -44,6 +69,10 @@
   <component name="ProjectId" id="1f5hp2Yu82KuvLNZO3Tt5kn6tOI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -56,18 +85,6 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.leet546">
     <configuration name="leet1025" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -145,16 +162,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand />
-          <select />
-        </treeState>
-      </serviceView>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -184,6 +191,7 @@
       <workItem from="1596983287172" duration="739000" />
       <workItem from="1597486974439" duration="9385000" />
       <workItem from="1597575758758" duration="2578000" />
+      <workItem from="1597718868952" duration="1019000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1595514228282</created>
@@ -245,16 +253,14 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -273,10 +279,33 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="默认的" />
     <option name="LAST_COMMIT_MESSAGE" value="默认的" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="281" y="0" key="CommitChangelistDialog2" timestamp="1597636819965">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="281" y="0" key="CommitChangelistDialog2/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1597636819965" />
+    <state x="213" y="18" key="Maven.ArtifactSearchDialog" timestamp="1597639407189">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="213" y="18" key="Maven.ArtifactSearchDialog/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1597639407189" />
+    <state x="568" y="230" width="425" height="268" key="MultipleFileMergeDialog" timestamp="1597636845537">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="568" y="230" width="425" height="268" key="MultipleFileMergeDialog/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1597636845537" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1597636702120">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1597636702120" />
+    <state x="477" y="276" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597636830833">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="477" y="276" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1597636830833" />
   </component>
   <component name="masterDetails">
     <states>
