@@ -1,2 +1,1 @@
-＃leetcode
 使用java的leetcode练习算法。可以进行测试编写的算法的输入输出
