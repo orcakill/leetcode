@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="dcb04c81-fa2b-44e8-89b3-48bb9f7f9922" name="默认的" comment="默认的">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet679.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,8 +39,8 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="e490e199-9eff-44b1-83bd-e7458cc508de" />
@@ -31,7 +48,6 @@
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
         <option name="vmOptionsForImporter" value="-Xmx768m" />
       </MavenImportingSettings>
     </option>
@@ -39,6 +55,10 @@
   <component name="ProjectId" id="1f5hp2Yu82KuvLNZO3Tt5kn6tOI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -50,34 +70,9 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Application.leet546">
-    <configuration name="leet1025" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="leetcode.leet1025" />
-      <module name="leetcode" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="leetcode.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.leet679">
     <configuration name="leet343" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="leetcode.leet343" />
       <module name="leetcode" />
@@ -117,9 +112,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="leet64$Solution" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="leetcode.leet64$Solution" />
-      <module name="leetcode1" />
+    <configuration name="leet647" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="leetcode.leet647" />
+      <module name="leetcode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="leetcode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="leet679" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="leetcode.leet679" />
+      <module name="leetcode" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="leetcode.*" />
@@ -132,23 +140,13 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.leet679" />
+        <item itemvalue="Application.leet647" />
         <item itemvalue="Application.leet546" />
         <item itemvalue="Application.leet343" />
         <item itemvalue="Application.leet392" />
-        <item itemvalue="Application.leet64$Solution" />
-        <item itemvalue="Application.leet1025" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand />
-          <select />
-        </treeState>
-      </serviceView>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -179,8 +177,11 @@
       <workItem from="1596983287172" duration="739000" />
       <workItem from="1597486974439" duration="9385000" />
       <workItem from="1597575758758" duration="2578000" />
-      <workItem from="1597596689893" duration="644000" />
-      <workItem from="1598165958402" duration="1394000" />
+      <workItem from="1597718868952" duration="2877000" />
+      <workItem from="1597807811355" duration="6888000" />
+      <workItem from="1598000171209" duration="208000" />
+      <workItem from="1598057322818" duration="5132000" />
+      <workItem from="1598085202229" duration="214000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1595514228282</created>
@@ -239,26 +240,24 @@
       <updated>1596217082255</updated>
     </task>
     <task id="LOCAL-00009" summary="默认的">
-      <created>1597596733659</created>
+      <created>1597719945011</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1597596733659</updated>
+      <updated>1597719945011</updated>
     </task>
     <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -277,10 +276,65 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="默认的" />
     <option name="LAST_COMMIT_MESSAGE" value="默认的" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="281" y="0" key="CommitChangelistDialog2" timestamp="1597719941735">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="281" y="0" key="CommitChangelistDialog2/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1597719941735" />
+    <state width="778" height="292" key="GridCell.Tab.0.bottom" timestamp="1598068555436">
+      <screen x="-1600" y="0" width="1600" height="900" />
+    </state>
+    <state width="778" height="292" key="GridCell.Tab.0.bottom/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1598068555436" />
+    <state width="778" height="292" key="GridCell.Tab.0.center" timestamp="1598068555436">
+      <screen x="-1600" y="0" width="1600" height="900" />
+    </state>
+    <state width="778" height="292" key="GridCell.Tab.0.center/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1598068555436" />
+    <state width="778" height="292" key="GridCell.Tab.0.left" timestamp="1598068555436">
+      <screen x="-1600" y="0" width="1600" height="900" />
+    </state>
+    <state width="778" height="292" key="GridCell.Tab.0.left/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1598068555436" />
+    <state width="778" height="292" key="GridCell.Tab.0.right" timestamp="1598068555436">
+      <screen x="-1600" y="0" width="1600" height="900" />
+    </state>
+    <state width="778" height="292" key="GridCell.Tab.0.right/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1598068555436" />
+    <state width="778" height="292" key="GridCell.Tab.1.bottom" timestamp="1598068555436">
+      <screen x="-1600" y="0" width="1600" height="900" />
+    </state>
+    <state width="778" height="292" key="GridCell.Tab.1.bottom/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1598068555436" />
+    <state width="778" height="292" key="GridCell.Tab.1.center" timestamp="1598068555436">
+      <screen x="-1600" y="0" width="1600" height="900" />
+    </state>
+    <state width="778" height="292" key="GridCell.Tab.1.center/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1598068555436" />
+    <state width="778" height="292" key="GridCell.Tab.1.left" timestamp="1598068555436">
+      <screen x="-1600" y="0" width="1600" height="900" />
+    </state>
+    <state width="778" height="292" key="GridCell.Tab.1.left/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1598068555436" />
+    <state width="778" height="292" key="GridCell.Tab.1.right" timestamp="1598068555436">
+      <screen x="-1600" y="0" width="1600" height="900" />
+    </state>
+    <state width="778" height="292" key="GridCell.Tab.1.right/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1598068555436" />
+    <state x="213" y="18" key="Maven.ArtifactSearchDialog" timestamp="1597639407189">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="213" y="18" key="Maven.ArtifactSearchDialog/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1597639407189" />
+    <state x="568" y="230" width="425" height="268" key="MultipleFileMergeDialog" timestamp="1597636845537">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="568" y="230" width="425" height="268" key="MultipleFileMergeDialog/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1597636845537" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1597719951602">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1597719951602" />
+    <state x="477" y="276" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597636830833">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="477" y="276" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1597636830833" />
   </component>
   <component name="masterDetails">
     <states>
