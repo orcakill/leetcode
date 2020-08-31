@@ -19,14 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcb04c81-fa2b-44e8-89b3-48bb9f7f9922" name="默认的" comment="8月28日 leet657更新">
-      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet841.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/array_list.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/two_array_list.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet841.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet841.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/two_array_list.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/two_array_list.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +68,18 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Application.leet841">
     <configuration name="leet201" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -299,19 +308,20 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="默认的" />
