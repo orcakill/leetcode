@@ -19,11 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcb04c81-fa2b-44e8-89b3-48bb9f7f9922" name="默认的" comment="8月31日 更新">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
+    <list default="true" id="dcb04c81-fa2b-44e8-89b3-48bb9f7f9922" name="默认的" comment="2020/9/01 更新">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet841.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet841.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet841.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet841_1.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +68,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
-  <component name="RunManager" selected="Application.leet841">
+  <component name="RunManager" selected="Application.leet841_1">
     <configuration name="leet201" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="leetcode.leet201" />
       <module name="leetcode" />
@@ -122,8 +121,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="leet841" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="leetcode.leet841" />
+    <configuration name="leet841_1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="leetcode.leet841_1" />
       <module name="leetcode" />
       <extension name="coverage">
         <pattern>
@@ -233,11 +232,11 @@
       <item itemvalue="Application.leet459" />
       <item itemvalue="Application.leet557" />
       <item itemvalue="Application.leet657" />
-      <item itemvalue="Application.leet841" />
+      <item itemvalue="Application.leet841_1" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.leet841" />
+        <item itemvalue="Application.leet841_1" />
         <item itemvalue="Application.leet557" />
         <item itemvalue="Application.leet657" />
         <item itemvalue="Application.leet459" />
@@ -292,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598802446111</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="2020/9/01 更新">
+      <created>1598928241877</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1598928241877</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -313,7 +319,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="默认的" />
     <MESSAGE value="2020/8/30 更新 leet557" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020/8/30 更新 leet557" />
+    <MESSAGE value="2020/9/01 更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020/9/01 更新" />
   </component>
   <component name="WindowStateProjectService">
     <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598842825719">
@@ -381,7 +388,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet841.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet841_1.java</url>
           <line>26</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
