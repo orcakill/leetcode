@@ -19,10 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcb04c81-fa2b-44e8-89b3-48bb9f7f9922" name="默认的" comment="2020/9/01 更新">
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet486.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet486.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leetclass/listNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetclass/ListNode.java" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,9 +69,21 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
-  <component name="RunManager" selected="Application.leet486">
-    <configuration name="leet459" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="leetcode.leet459" />
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.leet2">
+    <configuration name="leet2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="leetcode.leet2" />
       <module name="leetcode" />
       <extension name="coverage">
         <pattern>
@@ -227,19 +241,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.leet459" />
       <item itemvalue="Application.leet557" />
       <item itemvalue="Application.leet657" />
       <item itemvalue="Application.leet841_1" />
       <item itemvalue="Application.leet486" />
+      <item itemvalue="Application.leet2" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.leet2" />
         <item itemvalue="Application.leet486" />
         <item itemvalue="Application.leet841_1" />
         <item itemvalue="Application.leet557" />
         <item itemvalue="Application.leet657" />
-        <item itemvalue="Application.leet459" />
       </list>
     </recent_temporary>
   </component>
@@ -248,6 +262,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+      <changelist id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="" />
       <created>1598173453835</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -262,6 +277,7 @@
       <workItem from="1598863559164" duration="920000" />
       <workItem from="1598870200540" duration="696000" />
       <workItem from="1599094730442" duration="3291000" />
+      <workItem from="1599406991219" duration="1282000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1598252500809</created>
@@ -316,19 +332,20 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="默认的" />
