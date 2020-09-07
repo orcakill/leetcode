@@ -7,7 +7,7 @@ public class leet2 {
     public static void main(String[] args) {
       int  a[]={2,4,3};
       int  b[]={5,6,4};
-
+      //定义a为ListNode
       ListNode l1=ListNode.makeNode(a);
       ListNode l2=ListNode.makeNode(b);
 
