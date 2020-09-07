@@ -19,7 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leetclass/ListNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetclass/ListNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetclass/listNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetclass/listNode.class" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +278,8 @@
       <workItem from="1598863559164" duration="920000" />
       <workItem from="1598870200540" duration="696000" />
       <workItem from="1599094730442" duration="3291000" />
-      <workItem from="1599406991219" duration="2159000" />
+      <workItem from="1599406991219" duration="2786000" />
+      <workItem from="1599480927320" duration="3775000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1598252500809</created>
@@ -331,7 +337,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599412378500</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="2020/9/07 更新">
+      <created>1599413212514</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1599413212514</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,7 +440,17 @@
           <line>26</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet2.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="listNode.next" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
