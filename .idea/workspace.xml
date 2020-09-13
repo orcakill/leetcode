@@ -19,10 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet7.java" afterDir="false" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/9/11 更新">
+      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet9.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +67,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
-  <component name="RunManager" selected="Application.leet7">
+  <component name="RunManager" selected="Application.leet9">
     <configuration name="leet2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="leetcode.leet2" />
       <module name="leetcode" />
@@ -121,8 +120,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="leet841_1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="leetcode.leet841_1" />
+    <configuration name="leet9" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="leetcode.leet9" />
       <module name="leetcode" />
       <extension name="coverage">
         <pattern>
@@ -228,19 +227,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.leet841_1" />
       <item itemvalue="Application.leet486" />
       <item itemvalue="Application.leet2" />
       <item itemvalue="Application.leet3" />
       <item itemvalue="Application.leet7" />
+      <item itemvalue="Application.leet9" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.leet9" />
         <item itemvalue="Application.leet7" />
         <item itemvalue="Application.leet3" />
         <item itemvalue="Application.leet2" />
         <item itemvalue="Application.leet486" />
-        <item itemvalue="Application.leet841_1" />
       </list>
     </recent_temporary>
   </component>
@@ -268,7 +267,8 @@
       <workItem from="1599480927320" duration="3775000" />
       <workItem from="1599696524373" duration="4017000" />
       <workItem from="1599782653776" duration="3243000" />
-      <workItem from="1599815019259" duration="602000" />
+      <workItem from="1599815019259" duration="1162000" />
+      <workItem from="1599875561798" duration="3613000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1598252500809</created>
@@ -333,7 +333,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599413212514</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="2020/9/11 更新">
+      <created>1599820145917</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1599820145918</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -356,7 +363,8 @@
     <MESSAGE value="2020/8/30 更新 leet557" />
     <MESSAGE value="2020/9/01 更新" />
     <MESSAGE value="2020/9/07 更新" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020/9/07 更新" />
+    <MESSAGE value="2020/9/11 更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020/9/11 更新" />
   </component>
   <component name="WindowStateProjectService">
     <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598842825719">
@@ -367,53 +375,54 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="69" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1599105651804" />
-    <state width="1306" height="190" key="GridCell.Tab.0.bottom" timestamp="1599790873305">
+    <state width="1306" height="190" key="GridCell.Tab.0.bottom" timestamp="1599894998027">
       <screen x="-1600" y="0" width="1600" height="900" />
     </state>
-    <state width="1306" height="190" key="GridCell.Tab.0.bottom/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599790873305" />
+    <state width="1306" height="190" key="GridCell.Tab.0.bottom/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599894998027" />
     <state width="1306" height="190" key="GridCell.Tab.0.bottom/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1599706049381" />
-    <state width="1306" height="190" key="GridCell.Tab.0.center" timestamp="1599790873305">
+    <state width="1306" height="190" key="GridCell.Tab.0.center" timestamp="1599894998027">
       <screen x="-1600" y="0" width="1600" height="900" />
     </state>
-    <state width="1306" height="190" key="GridCell.Tab.0.center/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599790873305" />
+    <state width="1306" height="190" key="GridCell.Tab.0.center/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599894998027" />
     <state width="1306" height="190" key="GridCell.Tab.0.center/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1599706049380" />
-    <state width="1306" height="190" key="GridCell.Tab.0.left" timestamp="1599790873305">
+    <state width="1306" height="190" key="GridCell.Tab.0.left" timestamp="1599894998027">
       <screen x="-1600" y="0" width="1600" height="900" />
     </state>
-    <state width="1306" height="190" key="GridCell.Tab.0.left/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599790873305" />
+    <state width="1306" height="190" key="GridCell.Tab.0.left/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599894998027" />
     <state width="1306" height="190" key="GridCell.Tab.0.left/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1599706049380" />
-    <state width="1306" height="190" key="GridCell.Tab.0.right" timestamp="1599790873305">
+    <state width="1306" height="190" key="GridCell.Tab.0.right" timestamp="1599894998027">
       <screen x="-1600" y="0" width="1600" height="900" />
     </state>
-    <state width="1306" height="190" key="GridCell.Tab.0.right/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599790873305" />
+    <state width="1306" height="190" key="GridCell.Tab.0.right/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599894998027" />
     <state width="1306" height="190" key="GridCell.Tab.0.right/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1599706049381" />
-    <state width="1306" height="190" key="GridCell.Tab.1.bottom" timestamp="1599790873306">
+    <state width="1306" height="190" key="GridCell.Tab.1.bottom" timestamp="1599894998028">
       <screen x="-1600" y="0" width="1600" height="900" />
     </state>
-    <state width="1306" height="190" key="GridCell.Tab.1.bottom/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599790873306" />
+    <state width="1306" height="190" key="GridCell.Tab.1.bottom/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599894998028" />
     <state width="1306" height="190" key="GridCell.Tab.1.bottom/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1599706049742" />
-    <state width="1306" height="190" key="GridCell.Tab.1.center" timestamp="1599790873305">
+    <state width="1306" height="190" key="GridCell.Tab.1.center" timestamp="1599894998028">
       <screen x="-1600" y="0" width="1600" height="900" />
     </state>
-    <state width="1306" height="190" key="GridCell.Tab.1.center/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599790873305" />
+    <state width="1306" height="190" key="GridCell.Tab.1.center/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599894998028" />
     <state width="1306" height="190" key="GridCell.Tab.1.center/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1599706049742" />
-    <state width="1306" height="190" key="GridCell.Tab.1.left" timestamp="1599790873305">
+    <state width="1306" height="190" key="GridCell.Tab.1.left" timestamp="1599894998027">
       <screen x="-1600" y="0" width="1600" height="900" />
     </state>
-    <state width="1306" height="190" key="GridCell.Tab.1.left/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599790873305" />
+    <state width="1306" height="190" key="GridCell.Tab.1.left/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599894998027" />
     <state width="1306" height="190" key="GridCell.Tab.1.left/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1599706049741" />
-    <state width="1306" height="190" key="GridCell.Tab.1.right" timestamp="1599790873305">
+    <state width="1306" height="190" key="GridCell.Tab.1.right" timestamp="1599894998028">
       <screen x="-1600" y="0" width="1600" height="900" />
     </state>
-    <state width="1306" height="190" key="GridCell.Tab.1.right/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599790873305" />
+    <state width="1306" height="190" key="GridCell.Tab.1.right/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599894998028" />
     <state width="1306" height="190" key="GridCell.Tab.1.right/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1599706049742" />
     <state x="184" y="8" key="SettingsEditor" timestamp="1598842783792">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1598842783792" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1598252508011">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="-1278" y="119" key="Vcs.Push.Dialog.v2" timestamp="1599820249348">
+      <screen x="-1600" y="0" width="1600" height="900" />
     </state>
+    <state x="-1278" y="119" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599820249348" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1598252508011" />
     <state x="-1006" y="362" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598230330353">
       <screen x="-1600" y="0" width="1600" height="900" />
@@ -437,6 +446,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet7.java</url>
           <line>10</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet9.java</url>
+          <line>9</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
