@@ -20,8 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet834.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +87,7 @@
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
   </component>
-  <component name="RunManager" selected="Application.leet18">
+  <component name="RunManager" selected="Application.leet834">
     <configuration name="leet13" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="leetcode.leet13" />
       <module name="leetcode" />
@@ -127,8 +127,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="leet7" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="leetcode.leet7" />
+    <configuration name="leet834" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="leetcode.leet834" />
       <module name="leetcode" />
       <extension name="coverage">
         <pattern>
@@ -247,19 +247,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.leet7" />
       <item itemvalue="Application.leet9" />
       <item itemvalue="Application.leet13" />
       <item itemvalue="Application.leet20" />
       <item itemvalue="Application.leet18" />
+      <item itemvalue="Application.leet834" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.leet834" />
         <item itemvalue="Application.leet18" />
         <item itemvalue="Application.leet20" />
         <item itemvalue="Application.leet13" />
         <item itemvalue="Application.leet9" />
-        <item itemvalue="Application.leet7" />
       </list>
     </recent_temporary>
   </component>
@@ -300,7 +300,7 @@
       <workItem from="1601817652624" duration="1384000" />
       <workItem from="1601819069506" duration="3574000" />
       <workItem from="1601883586267" duration="4409000" />
-      <workItem from="1601983169073" duration="823000" />
+      <workItem from="1601983169073" duration="3359000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1598252500809</created>
@@ -400,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601983336610</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="2020/10/6 更新 README.md">
+      <created>1601984083814</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1601984083814</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,7 +434,8 @@
     <MESSAGE value="2020/9/13 更新" />
     <MESSAGE value="2020/10/5 更新 leet20" />
     <MESSAGE value="2020/10/6 更新 README.md添加电子邮件地址" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020/10/6 更新 README.md添加电子邮件地址" />
+    <MESSAGE value="2020/10/6 更新 README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020/10/6 更新 README.md" />
   </component>
   <component name="WindowStateProjectService">
     <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598842825719">
@@ -442,10 +450,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="110" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1600134644358" />
-    <state x="244" y="0" key="CommitChangelistDialog2" timestamp="1601983326477">
+    <state x="244" y="0" key="CommitChangelistDialog2" timestamp="1601984075124">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="244" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1601983326477" />
+    <state x="244" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1601984075124" />
     <state x="463" y="110" key="FileChooserDialogImpl" timestamp="1601819017172">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -515,12 +523,12 @@
     </state>
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1598842783792" />
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1601819031788" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1601983350885">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1601984361544">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="-1278" y="119" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599820249348" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1599978968452" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1601983350885" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1601984361544" />
     <state x="507" y="293" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601820861009">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
