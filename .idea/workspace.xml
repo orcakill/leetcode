@@ -23,6 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/10/07 更新 leet75">
+      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet344.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,20 +91,7 @@
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
-  <component name="RunManager" selected="Application.leet75">
-    <configuration name="leet13" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="leetcode.leet13" />
-      <module name="leetcode" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="leetcode.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.leet344">
     <configuration name="leet18" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="leetcode.leet18" />
       <module name="leetcode" />
@@ -119,6 +107,19 @@
     </configuration>
     <configuration name="leet20" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="leetcode.leet20" />
+      <module name="leetcode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="leetcode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="leet344" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="leetcode.leet344" />
       <module name="leetcode" />
       <extension name="coverage">
         <pattern>
@@ -156,15 +157,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -263,19 +262,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.leet13" />
       <item itemvalue="Application.leet20" />
       <item itemvalue="Application.leet18" />
       <item itemvalue="Application.leet834" />
       <item itemvalue="Application.leet75" />
+      <item itemvalue="Application.leet344" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.leet344" />
         <item itemvalue="Application.leet75" />
         <item itemvalue="Application.leet834" />
         <item itemvalue="Application.leet18" />
         <item itemvalue="Application.leet20" />
-        <item itemvalue="Application.leet13" />
       </list>
     </recent_temporary>
   </component>
@@ -325,6 +324,8 @@
       <workItem from="1602057012413" duration="291000" />
       <workItem from="1602058115693" duration="2143000" />
       <workItem from="1602070175186" duration="1527000" />
+      <workItem from="1602154717735" duration="240000" />
+      <workItem from="1602155004988" duration="1246000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1598252500809</created>
