@@ -23,7 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/10/20 更新 leet75">
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet75.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet75.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -314,7 +314,8 @@
       <workItem from="1602070175186" duration="1527000" />
       <workItem from="1602154717735" duration="240000" />
       <workItem from="1602155004988" duration="1246000" />
-      <workItem from="1603171192873" duration="270000" />
+      <workItem from="1603171192873" duration="2983000" />
+      <workItem from="1603282224281" duration="617000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1598252500809</created>
@@ -449,7 +450,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603171414637</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="2020/10/20 更新 leet75">
+      <created>1603171737868</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1603171737868</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,12 +576,12 @@
     </state>
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1598842783792" />
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1603171376320" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1603171416953">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1603171753586">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="-1278" y="119" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599820249348" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1599978968452" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1603171416953" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1603171753586" />
     <state x="507" y="293" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601820861009">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
