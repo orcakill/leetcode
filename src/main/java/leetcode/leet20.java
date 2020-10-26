@@ -7,11 +7,12 @@ import java.util.Map;
 
 public class leet20 {
     public static void main(String[] args) {
-        String s = "{}";
-        System.out.println(isValid(s));
+        String a="{[]}";
+        System.out.println(isValid(a));
 
     }
-    public  static boolean isValid(String s) {
+
+    public static boolean isValid(String s) {
         int n = s.length();
         if (n % 2 == 1) {
             return false;
@@ -37,9 +38,5 @@ public class leet20 {
         return stack.isEmpty();
     }
 
-
-
+    
 }
-
-
-
