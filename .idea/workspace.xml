@@ -22,10 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/10/29 更新leet28">
-      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet35.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/10/30 更新leet35" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -335,7 +332,7 @@
       <workItem from="1603629383423" duration="4488000" />
       <workItem from="1603758437530" duration="1274000" />
       <workItem from="1603929879898" duration="3634000" />
-      <workItem from="1604016492550" duration="2866000" />
+      <workItem from="1604016492550" duration="3197000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1598252500809</created>
@@ -519,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603940893770</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="2020/10/30 更新leet35">
+      <created>1604020663081</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1604020663081</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -555,7 +559,8 @@
     <MESSAGE value="2020/10/26 更新leet27" />
     <MESSAGE value="2020/10/27 更新leet27" />
     <MESSAGE value="2020/10/29 更新leet28" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020/10/29 更新leet28" />
+    <MESSAGE value="2020/10/30 更新leet35" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020/10/30 更新leet35" />
   </component>
   <component name="WindowStateProjectService">
     <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598842825719">
@@ -652,10 +657,10 @@
     </state>
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1603675524101" />
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1603171376320" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1603940896303">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1604020666663">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1603940896303" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1604020666663" />
     <state x="-1278" y="119" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599820249348" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1603758525048" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1603374579790" />

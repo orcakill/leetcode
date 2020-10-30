@@ -7,7 +7,7 @@ import java.util.List;
 public class leet35 {
     public static void main(String[] args) {
         int a[]={1,3,5,6};
-        System.out.println(searchInsert(a,5));/*2*/
+        System.out.println(searchInsert(a,5));/*2  */
         int b[]={1,3,5,6};
         System.out.println(searchInsert(b,2));/*1*/
         int c[]={1,3,5,6};
