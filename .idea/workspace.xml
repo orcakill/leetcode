@@ -22,13 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/10/30 更新leet35">
-      <change afterPath="$PROJECT_DIR$/src/main/java/novel_crawler/entity/NovelMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/novel_crawler/mappers/NovelMainMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/NovelMainMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/novel_crawler/mappers/NovelMainMapperTest.java" afterDir="false" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/11/3 更新leet35">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
@@ -356,7 +350,7 @@
       <workItem from="1604016492550" duration="6241000" />
       <workItem from="1604109558782" duration="2101000" />
       <workItem from="1604281037533" duration="2926000" />
-      <workItem from="1604362151694" duration="6619000" />
+      <workItem from="1604362151694" duration="6921000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1598252500809</created>
@@ -554,7 +548,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604020756609</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="2020/11/3 更新leet35">
+      <created>1604395307649</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1604395307649</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -591,7 +592,8 @@
     <MESSAGE value="2020/10/27 更新leet27" />
     <MESSAGE value="2020/10/29 更新leet28" />
     <MESSAGE value="2020/10/30 更新leet35" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020/10/30 更新leet35" />
+    <MESSAGE value="2020/11/3 更新leet35" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020/11/3 更新leet35" />
   </component>
   <component name="WindowStateProjectService">
     <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598842825719">
@@ -696,23 +698,24 @@
     </state>
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1603675524101" />
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1603171376320" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1604020759571">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1604395310902">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1604020759571" />
     <state x="-1278" y="119" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599820249348" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1603758525048" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1604395310902" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1603374579790" />
     <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1604282221276">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1366.728/-1600.-124.1600.900@0.0.1366.728" timestamp="1604282221276" />
-    <state x="507" y="293" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604281799629">
+    <state x="507" y="293" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604395245187">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="507" y="293" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728/-1600.-124.1600.900@0.0.1366.728" timestamp="1604281799629" />
     <state x="507" y="293" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1604017753707" />
     <state x="-1006" y="362" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1598230330353" />
+    <state x="507" y="293" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1604395245187" />
     <state x="507" y="293" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1601820861009" />
     <state x="454" y="183" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1604394706780">
       <screen x="0" y="0" width="1366" height="728" />
