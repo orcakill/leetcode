@@ -22,7 +22,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/10/30 更新leet35" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/10/30 更新leet35">
+      <change afterPath="$PROJECT_DIR$/src/main/java/novel_crawler/entity/NovelMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/novel_crawler/mappers/NovelMainMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/NovelMainMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/novel_crawler/mappers/NovelMainMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +55,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit3 Test Class" />
       </list>
     </option>
   </component>
@@ -73,7 +85,6 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -81,12 +92,22 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit3" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3" value="junit.framework.TestCase" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.24942529" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="novel_crawler.mappers" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="junit.framework.TestCase" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.leet35">
     <configuration name="leet21" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -332,7 +353,10 @@
       <workItem from="1603629383423" duration="4488000" />
       <workItem from="1603758437530" duration="1274000" />
       <workItem from="1603929879898" duration="3634000" />
-      <workItem from="1604016492550" duration="3197000" />
+      <workItem from="1604016492550" duration="6241000" />
+      <workItem from="1604109558782" duration="2101000" />
+      <workItem from="1604281037533" duration="2926000" />
+      <workItem from="1604362151694" duration="6619000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1598252500809</created>
@@ -523,7 +547,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604020663081</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="2020/10/30 更新leet35">
+      <created>1604020756609</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1604020756609</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -567,10 +598,18 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1598842825719" />
-    <state x="488" y="69" key="#com.intellij.ide.util.MemberChooser" timestamp="1599105651804">
+    <state x="488" y="69" key="#com.intellij.ide.util.MemberChooser" timestamp="1604382597234">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="69" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1599105651804" />
+    <state x="488" y="69" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1604382597234" />
+    <state x="354" y="286" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1604383043122">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="354" y="286" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1604383043122" />
+    <state x="491" y="180" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604383178644">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="491" y="180" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1604383178644" />
     <state x="413" y="110" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1603635147445">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -584,34 +623,34 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="110" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1601819017172" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1604020214546">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1604031769116">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1604020214546" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1604031769116" />
     <state width="1323" height="132" key="GridCell.Tab.0.bottom/0.0.1366.728/-1600.-218.1600.900@0.0.1366.728" timestamp="1600755239623" />
     <state width="1306" height="190" key="GridCell.Tab.0.bottom/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599894998027" />
     <state width="1286" height="163" key="GridCell.Tab.0.bottom/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1603675496567" />
     <state width="1286" height="203" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1603635848605" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1604020214546">
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1604031769116">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1604020214546" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1604031769116" />
     <state width="1323" height="132" key="GridCell.Tab.0.center/0.0.1366.728/-1600.-218.1600.900@0.0.1366.728" timestamp="1600755239623" />
     <state width="1306" height="190" key="GridCell.Tab.0.center/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599894998027" />
     <state width="1286" height="163" key="GridCell.Tab.0.center/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1603675496566" />
     <state width="1286" height="203" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1603635848605" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1604020214545">
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1604031769116">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1604020214545" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1604031769116" />
     <state width="1323" height="132" key="GridCell.Tab.0.left/0.0.1366.728/-1600.-218.1600.900@0.0.1366.728" timestamp="1600755239622" />
     <state width="1306" height="190" key="GridCell.Tab.0.left/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599894998027" />
     <state width="1286" height="163" key="GridCell.Tab.0.left/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1603675496566" />
     <state width="1286" height="203" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1603635848605" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1604020214546">
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1604031769116">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1604020214546" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1604031769116" />
     <state width="1323" height="132" key="GridCell.Tab.0.right/0.0.1366.728/-1600.-218.1600.900@0.0.1366.728" timestamp="1600755239623" />
     <state width="1306" height="190" key="GridCell.Tab.0.right/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599894998027" />
     <state width="1286" height="163" key="GridCell.Tab.0.right/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1603675496566" />
@@ -657,22 +696,32 @@
     </state>
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1603675524101" />
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1603171376320" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1604020666663">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1604020759571">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1604020666663" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1604020759571" />
     <state x="-1278" y="119" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599820249348" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1603758525048" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1603374579790" />
-    <state x="507" y="293" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604017753707">
+    <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1604282221276">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1366.728/-1600.-124.1600.900@0.0.1366.728" timestamp="1604282221276" />
+    <state x="507" y="293" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604281799629">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="507" y="293" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728/-1600.-124.1600.900@0.0.1366.728" timestamp="1604281799629" />
     <state x="507" y="293" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1604017753707" />
     <state x="-1006" y="362" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1598230330353" />
     <state x="507" y="293" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1601820861009" />
-    <state x="316" y="0" key="new project wizard" timestamp="1602053266654">
+    <state x="454" y="183" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1604394706780">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="454" y="183" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1604394706780" />
+    <state x="316" y="0" key="new project wizard" timestamp="1604282174195">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="316" y="0" key="new project wizard/0.0.1366.728/-1600.-124.1600.900@0.0.1366.728" timestamp="1604282174195" />
     <state x="316" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1602053266654" />
     <state x="378" y="119" key="refactoring.ChangeSignatureDialog" timestamp="1603635096685">
       <screen x="0" y="0" width="1366" height="728" />
@@ -703,7 +752,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet9.java</url>
-          <line>9</line>
+          <line>10</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
