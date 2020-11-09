@@ -8,7 +8,7 @@ public class leet53 {
         int  a[]={-2,1,-3,4,-1,2,1,-5,4};
         int  b[]={1};
         int  c[]={-2,1};
-        int  d[]={-2,-1};
+        int  d[]={-2,-1};/**/
         System.out.println(maxSubArray(c));
     }
 
