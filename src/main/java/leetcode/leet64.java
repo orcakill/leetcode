@@ -1,6 +1,6 @@
 package leetcode;
 
-import static leetcode.leet1025.Solution.divisorGame;
+
 
 public class leet64 {
     public static void main(String[] args) {/*leet1025*/
