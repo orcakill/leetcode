@@ -12,9 +12,9 @@ public class leet83 {
         int  b[]={1,1,2,3,3};
         int  c[]={};
 
-//        System.out.println(traverse(deleteDuplicates(ListNode.makeNode(a))).toString());
+        System.out.println(traverse(deleteDuplicates(ListNode.makeNode(a))).toString());
 //        System.out.println(traverse(deleteDuplicates(ListNode.makeNode(b))).toString());
-        System.out.println(traverse(deleteDuplicates(ListNode.makeNode(c))).toString());
+//        System.out.println(traverse(deleteDuplicates(ListNode.makeNode(c))).toString());
     }
   public static class ListNode {
       int val;
