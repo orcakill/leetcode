@@ -1,6 +1,7 @@
 package leetcode;
 
-import leetclass.TreeNode;
+
+
 
 //完全不懂
 public class leet110 {
@@ -9,6 +10,18 @@ public class leet110 {
         System.out.println(leet110.Solution.isBalanced(t));
     }
 
+    public static class TreeNode {
+
+        int val;
+        public TreeNode left;
+        public TreeNode right;
+        public TreeNode(int x) { val = x; }
+
+
+        public TreeNode() {
+
+        }
+    }
 
 
     static class Solution {
