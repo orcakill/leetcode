@@ -351,7 +351,7 @@
       <workItem from="1606102069664" duration="3117000" />
       <workItem from="1606198226852" duration="688000" />
       <workItem from="1606264736906" duration="7277000" />
-      <workItem from="1606282896702" duration="790000" />
+      <workItem from="1606282896702" duration="1002000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1598252500809</created>
@@ -654,7 +654,28 @@
       <option name="project" value="LOCAL" />
       <updated>1606287290551</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="2020/11/25 更新TreeNode">
+      <created>1606287419906</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1606287419906</updated>
+    </task>
+    <task id="LOCAL-00045" summary="2020/11/25 更新TreeNode">
+      <created>1606287439794</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1606287439794</updated>
+    </task>
+    <task id="LOCAL-00046" summary="2020/11/25 更新TreeNode">
+      <created>1606287487489</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1606287487489</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -824,17 +845,17 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="129" y="54" key="MergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1601821006314" />
-    <state x="-1384" y="-121" key="SettingsEditor" timestamp="1606287366331">
+    <state x="-1384" y="-121" key="SettingsEditor" timestamp="1606287578442">
       <screen x="-1600" y="-131" width="1600" height="900" />
     </state>
-    <state x="-1384" y="-121" key="SettingsEditor/0.0.1366.728/-1600.-131.1600.900@-1600.-131.1600.900" timestamp="1606287366331" />
+    <state x="-1384" y="-121" key="SettingsEditor/0.0.1366.728/-1600.-131.1600.900@-1600.-131.1600.900" timestamp="1606287578442" />
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1605141398056" />
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1603675524101" />
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1603171376320" />
-    <state x="-1278" y="-12" key="Vcs.Push.Dialog.v2" timestamp="1606287293172">
+    <state x="-1278" y="-12" key="Vcs.Push.Dialog.v2" timestamp="1606287489970">
       <screen x="-1600" y="-131" width="1600" height="900" />
     </state>
-    <state x="-1278" y="-12" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.-131.1600.900@-1600.-131.1600.900" timestamp="1606287293172" />
+    <state x="-1278" y="-12" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.-131.1600.900@-1600.-131.1600.900" timestamp="1606287489970" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1605230657180" />
     <state x="-1278" y="119" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599820249348" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1605664990062" />
