@@ -22,18 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/11/18 更新leet83">
-      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet88.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetclass/ListNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetclass/ListNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetclass/TreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetclass/TreeNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet110.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet110.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetclass/TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetclass/TreeNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet110$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet110$Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet110.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet110.class" afterDir="false" />
-    </list>
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/11/25 更新TreeNode" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -100,7 +89,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.24942529" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -362,7 +351,7 @@
       <workItem from="1606102069664" duration="3117000" />
       <workItem from="1606198226852" duration="688000" />
       <workItem from="1606264736906" duration="7277000" />
-      <workItem from="1606282896702" duration="594000" />
+      <workItem from="1606282896702" duration="790000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1598252500809</created>
@@ -651,7 +640,21 @@
       <option name="project" value="LOCAL" />
       <updated>1605664987534</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="2020/11/25 更新TreeNode">
+      <created>1606287204534</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1606287204534</updated>
+    </task>
+    <task id="LOCAL-00043" summary="2020/11/25 更新TreeNode">
+      <created>1606287290551</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1606287290551</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -670,7 +673,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2020/9/01 更新" />
     <MESSAGE value="2020/9/07 更新" />
     <MESSAGE value="2020/9/11 更新" />
     <MESSAGE value="2020/9/13 更新" />
@@ -695,7 +697,8 @@
     <MESSAGE value="2020/11/16 更新leet70" />
     <MESSAGE value="2020/11/17 更新leet83" />
     <MESSAGE value="2020/11/18 更新leet83" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020/11/18 更新leet83" />
+    <MESSAGE value="2020/11/25 更新TreeNode" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020/11/25 更新TreeNode" />
   </component>
   <component name="WindowStateProjectService">
     <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598842825719">
@@ -821,15 +824,17 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="129" y="54" key="MergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1601821006314" />
-    <state x="184" y="8" key="SettingsEditor" timestamp="1605141398056">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="-1384" y="-121" key="SettingsEditor" timestamp="1606287366331">
+      <screen x="-1600" y="-131" width="1600" height="900" />
     </state>
+    <state x="-1384" y="-121" key="SettingsEditor/0.0.1366.728/-1600.-131.1600.900@-1600.-131.1600.900" timestamp="1606287366331" />
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1605141398056" />
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1603675524101" />
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1603171376320" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1605664990062">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="-1278" y="-12" key="Vcs.Push.Dialog.v2" timestamp="1606287293172">
+      <screen x="-1600" y="-131" width="1600" height="900" />
     </state>
+    <state x="-1278" y="-12" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.-131.1600.900@-1600.-131.1600.900" timestamp="1606287293172" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1605230657180" />
     <state x="-1278" y="119" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599820249348" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1605664990062" />
