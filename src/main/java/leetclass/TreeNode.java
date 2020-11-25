@@ -49,7 +49,7 @@ public class TreeNode {
     public static ArrayList<Integer> preOrderRe(ArrayList<Integer> arrayList, TreeNode biTree) {//递归实现
         TreeNode leftTree = biTree.left;
         TreeNode rightTree = biTree.right;
-        arrayList.add(biTree.val) ;
+        arrayList.add(biTree.val);
 
         if (leftTree != null && rightTree != null) {
             preOrderRe(arrayList, leftTree);
