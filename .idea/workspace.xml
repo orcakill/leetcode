@@ -22,7 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/11/25 更新TreeNode" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/11/25 更新TreeNode">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leetclass/TreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetclass/TreeNode.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -351,7 +354,9 @@
       <workItem from="1606102069664" duration="3117000" />
       <workItem from="1606198226852" duration="688000" />
       <workItem from="1606264736906" duration="7277000" />
-      <workItem from="1606282896702" duration="1002000" />
+      <workItem from="1606282896702" duration="1648000" />
+      <workItem from="1606350215641" duration="945000" />
+      <workItem from="1606462841252" duration="1326000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1598252500809</created>
@@ -675,7 +680,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606287487489</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="2020/11/25 更新TreeNode">
+      <created>1606287587707</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1606287587707</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -852,10 +864,10 @@
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1605141398056" />
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1603675524101" />
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1603171376320" />
-    <state x="-1278" y="-12" key="Vcs.Push.Dialog.v2" timestamp="1606287489970">
+    <state x="-1278" y="-12" key="Vcs.Push.Dialog.v2" timestamp="1606287589773">
       <screen x="-1600" y="-131" width="1600" height="900" />
     </state>
-    <state x="-1278" y="-12" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.-131.1600.900@-1600.-131.1600.900" timestamp="1606287489970" />
+    <state x="-1278" y="-12" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.-131.1600.900@-1600.-131.1600.900" timestamp="1606287589773" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.-131.1600.900@0.0.1366.728" timestamp="1605230657180" />
     <state x="-1278" y="119" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@-1600.0.1600.900" timestamp="1599820249348" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1600.0.1600.900@0.0.1366.728" timestamp="1605664990062" />
