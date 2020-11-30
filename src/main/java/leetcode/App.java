@@ -20,8 +20,6 @@ public class App {
         Integer e[] = {1, null, 2};
 
 //        System.out.println(divisorGame(1));  }
-        TreeNode treeNode=TreeNode.createTreeNode(e);
-        System.out.println(TreeNode.createArrayList(treeNode).toString());
 
     }
 
