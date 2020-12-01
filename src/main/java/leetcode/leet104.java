@@ -112,7 +112,7 @@ public class leet104 {
             return depth(n,treeNode2.left,treeNode2.right);
         }
         if(treeNode2==null){
-            return depth(n,treeNode1.left,treeNode1.right);
+            return   depth(n,treeNode1.left,treeNode1.right);
         }
 
         int a= depth(n,treeNode1.left,treeNode1.right);
