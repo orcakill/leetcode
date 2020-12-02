@@ -22,25 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/12/01 更新 leet107">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetclass/listNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetclass/listNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet1025$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet1025$Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet1025.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet1025.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet110$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet110$Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet110.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet110.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet343$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet343$Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet343.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet343.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet392$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet392$Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet392.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet392.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet546$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet546$Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet546.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet546.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet64$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet64$Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet64.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet64.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet647.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet647.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet679.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet679.class" afterDir="false" />
-    </list>
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/12/01 更新 leet107" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -106,7 +88,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.24942529" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gant" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -382,21 +364,7 @@
       <workItem from="1606584396316" duration="351000" />
       <workItem from="1606584983232" duration="4743000" />
       <workItem from="1606869387829" duration="114000" />
-      <workItem from="1606869636516" duration="7104000" />
-    </task>
-    <task id="LOCAL-00003" summary="默认的">
-      <created>1598602382314</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1598602382314</updated>
-    </task>
-    <task id="LOCAL-00004" summary="2020/8/30 更新 leet557">
-      <created>1598802446111</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1598802446111</updated>
+      <workItem from="1606869636516" duration="7355000" />
     </task>
     <task id="LOCAL-00005" summary="2020/9/01 更新">
       <created>1598928241877</created>
@@ -727,7 +695,21 @@
       <option name="project" value="LOCAL" />
       <updated>1606890331746</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="2020/12/01 更新 leet107">
+      <created>1606894974622</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1606894974622</updated>
+    </task>
+    <task id="LOCAL-00053" summary="2020/12/01 更新 leet107">
+      <created>1606895046620</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1606895046620</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

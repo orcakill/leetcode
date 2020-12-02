@@ -40,7 +40,7 @@ public class leet107 {
         TreeNode l= treeNode.left;
         TreeNode r = treeNode.right;
         if (l == null && r== null) {
-            return lists;
+             return lists;
         }
         if(l!=null){
             arrayList.add(l.val);
