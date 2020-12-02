@@ -36,7 +36,7 @@ public class leet107 {
         return lists1;
     }
     public static   List<List<Integer>>  node(int index,List<List<Integer>> lists,TreeNode treeNode){
-        ArrayList<Integer> arrayList=new ArrayList<>();
+         ArrayList<Integer> arrayList=new ArrayList<>();
         TreeNode l= treeNode.left;
         TreeNode r = treeNode.right;
         if (l == null && r== null) {
