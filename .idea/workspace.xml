@@ -22,11 +22,24 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/12/01 更新 leet104">
-      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet107.java" afterDir="false" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/12/01 更新 leet107">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetclass/TreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetclass/TreeNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetclass/TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetclass/TreeNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetclass/listNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetclass/listNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet1025$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet1025$Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet1025.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet1025.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet110$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet110$Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet110.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet110.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet343$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet343$Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet343.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet343.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet392$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet392$Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet392.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet392.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet546$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet546$Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet546.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet546.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet64$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet64$Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet64.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet64.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet647.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet647.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet679.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet679.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -369,14 +382,7 @@
       <workItem from="1606584396316" duration="351000" />
       <workItem from="1606584983232" duration="4743000" />
       <workItem from="1606869387829" duration="114000" />
-      <workItem from="1606869636516" duration="5705000" />
-    </task>
-    <task id="LOCAL-00002" summary="默认的">
-      <created>1598514477429</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1598514477429</updated>
+      <workItem from="1606869636516" duration="7104000" />
     </task>
     <task id="LOCAL-00003" summary="默认的">
       <created>1598602382314</created>
@@ -714,7 +720,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606781293106</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="2020/12/01 更新 leet107">
+      <created>1606890331746</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1606890331746</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -733,7 +746,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2020/10/5 更新 leet20" />
     <MESSAGE value="2020/10/6 更新 README.md添加电子邮件地址" />
     <MESSAGE value="2020/10/6 更新 README.md" />
     <MESSAGE value="2020/10/6 更新 leet834" />
@@ -758,7 +770,8 @@
     <MESSAGE value="2020/11/28 更新 leet100" />
     <MESSAGE value="2020/11/30 更新 leet104" />
     <MESSAGE value="2020/12/01 更新 leet104" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020/12/01 更新 leet104" />
+    <MESSAGE value="2020/12/01 更新 leet107" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020/12/01 更新 leet107" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
