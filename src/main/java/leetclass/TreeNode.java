@@ -6,11 +6,11 @@ import java.util.Queue;
 
 
 public class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
 
-    TreeNode() {
+     TreeNode() {
     }
 
     TreeNode(int val) {
@@ -49,6 +49,28 @@ public class TreeNode {
             }
             return root;
         }
+
+
+        public static TreeNode createTreeNode(Integer[] array){
+            TreeNode root = createTreeNode1(array, 1);
+            return root;
+        }
+
+        private static TreeNode createTreeNode1(Integer[] array, int index) {
+            if(index > array.length){
+                return null;
+            }
+            Integer value = array[index - 1];
+            if(value == null){
+                return null;
+            }
+            TreeNode node = new TreeNode(value);
+            node.left = createTreeNode1(array, index * 2);
+            node.right = createTreeNode1(array, index * 2 + 1);
+            return node;
+        }
+
+
 
 
     public static Object createArrayList(TreeNode treeNode) {
