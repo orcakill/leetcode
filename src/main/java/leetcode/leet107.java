@@ -46,7 +46,7 @@ public class leet107 {
             arrayList.add(l.val);
         }
         if(r!=null){
-            arrayList.add(r.val);
+              arrayList.add(r.val);
         }
         if(index>=lists.size()){
             lists.add(arrayList);
