@@ -10,10 +10,10 @@ public class TreeNode {
     public TreeNode left;
     public TreeNode right;
 
-     TreeNode() {
+     public TreeNode() {
     }
 
-    TreeNode(int val) {
+    public TreeNode(int val) {
         this.val = val;
     }
 
@@ -73,32 +73,47 @@ public class TreeNode {
 
 
 
-    public static Object createArrayList(TreeNode treeNode) {
-        ArrayList<Integer> arrayList = new ArrayList<>();
-        return preOrderRe(arrayList, treeNode);
+    public static ArrayList<Integer> createArrayList(TreeNode treeNode) {
+
+        return preOrderRe(treeNode);
     }
 
-    public static ArrayList<Integer> preOrderRe(ArrayList<Integer> arrayList, TreeNode biTree) {//递归实现
-        TreeNode leftTree = biTree.left;
-        TreeNode rightTree = biTree.right;
-        arrayList.add(biTree.val)  ;
+    public static ArrayList<Integer> preOrderRe(TreeNode pTreeRoot) {//递归实现
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        if(pTreeRoot == null){
+            return null;
+        }
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.offer(pTreeRoot);
+        while(!queue.isEmpty()){
 
-        if (leftTree != null && rightTree != null) {
-            preOrderRe(arrayList, leftTree);
-        }
-        if (leftTree == null && rightTree != null) {
-            arrayList.add(null);
-            preOrderRe(arrayList, rightTree);
-        }
+            TreeNode treeNode = queue.poll();
 
-        if (rightTree != null && leftTree != null) {
-            preOrderRe(arrayList, rightTree);
+            if(treeNode==null){
+                list.add(null);
+            }
+            else {
+                if (treeNode.left != null) {
+                    queue.offer(treeNode.left);
+                }
+                if (treeNode.left == null&&treeNode.right != null) {
+                    queue.offer(null);
+                }
+                if (treeNode.right != null) {
+                    queue.offer(treeNode.right);
+                }
+                if (treeNode.right == null&&treeNode.left != null) {
+                    queue.offer(null);
+                }
+                list.add(treeNode.val);
+            }
         }
-        if (rightTree == null && leftTree != null) {
-            arrayList.add(null);
-            preOrderRe(arrayList, leftTree);
+        if(list.get(list.size()-1)==null){
+            list.remove(list.size()-1);
         }
-        return arrayList;
+        return list;
+
+
 
 
     }
