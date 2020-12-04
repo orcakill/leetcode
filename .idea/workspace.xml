@@ -22,7 +22,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/12/01 更新 leet107" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/12/01 更新 leet107">
+      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet108.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leetclass/TreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetclass/TreeNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetclass/TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetclass/TreeNode.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,20 +103,7 @@
       <recent name="junit.framework.TestCase" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.leet107">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="leetcode.App" />
-      <module name="leetcode" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="leetcode.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.leet108">
     <configuration name="leet100" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="leetcode.leet100" />
       <module name="leetcode" />
@@ -156,6 +148,19 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="leetcode.leet107" />
       <module name="leetcode1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="leet108" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="leetcode.leet108" />
+      <module name="leetcode1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="leetcode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -265,19 +270,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.App" />
       <item itemvalue="Application.leet100" />
       <item itemvalue="Application.leet101" />
       <item itemvalue="Application.leet104" />
       <item itemvalue="Application.leet107" />
+      <item itemvalue="Application.leet108" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.leet108" />
         <item itemvalue="Application.leet107" />
         <item itemvalue="Application.leet104" />
         <item itemvalue="Application.leet101" />
         <item itemvalue="Application.leet100" />
-        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -365,6 +370,8 @@
       <workItem from="1606584983232" duration="4743000" />
       <workItem from="1606869387829" duration="114000" />
       <workItem from="1606869636516" duration="7355000" />
+      <workItem from="1606978691314" duration="5591000" />
+      <workItem from="1607041306817" duration="14218000" />
     </task>
     <task id="LOCAL-00005" summary="2020/9/01 更新">
       <created>1598928241877</created>
@@ -779,9 +786,9 @@
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet107.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="48" />
+          <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet108.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="46" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
