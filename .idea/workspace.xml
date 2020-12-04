@@ -22,12 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/12/01 更新 leet107">
-      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet108.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetclass/TreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetclass/TreeNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetclass/TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetclass/TreeNode.class" afterDir="false" />
-    </list>
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/12/04 更新 leet108" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -371,14 +366,7 @@
       <workItem from="1606869387829" duration="114000" />
       <workItem from="1606869636516" duration="7355000" />
       <workItem from="1606978691314" duration="5591000" />
-      <workItem from="1607041306817" duration="14218000" />
-    </task>
-    <task id="LOCAL-00005" summary="2020/9/01 更新">
-      <created>1598928241877</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1598928241877</updated>
+      <workItem from="1607041306817" duration="14294000" />
     </task>
     <task id="LOCAL-00006" summary="2020/9/01 更新">
       <created>1598972349964</created>
@@ -716,7 +704,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606895046620</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="2020/12/04 更新 leet108">
+      <created>1607074341167</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1607074341168</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -735,7 +730,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2020/10/6 更新 README.md添加电子邮件地址" />
     <MESSAGE value="2020/10/6 更新 README.md" />
     <MESSAGE value="2020/10/6 更新 leet834" />
     <MESSAGE value="2020/10/07 更新 leet75" />
@@ -760,7 +754,8 @@
     <MESSAGE value="2020/11/30 更新 leet104" />
     <MESSAGE value="2020/12/01 更新 leet104" />
     <MESSAGE value="2020/12/01 更新 leet107" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020/12/01 更新 leet107" />
+    <MESSAGE value="2020/12/04 更新 leet108" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020/12/04 更新 leet108" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
