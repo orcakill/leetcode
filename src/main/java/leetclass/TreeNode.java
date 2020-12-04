@@ -100,7 +100,7 @@ public class TreeNode {
                     queue.offer(null);
                 }
                 if (treeNode.right != null) {
-                    queue.offer(treeNode.right);
+                      queue.offer(treeNode.right);
                 }
                 if (treeNode.right == null&&treeNode.left != null) {
                     queue.offer(null);
