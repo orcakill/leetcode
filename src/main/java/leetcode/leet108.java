@@ -19,7 +19,7 @@ public class leet108 {
 
         public static TreeNode helper(int[] nums, int left, int right) {
             if (left > right) {
-                return null;
+                return  null;
             }
 
             // 总是选择中间位置右边的数字作为根节点
