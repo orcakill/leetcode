@@ -22,9 +22,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/12/04 更新 leet108">
-      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet118.java" afterDir="false" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/11/29 更新 leet101">
+      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet112.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet108.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet108.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +104,7 @@
       <recent name="junit.framework.TestCase" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.leet118">
+  <component name="RunManager" selected="Application.leet112">
     <configuration name="leet104" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="leetcode.leet104" />
       <module name="leetcode" />
@@ -150,8 +153,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="leet118" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="leetcode.leet118" />
+    <configuration name="leet112" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="leetcode.leet112" />
       <module name="leetcode1" />
       <extension name="coverage">
         <pattern>
@@ -272,11 +275,11 @@
       <item itemvalue="Application.leet107" />
       <item itemvalue="Application.leet108" />
       <item itemvalue="Application.leet111" />
-      <item itemvalue="Application.leet118" />
+      <item itemvalue="Application.leet112" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.leet118" />
+        <item itemvalue="Application.leet112" />
         <item itemvalue="Application.leet111" />
         <item itemvalue="Application.leet108" />
         <item itemvalue="Application.leet107" />
@@ -370,8 +373,14 @@
       <workItem from="1606869636516" duration="7355000" />
       <workItem from="1606978691314" duration="5591000" />
       <workItem from="1607041306817" duration="14294000" />
-      <workItem from="1607131275997" duration="4148000" />
-      <workItem from="1607304475214" duration="9694000" />
+      <workItem from="1607131275997" duration="4086000" />
+    </task>
+    <task id="LOCAL-00006" summary="2020/9/01 更新">
+      <created>1598972349964</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1598972349964</updated>
     </task>
     <task id="LOCAL-00007" summary="2020/9/01 更新">
       <created>1598972428051</created>
@@ -709,14 +718,7 @@
       <option name="project" value="LOCAL" />
       <updated>1607074341168</updated>
     </task>
-    <task id="LOCAL-00055" summary="2020/12/04 更新 leet108">
-      <created>1607156123663</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1607156123663</updated>
-    </task>
-    <option name="localTasksCounter" value="56" />
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -785,12 +787,13 @@
           <line>6</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet118.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="leetclass.TreeNode" memberName="right" />
+        <PinnedItemInfo parentTag="leetclass.TreeNode" memberName="left" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>
