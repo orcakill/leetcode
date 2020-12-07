@@ -22,13 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/11/29 更新 leet101">
-      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet112.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet108.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet108.java" afterDir="false" />
-    </list>
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/12/07 更新 leet118" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -737,7 +731,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2020/10/6 更新 README.md" />
     <MESSAGE value="2020/10/6 更新 leet834" />
     <MESSAGE value="2020/10/07 更新 leet75" />
     <MESSAGE value="2020/10/20 更新 leet75" />
@@ -762,7 +755,8 @@
     <MESSAGE value="2020/12/01 更新 leet104" />
     <MESSAGE value="2020/12/01 更新 leet107" />
     <MESSAGE value="2020/12/04 更新 leet108" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020/12/04 更新 leet108" />
+    <MESSAGE value="2020/12/07 更新 leet118" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020/12/07 更新 leet118" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
