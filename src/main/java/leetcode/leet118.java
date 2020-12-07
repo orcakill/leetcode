@@ -19,7 +19,7 @@ public class leet118 {
             arrayList1.add(1);
             lists.add(arrayList1);
         }
-        for(int k=0;k<numRows-1;k++) {
+         for(int k=0;k<numRows-1;k++) {
             List<Integer> arrayList2 = new ArrayList<>();
             arrayList2.add(1);
             for (int i = 0; i <=k; i++) {
