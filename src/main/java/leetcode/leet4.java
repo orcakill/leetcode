@@ -22,7 +22,7 @@ public class leet4 {
             arrayList1.add(nums1[i]);
         }
         for(int i=0;i<nums2.length;i++){
-            arrayList2.add(nums2[i]);
+            arrayList2.add(nums2[i]) ;
         }
         arrayList1.addAll(arrayList2);
         Collections.sort(arrayList1);
