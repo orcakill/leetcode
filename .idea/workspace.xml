@@ -22,12 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/12/11 更新 leet136">
-      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet141.java" afterDir="false" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/12/09 更新 leet121">
+      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet5.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet4.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,20 +103,7 @@
       <recent name="junit.framework.TestCase" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.leet4">
-    <configuration name="leet121" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="leetcode.leet121" />
-      <module name="leetcode1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="leetcode.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.leet5">
     <configuration name="leet122" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="leetcode.leet122" />
       <module name="leetcode1" />
@@ -170,13 +156,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
+    <configuration name="leet5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="leetcode.leet5" />
+      <module name="leetcode1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="leetcode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -275,19 +263,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.leet121" />
       <item itemvalue="Application.leet122" />
       <item itemvalue="Application.leet125" />
       <item itemvalue="Application.leet136" />
       <item itemvalue="Application.leet4" />
+      <item itemvalue="Application.leet5" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.leet5" />
         <item itemvalue="Application.leet4" />
         <item itemvalue="Application.leet136" />
         <item itemvalue="Application.leet125" />
         <item itemvalue="Application.leet122" />
-        <item itemvalue="Application.leet121" />
       </list>
     </recent_temporary>
   </component>
@@ -382,6 +370,9 @@
       <workItem from="1607645633313" duration="3618000" />
       <workItem from="1608165436705" duration="4462000" />
       <workItem from="1608184153709" duration="1020000" />
+      <workItem from="1608518324102" duration="1219000" />
+      <workItem from="1608780605997" duration="4157000" />
+      <workItem from="1608889519358" duration="297000" />
     </task>
     <task id="LOCAL-00009" summary="2020/9/07 更新">
       <created>1599413212514</created>
