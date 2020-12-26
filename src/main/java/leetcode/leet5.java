@@ -14,6 +14,7 @@ public class leet5 {
 
     public static String longestPalindrome(String s) {
         int n = s.length();
+
         boolean[][] dp = new boolean[n][n];
         String ans = "";
         for (int l = 0; l < n; ++l) {
