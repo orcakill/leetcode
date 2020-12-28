@@ -23,8 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/12/27 更新 leet5">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fund/Maximum_yield.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet5.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +91,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.24942529" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -101,13 +101,13 @@
       <recent name="junit.framework.TestCase" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.leet5">
-    <configuration name="leet122" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="leetcode.leet122" />
+  <component name="RunManager" selected="Application.Maximum_yield">
+    <configuration name="Maximum_yield" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="fund.Maximum_yield" />
       <module name="leetcode1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="leetcode.*" />
+          <option name="PATTERN" value="fund.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -163,6 +163,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -261,19 +272,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.leet122" />
       <item itemvalue="Application.leet125" />
       <item itemvalue="Application.leet136" />
       <item itemvalue="Application.leet4" />
       <item itemvalue="Application.leet5" />
+      <item itemvalue="Application.Maximum_yield" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Maximum_yield" />
         <item itemvalue="Application.leet5" />
         <item itemvalue="Application.leet4" />
         <item itemvalue="Application.leet136" />
         <item itemvalue="Application.leet125" />
-        <item itemvalue="Application.leet122" />
       </list>
     </recent_temporary>
   </component>
@@ -805,9 +816,9 @@
           <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet5.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="57" />
+          <url>file://$PROJECT_DIR$/src/main/java/fund/Maximum_yield.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="63" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
