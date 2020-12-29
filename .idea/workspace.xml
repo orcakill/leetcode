@@ -22,10 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/12/27 更新 leet5">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/12/28 更新 Maximum_yield">
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/GetJson.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fund/Maximum_yield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/Maximum_yield.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -169,15 +169,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -387,14 +385,8 @@
       <workItem from="1608780605997" duration="4157000" />
       <workItem from="1608889519358" duration="297000" />
       <workItem from="1609052575742" duration="8416000" />
-      <workItem from="1609154886622" duration="2906000" />
-    </task>
-    <task id="LOCAL-00013" summary="2020/10/5 更新 leet20">
-      <created>1601885685194</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1601885685194</updated>
+      <workItem from="1609154886622" duration="3129000" />
+      <workItem from="1609240024435" duration="7626000" />
     </task>
     <task id="LOCAL-00014" summary="2020/10/6 更新 README.md添加电子邮件地址">
       <created>1601983336610</created>
@@ -732,7 +724,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609068577548</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="2020/12/28 更新 Maximum_yield">
+      <created>1609160761397</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1609160761398</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -751,7 +750,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2020/10/22 更新 leet21" />
     <MESSAGE value="2020/10/26 更新leet27" />
     <MESSAGE value="2020/10/27 更新leet27" />
     <MESSAGE value="2020/10/29 更新leet28" />
@@ -776,7 +774,8 @@
     <MESSAGE value="2020/12/11 更新 leet122" />
     <MESSAGE value="2020/12/17 更新 leet4" />
     <MESSAGE value="2020/12/27 更新 leet5" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020/12/27 更新 leet5" />
+    <MESSAGE value="2020/12/28 更新 Maximum_yield" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020/12/28 更新 Maximum_yield" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -822,8 +821,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/fund/Maximum_yield.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="63" />
+          <line>31</line>
+          <option name="timeStamp" value="73" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
