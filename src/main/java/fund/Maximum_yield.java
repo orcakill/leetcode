@@ -3,8 +3,13 @@ package fund;
 
 
 
-import org.json.JSONObject;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import entity.FundProfit;
+import org.springframework.http.HttpRequest;
 import util.GetJson;
+import util.HttpUtil;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -26,9 +31,9 @@ public class Maximum_yield {
 
     }
     public static String count(String s,Date ksrq,Date jsrq) throws Exception {
-        List<Double> list=new ArrayList<>();
         Map<String,String> map=get_week(ksrq,jsrq);
         String code=getCode(s);
+        List<FundProfit> list=getNetValue(code,ksrq,jsrq);
         return s;
     }
 
@@ -58,17 +63,32 @@ public class Maximum_yield {
         dayLine=dayLine.substring(0,dayLine.length()-3);
         dayLine=dayLine.replaceAll("\\\"", "");
         dayLine=dayLine.replaceAll("[\\[\\]]","");
-        String substring = dayLine.substring(0, dayLine.length() - 1);
+        String substring = dayLine.substring(0, dayLine.length() - 2);
         String[] result = substring.split(",");
         String  s0="";
         for(int i=0;i<result.length;i++){
             if(result[i].equals(s)){
-                s0=result[i-1];
+                s0=result[i-2];
             }
         }
 
         return  s0;
     }
+
+    //根据基金代码，开始日期，结束日期获取到阶段内所有的每日净值
+    public  static  List<FundProfit> getNetValue(String code,Date ksrq,Date jsrq) throws Exception {
+        List<FundProfit> list=new ArrayList<>();
+        String url="http://api.fund.eastmoney.com/f10/lsjz?callback=jQuery18302314707006222334_1609307026929&fundCode=005918&pageIndex=2&pageSize=20&startDate=&endDate=&_=1609307029975";
+        String dayLine = new GetJson().getHttpJson(url,1);
+
+
+
+
+        return  list;
+
+
+    }
+
 
 
 }

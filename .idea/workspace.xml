@@ -23,10 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/12/28 更新 Maximum_yield">
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/GetJson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entity/FundProfit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/HttpUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fund/Maximum_yield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/Maximum_yield.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/GetJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/GetJson.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -818,11 +821,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet125.java</url>
           <line>26</line>
           <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/fund/Maximum_yield.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="73" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
