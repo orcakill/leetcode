@@ -1,4 +1,4 @@
-package util;
+package fund;
 
 
 
@@ -10,10 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.json.JSONObject;
-import org.springframework.cglib.proxy.Proxy;
 
-import static com.alibaba.fastjson.JSON.parseObject;
-import static org.json.JSONObject.*;
 
 public class DealJS {
     public  String getHttpJson(String url,int comefrom) throws Exception {
