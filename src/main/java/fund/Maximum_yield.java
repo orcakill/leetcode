@@ -3,13 +3,9 @@ package fund;
 
 
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import entity.FundProfit;
 import org.springframework.http.HttpRequest;
-import util.GetJson;
-import util.HttpUtil;
+import util.DealJS;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -58,7 +54,7 @@ public class Maximum_yield {
     public static String getCode(String s) throws Exception {
         Map<String,String> map=new TreeMap<>();
         String address="http://fund.eastmoney.com/js/fundcode_search.js";
-        String dayLine = new GetJson().getHttpJson(address,1);
+        String dayLine = new DealJS().getHttpJson(address,1);
         dayLine=dayLine.substring(11,dayLine.length());
         dayLine=dayLine.substring(0,dayLine.length()-3);
         dayLine=dayLine.replaceAll("\\\"", "");
@@ -78,8 +74,18 @@ public class Maximum_yield {
     //根据基金代码，开始日期，结束日期获取到阶段内所有的每日净值
     public  static  List<FundProfit> getNetValue(String code,Date ksrq,Date jsrq) throws Exception {
         List<FundProfit> list=new ArrayList<>();
-        String url="http://api.fund.eastmoney.com/f10/lsjz?callback=jQuery18302314707006222334_1609307026929&fundCode=005918&pageIndex=2&pageSize=20&startDate=&endDate=&_=1609307029975";
-        String dayLine = new GetJson().getHttpJson(url,1);
+        Integer pageIndex = 1;
+        Integer pageSize=20;
+        String startTime="2018-1-1";
+        String endTime = "2020-4-15";
+        String referer = "http://fundf10.eastmoney.com/f10/jjjz_" + code + ".html";
+        long time = System.currentTimeMillis();
+        String url = "http://api.fund.eastmoney.com/f10/lsjz?callback=jQuery18306596328894644803_1571038362181&" +
+                "fundCode=%s&pageIndex=%s&pageSize=%s&startDate=%s&endDate=%s&_=%s";
+        url = String.format(url,code,pageIndex,pageSize,startTime,endTime,time);
+        System.out.println("url= " + url);
+        System.out.println(url);
+
 
 
 
@@ -88,6 +94,7 @@ public class Maximum_yield {
 
 
     }
+
 
 
 

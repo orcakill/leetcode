@@ -15,7 +15,7 @@ import org.springframework.cglib.proxy.Proxy;
 import static com.alibaba.fastjson.JSON.parseObject;
 import static org.json.JSONObject.*;
 
-public class GetJson {
+public class DealJS {
     public  String getHttpJson(String url,int comefrom) throws Exception {
         try {
             URL realUrl = new URL(url);
