@@ -4,6 +4,7 @@ package fund;
 
 
 import entity.FundProfit;
+import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -73,9 +74,11 @@ public class Maximum_yield {
     public  static  List<FundProfit> getNetValue(String code,Date ksrq,Date jsrq) throws Exception {
         List<FundProfit> list=new ArrayList<>();
         Integer pageIndex = 1;
-        Integer pageSize=20;
-        String startTime="2018-1-1";
-        String endTime = "2020-4-15";
+        long maxDay=(long) (jsrq.getTime()-ksrq.getTime())/(24*60*60*1000)+1;
+        Integer pageSize= Math.toIntExact(maxDay);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String startTime=formatter.format(ksrq);
+        String endTime = formatter.format(jsrq);
         String referer = "http://fundf10.eastmoney.com/f10/jjjz_" + code + ".html";
         long time = System.currentTimeMillis();
         String url = "http://api.fund.eastmoney.com/f10/lsjz?callback=jQuery18306596328894644803_1571038362181&" +
@@ -83,7 +86,7 @@ public class Maximum_yield {
         url = String.format(url,code,pageIndex,pageSize,startTime,endTime,time);
         System.out.println("url= " + url);
         System.out.println(url);
-
+        JSONObject js1=GetJson.getHttpJson(url,referer);
 
 
 
