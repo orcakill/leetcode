@@ -23,10 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/12/31 更新 Maximum_yield">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fund/GetJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fund/Maximum_yield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/Maximum_yield.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/GetJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/DealJS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/HttpUtil.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +86,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit3" />
@@ -390,13 +393,9 @@
       <workItem from="1609154886622" duration="3129000" />
       <workItem from="1609240024435" duration="7626000" />
       <workItem from="1609373748638" duration="6698000" />
-    </task>
-    <task id="LOCAL-00015" summary="2020/10/6 更新 README.md">
-      <created>1601984083814</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1601984083814</updated>
+      <workItem from="1609427200339" duration="415000" />
+      <workItem from="1609427775913" duration="3525000" />
+      <workItem from="1609477003439" duration="10195000" />
     </task>
     <task id="LOCAL-00016" summary="2020/10/6 更新 leet834">
       <created>1601995419931</created>
@@ -734,7 +733,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609377433612</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="2020/12/31 更新 Maximum_yield">
+      <created>1609426632240</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1609426632240</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -753,7 +759,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2020/10/27 更新leet27" />
     <MESSAGE value="2020/10/29 更新leet28" />
     <MESSAGE value="2020/10/30 更新leet35" />
     <MESSAGE value="2020/11/3 更新leet35" />
@@ -777,6 +782,7 @@
     <MESSAGE value="2020/12/17 更新 leet4" />
     <MESSAGE value="2020/12/27 更新 leet5" />
     <MESSAGE value="2020/12/28 更新 Maximum_yield" />
+    <MESSAGE value="2020/12/29 更新 Maximum_yield" />
     <MESSAGE value="2020/12/31 更新 Maximum_yield" />
     <option name="LAST_COMMIT_MESSAGE" value="2020/12/31 更新 Maximum_yield" />
   </component>
@@ -821,6 +827,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet125.java</url>
           <line>26</line>
           <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/fund/Maximum_yield.java</url>
+          <line>93</line>
+          <option name="timeStamp" value="75" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
