@@ -1,6 +1,6 @@
 package fund;
 
-public class sell_out {
+public class SellOut {
     public static void main(String[] args) {
         double  a=481.35; /*持有份额*/
         double  b=580.89; /*持有金额*/
