@@ -1,6 +1,8 @@
-package fund;
+package fund.util;
 
-import org.json.JSONObject;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -10,7 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class GetJson {
-    public static JSONObject getHttpJson(String url, String referer) throws Exception {
+    public static JSONArray getHttpJson(String url, String referer) throws Exception {
         try {
             URL realUrl = new URL(url);
             HttpURLConnection connection = (HttpURLConnection) realUrl.openConnection();
@@ -30,17 +32,27 @@ public class GetJson {
                 while ((len = is.read(buffer)) != -1) {
                     baos.write(buffer, 0, len);
                 }
-                String jsonString = baos.toString();
+                String str = baos.toString();
                 baos.close();
                 is.close();
                 //转换成json数据处理
                 // getHttpJson函数的后面的参数1，表示返回的是json数据，2表示http接口的数据在一个（）中的数据
                 //   JSONObject jsonArray = getJsonString(jsonString, comefrom);
-                 jsonString=jsonString.replace("jQuery18306596328894644803_1571038362181","");
-                 jsonString=jsonString.substring(1,jsonString.length()-1);
-                 JSONObject js=new JSONObject(jsonString);
+                //获取str的长度
+                str=str.replaceAll("jQuery18306596328894644803_1571038362181","");
+                int length = str.length();
+                //indexOf返回某个指定的字符串值在字符串中首次出现的位置
+                int indexStart = str.indexOf("(");
+                //截取字符串
+                str = str.substring(indexStart + 9, length -91);
+                //转换为Obj类型
+                JSONObject jsonObject = JSON.parseObject(str);
+                //获取数组
+                com.alibaba.fastjson.JSONArray jsonArray = jsonObject.getJSONArray("LSJZList");
+                //计算数组的长度
+                int size = jsonArray.size();
+                return jsonArray;
 
-                return js;
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();

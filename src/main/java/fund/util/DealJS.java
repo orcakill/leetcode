@@ -1,4 +1,4 @@
-package fund;
+package fund.util;
 
 
 
