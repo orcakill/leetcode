@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class GetStageList {
-    //获取一年中所有日期对应的星期
+    //获取一个阶段内的每一天
     public static List<String> getStageList(Date ksrq, Date jsrq) throws ParseException {
         List<String> list=new ArrayList<>();
         long maxDay=(long) (jsrq.getTime()-ksrq.getTime())/(24*60*60*1000)+1;

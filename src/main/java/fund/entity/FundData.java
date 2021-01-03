@@ -4,14 +4,13 @@ package fund.entity;
  * @author orcakill
  * @date 2020/12/30  10:54
  **/
-public class FundProfit {
+public class FundData {
     String fundName;       //基金名称
     String fundCode;       //基金代码
     String fundDay;        //日期
     String fundWeek;       //星期几
     Double fundNetValue;   //基金净值
-    Double fundShareHeld;  //持有份额
-    Double fundMoney;      //持有金额
+
 
     public String getFundName() {
         return fundName;
@@ -45,21 +44,6 @@ public class FundProfit {
         this.fundNetValue = fundNetValue;
     }
 
-    public Double getFundShareHeld() {
-        return fundShareHeld;
-    }
-
-    public void setFundShareHeld(Double fundShareHeld) {
-        this.fundShareHeld = fundShareHeld;
-    }
-
-    public Double getFundMoney() {
-        return fundMoney;
-    }
-
-    public void setFundMoney(Double fundMoney) {
-        this.fundMoney = fundMoney;
-    }
 
     public String getFundWeek() {
         return fundWeek;
