@@ -1,7 +1,7 @@
 package fund.util;
 
 import com.alibaba.fastjson.JSONArray;
-import fund.entity.FundProfit;
+import fund.entity.FundData;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.List;
 public class GetNetValue {
     //根据基金代码，开始日期，结束日期获取到阶段内所有的每日净值
     public  static JSONArray getNetValue(String code, Date ksrq, Date jsrq) throws Exception {
-        List<FundProfit> list=new ArrayList<>();
+        List<FundData> list=new ArrayList<>();
         Integer pageIndex = 1;
         long maxDay=(long) (jsrq.getTime()-ksrq.getTime())/(24*60*60*1000)+1;
         Integer pageSize= Math.toIntExact(maxDay);
