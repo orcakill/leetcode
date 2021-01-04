@@ -13,14 +13,14 @@ import java.util.Map;
 import static fund.util.GetCode.getCode;
 import static fund.util.GetNetValue.getNetValue;
 import static fund.util.GetStageList.getStageList;
-import static fund.util.GetWeek.getWeek;
+import static fund.util.GetWeekMap.getWeekMap;
 
 public class GetFundDataList {
     //获得一个基金一段时间内的净值数据
     public static List<FundData> getFundDataList(String s, Date ksrq, Date jsrq) throws Exception {
         List<FundData> fundDataList =new ArrayList<>();
         List<String> stage=getStageList(ksrq,jsrq);
-        Map<String,String> map=getWeek(ksrq,jsrq);
+        Map<String,String> map=getWeekMap(ksrq,jsrq);
         String code=getCode(s);
         JSONArray jsonArray=getNetValue(code,ksrq,jsrq);
         for(int i=0;i<stage.size();i++){

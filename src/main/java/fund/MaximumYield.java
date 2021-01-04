@@ -13,6 +13,7 @@ import java.util.*;
 import static fund.util.GetFundData.getFundData;
 import static fund.util.GetFundDataList.getFundDataList;
 import static fund.util.GetStageList.getStageList;
+import static fund.util.GetWeek.getWeek;
 
 
 public class MaximumYield {
@@ -40,8 +41,8 @@ public class MaximumYield {
         //获取到阶段内的每一天
         List<String>   dateList=getStageList(startDate,endDate);
         //失败天数
-        int turn=0;
         //开始处理每日数据
+        Double   turn=0.0;
         for(int i=0;i<dateList.size();i++){
             FixedInvestment fixedInvestment=new FixedInvestment();
             String date=dateList.get(i);
@@ -49,20 +50,42 @@ public class MaximumYield {
             if(list.contains(date)){
                 continue;
             }
-            FundData fundData=getFundData(fundDataList,date);
-            //如果当前日期不在基金历史中，跳过
-            if(fundData==null){
-                continue;
-            }
-            if(fundData.getFundWeek().equals(sWeek)){
-                turn+=1;
-                d+=100.0;
-            }
-
 
             fixedInvestment.setFixedDate(date);
-            fixedInvestment.setFixedTurn(turn);
-            fixedInvestment.setFixedCycleMoney(d);
+            if(i==0){
+                fixedInvestment.setFixedShare(0.0);
+                fixedInvestment.setFixedHoldProfit(0.0);
+                fixedInvestment.setFixedEarningRate(0.0);
+            }
+            if(i>0){
+                FixedInvestment fixedInvestment1=fixedInvestments.get(i-1);
+                String    lastDay=fixedInvestment1.getFixedDate();
+                String     dow=getWeek(lastDay);
+                //上个交易日期份额
+                Double     lastFixedShare=fixedInvestment1.getFixedShare();
+                //当日数据
+                FundData  fundData=getFundData(fundDataList,date);
+                //当日净值
+                Double fundNetValue=fundData.getFundNetValue();
+                //累计投资金额
+                double fixedEarningRate=0.0;
+                if(turn>0.0){
+                    fixedEarningRate=((lastFixedShare*fundNetValue)-turn)/turn;
+                }
+                if(dow.equals(sWeek)){
+                    //累加投资金额
+                    turn+=d;
+                    Double nowFixedShare=d/fundNetValue;
+                    fixedInvestment.setFixedShare(lastFixedShare+nowFixedShare);
+                    fixedInvestment.setFixedHoldProfit((lastFixedShare+nowFixedShare)*fundNetValue);
+                }
+                else{
+                    fixedInvestment.setFixedShare(lastFixedShare);
+                    fixedInvestment.setFixedHoldProfit(lastFixedShare*fundNetValue);
+
+                }
+                fixedInvestment.setFixedEarningRate(fixedEarningRate);
+            }
             fixedInvestments.add(fixedInvestment);
 
         }

@@ -4,14 +4,19 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
+import java.util.TreeMap;
 
-
-public class GetWeek {
-    public static String getWeek(String date) throws ParseException {
+public class GetWeekMap {
+    //获取一年中所有日期对应的星期
+    public static Map<String,String> getWeekMap(Date ksrq, Date jsrq) throws ParseException {
+        Map<String,String> map=new TreeMap<>();
+        long maxDay=(long) (jsrq.getTime()-ksrq.getTime())/(24*60*60*1000)+1;
+        for(int i=0;i<maxDay;i++){
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            Date  beginDay=formatter.parse(date);
+            String  beginDay=formatter.format(ksrq);
             Calendar calendar=Calendar.getInstance();
-            calendar.setTime(beginDay);
+            calendar.setTime(ksrq);
             String dow=String.valueOf(calendar.get(Calendar.DAY_OF_WEEK));
             if(dow.equals("1")){
                 dow="周日";
@@ -34,7 +39,10 @@ public class GetWeek {
             if(dow.equals("7")){
                 dow="周六";
             }
-
-        return  dow;
+            map.put(beginDay,dow);
+            calendar.add(Calendar.DATE,1);
+            ksrq=calendar.getTime();
+        }
+        return  map;
     }
 }
