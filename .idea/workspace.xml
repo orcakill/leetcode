@@ -22,15 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2021/01/02 更新 Maximum_yield……">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fund/entity/FixedInvestment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fund/util/GetFundData.java" afterDir="false" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2021/01/03 更新 Maximum_yield……">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fund/util/GetWeekMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fund/MaximumYield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/MaximumYield.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/entity/FundProfit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/entity/FundData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetFundProfitList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/util/GetFundDataList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetNetValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/util/GetNetValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetStageList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/util/GetStageList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/entity/FixedInvestment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/entity/FixedInvestment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetFundDataList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/util/GetFundDataList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetWeek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/util/GetWeek.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,15 +180,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -410,14 +406,8 @@
       <workItem from="1609600563671" duration="2946000" />
       <workItem from="1609646915124" duration="3129000" />
       <workItem from="1609660281757" duration="2412000" />
-      <workItem from="1609680367831" duration="3081000" />
-    </task>
-    <task id="LOCAL-00019" summary="2020/10/20 更新 leet75">
-      <created>1603171414637</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1603171414637</updated>
+      <workItem from="1609680367831" duration="3233000" />
+      <workItem from="1609762490147" duration="8319000" />
     </task>
     <task id="LOCAL-00020" summary="2020/10/20 更新 leet75">
       <created>1603171737868</created>
@@ -755,7 +745,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609596359715</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="2021/01/03 更新 Maximum_yield……">
+      <created>1609683660701</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1609683660701</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -774,7 +771,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2020/11/9 更新leet53" />
     <MESSAGE value="2020/11/10 更新leet58" />
     <MESSAGE value="2020/11/11 更新leet66" />
     <MESSAGE value="2020/11/13 更新leet67" />
@@ -799,7 +795,8 @@
     <MESSAGE value="2022/01/01 更新 Maximum_yield" />
     <MESSAGE value="2022/01/02 更新 Maximum_yield……" />
     <MESSAGE value="2021/01/02 更新 Maximum_yield……" />
-    <option name="LAST_COMMIT_MESSAGE" value="2021/01/02 更新 Maximum_yield……" />
+    <MESSAGE value="2021/01/03 更新 Maximum_yield……" />
+    <option name="LAST_COMMIT_MESSAGE" value="2021/01/03 更新 Maximum_yield……" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -845,8 +842,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/fund/MaximumYield.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="54" />
+          <line>45</line>
+          <properties>
+            <option name="count-filter" value="5" />
+            <option name="count-filter-enabled" value="true" />
+          </properties>
+          <option name="timeStamp" value="80" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -860,5 +861,10 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/leetcode1$MaximumYield.ic" NAME="MaximumYield Coverage Results" MODIFIED="1609772329813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>fund.util.*</FILTER>
+    </SUITE>
   </component>
 </project>
