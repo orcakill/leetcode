@@ -2,6 +2,7 @@ package fund.entity;
 
 public class FixedInvestment {
     private String fixedDate;          /*当前时间*/
+    private Double fixedNetValue;      /*当前净值*/
     private Double fixedShare;         /*当前持有份额*/
     private Double fixedHoldProfit;    /*持有收益金额*/
     private Double fixedEarningRate;   /*当前收益率*/
@@ -38,4 +39,11 @@ public class FixedInvestment {
         this.fixedShare = fixedShare;
     }
 
+    public Double getFixedNetValue() {
+        return fixedNetValue;
+    }
+
+    public void setFixedNetValue(Double fixedNetValue) {
+        this.fixedNetValue = fixedNetValue;
+    }
 }
