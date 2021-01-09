@@ -10,11 +10,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import static fund.util.GetCode.getCode;
 import static fund.util.GetFundData.getFundData;
 import static fund.util.GetFundDataList.getFundDataList;
-import static fund.util.GetLastFundData.getLastFundData;
 import static fund.util.GetStageList.getStageList;
 import static fund.util.GetWeek.getWeek;
+import static fund.util.Round.round;
 
 
 public class MaximumYield {
@@ -22,19 +23,36 @@ public class MaximumYield {
     //爬取网站：天天财富网
     public static void main(String[] args) throws Exception {
         DateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
-        Date ksrq= dateFormat1.parse("2020-01-01");   //开始日期
-        Date jsrq= dateFormat1.parse("2021-01-05");   //结束日期
-        String s1="天弘沪深300ETF联接C";                       //基金名称
-      //  String s1="中欧医疗健康混合C";
-     //  String s1="中欧医疗健康混合A";
-    //    String s1="招商中证白酒指数";
+        Date ksrq= dateFormat1.parse("2018-01-01");   //开始日期
+        Date jsrq= dateFormat1.parse("2021-01-01");   //结束日期
+        List<String> fundList=new ArrayList<>();
+        fundList.add("天弘沪深300ETF联接C");                       //基金名称
+        fundList.add("中欧医疗健康混合C");
+        fundList.add("中欧医疗健康混合A");
+        fundList.add("招商中证白酒指数");
+        fundList.add("景顺长城新兴成长混合");
+        fundList.add("广发纳斯达克100指数A");
+        fundList.add("广发中证全指金融地产联接A");
         double  d1=100.0;                                    //定投金额
         String  sWeek="周一";                                 //定投时间
         List<String> list=new ArrayList<>();
-    //    list.add("2020-10-19");
-   //     list.add("2020-10-26");
+//        list.add("2020-10-19");
+//        list.add("2020-10-26");
+      for(int i=0;i<fundList.size();i++){
+          String  s1=fundList.get(i);
+          FixedInvestment fixedInvestment=getRate(s1,ksrq,jsrq,d1,sWeek,list);
+          System.out.println(s1+" "
+                  +" 基金代码:"+fixedInvestment.getFixedCode()
+                  +" 最后日期:"+fixedInvestment.getFixedDate()
+                  +" 当前持有份额:"+ round(fixedInvestment.getFixedShare())
+                  +" 当前定投金额:"+ round(fixedInvestment.getFixedMoney())
+                  +" 当前收益金额:"+round(fixedInvestment.getFixedHoldProfit())
+                  +" 当前收益率:"+round(fixedInvestment.getFixedEarningRate()*100)
+                  +" 最低收益率:"+round(fixedInvestment.getFixedMinEarningRate()*100)
+                  +" 最高收益率:"+round(fixedInvestment.getFixedMaxEarningRate()*100)
+          );
+      }
 
-        System.out.println(getRate(s1,ksrq,jsrq,d1,sWeek,list).toString());
 
     }
 
@@ -48,19 +66,29 @@ public class MaximumYield {
         //失败天数
         //开始处理每日数据
         Double   turn=0.0;
-        double zz=0.0;
+        //最低收益率
+        double min=0.0;
+        //最高收益率
+        double max=0.0;
+        //确认交易
+        boolean trade=false;
         for(int i=0;i<dateList.size();i++){
             FixedInvestment fixedInvestment=new FixedInvestment();
             String date=dateList.get(i);
+            String code=fundDataList.get(i).getFundCode();
+            String week=getWeek(date);
             fixedInvestment.setFixedDate(date);
+            fixedInvestment.setFixedCode(code);
+            fixedInvestment.setFixedWeek(week);
             //如果当前日期在失败日期中，跳过
             if(list.contains(date)){
                 FixedInvestment fixedInvestment1=fixedInvestments.get(i-1);
+                fixedInvestment.setFixedMoney(fixedInvestment1.getFixedMoney());
                 fixedInvestment.setFixedNetValue(fixedInvestment1.getFixedNetValue());
                 fixedInvestment.setFixedShare(fixedInvestment1.getFixedShare());
                 fixedInvestment.setFixedEarningRate(fixedInvestment1.getFixedEarningRate());
                 fixedInvestments.add(fixedInvestment);
-
+                trade=false;
                 continue;
             }
 
@@ -68,16 +96,19 @@ public class MaximumYield {
             if(i==0){
                 FundData fundData=getFundData(fundDataList,date);
                 fixedInvestment.setFixedNetValue(fundData.getFundNetValue());
+                fixedInvestment.setFixedMoney(turn);
                 fixedInvestment.setFixedShare(0.0);
                 fixedInvestment.setFixedHoldProfit(0.0);
                 fixedInvestment.setFixedEarningRate(0.0);
+
+
             }
             if(i>0){
                 FixedInvestment fixedInvestment1=fixedInvestments.get(i-1);
-                String    lastDay=fixedInvestment1.getFixedDate();
-                String     dow=getWeek(lastDay);
+
                 //上个交易日期份额
                 Double     lastFixedShare=fixedInvestment1.getFixedShare();
+                Double     lastTurn=fixedInvestment1.getFixedMoney();
                 //当日数据
                 FundData  fundData=getFundData(fundDataList,date);
                 //如果当前非交易日
@@ -91,27 +122,38 @@ public class MaximumYield {
                 if(turn>0.0){
                     fixedEarningRate=((lastFixedShare*fundNetValue)-turn)/turn;
                 }
-                if(dow.equals(sWeek)){
+                if(trade&&fundData.getFundNetValue()!=null){
                     //累加投资金额
                     turn+=d;
                     Double nowFixedShare=d/fundNetValue;
+                    fixedInvestment.setFixedMoney(turn);
                     fixedInvestment.setFixedShare(lastFixedShare+nowFixedShare);
                     fixedInvestment.setFixedHoldProfit((lastFixedShare+nowFixedShare)*fundNetValue);
+                    trade=false;
                 }
                 else{
+                    fixedInvestment.setFixedMoney(lastTurn);
                     fixedInvestment.setFixedShare(lastFixedShare);
                     fixedInvestment.setFixedHoldProfit(lastFixedShare*fundNetValue);
 
                 }
                 fixedInvestment.setFixedNetValue(fundNetValue);
 
-                if(fixedEarningRate<zz){
-                    zz=fixedEarningRate;
+                if(fixedEarningRate<min){
+                    min=fixedEarningRate;
+                }
+                if(fixedEarningRate>max){
+                    max=fixedEarningRate;
                 }
                 fixedInvestment.setFixedEarningRate(fixedEarningRate);
+                fixedInvestment.setFixedMinEarningRate(min);
+                fixedInvestment.setFixedMaxEarningRate(max);
             }
             fixedInvestments.add(fixedInvestment);
-
+            //如果当前日期是定投日期，则下一个交易日开启交易
+            if(week.equals(sWeek)){
+                trade=true;
+            }
         }
 
 
