@@ -1,4 +1,4 @@
-package fund.util;
+package other.fund.util;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

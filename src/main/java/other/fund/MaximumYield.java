@@ -1,21 +1,19 @@
-package fund;
+package other.fund;
 
 
 
 
-import fund.entity.FixedInvestment;
-import fund.entity.FundData;
+import other.fund.entity.FixedInvestment;
+import other.fund.entity.FundData;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static fund.util.GetCode.getCode;
-import static fund.util.GetFundData.getFundData;
-import static fund.util.GetFundDataList.getFundDataList;
-import static fund.util.GetStageList.getStageList;
-import static fund.util.GetWeek.getWeek;
-import static fund.util.Round.round;
+import static other.fund.util.GetFundData.getFundData;
+import static other.fund.util.GetFundDataList.getFundDataList;
+import static other.fund.util.GetWeek.getWeek;
+import static other.fund.util.Round.round;
 
 
 public class MaximumYield {
@@ -61,8 +59,6 @@ public class MaximumYield {
         List<FixedInvestment> fixedInvestments=new ArrayList<>();
         //存储每日基金信息
         List<FundData> fundDataList=getFundDataList(s,startDate,endDate);
-        //获取到阶段内的每一天
-        List<String>   dateList=getStageList(startDate,endDate);
         //失败天数
         //开始处理每日数据
         Double   turn=0.0;
@@ -72,9 +68,9 @@ public class MaximumYield {
         double max=0.0;
         //确认交易
         boolean trade=false;
-        for(int i=0;i<dateList.size();i++){
+        for(int i=0;i<fundDataList.size();i++){
             FixedInvestment fixedInvestment=new FixedInvestment();
-            String date=dateList.get(i);
+            String date=fundDataList.get(i).getFundDay();
             String code=fundDataList.get(i).getFundCode();
             String week=getWeek(date);
             fixedInvestment.setFixedDate(date);
@@ -158,7 +154,7 @@ public class MaximumYield {
 
 
 
-      FixedInvestment  x=fixedInvestments.get(fixedInvestments.size()-1);
+        FixedInvestment  x=fixedInvestments.get(fixedInvestments.size()-1);
         return   x;
 
     }
