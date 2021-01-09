@@ -30,16 +30,10 @@ public class GetFundDataList {
             for(int j=jsonArray.size()-1;j>=0;j--){
                 JSONObject jsonObject  =  jsonArray.getJSONObject(j) ;
                 String date1=jsonObject.getString("FSRQ");
-                SimpleDateFormat format=new SimpleDateFormat("yyyy-mm-dd");
-                Date day=format.parse(date);
-                Date day1=format.parse(date1);
-                if(day.getTime()<day1.getTime()){
-                    break;
-                }
-
                 if(date1.equals(date)){
                     String   val1=jsonObject.getString("DWJZ");
                     netValue=Double.valueOf(val1);
+                    jsonArray.remove(j);
                     break;
                 }
 

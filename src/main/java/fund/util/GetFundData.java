@@ -16,12 +16,7 @@ public class GetFundData {
             if(sDate.equals(date)){
                 fundData=list.get(i);
             }
-            SimpleDateFormat format=new SimpleDateFormat("yyyy-mm-dd");
-            Date day=format.parse(sDate);
-            Date day1=format.parse(date);
-            if(day.getTime()<day1.getTime()){
-                break;
-            }
+
         }
         return  fundData;
     }

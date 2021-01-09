@@ -22,13 +22,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/12/31 更新 Maximum_yield">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fund/util/GetLastFundData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/01/05 更新 Maximum_yield……">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fund/util/DealJson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fund/util/Round.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fund/MaximumYield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/MaximumYield.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fund/entity/FixedInvestment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/entity/FixedInvestment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetFundData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/util/GetFundData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetFundDataList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/util/GetFundDataList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/util/GetJson.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,19 +178,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -410,13 +399,10 @@
       <workItem from="1609660281757" duration="2412000" />
       <workItem from="1609680367831" duration="3233000" />
       <workItem from="1609762490147" duration="8319000" />
-    </task>
-    <task id="LOCAL-00020" summary="2020/10/20 更新 leet75">
-      <created>1603171737868</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1603171737868</updated>
+      <workItem from="1609891039658" duration="1204000" />
+      <workItem from="1609977221433" duration="6449000" />
+      <workItem from="1610064917643" duration="12111000" />
+      <workItem from="1610176470533" duration="587000" />
     </task>
     <task id="LOCAL-00021" summary="2020/10/21 更新 leet20">
       <created>1603282934666</created>
@@ -754,7 +740,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609683660701</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="2020/01/05 更新 Maximum_yield……">
+      <created>1609839711758</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1609839711758</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -773,7 +766,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2020/11/10 更新leet58" />
     <MESSAGE value="2020/11/11 更新leet66" />
     <MESSAGE value="2020/11/13 更新leet67" />
     <MESSAGE value="2020/11/13 更新leet69" />
@@ -798,57 +790,10 @@
     <MESSAGE value="2022/01/02 更新 Maximum_yield……" />
     <MESSAGE value="2021/01/02 更新 Maximum_yield……" />
     <MESSAGE value="2021/01/03 更新 Maximum_yield……" />
-    <option name="LAST_COMMIT_MESSAGE" value="2021/01/03 更新 Maximum_yield……" />
+    <MESSAGE value="2020/01/05 更新 Maximum_yield……" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020/01/05 更新 Maximum_yield……" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet26.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet27.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet38.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet64.java</url>
-          <line>6</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet121.java</url>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet122.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet122.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="48" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet125.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/fund/MaximumYield.java</url>
-          <line>119</line>
-          <option name="timeStamp" value="86" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="leetclass.TreeNode" memberName="right" />

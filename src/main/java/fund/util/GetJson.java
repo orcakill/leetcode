@@ -11,6 +11,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static fund.util.DealJson.dealFundStr;
+
 public class GetJson {
     public static JSONArray getHttpJson(String url, String referer) throws Exception {
         try {
@@ -40,11 +42,7 @@ public class GetJson {
                 //   JSONObject jsonArray = getJsonString(jsonString, comefrom);
                 //获取str的长度
                 str=str.replaceAll("jQuery18306596328894644803_1571038362181","");
-                int length = str.length();
-                //indexOf返回某个指定的字符串值在字符串中首次出现的位置
-                int indexStart = str.indexOf("(");
-                //截取字符串
-                str = str.substring(indexStart + 9, length -91);
+                str =dealFundStr(str);
                 //转换为Obj类型
                 JSONObject jsonObject = JSON.parseObject(str);
                 //获取数组
@@ -54,10 +52,8 @@ public class GetJson {
                 return jsonArray;
 
             }
-        } catch (MalformedURLException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        } catch (IOException ex) {
-            ex.printStackTrace();
         }
         return null;
     }
