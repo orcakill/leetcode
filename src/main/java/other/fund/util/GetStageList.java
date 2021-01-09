@@ -1,4 +1,4 @@
-package fund.util;
+package other.fund.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

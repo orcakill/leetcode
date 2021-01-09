@@ -1,4 +1,4 @@
-package fund.entity;
+package other.fund.entity;
 
 /**
  * @author orcakill

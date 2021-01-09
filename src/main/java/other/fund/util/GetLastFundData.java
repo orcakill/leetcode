@@ -1,6 +1,6 @@
-package fund.util;
+package other.fund.util;
 
-import fund.entity.FundData;
+import other.fund.entity.FundData;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

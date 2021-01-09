@@ -22,15 +22,30 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/01/05 更新 Maximum_yield……">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fund/util/DealJson.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fund/util/Round.java" afterDir="false" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2021/01/04 更新 Maximum_yield……">
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetStartDate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/mail/SendMail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/MaximumYield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/MaximumYield.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/entity/FixedInvestment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/entity/FixedInvestment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetFundData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/util/GetFundData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetFundDataList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/util/GetFundDataList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fund/util/GetJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/MaximumYield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/MaximumYield.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/SellOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/SellOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/entity/FixedInvestment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/entity/FixedInvestment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/entity/FundData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/entity/FundData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/DealJS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/DealJS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/DealJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/DealJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetFundData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetFundData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetFundDataList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetFundDataList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetLastFundData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetLastFundData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetNetValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetNetValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetStageList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetStageList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetWeek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetWeek.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetWeekMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetWeekMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/Round.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/Round.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main_test/array.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main_test/array.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,13 +131,13 @@
       <recent name="junit.framework.TestCase" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MaximumYield">
+  <component name="RunManager" selected="Application.SendMail">
     <configuration name="MaximumYield" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="fund.MaximumYield" />
+      <option name="MAIN_CLASS_NAME" value="other.fund.MaximumYield" />
       <module name="leetcode1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="fund.util.*" />
+          <option name="PATTERN" value="other.fund.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -130,12 +145,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="leet125" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="leetcode.leet125" />
+    <configuration name="SendMail" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="other.mail.SendMail" />
       <module name="leetcode1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="leetcode.*" />
+          <option name="PATTERN" value="other.mail.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -277,18 +292,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.MaximumYield" />
-      <item itemvalue="Application.leet125" />
       <item itemvalue="Application.leet136" />
       <item itemvalue="Application.leet4" />
       <item itemvalue="Application.leet5" />
+      <item itemvalue="Application.SendMail" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SendMail" />
         <item itemvalue="Application.MaximumYield" />
         <item itemvalue="Application.leet5" />
         <item itemvalue="Application.leet4" />
         <item itemvalue="Application.leet136" />
-        <item itemvalue="Application.leet125" />
       </list>
     </recent_temporary>
   </component>
@@ -403,6 +418,7 @@
       <workItem from="1609977221433" duration="6449000" />
       <workItem from="1610064917643" duration="12111000" />
       <workItem from="1610176470533" duration="587000" />
+      <workItem from="1610210407785" duration="1213000" />
     </task>
     <task id="LOCAL-00021" summary="2020/10/21 更新 leet20">
       <created>1603282934666</created>
@@ -794,6 +810,15 @@
     <option name="LAST_COMMIT_MESSAGE" value="2020/01/05 更新 Maximum_yield……" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/other/fund/util/GetStartDate.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="93" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="leetclass.TreeNode" memberName="right" />
@@ -802,7 +827,7 @@
     </pin-to-top-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="fixedInvestments.get(4)" />
+        <watch expression="fundDataList" />
       </configuration>
     </watches-manager>
   </component>

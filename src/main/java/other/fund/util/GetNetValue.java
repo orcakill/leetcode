@@ -1,7 +1,7 @@
-package fund.util;
+package other.fund.util;
 
 import com.alibaba.fastjson.JSONArray;
-import fund.entity.FundData;
+import other.fund.entity.FundData;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

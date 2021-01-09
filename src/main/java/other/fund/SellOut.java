@@ -1,4 +1,4 @@
-package fund;
+package other.fund;
 
 public class SellOut {
     public static void main(String[] args) {

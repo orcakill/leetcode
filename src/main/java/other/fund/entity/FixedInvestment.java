@@ -1,4 +1,4 @@
-package fund.entity;
+package other.fund.entity;
 
 public class FixedInvestment {
     private String fixedCode;          /*基金代码*/

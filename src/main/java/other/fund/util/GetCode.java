@@ -1,4 +1,4 @@
-package fund.util;
+package other.fund.util;
 
 import java.util.Map;
 import java.util.TreeMap;
