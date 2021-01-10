@@ -22,30 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2021/01/04 更新 Maximum_yield……">
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetStartDate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/mail/SendMail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2021/01/10 更新 SendMail">
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/mail/util/PlanTimerTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/mail/util/SendMail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/MaximumYield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/MaximumYield.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/SellOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/SellOut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/entity/FixedInvestment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/entity/FixedInvestment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/entity/FundData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/entity/FundData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/DealJS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/DealJS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/DealJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/DealJson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetFundData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetFundData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetFundDataList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetFundDataList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetJson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetLastFundData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetLastFundData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetNetValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetNetValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetStageList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetStageList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetWeek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetWeek.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/GetWeekMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetWeekMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fund/util/Round.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/Round.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main_test/array.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main_test/array.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/mail/SendMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/mail/SendMail.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,11 +105,11 @@
     <property name="settings.editor.selected.configurable" value="reference.idesettings.debugger.capture" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="novel_crawler.mappers" />
-    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="junit.framework.TestCase" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="novel_crawler.mappers" />
     </key>
   </component>
   <component name="RunManager" selected="Application.SendMail">
@@ -193,6 +174,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -418,14 +410,8 @@
       <workItem from="1609977221433" duration="6449000" />
       <workItem from="1610064917643" duration="12111000" />
       <workItem from="1610176470533" duration="587000" />
-      <workItem from="1610210407785" duration="1213000" />
-    </task>
-    <task id="LOCAL-00021" summary="2020/10/21 更新 leet20">
-      <created>1603282934666</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1603282934666</updated>
+      <workItem from="1610210407785" duration="1318000" />
+      <workItem from="1610264714341" duration="6798000" />
     </task>
     <task id="LOCAL-00022" summary="2020/10/22 更新 leet21">
       <created>1603374493841</created>
@@ -763,7 +749,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609839711758</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="2021/01/10 更新 SendMail">
+      <created>1610217487341</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1610217487341</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -782,7 +775,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2020/11/11 更新leet66" />
     <MESSAGE value="2020/11/13 更新leet67" />
     <MESSAGE value="2020/11/13 更新leet69" />
     <MESSAGE value="2020/11/16 更新leet70" />
@@ -807,7 +799,8 @@
     <MESSAGE value="2021/01/02 更新 Maximum_yield……" />
     <MESSAGE value="2021/01/03 更新 Maximum_yield……" />
     <MESSAGE value="2020/01/05 更新 Maximum_yield……" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020/01/05 更新 Maximum_yield……" />
+    <MESSAGE value="2021/01/10 更新 SendMail" />
+    <option name="LAST_COMMIT_MESSAGE" value="2021/01/10 更新 SendMail" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -816,6 +809,15 @@
           <url>file://$PROJECT_DIR$/src/main/java/other/fund/util/GetStartDate.java</url>
           <line>15</line>
           <option name="timeStamp" value="93" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/other/mail/util/PlanTimerTask.java</url>
+          <line>32</line>
+          <properties>
+            <option name="count-filter" value="60" />
+            <option name="count-filter-enabled" value="true" />
+          </properties>
+          <option name="timeStamp" value="98" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
