@@ -22,11 +22,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2021/01/10 更新 SendMail">
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/mail/util/PlanTimerTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/mail/util/SendMail.java" afterDir="false" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/01/09 更新 Maximum_yield……">
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/behavior/RandomBehavior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/mail/SendMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/mail/SendMail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/MaximumYield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/MaximumYield.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +113,7 @@
       <recent name="novel_crawler.mappers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.SendMail">
+  <component name="RunManager" selected="Application.RandomBehavior">
     <configuration name="MaximumYield" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="other.fund.MaximumYield" />
       <module name="leetcode1" />
@@ -126,12 +127,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SendMail" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="other.mail.SendMail" />
+    <configuration name="RandomBehavior" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="other.behavior.RandomBehavior" />
       <module name="leetcode1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="other.mail.*" />
+          <option name="PATTERN" value="other.behavior.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -139,12 +140,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="leet136" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="leetcode.leet136" />
+    <configuration name="SendMail" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="other.mail.SendMail" />
       <module name="leetcode1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="leetcode.*" />
+          <option name="PATTERN" value="other.mail.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -284,18 +285,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.MaximumYield" />
-      <item itemvalue="Application.leet136" />
       <item itemvalue="Application.leet4" />
       <item itemvalue="Application.leet5" />
       <item itemvalue="Application.SendMail" />
+      <item itemvalue="Application.RandomBehavior" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SendMail" />
+        <item itemvalue="Application.RandomBehavior" />
         <item itemvalue="Application.MaximumYield" />
+        <item itemvalue="Application.SendMail" />
         <item itemvalue="Application.leet5" />
         <item itemvalue="Application.leet4" />
-        <item itemvalue="Application.leet136" />
       </list>
     </recent_temporary>
   </component>
@@ -412,6 +413,7 @@
       <workItem from="1610176470533" duration="587000" />
       <workItem from="1610210407785" duration="1318000" />
       <workItem from="1610264714341" duration="6798000" />
+      <workItem from="1610409725449" duration="16177000" />
     </task>
     <task id="LOCAL-00022" summary="2020/10/22 更新 leet21">
       <created>1603374493841</created>
@@ -811,13 +813,9 @@
           <option name="timeStamp" value="93" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/other/mail/util/PlanTimerTask.java</url>
-          <line>32</line>
-          <properties>
-            <option name="count-filter" value="60" />
-            <option name="count-filter-enabled" value="true" />
-          </properties>
-          <option name="timeStamp" value="98" />
+          <url>file://$PROJECT_DIR$/src/main/java/other/behavior/RandomBehavior.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="111" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -827,11 +825,6 @@
         <PinnedItemInfo parentTag="leetclass.TreeNode" memberName="left" />
       </pinned-members>
     </pin-to-top-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="fundDataList" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

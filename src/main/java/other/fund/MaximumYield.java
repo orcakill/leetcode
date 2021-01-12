@@ -21,7 +21,7 @@ public class MaximumYield {
     //爬取网站：天天财富网
     public static void main(String[] args) throws Exception {
         DateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
-        Date ksrq= dateFormat1.parse("2018-01-01");   //开始日期
+        Date ksrq= dateFormat1.parse("2015-01-01");   //开始日期
         Date jsrq= dateFormat1.parse("2021-01-01");   //结束日期
         List<String> fundList=new ArrayList<>();
         fundList.add("天弘沪深300ETF联接C");                       //基金名称
@@ -31,6 +31,7 @@ public class MaximumYield {
         fundList.add("景顺长城新兴成长混合");
         fundList.add("广发纳斯达克100指数A");
         fundList.add("广发中证全指金融地产联接A");
+        fundList.add("博时黄金ETF");
         double  d1=100.0;                                    //定投金额
         String  sWeek="周一";                                 //定投时间
         List<String> list=new ArrayList<>();
