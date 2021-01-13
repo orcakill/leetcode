@@ -23,11 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/01/09 更新 Maximum_yield……">
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/behavior/RandomBehavior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/articles/HotArticles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/fund/IntelligentFixedInvestment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/behavior/RandomBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/behavior/RandomBehavior.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/MaximumYield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/MaximumYield.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/util/GetFundDataList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetFundDataList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +114,7 @@
       <recent name="novel_crawler.mappers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.RandomBehavior">
+  <component name="RunManager" selected="Application.MaximumYield">
     <configuration name="MaximumYield" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="other.fund.MaximumYield" />
       <module name="leetcode1" />
@@ -179,13 +180,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -292,8 +295,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.RandomBehavior" />
         <item itemvalue="Application.MaximumYield" />
+        <item itemvalue="Application.RandomBehavior" />
         <item itemvalue="Application.SendMail" />
         <item itemvalue="Application.leet5" />
         <item itemvalue="Application.leet4" />
@@ -414,6 +417,7 @@
       <workItem from="1610210407785" duration="1318000" />
       <workItem from="1610264714341" duration="6798000" />
       <workItem from="1610409725449" duration="16177000" />
+      <workItem from="1610496879402" duration="12708000" />
     </task>
     <task id="LOCAL-00022" summary="2020/10/22 更新 leet21">
       <created>1603374493841</created>
@@ -808,14 +812,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/other/fund/util/GetStartDate.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="93" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/other/behavior/RandomBehavior.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="111" />
+          <url>file://$PROJECT_DIR$/src/main/java/other/fund/MaximumYield.java</url>
+          <line>167</line>
+          <option name="timeStamp" value="126" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -34,23 +34,19 @@ public class GetFundDataList {
                     String   val1=jsonObject.getString("DWJZ");
                     netValue=Double.valueOf(val1);
                     jsonArray.remove(j);
-                    FundData fundData =new FundData();
-                    fundData.setFundName(s);
-                    fundData.setFundCode(code);
-                    fundData.setFundDay(date);
-                    fundData.setFundWeek(week);
-                    if(netValue!=0.0){
-                        fundData.setFundNetValue(netValue);
-                    }
-                    fundDataList.add(fundData);
+
                     break;
                 }
-
-
-
             }
-
-
+            FundData fundData =new FundData();
+            fundData.setFundName(s);
+            fundData.setFundCode(code);
+            fundData.setFundDay(date);
+            fundData.setFundWeek(week);
+            if(netValue!=0.0){
+                fundData.setFundNetValue(netValue);
+            }
+            fundDataList.add(fundData);
         }
         return fundDataList;
     }

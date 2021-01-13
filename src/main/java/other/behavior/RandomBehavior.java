@@ -8,7 +8,7 @@ import java.util.*;
  **/
 public class RandomBehavior {
     public static void main(String[] args){
-        Integer num=1;
+        Integer num=100;
         Map<String, Double>  map=new TreeMap<>();
         map.put("退让",60.00);
         map.put("大骂",30.00);
