@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static other.mail.util.SendMail.sendOneMail;
+import static util.getPassWord.get163mail;
 
 public class PlanTimerTask extends TimerTask {
     //计划时间
@@ -27,7 +28,7 @@ public class PlanTimerTask extends TimerTask {
     private static void initPlanTimes() throws ParseException {
         planTimes = new ArrayList<String>();
         SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date=format.parse("2021-01-10 19:00:00");
+        Date date=format.parse("2021-01-14 15:00:00");
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         for(int i=0;i<60;i++){
@@ -56,8 +57,9 @@ public class PlanTimerTask extends TimerTask {
             String mail="orcakill@dingtalk.com";
             String title=dateTime+" java测试";
             String content="这是一封java邮件";
+            String passWord=get163mail();
             try {
-                System.out.println(sendOneMail(mail,title,content));
+                System.out.println(sendOneMail(mail,title,content,passWord));
             } catch (MessagingException e) {
                 e.printStackTrace();
             }

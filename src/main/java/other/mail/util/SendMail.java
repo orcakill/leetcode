@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.Properties;
 
 public class SendMail {
-    public  static String sendOneMail(String mail,String title,String content) throws MessagingException {
+    public  static String sendOneMail(String mail,String title,String content,String passWord) throws MessagingException {
         String s="";
         int num=1;
         Date nowDate=new Date();
@@ -40,7 +40,7 @@ public class SendMail {
         //得到邮差对象
         Transport transport = session.getTransport();
         //连接自己的邮箱账户
-        transport.connect("orcakill@163.com", "LJPOYPSGLKTQWPBU");
+        transport.connect("orcakill@163.com", passWord);
         //密码为刚才得到的授权码
         //发送邮件
         transport.sendMessage(message, message.getAllRecipients());

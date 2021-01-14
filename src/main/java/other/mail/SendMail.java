@@ -12,6 +12,8 @@ import javax.mail.internet.MimeMessage;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import static util.getPassWord.get163mail;
+
 public class SendMail {
     //给指定邮箱，定时发送邮件
     public static void main(String[] args) throws Exception {
