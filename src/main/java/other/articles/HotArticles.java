@@ -22,7 +22,7 @@ public class HotArticles {
         String sql = "SELECT DATE_FORMAT(rq,'%Y-%m-%d') rq FROM test";
         try(Connection conn = DriverManager.getConnection(dburl,"root",getMysqlPassword());
             Statement stmt = conn.createStatement();
-            ResultSet rst = stmt.executeQuery(sql))
+            ResultSet rst  = stmt.executeQuery(sql))
 
         {
             while (rst.next()){
