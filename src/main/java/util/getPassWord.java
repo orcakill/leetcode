@@ -9,7 +9,16 @@ import java.io.FileReader;
  **/
 public class getPassWord {
     public  static   String  get163mail(){
-        String  file="C:\\Users\\Administrator\\Desktop\\study\\java\\163mail授权码.txt";
+        String  file="D:\\study\\java\\163mail授权码.txt";
+        return getString(file);
+    }
+    public  static   String  getMysqlPassword(){
+        String  file="D:\\study\\java\\mysql.txt";
+        return getString(file);
+    }
+
+
+    private static String getString(String file) {
         StringBuilder result = new StringBuilder();
         try{
             BufferedReader br = new BufferedReader(new FileReader(file));//构造一个BufferedReader类来读取文件
@@ -25,6 +34,7 @@ public class getPassWord {
         ss=ss.replaceAll("\r\n","");
         return ss;
     }
+
 
 
 
