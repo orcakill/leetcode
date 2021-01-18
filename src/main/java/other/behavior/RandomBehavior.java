@@ -10,8 +10,9 @@ public class RandomBehavior {
     public static void main(String[] args){
         Integer num=100;
         Map<String, Double>  map=new TreeMap<>();
-        map.put("退让",60.00);
-        map.put("大骂",30.00);
+        map.put("踩回去",40.00);
+        map.put("退让",30.00);
+        map.put("大骂",20.00);
         map.put("打架",9.00);
         map.put("杀人",1.00);
         List<String> list=new ArrayList<>();
