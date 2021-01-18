@@ -28,7 +28,7 @@ public class PlanTimerTask extends TimerTask {
     private static void initPlanTimes() throws ParseException {
         planTimes = new ArrayList<String>();
         SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date=format.parse("2021-01-14 15:00:00");
+        Date date=format.parse("2021-01-14 21:00:00");
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         for(int i=0;i<60;i++){
@@ -48,7 +48,7 @@ public class PlanTimerTask extends TimerTask {
     public void run() {
         // TODO Auto-generated method stub
         Calendar calendar = Calendar.getInstance();
-        System.out.println("检查是否到了计划时间点");
+
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
         String dateTime=String.valueOf(hour)+":"+String.valueOf(minute);
@@ -64,6 +64,9 @@ public class PlanTimerTask extends TimerTask {
                 e.printStackTrace();
             }
             System.out.println("邮件已发送");
+        }
+        else{
+            System.out.println("不在计划时间点内");
         }
     }
 }
