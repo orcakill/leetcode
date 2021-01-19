@@ -22,14 +22,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2020/01/09 更新 Maximum_yield……">
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/fund/dao/jdbc.java" afterDir="false" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="update HotArticles">
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/articles/entity/HotSpot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/articles/map/getWebAddress.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/getPutFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/dao/jdbc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/fund/entity/Fund.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/HotArticles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/HotArticles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/behavior/RandomBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/behavior/RandomBehavior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/mail/util/PlanTimerTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/mail/util/PlanTimerTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/dao/jdbc.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/entity/FundData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/entity/FundData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/util/GetFundDataList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetFundDataList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,6 +183,19 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -808,6 +826,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/other/fund/MaximumYield.java</url>
           <line>167</line>
           <option name="timeStamp" value="126" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/other/articles/HotArticles.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="133" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
