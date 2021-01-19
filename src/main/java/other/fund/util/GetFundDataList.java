@@ -39,7 +39,6 @@ public class GetFundDataList {
                 }
             }
             FundData fundData =new FundData();
-            fundData.setFundName(s);
             fundData.setFundCode(code);
             fundData.setFundDay(date);
             fundData.setFundWeek(week);

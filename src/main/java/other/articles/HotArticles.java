@@ -1,8 +1,14 @@
 package other.articles;
 
 
-import java.sql.*;
+import other.articles.entity.HotSpot;
 
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import static other.articles.map.getWebAddress.getWebAddress;
+import static other.articles.util.getPutFile.getPutFile;
 import static util.getPassWord.getMysqlPassword;
 
 /**
@@ -10,30 +16,23 @@ import static util.getPassWord.getMysqlPassword;
  * @date 2021/1/13  15:55
  **/
 public class HotArticles {
-
+     /*实现爬取当日热点及数据*/
+    /*目标爬取：百度热点   进度：0  %
+    * */
     public static void main(String[] args) throws Exception{
-        //加载数据库驱动程序
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        }catch (ClassNotFoundException cne){
-            cne.printStackTrace();
-        }
-        String dburl = "jdbc:mysql://123.57.14.117:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC";
-        String sql = "SELECT fund_name rq FROM fund";
-        try(Connection conn = DriverManager.getConnection(dburl,"test",getMysqlPassword());
-            Statement stmt = conn.createStatement();
-            ResultSet rst  = stmt.executeQuery(sql))
+       String  web="百度实时热点";
+        List<HotSpot> hotSpots=getHotSpot(web);
 
-        {
-            while (rst.next()){
-                System.out.println(rst.getString(1)
-                );
-            }
+       System.out.println(getHotSpot(web));
 
-        }catch (SQLException se){
-            se.printStackTrace();
-        }
+    }
 
+    public static List<HotSpot> getHotSpot(String web) throws Exception {
+        List<HotSpot> hotSpots=new ArrayList<>();
+        String  url=getWebAddress(web);
+        getPutFile(url,"D:\\test\\hotSpot\\123.html");
+
+        return hotSpots;
     }
 }
 
