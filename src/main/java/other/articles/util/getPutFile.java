@@ -32,7 +32,7 @@ public class getPutFile {
             File fileParent = file.getParentFile();
             //获取目录
             if(!fileParent.exists()){
-                fileParent.mkdir();
+                fileParent.mkdirs();
             }
             if(file.exists()) {
                 file.delete();

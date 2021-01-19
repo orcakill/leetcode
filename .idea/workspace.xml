@@ -22,8 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="update HotArticles">
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="更新 HotArticles">
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/blankFill.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/replace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/HotArticles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/HotArticles.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/util/getPutFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/getPutFile.java" afterDir="false" />
     </list>
@@ -102,7 +107,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.24942529" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.idesettings.debugger.capture" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
@@ -285,19 +290,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.MaximumYield" />
-      <item itemvalue="Application.leet5" />
-      <item itemvalue="Application.SendMail" />
-      <item itemvalue="Application.RandomBehavior" />
       <item itemvalue="Application.HotArticles" />
+      <item itemvalue="Application.MaximumYield" />
+      <item itemvalue="Application.RandomBehavior" />
+      <item itemvalue="Application.SendMail" />
+      <item itemvalue="Application.leet5" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.HotArticles" />
-        <item itemvalue="Application.SendMail" />
-        <item itemvalue="Application.MaximumYield" />
-        <item itemvalue="Application.RandomBehavior" />
         <item itemvalue="Application.leet5" />
+        <item itemvalue="Application.SendMail" />
+        <item itemvalue="Application.RandomBehavior" />
+        <item itemvalue="Application.MaximumYield" />
       </list>
     </recent_temporary>
   </component>
@@ -818,6 +823,11 @@
           <line>167</line>
           <option name="timeStamp" value="126" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/other/articles/HotArticles.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="147" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
@@ -826,6 +836,11 @@
         <PinnedItemInfo parentTag="leetclass.TreeNode" memberName="left" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="s1" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
