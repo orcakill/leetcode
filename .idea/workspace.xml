@@ -23,18 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="update HotArticles">
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/articles/entity/HotSpot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/articles/map/getWebAddress.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/getPutFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/dao/jdbc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/fund/entity/Fund.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/HotArticles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/HotArticles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/dao/jdbc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/entity/FundData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/entity/FundData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/util/GetFundDataList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetFundDataList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/util/getPutFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/getPutFile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -430,13 +421,6 @@
       <workItem from="1610794657718" duration="610000" />
       <workItem from="1610974618415" duration="2449000" />
     </task>
-    <task id="LOCAL-00022" summary="2020/10/22 更新 leet21">
-      <created>1603374493841</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1603374493841</updated>
-    </task>
     <task id="LOCAL-00023" summary="2020/10/26 更新leet27">
       <created>1603675429435</created>
       <option name="number" value="00023" />
@@ -773,7 +757,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610217487341</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="update HotArticles">
+      <created>1611051046136</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1611051046137</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -792,7 +783,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2020/11/13 更新leet67" />
     <MESSAGE value="2020/11/13 更新leet69" />
     <MESSAGE value="2020/11/16 更新leet70" />
     <MESSAGE value="2020/11/17 更新leet83" />
@@ -817,7 +807,8 @@
     <MESSAGE value="2021/01/03 更新 Maximum_yield……" />
     <MESSAGE value="2020/01/05 更新 Maximum_yield……" />
     <MESSAGE value="2021/01/10 更新 SendMail" />
-    <option name="LAST_COMMIT_MESSAGE" value="2021/01/10 更新 SendMail" />
+    <MESSAGE value="update HotArticles" />
+    <option name="LAST_COMMIT_MESSAGE" value="update HotArticles" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -826,11 +817,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/other/fund/MaximumYield.java</url>
           <line>167</line>
           <option name="timeStamp" value="126" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/other/articles/HotArticles.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="133" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
