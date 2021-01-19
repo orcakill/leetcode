@@ -21,7 +21,7 @@ public class getPutFile {
             //通过链接取得网页返回的数据
             InputStream is=conn.getInputStream();
 
-            System.out.println(conn.getContentEncoding());
+//          System.out.println(conn.getContentEncoding());
             //一般按行读取网页数据，并进行内容分析
             //因此用BufferedReader和InputStreamReader把字节流转化为字符流的缓冲流
             //进行转换时，需要处理编码格式问题
@@ -39,18 +39,18 @@ public class getPutFile {
             }
             if(!file.exists()) {
                 //文件不存在
-                System.out.println("目标文件不存在！");
+ //               System.out.println("目标文件不存在！");
                 try {
                     //如果目标文件不存在则自动创建
                     file.createNewFile();
-                    System.out.println("已自动创建文件！");
+ //                   System.out.println("已自动创建文件！");
                 } catch (IOException e) {
                     System.out.println("自动创建文件失败！");
                 }
             }
             String line=null;
             while((line=br.readLine())!=null){
-                System.out.println(line);
+//                System.out.println(line);
                 //创建文件输出流将读取到的网页源代码写入文件（文件流）
 //                                         FileOutputStream fileOutputStream = new FileOutputStream(file,true);
 //                                         fileOutputStream.write(line.getBytes());

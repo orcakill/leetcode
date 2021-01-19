@@ -30,7 +30,7 @@ public class HotArticles {
     public static List<HotSpot> getHotSpot(String web) throws Exception {
         List<HotSpot> hotSpots=new ArrayList<>();
         String  url=getWebAddress(web);
-        getPutFile(url,"D:\\test\\hotSpot\\123.html");
+        getPutFile(url,"D:\\test\\hotSpot\\"+web+".html");
 
         return hotSpots;
     }
