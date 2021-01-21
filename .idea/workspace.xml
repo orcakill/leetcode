@@ -23,9 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="update HotArticles">
-      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet6.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/fund/DirectIncome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet6.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,20 +118,7 @@
       <recent name="novel_crawler.mappers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DirectIncome">
-    <configuration name="DirectIncome" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="other.fund.DirectIncome" />
-      <module name="leetcode1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="other.fund.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="应用程序.leet6">
     <configuration name="HotArticles" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="other.articles.HotArticles" />
       <module name="leetcode1" />
@@ -183,13 +171,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration name="leet6" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="leetcode.leet6" />
+      <module name="leetcode1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="leetcode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -288,19 +291,15 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.HotArticles" />
-      <item itemvalue="Application.RandomBehavior" />
-      <item itemvalue="Application.SendMail" />
-      <item itemvalue="Application.leet5" />
-      <item itemvalue="Application.DirectIncome" />
+      <item itemvalue="应用程序.HotArticles" />
+      <item itemvalue="应用程序.RandomBehavior" />
+      <item itemvalue="应用程序.SendMail" />
+      <item itemvalue="应用程序.leet5" />
+      <item itemvalue="应用程序.leet6" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DirectIncome" />
-        <item itemvalue="Application.HotArticles" />
-        <item itemvalue="Application.leet5" />
-        <item itemvalue="Application.SendMail" />
-        <item itemvalue="Application.RandomBehavior" />
+        <item itemvalue="应用程序.leet6" />
       </list>
     </recent_temporary>
   </component>
@@ -824,6 +823,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/other/fund/MaximumYield.java</url>
           <line>167</line>
           <option name="timeStamp" value="126" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/leetcode/leet6.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="131" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
