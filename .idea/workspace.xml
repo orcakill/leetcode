@@ -23,10 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="update HotArticles">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/fund/DirectIncome.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/HotArticles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/HotArticles.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,13 +117,13 @@
       <recent name="novel_crawler.mappers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HotArticles">
-    <configuration name="HotArticles" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="other.articles.HotArticles" />
+  <component name="RunManager" selected="Application.DirectIncome">
+    <configuration name="DirectIncome" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="other.fund.DirectIncome" />
       <module name="leetcode1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="other.articles.*" />
+          <option name="PATTERN" value="other.fund.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -132,12 +131,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MaximumYield" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="other.fund.MaximumYield" />
+    <configuration name="HotArticles" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="other.articles.HotArticles" />
       <module name="leetcode1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="other.fund.util.*" />
+          <option name="PATTERN" value="other.articles.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -180,6 +179,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -279,18 +289,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.HotArticles" />
-      <item itemvalue="Application.MaximumYield" />
       <item itemvalue="Application.RandomBehavior" />
       <item itemvalue="Application.SendMail" />
       <item itemvalue="Application.leet5" />
+      <item itemvalue="Application.DirectIncome" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DirectIncome" />
         <item itemvalue="Application.HotArticles" />
         <item itemvalue="Application.leet5" />
         <item itemvalue="Application.SendMail" />
         <item itemvalue="Application.RandomBehavior" />
-        <item itemvalue="Application.MaximumYield" />
       </list>
     </recent_temporary>
   </component>
@@ -415,14 +425,8 @@
       <workItem from="1610974618415" duration="2449000" />
       <workItem from="1611103640029" duration="2643000" />
       <workItem from="1611117749571" duration="105000" />
-      <workItem from="1611121137551" duration="2021000" />
-    </task>
-    <task id="LOCAL-00023" summary="2020/10/26 更新leet27">
-      <created>1603675429435</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1603675429435</updated>
+      <workItem from="1611121137551" duration="2056000" />
+      <workItem from="1611188114311" duration="14410000" />
     </task>
     <task id="LOCAL-00024" summary="2020/10/27 更新leet27">
       <created>1603758521765</created>
@@ -760,7 +764,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611051046137</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="update HotArticles">
+      <created>1611137505802</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1611137505803</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -822,11 +833,6 @@
         <PinnedItemInfo parentTag="leetclass.TreeNode" memberName="left" />
       </pinned-members>
     </pin-to-top-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="s1" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
