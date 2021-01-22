@@ -25,17 +25,23 @@ public class DirectIncome {
     /*天天基金网*/
     public static void main(String[] args) throws Exception {
         DateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
-        Date ksrq= dateFormat1.parse("2015-01-01");   //开始日期
+        Date ksrq= dateFormat1.parse("2020-01-01");   //开始日期
         Date jsrq= dateFormat1.parse("2021-01-01");   //结束日期
         List<String> fundList=new ArrayList<>();
-        fundList.add("天弘沪深300ETF联接C");                       //基金名称
-        fundList.add("中欧医疗健康混合C");
-        fundList.add("中欧医疗健康混合A");
-        fundList.add("招商中证白酒指数(LOF)");
-        fundList.add("景顺长城新兴成长混合");
-        fundList.add("广发纳斯达克100指数A");
-        fundList.add("广发中证全指金融地产联接A");
-        fundList.add("博时黄金ETF");
+        //基金名称
+        fundList.add("天弘沪深300ETF联接C");
+        fundList.add("天弘弘择短债C");
+        fundList.add("天弘增利短债C");
+
+        fundList.add("博时信用债券A/B");
+        fundList.add("鹏华可转债债券A");
+//        fundList.add("中欧医疗健康混合C");
+//        fundList.add("中欧医疗健康混合A");
+//        fundList.add("招商中证白酒指数(LOF)");
+//        fundList.add("景顺长城新兴成长混合");
+//        fundList.add("广发纳斯达克100指数A");
+//        fundList.add("广发中证全指金融地产联接A");
+//        fundList.add("博时黄金ETF");
         Double d=10000.0;
         List<String> list=new ArrayList<>();
         for(int i=0;i<fundList.size();i++){
