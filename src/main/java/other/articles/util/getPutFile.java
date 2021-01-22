@@ -1,7 +1,6 @@
 package other.articles.util;
 
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -25,7 +24,7 @@ public class getPutFile {
             //一般按行读取网页数据，并进行内容分析
             //因此用BufferedReader和InputStreamReader把字节流转化为字符流的缓冲流
             //进行转换时，需要处理编码格式问题
-            BufferedReader br=new BufferedReader(new InputStreamReader(is,"gb2312"));
+            BufferedReader br=new BufferedReader(new InputStreamReader(is,"utf-8"));
             //按行读取并打印
             File file = new File(downloadDir);
             //创建本地文件操作对象
