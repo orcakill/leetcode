@@ -23,13 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="update leet6">
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/articles/FindITNews.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/articles/entity/ITHomeNews.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/map/getWebAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/map/getWebAddress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/DirectIncome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/DirectIncome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/FindITNews.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/FindITNews.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/util/getPutFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/getPutFile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +74,6 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="$PROJECT_DIR$/../../maven/apache-maven-3.6.0" />
         <option name="userSettingsFile" value="D:\Java\maven\apache-maven-3.6.0\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
@@ -121,7 +118,7 @@
       <recent name="novel_crawler.mappers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DirectIncome">
+  <component name="RunManager" selected="应用程序.FindITNews">
     <configuration name="DirectIncome" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="other.fund.DirectIncome" />
       <module name="leetcode1" />
@@ -135,8 +132,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HotArticles" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="other.articles.HotArticles" />
+    <configuration name="FindITNews" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="other.articles.FindITNews" />
       <module name="leetcode1" />
       <extension name="coverage">
         <pattern>
@@ -187,15 +184,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -294,16 +289,16 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.HotArticles" />
-      <item itemvalue="Application.SendMail" />
-      <item itemvalue="Application.leet5" />
-      <item itemvalue="Application.leet6" />
-      <item itemvalue="Application.DirectIncome" />
+      <item itemvalue="应用程序.DirectIncome" />
+      <item itemvalue="应用程序.SendMail" />
+      <item itemvalue="应用程序.leet5" />
+      <item itemvalue="应用程序.leet6" />
+      <item itemvalue="应用程序.FindITNews" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DirectIncome" />
-        <item itemvalue="Application.HotArticles" />
+        <item itemvalue="应用程序.FindITNews" />
+        <item itemvalue="应用程序.DirectIncome" />
       </list>
     </recent_temporary>
   </component>
@@ -827,6 +822,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/other/fund/MaximumYield.java</url>
           <line>167</line>
           <option name="timeStamp" value="126" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/other/articles/FindITNews.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="127" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

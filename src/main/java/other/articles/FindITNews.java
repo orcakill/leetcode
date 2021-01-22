@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import static other.articles.map.getWebAddress.getWebAddress;
+import static other.articles.util.getPutFile.getPutFile;
 
 /**
  * @author orcakill
@@ -30,5 +31,11 @@ public class FindITNews {
     public  static  void  dealData(String web,Date startDate,Date endDate){
         List<ITHomeNews> itHomeNews=new ArrayList<>();
         String url = getWebAddress(web);
+        String downloadDir = "D:\\test\\ITNews\\" + web + ".html";
+        try {
+            getPutFile(url, downloadDir);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
