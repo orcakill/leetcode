@@ -17,6 +17,11 @@ public class getPassWord {
         return getString(file);
     }
 
+    public  static   String  getTestMysqlPassword(){
+        String  file="D:\\study\\java\\testmysql.txt";
+        return getString(file);
+    }
+
 
     private static String getString(String file) {
         StringBuilder result = new StringBuilder();
