@@ -23,11 +23,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="update leet6">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/HttpClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/getContent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/getIndex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/screen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/dao/ITNews.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/FindITNews.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/FindITNews.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/util/getPutFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/getPutFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/entity/ITHomeNews.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/entity/ITHomeNews.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/dao/jdbc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/dao/Jdbc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/getPassWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/getPassWord.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +105,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -118,7 +129,7 @@
       <recent name="novel_crawler.mappers" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.FindITNews">
+  <component name="RunManager" selected="Application.FindITNews">
     <configuration name="DirectIncome" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="other.fund.DirectIncome" />
       <module name="leetcode1" />
@@ -289,16 +300,16 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="应用程序.DirectIncome" />
-      <item itemvalue="应用程序.SendMail" />
-      <item itemvalue="应用程序.leet5" />
-      <item itemvalue="应用程序.leet6" />
-      <item itemvalue="应用程序.FindITNews" />
+      <item itemvalue="Application.DirectIncome" />
+      <item itemvalue="Application.FindITNews" />
+      <item itemvalue="Application.SendMail" />
+      <item itemvalue="Application.leet5" />
+      <item itemvalue="Application.leet6" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.FindITNews" />
-        <item itemvalue="应用程序.DirectIncome" />
+        <item itemvalue="Application.FindITNews" />
+        <item itemvalue="Application.DirectIncome" />
       </list>
     </recent_temporary>
   </component>
@@ -825,8 +836,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/other/articles/FindITNews.java</url>
-          <line>35</line>
-          <option name="timeStamp" value="127" />
+          <line>38</line>
+          <option name="timeStamp" value="132" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -2,13 +2,15 @@ package other.articles;
 
 import other.articles.entity.ITHomeNews;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import static other.articles.map.getWebAddress.getWebAddress;
-import static other.articles.util.getPutFile.getPutFile;
+import static other.articles.util.HttpClient.getITHttpClient;
+import static other.articles.util.getIndex.getIndex;
+import static other.articles.util.screen.screenITNews;
 
 /**
  * @author orcakill
@@ -28,14 +30,17 @@ public class FindITNews {
     }
 
 
-    public  static  void  dealData(String web,Date startDate,Date endDate){
-        List<ITHomeNews> itHomeNews=new ArrayList<>();
+    public  static  void  dealData(String web,Date startDate,Date endDate) throws SQLException {
         String url = getWebAddress(web);
-        String downloadDir = "D:\\test\\ITNews\\" + web + ".html";
-        try {
-            getPutFile(url, downloadDir);
-        } catch (Exception e) {
-            e.printStackTrace();
+        //获取当前页IT之家AI新闻目录
+        //检查数据库是否已有，将已有的剔除，不执行插入
+        List<ITHomeNews> itHomeNews=screenITNews(getIndex(getITHttpClient(url)));
+        //获取新闻内容
+        for(int i=0;i<itHomeNews.size();i++){
+            ITHomeNews itHomeNews1=itHomeNews.get(i);
+
         }
+
+
     }
 }

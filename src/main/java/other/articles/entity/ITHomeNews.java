@@ -15,6 +15,24 @@ public class ITHomeNews {
     private Integer newsPaise; /*点赞人数*/
     private Integer newsTread; /*践踏人数*/
     private String newsIndex; /*新闻网址名称*/
+    private String newsHref; /*新闻网址名称*/
+    private String newsContent; /*新闻内容*/
+
+    public String getNewsContent() {
+        return newsContent;
+    }
+
+    public void setNewsContent(String newsContent) {
+        this.newsContent = newsContent;
+    }
+
+    public String getNewsHref() {
+        return newsHref;
+    }
+
+    public void setNewsHref(String newsHref) {
+        this.newsHref = newsHref;
+    }
 
     public String getNewsIndex() {
         return newsIndex;
