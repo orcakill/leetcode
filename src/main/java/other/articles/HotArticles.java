@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static other.articles.map.getWebAddress.getWebAddress;
-import static other.articles.util.getPutFile.getPutFile;
+import static other.articles.util.PutFile.getPutFile;
 import static other.articles.util.replace.replaceA;
 
 
@@ -26,12 +26,11 @@ public class HotArticles {
         String web = "百度实时热点";
         List<HotSpot> hotSpots = getHotSpot(web);
 
-        for (int i=0;i<hotSpots.size();i++){
-            HotSpot hotSpot=hotSpots.get(i);
-            System.out.println("热点网站名称:"+hotSpot.getHotSpotWeb()
-                    +" 热点排行:"+hotSpot.getHotSpotRank()
-                    +" 热点搜索指数:"+hotSpot.getHotSpotDegree()
-                    +" 热点名称："+hotSpot.getHotSpotName()
+        for (HotSpot hotSpot : hotSpots) {
+            System.out.println("热点网站名称:" + hotSpot.getHotSpotWeb()
+                    + " 热点排行:" + hotSpot.getHotSpotRank()
+                    + " 热点搜索指数:" + hotSpot.getHotSpotDegree()
+                    + " 热点名称：" + hotSpot.getHotSpotName()
             );
         }
 
