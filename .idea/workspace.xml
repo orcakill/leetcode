@@ -22,22 +22,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="update leet6">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/HttpClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/getContent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/getIndex.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/screen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/dao/ITNews.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="update FindITNews">
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/FindITNews.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/FindITNews.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/HotArticles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/HotArticles.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/entity/ITHomeNews.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/entity/ITHomeNews.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/dao/jdbc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/dao/Jdbc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/getPassWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/getPassWord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/util/getContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/getContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/util/getPutFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/PutFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/util/screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/screen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/dao/ITNews.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/dao/ITNews.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +125,7 @@
       <recent name="novel_crawler.mappers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.FindITNews">
+  <component name="RunManager" selected="应用程序.FindITNews">
     <configuration name="DirectIncome" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="other.fund.DirectIncome" />
       <module name="leetcode1" />
@@ -191,17 +187,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -300,16 +285,16 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.DirectIncome" />
-      <item itemvalue="Application.FindITNews" />
-      <item itemvalue="Application.SendMail" />
-      <item itemvalue="Application.leet5" />
-      <item itemvalue="Application.leet6" />
+      <item itemvalue="应用程序.DirectIncome" />
+      <item itemvalue="应用程序.FindITNews" />
+      <item itemvalue="应用程序.SendMail" />
+      <item itemvalue="应用程序.leet5" />
+      <item itemvalue="应用程序.leet6" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.FindITNews" />
-        <item itemvalue="Application.DirectIncome" />
+        <item itemvalue="应用程序.FindITNews" />
+        <item itemvalue="应用程序.DirectIncome" />
       </list>
     </recent_temporary>
   </component>
@@ -436,6 +421,8 @@
       <workItem from="1611117749571" duration="105000" />
       <workItem from="1611121137551" duration="2056000" />
       <workItem from="1611188114311" duration="14410000" />
+      <workItem from="1611469435242" duration="12581000" />
+      <workItem from="1611491220400" duration="3596000" />
     </task>
     <task id="LOCAL-00024" summary="2020/10/27 更新leet27">
       <created>1603758521765</created>
@@ -799,7 +786,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2020/11/13 更新leet69" />
     <MESSAGE value="2020/11/16 更新leet70" />
     <MESSAGE value="2020/11/17 更新leet83" />
     <MESSAGE value="2020/11/18 更新leet83" />
@@ -824,20 +810,16 @@
     <MESSAGE value="2020/01/05 更新 Maximum_yield……" />
     <MESSAGE value="2021/01/10 更新 SendMail" />
     <MESSAGE value="update HotArticles" />
-    <option name="LAST_COMMIT_MESSAGE" value="update HotArticles" />
+    <MESSAGE value="update FindITNews" />
+    <option name="LAST_COMMIT_MESSAGE" value="update FindITNews" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/other/fund/MaximumYield.java</url>
-          <line>167</line>
-          <option name="timeStamp" value="126" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/other/articles/FindITNews.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="132" />
+          <line>41</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
