@@ -23,17 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="update FindITNews">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/FindITNews.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/FindITNews.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/HotArticles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/HotArticles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/entity/ITHomeNews.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/entity/ITHomeNews.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/util/getContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/getContent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/util/getPutFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/PutFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/util/screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/screen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/dao/ITNews.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/dao/ITNews.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -422,14 +414,7 @@
       <workItem from="1611121137551" duration="2056000" />
       <workItem from="1611188114311" duration="14410000" />
       <workItem from="1611469435242" duration="12581000" />
-      <workItem from="1611491220400" duration="3596000" />
-    </task>
-    <task id="LOCAL-00024" summary="2020/10/27 更新leet27">
-      <created>1603758521765</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1603758521765</updated>
+      <workItem from="1611491220400" duration="3887000" />
     </task>
     <task id="LOCAL-00025" summary="2020/10/29 更新leet28">
       <created>1603940844865</created>
@@ -767,7 +752,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611137505803</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="update FindITNews">
+      <created>1611503313875</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1611503313876</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
