@@ -22,11 +22,85 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="update FindITNews">
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/pattern/test1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_8_17_11_54___.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="update test1">
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/MaxRate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/DirectIncome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/DirectIncome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/IntelligentFixedInvestment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/MaximumYield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/MaximumYield.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/entity/FixedInvestment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/entity/FixedInvestment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/other/pattern/test1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/pattern/test1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetclass/TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetclass/TreeNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetclass/listNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetclass/listNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet100$TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet100$TreeNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet100.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet100.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet101$TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet101$TreeNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet101.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet101.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet1025$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet1025$Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet1025.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet1025.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet104$TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet104$TreeNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet104.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet104.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet107.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet107.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet108.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet108.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet110$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet110$Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet110$TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet110$TreeNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet110.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet110.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet111.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet111.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet112.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet112.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet118.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet118.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet13.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet14.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet17.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet17.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet18.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet18.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet20$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet20$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet20.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet20.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet201.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet201.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet21$ListNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet21$ListNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet21.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet21.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet26.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet26.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet27.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet27.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet28.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet28.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet343$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet343$Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet343.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet343.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet344.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet344.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet35.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet35.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet38.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet38.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet392$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet392$Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet392.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet392.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet459.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet459.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet486.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet486.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet53.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet53.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet546$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet546$Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet546.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet546.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet557.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet557.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet58.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet58.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet64$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet64$Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet64.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet64.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet647.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet647.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet657.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet657.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet66.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet66.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet67.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet67.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet679.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet679.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet69.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet69.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet70.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet70.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet75.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet75.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet83$ListNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet83$ListNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet83.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet83.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet834.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet834.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet841_1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet841_1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet88.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet88.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet9.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/util/array_list.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/array_list.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/util/two_array_list.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/two_array_list.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/leetcode/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/leetcode/AppTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +182,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.24942529" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
   </component>
   <component name="RecentsManager">
@@ -118,13 +193,13 @@
       <recent name="novel_crawler.mappers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.test1">
-    <configuration name="FindITNews" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="other.articles.FindITNews" />
+  <component name="RunManager" selected="Application.MaximumYield">
+    <configuration name="MaximumYield" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="other.fund.MaximumYield" />
       <module name="leetcode1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="other.articles.*" />
+          <option name="PATTERN" value="other.fund.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -184,15 +259,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -291,14 +364,15 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.FindITNews" />
       <item itemvalue="Application.SendMail" />
       <item itemvalue="Application.leet5" />
       <item itemvalue="Application.leet6" />
       <item itemvalue="Application.test1" />
+      <item itemvalue="Application.MaximumYield" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MaximumYield" />
         <item itemvalue="Application.test1" />
       </list>
     </recent_temporary>
@@ -428,13 +502,7 @@
       <workItem from="1611188114311" duration="14410000" />
       <workItem from="1611469435242" duration="12581000" />
       <workItem from="1611491220400" duration="3887000" />
-    </task>
-    <task id="LOCAL-00025" summary="2020/10/29 更新leet28">
-      <created>1603940844865</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1603940844865</updated>
+      <workItem from="1611619490383" duration="9172000" />
     </task>
     <task id="LOCAL-00026" summary="2020/10/29 更新leet28">
       <created>1603940893770</created>
@@ -772,7 +840,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611503313876</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="update test1">
+      <created>1611569509408</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1611569509409</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -791,7 +866,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2020/11/16 更新leet70" />
     <MESSAGE value="2020/11/17 更新leet83" />
     <MESSAGE value="2020/11/18 更新leet83" />
     <MESSAGE value="2020/11/25 更新TreeNode" />
@@ -816,7 +890,8 @@
     <MESSAGE value="2021/01/10 更新 SendMail" />
     <MESSAGE value="update HotArticles" />
     <MESSAGE value="update FindITNews" />
-    <option name="LAST_COMMIT_MESSAGE" value="update FindITNews" />
+    <MESSAGE value="update test1" />
+    <option name="LAST_COMMIT_MESSAGE" value="update test1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

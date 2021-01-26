@@ -126,12 +126,8 @@ public class DirectIncome {
             fixedInvestments.add(fixedInvestment);
 
         }
-
-
-
         FixedInvestment  x=fixedInvestments.get(fixedInvestments.size()-1);
         return   x;
-
     }
 
 }
