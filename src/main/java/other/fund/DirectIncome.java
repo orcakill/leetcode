@@ -56,7 +56,7 @@ public class DirectIncome {
                     +" 当前收益率:"+round(fixedInvestment.getFixedEarningRate()*100)
                     +" 最低收益率:"+round(fixedInvestment.getFixedMinEarningRate()*100)
                     +" 最高收益率:"+round(fixedInvestment.getFixedMaxEarningRate()*100)
-            );
+             );
         }
 
 
