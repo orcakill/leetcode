@@ -8,9 +8,18 @@ public class FixedInvestment {
     private Double fixedShare;         /*当前持有份额*/
     private Double fixedMoney;         /*当前定投金额*/
     private Double fixedHoldProfit;    /*持有收益金额*/
+    private Double fixedCumulativeRevenue;  /*累计收益*/
     private Double fixedEarningRate;   /*当前收益率*/
     private double fixedMinEarningRate;  /*最低收益率*/
     private double fixedMaxEarningRate;  /*最低收益率*/
+
+    public Double getFixedCumulativeRevenue() {
+        return fixedCumulativeRevenue;
+    }
+
+    public void setFixedCumulativeRevenue(Double fixedCumulativeRevenue) {
+        this.fixedCumulativeRevenue = fixedCumulativeRevenue;
+    }
 
     public String getFixedWeek() {
         return fixedWeek;
