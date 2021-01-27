@@ -23,84 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="update test1">
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/MaxRate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/DirectIncome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/DirectIncome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/IntelligentFixedInvestment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/MaximumYield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/MaximumYield.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/entity/FixedInvestment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/entity/FixedInvestment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/pattern/test1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/pattern/test1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetclass/TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetclass/TreeNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetclass/listNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetclass/listNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet100$TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet100$TreeNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet100.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet100.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet101$TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet101$TreeNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet101.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet101.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet1025$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet1025$Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet1025.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet1025.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet104$TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet104$TreeNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet104.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet104.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet107.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet107.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet108.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet108.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet110$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet110$Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet110$TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet110$TreeNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet110.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet110.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet111.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet111.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet112.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet112.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet118.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet118.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet13.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet13.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet14.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet14.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet17.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet17.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet18.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet18.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet20$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet20$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet20.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet20.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet201.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet201.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet21$ListNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet21$ListNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet21.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet21.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet26.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet26.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet27.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet27.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet28.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet28.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet343$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet343$Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet343.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet343.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet344.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet344.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet35.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet35.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet38.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet38.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet392$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet392$Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet392.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet392.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet459.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet459.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet486.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet486.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet53.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet53.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet546$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet546$Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet546.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet546.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet557.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet557.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet58.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet58.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet64$Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet64$Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet64.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet64.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet647.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet647.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet657.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet657.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet66.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet66.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet67.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet67.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet679.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet679.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet69.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet69.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet70.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet70.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet75.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet75.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet83$ListNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet83$ListNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet83.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet83.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet834.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet834.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet841_1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet841_1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet88.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet88.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leetcode/leet9.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leetcode/leet9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/array_list.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/array_list.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/two_array_list.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/two_array_list.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/leetcode/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/leetcode/AppTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,6 +71,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../maven/apache-maven-3.6.0" />
         <option name="userSettingsFile" value="D:\Java\maven\apache-maven-3.6.0\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
@@ -178,12 +103,12 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3" value="junit.framework.TestCase" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.24942529" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
@@ -255,17 +180,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -502,14 +416,9 @@
       <workItem from="1611188114311" duration="14410000" />
       <workItem from="1611469435242" duration="12581000" />
       <workItem from="1611491220400" duration="3887000" />
-      <workItem from="1611619490383" duration="9172000" />
-    </task>
-    <task id="LOCAL-00026" summary="2020/10/29 更新leet28">
-      <created>1603940893770</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1603940893770</updated>
+      <workItem from="1611619490383" duration="10665000" />
+      <workItem from="1611705707797" duration="738000" />
+      <workItem from="1611706563643" duration="1244000" />
     </task>
     <task id="LOCAL-00027" summary="2020/10/30 更新leet35">
       <created>1604020663081</created>
@@ -847,7 +756,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611569509409</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="update test1">
+      <created>1611654356167</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1611654356168</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
