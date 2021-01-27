@@ -23,7 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="update test1">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +118,7 @@
       <recent name="novel_crawler.mappers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MaximumYield">
+  <component name="RunManager" selected="应用程序.MaximumYield">
     <configuration name="MaximumYield" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="other.fund.MaximumYield" />
       <module name="leetcode1" />
@@ -278,18 +278,12 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.SendMail" />
-      <item itemvalue="Application.leet5" />
-      <item itemvalue="Application.leet6" />
-      <item itemvalue="Application.test1" />
-      <item itemvalue="Application.MaximumYield" />
+      <item itemvalue="应用程序.MaximumYield" />
+      <item itemvalue="应用程序.SendMail" />
+      <item itemvalue="应用程序.leet5" />
+      <item itemvalue="应用程序.leet6" />
+      <item itemvalue="应用程序.test1" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.MaximumYield" />
-        <item itemvalue="Application.test1" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -419,6 +413,7 @@
       <workItem from="1611619490383" duration="10665000" />
       <workItem from="1611705707797" duration="738000" />
       <workItem from="1611706563643" duration="1244000" />
+      <workItem from="1611731455141" duration="595000" />
     </task>
     <task id="LOCAL-00027" summary="2020/10/30 更新leet35">
       <created>1604020663081</created>
