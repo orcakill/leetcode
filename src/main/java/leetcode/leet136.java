@@ -21,11 +21,11 @@ public class leet136 {
                }
            }
        }
-       for(int i=0;i<nums.length;i++){
-           if(!list.contains(nums[i])){
-               x=nums[i];
-           }
-       }
+        for (int num : nums) {
+            if (!list.contains(num)) {
+                x = num;
+            }
+        }
         return x;
     }
 }

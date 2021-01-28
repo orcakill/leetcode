@@ -13,15 +13,15 @@ public class leet125 {
             return true;
         }
         String s0=s.replaceAll("[\\pP\\p{Punct}]","");
-        String s1=new String();
+        String s1= "";
         for(int i=0;i<s0.length();i++){
             String ss=s0.substring(i,i+1).toLowerCase();
             if(!ss.equals(" ")&&!ss.equals("''")){
                s1+=ss;
             }
         }
-        StringBuffer s2=new StringBuffer(s1);
-        StringBuffer s3=s2.reverse();
+        StringBuilder s2=new StringBuilder(s1);
+        StringBuilder s3=s2.reverse();
         String       s4=new String(s3);
 
         return s1.equals(s4);

@@ -40,10 +40,8 @@ public class DealJS {
                //   JSONObject jsonArray = getJsonString(jsonString, comefrom);
                 return jsonString ;
             }
-        } catch (MalformedURLException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        } catch (IOException ex) {
-            ex.printStackTrace();
         }
         return null;
     }

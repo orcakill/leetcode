@@ -45,7 +45,7 @@ public class GetJson {
                 //转换为Obj类型
                 JSONObject jsonObject = JSON.parseObject(str);
                 //获取数组
-                com.alibaba.fastjson.JSONArray jsonArray = jsonObject.getJSONArray("LSJZList");
+                JSONArray jsonArray = jsonObject.getJSONArray("LSJZList");
                 //计算数组的长度
                 int size = jsonArray.size();
                 return jsonArray;

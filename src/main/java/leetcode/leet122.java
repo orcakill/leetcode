@@ -22,33 +22,29 @@ public class leet122 {
     public static int maxProfit(int[] prices) {
         int sum = 0;
        List<List<Integer>> lists =new ArrayList<>();
-       for(int i=0;i<prices.length;i++){
-           int val=prices[i];
-           if(lists.size()==0){
-               ArrayList<Integer> list1=new ArrayList<>();
-               list1.add(val);
-               lists.add(list1);
-               }
-           else{
-               List<Integer> list2=lists.get(lists.size()-1);
-               List<Integer> list3=new ArrayList<>();
-               int val1=list2.get(list2.size()-1);
-               if(val>=val1){
-                   list2.add(val);
-                   lists.set(lists.size()-1,list2);
-               }
-               else{
-                   list3.add(val);
-                   lists.add(list3);
-               }
-           }
-       }
-       for(int i=0;i<lists.size();i++){
-           List<Integer> list4=lists.get(i);
-           if(list4.size()>0){
-               sum+=list4.get(list4.size()-1)-list4.get(0);
-           }
-       }
+        for (int val : prices) {
+            if (lists.size() == 0) {
+                ArrayList<Integer> list1 = new ArrayList<>();
+                list1.add(val);
+                lists.add(list1);
+            } else {
+                List<Integer> list2 = lists.get(lists.size() - 1);
+                List<Integer> list3 = new ArrayList<>();
+                int val1 = list2.get(list2.size() - 1);
+                if (val >= val1) {
+                    list2.add(val);
+                    lists.set(lists.size() - 1, list2);
+                } else {
+                    list3.add(val);
+                    lists.add(list3);
+                }
+            }
+        }
+        for (List<Integer> list4 : lists) {
+            if (list4.size() > 0) {
+                sum += list4.get(list4.size() - 1) - list4.get(0);
+            }
+        }
 
 
 
