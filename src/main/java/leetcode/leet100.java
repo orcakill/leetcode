@@ -2,7 +2,7 @@ package leetcode;
 
 import java.util.ArrayList;
 
-import static util.array_list.array_list_one;
+
 
 public class leet100 {
     public static void main(String[] args) {

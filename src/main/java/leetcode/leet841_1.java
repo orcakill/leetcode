@@ -5,8 +5,6 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
-import util.array_list;
-import util.two_array_list;
 
 public class leet841_1 {
     public static void main(String[] args) {
@@ -16,8 +14,7 @@ public class leet841_1 {
         int d[][] = {{1, 3}, {3, 0, 1}, {2}, {0}};
         int e[][] = {{4}, {3}, {}, {2, 5, 7}, {1}, {}, {8, 9}, {}, {}, {6}}; /* 0   1   2   3      4   5   6    7  8   9*/
         int f[][] = {{6, 7, 8}, {5, 4, 9}, {}, {8}, {4}, {}, {1, 9, 2, 3}, {7}, {6, 5}, {2, 3, 1}}; /* 0      1     2  3   4  5   6         7    8      9*/
-        List<List<Integer>> list1 = two_array_list.array_list_two(b);
-        System.out.println(canVisitAllRooms(list1));
+
     }
 
     public static boolean canVisitAllRooms(List<List<Integer>> rooms) {
