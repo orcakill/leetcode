@@ -7,7 +7,7 @@ import java.util.List;
 
 public class leet546 {
     public static void main(String[] args) {
-        leet546.Solution a = new leet546.Solution();
+        Solution a = new Solution();
         /*   System.out.println(1);*/
         int[] box={1,3,2,2,2,3,4,1};
         System.out.println(a.removeBoxes(box));
