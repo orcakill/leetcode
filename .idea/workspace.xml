@@ -23,30 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2021/01/28 deal sensitive history">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet122.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet122.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet125.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet125.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet136.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet136.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet18.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet18.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet20.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet20.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet26.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet26.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet27.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet27.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet38.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet38.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet53.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet53.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet83.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet83.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetcode/leet88.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetcode/leet88.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/articles/util/HttpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/articles/util/HttpClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/behavior/RandomBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/behavior/RandomBehavior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/DirectIncome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/DirectIncome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/util/DealJS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/DealJS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/util/GetFundData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetFundData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/util/GetFundDataList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/GetFundDataList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/other/fund/util/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/other/fund/util/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/two_array_list.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/two_array_list.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -426,14 +404,7 @@
       <workItem from="1611794745889" duration="546000" />
       <workItem from="1611795331716" duration="2654000" />
       <workItem from="1611799138229" duration="74000" />
-      <workItem from="1611799248189" duration="2892000" />
-    </task>
-    <task id="LOCAL-00022" summary="2020/10/22 更新 leet21">
-      <created>1603374493841</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1603374493841</updated>
+      <workItem from="1611799248189" duration="3790000" />
     </task>
     <task id="LOCAL-00023" summary="2020/10/26 更新leet27">
       <created>1603675429435</created>
@@ -771,7 +742,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611794963631</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="2021/01/28 deal sensitive history">
+      <created>1611802168918</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1611802168919</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
