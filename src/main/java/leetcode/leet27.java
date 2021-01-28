@@ -11,10 +11,10 @@ public class leet27 {
 
     public static int removeElement(int[] nums, int val) {
         ArrayList<Integer> a = new ArrayList<>();
-        for (int i = 0; i < nums.length; i++) {
-           if(nums[i]!=val){
-               a.add(nums[i]);
-           }
+        for (int num : nums) {
+            if (num != val) {
+                a.add(num);
+            }
         }
         for(int i=0;i<a.size();i++){
             nums[i]=a.get(i);

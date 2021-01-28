@@ -13,7 +13,7 @@ public class leet18 {
 
     public static List<List<Integer>> fourSum(int[] nums, int target) {
         //定义一个二维list,用于处理并返回
-        List<List<Integer>> quadruplets=new ArrayList<List<Integer>>();
+        List<List<Integer>> quadruplets= new ArrayList<>();
         //判断nums是否为空或者长度是否小于4
         if(nums== null||nums.length<4){
             return  quadruplets;

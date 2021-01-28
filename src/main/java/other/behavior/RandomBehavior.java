@@ -20,10 +20,9 @@ public class RandomBehavior {
           list.add(compute(map));
         }
         List<String> list1=new ArrayList<>();
-        for(int i=0;i<list.size();i++){
-            String  ss=list.get(i);
-            if(!list1.contains(ss)){
-                list1.add(list.get(i));
+        for (String ss : list) {
+            if (!list1.contains(ss)) {
+                list1.add(ss);
             }
         }
         List<Integer> list2=new ArrayList<>();
@@ -31,11 +30,10 @@ public class RandomBehavior {
             String s1=list1.get(i);
             list2.add(0);
             int x=0;
-            for(int j=0;j<list.size();j++){
-                String s2=list.get(j);
-                if(s1.equals(s2)){
-                    x+=1;
-                    list2.set(i,x);
+            for (String s2 : list) {
+                if (s1.equals(s2)) {
+                    x += 1;
+                    list2.set(i, x);
                 }
             }
         }

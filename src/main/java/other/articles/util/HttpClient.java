@@ -43,8 +43,6 @@ public class HttpClient {
                 System.out.println("返回状态不是200");
                 System.out.println(EntityUtils.toString(response.getEntity(), "utf-8"));
             }
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

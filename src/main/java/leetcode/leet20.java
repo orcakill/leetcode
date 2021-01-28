@@ -18,7 +18,7 @@ public class leet20 {
             return false;
         }
 
-        Map<Character, Character> pairs = new HashMap<Character, Character>() {{
+        Map<Character, Character> pairs = new HashMap<>() {{
             put(')', '(');
             put(']', '[');
             put('}', '{');
