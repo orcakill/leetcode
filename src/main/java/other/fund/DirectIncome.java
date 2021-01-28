@@ -44,19 +44,18 @@ public class DirectIncome {
 //        fundList.add("博时黄金ETF");
         Double d=10000.0;
         List<String> list=new ArrayList<>();
-        for(int i=0;i<fundList.size();i++){
-            String  s1=fundList.get(i);
-            FixedInvestment fixedInvestment=getDirectRate(s1,ksrq,jsrq,d,list);
-            System.out.println(s1+" "
-                    +" 基金代码:"+fixedInvestment.getFixedCode()
-                    +" 最后日期:"+fixedInvestment.getFixedDate()
-                    +" 当前持有份额:"+ round(fixedInvestment.getFixedShare())
-                    +" 当前定投金额:"+ round(fixedInvestment.getFixedMoney())
-                    +" 当前收益金额:"+round(fixedInvestment.getFixedHoldProfit())
-                    +" 当前收益率:"+round(fixedInvestment.getFixedEarningRate()*100)
-                    +" 最低收益率:"+round(fixedInvestment.getFixedMinEarningRate()*100)
-                    +" 最高收益率:"+round(fixedInvestment.getFixedMaxEarningRate()*100)
-             );
+        for (String s1 : fundList) {
+            FixedInvestment fixedInvestment = getDirectRate(s1, ksrq, jsrq, d, list);
+            System.out.println(s1 + " "
+                    + " 基金代码:" + fixedInvestment.getFixedCode()
+                    + " 最后日期:" + fixedInvestment.getFixedDate()
+                    + " 当前持有份额:" + round(fixedInvestment.getFixedShare())
+                    + " 当前定投金额:" + round(fixedInvestment.getFixedMoney())
+                    + " 当前收益金额:" + round(fixedInvestment.getFixedHoldProfit())
+                    + " 当前收益率:" + round(fixedInvestment.getFixedEarningRate() * 100)
+                    + " 最低收益率:" + round(fixedInvestment.getFixedMinEarningRate() * 100)
+                    + " 最高收益率:" + round(fixedInvestment.getFixedMaxEarningRate() * 100)
+            );
         }
 
 

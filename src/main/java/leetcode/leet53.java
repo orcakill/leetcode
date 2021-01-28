@@ -18,8 +18,8 @@ public class leet53 {
         if(nums.length==1){
             return nums[0];
         }
-        for(int i=0;i<nums.length;i++){
-                arrayList.add(nums[i]);
+        for (int num : nums) {
+            arrayList.add(num);
         }
         for(int i=0;i<arrayList.size();i++){
             int  x=arrayList.get(i);
