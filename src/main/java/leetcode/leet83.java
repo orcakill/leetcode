@@ -58,9 +58,9 @@ public class leet83 {
             head=head.next;
         }
         ArrayList<Integer> arrayList1=new ArrayList<>();
-        for(int i=0;i<arrayList.size();i++){
-            if(!arrayList1.contains(arrayList.get(i))){
-                arrayList1.add(arrayList.get(i));
+        for (Integer integer : arrayList) {
+            if (!arrayList1.contains(integer)) {
+                arrayList1.add(integer);
             }
         }
         ListNode listNode = new ListNode(arrayList1.get(0));

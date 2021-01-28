@@ -18,11 +18,11 @@ public class leet4 {
         double num=0;
         ArrayList<Integer> arrayList1=new ArrayList();
         ArrayList<Integer>  arrayList2=new ArrayList();
-        for(int i=0;i<nums1.length;i++){
-            arrayList1.add(nums1[i]);
+        for (int j : nums1) {
+            arrayList1.add(j);
         }
-        for(int i=0;i<nums2.length;i++){
-            arrayList2.add(nums2[i]) ;
+        for (int j : nums2) {
+            arrayList2.add(j);
         }
         arrayList1.addAll(arrayList2);
         Collections.sort(arrayList1);

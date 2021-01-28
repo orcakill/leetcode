@@ -7,7 +7,7 @@ package leetcode;
 public class leet110 {
     public static void main(String[] args) {
         TreeNode t=new TreeNode();
-        System.out.println(leet110.Solution.isBalanced(t));
+        System.out.println(Solution.isBalanced(t));
     }
 
     public static class TreeNode {

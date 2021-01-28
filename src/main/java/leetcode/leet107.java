@@ -12,7 +12,7 @@ public class leet107 {
         Integer b[]={1,2};
         Integer c[]={1,2,3,4,null,null,5};
 
-        TreeNode treeNode=leetclass.TreeNode.createTreeNode(c);
+        TreeNode treeNode= TreeNode.createTreeNode(c);
         List<List<Integer>>  x=levelOrderBottom(treeNode);
         System.out.println(x);
      // System.out.println(levelOrderBottom(TreeNode.createTreeNode(a)));

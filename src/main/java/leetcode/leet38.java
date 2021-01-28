@@ -36,10 +36,10 @@ public class leet38 {
 
           }
            String  result="";
-           for(int k=0;k<arrayList.size();k++){
-               int length=arrayList.get(k).length();
-               String val=arrayList.get(k).substring(0,1);
-               result=result+length+val;
+           for (String s : arrayList) {
+               int length = s.length();
+               String val = s.substring(0, 1);
+               result = result + length + val;
 
            }
            countAndSay=result;

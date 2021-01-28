@@ -22,17 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="update test1">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Update_at_2020_8_17_11_41___.xml" afterDir="false" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="2021/01/28 deal sensitive history">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="CodeInsightWorkspaceSettings">
-    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -71,8 +68,9 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="$PROJECT_DIR$/../../maven/apache-maven-3.6.0" />
-        <option name="userSettingsFile" value="D:\Java\maven\apache-maven-3.6.0\conf\settings.xml" />
+        <option name="localRepository" value="C:\Users\Administrator\.m2\repository" />
+        <option name="mavenHome" value="D:\Java\maven\apache-maven-3.6.0" />
+        <option name="userSettingsFile" value="D:\apache-maven-3.5.4\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
     <option name="importingSettings">
@@ -80,7 +78,6 @@
         <option name="downloadAnnotationsAutomatically" value="true" />
         <option name="downloadDocsAutomatically" value="true" />
         <option name="downloadSourcesAutomatically" value="true" />
-        <option name="jdkForImporter" value="15" />
         <option name="vmOptionsForImporter" value="-Xmx768m" />
       </MavenImportingSettings>
     </option>
@@ -93,7 +90,6 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -101,9 +97,8 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit3" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3" value="junit.framework.TestCase" />
-    <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main" />
+    <property name="project.structure.last.edited" value="项目" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.24942529" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -111,6 +106,10 @@
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Java\idea_java_project\leetcode\src\main" />
+      <recent name="D:\Java\idea_java_project\leetcode\src\main\java" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="junit.framework.TestCase" />
     </key>
@@ -118,72 +117,7 @@
       <recent name="novel_crawler.mappers" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.MaximumYield">
-    <configuration name="MaximumYield" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="other.fund.MaximumYield" />
-      <module name="leetcode1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="other.fund.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SendMail" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="other.mail.SendMail" />
-      <module name="leetcode1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="other.mail.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="leet5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="leetcode.leet5" />
-      <module name="leetcode1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="leetcode.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="leet6" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="leetcode.leet6" />
-      <module name="leetcode1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="leetcode.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="test1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="other.pattern.test1" />
-      <module name="leetcode1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="other.pattern.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="应用程序.MaximumYield (1)">
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment />
@@ -277,13 +211,83 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MaximumYield (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="other.fund.MaximumYield" />
+      <module name="leetcode1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="other.fund.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="leet125" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="leetcode.leet125" />
+      <module name="leetcode1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="leetcode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="leet136" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="leetcode.leet136" />
+      <module name="leetcode1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="leetcode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="leet4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="leetcode.leet4" />
+      <module name="leetcode1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="leetcode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="leet5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="leetcode.leet5" />
+      <module name="leetcode1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="leetcode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="应用程序.MaximumYield" />
-      <item itemvalue="应用程序.SendMail" />
+      <item itemvalue="应用程序.MaximumYield (1)" />
+      <item itemvalue="应用程序.leet125" />
+      <item itemvalue="应用程序.leet136" />
+      <item itemvalue="应用程序.leet4" />
       <item itemvalue="应用程序.leet5" />
-      <item itemvalue="应用程序.leet6" />
-      <item itemvalue="应用程序.test1" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="应用程序.MaximumYield (1)" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -396,24 +400,39 @@
       <workItem from="1609977221433" duration="6449000" />
       <workItem from="1610064917643" duration="12111000" />
       <workItem from="1610176470533" duration="587000" />
-      <workItem from="1610210407785" duration="1318000" />
-      <workItem from="1610264714341" duration="6798000" />
-      <workItem from="1610409725449" duration="16177000" />
-      <workItem from="1610496879402" duration="12708000" />
-      <workItem from="1610583322225" duration="4268000" />
-      <workItem from="1610677177708" duration="7813000" />
-      <workItem from="1610794657718" duration="610000" />
-      <workItem from="1610974618415" duration="2449000" />
-      <workItem from="1611103640029" duration="2643000" />
-      <workItem from="1611117749571" duration="105000" />
-      <workItem from="1611121137551" duration="2056000" />
-      <workItem from="1611188114311" duration="14410000" />
-      <workItem from="1611469435242" duration="12581000" />
-      <workItem from="1611491220400" duration="3887000" />
-      <workItem from="1611619490383" duration="10665000" />
-      <workItem from="1611705707797" duration="738000" />
-      <workItem from="1611706563643" duration="1244000" />
-      <workItem from="1611731455141" duration="595000" />
+      <workItem from="1611794082814" duration="622000" />
+      <workItem from="1611794745889" duration="546000" />
+      <workItem from="1611795331716" duration="2654000" />
+      <workItem from="1611799138229" duration="74000" />
+      <workItem from="1611799248189" duration="3790000" />
+    </task>
+    <task id="LOCAL-00023" summary="2020/10/26 更新leet27">
+      <created>1603675429435</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1603675429435</updated>
+    </task>
+    <task id="LOCAL-00024" summary="2020/10/27 更新leet27">
+      <created>1603758521765</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1603758521765</updated>
+    </task>
+    <task id="LOCAL-00025" summary="2020/10/29 更新leet28">
+      <created>1603940844865</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1603940844865</updated>
+    </task>
+    <task id="LOCAL-00026" summary="2020/10/29 更新leet28">
+      <created>1603940893770</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1603940893770</updated>
     </task>
     <task id="LOCAL-00027" summary="2020/10/30 更新leet35">
       <created>1604020663081</created>
@@ -716,49 +735,21 @@
       <option name="project" value="LOCAL" />
       <updated>1609839711758</updated>
     </task>
-    <task id="LOCAL-00070" summary="2021/01/10 更新 SendMail">
-      <created>1610217487341</created>
+    <task id="LOCAL-00070" summary="2021/01/28 deal sensitive history">
+      <created>1611794963630</created>
       <option name="number" value="00070" />
       <option name="presentableId" value="LOCAL-00070" />
       <option name="project" value="LOCAL" />
-      <updated>1610217487341</updated>
+      <updated>1611794963631</updated>
     </task>
-    <task id="LOCAL-00071" summary="update HotArticles">
-      <created>1611051046136</created>
+    <task id="LOCAL-00071" summary="2021/01/28 deal sensitive history">
+      <created>1611802168918</created>
       <option name="number" value="00071" />
       <option name="presentableId" value="LOCAL-00071" />
       <option name="project" value="LOCAL" />
-      <updated>1611051046137</updated>
+      <updated>1611802168919</updated>
     </task>
-    <task id="LOCAL-00072" summary="update HotArticles">
-      <created>1611137505802</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1611137505803</updated>
-    </task>
-    <task id="LOCAL-00073" summary="update FindITNews">
-      <created>1611503313875</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1611503313876</updated>
-    </task>
-    <task id="LOCAL-00074" summary="update test1">
-      <created>1611569509408</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1611569509409</updated>
-    </task>
-    <task id="LOCAL-00075" summary="update test1">
-      <created>1611654356167</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1611654356168</updated>
-    </task>
-    <option name="localTasksCounter" value="76" />
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -769,7 +760,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -777,6 +780,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="2020/11/13 更新leet67" />
+    <MESSAGE value="2020/11/13 更新leet69" />
+    <MESSAGE value="2020/11/16 更新leet70" />
     <MESSAGE value="2020/11/17 更新leet83" />
     <MESSAGE value="2020/11/18 更新leet83" />
     <MESSAGE value="2020/11/25 更新TreeNode" />
@@ -798,36 +804,24 @@
     <MESSAGE value="2021/01/02 更新 Maximum_yield……" />
     <MESSAGE value="2021/01/03 更新 Maximum_yield……" />
     <MESSAGE value="2020/01/05 更新 Maximum_yield……" />
-    <MESSAGE value="2021/01/10 更新 SendMail" />
-    <MESSAGE value="update HotArticles" />
-    <MESSAGE value="update FindITNews" />
-    <MESSAGE value="update test1" />
-    <option name="LAST_COMMIT_MESSAGE" value="update test1" />
+    <MESSAGE value="2021/01/28 deal sensitive history" />
+    <option name="LAST_COMMIT_MESSAGE" value="2021/01/28 deal sensitive history" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/other/articles/FindITNews.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="leetclass.TreeNode" memberName="right" />
         <PinnedItemInfo parentTag="leetclass.TreeNode" memberName="left" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="fixedInvestments.get(4)" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/leetcode1$MaximumYield.ic" NAME="MaximumYield Coverage Results" MODIFIED="1609772329813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>fund.util.*</FILTER>
-    </SUITE>
   </component>
 </project>
