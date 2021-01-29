@@ -9,7 +9,7 @@ public class two_array_list {
         List<List<Integer>>   llist1=new ArrayList<List<Integer>>();
         for (int[] ints : arr1) {
             List<Integer> list1 = new ArrayList<>();
-            int arr2[] = ints;
+             int arr2[] = ints;
             for (int i : arr2) {
                 list1.add(i);
             }
