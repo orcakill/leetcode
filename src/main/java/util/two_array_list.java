@@ -13,7 +13,7 @@ public class two_array_list {
             for (int i : arr2) {
                 list1.add(i);
             }
-            llist1.add(list1);
+              llist1.add(list1);
         }
         return  llist1;
     }
