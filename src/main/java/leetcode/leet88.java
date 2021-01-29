@@ -1,11 +1,10 @@
 package leetcode;
-import  util.array_list;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import static util.array_list.array_list_one;
+
 
 public class leet88 {
     public static void main(String[] args) {
@@ -14,7 +13,6 @@ public class leet88 {
         int  m=3;
         int  n=3;
 
-        System.out.println(array_list_one(merge(a,m,b,n)).toString());
 
     }
     public static int[] merge(int[] nums1, int m, int[] nums2, int n) {

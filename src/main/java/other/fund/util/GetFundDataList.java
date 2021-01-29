@@ -22,26 +22,27 @@ public class GetFundDataList {
         Map<String,String> map=getWeekMap(ksrq,jsrq);
         String code=getCode(s);
         JSONArray jsonArray=getNetValue(code,ksrq,jsrq);
-        for (String date : stage) {
+        for(int i=0;i<stage.size();i++){
 
-            String week = map.get(date);
-            Double netValue = 0.0;
-            for (int j = jsonArray.size() - 1; j >= 0; j--) {
-                JSONObject jsonObject = jsonArray.getJSONObject(j);
-                String date1 = jsonObject.getString("FSRQ");
-                if (date1.equals(date)) {
-                    String val1 = jsonObject.getString("DWJZ");
-                    netValue = Double.valueOf(val1);
+            String date=stage.get(i);
+            String week=map.get(date);
+            Double netValue=0.0;
+            for(int j=jsonArray.size()-1;j>=0;j--){
+                JSONObject jsonObject  =  jsonArray.getJSONObject(j) ;
+                String date1=jsonObject.getString("FSRQ");
+                if(date1.equals(date)){
+                    String   val1=jsonObject.getString("DWJZ");
+                    netValue=Double.valueOf(val1);
                     jsonArray.remove(j);
 
                     break;
                 }
             }
-            FundData fundData = new FundData();
+            FundData fundData =new FundData();
             fundData.setFundCode(code);
             fundData.setFundDay(date);
             fundData.setFundWeek(week);
-            if (netValue != 0.0) {
+            if(netValue!=0.0){
                 fundData.setFundNetValue(netValue);
             }
             fundDataList.add(fundData);
