@@ -24,7 +24,7 @@ import static other.fund.util.Round.round;
 public class DirectIncome {
     /*天天基金网*/
     public static void main(String[] args) throws Exception {
-        DateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat     dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
         Date ksrq= dateFormat1.parse("2020-01-01");   //开始日期
         Date jsrq= dateFormat1.parse("2021-01-01");   //结束日期
         List<String> fundList=new ArrayList<>();
@@ -103,7 +103,7 @@ public class DirectIncome {
                     if(fundNetValue==null){
                         fundNetValue=fixedInvestment1.getFixedNetValue();
                     }
-                    Double     fixedEarningRate=((lastFixedShare*fundNetValue)-d)/d;
+                    double fixedEarningRate=((lastFixedShare*fundNetValue)-d)/d;
                     fixedInvestment.setFixedMoney(d);
                     fixedInvestment.setFixedShare(lastFixedShare);
                     fixedInvestment.setFixedHoldProfit(lastFixedShare*fundNetValue);
@@ -125,8 +125,7 @@ public class DirectIncome {
             fixedInvestments.add(fixedInvestment);
 
         }
-        FixedInvestment  x=fixedInvestments.get(fixedInvestments.size()-1);
-        return   x;
+        return fixedInvestments.get(fixedInvestments.size()-1);
     }
 
 }
