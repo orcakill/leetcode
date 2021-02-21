@@ -10,30 +10,31 @@ import java.util.List;
 public class leet6 {
     public static void main(String[] args) throws Exception {
         String  str="PAYPALISHIRING";
-
         System.out.println(convert(str,3));
     }
 
 
     public static String convert(String s, int numRows) {
-        if (numRows == 1) return s;
-
-        List<StringBuilder> rows = new ArrayList<>();
-        for (int i = 0; i < Math.min(numRows, s.length()); i++)
-            rows.add(new StringBuilder());
-
-        int curRow = 0;
-        boolean goingDown = false;
-
-        for (char c : s.toCharArray()) {
-            rows.get(curRow).append(c);
-            if (curRow == 0 || curRow == numRows - 1) goingDown = !goingDown;
-            curRow += goingDown ? 1 : -1;
-        }
-
-        StringBuilder ret = new StringBuilder();
-        for (StringBuilder row : rows) ret.append(row);
-        return ret.toString();
-
+       if(numRows==1){
+           return s;
+       }
+       List<StringBuilder>  list=new ArrayList<>();
+       for(int i=0;i<Math.min(s.length(),numRows);i++){
+           list.add(new StringBuilder());
+       }
+       int cur=0;
+       boolean goDown=false;
+       for(char str:s.toCharArray()){
+           list.get(cur).append(str);
+           if(cur==0||numRows-cur==1){
+               goDown=!goDown;
+           }
+           cur+=goDown?1:-1;
+       }
+       StringBuilder s1 = new StringBuilder();
+       for(StringBuilder ss:list){
+           s1.append(ss);
+       }
+       return  s1.toString();
     }
 }
