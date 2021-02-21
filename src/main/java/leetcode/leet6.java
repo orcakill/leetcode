@@ -14,7 +14,7 @@ public class leet6 {
     }
 
 
-    public static String convert(String s, int numRows) {
+    public static String convert(String s, int  numRows) {
        if(numRows==1){
            return s;
        }
