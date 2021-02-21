@@ -19,7 +19,7 @@ public class PutFile {
             //通过链接取得网页返回的数据
 
             InputStream is=conn.getInputStream();
-            String    s=conn.getContentType();
+            String    s= conn.getContentType();
             String  charset=s.substring(s.indexOf("charset=")+8);
           System.out.println(conn.getContentEncoding());
             //一般按行读取网页数据，并进行内容分析
