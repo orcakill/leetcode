@@ -25,7 +25,7 @@ public class leet8 {
 }
 
 class Automaton {
-    public int sign = 1;
+    public int  sign = 1;
     public long ans = 0;
     private String state = "start";
     private Map<String, String[]> table = new HashMap<String, String[]>() {{
