@@ -23,6 +23,7 @@ public class ListNode {
         return head;
     }
 
+
     //遍历链表
     public static ArrayList<Integer> traverse(ListNode head) {
         ArrayList<Integer> arrayList = new ArrayList<>();
