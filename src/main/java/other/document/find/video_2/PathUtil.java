@@ -12,9 +12,12 @@ public class PathUtil {
     public static String createMoviePath(String title) {
         System.out.println("开始创建视频路径");
         //图片名称
+        title= title.replaceAll("[/\\\\:*?|]", ".");
+        title =title.replaceAll("[\"<>]", "'");
+
         String movieName = title + ".mp4";
         //创建路径
-        String path = "F:\\test\\video_find\\";
+        String path = "F://test//video_find";
         File dir = new File(path);
         if (!dir.exists()) {
             dir.mkdirs();

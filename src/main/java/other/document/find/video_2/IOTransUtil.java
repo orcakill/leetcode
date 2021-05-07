@@ -15,8 +15,9 @@ public class IOTransUtil {
         try {
             BufferedInputStream bis = new BufferedInputStream(inputStream);
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(imagePath));
+
             byte[] bytes = new byte[1024];
-            int len = 0;
+            int len;
             while ((len = bis.read(bytes)) != -1) {
                 bos.write(bytes, 0, len);
                 System.out.println("写入第 " + i++ + "次" );
