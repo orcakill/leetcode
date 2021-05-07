@@ -11,7 +11,7 @@ import java.io.InputStream;
  **/
 public class IOTransUtil {
     public static void inputStreamToFile(InputStream inputStream, String imagePath) {
-        int i = 1;
+        int i = 1 ;
         try {
             BufferedInputStream bis = new BufferedInputStream(inputStream);
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(imagePath));
