@@ -22,6 +22,28 @@ public class getPassWord {
         return getString(file);
     }
 
+    public  static   String  getBaiduAppID(){
+        String  file="D:\\study\\java\\百度网盘AppID.txt";
+        return getString(file);
+    }
+
+    public  static   String  getBaiduAppkey(){
+        String  file="D:\\study\\java\\百度网盘Appkey.txt";
+        return getString(file);
+    }
+
+    public  static   String  getBaiduSecretkey(){
+        String  file="D:\\study\\java\\百度网盘Secretkey.txt";
+        return getString(file);
+    }
+
+    public  static   String  getBaiduSignkey(){
+        String  file="D:\\study\\java\\百度网盘Signkey.txt";
+        return getString(file);
+    }
+
+
+
 
     private static String getString(String file) {
         StringBuilder result = new StringBuilder();
