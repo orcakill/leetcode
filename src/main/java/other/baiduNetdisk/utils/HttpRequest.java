@@ -34,7 +34,8 @@ public class HttpRequest {
             // 设置通用的请求属性
             connection.setRequestProperty("accept", "*/*");
             connection.setRequestProperty("connection", "Keep-Alive");
-            connection.setRequestProperty("user-agent", "pan.baidu.com");
+            connection.setRequestProperty("user-agent",
+                    "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
             // 建立实际的连接
             connection.connect();
             // 获取所有响应头字段
@@ -47,6 +48,7 @@ public class HttpRequest {
             in = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
             String line;
             while ((line = in.readLine()) != null) {
+                System.out.println(line);
                 result.append(line);
             }
         } catch (Exception e) {

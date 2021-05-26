@@ -5,6 +5,7 @@ import other.baiduNetdisk.utils.HttpRequest;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
+import static other.baiduNetdisk.module.assessToken.getAssessToken;
 import static other.baiduNetdisk.utils.diskUtils.getAuth;
 
 /**
@@ -21,7 +22,7 @@ public class userInfo {
        */
 
       public static void getUserInfo(){
-          String accessToken   = getAuth();
+          String accessToken   =getAssessToken();
 
           //发送 GET 请求
           String s= HttpRequest.sendGet("https://pan.baidu.com/rest/2.0/xpan/nas", "access_token="+accessToken+"&method=uinfo");

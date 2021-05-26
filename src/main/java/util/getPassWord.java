@@ -41,6 +41,15 @@ public class getPassWord {
         String  file="D:\\study\\java\\百度网盘Signkey.txt";
         return getString(file);
     }
+    public  static   String  getBaiducode(){
+        String  file="D:\\study\\java\\百度网盘code.txt";
+        return getString(file);
+    }
+
+    public  static   String  getBaiduRefreshToken(){
+        String  file="D:\\study\\java\\百度网盘RefreshToken.txt";
+        return getString(file);
+    }
 
 
 
