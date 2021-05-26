@@ -1,10 +1,12 @@
 package other.baiduNetdisk;
 
-import other.baiduNetdisk.module.userInfo;
+
+
 
 import java.io.UnsupportedEncodingException;
 
-import static other.baiduNetdisk.utils.diskUtils.getAuth;
+import static other.baiduNetdisk.module.assessToken.getAssessToken;
+import static other.baiduNetdisk.module.userInfo.getUserInfo;
 
 /**
  * @author orcakill @date 2021/5/12  11:11
@@ -12,8 +14,10 @@ import static other.baiduNetdisk.utils.diskUtils.getAuth;
 public class app {
 
     public static void main(String[] args) throws UnsupportedEncodingException {
+        //接入,获取
+       String assessToken= getAssessToken();
        //基础能力-获取用户信息
-        userInfo.getUserInfo();
+        getUserInfo();
 
     }
 }
