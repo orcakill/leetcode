@@ -48,7 +48,6 @@ public class HttpRequest {
             in = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
             String line;
             while ((line = in.readLine()) != null) {
-                System.out.println(line);
                 result.append(line);
             }
         } catch (Exception e) {

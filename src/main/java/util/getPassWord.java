@@ -51,6 +51,11 @@ public class getPassWord {
         return getString(file);
     }
 
+    public  static   String  getBaiduAssessToken(){
+        String  file="D:\\study\\java\\百度网盘AssessToken.txt";
+        return getString(file);
+    }
+
 
 
 

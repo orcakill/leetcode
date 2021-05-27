@@ -11,28 +11,19 @@ import util.getPassWord;
  **/
 public class assessToken {
     public static   String getAssessToken(){
-
+        //获取assessToken
         String apiKey= getPassWord.getBaiduAppkey();
         String secretkey= getPassWord.getBaiduSecretkey();
         String  url1="http://openapi.baidu.com/oauth/2.0/authorize";
         String  param1="response_type=token"+
                 "&client_id="+apiKey+
-                "&client_secret="+secretkey;
-        String result=HttpRequest.sendGet(url1,param1);
-        JSONObject jsonObject = null;
-        try {
-            jsonObject = new JSONObject(result);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        String access_token = null;
-        try {
-            access_token = jsonObject.getString("access_token");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        System.out.println("获取到的AccessToken的值:"+access_token);
-        return access_token;
+                "&redirect_uri=oob"+
+                "&scope=basic,netdisk"+
+                "&display=popup"+
+                "&state=xxx";
+        String url=url1+"?"+param1;
+        String assessToken=getPassWord.getBaiduAssessToken();
+        return assessToken;
 
     }
 }
