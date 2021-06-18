@@ -6,7 +6,7 @@ package other.articles.entity;
  **/
 public class ITHomeNews {
     private String newsName; /*新闻名称*/
-    private String newsDate; /*新闻时间*/
+    private Long newsDate; /*新闻时间*/
     private String newsTags; /*新闻标签*/
     private String newsDescribe; /*新闻描述*/
     private String newsSource; /*新闻来源*/
@@ -46,11 +46,11 @@ public class ITHomeNews {
         this.newsName = newsName;
     }
 
-    public String getNewsDate() {
+    public Long getNewsDate() {
         return newsDate;
     }
 
-    public void setNewsDate(String newsDate) {
+    public void setNewsDate(Long newsDate) {
         this.newsDate = newsDate;
     }
 

@@ -22,7 +22,7 @@ public class FindITNews {
     //爬取IT之家AI数据
     public  static  void  main(String[] args) throws  Exception{
 
-        //爬取IT之家最近一年数据
+        //爬取IT之家从2020-01-01至今的数据
         String web="IT之家AI";
         SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
         Date startDate=format.parse("2020-01-01");

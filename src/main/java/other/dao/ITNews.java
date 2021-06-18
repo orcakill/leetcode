@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import  java.sql.PreparedStatement;
+
 
 /**
  * @author orcakill
@@ -33,19 +35,19 @@ public class ITNews {
     public static void insert(ITHomeNews itHomeNews) throws SQLException {
         String sql = "insert into it_news" +
                 "(news_name,news_date,news_tags,news_describe,news_source,news_index,news_content,news_href) " +
-                "values("+
-                "'"+itHomeNews.getNewsName()+"',"+
-                "STR_TO_DATE('"+itHomeNews.getNewsDate()+"','%Y-%m-%d %H:%i:%s'),"+
-                "'"+itHomeNews.getNewsTags()+"',"+
-                "'"+itHomeNews.getNewsDescribe()+"',"+
-                "'"+itHomeNews.getNewsSource()+"',"+
-                "'"+itHomeNews.getNewsIndex()+"',"+
-                "'"+itHomeNews.getNewsContent()+"',"+
-                "'"+itHomeNews.getNewsHref()+"')"
-                ;
+                "values (?,?,?,?,?,?,?,?)";
         Connection connection = Jdbc.getConnection();
-        Statement statement = connection.createStatement();
-        int num =statement.executeUpdate(sql);
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+        pstmt.setString(1, itHomeNews.getNewsName());
+        pstmt.setLong(2, itHomeNews.getNewsDate());
+        pstmt.setString(3, itHomeNews.getNewsTags());
+        pstmt.setString(4, itHomeNews.getNewsDescribe());
+        pstmt.setString(5, itHomeNews.getNewsSource());
+        pstmt.setString(6, itHomeNews.getNewsIndex());
+        pstmt.setString(7, itHomeNews.getNewsContent());
+        pstmt.setString(8, itHomeNews.getNewsHref());
+
+        int num =pstmt.executeUpdate();
 
         if(num>0){
             logger.info("插入成功");
@@ -54,6 +56,6 @@ public class ITNews {
             logger.error("插入失败");
         }
 
-        Jdbc.release(null, statement, connection);
+        Jdbc.release(null, pstmt, connection);
     }
 }
