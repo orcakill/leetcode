@@ -5,7 +5,8 @@ package other.baiduNetdisk;
 
 import java.io.UnsupportedEncodingException;
 
-import static other.baiduNetdisk.module.assessToken.getAssessToken;
+
+import static other.baiduNetdisk.module.CapacityInfo.getCapacityInfo;
 import static other.baiduNetdisk.module.userInfo.getUserInfo;
 
 /**
@@ -14,10 +15,11 @@ import static other.baiduNetdisk.module.userInfo.getUserInfo;
 public class app {
 
     public static void main(String[] args) throws UnsupportedEncodingException {
-        //接入,获取
-       String assessToken= getAssessToken();
        //基础能力-获取用户信息
-        getUserInfo();
-
+       String userInfo=getUserInfo();
+       System.out.println(userInfo);
+       //基础能力-获取网盘容量信息
+        String capacityInfo=getCapacityInfo();
+        System.out.println(capacityInfo);
     }
 }

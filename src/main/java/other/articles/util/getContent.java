@@ -23,7 +23,7 @@ public class getContent {
         String date= document.getElementById("pubtime_baidu").text();
         Date date1=format.parse(date);
         SimpleDateFormat format1=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        date=format1.format(date1);
+        long longDate=date1.getTime();
         String  source=document.getElementById("source_baidu").select("a").text();
         Element list =document.getElementById("paragraph");
         Elements elements= list.select("p");
@@ -32,7 +32,7 @@ public class getContent {
             content.append("    ").append(element.select("p").text()).append("\r\n");
         }
         itHomeNews.setNewsName(title);
-        itHomeNews.setNewsDate(date);
+        itHomeNews.setNewsDate(longDate);
         itHomeNews.setNewsSource(source);
         itHomeNews.setNewsContent(content.toString());
         return itHomeNews;
