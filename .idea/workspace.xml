@@ -22,7 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="fix(文章爬取): 文章内容包含单引号无法保存&#10;&#10;已解决" />
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="fix(文章爬取): 文章内容包含单引号无法保存&#10;&#10;已解决">
+      <change beforePath="$PROJECT_DIR$/src/main/resources/client/html/html_2_text_formatting.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/client/html/html_2_text_formatting.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -410,6 +412,7 @@
       <workItem from="1623916714301" duration="18290000" />
       <workItem from="1624241788375" duration="974000" />
       <workItem from="1624242891671" duration="610000" />
+      <workItem from="1624851829158" duration="24000" />
     </task>
     <task id="LOCAL-00041" summary="2020/11/18 更新leet83">
       <created>1605664987534</created>
