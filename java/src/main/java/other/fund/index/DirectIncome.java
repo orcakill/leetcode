@@ -1,4 +1,4 @@
-package other.fund;
+package other.fund.index;
 
 import other.fund.entity.FixedInvestment;
 import other.fund.entity.FundData;

@@ -37,7 +37,7 @@ public class Result {
             FixedInvestment fixedInvestment = getMaxRate1(d2, s1, ksrq, jsrq, d1, sWeek, list);
             System.out.println(s1 + " "
                     + " 基金代码:" + fixedInvestment.getFixedCode()
-                    + " 最后日期:" + fixedInvestment.getFixedDate()
+                    + " 累计定投金额:" + fixedInvestment.getFixedDate()
                     + " 当前持有份额:" + round(fixedInvestment.getFixedShare())
                     + " 当前定投金额:" + round(fixedInvestment.getFixedMoney())
                     + " 当前收益金额:" + round(fixedInvestment.getFixedHoldProfit())

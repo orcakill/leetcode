@@ -1,4 +1,4 @@
-package other.fund;
+package other.fund.index;
 
 public class SellOut {
     public static void main(String[] args) {
