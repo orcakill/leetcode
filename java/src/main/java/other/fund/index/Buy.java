@@ -1,4 +1,4 @@
-package other.fund;
+package other.fund.index;
 
 public class Buy {
     public static void  main(String[] arg){
