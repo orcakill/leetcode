@@ -22,7 +22,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="fix(许可证调整): 许可证调整&#10;&#10;完成">
+    <list default="true" id="77b10a71-d0f4-4441-9652-db4c1a4c1b3f" name="Default Changelist" comment="修正多余文件夹">
+      <change afterPath="$PROJECT_DIR$/.idea/leetcode.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries-with-intellij-classes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/client/.idea/client.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,6 +97,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -141,6 +147,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -413,6 +430,7 @@
       <workItem from="1625281474701" duration="1804000" />
       <workItem from="1625284806417" duration="2111000" />
       <workItem from="1625541153876" duration="14960000" />
+      <workItem from="1626181139915" duration="176000" />
     </task>
     <task id="LOCAL-00044" summary="2020/11/25 更新TreeNode">
       <created>1606287419906</created>
@@ -788,7 +806,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2021/01/02 更新 Maximum_yield……" />
     <MESSAGE value="2021/01/03 更新 Maximum_yield……" />
     <MESSAGE value="2020/01/05 更新 Maximum_yield……" />
     <MESSAGE value="2021/01/28 deal sensitive history" />
@@ -813,7 +830,8 @@
     <MESSAGE value="feat(调整项目结构): 将当前项目放置在java文件夹下&#10;&#10;完成" />
     <MESSAGE value="fix(基金计算调整): 调整基金计算部分逻辑&#10;&#10;完成" />
     <MESSAGE value="fix(许可证调整): 许可证调整&#10;&#10;完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix(许可证调整): 许可证调整&#10;&#10;完成" />
+    <MESSAGE value="修正多余文件夹" />
+    <option name="LAST_COMMIT_MESSAGE" value="修正多余文件夹" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
