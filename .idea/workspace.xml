@@ -4,65 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6fcf3dc-0ed3-4533-a169-1c60589acd2c" name="默认变更列表" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/leetcode.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__c3p0_c3p0_0_9_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_1_41.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_11_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_mail_javax_mail_1_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_dbcp_commons_dbcp_1_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_fileupload_commons_fileupload_1_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_pool_commons_pool_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_activation_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_javaee_api_7_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jstl_jstl_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_22.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ezmorph_ezmorph_1_0_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_json_lib_json_lib_jdk15_2_2_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_jackson_jackson_core_asl_1_9_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_jackson_jackson_mapper_asl_1_9_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jsoup_jsoup_1_13_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_5_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_1_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_1_6_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_1_6_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_1_6_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_4_1_6_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_4_1_6_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_1_6_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_4_1_6_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_oxm_4_1_6_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_4_1_6_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_4_1_6_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_4_1_6_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_4_1_6_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java/idea_java_project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java/leetcode1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java/src/main/java/other/sql/BasicFormatterImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java/src/main/resources/client/.idea/client.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java/src/main/resources/client/html/html_5_css.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+    <list default="true" id="b6fcf3dc-0ed3-4533-a169-1c60589acd2c" name="默认变更列表" comment="修正缺少文件的bug">
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet10.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet110.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet111.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet112.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet118.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet125.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet13.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet14.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet155.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet26.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet27.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet28.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet344.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet392.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet486.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet546.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet58.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet64.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet657.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet66.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet69.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet7.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet70.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet75.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet83.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet88.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet9.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,8 +102,23 @@
       <option name="presentableId" value="Default" />
       <updated>1626326146595</updated>
       <workItem from="1626326149794" duration="1316000" />
-      <workItem from="1626342599194" duration="1440000" />
+      <workItem from="1626342599194" duration="2099000" />
     </task>
+    <task id="LOCAL-00001" summary="feat(添加sql美化功能): 添加sql美化功能&#10;&#10;添加sql美化功能">
+      <created>1626393824062</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1626393824062</updated>
+    </task>
+    <task id="LOCAL-00002" summary="修正缺少文件的bug">
+      <created>1626394099175</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1626394099175</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,5 +138,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="feat(添加sql美化功能): 添加sql美化功能&#10;&#10;添加sql美化功能" />
+    <MESSAGE value="修正缺少文件的bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="修正缺少文件的bug" />
   </component>
 </project>
