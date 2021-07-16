@@ -5,6 +5,7 @@
       <paths name="aliyun">
         <serverdata>
           <mappings>
+            <mapping local="$PROJECT_DIR$/java" web="/" />
             <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
