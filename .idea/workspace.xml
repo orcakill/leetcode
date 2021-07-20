@@ -4,89 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6fcf3dc-0ed3-4533-a169-1c60589acd2c" name="默认变更列表" comment="修正缺少文件的bug">
+    <list default="true" id="b6fcf3dc-0ed3-4533-a169-1c60589acd2c" name="默认变更列表" comment="feat(添加mybatis-plus): 初步添加mybatis-plus的持久层&#10;&#10;初步添加mybatis-plus的持久层">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_annotation_3_4_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_core_3_4_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_extension_3_4_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/app.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/controller/CsdnController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/dao/ArticleMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/entity/Articles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/main/resources/client/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/main/resources/client/.idea/client.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/main/resources/client/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/main/resources/client/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetclass/ListNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet100$TreeNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet101$TreeNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet101.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet104$TreeNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet104.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet110$TreeNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet110.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet112.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet118.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet119.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet121.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet125.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet136.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet14.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet141.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet17.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet20$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet20.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet201.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet21$ListNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet21.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet26.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet27.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet343$Solution.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet343.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet344.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet35.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet38.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet459.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet486.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet546$Solution.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet557.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet58.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet647.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet657.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet67.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet69.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet70.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet75.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet83$ListNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet83.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet834.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/leetcode/leet9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/other/articles/HotArticles.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/other/articles/entity/HotSpot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/other/articles/util/HttpClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/other/articles/util/PutFile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/other/articles/util/getContent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/other/articles/util/replace.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/other/articles/util/screen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/other/behavior/RandomBehavior.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/other/dao/ITNews.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/other/dao/Jdbc.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/other/fund/util/GetCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/other/fund/util/GetFundData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/other/fund/util/GetJson.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/other/fund/util/GetNetValue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/other/fund/util/GetWeek.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/other/fund/util/GetWeekMap.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/other/fund/util/MaxRate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/other/mail/SendMail.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/other/mail/util/PlanTimerTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/classes/util/getPassWord.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/target/test-classes/leetcode/AppTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/leetcode1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/java/leetcode1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/java/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/main/java/other/articles/FindITNews.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/controller/FindITNews.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/main/java/other/articles/HotArticles.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/controller/HotArticles.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,14 +49,23 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/java/src/main/resources" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="模块" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.35863873" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\project\leetcode\java\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="other.articles.dao" />
+    </key>
+  </component>
+  <component name="RunManager" selected="应用程序.leet2">
     <configuration name="BasicFormatterImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="other.sql.BasicFormatterImpl" />
       <module name="leetcode1" />
@@ -137,8 +79,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="leet2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="leetcode.leet2" />
+      <module name="leetcode1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="leetcode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.leet2" />
         <item itemvalue="应用程序.BasicFormatterImpl" />
       </list>
     </recent_temporary>
@@ -152,7 +108,8 @@
       <option name="presentableId" value="Default" />
       <updated>1626326146595</updated>
       <workItem from="1626326149794" duration="1316000" />
-      <workItem from="1626342599194" duration="2461000" />
+      <workItem from="1626342599194" duration="6677000" />
+      <workItem from="1626741691631" duration="4867000" />
     </task>
     <task id="LOCAL-00001" summary="feat(添加sql美化功能): 添加sql美化功能&#10;&#10;添加sql美化功能">
       <created>1626393824062</created>
@@ -182,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626394592277</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="修正缺少文件的bug">
+      <created>1626394830854</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1626394830854</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,5 +169,9 @@
     <MESSAGE value="feat(添加sql美化功能): 添加sql美化功能&#10;&#10;添加sql美化功能" />
     <MESSAGE value="修正缺少文件的bug" />
     <option name="LAST_COMMIT_MESSAGE" value="修正缺少文件的bug" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

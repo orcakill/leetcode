@@ -1,4 +1,4 @@
-package other.articles;
+package other.articles.controller;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
