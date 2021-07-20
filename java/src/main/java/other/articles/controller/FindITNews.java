@@ -1,4 +1,4 @@
-package other.articles;
+package other.articles.controller;
 
 import other.articles.entity.ITHomeNews;
 import other.dao.ITNews;
