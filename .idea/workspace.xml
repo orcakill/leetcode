@@ -5,27 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6fcf3dc-0ed3-4533-a169-1c60589acd2c" name="默认变更列表" comment="feat(添加mybatis-plus): 初步添加mybatis-plus的持久层&#10;&#10;初步添加mybatis-plus的持久层">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_annotation_3_4_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_core_3_4_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_extension_3_4_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_4_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/app.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/controller/CsdnController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/dao/ArticleMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/entity/Articles.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/service/ArticleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/leetcode1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/java/leetcode1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/java/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/main/java/other/articles/FindITNews.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/controller/FindITNews.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/main/java/other/articles/HotArticles.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/controller/HotArticles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/main/java/other/articles/app.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/app.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/main/java/other/articles/controller/CsdnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/controller/FindCsdn.java" afterDir="false" />
+    </list>
+    <list id="c8e9b634-82fc-4f22-bbc2-f9d046a0a64c" name="ignore" comment="">
+      <change afterPath="$PROJECT_DIR$/java/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager" show_ignored="true" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -47,6 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TODO_SCOPE" value="所有位置" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/java/src/main/resources" />
@@ -103,13 +97,14 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
       <changelist id="b6fcf3dc-0ed3-4533-a169-1c60589acd2c" name="默认变更列表" comment="" />
+      <changelist id="c8e9b634-82fc-4f22-bbc2-f9d046a0a64c" name="ignore" comment="" />
       <created>1626326146595</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1626326146595</updated>
       <workItem from="1626326149794" duration="1316000" />
       <workItem from="1626342599194" duration="6677000" />
-      <workItem from="1626741691631" duration="4867000" />
+      <workItem from="1626741691631" duration="9671000" />
     </task>
     <task id="LOCAL-00001" summary="feat(添加sql美化功能): 添加sql美化功能&#10;&#10;添加sql美化功能">
       <created>1626393824062</created>
@@ -146,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626394830854</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat(添加mybatis-plus): 初步添加mybatis-plus的持久层&#10;&#10;初步添加mybatis-plus的持久层">
+      <created>1626748639019</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1626748639019</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,7 +170,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="feat(添加sql美化功能): 添加sql美化功能&#10;&#10;添加sql美化功能" />
     <MESSAGE value="修正缺少文件的bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="修正缺少文件的bug" />
+    <MESSAGE value="feat(添加mybatis-plus): 初步添加mybatis-plus的持久层&#10;&#10;初步添加mybatis-plus的持久层" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(添加mybatis-plus): 初步添加mybatis-plus的持久层&#10;&#10;初步添加mybatis-plus的持久层" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
