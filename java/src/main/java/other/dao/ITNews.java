@@ -2,7 +2,7 @@ package other.dao;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import other.articles.entity.ITHomeNews;
+import other.articles.model.entity.ITHomeNews;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

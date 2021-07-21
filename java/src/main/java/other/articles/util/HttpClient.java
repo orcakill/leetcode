@@ -8,7 +8,7 @@ import org.apache.http.client.utils.HttpClientUtils;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import other.articles.entity.ITHomeNews;
+import other.articles.model.entity.ITHomeNews;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package other.articles.entity;
+package other.articles.model.entity;
 
 /**
  * @author orcakill
