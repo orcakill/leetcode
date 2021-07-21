@@ -1,6 +1,6 @@
 package other.articles.controller;
 
-import other.articles.entity.ITHomeNews;
+import other.articles.model.entity.ITHomeNews;
 import other.dao.ITNews;
 
 import java.text.SimpleDateFormat;

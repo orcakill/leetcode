@@ -3,7 +3,7 @@ package other.articles.controller;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import other.articles.entity.HotSpot;
+import other.articles.model.entity.HotSpot;
 
 import java.io.File;
 import java.util.ArrayList;
