@@ -1,6 +1,7 @@
 package other.articles.service.impl;
 
 import other.articles.dao.ArticleMapper;
+import other.articles.model.dto.ArticleDTO;
 import other.articles.model.entity.ArticlePO;
 import other.articles.model.entity.ITHomeNews;
 import other.articles.service.ArticleService;
@@ -39,6 +40,6 @@ public class ArticleServiceImpl implements ArticleService {
 
     private void dealCsdnData(String web) {
         String url = getWebAddress(web);
-        List<ArticlePO> articlePOS=getArticleIndex((getITHttpClient(url)));
+        List<ArticleDTO> articlePOS=getArticleIndex((getITHttpClient(url)));
     }
 }
