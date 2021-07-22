@@ -4,6 +4,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import other.articles.model.entity.ArticlePO;
 import other.articles.model.entity.ITHomeNews;
 
 import java.util.ArrayList;
@@ -33,5 +34,26 @@ public class index {
         }
 
         return  itHomeNews;
+    }
+
+
+    public static List<ArticlePO> getArticleIndex(String html) {
+        List<ArticlePO> articlePOS= new ArrayList<>();
+        Document document = Jsoup.parse(html);
+        Element list = document.getElementById("list");
+        Elements elements = list.getElementsByClass("c");
+        for (Element element : elements) {
+            ITHomeNews itHomeNews1 = new ITHomeNews();
+            String title = element.select(".title").text();
+            String m = element.select(".m").text();
+            String tags = element.select(".tags").text();
+            tags=tags.replaceAll("Tags：","").replaceAll(" ","");
+            String href = element.select(".title").attr("href");
+
+            ArticlePO articlePO=new ArticlePO();
+            articlePO.setId(UUID.getUUID());
+        }
+
+        return  articlePOS;
     }
 }

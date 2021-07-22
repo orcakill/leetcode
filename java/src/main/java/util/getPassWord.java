@@ -9,50 +9,50 @@ import java.io.FileReader;
  **/
 public class getPassWord {
     public  static   String  get163mail(){
-        String  file="D:\\study\\java\\163mail授权码.txt";
+        String  file="D:\\study\\password\\163mail授权码.txt";
         return getString(file);
     }
     public  static   String  getMysqlPassword(){
-        String  file="D:\\study\\java\\mysql.txt";
+        String  file="D:\\study\\password\\mysql.txt";
         return getString(file);
     }
 
     public  static   String  getTestMysqlPassword(){
-        String  file="D:\\study\\java\\testmysql.txt";
+        String  file="D:\\study\\password\\testmysql.txt";
         return getString(file);
     }
 
     public  static   String  getBaiduAppID(){
-        String  file="D:\\study\\java\\百度网盘AppID.txt";
+        String  file="D:\\study\\password\\百度网盘AppID.txt";
         return getString(file);
     }
 
     public  static   String  getBaiduAppkey(){
-        String  file="D:\\study\\java\\百度网盘Appkey.txt";
+        String  file="D:\\study\\password\\百度网盘Appkey.txt";
         return getString(file);
     }
 
     public  static   String  getBaiduSecretkey(){
-        String  file="D:\\study\\java\\百度网盘Secretkey.txt";
+        String  file="D:\\study\\password\\百度网盘Secretkey.txt";
         return getString(file);
     }
 
     public  static   String  getBaiduSignkey(){
-        String  file="D:\\study\\java\\百度网盘Signkey.txt";
+        String  file="D:\\study\\password\\百度网盘Signkey.txt";
         return getString(file);
     }
     public  static   String  getBaiducode(){
-        String  file="D:\\study\\java\\百度网盘code.txt";
+        String  file="D:\\study\\password\\百度网盘code.txt";
         return getString(file);
     }
 
     public  static   String  getBaiduRefreshToken(){
-        String  file="D:\\study\\java\\百度网盘RefreshToken.txt";
+        String  file="D:\\study\\password\\百度网盘RefreshToken.txt";
         return getString(file);
     }
 
     public  static   String  getBaiduAssessToken(){
-        String  file="D:\\study\\java\\百度网盘AssessToken.txt";
+        String  file="D:\\study\\password\\百度网盘AssessToken.txt";
         return getString(file);
     }
 

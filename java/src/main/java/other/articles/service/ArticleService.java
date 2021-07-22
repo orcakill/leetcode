@@ -5,15 +5,17 @@ import org.springframework.transaction.annotation.Transactional;
 import other.articles.dao.ArticleMapper;
 import other.articles.model.entity.ArticlePO;
 
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 
-@Service
-public class ArticleService {
-    private final ArticleMapper articleMapper;
+public interface ArticleService {
+    ArticlePO findById(String id) throws SQLException;
 
-    public ArticleService(ArticleMapper articleMapper) {
-        this.articleMapper = articleMapper;
-    }
+    List<ArticlePO> findAll() throws SQLException;
 
+    void insert(ArticlePO articlePO) throws SQLException;
 
+    //csdn网站爬取
+    void  crawlAllArticle();
 }
