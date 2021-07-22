@@ -13,15 +13,17 @@ public class ArticlePO implements Serializable {
     @TableId
     private String id;
     private String author;
-    private String title;
+    private String category;
+    private String tabloid;
     private String content;
     private String tags;
+    private String title;
     private Integer type;
-    private String category;
+    private Integer views;
     private Long gmtCreate;
     private Long gmtUpdate;
-    private String tabloid;
-    private Integer views;
+
+
 
 
 }

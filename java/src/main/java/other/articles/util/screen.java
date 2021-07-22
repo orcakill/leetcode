@@ -1,5 +1,6 @@
 package other.articles.util;
 
+import other.articles.model.entity.ArticlePO;
 import other.articles.model.entity.ITHomeNews;
 import other.dao.ITNews;
 
@@ -22,8 +23,9 @@ public class screen {
                 i--;
             }
         }
-
-
         return  itHomeNews;
     }
+
+
+
 }

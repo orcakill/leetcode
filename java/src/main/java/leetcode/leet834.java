@@ -22,7 +22,7 @@ public class leet834 {
         dp = new int[N];
         graph = new ArrayList<>();
         for (int i = 0; i < N; ++i) {
-            graph.add(new ArrayList<>());
+            graph.add(new ArrayList<Integer>());
         }
         for (int[] edge : edges) {
             int u = edge[0], v = edge[1];
