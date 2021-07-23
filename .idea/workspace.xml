@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6fcf3dc-0ed3-4533-a169-1c60589acd2c" name="默认变更列表" comment="feat(article文章管理): 回滚到jdbc&#10;&#10;回滚到jdbc，mybatis需要spring boot配合">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/service/impl/ArticleServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/util/UUID.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java/src/test/java/other/articles/dao/ArticleMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/leetcode1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/java/leetcode1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/main/java/leetcode/leet834.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet834.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/main/java/leetcode/leet88.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/main/java/leetcode/leet88.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/main/java/other/articles/dao/ArticleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/dao/ArticleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/main/java/other/articles/map/webAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/map/webAddress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/main/java/other/articles/model/entity/ArticlePO.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/model/entity/ArticlePO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/main/java/other/articles/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/main/java/other/articles/util/index.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/util/index.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/main/java/other/articles/util/screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/main/java/other/articles/util/screen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/main/java/util/getPassWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/main/java/util/getPassWord.java" afterDir="false" />
-    </list>
+    <list default="true" id="b6fcf3dc-0ed3-4533-a169-1c60589acd2c" name="默认变更列表" comment="fix(回滚planTimerTask): 回滚planTimerTask&#10;&#10;回滚planTimerTask" />
     <list id="c8e9b634-82fc-4f22-bbc2-f9d046a0a64c" name="ignore" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +183,7 @@
       <workItem from="1626326149794" duration="1316000" />
       <workItem from="1626342599194" duration="6677000" />
       <workItem from="1626741691631" duration="20786000" />
-      <workItem from="1626917556566" duration="9998000" />
+      <workItem from="1626917556566" duration="11000000" />
     </task>
     <task id="LOCAL-00001" summary="feat(添加sql美化功能): 添加sql美化功能&#10;&#10;添加sql美化功能">
       <created>1626393824062</created>
@@ -258,7 +241,21 @@
       <option name="project" value="LOCAL" />
       <updated>1626875721488</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feat(article文章管理): article添加查询单个、查询全部、编辑的功能&#10;&#10;article添加查询单个、查询全部、编辑的功能">
+      <created>1626952822614</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1626952822614</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fix(回滚planTimerTask): 回滚planTimerTask&#10;&#10;回滚planTimerTask">
+      <created>1627000281944</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1627000281944</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,7 +280,9 @@
     <MESSAGE value="feat(添加mybatis-plus): 初步添加mybatis-plus的持久层&#10;&#10;初步添加mybatis-plus的持久层" />
     <MESSAGE value="feat(article文章管理): 初步添加mybatis-plus的持久层&#10;&#10;初步添加mybatis-plus的持久层" />
     <MESSAGE value="feat(article文章管理): 回滚到jdbc&#10;&#10;回滚到jdbc，mybatis需要spring boot配合" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(article文章管理): 回滚到jdbc&#10;&#10;回滚到jdbc，mybatis需要spring boot配合" />
+    <MESSAGE value="feat(article文章管理): article添加查询单个、查询全部、编辑的功能&#10;&#10;article添加查询单个、查询全部、编辑的功能" />
+    <MESSAGE value="fix(回滚planTimerTask): 回滚planTimerTask&#10;&#10;回滚planTimerTask" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix(回滚planTimerTask): 回滚planTimerTask&#10;&#10;回滚planTimerTask" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
