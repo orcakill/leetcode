@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import other.articles.dao.ArticleMapper;
 import other.articles.model.entity.ArticlePO;
+import other.articles.service.impl.ArticleServiceImpl;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -17,5 +18,8 @@ public interface ArticleService {
     void insert(ArticlePO articlePO) throws SQLException;
 
     //csdn网站爬取
-    void  crawlAllArticle();
+    static void crawlAllArticle() {
+        String web="CSDN";
+        ArticleServiceImpl.dealCsdnData(web);
+    }
 }
