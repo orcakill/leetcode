@@ -4,7 +4,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import other.articles.model.entity.ArticlePO;
+import other.articles.model.dto.ArticleDTO;
 import other.articles.model.entity.ITHomeNews;
 
 import java.util.ArrayList;
@@ -37,11 +37,11 @@ public class index {
     }
 
 
-    public static List<ArticlePO> getArticleIndex(String html) {
-        List<ArticlePO> articlePOS= new ArrayList<>();
+    public static List<ArticleDTO> getArticleIndex(String html) {
+        List<ArticleDTO> articleDTOS= new ArrayList<>();
         Document document = Jsoup.parse(html);
-        Element list = document.getElementById("list");
-        Elements elements = list.getElementsByClass("c");
+        //Element list = document.getElementById("navList-box");
+        Elements elements = document.getElementsByClass("navList-box");
         for (Element element : elements) {
             ITHomeNews itHomeNews1 = new ITHomeNews();
             String title = element.select(".title").text();
@@ -50,10 +50,20 @@ public class index {
             tags=tags.replaceAll("Tags：","").replaceAll(" ","");
             String href = element.select(".title").attr("href");
 
-            ArticlePO articlePO=new ArticlePO();
-            articlePO.setId(UUID.getUUID());
+            ArticleDTO articleDTO=new ArticleDTO();
+            articleDTO.setId(UUID.getUUID());
+            articleDTO.setAuthor("");
+            articleDTO.setCategory("1");
+            articleDTO.setTabloid("1");
+            articleDTO.setContent("1");
+            articleDTO.setTags("1");
+            articleDTO.setTitle("1");
+            articleDTO.setType(Integer.valueOf("1"));
+            articleDTO.setViews(Integer.valueOf("1"));
+            articleDTO.setGmtCreate(Long.valueOf(1));
+            articleDTO.setGmtUpdate(Long.valueOf(1));
         }
 
-        return  articlePOS;
+        return  articleDTOS;
     }
 }
