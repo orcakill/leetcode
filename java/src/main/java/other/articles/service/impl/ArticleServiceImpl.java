@@ -17,6 +17,7 @@ import static other.articles.util.screen.screenITNews;
 
 public class ArticleServiceImpl implements ArticleService {
 
+
     @Override
     public ArticlePO findById(String id) throws SQLException {
         return ArticleMapper.findByIdArticle(id);
@@ -32,13 +33,8 @@ public class ArticleServiceImpl implements ArticleService {
        ArticleMapper.insertArticle(articlePO);
     }
 
-    @Override
-    public void crawlAllArticle() {
-        String web="CSDN";
-        dealCsdnData(web);
-    }
 
-    private void dealCsdnData(String web) {
+    public static void dealCsdnData(String web) {
         String url = getWebAddress(web);
         List<ArticleDTO> articlePOS=getArticleIndex((getITHttpClient(url)));
     }
