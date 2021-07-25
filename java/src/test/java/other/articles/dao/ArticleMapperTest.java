@@ -68,4 +68,9 @@ public class ArticleMapperTest {
         articlePO.setGmtUpdate(Long.valueOf(3));
         insertArticle(articlePO);
     }
+
+    @Test
+    public void deleteAll() throws SQLException {
+        ArticleMapper.deleteAll();
+    }
 }

@@ -96,4 +96,22 @@ public class ArticleMapper {
 
         Jdbc.release(null, pstmt, connection);
     }
+
+    public static void deleteAll() throws SQLException {
+        String sql = "delete   from articles";
+        Connection connection = Jdbc.getConnection();
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+
+
+        int num =pstmt.executeUpdate();
+
+        if(num>0){
+            logger.info("删除成功");
+        }
+        else{
+            logger.error("删除失败");
+        }
+
+        Jdbc.release(null, pstmt, connection);
+    }
 }
