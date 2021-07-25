@@ -42,7 +42,9 @@ public class getContent {
 
     public  static ArticlePO getCsdnContent(String html) throws ParseException {
         ArticlePO  articlePO=new ArticlePO();
-        Document document = Jsoup.parse(html);
+        Document documents = Jsoup.parse(html);
+        String temp = documents.html().replace("<br>", "</p><p>");
+        Document document = Jsoup.parse(temp);
         articlePO.setAuthor(document.getElementsByClass("follow-nickName ").text());
         articlePO.setCategory(document.getElementsByClass("tag-link").text());
         Element list =document.getElementById("content_views");
@@ -50,12 +52,12 @@ public class getContent {
         Elements elements= list.children();
         StringBuilder content= new StringBuilder();
         for(Element element:elements){
-//            if(!element.select("img").isEmpty()){
-//                String imgName="20210713143344961.png";
-//                String imgAddress=element.select("img").attr("src");
-//                String  img="!["+imgName+"]("+imgAddress+")";
-//                content.append("    ").append(img).append("\r\n");
-//            }
+            if(!element.select("img").isEmpty()){
+                String imgName="20210713143344961.png";
+                String imgAddress=element.select("img").attr("src");
+                String  img="!["+imgName+"]("+imgAddress+")";
+                content.append(img).append("\r\n");
+            }
             if(!element.select("p").isEmpty()){
                 content.append("    ").append(element.select("p").text()).append("\r\n");
             }
