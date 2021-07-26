@@ -8,6 +8,7 @@ import other.articles.service.ArticleService;
 
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -41,16 +42,18 @@ public class ArticleServiceImpl implements ArticleService {
     public static void dealCsdnData(String web) throws ParseException, SQLException {
         String url = getWebAddress(web);
         List<ArticleDTO> articleDTOS=getArticleIndex((getITHttpClient(url)));
+        List<ArticlePO>  articlePOS=new ArrayList<>();
         ArticleMapper.deleteAll();
-        for (int i=0;i<articleDTOS.size();i++) {
-            ArticleDTO articleDTO=articleDTOS.get(i);
-            ArticlePO articlePO=getCsdnContent(getITHttpClient(articleDTO.getWebAddress()));
+        for (ArticleDTO articleDTO : articleDTOS) {
+            ArticlePO articlePO = getCsdnContent(getITHttpClient(articleDTO.getWebAddress()));
             articlePO.setId(articleDTO.getId());
             articlePO.setTabloid(articleDTO.getTabloid());
             articlePO.setTitle(articleDTO.getTitle());
             articlePO.setType(articleDTO.getType());
             articlePO.setViews(articleDTO.getViews());
             ArticleMapper.insertArticle(articlePO);
+            articlePOS.add(articlePO);
         }
+        System.out.println("爬取成功");
     }
 }
