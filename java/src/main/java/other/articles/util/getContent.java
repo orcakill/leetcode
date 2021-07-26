@@ -11,6 +11,7 @@ import other.articles.model.entity.ITHomeNews;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * @author orcakill
@@ -22,12 +23,13 @@ public class getContent {
         Document document = Jsoup.parse(html);
         String title=document.select("h1").text();
         SimpleDateFormat format=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        String date= document.getElementById("pubtime_baidu").text();
+        String date= Objects.requireNonNull(document.getElementById("pubtime_baidu")).text();
         Date date1=format.parse(date);
         SimpleDateFormat format1=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         long longDate=date1.getTime();
-        String  source=document.getElementById("source_baidu").select("a").text();
+        String  source= Objects.requireNonNull(document.getElementById("source_baidu")).select("a").text();
         Element list =document.getElementById("paragraph");
+        assert list != null;
         Elements elements= list.select("p");
         StringBuilder content= new StringBuilder();
         for(Element element:elements){
@@ -46,12 +48,15 @@ public class getContent {
         String temp = documents.html().replace("<br>", "</p><p>");
         Document document = Jsoup.parse(temp);
         articlePO.setAuthor(document.getElementsByClass("follow-nickName ").text());
-        articlePO.setCategory(document.getElementsByClass("tag-link").text());
+        articlePO.setCategory(document.getElementsByClass("tag-link").get(0).text());
         Element list =document.getElementById("content_views");
         assert list != null;
         Elements elements= list.children();
         StringBuilder content= new StringBuilder();
         for(Element element:elements){
+            if(!element.select("h1").isEmpty()){
+                content.append("# ").append(element.select("h1").text()).append("\r\n");
+            }
             if(!element.select("img").isEmpty()){
                 String imgName="20210713143344961.png";
                 String imgAddress=element.select("img").attr("src");
@@ -62,7 +67,7 @@ public class getContent {
                 content.append("    ").append(element.select("p").text()).append("\r\n");
             }
             if(!element.select("code").isEmpty()){
-                content.append("    ").append(element.select("code").text()).append("\r\n");
+                content.append("```").append("\r\n").append(element.select("code").text()).append("\r\n").append("```").append("\r\n");
             }
 
 
@@ -70,8 +75,9 @@ public class getContent {
         }
         String  content1= String.valueOf(content);
         String  content2=content1.replaceAll("((\r\n)|\n)[\\s\t ]*(\\1)+", "$1");
-        articlePO.setContent(content2);
-        articlePO.setTags(document.getElementsByClass("tag-link").text());
+        String  content3=content2.replaceAll("\r\n","\r\n\r\n");
+        articlePO.setContent(content3);
+        articlePO.setTags(document.getElementsByClass("tag-link").text().replace(" ",","));
         String time=document.getElementsByClass("time").get(0).text();
         SimpleDateFormat sdf =   new SimpleDateFormat( "yyyy-MM-dd hh:mm:ss" );
         Date date = sdf.parse(time);
