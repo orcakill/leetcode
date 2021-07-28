@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class leet841_1 {
+public class leet841 {
     public static void main(String[] args) {
         int[][] a = {{1}, {2}, {3}, {}};
         int[][] b = {{1, 3}, {3, 0, 1}, {2}, {0}};
