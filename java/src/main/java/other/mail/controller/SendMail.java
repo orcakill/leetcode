@@ -1,8 +1,9 @@
-package other.mail;
+package other.mail.controller;
 
 
 import other.mail.util.PlanTimerTask;
 
+import java.math.BigInteger;
 import java.util.*;
 
 public class SendMail {
