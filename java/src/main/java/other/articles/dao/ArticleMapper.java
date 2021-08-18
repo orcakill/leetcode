@@ -86,7 +86,6 @@ public class ArticleMapper {
         pstmt.setLong(11,articlePO.getGmtUpdate());
 
         int num =pstmt.executeUpdate();
-
         if(num>0){
             logger.info("插入成功");
         }

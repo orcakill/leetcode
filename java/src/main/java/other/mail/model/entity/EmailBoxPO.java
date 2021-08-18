@@ -2,12 +2,13 @@ package other.mail.model.entity;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
 
 @Data
 public class EmailBoxPO {
-    private BigInteger emailId; /*邮件id*/
+    private BigDecimal emailId; /*邮件id*/
     private String sender; /*发送人*/
     private String receiver; /*收信人*/
     private String cc; /*抄送人*/
