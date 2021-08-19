@@ -1,12 +1,15 @@
 package other.mail.model.entity;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import lombok.Data;
 
+import javax.persistence.Id;
 import java.math.BigInteger;
-import java.sql.Date;
+import java.util.Date;
 
 @Data
 public class MessageEventPO {
+    @Id
     private BigInteger messageId; /*消息id*/
     private Date messageDate; /*消息日期*/
     private String messageTitle; /*消息标题*/
