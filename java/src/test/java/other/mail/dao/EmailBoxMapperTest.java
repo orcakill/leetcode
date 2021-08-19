@@ -20,7 +20,6 @@ public class EmailBoxMapperTest {
     public void insert() throws SQLException {
         Date date=new Date();
         EmailBoxPO emailBoxPO=new EmailBoxPO();
-        emailBoxPO.setEmailId(BigDecimal.valueOf(1));
         emailBoxPO.setSender("张三");
         emailBoxPO.setReceiver("李四");
         emailBoxPO.setCc("王五");
