@@ -39,22 +39,23 @@ public class EmailBoxMapper {
 
     public static void insert(EmailBoxPO emailBoxPO) throws SQLException {
         String sql = "insert into email_box" +
-                "(sender,receiver,cc,title,content,send_type,send_date,box_type,email_status,is_delete,gmt_create,gmt_update) " +
-                "values (?,?,?,?,?,?,?,?,?,?,?,?)";
+                "(email_id,sender,receiver,cc,title,content,send_type,send_date,box_type,email_status,is_delete,gmt_create,gmt_update) " +
+                "values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection connection = Jdbc.getConnection();
         PreparedStatement pstmt = connection.prepareStatement(sql);
-        pstmt.setString(1, emailBoxPO.getSender());
-        pstmt.setString(2, emailBoxPO.getReceiver());
-        pstmt.setString(3, emailBoxPO.getCc());
-        pstmt.setString(4, emailBoxPO.getTitle());
-        pstmt.setString(5, emailBoxPO.getContent());
-        pstmt.setInt(6, emailBoxPO.getSendType());
-        pstmt.setDate(7, new java.sql.Date(emailBoxPO.getSendDate().getTime()));
-        pstmt.setInt(8, emailBoxPO.getBoxType());
-        pstmt.setInt(9,emailBoxPO.getEmailStatus());
-        pstmt.setInt(10,emailBoxPO.getIsDelete());
-        pstmt.setDate(11,new java.sql.Date(emailBoxPO.getGmtCreate().getTime()));
-        pstmt.setDate(12,new java.sql.Date(emailBoxPO.getGmtUpdate().getTime()));
+        pstmt.setBigDecimal(1, emailBoxPO.getEmailId());
+        pstmt.setString(2, emailBoxPO.getSender());
+        pstmt.setString(3, emailBoxPO.getReceiver());
+        pstmt.setString(4, emailBoxPO.getCc());
+        pstmt.setString(5, emailBoxPO.getTitle());
+        pstmt.setString(6, emailBoxPO.getContent());
+        pstmt.setInt(7, emailBoxPO.getSendType());
+        pstmt.setDate(8, new java.sql.Date(emailBoxPO.getSendDate().getTime()));
+        pstmt.setInt(9, emailBoxPO.getBoxType());
+        pstmt.setInt(10,emailBoxPO.getEmailStatus());
+        pstmt.setInt(11,emailBoxPO.getIsDelete());
+        pstmt.setDate(12,new java.sql.Date(emailBoxPO.getGmtCreate().getTime()));
+        pstmt.setDate(13,new java.sql.Date(emailBoxPO.getGmtUpdate().getTime()));
 
         int num =pstmt.executeUpdate();
         System.out.println(pstmt);
