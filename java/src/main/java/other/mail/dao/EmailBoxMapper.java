@@ -58,7 +58,6 @@ public class EmailBoxMapper {
         pstmt.setDate(13,new java.sql.Date(emailBoxPO.getGmtUpdate().getTime()));
 
         int num =pstmt.executeUpdate();
-        System.out.println(pstmt);
         if(num>0){
             logger.info("插入成功");
         }

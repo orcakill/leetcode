@@ -18,11 +18,11 @@
         <maven.compiler.target>1.7</maven.compiler.target>
 
         <!-- spring版本号 -->
-        <spring.version>4.1.6.RELEASE</spring.version>
+        <spring.version>5.3.9</spring.version>
         <!-- mybatis版本号 -->
-        <mybatis.version>3.5.6</mybatis.version>
+        <mybatis.version>3.5.7</mybatis.version>
         <!-- log4j日志文件管理包版本 -->
-        <slf4j.version>1.7.7</slf4j.version>
+        <slf4j.version>1.7.32</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
     </properties>
 
@@ -153,13 +153,13 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
-            <version>1.2.2</version>
+            <version>2.0.6</version>
         </dependency>
         <!-- 导入java ee jar 包 -->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
-            <version>7.0</version>
+            <version>8.0.1</version>
         </dependency>
 
 
@@ -192,14 +192,14 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.22</version>
+            <version>8.0.25</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
-            <version>1.14.1</version>
+            <version>1.14.2</version>
         </dependency>
 
 
@@ -208,7 +208,7 @@
         <dependency>
             <groupId>net.sf.json-lib</groupId>
             <artifactId>json-lib</artifactId>
-            <version>2.2.3</version>
+            <version>2.4</version>
             <classifier>jdk15</classifier>
             <exclusions>
                 <exclusion>
@@ -241,13 +241,13 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-annotation</artifactId>
-            <version>3.4.2</version>
+            <version>3.4.3.1</version>
         </dependency>
 
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-extension</artifactId>
-            <version>3.4.2</version>
+            <version>3.4.3.1</version>
             <exclusions>
                 <exclusion>
                     <artifactId>mybatis-spring</artifactId>
@@ -262,14 +262,14 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>4.6.1</version>
+            <version>5.7.9</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
-            <version>2.5.2</version>
+            <version>2.5.3</version>
             <exclusions>
                 <exclusion>
                     <artifactId>slf4j-api</artifactId>
@@ -323,17 +323,17 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.1.41</version>
+            <version>1.2.78</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.18</version>
+            <version>1.18.20</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
 
