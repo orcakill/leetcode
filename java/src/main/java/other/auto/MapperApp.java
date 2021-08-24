@@ -31,9 +31,7 @@ public class MapperApp {
 			classPO.setType (type);
 			classPO.setPk (text);
 			classPOS.add (classPO);
-		}
-		
-		/*根据id查询一条数据的mapper方法*/
+		} /*根据id查询一条数据的mapper方法*/
 		String name1 = name.substring (0, 1)
 		                   .toLowerCase (Locale.ROOT) + name.substring (1);
 		StringBuilder str =
@@ -53,9 +51,7 @@ public class MapperApp {
 				                    .append ("\"+id;  \r\n")
 				                    .append ("  Connection connection= Jdbc.getConnection();\r\n  " + "Statement " +
 				                             "statement=connection.createStatement(); \r\n  " + "ResultSet " +
-				                             "resultSet=statement.executeQuery(sql);\r\n  " + "while(resultSet.next" +
-				                             "()" +
-				                             ")" +
+				                             "resultSet=statement.executeQuery(sql);\r\n  " + "while(resultSet.next())" +
 				                             "{\r\n");
 		for (int i = 0; i < classPOS.size (); i++) {
 			str.append ("    ")
@@ -76,15 +72,16 @@ public class MapperApp {
 				str.append (toType (classPOS.get (i)
 				                            .getType ()));
 			}
-			
 			str.append ("(")
 			   .append (i + 1)
 			   .append ("))")
 			   .append ("; \r\n");
 		}
-		str.append ("    Jdbc.release(null, statement, connection);\r\n")
-		   .append ("    return " + name1 + ";\r\n")
-		   .append ("    }\r\n")
+		str.append ("    }\r\n")
+		   .append ("    Jdbc.release(null, statement, connection);\r\n")
+		   .append ("    return ")
+		   .append (name1)
+		   .append (";\r\n")
 		   .append ("}\r\n")
 		   .append ("public static void insert(" + name + " ")
 		   .append (name1)
@@ -114,28 +111,37 @@ public class MapperApp {
 		   .append ("  PreparedStatement preparedStatement = connection.prepareStatement(sql);\r\n");
 		for (int i = 0; i < classPOS.size (); i++) {
 			str.append ("    ")
-			   .append ("preparedStatement.set")
-			   .append (toType (classPOS.get (i)
-			                            .getType ()))
-			   .append ("(")
-			   .append (i)
-			   .append (",")
-			   .append ("new java.sql.Date(")
-			   .append (name1)
-			   .append (".get");
+			   .append ("preparedStatement.set");
+			if (toType (classPOS.get (i)
+			                    .getType ()).equals ("Integer")) {
+				str.append ("Int");
+			}
+			else {
+				str.append (toType (classPOS.get (i)
+				                            .getType ()));
+			}
+			str.append ("(")
+			   .append (i + 1)
+			   .append (",");
 			if (toType (classPOS.get (i)
 			                    .getType ()).equals ("Date")) {
-				str.append (Case.toUpper (classPOS.get (i)
+				str.append ("new java.sql.Date(")
+				   .append (name1)
+				   .append (".get")
+				   .append (Case.toUpper (classPOS.get (i)
 				                                  .getName ()))
 				   .append ("()")
+				   .append (".getTime()")
 				   .append (")");
 			}
 			else {
-				str.append (Case.toUpper (classPOS.get (i)
+				str.append (name1)
+				   .append (".get")
+				   .append (Case.toUpper (classPOS.get (i)
 				                                  .getName ()))
 				   .append ("()");
 			}
-			str.append ("))")
+			str.append (")")
 			   .append ("; \r\n");
 		}
 		str.append ("    ")
@@ -157,18 +163,15 @@ public class MapperApp {
 		   .append ("\t\tConnection connection = Jdbc.getConnection ();\r\n")
 		   .append ("\t\tPreparedStatement preparedStatement = connection.prepareStatement (sql);\r\n")
 		   .append ("\t\tint num = preparedStatement.executeUpdate ();\r\n")
-		   .append ("\t\tif (num > 0) {\n\t\t\tlogger.info (\"删除成功\");\n\t\t}\n\t\telse {\n\t\t\tlogger.error " +
-		            "(\"删除失败\");\n\t\t}\n\t\tJdbc.release (null, preparedStatement, connection);\n\t}");
+		   .append ("\t\tif (num > 0) {\n\t\t\tlogger.info (\"删除成功\");\n\t\t}\n\t\telse {\n\t\t\tlogger.error (\"删除失败\");\n\t\t}\n\t\tJdbc.release (null, preparedStatement, connection);\n\t}");
 		System.out.println (str);
 	}
 	
-	/*将java.lang.Integer转换为Integer*/
-	public static String toType (String str) {
+	public static String toType (String str) { /*将java.lang.Integer转换为Integer*/
 		return str.substring (str.lastIndexOf (".") + 1);
 	}
 	
-	/*将emailId转换为email_id*/
-	public static String toLowerLine (String str) {
+	public static String toLowerLine (String str) { /*将emailId转换为email_id*/
 		if (str.length () == 0) {
 			return str;
 		}
@@ -182,7 +185,6 @@ public class MapperApp {
 				stringBuilder.append ("_")
 				             .append (str.substring (i, i + 1)
 				                         .toLowerCase ());
-				
 			}
 		}
 		return String.valueOf (stringBuilder);
