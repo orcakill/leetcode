@@ -4,13 +4,14 @@ import jdk.nashorn.internal.ir.annotations.Ignore;
 import lombok.Data;
 
 import javax.persistence.Id;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
 
 @Data
 public class MessageEventPO {
     @Id
-    private BigInteger messageId; /*消息id*/
+    private BigDecimal messageId; /*消息id*/
     private Date messageDate; /*消息日期*/
     private String messageTitle; /*消息标题*/
     private String messageContent; /*消息内容*/
