@@ -60,6 +60,7 @@ public class PlanTimerTask extends TimerTask {
 		System.out.println (stringBuilder);
 		if (planTimes.contains (dateTime)) {
 			String mail = "orcakill@dingtalk.com";
+			
 			String title = dateTime + " java测试";
 			String content = "这是一封java邮件";
 			String passWord = get163mail ();
