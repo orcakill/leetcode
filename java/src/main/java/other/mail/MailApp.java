@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class App {
+public class MailApp {
         //给指定邮箱，定时发送邮件
         public static void main(String[] args) throws Exception {
             

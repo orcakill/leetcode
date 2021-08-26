@@ -1,9 +1,9 @@
 package other.document.find.video_2;
 
-/**
- * @author orcakill
+/*
+  @author orcakill
  * @date 2021/5/6  18:22
- **/
+ */
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -117,7 +117,7 @@ public class AppMovie {
         heads.put("Cache-Control", "max-age=0");
         heads.put("Connection", "keep-alive");
 
-        //TODO 请在这里填写自己的cookie,没有cookid将会请求不到
+        //git pullTODO 请在这里填写自己的cookie,没有cookid将会请求不到
         heads.put("Cookie", "填写自己的cookie");
 
         heads.put("Host", "api.bilibili.com");
