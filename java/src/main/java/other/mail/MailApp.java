@@ -1,16 +1,16 @@
 package other.mail;
 
+import other.mail.controller.MessageEventController;
+import other.mail.model.entity.MessageEventPO;
 import other.mail.util.PlanTimerTask;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 public class MailApp {
         //给指定邮箱，定时发送邮件
         public static void main(String[] args) throws Exception {
             
+/*
             Calendar calendar= Calendar.getInstance ();
             TimerTask task = new PlanTimerTask ();
             Date firstTime = calendar.getTime ();
@@ -18,7 +18,9 @@ public class MailApp {
             long period = 1000 * 60 ;
             
             Timer timer = new Timer();
-            timer.schedule(task, firstTime, period);
+           timer.schedule(task, firstTime, period);
+*/
+            List<MessageEventPO> messageEventPOList= MessageEventController.dealMessage ();
             
         }
     

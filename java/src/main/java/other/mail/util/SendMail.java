@@ -12,6 +12,7 @@ import java.util.Properties;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 import org.apache.commons.mail.SimpleEmail;
+import other.mail.model.entity.EmailBoxPO;
 
 public class SendMail {
     //不可用
@@ -48,8 +49,9 @@ public class SendMail {
         transport.sendMessage(message, message.getAllRecipients());
     }
     //可用
-    public  static void sendTextMail(String mail,String title,String content,String passWord){
+    public  static void sendTextMail(EmailBoxPO emailBoxPO){
         SimpleEmail email = new SimpleEmail();
+        String  passWord=util.getPassWord.get163mail ();
         try {
             // 发送电子邮件的邮件服务器地址
             email.setHostName("smtp.163.com");
@@ -59,11 +61,11 @@ public class SendMail {
             // 设置发件人邮箱(与用户名保持一致) 并且 设置发件人昵称
             email.setFrom("orcakill@163.com","逆戟之刃");
             // 邮件主题
-            email.setSubject(title);
+            email.setSubject(emailBoxPO.getTitle ());
             // 邮件内容
-            email.setMsg(content);
+            email.setMsg(emailBoxPO.getContent ());
             // 收件人地址
-            email.addTo(mail);
+            email.addTo(emailBoxPO.getReceiver ());
             // 邮件发送
             email.send();
             System.out.println("邮件发送成功！");

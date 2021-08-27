@@ -1,5 +1,9 @@
 package other.mail.util;
 
+import other.mail.controller.MessageEventController;
+import other.mail.model.entity.EmailBoxPO;
+import other.mail.model.entity.MessageEventPO;
+
 import javax.mail.MessagingException;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.text.ParseException;
@@ -60,11 +64,11 @@ public class PlanTimerTask extends TimerTask {
 		System.out.println (stringBuilder);
 		if (planTimes.contains (dateTime)) {
 			String mail = "orcakill@dingtalk.com";
-			
-			String title = dateTime + " java测试";
-			String content = "这是一封java邮件";
-			String passWord = get163mail ();
-			sendTextMail (mail, title, content, passWord);
+			List<MessageEventPO> messageEventPOList= MessageEventController.dealMessage ();
+			List<EmailBoxPO> emailBoxPOList=new ArrayList<> ();
+			for(int i=0;i<+emailBoxPOList.size ();i++){
+				sendTextMail (emailBoxPOList.get (i));
+			}
 		}
 		else {
 			System.out.println ("不在计划时间点内");
