@@ -1,7 +1,6 @@
 package other.mail.util;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import java.io.ByteArrayOutputStream;
@@ -10,10 +9,8 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import static other.fund.util.DealJson.dealFundStr;
-
 public class GetJson {
-    public static JSONObject getHttpJson(String url) {
+    public static String getHttpJson(String url) {
         try {
             URL realUrl = new URL(url);
             HttpURLConnection connection = (HttpURLConnection) realUrl.openConnection();
@@ -35,14 +32,8 @@ public class GetJson {
                 String str = baos.toString();
                 baos.close();
                 is.close();
-                //转换成json数据处理
-                // getHttpJson函数的后面的参数1，表示返回的是json数据，2表示http接口的数据在一个（）中的数据
-                //   JSONObject jsonArray = getJsonString(jsonString, comefrom);
-                //获取str的长度
-                //转换为Obj类型
-                JSONObject jsonObject = JSON.parseObject(str);
 
-                return jsonObject;
+                return str;
 
             }
         } catch (IOException e) {
