@@ -63,7 +63,6 @@ public class PlanTimerTask extends TimerTask {
 		}
 		System.out.println (stringBuilder);
 		if (planTimes.contains (dateTime)) {
-			String mail = "orcakill@dingtalk.com";
 			List<MessageEventPO> messageEventPOList= MessageEventController.dealMessage ();
 			List<EmailBoxPO> emailBoxPOList=new ArrayList<> ();
 			for(int i=0;i<+emailBoxPOList.size ();i++){
