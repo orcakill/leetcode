@@ -1,8 +1,9 @@
 package other.mail;
 
+import other.mail.controller.EmailBoxController;
 import other.mail.controller.MessageEventController;
+import other.mail.model.entity.EmailBoxPO;
 import other.mail.model.entity.MessageEventPO;
-import other.mail.util.PlanTimerTask;
 
 import java.util.*;
 
@@ -21,6 +22,7 @@ public class MailApp {
            timer.schedule(task, firstTime, period);
 */
             List<MessageEventPO> messageEventPOList= MessageEventController.dealMessage ();
+            List<EmailBoxPO> emailBoxPOList= EmailBoxController.messageToEmail (messageEventPOList);
             
         }
     
