@@ -7,6 +7,8 @@ import other.mail.model.entity.MessageEventPO;
 
 import java.util.*;
 
+import static other.mail.util.SendMail.sendTextMail;
+
 public class MailApp {
         //给指定邮箱，定时发送邮件
         public static void main(String[] args) throws Exception {
@@ -23,7 +25,9 @@ public class MailApp {
 */
             List<MessageEventPO> messageEventPOList= MessageEventController.dealMessage ();
             List<EmailBoxPO> emailBoxPOList= EmailBoxController.messageToEmail (messageEventPOList);
-            
+//            for(int i=0;i<+emailBoxPOList.size ();i++){
+//                sendTextMail (emailBoxPOList.get (i));
+//            }
         }
     
 }

@@ -6,6 +6,7 @@ import other.mail.model.entity.MessageEventPO;
 
 import javax.mail.MessagingException;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -63,7 +64,11 @@ public class PlanTimerTask extends TimerTask {
 		}
 		System.out.println (stringBuilder);
 		if (planTimes.contains (dateTime)) {
-			List<MessageEventPO> messageEventPOList= MessageEventController.dealMessage ();
+			try {
+				List<MessageEventPO> messageEventPOList= MessageEventController.dealMessage ();
+			} catch (IOException e) {
+				e.printStackTrace ();
+			}
 			List<EmailBoxPO> emailBoxPOList=new ArrayList<> ();
 			for(int i=0;i<+emailBoxPOList.size ();i++){
 				sendTextMail (emailBoxPOList.get (i));
