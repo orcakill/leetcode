@@ -66,6 +66,8 @@ public class SendMail {
             email.setMsg(emailBoxPO.getContent ());
             // 收件人地址
             email.addTo(emailBoxPO.getReceiver ());
+            //启用ssl加密
+            email.setSSLOnConnect (true);
             // 邮件发送
             email.send();
             System.out.println("邮件发送成功！");
