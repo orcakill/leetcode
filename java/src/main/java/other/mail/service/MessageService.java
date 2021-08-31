@@ -4,19 +4,20 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import other.mail.model.dto.CommitDTO;
 import other.mail.model.entity.MessageEventPO;
 import other.mail.util.*;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import static other.articles.util.HttpClient.getITHttpClient;
-import static other.mail.util.HttpsUtil.*;
 
 public class MessageService {
 	public static List<MessageEventPO>  commitMessage(){
@@ -88,14 +89,30 @@ public class MessageService {
 		return  messageEventPOList;
 	}
 	
-	public static List<MessageEventPO>  officeMessage() throws IOException {
+	public static List<MessageEventPO>  officeMessage() throws Exception {
+		Calendar calendar = Calendar.getInstance ();
+		Date date=new Date ();
+		calendar.setTime(date);
+		calendar.add (Calendar.DATE,-2);
+		Date  date1=calendar.getTime ();
 		List<MessageEventPO> messageEventPOList=new ArrayList<> ();
 		String   url="https://www.dyrsks.cn/gwysydwks.html";
-		//绕过Https证书方案
-		byte[] resultBytes= doGet (url);
-		String result=new String(resultBytes);
-		Document document = Jsoup.parse (result);
-		Elements elements = document.getElementsByClass ("list");
+		Document document = Jsoup.parse (HttpClient.getITHttpClient (url));
+		Elements elements = document.getElementsByClass ("list-item");
+		String  str=elements.get(0).select ("a").text ();
+		String  strDate=elements.get (0).getElementsByClass ("list-item-date").text ();
+		SimpleDateFormat dateFormat=new SimpleDateFormat ("yyyy-mm-dd");
+		Date date2=dateFormat.parse (strDate);
+		if(str.indexOf ("事业单位")!=-1){
+		   if(date1.getTime ()<date2.getTime ()){
+			   MessageEventPO messageEventPO1=new MessageEventPO ();
+			   messageEventPO1.setMessageDate (date);
+			   messageEventPO1.setMessageTitle ("东营市人事考试信息网");
+			   messageEventPO1.setMessageContent ("东营市人事考试信息网近两天有事业单位考试信息,链接地址："+url);
+			   messageEventPO1.setMessageType (0);
+			   messageEventPOList.add (messageEventPO1);
+		   }
+		}
 		return  messageEventPOList;
 	}
 }

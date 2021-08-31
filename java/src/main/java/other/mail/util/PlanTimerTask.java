@@ -1,5 +1,6 @@
 package other.mail.util;
 
+import other.mail.controller.EmailBoxController;
 import other.mail.controller.MessageEventController;
 import other.mail.model.entity.EmailBoxPO;
 import other.mail.model.entity.MessageEventPO;
@@ -64,12 +65,14 @@ public class PlanTimerTask extends TimerTask {
 		}
 		System.out.println (stringBuilder);
 		if (planTimes.contains (dateTime)) {
+			
+			List<MessageEventPO> messageEventPOList= null;
 			try {
-				List<MessageEventPO> messageEventPOList= MessageEventController.dealMessage ();
-			} catch (IOException e) {
+				messageEventPOList = MessageEventController.dealMessage ();
+			} catch (Exception e) {
 				e.printStackTrace ();
 			}
-			List<EmailBoxPO> emailBoxPOList=new ArrayList<> ();
+			List<EmailBoxPO> emailBoxPOList= EmailBoxController.messageToEmail (messageEventPOList);
 			for(int i=0;i<+emailBoxPOList.size ();i++){
 				sendTextMail (emailBoxPOList.get (i));
 			}

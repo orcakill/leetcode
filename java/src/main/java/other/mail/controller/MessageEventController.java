@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class MessageEventController {
-	public static List<MessageEventPO> dealMessage () throws IOException {
+	public static List<MessageEventPO> dealMessage () throws Exception {
 		List<MessageEventPO> messageEventPOList=new ArrayList<> ();
         /*github  1、leetcode题库算法题目一周至少提交一次 2、leetcode项目每两天至少提交一次*/
         List<MessageEventPO> messageEventPOList1= MessageService.commitMessage ();
