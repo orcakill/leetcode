@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
 import java.text.ParseException;
 import java.util.*;
 
-import static other.mail.util.SendMail.sendTextMail;
+
 
 public class PlanTimerTask extends TimerTask {
 	private static final Logger logger = LogManager.getLogger (PlanTimerTask.class);
@@ -27,7 +27,7 @@ public class PlanTimerTask extends TimerTask {
 	}
 	
 	/*
-	 * 初始化计划时间
+	 * 初始化计划时间、初始化任务、初始化账号
 	 * */
 	private static void initPlanTimes () throws ParseException {
 		planTimes = new ArrayList<> ();
