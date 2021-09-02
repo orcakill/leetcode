@@ -2,7 +2,8 @@ package other.scenario.util;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-
+import other.mail.model.entity.EmailBoxPO;
+import other.scenario.entity.TaskInfoPO;
 
 import java.text.ParseException;
 import java.util.*;
@@ -14,6 +15,10 @@ public class PlanTimerTask extends TimerTask {
 	
 	//计划时间
 	private static List<String> planTimes;
+	
+	//计划任务
+	private static List<TaskInfoPO> taskInfoPOList;
+	
 	
 	/*
 	 * 静态初始化
@@ -60,6 +65,9 @@ public class PlanTimerTask extends TimerTask {
 		}
 		if (planTimes.contains (dateTime)) {
 			stringBuilder.append ("    在计划时间点内,执行开始");
+			
+			
+			
 			int minute1=RandomUtil.randomMinute (60);
 			planTimes.remove (0);
 			planTimes.add ("0:"+minute1);
