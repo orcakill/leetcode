@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmailBoxController {
-	public  static List<EmailBoxPO>  messageToEmail(List<MessageEventPO> messageEventPOList){
+	public  static List<EmailBoxPO>  messageToEmail (List<MessageEventPO> messageEventPOList){
 		List<EmailBoxPO> emailBoxPOList=new ArrayList<> ();
 		for (MessageEventPO messageEventPO : messageEventPOList) {
 			EmailBoxPO emailBoxPO = new EmailBoxPO ();

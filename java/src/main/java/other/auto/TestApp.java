@@ -11,8 +11,8 @@ import java.util.Locale;
 
 public class TestApp {
 	public static void main (String[] args) throws ClassNotFoundException {
-		Class<?> c = Class.forName ("other.mail.model.entity.MessageEventPO");
-		final String name = "MessageEventPO";
+		Class<?> c = Class.forName ("other.scenario.entity.TaskInfoPO");
+		final String name = "TaskInfoPO";
 		Field[] field = c.getDeclaredFields ();
 		List<ClassPO> classPOS = new ArrayList<> ();
 		for (Field f : field) {

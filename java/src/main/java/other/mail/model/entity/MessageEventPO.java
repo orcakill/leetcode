@@ -1,11 +1,9 @@
 package other.mail.model.entity;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import lombok.Data;
 
 import javax.persistence.Id;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Date;
 
 @Data

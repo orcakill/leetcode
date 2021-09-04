@@ -4,23 +4,19 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import other.mail.model.dto.CommitDTO;
-import other.mail.model.entity.MessageEventPO;
+import other.mail.model.entity.*;
 import other.mail.util.*;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import static other.articles.util.HttpClient.getITHttpClient;
-
 public class MessageService {
-	public static List<MessageEventPO>  commitMessage(){
+	public static List<MessageEventPO>  commitMessage (){
 		List<MessageEventPO> messageEventPOList = new ArrayList<> ();
 		Calendar calendar = Calendar.getInstance ();
 		Date date=new Date ();
