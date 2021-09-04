@@ -34,17 +34,16 @@ public class ScenarioApp {
         18、无体力结束或任务完成或单个账号登录时间满2小时退出 -小号（）、大号（）
         19、周三6-9点下线，任务处理截止到中午12点，截止后发送每日报告到邮箱  -小号（）、大号（）
         20、继续下个账号，3个账号退出后登录大号或结束              -小号（）、大号（）
+        21、自动斗技                                         -小号（）
     */
-		Calendar calendar= Calendar.getInstance ();
+		Calendar calendar = Calendar.getInstance ();
 		TimerTask task = new PlanTimerTask ();
 		Date firstTime = calendar.getTime ();
 		//间隔：1分钟
 		long period = 1000 * 60;
 		
-		Timer timer = new Timer();
-		timer.schedule(task, firstTime, period);
+		Timer timer = new Timer ();
+		timer.schedule (task, firstTime, period);
 		
-		
-	
 	}
 }

@@ -2,19 +2,13 @@ package other.mail.util;
 
 import other.mail.controller.EmailBoxController;
 import other.mail.controller.MessageEventController;
-import other.mail.model.entity.EmailBoxPO;
-import other.mail.model.entity.MessageEventPO;
+import other.mail.model.entity.*;
 
-import javax.mail.MessagingException;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
-import java.io.IOException;
+
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static other.mail.util.SendMail.sendOneMail;
 import static other.mail.util.SendMail.sendTextMail;
-import static util.getPassWord.get163mail;
 
 public class PlanTimerTask extends TimerTask {
 	//计划时间
@@ -72,6 +66,7 @@ public class PlanTimerTask extends TimerTask {
 			} catch (Exception e) {
 				e.printStackTrace ();
 			}
+			assert messageEventPOList != null;
 			List<EmailBoxPO> emailBoxPOList= EmailBoxController.messageToEmail (messageEventPOList);
 			for(int i=0;i<+emailBoxPOList.size ();i++){
 				sendTextMail (emailBoxPOList.get (i));
