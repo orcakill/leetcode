@@ -3,6 +3,7 @@ package other.scenario.dao;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import other.dao.Jdbc;
+import other.dao.Sql;
 import other.scenario.entity.OnmyojiInfoPO;
 
 import java.math.BigDecimal;
@@ -14,9 +15,9 @@ public class OnmyojiInfoMapper {
 	
 	private static final Logger logger = LogManager.getLogger(OnmyojiInfoPO.class);
 	
-	public static OnmyojiInfoPO findById(BigDecimal id) throws SQLException {
+	public static OnmyojiInfoPO findById(String userName) throws SQLException {
 		OnmyojiInfoPO onmyojiInfoPO =new OnmyojiInfoPO();
-		String sql="select * from onmyoji_info where user_name="+id;
+		String sql="select * from onmyoji_info where user_name="+userName;
 		Connection connection= Jdbc.getConnection();
 		Statement statement=connection.createStatement();
 		ResultSet resultSet=statement.executeQuery(sql);
@@ -33,7 +34,6 @@ public class OnmyojiInfoMapper {
 	
 	public static List<OnmyojiInfoPO> findAll () throws SQLException {
 		List<OnmyojiInfoPO> onmyojiInfoPOList=new ArrayList<> ();
-		
 		String sql="select * from onmyoji_info order by user_num";
 		Connection connection= Jdbc.getConnection();
 		Statement statement=connection.createStatement();
@@ -51,7 +51,13 @@ public class OnmyojiInfoMapper {
 		return onmyojiInfoPOList;
 	}
 	
+	public static Boolean check (String userName) throws SQLException {
+		String sql="select count(*) num from onmyoji_info";
+		return  Sql.BooleanSQL (sql);
+	}
+	
 	public static void insert(OnmyojiInfoPO onmyojiInfoPO) throws SQLException {
+		
 		String sql="insert into onmyoji_info(user_name,user_account,user_type,user_address,user_num)values(?,?,?,?,?)";
 		Connection connection = Jdbc.getConnection();
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
