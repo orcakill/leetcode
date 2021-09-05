@@ -3,6 +3,7 @@ package other.scenario.dao;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import other.dao.Jdbc;
+import other.dao.Sql;
 import other.scenario.entity.TaskListPO;
 
 
@@ -17,7 +18,6 @@ public class TaskListMapper {
 		Connection connection= Jdbc.getConnection();
 		Statement statement=connection.createStatement ();
 		ResultSet resultSet=statement.executeQuery (sql);
-		System.out.println (sql);
 		while(resultSet.next()){
 			taskListPO.setTaskListDate(resultSet.getDate(1));
 			taskListPO.setTaskNum(resultSet.getInt(2));
@@ -47,15 +47,7 @@ public class TaskListMapper {
 	
 	public static void deleteAll () throws SQLException {
 		String sql = "delete  from task_list";
-		Connection connection = Jdbc.getConnection ();
-		PreparedStatement preparedStatement = connection.prepareStatement (sql);
-		int num = preparedStatement.executeUpdate ();
-		if (num > 0) {
-			logger.info ("删除成功");
-		}
-		else {
-			logger.error ("删除失败");
-		}
-		Jdbc.release (null, preparedStatement, connection);
+		Sql.deleteSQL (sql,logger);
 	}
+
 }
