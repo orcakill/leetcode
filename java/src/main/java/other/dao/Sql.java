@@ -3,6 +3,7 @@ package other.dao;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 
 public class Sql {
 	public static void deleteSQL (String sql, Logger logger) throws SQLException {
@@ -28,5 +29,10 @@ public class Sql {
 		}
 		Jdbc.release(null, statement, connection);
 		return num!=0;
+	}
+	
+	public  static  String dateToString(java.util.Date date){
+		SimpleDateFormat simpleDateFormat=new SimpleDateFormat ("yyyy-MM-dd");
+		return simpleDateFormat.format (date);
 	}
 }

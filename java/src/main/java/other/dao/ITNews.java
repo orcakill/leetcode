@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import  java.sql.PreparedStatement;
 
+import static other.dao.Sql.BooleanSQL;
 
 /**
  * @author orcakill
@@ -19,17 +20,7 @@ public class ITNews {
     private static final Logger logger = LogManager.getLogger(ITNews.class);
 
     public static  boolean isEmpty(String name) throws SQLException {
-
-        String sql="select count(*) num from it_news where news_name='"+name+"'";
-        Connection connection= Jdbc.getConnection();
-        Statement statement=connection.createStatement();
-        ResultSet resultSet=statement.executeQuery(sql);
-        int num=0;
-        while(resultSet.next()){
-            num=resultSet.getInt("num");
-        }
-        Jdbc.release(null, statement, connection);
-        return num!=0;
+        return  BooleanSQL(name);
     }
 
     public static void insert(ITHomeNews itHomeNews) throws SQLException {
