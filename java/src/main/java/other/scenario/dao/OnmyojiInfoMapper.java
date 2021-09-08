@@ -78,16 +78,7 @@ public class OnmyojiInfoMapper {
 	
 	public static void deleteAll () throws SQLException {
 		String sql = "delete   from onmyoji_info";
-		Connection connection = Jdbc.getConnection ();
-		PreparedStatement preparedStatement = connection.prepareStatement (sql);
-		int num = preparedStatement.executeUpdate ();
-		if (num > 0) {
-			logger.info ("删除成功");
-		}
-		else {
-			logger.error ("删除失败");
-		}
-		Jdbc.release (null, preparedStatement, connection);
+		Sql.deleteSQL (sql,logger);
 	}
 
 }

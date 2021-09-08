@@ -78,7 +78,7 @@ public class PlanTimerTask extends TimerTask {
 					taskListPO.setTaskNum (taskInfoPO.getTaskNum ());
 					taskListPO.setUserName (onmyojiInfoPO.getUserName ());
 					taskListPO.setTaskState (0);
-					TaskListMapper.insert (taskListPO);
+					TaskListMapper.save (taskListPO);
 				}
 			}
 			int minute1 = RandomUtil.randomMinute (60);
