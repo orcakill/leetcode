@@ -1,7 +1,8 @@
 package other.scenario.dao;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import other.dao.Jdbc;
 import other.dao.Sql;
 import other.scenario.entity.TaskListPO;
@@ -99,7 +100,7 @@ public class TaskListMapper {
 	
 	public static void deleteAll () throws SQLException {
 		String sql = "delete  from task_list";
-		Sql.deleteSQL (sql, logger);
+		Sql.deleteSQL (sql, (org.apache.logging.log4j.core.Logger) logger);
 	}
 	
 	public static void deleteById(String taskListDate, Integer taskListNum) throws SQLException {

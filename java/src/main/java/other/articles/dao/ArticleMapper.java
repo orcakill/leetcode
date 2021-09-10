@@ -1,7 +1,8 @@
 package other.articles.dao;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import other.articles.model.entity.ArticlePO;
 import other.dao.ITNews;
 import other.dao.Jdbc;
@@ -16,7 +17,7 @@ import java.util.List;
  **/
 
 public class ArticleMapper {
-    private static final Logger logger = LogManager.getLogger(ITNews.class);
+    private static final Logger logger = LogManager.getLogger (ITNews.class);
 
 
     public static ArticlePO findByIdArticle(String id) throws SQLException {

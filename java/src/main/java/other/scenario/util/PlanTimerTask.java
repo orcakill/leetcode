@@ -1,8 +1,9 @@
 package other.scenario.util;
 
 import lombok.SneakyThrows;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import other.scenario.dao.OnmyojiInfoMapper;
 import other.scenario.dao.TaskInfoMapper;
 import other.scenario.dao.TaskListMapper;
