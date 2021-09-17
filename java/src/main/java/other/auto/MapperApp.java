@@ -37,7 +37,6 @@ public class MapperApp {
 			str.append (toLowerLine (classPOS1.get (i).getName ()))
 			   .append ("=?");
 		}
-
 		str.append ("\"; \r\n")
 		   .append ("  Connection connection= Jdbc.getConnection();\r\n  " + "PreparedStatement " +
 		            "preparedStatement=connection.prepareStatement(); \r\n");
@@ -118,16 +117,27 @@ public class MapperApp {
 			                     .getName ())
 			   .append (");\r\n");
 		}
-		str.append ("  ResultSet resultSet=preparedStatement.executeQuery(sql);\r\n");
-		str.append ("  return  Sql.BooleanSQL (sql);" +
-		            "\r\n");
+		str.append ("  ResultSet resultSet=preparedStatement.executeQuery();\r\n");
+		str.append ("  int num = 0;\r\n")
+				.append ("\twhile (resultSet.next ()) {\r\n")
+				.append ("\t\tnum = resultSet.getInt (\"num\");\r\n\t}\r\n")
+				.append ("\tJdbc.release (null, preparedStatement, connection);\r\n")
+				.append ("\treturn num != 0;\r\n");
 		str.append ("}\r\n\r\n");
 		
 		/*保存方法*/
 		str.append ("/*保存方法*/\r\n public static void save(" + name + " ")
 		   .append (name1)
 		   .append (") throws SQLException {\r\n")
-		   .append ("  ")
+		   .append ("Boolean check = check (dateToString (");
+		   for(int i=0;i<classPOS1.size ();i++){
+			   str.append (name1)
+			      .append ("get")
+			      .append (name);
+		   }
+		   str.append ("taskListPO.getTaskListDate ()), taskListPO" +
+				         ".getTaskListNum ());c")
+		   .append (");\r\n")
 		   .append ("String sql=")
 		   .append ("\"")
 		   .append ("insert into ")
