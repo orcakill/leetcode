@@ -15,6 +15,7 @@ public class MapperApp {
 		String table = "task_list";
 		List<ClassPO> classPOS = CommonUtils.getClassPO (c);
 		List<ClassPO> classPOS1=CommonUtils.getPk (classPOS);
+		List<ClassPO> classPOS2=CommonUtils.getNoPk (classPOS);
 		String name1 = CommonUtils.toLower (name);
 		/*根据主键查询一条数据*/
 		StringBuilder str =
@@ -126,19 +127,26 @@ public class MapperApp {
 		str.append ("}\r\n\r\n");
 		
 		/*保存方法*/
-		str.append ("/*保存方法*/\r\n public static void save(" + name + " ")
+		str.append ("/*保存方法*/\r\npublic static void save(" + name + " ")
 		   .append (name1)
 		   .append (") throws SQLException {\r\n")
-		   .append ("Boolean check = check (dateToString (");
+		   .append ("\tBoolean check = check (dateToString (");
 		   for(int i=0;i<classPOS1.size ();i++){
 			   str.append (name1)
-			      .append ("get")
-			      .append (name);
+			      .append (".get")
+			      .append (CommonUtils.toUpper(classPOS1.get (i).getName ()))
+					   .append ("()");
+			   if(i<classPOS1.size ()-1){
+				   str.append (",");
+			   }
 		   }
-		   str.append ("taskListPO.getTaskListDate ()), taskListPO" +
-				         ".getTaskListNum ());c")
-		   .append (");\r\n")
-		   .append ("String sql=")
+		   str.append (");\r\n")
+				   .append ("\tif (check) {\r\n")
+				   .append ("String sql=\"update ")
+				   .append (table)
+				   .append (" set");
+		
+		   str.append ("\tString sql=")
 		   .append ("\"")
 		   .append ("insert into ")
 		   .append (table)
@@ -158,8 +166,8 @@ public class MapperApp {
 			}
 		}
 		str.append (")" + "\"" + ";\r\n")
-		   .append ("  Connection connection = Jdbc.getConnection();\r\n")
-		   .append ("  PreparedStatement preparedStatement = connection.prepareStatement(sql);\r\n");
+		   .append ("\tConnection connection = Jdbc.getConnection();\r\n")
+		   .append ("\tPreparedStatement preparedStatement = connection.prepareStatement(sql);\r\n");
 		for (int i = 0; i < classPOS.size (); i++) {
 			str.append ("    ")
 			   .append ("preparedStatement.set");
