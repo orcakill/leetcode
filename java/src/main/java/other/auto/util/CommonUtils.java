@@ -43,6 +43,17 @@ public class CommonUtils {
 		return  classPOS1;
 	}
 	
+	public static List<ClassPO> getNoPk(List<ClassPO> classPOS){
+		List<ClassPO> classPOS1=new ArrayList<> ();
+		for (ClassPO classPO : classPOS) {
+			if (classPO.getPk () != 1) {
+				classPOS1.add (classPO);
+			}
+			
+		}
+		return  classPOS1;
+	}
+	
 	/*将java.lang.Integer转换为Integer*/
 	public static String toType (String str) {
 		return str.substring (str.lastIndexOf (".") + 1);
@@ -68,10 +79,16 @@ public class CommonUtils {
 		return String.valueOf (stringBuilder);
 	}
 	
-	/*将emailId转换为EmailId*/
+	/*将EmailId转换为emailId*/
 	public static String toLower (String name) {
 		return name.substring (0, 1)
 		           .toLowerCase (Locale.ROOT) + name.substring (1);
+	}
+	
+	/*将emailId转换为EmailId*/
+	public static String toUpper(String name) {
+		return name.substring (0, 1)
+		           .toUpperCase (Locale.ROOT) + name.substring (1);
 	}
 	
 	public static void getResultSet (List<ClassPO> classPOS, String name1, StringBuilder str) {
