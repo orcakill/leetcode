@@ -1,5 +1,6 @@
 package other.auto;
 
+import com.baomidou.mybatisplus.core.injector.methods.DeleteById;
 import other.auto.entity.ClassPO;
 import other.auto.method.*;
 import other.auto.util.CommonUtils;
@@ -23,9 +24,11 @@ public class MapperApp {
 		StringBuilder str3 =Check.check (table,classPOS, classPOS1);
 		/*保存方法*/
 		StringBuilder str4=Save.save (name, name1, table, classPOS, classPOS1, classPOS2);
-		/*删除方法*/
+		/*删除全部的方法*/
 		StringBuilder str5=DeleteAll.deleteAll (name,name1, table, classPOS, classPOS1, classPOS2);
-		StringBuilder str=str1.append (str2).append (str3).append (str4).append (str5);
-		System.out.println (str4);
+		/*根据主键删除的方法*/
+		StringBuilder str6= DeleteOne.deleteById(name,name1, table, classPOS, classPOS1, classPOS2);
+		StringBuilder str=str1.append (str2).append (str3).append (str4).append (str5).append (str6);
+		System.out.println (str5);
 	}
 }

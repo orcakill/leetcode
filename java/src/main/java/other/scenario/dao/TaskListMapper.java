@@ -87,7 +87,6 @@ public class TaskListMapper {
 			preparedStatement.setString (4, taskListPO.getUserName ());
 			preparedStatement.setInt (5, taskListPO.getTaskState ());
 			int num = preparedStatement.executeUpdate ();
-			System.out.println (preparedStatement);
 			if (num > 0) {
 				logger.info ("插入成功");
 			}
