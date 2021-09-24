@@ -122,9 +122,13 @@ public class CommonUtils {
 		for (int i = 0; i < classPOS.size (); i++) {
 			if (classPOS.get (i)
 			            .getPk () == 1) {
-				str.append (toType (classPOS.get (i)
-				                            .getType ()))
-				   .append (" ")
+				if(toType (classPOS.get (i).getType ()).equals ("Date")){
+					str.append ("String");
+				}
+				else{
+					str.append (toType (classPOS.get (i).getType ()));
+				}
+				str.append (" ")
 				   .append (classPOS.get (i)
 				                    .getName ());
 				if (i != classPOS.size () - 1) {

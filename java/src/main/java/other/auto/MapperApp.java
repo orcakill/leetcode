@@ -29,6 +29,6 @@ public class MapperApp {
 		/*根据主键删除的方法*/
 		StringBuilder str6= DeleteOne.deleteById(name,name1, table, classPOS, classPOS1, classPOS2);
 		StringBuilder str=str1.append (str2).append (str3).append (str4).append (str5).append (str6);
-		System.out.println (str5);
+		System.out.println (str);
 	}
 }
