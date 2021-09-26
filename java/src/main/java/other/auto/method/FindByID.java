@@ -34,7 +34,7 @@ public class FindByID {
 		            "{\r\n");
 		getResultSet (classPOS, name1, str);
 		str.append ("    }\r\n")
-		   .append ("    Jdbc.release(null, statement, connection);\r\n")
+		   .append ("    Jdbc.release(null, preparedStatement, connection);\r\n")
 		   .append ("    return ")
 		   .append (name1)
 		   .append (";\r\n")
@@ -52,10 +52,10 @@ public class FindByID {
 		}
 		str.append ("\"; \r\n")
 		   .append ("  Connection connection= Jdbc.getConnection();\r\n  " + "PreparedStatement " +
-		            "preparedStatement=connection.prepareStatement(); \r\n");
+		            "preparedStatement=connection.prepareStatement(sql); \r\n");
 		for(int i=0;i<classPOS1.size ();i++){
 			str.append ("  preparedStatement.setObject (")
-			   .append (i)
+			   .append (i+1)
 			   .append (",")
 			   .append (classPOS1.get (i)
 			                     .getName ())

@@ -9,21 +9,35 @@ import java.util.List;
 import static other.auto.util.CommonUtils.*;
 
 public class Save {
-	public static  StringBuilder save(String name, String name1, String table, List<ClassPO> classPOS,
-	                                  List<ClassPO> classPOS1,List<ClassPO> classPOS2){
-		StringBuilder str=new StringBuilder ();
+	public static StringBuilder save (String name, String name1, String table, List<ClassPO> classPOS,
+	                                  List<ClassPO> classPOS1, List<ClassPO> classPOS2) {
+		StringBuilder str = new StringBuilder ();
 		str.append ("/*保存方法*/\r\npublic static void save(")
 		   .append (name)
 		   .append (" ")
 		   .append (name1)
 		   .append (") throws SQLException {\r\n")
-		   .append ("\tBoolean check = check (dateToString (");
-		for(int i=0;i<classPOS1.size ();i++){
-			str.append (name1)
-			   .append (".get")
-			   .append (CommonUtils.toUpper (classPOS1.get (i).getName ()))
-			   .append ("()");
-			if(i<classPOS1.size ()-1){
+		   .append ("\tBoolean check = check (");
+		for (int i = 0; i < classPOS1.size (); i++) {
+			if (toType (classPOS1.get (i)
+			                     .getType ()).equals ("Date")) {
+				str.append ("dateToString (")
+				   .append (name1)
+				   .append (".get")
+				   .append (CommonUtils.toUpper (classPOS1.get (i)
+				                                          .getName ()))
+				   .append ("()")
+				   .append (")");
+			}
+			else {
+				str.append (name1)
+				   .append (".get")
+				   .append (CommonUtils.toUpper (classPOS1.get (i)
+				                                          .getName ()))
+				   .append ("()");
+
+			}
+			if (i < classPOS1.size () - 1) {
 				str.append (",");
 			}
 		}
@@ -32,59 +46,73 @@ public class Save {
 		   .append ("\tString sql=\"update ")
 		   .append (table)
 		   .append (" set ");
-		for(int i=0;i<classPOS2.size ();i++){
-			str.append (toLowerLine(classPOS2.get (i).getName ()))
-					.append ("=?");
-			if(i<classPOS2.size ()-1){
+		for (int i = 0; i < classPOS2.size (); i++) {
+			str.append (toLowerLine (classPOS2.get (i)
+			                                  .getName ()))
+			   .append ("=?");
+			if (i < classPOS2.size () - 1) {
 				str.append (",");
 			}
 		}
 		str.append (" where ");
-		for(int i=0;i<classPOS1.size ();i++){
-			str.append (toLowerLine(classPOS1.get (i).getName ()))
+		for (int i = 0; i < classPOS1.size (); i++) {
+			str.append (toLowerLine (classPOS1.get (i)
+			                                  .getName ()))
 			   .append ("=? ");
-			if(i<classPOS1.size ()-1){
+			if (i < classPOS1.size () - 1) {
 				str.append (" and ");
 			}
 		}
 		str.append ("\";\r\n")
-				.append ("\tConnection connection = Jdbc.getConnection ();\n" +
-				         "\tPreparedStatement preparedStatement = connection.prepareStatement (sql);\r\n");
-		int num=1;
-		for(int i=0;i<classPOS2.size ();i++){
+		   .append ("\tConnection connection = Jdbc.getConnection ();\n" +
+		            "\tPreparedStatement preparedStatement = connection.prepareStatement (sql);\r\n");
+		int num = 1;
+		for (int i = 0; i < classPOS2.size (); i++) {
 			str.append ("\tpreparedStatement.set");
-			if(toType(classPOS2.get (i).getType ()).equals ("Integer")){
+			if (toType (classPOS2.get (i)
+			                     .getType ()).equals ("Integer")) {
 				str.append ("Int");
 			}
 			else {
-				str.append (toType (classPOS2.get (i).getType ()));
+				str.append (toType (classPOS2.get (i)
+				                             .getType ()));
 			}
-			str.append ("("+num+",");
-			if(toType (classPOS2.get (i).getType ()).equals ("Date")){
-				str.append ("new java.sql.Date ("+toLower (name)+".get"+toUpper (classPOS2.get (i).getName ())+"()));");
+			str.append ("(" + num + ",");
+			if (toType (classPOS2.get (i)
+			                     .getType ()).equals ("Date")) {
+				str.append ("new java.sql.Date (" + toLower (name) + ".get" + toUpper (classPOS2.get (i)
+				                                                                                .getName ()) + "()))" +
+				            ";");
 			}
-			else{
-				str.append (toLower (name)+".get"+toUpper (classPOS2.get (i).getName ())+"());");
+			else {
+				str.append (toLower (name) + ".get" + toUpper (classPOS2.get (i)
+				                                                        .getName ()) + "());");
 			}
 			num++;
 			str.append ("\r\n");
 		}
-		for(int i=0;i<classPOS1.size ();i++){
+		for (int i = 0; i < classPOS1.size (); i++) {
 			str.append ("\tpreparedStatement.set");
-			if(toType(classPOS1.get (i).getType ()).equals ("Integer")){
+			if (toType (classPOS1.get (i)
+			                     .getType ()).equals ("Integer")) {
 				str.append ("Int");
 			}
 			else {
-				str.append (toType (classPOS1.get (i).getType ()));
+				str.append (toType (classPOS1.get (i)
+				                             .getType ()));
 			}
-			str.append ("("+num+",");
-			if(toType (classPOS1.get (i).getType ()).equals ("Date")){
-				str.append ("new java.sql.Date ("+toLower (name)+".get"+toUpper (classPOS1.get (i).getName ())+"()));");
+			str.append ("(" + num + ",");
+			if (toType (classPOS1.get (i)
+			                     .getType ()).equals ("Date")) {
+				str.append ("new java.sql.Date (" + toLower (name) + ".get" + toUpper (classPOS1.get (i)
+				                                                                                .getName ()) + "()))" +
+				            ";");
 			}
-			else{
-				str.append (toLower (name)+".get"+toUpper (classPOS1.get (i).getName ())+"());");
+			else {
+				str.append (toLower (name) + ".get" + toUpper (classPOS1.get (i)
+				                                                        .getName ()) + "());");
 			}
-
+			
 			num++;
 			str.append ("\r\n");
 		}
@@ -169,6 +197,6 @@ public class Save {
 		   .append ("\r\n")
 		   .append ("\r\n");
 		
-		return  str;
+		return str;
 	}
 }
