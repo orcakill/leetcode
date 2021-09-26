@@ -11,7 +11,8 @@ public class FindByID {
 	                                        List<ClassPO> classPOS1){
 		StringBuilder str=new StringBuilder ();
 		str.append ("private static final Logger logger = LogManager.getLogger(")
-		   .append (name)
+		   .append (name.replaceAll ("PO", ""))
+		   .append ("Mapper")
 		   .append (".class); \r\n\r\n")
 		   .append ("/*根据主键查询一条数据*/\r\npublic static ")
 		   .append (name)

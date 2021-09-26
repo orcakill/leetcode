@@ -5,11 +5,11 @@ import other.auto.entity.ClassPO;
 import java.util.List;
 
 import static other.auto.util.CommonUtils.*;
-import static other.auto.util.CommonUtils.toUpper;
+
 
 public class DeleteOne {
-	public static StringBuilder deleteById (String name, String name1, String table, List<ClassPO> classPOS,
-	                                        List<ClassPO> classPOS1, List<ClassPO> classPOS2) {
+	public static StringBuilder deleteById (String table, List<ClassPO> classPOS,
+	                                        List<ClassPO> classPOS1) {
 		StringBuilder str = new StringBuilder ();
 		str.append ("/*根据主键删除数据*/\npublic static void deleteById(");
 		getId (classPOS, str);
@@ -34,7 +34,9 @@ public class DeleteOne {
 			   .append ("(")
 			   .append (i + 1)
 			   .append (",")
-			   .append (classPOS1.get (i).getName ()+");")
+			   .append (classPOS1.get (i)
+			                     .getName ())
+			   .append (");")
 			   .append ("\r\n");
 		}
 		str.append ("\tint num = preparedStatement.executeUpdate ();\n" +
