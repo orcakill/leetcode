@@ -10,7 +10,9 @@ public class FindAll {
 	public  static  StringBuilder findAll (String name, String name1, String table, List<ClassPO> classPOS){
 		StringBuilder str=new StringBuilder ();
 		str.append ("/*查询全部数据*/\r\npublic static ")
-		   .append ("List<"+name+">")
+		   .append ("List<")
+		   .append (name)
+		   .append (">")
 		   .append (" findAll() ");
 		str.append ("throws SQLException {  \r\n" + "  " + "List<")
 		   .append (name)
@@ -43,7 +45,8 @@ public class FindAll {
 		   .append ("    }\r\n")
 		   .append ("    Jdbc.release(null, statement, connection);\r\n")
 		   .append ("    return ")
-		   .append (name1+"List")
+		   .append (name1)
+		   .append ("List")
 		   .append (";\r\n")
 		   .append ("}\r\n\r\n");
 		return  str;

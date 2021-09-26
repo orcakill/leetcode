@@ -35,7 +35,7 @@ public class Save {
 				   .append (CommonUtils.toUpper (classPOS1.get (i)
 				                                          .getName ()))
 				   .append ("()");
-
+				
 			}
 			if (i < classPOS1.size () - 1) {
 				str.append (",");
@@ -67,50 +67,70 @@ public class Save {
 		   .append ("\tConnection connection = Jdbc.getConnection ();\n" +
 		            "\tPreparedStatement preparedStatement = connection.prepareStatement (sql);\r\n");
 		int num = 1;
-		for (int i = 0; i < classPOS2.size (); i++) {
+		for (ClassPO classPO : classPOS2) {
 			str.append ("\tpreparedStatement.set");
-			if (toType (classPOS2.get (i)
-			                     .getType ()).equals ("Integer")) {
+			if (toType (classPO
+					.getType ()).equals ("Integer")) {
 				str.append ("Int");
 			}
 			else {
-				str.append (toType (classPOS2.get (i)
-				                             .getType ()));
+				str.append (toType (classPO
+						.getType ()));
 			}
-			str.append ("(" + num + ",");
-			if (toType (classPOS2.get (i)
-			                     .getType ()).equals ("Date")) {
-				str.append ("new java.sql.Date (" + toLower (name) + ".get" + toUpper (classPOS2.get (i)
-				                                                                                .getName ()) + "()))" +
-				            ";");
+			str.append ("(")
+			   .append (num)
+			   .append (",");
+			if (toType (classPO
+					.getType ()).equals ("Date")) {
+				str.append ("new java.sql.Date (")
+				   .append (toLower (name))
+				   .append (".get")
+				   .append (toUpper (classPO
+						   .getName ()))
+				   .append (".getTime")
+				   .append ("()))")
+				   .append (";");
 			}
 			else {
-				str.append (toLower (name) + ".get" + toUpper (classPOS2.get (i)
-				                                                        .getName ()) + "());");
+				str.append (toLower (name))
+				   .append (".get")
+				   .append (toUpper (classPO
+						   .getName ()))
+				   .append ("());");
 			}
 			num++;
 			str.append ("\r\n");
 		}
-		for (int i = 0; i < classPOS1.size (); i++) {
+		for (ClassPO classPO : classPOS1) {
 			str.append ("\tpreparedStatement.set");
-			if (toType (classPOS1.get (i)
-			                     .getType ()).equals ("Integer")) {
+			if (toType (classPO
+					.getType ()).equals ("Integer")) {
 				str.append ("Int");
 			}
 			else {
-				str.append (toType (classPOS1.get (i)
-				                             .getType ()));
+				str.append (toType (classPO
+						.getType ()));
 			}
-			str.append ("(" + num + ",");
-			if (toType (classPOS1.get (i)
-			                     .getType ()).equals ("Date")) {
-				str.append ("new java.sql.Date (" + toLower (name) + ".get" + toUpper (classPOS1.get (i)
-				                                                                                .getName ()) + "()))" +
-				            ";");
+			str.append ("(")
+			   .append (num)
+			   .append (",");
+			if (toType (classPO
+					.getType ()).equals ("Date")) {
+				str.append ("new java.sql.Date (")
+				   .append (toLower (name))
+				   .append (".get")
+				   .append (toUpper (classPO
+						   .getName ()))
+				   .append ("()")
+				   .append (".getTime()))")
+				   .append (";");
 			}
 			else {
-				str.append (toLower (name) + ".get" + toUpper (classPOS1.get (i)
-				                                                        .getName ()) + "());");
+				str.append (toLower (name))
+				   .append (".get")
+				   .append (toUpper (classPO
+						   .getName ()))
+				   .append ("());");
 			}
 			
 			num++;
