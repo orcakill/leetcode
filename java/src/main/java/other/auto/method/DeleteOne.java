@@ -34,7 +34,7 @@ public class DeleteOne {
 			   .append ("(")
 			   .append (i + 1)
 			   .append (",")
-			   .append (toLower (name)+".get"+toUpper (classPOS1.get (i).getName ())+"());")
+			   .append (classPOS1.get (i).getName ()+");")
 			   .append ("\r\n");
 		}
 		str.append ("\tint num = preparedStatement.executeUpdate ();\n" +
