@@ -17,11 +17,11 @@ public class CheckTest {
 		String  strDate=simpleDateFormat.format (date);
 		stringBuilder.append ("@Test\r\n");
 		stringBuilder.append ("public void check() throws SQLException {\n")
-				.append ("\tBoolean boolean=check(");
+				.append ("\tBoolean boolean1="+toUpper (name).replaceAll ("PO","")+"Mapper.check(");
 		getParamExample (classPOS1, stringBuilder, strDate);
 		stringBuilder.append (");\n");
-		stringBuilder.append ("\tSystem.out.println (boolean);\r\n")
-				.append ("}\n");
+		stringBuilder.append ("\tSystem.out.println (boolean1);\r\n")
+				.append ("}\n\n");
 	return  stringBuilder;
 	}
 	
