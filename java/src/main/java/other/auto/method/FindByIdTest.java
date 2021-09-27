@@ -3,15 +3,25 @@ package other.auto.method;
 import other.auto.entity.ClassPO;
 import util.Case;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
+import static other.auto.util.CommonUtils.getParamExample;
+import static other.auto.util.CommonUtils.toType;
+
 public class FindByIdTest {
-	public  static  StringBuilder findById (String name, String name1,List<ClassPO> classPOS,List<ClassPO> classPOS1){
-		StringBuilder str=new StringBuilder ();
+	public static StringBuilder findByIdTest (String name, String name1, List<ClassPO> classPOS,
+	                                        List<ClassPO> classPOS1) {
+		StringBuilder str = new StringBuilder ();
+		Date date = new Date ();
+		SimpleDateFormat simpleDateFormat=new SimpleDateFormat ("yyyy-MM-dd");
+		String  strDate=simpleDateFormat.format (date);
 		str.append ("@Test\r\n");
-		str.append ("public void findById() throws SQLException {\r\n");
+		str.append ("public void findById(");
+		str.append (") throws SQLException {\r\n");
 		String substring = name.substring (0, name.length () - 2);
-		str.append ("  ")
+		str.append ("\t")
 		   .append (name)
 		   .append (" ")
 		   .append (name1)
@@ -20,9 +30,10 @@ public class FindByIdTest {
 		str.append ("Mapper");
 		str.append (".");
 		str.append ("findByID(");
-		str.append ("BigDecimal.valueOf(1));\r\n");
+		getParamExample (classPOS1, str, strDate);
+		str.append (");\r\n");
 		for (ClassPO classPO : classPOS) {
-			str.append ("        System.out.println(")
+			str.append ("\tSystem.out.println(")
 			   .append (name1)
 			   .append (".get")
 			   .append (Case.toUpper (classPO.getName ()))
@@ -31,6 +42,6 @@ public class FindByIdTest {
 		str.append ("}")
 		   .append ("\r\n")
 		   .append ("    @Test\r\n");
-		return  str;
+		return str;
 	}
 }
