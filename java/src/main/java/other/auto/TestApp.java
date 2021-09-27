@@ -1,9 +1,7 @@
 package other.auto;
 
 import other.auto.entity.ClassPO;
-import other.auto.method.CheckTest;
-import other.auto.method.FindAllTest;
-import other.auto.method.FindByIdTest;
+import other.auto.method.*;
 import other.auto.util.CommonUtils;
 import java.util.List;
 
@@ -24,12 +22,14 @@ public class TestApp {
 		/*测试check*/
 		StringBuilder str3= CheckTest.checkTest (name,name1,classPOS,classPOS1);
 		/*测试save*/
-		StringBuilder str4=new StringBuilder ();
+		StringBuilder str4= SaveTest.saveTest (name,name1,classPOS,classPOS1);
 		/*测试deleteAll*/
-		StringBuilder str5=new StringBuilder ();
+		StringBuilder str5= DeleteAllTest.deleteAllTest (name,name1,classPOS,classPOS1);
 		/*测试deleteById*/
-		StringBuilder str6=new StringBuilder ();
-		System.out.println (str3);
+		StringBuilder str6=DeleteByIdTest.deleteByIdTest (name,name1,classPOS,classPOS1);
+		StringBuilder str=new StringBuilder ();
+		str.append (str1).append (str2).append (str3).append (str4).append (str5).append (str6);
+		System.out.println (str);
 	}
 	
 }

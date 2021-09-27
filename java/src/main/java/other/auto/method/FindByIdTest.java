@@ -29,7 +29,7 @@ public class FindByIdTest {
 		   .append (substring);
 		str.append ("Mapper");
 		str.append (".");
-		str.append ("findByID(");
+		str.append ("findById(");
 		getParamExample (classPOS1, str, strDate);
 		str.append (");\r\n");
 		for (ClassPO classPO : classPOS) {
@@ -40,8 +40,7 @@ public class FindByIdTest {
 			   .append ("());\r\n");
 		}
 		str.append ("}")
-		   .append ("\r\n")
-		   .append ("    @Test\r\n");
+		   .append ("\r\n\r\n");
 		return str;
 	}
 }
