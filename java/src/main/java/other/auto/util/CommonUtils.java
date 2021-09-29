@@ -1,11 +1,11 @@
 package other.auto.util;
 
 import other.auto.entity.ClassPO;
+import other.auto.method.DeleteByIdTest;
 import util.Case;
 
 import javax.persistence.Id;
 import java.lang.reflect.Field;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -145,22 +145,7 @@ public class CommonUtils {
 		return new Date ();
 	}
 	public static void getParamExample (List<ClassPO> classPOS1, StringBuilder stringBuilder, String strDate) {
-		for (int i = 0; i < classPOS1.size (); i++) {
-			if(toType(classPOS1.get (i).getType ()).equals ("Date")){
-				stringBuilder.append ("\"")
-				             .append (strDate)
-				             .append ("\"");
-			}
-			if(toType(classPOS1.get (i).getType ()).equals ("Integer")){
-				stringBuilder.append (1);
-			}
-			if(toType(classPOS1.get (i).getType ()).equals ("String")){
-				stringBuilder.append ("测试");
-			}
-			if (i < classPOS1.size () - 1) {
-				stringBuilder.append (",");
-			}
-		}
+		DeleteByIdTest.setParam (classPOS1, stringBuilder, strDate);
 	}
 	
 }
