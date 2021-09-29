@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import static other.auto.util.CommonUtils.getParamExample;
-import static other.auto.util.CommonUtils.toType;
+
 
 public class FindByIdTest {
 	public static StringBuilder findByIdTest (String name, String name1, List<ClassPO> classPOS,
