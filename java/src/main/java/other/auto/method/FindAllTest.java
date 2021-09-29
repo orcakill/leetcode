@@ -15,7 +15,7 @@ public class FindAllTest {
 		             .append (">")
 		             .append (" ")
 		             .append (name1)
-		             .append ("List=new ArrayList();\r\n")
+		             .append ("List="+name.replaceAll ("PO","")+"Mapper.findAll();\r\n")
 		             .append ("\tfor(int i=0;i<")
 		             .append (name1)
 		             .append ("List.size();i++){\n");
