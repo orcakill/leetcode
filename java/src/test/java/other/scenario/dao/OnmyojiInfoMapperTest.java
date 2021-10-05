@@ -23,12 +23,12 @@ public class OnmyojiInfoMapperTest {
 	@Test
 	public void findAll() throws SQLException {
 		List<OnmyojiInfoPO> onmyojiInfoPOList=OnmyojiInfoMapper.findAll();
-		for(int i=0;i<onmyojiInfoPOList.size();i++){
-			System.out.println (onmyojiInfoPOList.get(i).getUserName());
-			System.out.println (onmyojiInfoPOList.get(i).getUserAccount());
-			System.out.println (onmyojiInfoPOList.get(i).getUserType());
-			System.out.println (onmyojiInfoPOList.get(i).getUserAddress());
-			System.out.println (onmyojiInfoPOList.get(i).getUserNum());
+		for (OnmyojiInfoPO onmyojiInfoPO : onmyojiInfoPOList) {
+			System.out.println (onmyojiInfoPO.getUserName ());
+			System.out.println (onmyojiInfoPO.getUserAccount ());
+			System.out.println (onmyojiInfoPO.getUserType ());
+			System.out.println (onmyojiInfoPO.getUserAddress ());
+			System.out.println (onmyojiInfoPO.getUserNum ());
 		}
 	}
 	
@@ -55,10 +55,6 @@ public class OnmyojiInfoMapperTest {
 	}
 	
 	@Test
-
-
-
-
 	public void deleteById() throws SQLException {
 		OnmyojiInfoMapper.deleteById("测试");
 	}
