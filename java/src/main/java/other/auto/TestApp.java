@@ -9,8 +9,8 @@ import java.util.List;
 
 public class TestApp {
 	public static void main (String[] args) throws ClassNotFoundException {
-		Class<?> c1 = Class.forName ("other.scenario.entity.OnmyojiInfoPO");
-		final String name = "OnmyojiInfoPO";
+		Class<?> c1 = Class.forName ("other.scenario.entity.TaskInfoPO");
+		final String name = "TaskInfoPO";
 		List<ClassPO> classPOS = CommonUtils.getClassPO (c1);
 		List<ClassPO> classPOS1 = CommonUtils.getPk (classPOS);
 		String name1 = CommonUtils.toLower (name);

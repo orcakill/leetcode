@@ -75,7 +75,7 @@ public class PlanTimerTask extends TimerTask {
 				
 				for (TaskInfoPO taskInfoPO : taskInfoPOList) {
 					TaskListPO taskListPO = new TaskListPO ();
-					taskListPO.setTaskListDate (date);
+					taskListPO.setListDate (date);
 					taskListPO.setTaskNum (taskInfoPO.getTaskNum ());
 					taskListPO.setUserName (onmyojiInfoPO.getUserName ());
 					taskListPO.setTaskState (0);

@@ -26,8 +26,8 @@ public class TaskListMapper {
 		preparedStatement.setObject (2,taskListNum);
 		ResultSet resultSet=preparedStatement.executeQuery(sql);
 		while(resultSet.next()){
-			taskListPO.setTaskListDate(resultSet.getDate(1));
-			taskListPO.setTaskListNum(resultSet.getInt(2));
+			taskListPO.setListDate(resultSet.getDate(1));
+			taskListPO.setListNum(resultSet.getInt(2));
 			taskListPO.setTaskNum(resultSet.getInt(3));
 			taskListPO.setUserName(resultSet.getString(4));
 			taskListPO.setTaskState(resultSet.getInt(5));
@@ -45,8 +45,8 @@ public class TaskListMapper {
 		ResultSet resultSet=statement.executeQuery(sql);
 		while(resultSet.next()){
 			TaskListPO taskListPO =new TaskListPO();
-			taskListPO.setTaskListDate(resultSet.getDate(1));
-			taskListPO.setTaskListNum(resultSet.getInt(2));
+			taskListPO.setListDate(resultSet.getDate(1));
+			taskListPO.setListNum(resultSet.getInt(2));
 			taskListPO.setTaskNum(resultSet.getInt(3));
 			taskListPO.setUserName(resultSet.getString(4));
 			taskListPO.setTaskState(resultSet.getInt(5));
@@ -74,7 +74,7 @@ public class TaskListMapper {
 	
 	/*保存方法*/
 	public static void save(TaskListPO taskListPO) throws SQLException {
-		Boolean check = check (dateToString (taskListPO.getTaskListDate()),taskListPO.getTaskListNum());
+		Boolean check = check (dateToString (taskListPO.getListDate()),taskListPO.getListNum());
 		if (check) {
 			String sql="update task_list set task_num=?,user_name=?,task_state=? where task_list_date=?  and task_list_num=? ";
 			Connection connection = Jdbc.getConnection ();
@@ -82,8 +82,8 @@ public class TaskListMapper {
 			preparedStatement.setInt(1,taskListPO.getTaskNum());
 			preparedStatement.setString(2,taskListPO.getUserName());
 			preparedStatement.setInt(3,taskListPO.getTaskState());
-			preparedStatement.setDate(4,new java.sql.Date (taskListPO.getTaskListDate().getTime()));
-			preparedStatement.setInt(5,taskListPO.getTaskListNum());
+			preparedStatement.setDate(4,new java.sql.Date (taskListPO.getListDate().getTime()));
+			preparedStatement.setInt(5,taskListPO.getListNum());
 			int num = preparedStatement.executeUpdate ();
 			if (num > 0) {
 				logger.info ("更新成功");
@@ -97,8 +97,8 @@ public class TaskListMapper {
 			String sql="insert into task_list(task_list_date,task_list_num,task_num,user_name,task_state)values(?,?,?,?,?)";
 			Connection connection = Jdbc.getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setDate(1,new java.sql.Date(taskListPO.getTaskListDate().getTime()));
-			preparedStatement.setInt(2,taskListPO.getTaskListNum());
+			preparedStatement.setDate(1,new java.sql.Date(taskListPO.getListDate().getTime()));
+			preparedStatement.setInt(2,taskListPO.getListNum());
 			preparedStatement.setInt(3,taskListPO.getTaskNum());
 			preparedStatement.setString(4,taskListPO.getUserName());
 			preparedStatement.setInt(5,taskListPO.getTaskState());
