@@ -25,7 +25,7 @@ public class TaskInfoMapperTest {
 		taskInfoPO.setTaskName("测试");
 		taskInfoPO.setTaskType(0);
 		
-		TaskInfoMapper.insert(taskInfoPO);
+		TaskInfoMapper.save(taskInfoPO);
 	}
 	@Test
 	public void deleteAll() throws SQLException {

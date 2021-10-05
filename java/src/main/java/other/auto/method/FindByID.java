@@ -53,7 +53,7 @@ public class FindByID {
 		}
 		str.append ("\"; \r\n")
 		   .append ("  Connection connection= Jdbc.getConnection();\r\n  " + "PreparedStatement " +
-		            "preparedStatement=connection.prepareStatement(); \r\n");
+		            "preparedStatement=connection.prepareStatement(sql); \r\n");
 		for(int i=0;i<classPOS1.size ();i++){
 			str.append ("  preparedStatement.setObject (")
 			   .append (i+1)
