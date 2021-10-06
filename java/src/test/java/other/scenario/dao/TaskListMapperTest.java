@@ -19,6 +19,18 @@ public class TaskListMapperTest {
 	}
 	
 	@Test
+	public void findByListDate() throws SQLException {
+		List<TaskListPO> taskListPOList=TaskListMapper.findByListDate ("2021-10-06");
+		for (TaskListPO taskListPO : taskListPOList) {
+			System.out.println (taskListPO.getListDate ());
+			System.out.println (taskListPO.getListNum ());
+			System.out.println (taskListPO.getTaskNum ());
+			System.out.println (taskListPO.getUserName ());
+			System.out.println (taskListPO.getTaskState ());
+		}
+	}
+	
+	@Test
 	public void findAll() throws SQLException {
 		List<TaskListPO> taskListPOList=TaskListMapper.findAll ();
 		for (TaskListPO taskListPO : taskListPOList) {

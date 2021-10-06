@@ -1,7 +1,6 @@
 package other.scenario.util;
 
 import lombok.SneakyThrows;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import other.scenario.dao.OnmyojiInfoMapper;
@@ -13,16 +12,16 @@ import other.scenario.entity.TaskListPO;
 
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
+
+import static other.scenario.controller.TaskListController.dealTaskList;
 
 public class PlanTimerTask extends TimerTask {
 	private static final Logger logger = LogManager.getLogger (PlanTimerTask.class);
 	
 	//计划时间
 	private static List<String> planTimes;
-	
-
-	
 	/*
 	 * 静态初始化
 	 * */
@@ -35,7 +34,7 @@ public class PlanTimerTask extends TimerTask {
 	}
 	
 	/*
-	 * 初始化计划时间、初始化任务、初始化账号
+	 * 初始化计划时间，只执行一次
 	 * */
 	private static void initPlanTimes () throws ParseException, SQLException {
 		planTimes = new ArrayList<> ();
@@ -43,8 +42,43 @@ public class PlanTimerTask extends TimerTask {
 		Calendar calendar = Calendar.getInstance ();
 		calendar.setTime (date);
 		int hour = calendar.get (Calendar.HOUR_OF_DAY);
-		int minute = calendar.get (Calendar.MINUTE) + 2;
+		int minute = calendar.get (Calendar.MINUTE);
 		planTimes.add (hour + ":" + minute);
+	}
+	
+	/*
+	 * 初始化当天任务,每天执行
+	 * */
+	private static void initTaskListPOList () throws SQLException {
+//		获取当前日期
+		Date date=new Date ();
+		SimpleDateFormat simpleDateFormat=new SimpleDateFormat ("yyyy-MM-dd");
+		String dateStr=simpleDateFormat.format (date);
+//        获取当天任务列表
+		List<TaskListPO> taskListPOList=TaskListMapper.findByListDate (dateStr);
+		if(taskListPOList.size ()==0){
+//			获取账号
+            List<OnmyojiInfoPO> onmyojiInfoPOList=OnmyojiInfoMapper.findAll ();
+			int num=1;
+			for (OnmyojiInfoPO onmyojiInfoPO : onmyojiInfoPOList) {
+//				获取任务列表
+				List<TaskInfoPO> taskInfoPOList = TaskInfoMapper.findAll ();
+				for (TaskInfoPO taskInfoPO : taskInfoPOList) {
+					TaskListPO taskListPO = new TaskListPO ();
+					taskListPO.setListDate (date);
+					taskListPO.setListNum (num);
+					taskListPO.setUserName (onmyojiInfoPO.getUserName ());
+					taskListPO.setTaskNum (taskInfoPO
+							.getTaskNum ());
+					taskListPO.setTaskState (0);
+					taskListPOList.add (taskListPO);
+					TaskListMapper.save (taskListPO);
+					num++;
+				}
+			}
+			
+		}
+		
 	}
 	
 	/*
@@ -53,7 +87,6 @@ public class PlanTimerTask extends TimerTask {
 	@SneakyThrows
 	@Override
 	public void run () {
-		Date date = new Date ();
 		Calendar calendar = Calendar.getInstance ();
 		
 		int hour = calendar.get (Calendar.HOUR_OF_DAY);
@@ -67,28 +100,21 @@ public class PlanTimerTask extends TimerTask {
 			             .append (planTime);
 		}
 		if (planTimes.contains (dateTime)) {
-			stringBuilder.append ("    在计划时间点内,执行开始");
-			List<OnmyojiInfoPO> onmyojiInfoPOList= OnmyojiInfoMapper.findAll ();
-			List<TaskInfoPO> taskInfoPOList= TaskInfoMapper.findAll ();
-			TaskListMapper.deleteAll ();
-			for (OnmyojiInfoPO onmyojiInfoPO : onmyojiInfoPOList) {
-				
-				for (TaskInfoPO taskInfoPO : taskInfoPOList) {
-					TaskListPO taskListPO = new TaskListPO ();
-					taskListPO.setListDate (date);
-					taskListPO.setTaskNum (taskInfoPO.getTaskNum ());
-					taskListPO.setUserName (onmyojiInfoPO.getUserName ());
-					taskListPO.setTaskState (0);
-					TaskListMapper.save (taskListPO);
-				}
-			}
-			int minute1 = RandomUtil.randomMinute (60);
-			planTimes.remove (0);
-			planTimes.add ("0:" + minute1);
+			stringBuilder.append (",在计划时间点内,执行开始。");
+			logger.info (stringBuilder);
+			
+//			初始化化每日任务
+			initTaskListPOList ();
+//			执行任务
+			dealTaskList ();
+// int minute1 = RandomUtil.randomMinute (60);
+// planTimes.remove (0);
+// planTimes.add ("0:" + minute1);
 		}
 		else {
-			stringBuilder.append ("   不在计划时间点内");
+			stringBuilder.append (",不在计划时间点内");
+			logger.info (stringBuilder);
 		}
-		logger.info (stringBuilder);
+
 	}
 }
