@@ -7,7 +7,6 @@ import other.dao.Jdbc;
 import other.dao.Sql;
 import other.scenario.entity.TaskInfoPO;
 
-import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +17,7 @@ public class TaskInfoMapper {
 	/*根据主键查询一条数据*/
 	public static TaskInfoPO findById(Integer taskNum) throws SQLException {
 		TaskInfoPO taskInfoPO =new TaskInfoPO();
-		String sql="select * from task_info where task_num=?";
+		String sql="select * from task_info where task_id=?";
 		Connection connection= Jdbc.getConnection();
 		PreparedStatement preparedStatement=connection.prepareStatement(sql);
 		preparedStatement.setObject (1,taskNum);
@@ -52,7 +51,7 @@ public class TaskInfoMapper {
 	
 	/*根据主键判断数据已存在*/
 	public static Boolean check(Integer taskNum) throws SQLException {
-		String sql="select count(*) num from task_info where task_num=?";
+		String sql="select count(*) num from task_info where task_id=?";
 		Connection connection= Jdbc.getConnection();
 		PreparedStatement preparedStatement=connection.prepareStatement(sql);
 		preparedStatement.setObject (1,taskNum);
@@ -69,7 +68,7 @@ public class TaskInfoMapper {
 	public static void save(TaskInfoPO taskInfoPO) throws SQLException {
 		Boolean check = check (taskInfoPO.getTaskNum());
 		if (check) {
-			String sql="update task_info set task_name=?,task_type=? where task_num=? ";
+			String sql="update task_info set task_name=?,task_type=? where task_id=? ";
 			Connection connection = Jdbc.getConnection ();
 			PreparedStatement preparedStatement = connection.prepareStatement (sql);
 			preparedStatement.setString(1,taskInfoPO.getTaskName());
@@ -85,7 +84,7 @@ public class TaskInfoMapper {
 			Jdbc.release (null, preparedStatement, connection);
 		}
 		else {
-			String sql="insert into task_info(task_num,task_name,task_type)values(?,?,?)";
+			String sql="insert into task_info(task_id,task_name,task_type)values(?,?,?)";
 			Connection connection = Jdbc.getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1,taskInfoPO.getTaskNum());
@@ -110,7 +109,7 @@ public class TaskInfoMapper {
 	
 	/*根据主键删除数据*/
 	public static void deleteById(Integer taskNum) throws SQLException {
-		String sql = "delete  from task_info where task_num=? ";
+		String sql = "delete  from task_info where task_id=? ";
 		Connection connection = Jdbc.getConnection ();
 		PreparedStatement preparedStatement = connection.prepareStatement (sql);
 		preparedStatement.setObject(1,taskNum);
