@@ -1,28 +1,34 @@
 package other.scenario.service;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import other.scenario.dao.OnmyojiInfoMapper;
 import other.scenario.map.ExeAddress;
+import other.scenario.util.ImageRecognition;
 import other.scenario.util.StartUpExeUtils;
 
 import java.awt.*;
 import java.awt.event.InputEvent;
+import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
 public class LoginService {
+	private static final Logger logger = LogManager.getLogger (LoginService.class);
+	
 	public static void loginService () throws Exception {
 //	    启动程序
-		StartUpExeUtils.startUpExe ("CMD /C " + ExeAddress.exeAddress (), "onmyoji.exe");
-//      鼠标单击桌面最中央一次
-		Point point = MouseInfo.getPointerInfo().getLocation();
-		System.out.println("初始位置：x=" + point.getX() + ",y="+ point.getY());
-		Robot robot = new Robot ();
-		robot.delay (20000);
-		robot.mouseMove (850, 500);
-		Point point1 = MouseInfo.getPointerInfo().getLocation();
-		System.out.println("移动后位置：x=" + point1.getX() + ",y="+ point1.getY());
-		robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-		robot.delay (500);
-		robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-		System.out.println ("点击成功");
+		StartUpExeUtils.startUpExe ("CMD /C " + ExeAddress.exeAddress (), "Nox.exe");
+//      单击阴阳师图标
+		Thread.sleep (30000);
+		
+		logger.info ("开始单击阴阳师图标");
+		File file1=new File ("D:\\Study\\Project\\leetcode\\java\\src\\main\\resources\\image\\scenario\\阴阳师图标.png");
+		if(file1.exists ()){
+			ImageRecognition.imageRecognition (file1);
+		}
+		else{
+			logger.info ("图标路径不存在");
+		}
 	}
 }

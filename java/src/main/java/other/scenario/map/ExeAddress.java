@@ -8,12 +8,12 @@ public class ExeAddress {
 	public  static String exeAddress(){
 		String address="";
 		List<String> list=new ArrayList<> ();
-		boolean add = list.add ("D:\\software\\Onmyoji");
+		list.add ("D:\\software\\Nox\\bin");
 		
 		for (String s : list) {
 			File file = new File (s);
 			if (file.exists ()) {
-				address = s + "\\Launch.exe";
+				address = s + "\\Nox.exe";
 				break;
 			}
 		}
