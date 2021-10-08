@@ -1,6 +1,9 @@
 package other.scenario.util;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import other.scenario.entity.PictureIdentifyWorkPO;
+import other.scenario.service.LoginService;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -11,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ImageRecognition {
+	private static final Logger logger = LogManager.getLogger (ImageRecognition.class);
+	
 	public static void  imageRecognition(File file) throws AWTException {
 //		屏幕截图
 		BufferedImage Window=Screenshot.screenshot ();
@@ -20,6 +25,17 @@ public class ImageRecognition {
 		List<PictureIdentifyWorkPO> mouseXY=FindAllImgData(Window,ImagesData);
 //		鼠标点击
 	    MouseClick.mouseClicks (mouseXY);
+	}
+	
+	public static boolean imageRecognitionIsEmpty(File file) throws AWTException {
+//		屏幕截图
+		BufferedImage Window=Screenshot.screenshot ();
+//		图片
+		List<int[][]> ImagesData=imageToDate(file);
+//		屏幕截图和图片对比
+		List<PictureIdentifyWorkPO> mouseXY=FindAllImgData(Window,ImagesData);
+//		鼠标点击
+		return  mouseXY.size ()>0;
 	}
 	
 	/**
@@ -83,8 +99,7 @@ b:
 							}
 							if (flag) {
 								
-								System.out.println ("在屏幕上找到图片了");
-								System.out.println ("坐标:( " + x + " , " + y + " )");
+								logger.info ("在屏幕上找到图片了,坐标:( " + x + " , " + y + " )");
 								// 这是专门存储数据的类
 								PictureIdentifyWorkPO mouseXY = new PictureIdentifyWorkPO ();
 								x += (int) (Math.random () * imgWidth);

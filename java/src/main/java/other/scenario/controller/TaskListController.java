@@ -22,9 +22,10 @@ public class TaskListController {
 //		打开阴阳师
 		LoginService.loginService ();
 		for (TaskListPO taskListPO : taskListPOList) {
-//          任务未完成时，开处理
+//          任务未完成时，开始处理
 			if (taskListPO.getTaskState () == 0) {
-
+//               获取到当前任务用户所在大区
+			
 			}
 			break;
 		}

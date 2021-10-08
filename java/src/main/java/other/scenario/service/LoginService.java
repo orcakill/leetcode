@@ -19,19 +19,17 @@ public class LoginService {
 	public static void loginService () throws Exception {
 //	    启动程序
 		StartUpExeUtils.startUpExe ("CMD /C " + ExeAddress.exeAddress (), "Nox.exe");
-//      模拟器全屏
+
 //      单击阴阳师图标
-		Thread.sleep (30000);
-		logger.info ("开始单击阴阳师图标");
-		File file1=new File ("D:\\Study\\Project\\leetcode\\java\\src\\main\\resources\\image\\scenario\\阴阳师图标.png");
-		if(file1.exists ()){
-			ImageRecognition.imageRecognition (file1);
-		}
-		else{
-			logger.info ("图标路径不存在");
-		}
-//		跳过开场动画
-//		跳过公告
+		File file1=new File ("java/src/main/resources/image/scenario/阴阳师图标.png");
+		logger.info ("单击阴阳师图标，进入游戏");
+		ImageService.imageClick (file1);
+		logger.info ("进入游戏成功");
+//      模拟器全屏
+		File file2=new File ("java/src/main/resources/image/scenario/模拟器全屏.png");
+		logger.info ("单击窗口最大化");
+		ImageService.imageClick (file2);
+		logger.info ("窗口最大化最大化成功");
 
 	}
 }
