@@ -1,11 +1,13 @@
 package other.scenario.controller;
 
+import other.scenario.dao.OnmyojiInfoMapper;
 import other.scenario.dao.TaskListMapper;
 import other.scenario.entity.TaskListPO;
 import other.scenario.service.LoginService;
 import other.scenario.util.StartUpExeUtils;
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -24,8 +26,7 @@ public class TaskListController {
 		for (TaskListPO taskListPO : taskListPOList) {
 //          任务未完成时，开始处理
 			if (taskListPO.getTaskState () == 0) {
-//               获取到当前任务用户所在大区
-			
+   
 			}
 			break;
 		}
