@@ -27,7 +27,8 @@ public class ImageRecognition {
 	    MouseClick.mouseClicks (mouseXY);
 	}
 	
-	public static boolean imageRecognitionIsEmpty(File file) throws AWTException {
+	   
+       public static boolean imageRecognitionIsEmpty(File file) throws AWTException {
 //		屏幕截图
 		BufferedImage Window=Screenshot.screenshot ();
 //		图片
