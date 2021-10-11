@@ -3,7 +3,6 @@ package other.scenario.util;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import other.scenario.entity.PictureIdentifyWorkPO;
-import other.scenario.service.LoginService;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -13,25 +12,38 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImageRecognition {
-	private static final Logger logger = LogManager.getLogger (ImageRecognition.class);
+public class ImagesRecognition {
+	private static final Logger logger = LogManager.getLogger (ImagesRecognition.class);
 	
-	public static void  imageRecognition(File file) throws AWTException {
+	public static void  imagesRecognition (String FolderName) throws AWTException {
 //		屏幕截图
 		BufferedImage Window=Screenshot.screenshot ();
 //		图片
-		List<int[][]> ImagesData=imageToDate(file);
+		List<int[][]> ImagesData=imageToDate(FolderName);
+//		屏幕截图和图片对比
+		List<PictureIdentifyWorkPO> mouseXY=FindAllImgData (Window,ImagesData);
+//		鼠标点击
+		MouseClick.mouseClicks (mouseXY);
+	}
+	
+	
+	
+	public static boolean imagesRecognitionIsEmpty(String FolderName) throws AWTException {
+//		屏幕截图
+		BufferedImage Window=Screenshot.screenshot ();
+//		图片
+		List<int[][]> ImagesData=imageToDate(FolderName);
 //		屏幕截图和图片对比
 		List<PictureIdentifyWorkPO> mouseXY=FindAllImgData(Window,ImagesData);
 //		鼠标点击
-	    MouseClick.mouseClicks (mouseXY);
+		return  mouseXY.size ()>0;
 	}
 	
-	public static PictureIdentifyWorkPO imageRecognitionMouse(File file) throws AWTException {
+	public static PictureIdentifyWorkPO imagesRecognitionMouse(String FolderName) throws AWTException {
 //		屏幕截图
 		BufferedImage Window=Screenshot.screenshot ();
 //		图片
-		List<int[][]> ImagesData=imageToDate(file);
+		List<int[][]> ImagesData=imageToDate(FolderName);
 //		屏幕截图和图片对比
 		List<PictureIdentifyWorkPO> mouseXY=FindAllImgData(Window,ImagesData);
 //		鼠标点击
@@ -40,19 +52,6 @@ public class ImageRecognition {
 			pictureIdentifyWorkPO=mouseXY.get (0);
 		}
 		return pictureIdentifyWorkPO;
-	}
-	
-	
-	   
-       public static boolean imageRecognitionIsEmpty(File file) throws AWTException {
-//		屏幕截图
-		BufferedImage Window=Screenshot.screenshot ();
-//		图片
-		List<int[][]> ImagesData=imageToDate(file);
-//		屏幕截图和图片对比
-		List<PictureIdentifyWorkPO> mouseXY=FindAllImgData(Window,ImagesData);
-//		鼠标点击
-		return  mouseXY.size ()>0;
 	}
 	
 	/**
@@ -150,34 +149,60 @@ b:
 		
 		return Math.abs (R1 - R2) < 5 && Math.abs (G1 - G2) < 5 && Math.abs (B1 - B2) < 5;
 	}
-
 	
 	
 	
 	
-	public static List<int[][]> imageToDate(File file){
-		return  getImagesGRB(readFiles (file));
+	
+	public static List<int[][]> imageToDate(String FolderName){
+		return getImagesGRB(readFiles (FolderName));
 	}
 	
-	
-	public static List<BufferedImage> readFiles(File file) {
-		java.util.List<BufferedImage> files = new ArrayList<>();
-		String[] strArray = file.getName().split("\\.");
-		int suffixIndex = strArray.length - 1;
-		// 存储照片文件
-		if (!file.isDirectory()
-		    && (strArray[suffixIndex].equals("png") || strArray[suffixIndex].equals("jpg"))) {
-			BufferedImage img = null;
-			try {
-				img = ImageIO.read (file);
-			} catch (IOException e) {
-				e.printStackTrace ();
+	/**
+	 * 本方法根据文件夹名从当前项目中找文件夹并且返回文件夹所有照片文件
+	 *
+	 * @param FolderName    - 指定的文件夹名字
+	 *
+	 * @return - 返回指定文件夹内的所有照片文件
+	 */
+	public static List<BufferedImage> readFiles(String FolderName) {
+		
+		try {
+			// 获取当前目录下的指定文件夹
+			File Folder = new File(
+					System.getProperty("user.dir") + File.separator + FolderName);
+			// 遍历文件夹的所有文件
+			if (Folder.isDirectory()) {
+				java.util.List<BufferedImage> files = new ArrayList<>();
+				String[] filelist = Folder.list();
+				// 将所有照片存储并且返回
+				assert filelist != null;
+				for (String s : filelist) {
+					File file = new File (Folder + File.separator + s);
+					// 判断是否为照片文件
+					String[] strArray = file.getName ()
+					                        .split ("\\.");
+					int suffixIndex = strArray.length - 1;
+					// 存储照片文件
+					if (!file.isDirectory ()
+					    && (strArray[suffixIndex].equals ("png") || strArray[suffixIndex].equals ("jpg"))) {
+						BufferedImage img = ImageIO.read (file);
+						files.add (img);
+					}
+					
+				}
+				return files;
 			}
-			files.add(img);
+		} catch (Exception e) {
+			
+			e.getStackTrace();
+			
 		}
-		return files;
+		
+		return null;
 		
 	}
+	
 	
 	
 	/**
@@ -208,5 +233,4 @@ b:
 		return ImagesData;
 		
 	}
-	
 }
