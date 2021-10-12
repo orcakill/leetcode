@@ -6,6 +6,7 @@ import other.scenario.dao.OnmyojiInfoMapper;
 import other.scenario.dao.TaskListMapper;
 import other.scenario.entity.TaskListPO;
 import other.scenario.service.LoginService;
+import other.scenario.service.ReceiveMail;
 import other.scenario.util.StartUpExeUtils;
 
 import java.awt.*;
@@ -34,6 +35,14 @@ public class TaskListController {
 				/*登录*/
 				LoginService.loginAreaService(taskListPO.getUserName ());
 				logger.info ("登录"+taskListPO.getUserName ()+"成功");
+//				任务1：签到、领取勾玉、领取邮件
+				if(taskListPO.getTaskNum ()==1){
+//					领取邮件
+					ReceiveMail.receiveMail ();
+//                  签到、领取每日勾玉
+                    ReceiveMail.singIn ();
+					TaskListMapper.save (taskListPO);
+				}
 			}
 			break;
 		}
