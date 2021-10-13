@@ -25,7 +25,7 @@ public class ImageService {
 				   break;
 	           }
 			   else{
-				   logger.error ("在每5秒的检测中，第"+i+"次检查未发现该图片");
+				   logger.error ("在每5秒的检测中，第"+(i+1)+"次检查未发现该图片");
 			   }
             }
 
@@ -38,7 +38,8 @@ public class ImageService {
 	
 	/*多张图片识别*/
 	public static  void  imagesClick (String folder) throws AWTException, InterruptedException {
-		File file=new File (folder);
+		File file=new File (
+				System.getProperty("user.dir") + "/java/src/main/resources/image/"+ folder);
 		if(file.exists ()){
 			for(int i=0;i<20;i++){
 				Thread.sleep (5000);
@@ -51,7 +52,7 @@ public class ImageService {
 					break;
 				}
 				else{
-					logger.error ("在每5秒的检测中，第"+i+"次检查未发现该图片");
+					logger.error ("在每5秒的检测中，第"+(i+1)+"次检查未发现该图片");
 				}
 			}
 			

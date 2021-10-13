@@ -28,23 +28,31 @@ public class TaskListController {
 		List<TaskListPO> taskListPOList= TaskListMapper.findByListDate (dateStr);
 //		打开阴阳师
 		LoginService.loginService ();
-		for (int i=0;i<1;i++) {
+		String userName=null;
+		for (int i=0;i<taskListPOList.size ();i++) {
 			TaskListPO taskListPO=taskListPOList.get (i);
+			String taskUser=taskListPO.getUserName ();
 //          任务未完成时，开始处理
 			if (taskListPO.getTaskState () == 0) {
-				/*登录*/
-				LoginService.loginAreaService(taskListPO.getUserName ());
+				/*当前账号为空或不等于上一个任务执行的账号登录*/
+				if(userName==null||!userName.equals (taskUser)){
+					userName=taskUser;
+					LoginService.loginBackService ();
+				}
 				logger.info ("登录"+taskListPO.getUserName ()+"成功");
 //				任务1：签到、领取勾玉、领取邮件
 				if(taskListPO.getTaskNum ()==1){
 //					领取邮件
-					ReceiveMail.receiveMail ();
-//                  签到、领取每日勾玉
-                    ReceiveMail.singIn ();
+					boolean b1=ReceiveMail.receiveMail ();
+//                  签到、领取每日勾玉、领取御魂加成、体力
+                    boolean b2=ReceiveMail.singIn ();
+//					任务1完成
+					if(b1||b2){
+						taskListPO.setTaskState (1);
+					}
 					TaskListMapper.save (taskListPO);
 				}
 			}
-			break;
 		}
 	}
 }
