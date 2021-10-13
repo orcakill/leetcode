@@ -13,7 +13,7 @@ public class ReceiveMail {
 	private static final Logger logger = LogManager.getLogger (ReceiveMail.class);
 	
 	//邮件领取
-	public  static  void receiveMail() throws InterruptedException, AWTException {
+	public  static  boolean receiveMail() throws InterruptedException, AWTException {
 	  //判断当前是否为首页，通过判断头像确定
        if(IndexEmpty.indexEmpty ()){
 		   //点击邮件按钮
@@ -27,11 +27,10 @@ public class ReceiveMail {
 		   if(b){
 			   logger.info ("有邮件，点击全部领取");
 			   //判断有无全部领取，无则跳过，有则点击，并更新任务记录
-			   File file3 = new File ("java/src/main/resources/image/scenario/全部领取.png");
-			   ImageService.imageClick (file3);
+			   ImageService.imageClick (file2);
 			   logger.info ("确认");
-			   File file4 = new File ("java/src/main/resources/image/scenario/邮件确认.png");
-			   ImageService.imageClick (file4);
+			   File file3 = new File ("java/src/main/resources/image/scenario/邮件确认.png");
+			   ImageService.imageClick (file3);
 			   logger.info ("已领取全部邮件");
 		   }
 		   else{
@@ -39,13 +38,13 @@ public class ReceiveMail {
 		   }
 		   logger.info ("返回首页");
 		   IndexEmpty.indexBack ();
-		   
        }
+		return  true;
 
 	}
 	
-	//签到、领取每日勾玉、领取御魂加成
-	public static  void  singIn() throws InterruptedException, AWTException {
+	//签到、领取每日勾玉、领取御魂加成、领取体力
+	public static  boolean  singIn() throws InterruptedException, AWTException {
 		//判断当前是否为首页，通过判断头像确定
 		if(IndexEmpty.indexEmpty ()) {
 			//点击签到按钮
@@ -100,6 +99,7 @@ public class ReceiveMail {
 			Thread.sleep (5000);
 			IndexEmpty.indexEmpty();
 		}
+		return  true;
 	}
 	
 	

@@ -49,11 +49,11 @@ public class LoginService {
 	 * @date: 2021/10/9 15:06
 	 */
 	public static void loginAreaService (String userName) throws Exception {
-
-//	    点击切换
-		String folderName="java/src/main/resources/image/scenario/切换";
+//	    切换
+		String folderName1 = "scenario/切换";
 		logger.info ("单击切换，进入大区选择");
-		ImageService.imagesClick (folderName);
+		ImageService.imagesClick (folderName1);
+		logger.info ("进入大区选择成功");
 //		点击三角形，打开账号大区列表
 		File file1 = new File ("java/src/main/resources/image/scenario/大区切换三角图标.png");
 		logger.info ("单击大区切换三角，进入选择大区");
@@ -63,20 +63,26 @@ public class LoginService {
 		String address = OnmyojiInfoMapper.findById (userName)
 		                                  .getUserAddress ();
 //		选择用户所在大区
-		File file2=new File ("java/src/main/resources/image/scenario/"+address+".png");
+		File file2 = new File ("java/src/main/resources/image/scenario/" + address + ".png");
 		logger.info ("单击大区");
 		ImageService.imageClick (file2);
 //		登录,通过适龄提示的纵坐标，适龄提示的横坐标—+（反馈的横坐标-适龄提示横坐标）*0.5  通过和切换的横坐标确定比例系数
 //		适龄提示的坐标
 		logger.info ("查找适龄提示的坐标");
-		File file3=new File ("java/src/main/resources/image/scenario/适龄提示.png");
-		PictureIdentifyWorkPO pictureIdentifyWorkPO1= ImageRecognition.imageRecognitionMouse (file3);
+		File file3 = new File ("java/src/main/resources/image/scenario/适龄提示.png");
+		PictureIdentifyWorkPO pictureIdentifyWorkPO1 = ImageRecognition.imageRecognitionMouse (file3);
+		if (pictureIdentifyWorkPO1 == null){
+			logger.info ("没找到适龄提示的坐标");
+		}
 //		反馈的坐标
 		logger.info ("查找反馈的坐标");
-		File file4=new File ("java/src/main/resources/image/scenario/反馈.png");
-		PictureIdentifyWorkPO pictureIdentifyWorkPO2= ImageRecognition.imageRecognitionMouse (file4);
+		File file4 = new File ("java/src/main/resources/image/scenario/反馈.png");
+		PictureIdentifyWorkPO pictureIdentifyWorkPO2 = ImageRecognition.imageRecognitionMouse (file4);
+		if (pictureIdentifyWorkPO2 == null){
+		  logger.info ("没找到反馈的坐标");
+	    }
 		logger.info ("查找切换的坐标");
-		PictureIdentifyWorkPO pictureIdentifyWorkPOcs= ImagesRecognition.imagesRecognitionMouse (folderName);
+		PictureIdentifyWorkPO pictureIdentifyWorkPOcs= ImagesRecognition.imagesRecognitionMouse (folderName1);
 		int y=pictureIdentifyWorkPO1.getY ();
 		int x=pictureIdentifyWorkPO1.getX ()+
 				(int) ((pictureIdentifyWorkPO2.getX () - pictureIdentifyWorkPO1.getX ()) * 0.5);
@@ -91,5 +97,43 @@ public class LoginService {
 
 
 	}
+	
+	public static void loginBackService () throws InterruptedException, AWTException {
+//		判断当前是首页
+	   boolean b=IndexEmpty.indexEmpty ();
+	   if(b){
+//		   当前是首页，点击首页头像
+		   String folderName1="scenario/首页";
+		   logger.info ("开始单击首页头像");
+		   ImageService.imagesClick (folderName1);
+		   logger.info ("单击首页头像完成");
+		   
+		   File  file1=new File ("java/src/main/resources/image/scenario/用户中心.png");
+		   logger.info ("单击用户中心");
+		   ImageService.imageClick (file1);
+		   logger.info ("单击用户中心完成");
+		
+		   File  file2=new File ("java/src/main/resources/image/scenario/切换账号.png");
+		   logger.info ("单击切换账号");
+		   ImageService.imageClick (file2);
+		   logger.info ("单击切换账号完成");
+		
+		   File  file3=new File ("java/src/main/resources/image/scenario/登录.png");
+		   logger.info ("单击登录");
+		   ImageService.imageClick (file3);
+		   logger.info ("单击登录完成");
+		
+		   String folderName2="scenario/切换";
+//		   判断是否回到了切换页面
+		   for(int i=0;i<3;i++){
+			   Thread.sleep (5000);
+			   boolean b1=ImagesRecognition.imagesRecognitionIsEmpty (folderName2);
+			   if(b){
+				   logger.info ("成功返回切换页面");
+			   }
+		   }
+ 		}
+	}
+	
 	
 }
