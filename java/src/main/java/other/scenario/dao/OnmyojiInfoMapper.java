@@ -38,7 +38,7 @@ public class OnmyojiInfoMapper {
 	/*查询全部数据*/
 	public static List<OnmyojiInfoPO> findAll() throws SQLException {
 		List<OnmyojiInfoPO> onmyojiInfoPOList=new ArrayList<>();
-		String sql="select * from onmyoji_info";
+		String sql="select * from onmyoji_info order  by user_num";
 		Connection connection= Jdbc.getConnection();
 		Statement statement=connection.createStatement();
 		ResultSet resultSet=statement.executeQuery(sql);
