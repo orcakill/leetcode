@@ -34,12 +34,21 @@ public class TaskListController {
 			String taskUser=taskListPO.getUserName ();
 //          任务未完成时，开始处理
 			if (taskListPO.getTaskState () == 0) {
-				/*当前账号为空或不等于上一个任务执行的账号登录*/
-				if(userName==null||!userName.equals (taskUser)){
+				/*当前账号为空或不等于上一个任务执行的账号是登录*/
+				if(userName==null){
+//					第一次登录
 					userName=taskUser;
-					LoginService.loginBackService ();
+					LoginService.loginAreaService (userName);
+					logger.info ("登录"+taskListPO.getUserName ()+"成功");
 				}
-				logger.info ("登录"+taskListPO.getUserName ()+"成功");
+				if(!userName.equals (taskUser)){
+					userName=taskUser;
+//					返回切换界面
+					LoginService.loginBackService ();
+//					重新登录
+					LoginService.loginAreaService (userName);
+					logger.info ("登录"+taskListPO.getUserName ()+"成功");
+				}
 //				任务1：签到、领取勾玉、领取邮件
 				if(taskListPO.getTaskNum ()==1){
 //					领取邮件
@@ -50,8 +59,9 @@ public class TaskListController {
 					if(b1||b2){
 						taskListPO.setTaskState (1);
 					}
-					TaskListMapper.save (taskListPO);
+//					TaskListMapper.save (taskListPO);
 				}
+				
 			}
 		}
 	}

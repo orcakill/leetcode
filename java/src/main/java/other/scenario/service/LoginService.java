@@ -51,21 +51,21 @@ public class LoginService {
 	public static void loginAreaService (String userName) throws Exception {
 //	    切换
 		String folderName1 = "scenario/切换";
-		logger.info ("单击切换，进入大区选择");
+		logger.info ("准备单击切换");
 		ImageService.imagesClick (folderName1);
-		logger.info ("进入大区选择成功");
+		logger.info ("进入账号列表");
 //		点击三角形，打开账号大区列表
 		File file1 = new File ("java/src/main/resources/image/scenario/大区切换三角图标.png");
-		logger.info ("单击大区切换三角，进入选择大区");
+		logger.info ("准备单击大区切换三角");
 		ImageService.imageClick (file1);
-		logger.info ("进入选择");
+		logger.info ("进入大区列表");
 //      获取到当前任务用户所在大区
 		String address = OnmyojiInfoMapper.findById (userName)
 		                                  .getUserAddress ();
 //		选择用户所在大区
-		File file2 = new File ("java/src/main/resources/image/scenario/" + address + ".png");
-		logger.info ("单击大区");
-		ImageService.imageClick (file2);
+		String folderName2= "scenario/" + address;
+		logger.info ("准备单击大区");
+		ImageService.imagesClick (folderName2);
 //		登录,通过适龄提示的纵坐标，适龄提示的横坐标—+（反馈的横坐标-适龄提示横坐标）*0.5  通过和切换的横坐标确定比例系数
 //		适龄提示的坐标
 		logger.info ("查找适龄提示的坐标");

@@ -97,7 +97,7 @@ public class ReceiveMail {
 				logger.info ("不需要领取御魂加成");
 			}
 			Thread.sleep (5000);
-			IndexEmpty.indexEmpty();
+			IndexEmpty.indexHeadBack ();
 		}
 		return  true;
 	}
