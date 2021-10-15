@@ -66,6 +66,8 @@ public class ReceiveMailImpl {
 				File file11 = new File ("java/src/main/resources/image/scenario/每日一签.png");
 				ImageService.imageClick (file11);
 				logger.info ("签到成功");
+				Thread.sleep (5000);
+				MouseClick.mouseClickNow (0,0);
 				//点击返回，返回首页
 				IndexService.indexBack ();
 			}
@@ -101,12 +103,12 @@ public class ReceiveMailImpl {
 				logger.info ("领取成功");
 				//向下移动点击，返回首页
 				MouseClick.mouseClickNow (0,20);
+				Thread.sleep (5000);
+				IndexService.indexHeadBack ();
 			}
 			else{
 				logger.info ("不需要领取御魂加成");
 			}
-			Thread.sleep (5000);
-			IndexService.indexHeadBack ();
 		}
 		return  true;
 	}
@@ -116,13 +118,42 @@ public class ReceiveMailImpl {
 		//判断当前是否为首页，通过判断头像确定
 		if(IndexService.indexEmpty ()) {
 //			进入首页底部功能菜单
+			File file1=new File ("java/src/main/resources/image/scenario/底部菜单.png");
+			logger.info ("准备点击底部菜单栏");
+			ImageService.imageClick (file1);
+			logger.info ("打开底部菜单栏成功");
 //			进入阴阳寮
+			File file2=new File ("java/src/main/resources/image/scenario/阴阳寮.png");
+			logger.info ("准备点击阴阳寮");
+			ImageService.imageClick (file2);
+			logger.info ("进入阴阳寮成功");
 //			进入结界
+			File file3=new File ("java/src/main/resources/image/scenario/结界.png");
+			logger.info ("准备点击结界");
+			ImageService.imageClick (file3);
+			logger.info ("进入结界成功");
 //			进入体力食盒
+			String file4="scenario/体力食盒";
+			logger.info ("准备点击体力食盒");
+			ImageService.imagesClick (file4);
+			logger.info ("进入体力食盒成功");
 //			领取体力
+			File file5=new File ("java/src/main/resources/image/scenario/取出体力.png");
+			logger.info ("准备取出体力");
+			ImageService.imageClick (file5);
+			logger.info ("取出体力成功");
+//			3秒后原地点击
+			Thread.sleep (3000);
+			MouseClick.mouseClickNow (0,0);
+//			返回结界
+			IndexService.indexBack ();
+//			返回阴阳寮
+			IndexService.indexBack ();
 //			返回首页
+			IndexService.indexBack ();
+			return  true;
 		}
 		
-		return  true;
+		return  false;
 	}
 }

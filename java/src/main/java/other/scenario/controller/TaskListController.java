@@ -37,6 +37,7 @@ public class TaskListController {
 					logger.info ("登录"+taskListPO.getUserName ()+"成功");
 				}
 				if(!userName.equals (taskUser)){
+					System.out.println ("当前账号"+userName+"  "+"任务账号"+taskUser);
 					userName=taskUser;
 //					返回切换界面
 					LoginService.loginBackService ();
@@ -59,7 +60,7 @@ public class TaskListController {
 //				任务4：领取体力食盒体力
 				if(taskListPO.getTaskNum ()==4){
 //					领取体力食盒体力
-					boolean b1= ReceiveService.receiveMail ();
+					boolean b1= ReceiveService.receiveBox ();
 //					任务1完成
 					if(b1){
 						taskListPO.setTaskState (1);
