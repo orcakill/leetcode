@@ -109,5 +109,6 @@
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.11.0" level="project" />
     <orderEntry type="library" name="Maven: net.sourceforge.lept4j:lept4j:1.13.3" level="project" />
     <orderEntry type="library" name="Maven: org.jboss:jboss-vfs:3.2.15.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.8" level="project" />
   </component>
 </module>

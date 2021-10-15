@@ -1,66 +1,32 @@
 package other.scenario.service;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import other.scenario.util.ImageRecognition;
-import other.scenario.util.ImagesRecognition;
+
+
+import other.scenario.service.impl.ImageServiceImpl;
 
 import java.awt.*;
 import java.io.File;
 
-public class ImageService {
-	private static final Logger logger = LogManager.getLogger (ImageService.class);
+
+public interface ImageService {
 	
 	/*单张图片识别*/
-	public static  void  imageClick (File file) throws AWTException, InterruptedException {
-		if(file.exists ()){
-            for(int i=0;i<20;i++){
-	            Thread.sleep (5000);
-	           if(ImageRecognition.imageRecognitionIsEmpty (file)){
-		           logger.info ("图片匹配成功");
-		           Thread.sleep (2000);
-				   ImageRecognition.imageRecognition (file);
-		           Thread.sleep (2000);
-		           logger.info ("操作成功");
-				   break;
-	           }
-			   else{
-				   logger.error ("在每5秒的检测中，第"+(i+1)+"次检查未发现该图片");
-			   }
-            }
-
-		}
-		else{
-			logger.info ("图标路径不存在");
-		}
-		
+	static  void  imageClick (File file) throws InterruptedException, AWTException{
+		ImageServiceImpl.imageClick (file);
 	}
+	/*单张图片识别，判断图片在当前页面是否存在*/
+    static 	boolean  imageClickIsEmpty (File file) throws InterruptedException, AWTException{
+		return  ImageServiceImpl.imageClickIsEmpty (file);
+    }
 	
-	/*多张图片识别*/
-	public static  void  imagesClick (String folder) throws AWTException, InterruptedException {
-		File file=new File (
-				System.getProperty("user.dir") + "/java/src/main/resources/image/"+ folder);
-		if(file.exists ()){
-			for(int i=0;i<20;i++){
-				Thread.sleep (5000);
-				if(ImagesRecognition.imagesRecognitionIsEmpty (folder)){
-					logger.info ("图片匹配成功");
-					Thread.sleep (2000);
-					ImagesRecognition.imagesRecognition (folder);
-					Thread.sleep (2000);
-					logger.info ("操作成功");
-					break;
-				}
-				else{
-					logger.error ("在每5秒的检测中，第"+(i+1)+"次检查未发现该图片");
-				}
-			}
-			
-		}
-		else{
-			logger.info ("图标路径不存在");
-		}
-		
-	}
+	/*多张图片识别,判断图片在当前页面是否存在*/
+   static 	void  imagesClick (String folder) throws InterruptedException, AWTException{
+	   ImageServiceImpl.imagesClick (folder);
+   }
+	
+	/*多张图片识别,判断图片在当前页面是否存在*/
+    static boolean imagesClickIsEmpty (String folder) throws AWTException, InterruptedException{
+		 return  ImageServiceImpl.imagesClickIsEmpty (folder);
+    }
 	
 }

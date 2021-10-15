@@ -1,34 +1,43 @@
-package other.scenario.service;
+package other.scenario.service.impl;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import other.scenario.util.ImagesRecognition;
+import other.scenario.service.ImageService;
+import other.scenario.service.IndexService;
 
 import java.awt.*;
-import java.util.Date;
 
-public class IndexEmpty {
-	private static final Logger logger = LogManager.getLogger (IndexEmpty.class);
+/**
+ * @author orcakill
+ * @version 1.0.0
+ * @ClassName IndexEmptyImpl.java
+ * @Description TODO
+ * @createTime 2021年10月15日 11:19:00
+ */
+public class IndexServiceImpl {
+	private static final Logger logger = LogManager.getLogger (IndexService.class);
 
-	public  static  Boolean indexEmpty() throws InterruptedException, AWTException {
+	
+
+	public static Boolean indexEmpty () throws InterruptedException, AWTException {
 		String folderName="scenario/首页";
 		logger.info ("判断是否为首页");
 		for(int i=0;i<3;i++){
 			Thread.sleep (5000);
-			boolean b= ImagesRecognition.imagesRecognitionIsEmpty (folderName);
+			boolean b= ImageService.imagesClickIsEmpty (folderName);
 			if(b){
-				logger.info ("当前是首页");
+				logger.info ("当前页是首页");
 				return b;
 			}
 			else{
-				logger.info ("不是首页");
+				logger.info ("当前页不是首页");
 			}
 		}
-		logger.info (false);
 		return  false;
 	}
 	
-	public  static  void indexBack() throws InterruptedException, AWTException {
+
+	public static void indexBack () throws InterruptedException, AWTException {
 		String folderName="scenario/返回首页";
 		logger.info ("开始返回");
 		ImageService.imagesClick (folderName);
@@ -40,10 +49,11 @@ public class IndexEmpty {
 			indexBack ();
 		}
 		logger.info ("已返回首页");
-
+		
 	}
+	
 	//点击头像返回
-	public  static  void indexHeadBack() throws InterruptedException, AWTException {
+	public static void indexHeadBack () throws InterruptedException, AWTException {
 		String folderName="scenario/头像";
 		logger.info ("开始点击头像返回");
 		ImageService.imagesClick (folderName);
@@ -57,4 +67,5 @@ public class IndexEmpty {
 		logger.info ("返回首页");
 		
 	}
+	
 }

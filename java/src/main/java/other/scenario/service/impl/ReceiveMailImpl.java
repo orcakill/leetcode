@@ -1,52 +1,61 @@
-package other.scenario.service;
+package other.scenario.service.impl;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import other.scenario.service.ImageService;
+import other.scenario.service.IndexService;
 import other.scenario.util.ImageRecognition;
-import other.scenario.util.ImagesRecognition;
 import other.scenario.util.MouseClick;
 
 import java.awt.*;
 import java.io.File;
 
-public class ReceiveMail {
-	private static final Logger logger = LogManager.getLogger (ReceiveMail.class);
+/**
+ * @author orcakill
+ * @version 1.0.0
+ * @ClassName ReceiveMailImpl.java
+ * @Description TODO
+ * @createTime 2021年10月15日 13:36:00
+ */
+public class ReceiveMailImpl {
+	private static final Logger logger = LogManager.getLogger (ReceiveMailImpl.class);
 	
 	//邮件领取
 	public  static  boolean receiveMail() throws InterruptedException, AWTException {
-	  //判断当前是否为首页，通过判断头像确定
-       if(IndexEmpty.indexEmpty ()){
-		   //点击邮件按钮
-	       File file1 = new File ("java/src/main/resources/image/scenario/领取邮件.png");
-	       logger.info ("点击邮件");
-	       ImageService.imageClick (file1);
-	       logger.info ("进入邮箱");
-	       //判断有无全部领取，无则跳过，有则点击，并更新任务记录
-	       File file2 = new File ("java/src/main/resources/image/scenario/全部领取.png");
-	       boolean b= ImageRecognition.imageRecognitionIsEmpty (file2);
-		   if(b){
-			   logger.info ("有邮件，点击全部领取");
-			   //判断有无全部领取，无则跳过，有则点击，并更新任务记录
-			   ImageService.imageClick (file2);
-			   logger.info ("确认");
-			   File file3 = new File ("java/src/main/resources/image/scenario/邮件确认.png");
-			   ImageService.imageClick (file3);
-			   logger.info ("已领取全部邮件");
-		   }
-		   else{
-			   logger.info ("没有邮件，不领取");
-		   }
-		   logger.info ("返回首页");
-		   IndexEmpty.indexBack ();
-       }
-		return  true;
-
+		//判断当前是否为首页，通过判断头像确定
+		if(IndexService.indexEmpty ()){
+			//点击邮件按钮
+			File file1 = new File ("java/src/main/resources/image/scenario/领取邮件.png");
+			logger.info ("点击邮件");
+			ImageService.imageClick (file1);
+			logger.info ("进入邮箱");
+			//判断有无全部领取，无则跳过，有则点击，并更新任务记录
+			File file2 = new File ("java/src/main/resources/image/scenario/全部领取.png");
+			boolean b= ImageRecognition.imageRecognitionIsEmpty (file2);
+			if(b){
+				logger.info ("有邮件，点击全部领取");
+				//判断有无全部领取，无则跳过，有则点击，并更新任务记录
+				ImageService.imageClick (file2);
+				logger.info ("确认");
+				File file3 = new File ("java/src/main/resources/image/scenario/邮件确认.png");
+				ImageService.imageClick (file3);
+				logger.info ("已领取全部邮件");
+				return  true;
+			}
+			else{
+				logger.info ("没有邮件，不领取");
+			}
+			logger.info ("返回首页");
+			IndexService.indexBack ();
+		}
+		return  false;
+		
 	}
 	
 	//签到、领取每日勾玉、领取御魂加成、领取体力
 	public static  boolean  singIn() throws InterruptedException, AWTException {
 		//判断当前是否为首页，通过判断头像确定
-		if(IndexEmpty.indexEmpty ()) {
+		if(IndexService.indexEmpty ()) {
 			//点击签到按钮
 			logger.info("检查是否需要签到");
 			File file1 = new File ("java/src/main/resources/image/scenario/签到.png");
@@ -58,7 +67,7 @@ public class ReceiveMail {
 				ImageService.imageClick (file11);
 				logger.info ("签到成功");
 				//点击返回，返回首页
-				IndexEmpty.indexBack ();
+				IndexService.indexBack ();
 			}
 			else{
 				logger.info ("不需要签到");
@@ -72,13 +81,13 @@ public class ReceiveMail {
 				logger.info ("开始领取勾玉");
 				ImageService.imageClick (file2);
 				logger.info ("领取成功");
-				IndexEmpty.indexHeadBack ();
+				IndexService.indexHeadBack ();
 			}
 			else{
 				logger.info ("不需要领取");
 			}
 			Thread.sleep (5000);
-
+			
 			
 			//点击御魂加成按钮
 			logger.info("检查是否需要领取御魂加成");
@@ -97,12 +106,23 @@ public class ReceiveMail {
 				logger.info ("不需要领取御魂加成");
 			}
 			Thread.sleep (5000);
-			IndexEmpty.indexHeadBack ();
+			IndexService.indexHeadBack ();
 		}
 		return  true;
 	}
 	
-	
-	
-	
+	//领取体力食盒
+	public  static  boolean   receiveBox() throws InterruptedException, AWTException {
+		//判断当前是否为首页，通过判断头像确定
+		if(IndexService.indexEmpty ()) {
+//			进入首页底部功能菜单
+//			进入阴阳寮
+//			进入结界
+//			进入体力食盒
+//			领取体力
+//			返回首页
+		}
+		
+		return  true;
+	}
 }
