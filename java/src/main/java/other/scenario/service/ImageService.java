@@ -19,7 +19,7 @@ public interface ImageService {
 		return  ImageServiceImpl.imageClickIsEmpty (file);
     }
 	
-	/*多张图片识别,判断图片在当前页面是否存在*/
+	/*多张图片识别*/
    static 	void  imagesClick (String folder) throws InterruptedException, AWTException{
 	   ImageServiceImpl.imagesClick (folder);
    }
