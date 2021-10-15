@@ -1,35 +1,38 @@
 package other.scenario.service;
 
 import org.junit.Test;
-import other.scenario.util.ImageRecognition;
-import other.scenario.util.ImagesRecognition;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.awt.*;
 import java.io.File;
 
-import static org.junit.Assert.*;
-
 public class ImageServiceTest {
+
 	
 	@Test
-	public void imageClick () throws InterruptedException, AWTException {
+	public void imageClickIsEmpty () throws InterruptedException, AWTException {
 		File file=new File (System.getProperty("user.dir") + "/src/main/resources/image/"+"scenario/适龄提示.png");
-		for(int i=0;i<100;i++) {
-			Thread.sleep (2000);
-			System.out.println ("第"+(i+1)+"轮测试");
-			ImageRecognition.imageRecognitionIsEmpty (file);
+		if(file.exists ()){
+			boolean b=ImageService.imageClickIsEmpty (file);
+			System.out.println (b);
 		}
+		else{
+			System.out.println ("图片文件路径不存在");
+		}
+
 	}
 	
 	@Test
-	public void imagesClick () throws InterruptedException, AWTException {
+	public void   imagesClickIsEmpty () throws InterruptedException, AWTException {
 		String folderName="scenario/网易-相伴相随";
-		for(int i=0;i<100;i++){
-			Thread.sleep (2000);
-			System.out.println ("第"+(i+1)+"轮测试");
-			boolean b=ImagesRecognition.imagesRecognitionIsEmpty (folderName);
+		File file = new File (
+				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folderName);
+		if(file.exists ()){
+			boolean b=ImageService.imagesClickIsEmpty (folderName);
 			System.out.println (b);
 		}
-
+		else{
+			System.out.println ("图片文件路径不存在");
+		}
 	}
 }
