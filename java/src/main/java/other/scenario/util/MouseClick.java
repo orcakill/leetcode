@@ -37,13 +37,38 @@ public class MouseClick {
 		Point p = MouseInfo.getPointerInfo ()
 		                   .getLocation ();
 		logger.debug ("当前坐标：" + p.getX () + "---" + p.getY ());
-		double  x=p.getX ();
-		double  y=p.getY ();
+		double x = p.getX ();
+		double y = p.getY ();
 		// 修复JDK8的移动不正确的BUG(亲测在JDK11,该BUG已经修复)
 		for (int j = 0; j < 6; j++) {
-			robot1.mouseMove ((int) (x+x1), (int) (y+y1));
+			robot1.mouseMove ((int) (x + x1), (int) (y + y1));
 		}
-
+		
+		robot1.mousePress (InputEvent.BUTTON1_MASK);
+		robot1.mouseRelease (InputEvent.BUTTON1_MASK);
+		
+	}
+	
+	//移动到坐标后，滚动一定刻度后单击
+	public static void mouseRoll (List<PictureIdentifyWorkPO> findAllImgData, Integer num, Integer wheelAmt) throws
+	                                                                                                         AWTException,
+	                                                                                                         InterruptedException {
+		Robot robot1 = new Robot ();
+		for (int i = 0; i < num; i++) {
+			Double bl = ComputerScaling.getScale ();
+			for (PictureIdentifyWorkPO findAllImgDatum : findAllImgData) {
+				// 修复JDK8的移动不正确的BUG(亲测在JDK11,该BUG已经修复)
+				for (int j = 0; j < 6; j++) {
+					robot1.mouseMove ((int) (findAllImgDatum.getX () / bl), (int) (findAllImgDatum.getY () / bl));
+				}
+				Point p = MouseInfo.getPointerInfo ()
+				                   .getLocation ();
+				Thread.sleep (2000);
+				robot1.mouseWheel (wheelAmt);
+			}
+			
+		}
+		Thread.sleep (2000);
 		robot1.mousePress (InputEvent.BUTTON1_MASK);
 		robot1.mouseRelease (InputEvent.BUTTON1_MASK);
 		
