@@ -28,9 +28,10 @@ public class TaskListMapper {
 		while(resultSet.next()){
 			taskListPO.setListDate(resultSet.getDate(1));
 			taskListPO.setListNum(resultSet.getInt(2));
-			taskListPO.setTaskNum(resultSet.getInt(3));
+			taskListPO.setTaskId(resultSet.getInt(3));
 			taskListPO.setUserName(resultSet.getString(4));
 			taskListPO.setTaskState(resultSet.getInt(5));
+			taskListPO.setTaskNumber(resultSet.getInt(6));
 		}
 		Jdbc.release(null, preparedStatement, connection);
 		return taskListPO;
@@ -47,15 +48,16 @@ public class TaskListMapper {
 			TaskListPO taskListPO =new TaskListPO();
 			taskListPO.setListDate(resultSet.getDate(1));
 			taskListPO.setListNum(resultSet.getInt(2));
-			taskListPO.setTaskNum(resultSet.getInt(3));
+			taskListPO.setTaskId(resultSet.getInt(3));
 			taskListPO.setUserName(resultSet.getString(4));
 			taskListPO.setTaskState(resultSet.getInt(5));
+			taskListPO.setTaskNumber(resultSet.getInt(6));
 			taskListPOList.add(taskListPO);
 		}
 		Jdbc.release(null,preparedStatement, connection);
 		return taskListPOList;
 	}
-
+	
 	
 	/*查询全部数据*/
 	public static List<TaskListPO> findAll() throws SQLException {
@@ -68,9 +70,10 @@ public class TaskListMapper {
 			TaskListPO taskListPO =new TaskListPO();
 			taskListPO.setListDate(resultSet.getDate(1));
 			taskListPO.setListNum(resultSet.getInt(2));
-			taskListPO.setTaskNum(resultSet.getInt(3));
+			taskListPO.setTaskId(resultSet.getInt(3));
 			taskListPO.setUserName(resultSet.getString(4));
 			taskListPO.setTaskState(resultSet.getInt(5));
+			taskListPO.setTaskNumber(resultSet.getInt(6));
 			taskListPOList.add(taskListPO);
 		}
 		Jdbc.release(null, statement, connection);
@@ -97,14 +100,16 @@ public class TaskListMapper {
 	public static void save(TaskListPO taskListPO) throws SQLException {
 		Boolean check = check (dateToString (taskListPO.getListDate()),taskListPO.getListNum());
 		if (check) {
-			String sql="update task_list set task_num=?,user_name=?,task_state=? where list_date=?  and list_num=? ";
+			String sql="update task_list set task_id=?,user_name=?,task_state=?,task_number=? where list_date=?  and " +
+			           "list_num=? ";
 			Connection connection = Jdbc.getConnection ();
 			PreparedStatement preparedStatement = connection.prepareStatement (sql);
-			preparedStatement.setInt(1,taskListPO.getTaskNum());
+			preparedStatement.setInt(1,taskListPO.getTaskId());
 			preparedStatement.setString(2,taskListPO.getUserName());
 			preparedStatement.setInt(3,taskListPO.getTaskState());
-			preparedStatement.setDate(4,new java.sql.Date (taskListPO.getListDate().getTime()));
-			preparedStatement.setInt(5,taskListPO.getListNum());
+			preparedStatement.setInt(4,taskListPO.getTaskNumber ());
+			preparedStatement.setDate(5,new java.sql.Date (taskListPO.getListDate().getTime()));
+			preparedStatement.setInt(6,taskListPO.getListNum());
 			int num = preparedStatement.executeUpdate ();
 			if (num > 0) {
 				logger.info ("更新成功");
@@ -115,14 +120,16 @@ public class TaskListMapper {
 			Jdbc.release (null, preparedStatement, connection);
 		}
 		else {
-			String sql="insert into task_list(list_date,list_num,task_num,user_name,task_state)values(?,?,?,?,?)";
+			String sql="insert into task_list(list_date,list_num,task_id,user_name,task_state,task_number)values(?,?," +
+			           "?,?,?,?)";
 			Connection connection = Jdbc.getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setDate(1,new java.sql.Date(taskListPO.getListDate().getTime()));
 			preparedStatement.setInt(2,taskListPO.getListNum());
-			preparedStatement.setInt(3,taskListPO.getTaskNum());
+			preparedStatement.setInt(3,taskListPO.getTaskId());
 			preparedStatement.setString(4,taskListPO.getUserName());
 			preparedStatement.setInt(5,taskListPO.getTaskState());
+			preparedStatement.setInt(6,taskListPO.getTaskNumber ());
 			int num =preparedStatement.executeUpdate();
 			if(num>0){
 				logger.info("插入成功");

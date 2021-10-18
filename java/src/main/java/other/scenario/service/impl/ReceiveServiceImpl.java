@@ -17,8 +17,8 @@ import java.io.File;
  * @Description TODO
  * @createTime 2021年10月15日 13:36:00
  */
-public class ReceiveMailImpl {
-	private static final Logger logger = LogManager.getLogger (ReceiveMailImpl.class);
+public class ReceiveServiceImpl {
+	private static final Logger logger = LogManager.getLogger (ReceiveServiceImpl.class);
 	
 	//邮件领取
 	public  static  boolean receiveMail() throws InterruptedException, AWTException {
@@ -40,7 +40,6 @@ public class ReceiveMailImpl {
 				File file3 = new File ("java/src/main/resources/image/scenario/邮件确认.png");
 				ImageService.imageClick (file3);
 				logger.info ("已领取全部邮件");
-				return  true;
 			}
 			else{
 				logger.info ("没有邮件，不领取");
@@ -48,7 +47,7 @@ public class ReceiveMailImpl {
 			logger.info ("返回首页");
 			IndexService.indexBack ();
 		}
-		return  false;
+		return  true;
 		
 	}
 	
@@ -69,6 +68,7 @@ public class ReceiveMailImpl {
 				Thread.sleep (5000);
 				MouseClick.mouseClickNow (0,0);
 				//点击返回，返回首页
+				Thread.sleep (2000);
 				IndexService.indexBack ();
 			}
 			else{
@@ -89,7 +89,6 @@ public class ReceiveMailImpl {
 				logger.info ("不需要领取");
 			}
 			Thread.sleep (5000);
-			
 			
 			//点击御魂加成按钮
 			logger.info("检查是否需要领取御魂加成");
@@ -151,6 +150,11 @@ public class ReceiveMailImpl {
 			IndexService.indexBack ();
 //			返回首页
 			IndexService.indexBack ();
+//			退出首页底部功能菜单
+			File file6=new File ("java/src/main/resources/image/scenario/退出底部菜单栏.png");
+			logger.info ("准备关闭底部菜单栏");
+			ImageService.imageClick (file6);
+			logger.info ("关闭底部菜单栏成功");
 			return  true;
 		}
 		

@@ -14,7 +14,7 @@ public class TaskInfoMapperTest {
 	@Test
 	public void findById() throws SQLException {
 		TaskInfoPO taskInfoPO=TaskInfoMapper.findById(1);
-		System.out.println(taskInfoPO.getTaskNum());
+		System.out.println(taskInfoPO.getTaskId());
 		System.out.println(taskInfoPO.getTaskName());
 		System.out.println(taskInfoPO.getTaskType());
 	}
@@ -23,7 +23,7 @@ public class TaskInfoMapperTest {
 	public void findAll() throws SQLException {
 		List<TaskInfoPO> taskInfoPOList=TaskInfoMapper.findAll ();
 		for (TaskInfoPO taskInfoPO : taskInfoPOList) {
-			System.out.println (taskInfoPO.getTaskNum ());
+			System.out.println (taskInfoPO.getTaskId ());
 			System.out.println (taskInfoPO.getTaskName ());
 			System.out.println (taskInfoPO.getTaskType ());
 		}
@@ -38,7 +38,7 @@ public class TaskInfoMapperTest {
 	@Test
 	public void save() throws SQLException {
 		TaskInfoPO taskInfoPO=new TaskInfoPO();
-		taskInfoPO.setTaskNum(1);
+		taskInfoPO.setTaskId(1);
 		taskInfoPO.setTaskName("测试");
 		taskInfoPO.setTaskType(1);
 		TaskInfoMapper.save(taskInfoPO);
