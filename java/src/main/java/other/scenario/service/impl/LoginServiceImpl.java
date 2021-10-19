@@ -75,19 +75,17 @@ public class LoginServiceImpl{
 		logger.info ("查找适龄提示的坐标");
 		File file3 = new File ("java/src/main/resources/image/scenario/适龄提示.png");
 		PictureIdentifyWorkPO pictureIdentifyWorkPO1 = ImageRecognition.imageRecognitionMouse (file3);
-		if (pictureIdentifyWorkPO1 == null){
+		if (pictureIdentifyWorkPO1.getX ()==null){
 			logger.info ("没找到适龄提示的坐标");
 		}
 //		反馈的坐标
 		logger.info ("查找反馈的坐标");
 		File file4 = new File ("java/src/main/resources/image/scenario/反馈.png");
 		PictureIdentifyWorkPO pictureIdentifyWorkPO2 = ImageRecognition.imageRecognitionMouse (file4);
-		if (pictureIdentifyWorkPO2 == null){
+		if (pictureIdentifyWorkPO2 .getX ()==null){
 			logger.info ("没找到反馈的坐标");
 		}
-		assert pictureIdentifyWorkPO1 != null;
 		int y=pictureIdentifyWorkPO1.getY ();
-		assert pictureIdentifyWorkPO2 != null;
 		int x= pictureIdentifyWorkPO1.getX () +
 		       (int) ((pictureIdentifyWorkPO2.getX () - pictureIdentifyWorkPO1.getX ()) * 0.5);
 		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList=new ArrayList<> ();

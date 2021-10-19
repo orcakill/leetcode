@@ -13,7 +13,7 @@ import java.io.IOException;
  */
 public interface FightAutoService {
 	/***
-	 * @description: 樱饼刷御魂
+	 * @description: 刷御魂
 	 * @param
 	 * @return: boolean
 	 * @author: orcakill

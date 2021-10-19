@@ -40,6 +40,7 @@ public class ReceiveServiceImpl {
 				File file3 = new File ("java/src/main/resources/image/scenario/邮件确认.png");
 				ImageService.imageClick (file3);
 				logger.info ("已领取全部邮件");
+				Thread.sleep (2000);
 			}
 			else{
 				logger.info ("没有邮件，不领取");
