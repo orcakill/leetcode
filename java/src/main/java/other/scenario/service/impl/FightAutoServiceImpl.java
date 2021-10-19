@@ -13,7 +13,6 @@ import other.scenario.util.Screenshot;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -47,35 +46,42 @@ public class FightAutoServiceImpl {
 			ImageService.imageClick (file4);
 			logger.info ("进入八岐大蛇");
 //				已选择了第一层
-			File file5 = new File ("java/src/main/resources/image/scenario/御魂第一层.png");
+			File file5 = new File ("java/src/main/resources/image/scenario/御魂第五层-选择中.png");
 			boolean b1 = ImageService.imageClickIsEmpty (file5);
 			if (b1) {
-				logger.info ("已选择御魂第一层");
-//					开始挑战,处理剩余次数的御魂
-				for (int i = 0; num > 0; i++) {
-					String file6 = "scenario/挑战";
-					logger.info ("准备挑战");
-					ImageService.imagesClick (file6);
-					logger.info ("等待挑战完成");
-					String file7 = "scenario/退出挑战";
-					Thread.sleep (20 * 1000);
-					logger.info ("准备退出挑战");
-					ImageService.imagesClick (file7);
-					logger.info ("退出挑战完成");
-					num--;
-					Thread.sleep (2 * 1000);
-					logger.info ("第" + (i + 1) + "次挑战完成，剩余" + (num) + "次");
-				}
-//					开始退出御魂挑战
-				IndexService.indexBack ();
-				IndexService.indexBack ();
-//			        退出首页底部功能菜单
-				File file8 = new File ("java/src/main/resources/image/scenario/退出底部菜单栏.png");
-				logger.info ("准备关闭底部菜单栏");
-				ImageService.imageClick (file8);
-				logger.info ("关闭底部菜单栏成功");
-				return num;
+				logger.info ("已选择御魂第五层");
 			}
+			else {
+				logger.info ("准备选择御魂第五层");
+				File file51=new File ("java/src/main/resources/image/scenario/御魂第五层.png");
+				ImageService.imageClick (file51);
+				logger.info ("选择成功");
+			}
+//			开始挑战,处理剩余次数的御魂
+			for (int i = 0; num > 0; i++) {
+				String file6 = "scenario/挑战";
+				logger.info ("准备挑战");
+				ImageService.imagesClick (file6);
+				logger.info ("等待挑战完成");
+				String file7 = "scenario/退出挑战";
+				Thread.sleep (20 * 1000);
+				logger.info ("准备退出挑战");
+				ImageService.imagesClick (file7);
+				logger.info ("退出挑战完成");
+				num--;
+				Thread.sleep (2 * 1000);
+				logger.info ("第" + (i + 1) + "次挑战完成，剩余" + (num) + "次");
+			}
+//			开始退出御魂挑战
+			IndexService.indexBack ();
+			IndexService.indexBack ();
+//			退出首页底部功能菜单
+			File file8 = new File ("java/src/main/resources/image/scenario/退出底部菜单栏.png");
+			logger.info ("准备关闭底部菜单栏");
+			ImageService.imageClick (file8);
+			logger.info ("关闭底部菜单栏成功");
+			return num;
+			
 		}
 		return num;
 	}
@@ -123,7 +129,7 @@ public class FightAutoServiceImpl {
 				logger.info ("准备退出喂食");
 				ImageService.imagesClick (file71);
 				logger.info ("退出喂食");
-//				    自动战斗
+//				 自动战斗
 				String file8 = "scenario/自动战斗";
 				logger.info ("准备自动战斗");
 				ImageService.imagesClick (file8);
@@ -132,9 +138,9 @@ public class FightAutoServiceImpl {
 				Thread.sleep (10 * 60 * 1000);
 //				停止自动战斗
 				logger.info ("准备停止自动战斗");
-				ImageService.imagesClick (file8);
+				MouseClick.mouseClickNow (0,0);
 				logger.info ("自动战斗停止");
-				Thread.sleep (10*1000);
+				Thread.sleep (10 * 1000);
 //				退出到首页
 				IndexService.indexBack ();
 				String file81 = "scenario/确认";
@@ -163,41 +169,41 @@ public class FightAutoServiceImpl {
 		if (b) {
 //			进入结界突破
 			logger.info ("准备进入结界突破");
-			File file=new File ("java/src/main/resources/image/scenario/结界突破.png");
+			File file = new File ("java/src/main/resources/image/scenario/结界突破.png");
 			ImageService.imageClick (file);
 			logger.info ("进入结界突破");
 //			开始循环开始准备选择
-			for(int i=0;num>0;i++){
-				logger.info ("开始选择第"+(i+1)+"个结界");
-				String folder="scenario/个人结界";
+			for (int i = 0; num > 0; i++) {
+				logger.info ("开始选择第" + (i + 1) + "个结界");
+				String folder = "scenario/个人结界";
 //				判断是否存在可攻打结界
-				boolean b1=ImageService.imagesClickIsEmpty (folder);
-				if(!b1){
+				boolean b1 = ImageService.imagesClickIsEmpty (folder);
+				if (!b1) {
 					logger.info ("不存在可攻打结界");
-				   File file1=new File ("java/src/main/resources/image/scenario/刷新.png");
-				   ImageService.imageClick (file1);
+					File file1 = new File ("java/src/main/resources/image/scenario/刷新.png");
+					ImageService.imageClick (file1);
 				}
 				ImageService.imagesClick (folder);
 				logger.info ("准备选择进攻");
-				String folder1="scenario/进攻";
+				String folder1 = "scenario/进攻";
 				ImageService.imagesClick (folder1);
 				logger.info ("等待进攻完成");
-				Thread.sleep (60*100);
-				String folder2="scenario/退出挑战";
-				boolean b2=ImageService.imagesClickIsEmpty (folder2);
-				if(b2){
+				Thread.sleep (60 * 100);
+				String folder2 = "scenario/退出挑战";
+				boolean b2 = ImageService.imagesClickIsEmpty (folder2);
+				if (b2) {
 					logger.info ("挑战成功，退出挑战");
 					ImageService.imagesClick (folder2);
 					num--;
-					logger.info ("第"+(i+1)+"结界挑战完成");
-					Thread.sleep (3*1000);
-					boolean b3=ImageService.imagesClickIsEmpty (folder2);
-					if(b3){
+					logger.info ("第" + (i + 1) + "结界挑战完成");
+					Thread.sleep (3 * 1000);
+					boolean b3 = ImageService.imagesClickIsEmpty (folder2);
+					if (b3) {
 						ImageService.imagesClick (folder2);
 					}
 				}
-				else{
-                   FightAutoService.fightFalse ();
+				else {
+					FightAutoService.fightFalse ();
 				}
 			}
 //			返回首页
@@ -248,14 +254,14 @@ public class FightAutoServiceImpl {
 	}
 	
 	public static void fightFalse () throws InterruptedException, AWTException {
-		String folder="scenario/挑战失败";
-		boolean b=ImageService.imagesClickIsEmpty (folder);
-		if(b){
+		String folder = "scenario/挑战失败";
+		boolean b = ImageService.imagesClickIsEmpty (folder);
+		if (b) {
 			logger.info ("挑战已失败，退出挑战");
 			ImageService.imagesClick (folder);
 			logger.info ("退出挑战成功");
 		}
-		else{
+		else {
 			logger.info ("无法判断当前是否挑战失败");
 		}
 	}
@@ -269,17 +275,19 @@ public class FightAutoServiceImpl {
 			ImageService.imageClick (file);
 			logger.info ("打开底部菜单栏成功");
 //			进入花合战
-			File file1=new File ("java/src/main/resources/image/scenario/花合战.png");
+			File file1 = new File ("java/src/main/resources/image/scenario/花合战.png");
 			logger.info ("准备进入花合战");
 			ImageService.imageClick (file1);
 			logger.info ("进入花合战");
 			Thread.sleep (2000);
 //			是否有全部领取
-			File file2=new File ("java/src/main/resources/image/scenario/花合战全部领取.png");
-			boolean b=ImageService.imageClickIsEmpty (file2);
-			if(b){
+			MouseClick.mouseClickNow (0,0);
+			File file2 = new File ("java/src/main/resources/image/scenario/花合战全部领取.png");
+			boolean b = ImageService.imageClickIsEmpty (file2);
+			if (b) {
 				ImageService.imageClick (file2);
 			}
+			MouseClick.mouseClickNow (0,0);
 //			返回首页
 			IndexService.indexBack ();
 //			退出底部菜单栏
@@ -289,7 +297,7 @@ public class FightAutoServiceImpl {
 			logger.info ("关闭底部菜单栏成功");
 			return true;
 		}
-		return  false;
+		return false;
 	}
 	
 	public static boolean friendScreen (String userName) throws InterruptedException, AWTException, IOException {
@@ -301,27 +309,28 @@ public class FightAutoServiceImpl {
 			ImageService.imageClick (file);
 			logger.info ("打开底部菜单栏成功");
 //			进入好友
-			File file1= new File ("java/src/main/resources/image/scenario/好友.png");
+			File file1 = new File ("java/src/main/resources/image/scenario/好友.png");
 			logger.info ("准备点击好友");
 			ImageService.imageClick (file1);
 			logger.info ("打开好友成功");
 //			点击添加
-			File file2= new File ("java/src/main/resources/image/scenario/添加.png");
+			File file2 = new File ("java/src/main/resources/image/scenario/添加.png");
 			logger.info ("准备点击添加");
 			ImageService.imageClick (file2);
 			logger.info ("打开添加");
 //			进入协战
-			File file3= new File ("java/src/main/resources/image/scenario/协战.png");
+			File file3 = new File ("java/src/main/resources/image/scenario/协战.png");
 			logger.info ("准备点击协战");
 			ImageService.imageClick (file3);
 			logger.info ("打开协战");
 //			开始截图
 //		    屏幕截图
-			BufferedImage window= Screenshot.screenshot ();
-			Date date=new Date ();
-			SimpleDateFormat simpleDateFormat=new SimpleDateFormat ("yyyy-MM-dd");
-			String str=simpleDateFormat.format (date);
-			ImageIO.write (window, "jpg", new File("java/src/main/resources/image/scenario/每日截图/" +str+"_"+userName));
+			BufferedImage window = Screenshot.screenshot ();
+			Date date = new Date ();
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat ("yyyy-MM-dd");
+			String str = simpleDateFormat.format (date);
+			ImageIO.write (window, "jpg",
+					new File ("java/src/main/resources/image/scenario/每日截图/" + str + "_" + userName + ".jpg"));
 //			返回首页
 			IndexService.indexBack ();
 //			退出底部菜单栏
@@ -331,7 +340,7 @@ public class FightAutoServiceImpl {
 			logger.info ("关闭底部菜单栏成功");
 			return true;
 		}
-		return  false;
+		return false;
 	}
 }
 
