@@ -1,7 +1,7 @@
 package other.auto.method;
 
 import other.auto.entity.ClassPO;
-import other.auto.util.CommonUtils;
+import other.dao.CommonUtils;
 
 import java.util.List;
 

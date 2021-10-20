@@ -2,15 +2,15 @@ package other.auto;
 
 import other.auto.entity.ClassPO;
 import other.auto.method.*;
-import other.auto.util.CommonUtils;
+import other.dao.CommonUtils;
 
 import java.util.List;
 
 public class MapperApp {
 	public static void main (String[] args) throws ClassNotFoundException {        /* 赋值类名*/
-		Class<?> c = Class.forName ("other.scenario.entity.TaskInfoPO");
-		final String name = "TaskInfoPO";
-		String table = "task_info";
+		Class<?> c = Class.forName ("other.mail.model.entity.EmailBoxPO");
+		final String name = "EmailBoxPO";
+		String table = "email_box";
 		List<ClassPO> classPOS = CommonUtils.getClassPO (c);
 		List<ClassPO> classPOS1 = CommonUtils.getPk (classPOS);
 		List<ClassPO> classPOS2 = CommonUtils.getNoPk (classPOS);

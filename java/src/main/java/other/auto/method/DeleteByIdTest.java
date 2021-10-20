@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import static other.auto.util.CommonUtils.toType;
+import static other.dao.CommonUtils.toType;
 
 public class DeleteByIdTest {
 	public static StringBuilder deleteByIdTest (String name,
@@ -35,6 +35,9 @@ public class DeleteByIdTest {
 			}
 			if(toType(classPOS1.get (i).getType ()).equals ("Integer")){
 				str.append (1);
+			}
+			if(toType(classPOS1.get (i).getType ()).equals ("BigDecimal")){
+				str.append ("BigDecimal.valueOf (1)");
 			}
 			if(toType(classPOS1.get (i).getType ()).equals ("String")){
 				str.append ("\"测试\"");

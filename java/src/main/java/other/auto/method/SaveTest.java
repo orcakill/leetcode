@@ -5,7 +5,7 @@ import other.auto.entity.ClassPO;
 
 import java.util.List;
 
-import static other.auto.util.CommonUtils.*;
+import static other.dao.CommonUtils.*;
 
 public class SaveTest {
 	public static StringBuilder saveTest (String name, String name1, List<ClassPO> classPOS) {
@@ -28,7 +28,7 @@ public class SaveTest {
 			   .append ("(");
 			if (toType (classPO
 					.getType ()).equals ("Date")) {
-				str.append ("CommonUtils.getDate()");
+				str.append ("new Date()");
 			}
 			if (toType (classPO
 					.getType ()).equals ("Integer")) {

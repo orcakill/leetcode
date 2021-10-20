@@ -4,7 +4,7 @@ import other.auto.entity.ClassPO;
 
 import java.util.List;
 
-import static other.auto.util.CommonUtils.getResultSet;
+import static other.dao.CommonUtils.getResultSet;
 
 public class FindAll {
 	public  static  StringBuilder findAll (String name, String name1, String table, List<ClassPO> classPOS){

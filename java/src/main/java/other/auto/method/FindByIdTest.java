@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import static other.auto.util.CommonUtils.getParamExample;
+import static other.dao.CommonUtils.getParamExample;
 
 
 public class FindByIdTest {

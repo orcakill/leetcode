@@ -2,15 +2,15 @@ package other.auto;
 
 import other.auto.entity.ClassPO;
 import other.auto.method.*;
-import other.auto.util.CommonUtils;
+import other.dao.CommonUtils;
 import java.util.List;
 
 
 
 public class TestApp {
 	public static void main (String[] args) throws ClassNotFoundException {
-		Class<?> c1 = Class.forName ("other.scenario.entity.TaskInfoPO");
-		final String name = "TaskInfoPO";
+		Class<?> c1 = Class.forName ("other.mail.model.entity.EmailBoxPO");
+		final String name = "EmailBoxPO";
 		List<ClassPO> classPOS = CommonUtils.getClassPO (c1);
 		List<ClassPO> classPOS1 = CommonUtils.getPk (classPOS);
 		String name1 = CommonUtils.toLower (name);

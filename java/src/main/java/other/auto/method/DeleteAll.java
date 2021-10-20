@@ -9,7 +9,7 @@ public class DeleteAll {
 		            "from ")
 		   .append (table)
 		   .append ("\";\n")
-		   .append ("\tSql.deleteSQL (sql, (org.apache.logging.log4j.core.Logger) logger);\n")
+		   .append ("\tSql.deleteSQL (sql);\n")
 		   .append ("}\r\n\r\n");
 	     return  str;
 	}

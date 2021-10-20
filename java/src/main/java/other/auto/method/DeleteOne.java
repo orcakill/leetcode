@@ -4,7 +4,7 @@ import other.auto.entity.ClassPO;
 
 import java.util.List;
 
-import static other.auto.util.CommonUtils.*;
+import static other.dao.CommonUtils.*;
 
 
 public class DeleteOne {

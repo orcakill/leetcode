@@ -4,12 +4,12 @@ import other.auto.entity.ClassPO;
 
 import java.util.List;
 
-import static other.auto.util.CommonUtils.*;
+import static other.dao.CommonUtils.*;
 
 public class FindByID {
-	public  static  StringBuilder findById (String name, String name1, String table, List<ClassPO> classPOS,
-	                                        List<ClassPO> classPOS1){
-		StringBuilder str=new StringBuilder ();
+	public static StringBuilder findById (String name, String name1, String table, List<ClassPO> classPOS,
+	                                      List<ClassPO> classPOS1) {
+		StringBuilder str = new StringBuilder ();
 		str.append ("private static final Logger logger = LogManager.getLogger(")
 		   .append (name.replaceAll ("PO", ""))
 		   .append ("Mapper")
@@ -40,23 +40,24 @@ public class FindByID {
 		   .append (name1)
 		   .append (";\r\n")
 		   .append ("}\r\n\r\n");
-		return  str;
+		return str;
 	}
 	
 	public static void getParam (List<ClassPO> classPOS1, StringBuilder str) {
-		for(int i=0;i<classPOS1.size ();i++){
-			if(i>0){
+		for (int i = 0; i < classPOS1.size (); i++) {
+			if (i > 0) {
 				str.append (" and ");
 			}
-			str.append (toLowerLine (classPOS1.get (i).getName ()))
+			str.append (toLowerLine (classPOS1.get (i)
+			                                  .getName ()))
 			   .append ("=?");
 		}
 		str.append ("\"; \r\n")
 		   .append ("  Connection connection= Jdbc.getConnection();\r\n  " + "PreparedStatement " +
 		            "preparedStatement=connection.prepareStatement(sql); \r\n");
-		for(int i=0;i<classPOS1.size ();i++){
+		for (int i = 0; i < classPOS1.size (); i++) {
 			str.append ("  preparedStatement.setObject (")
-			   .append (i+1)
+			   .append (i + 1)
 			   .append (",")
 			   .append (classPOS1.get (i)
 			                     .getName ())

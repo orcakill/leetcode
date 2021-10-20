@@ -1,12 +1,12 @@
 package other.auto.method;
 
 import other.auto.entity.ClassPO;
-import other.auto.util.CommonUtils;
+import other.dao.CommonUtils;
 import util.Case;
 
 import java.util.List;
 
-import static other.auto.util.CommonUtils.*;
+import static other.dao.CommonUtils.*;
 
 public class Save {
 	public static StringBuilder save (String name, String name1, String table, List<ClassPO> classPOS,
@@ -87,7 +87,7 @@ public class Save {
 				   .append (".get")
 				   .append (toUpper (classPO
 						   .getName ()))
-				   .append (".getTime")
+				   .append ("().getTime")
 				   .append ("()))")
 				   .append (";");
 			}

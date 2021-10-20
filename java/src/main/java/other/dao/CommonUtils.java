@@ -1,4 +1,4 @@
-package other.auto.util;
+package other.dao;
 
 import other.auto.entity.ClassPO;
 import other.auto.method.DeleteByIdTest;
