@@ -29,9 +29,5 @@ public interface ImageService {
 		 return  ImageServiceImpl.imagesClickIsEmpty (folder);
     }
 	
-	/*多张图片识别，获取其中随机的一个点*/
-	static 	void  imagesClickRandom (String folder) throws InterruptedException, AWTException{
-		ImageServiceImpl.imagesClickRandom (folder);
-	}
 	
 }

@@ -41,9 +41,9 @@ public class LoginServiceImpl{
 		StartUpExeUtils.startUpExe ("CMD /C " + ExeAddress.exeAddress (), "Nox.exe");
 
 //      单击阴阳师图标
-		File file1 = new File ("java/src/main/resources/image/scenario/阴阳师图标.png");
+		String file1 = "scenario/阴阳师图标";
 		logger.info ("单击阴阳师图标，进入登录页面");
-		ImageService.imageClick (file1);
+		ImageService.imagesClick (file1);
 //      模拟器全屏
 //		File file2 = new File ("java/src/main/resources/image/scenario/模拟器全屏.png");
 //		logger.info ("单击窗口最大化");

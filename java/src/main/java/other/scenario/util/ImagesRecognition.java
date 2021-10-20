@@ -23,7 +23,16 @@ public class ImagesRecognition {
 //		屏幕截图和图片对比
 		List<PictureIdentifyWorkPO> mouseXY=FindAllImgData (Window,ImagesData);
 //		鼠标点击
-		MouseClick.mouseClicks (mouseXY);
+		List<PictureIdentifyWorkPO> mouseXY1=new ArrayList<> ();
+//		鼠标点击
+		if(mouseXY.size ()>0){
+			int num=RandomUtil.randomMinute (mouseXY.size ());
+			mouseXY1.add (mouseXY.get (num));
+			MouseClick.mouseClicks (mouseXY1);
+		}
+		else{
+			MouseClick.mouseClicks (mouseXY);
+		}
 	}
 	
 	

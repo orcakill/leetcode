@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 import other.scenario.util.ImageRecognition;
-import other.scenario.util.ImagesRandom;
 import other.scenario.util.ImagesRecognition;
 
 import java.awt.*;
@@ -20,7 +19,7 @@ import java.io.File;
 @Service
 public class ImageServiceImpl  {
 	public  static  final Logger logger = LogManager.getLogger (ImageServiceImpl.class);
-	private  static final int num=20;
+	private  static final int num=30;
 	
 
 	public static void imageClick (File file) throws InterruptedException, AWTException {
@@ -135,31 +134,6 @@ public class ImageServiceImpl  {
 		return b;
 	}
 	
-	public static void imagesClickRandom (String folderName) throws InterruptedException, AWTException {
-		File fileX = new File (
-				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folderName);
-		if (fileX.exists ()) {
-			for (int i = 0; i < num; i++) {
-				Thread.sleep (5000);
-				if (ImagesRandom.imagesRecognitionIsEmpty (folderName)) {
-					logger.info ("图片匹配成功");
-					Thread.sleep (2000);
-					ImagesRandom.imagesRecognition (folderName);
-					Thread.sleep (2000);
-					logger.info ("操作成功");
-					break;
-				}
-				else {
-					logger.error ("在每5秒的检测中，第" + (i + 1) + "次检查未发现该图片");
-				}
-				if(i==num-1){
-					logger.info (folderName + "该路径下，图片未找到");
-				}
-			}
-		}
-		else {
-			logger.info ("该图标的路径不确定存在");
-		}
-	}
+
 }
 

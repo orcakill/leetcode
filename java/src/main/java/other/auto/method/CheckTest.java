@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import static other.auto.util.CommonUtils.*;
+import static other.dao.CommonUtils.*;
 
 public class CheckTest {
 	public static StringBuilder checkTest (String name,

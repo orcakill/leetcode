@@ -4,7 +4,7 @@ import other.auto.entity.ClassPO;
 
 import java.util.List;
 
-import static other.auto.util.CommonUtils.getId;
+import static other.dao.CommonUtils.getId;
 
 public class Check {
 	public  static  StringBuilder check (String table, List<ClassPO> classPOS,

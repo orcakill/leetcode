@@ -32,19 +32,19 @@ public class TempApp {
 		for (int i = 0; num > 0; i++) {
 			String file1 = "scenario/temp/御魂/挑战";
 			logger.info ("准备开始御魂挑战");
-			ImageService.imagesClickRandom (file1);
+			ImageService.imagesClick (file1);
 			logger.info ("等待挑战完成");
 			Thread.sleep (getRandom (25, 35) * 1000L);
 			
 			String file2 = "scenario/temp/御魂/角色头像";
 			logger.info ("准备点击角色头像");
-			ImageService.imagesClickRandom (file2);
+			ImageService.imagesClick (file2);
 			logger.info ("点击角色头像完成");
 			
 			Thread.sleep (getRandom (2,4) * 1000L);
 			String file3 = "scenario/temp/御魂/退出挑战";
 			logger.info ("准备退出挑战");
-			ImageService.imagesClickRandom (file3);
+			ImageService.imagesClick (file3);
 			logger.info ("退出挑战完成");
 			num--;
 			Thread.sleep (getRandom (2,4) * 1000L);
