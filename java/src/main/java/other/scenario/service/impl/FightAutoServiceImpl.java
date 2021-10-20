@@ -138,9 +138,9 @@ public class FightAutoServiceImpl {
 				Thread.sleep (10 * 60 * 1000);
 //				停止自动战斗
 				logger.info ("准备停止自动战斗");
-				MouseClick.mouseClickNow (0,0);
+				ImageService.imagesClick (file8);
 				logger.info ("自动战斗停止");
-				Thread.sleep (10 * 1000);
+				Thread.sleep (5* 1000);
 //				退出到首页
 				IndexService.indexBack ();
 				String file81 = "scenario/确认";

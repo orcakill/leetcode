@@ -41,6 +41,7 @@ public class ReceiveServiceImpl {
 				ImageService.imageClick (file3);
 				logger.info ("已领取全部邮件");
 				Thread.sleep (2000);
+				IndexService.indexBack ();
 			}
 			else{
 				logger.info ("没有邮件，不领取");

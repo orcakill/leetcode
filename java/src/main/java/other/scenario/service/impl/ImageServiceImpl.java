@@ -20,6 +20,7 @@ import java.io.File;
 public class ImageServiceImpl  {
 	public  static  final Logger logger = LogManager.getLogger (ImageServiceImpl.class);
 	private  static final int num=30;
+	private  static final int numEmpty=10;
 	
 
 	public static void imageClick (File file) throws InterruptedException, AWTException {
@@ -51,7 +52,7 @@ public class ImageServiceImpl  {
 	public static boolean imageClickIsEmpty (File file) throws InterruptedException, AWTException {
 		boolean b = false;
 		if (file.exists ()) {
-			for (int i = 0; i < num; i++) {
+			for (int i = 0; i < numEmpty; i++) {
 				Thread.sleep (5000);
 				if (ImageRecognition.imageRecognitionIsEmpty (file)) {
 					logger.info ("图片匹配成功,该图片在当前页面存在");
@@ -61,7 +62,7 @@ public class ImageServiceImpl  {
 				else {
 					logger.error ("在每5秒的检测中，第" + (i + 1) + "次检查未发现该图片");
 				}
-				if(i==num-1){
+				if(i==numEmpty-1){
 					logger.info (file + "图片未找到");
 				}
 			}
@@ -111,7 +112,7 @@ public class ImageServiceImpl  {
 					System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
 		}
 		if (file.exists ()) {
-			for (int i = 0; i <num; i++) {
+			for (int i = 0; i <numEmpty; i++) {
 				Thread.sleep (5000);
 				if (ImagesRecognition.imagesRecognitionIsEmpty (folder)) {
 					logger.info ("图片匹配成功,该图片在当前页面存在");
@@ -121,7 +122,7 @@ public class ImageServiceImpl  {
 				else {
 					logger.error ("在每5秒的检测中，第" + (i + 1) + "次检查未发现该图片");
 				}
-				if(i==num-1){
+				if(i==numEmpty-1){
 					logger.info (folder + "路径下，图片未找到");
 				}
 			}

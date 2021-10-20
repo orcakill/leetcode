@@ -72,6 +72,7 @@ public class LoginServiceImpl{
 		ImageService.imagesClick (folderName2);
 //		登录,通过适龄提示的纵坐标，适龄提示的横坐标—+（反馈的横坐标-适龄提示横坐标）*0.5  通过和切换的横坐标确定比例系数
 //		适龄提示的坐标
+		Thread.sleep (2000);
 		logger.info ("查找适龄提示的坐标");
 		File file3 = new File ("java/src/main/resources/image/scenario/适龄提示.png");
 		PictureIdentifyWorkPO pictureIdentifyWorkPO1 = ImageRecognition.imageRecognitionMouse (file3);
