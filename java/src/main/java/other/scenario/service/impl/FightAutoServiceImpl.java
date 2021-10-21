@@ -135,10 +135,8 @@ public class FightAutoServiceImpl {
 				ImageService.imagesClick (file8);
 				logger.info ("自动战斗开始");
 //				等待自动战斗完成
-				Thread.sleep (10 * 60 * 1000);
+				Thread.sleep (20 * 60 * 1000);
 //				停止自动战斗
-				logger.info ("准备停止自动战斗");
-				ImageService.imagesClick (file8);
 				logger.info ("自动战斗停止");
 				Thread.sleep (5* 1000);
 //				退出到首页
@@ -282,6 +280,10 @@ public class FightAutoServiceImpl {
 			Thread.sleep (2000);
 //			是否有全部领取
 			MouseClick.mouseClickNow (0,0);
+			File file11=new File ("java/src/main/resources/image/scenario/任务.png");
+			logger.info ("点击任务");
+			ImageService.imageClick (file11);
+			logger.info ("进入任务");
 			File file2 = new File ("java/src/main/resources/image/scenario/花合战全部领取.png");
 			boolean b = ImageService.imageClickIsEmpty (file2);
 			if (b) {
