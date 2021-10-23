@@ -8,9 +8,9 @@ import java.util.List;
 
 public class MapperApp {
 	public static void main (String[] args) throws ClassNotFoundException {        /* 赋值类名*/
-		Class<?> c = Class.forName ("other.mail.model.entity.EmailBoxPO");
-		final String name = "EmailBoxPO";
-		String table = "email_box";
+		Class<?> c = Class.forName ("other.mail.model.entity.MessageEventPO");
+		final String name = "MessageEventPO";
+		String table = "message_event";
 		List<ClassPO> classPOS = CommonUtils.getClassPO (c);
 		List<ClassPO> classPOS1 = CommonUtils.getPk (classPOS);
 		List<ClassPO> classPOS2 = CommonUtils.getNoPk (classPOS);
