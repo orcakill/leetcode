@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 import other.scenario.util.ImageRecognition;
+import other.scenario.util.ImagesBackRec;
 import other.scenario.util.ImagesRecognition;
 
 import java.awt.*;
@@ -19,7 +20,7 @@ import java.io.File;
 @Service
 public class ImageServiceImpl  {
 	public  static  final Logger logger = LogManager.getLogger (ImageServiceImpl.class);
-	private  static final int num=30;
+	private  static final int num=15;
 	private  static final int numEmpty=10;
 	
 
@@ -74,7 +75,7 @@ public class ImageServiceImpl  {
 	}
 	
 
-	public static void imagesClick (String folder) throws InterruptedException, AWTException {
+	public static void imagesClick (String folder ) throws InterruptedException, AWTException {
 		File file = new File (
 				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
 		if (file.exists ()) {
@@ -135,6 +136,116 @@ public class ImageServiceImpl  {
 		return b;
 	}
 	
-
+	public static void imagesClickNumber (String folder,Integer number) throws InterruptedException, AWTException {
+		File file= new File (
+				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
+		if (file.exists ()) {
+			for (int i = 0; i < number; i++) {
+				Thread.sleep (3000);
+				if (ImagesRecognition.imagesRecognitionIsEmpty (folder)) {
+					logger.info ("图片匹配成功");
+					Thread.sleep (1000);
+					ImagesRecognition.imagesRecognition (folder);
+					Thread.sleep (1000);
+					logger.info ("操作成功");
+					break;
+				}
+				else {
+					logger.error ("在每5秒的检测中，第" + (i + 1) + "次检查未发现该图片");
+				}
+				if(i==num-1){
+					logger.info (folder + "路径下，图片未找到");
+				}
+			}
+		}
+		else {
+			logger.info ("图标路径不存在");
+		}
+		
+	}
+	
+	public static void imagesClickBack (String folder) throws InterruptedException, AWTException {
+		File file = new File (
+				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
+		if (file.exists ()) {
+			for (int i = 0; i < num; i++) {
+				Thread.sleep (5000);
+				if (ImagesBackRec.imagesRecognitionIsEmpty (folder)) {
+					logger.info ("图片匹配成功");
+					Thread.sleep (2000);
+					ImagesBackRec.imagesRecognition (folder);
+					Thread.sleep (2000);
+					logger.info ("点击成功");
+					break;
+				}
+				else {
+					logger.error ("在每5秒的检测中，第" + (i + 1) + "次检查未发现该图片");
+				}
+				if(i==num-1){
+					logger.info (folder + "路径下，图片未找到");
+				}
+			}
+		}
+		else {
+			logger.info ("图标路径不存在");
+		}
+	}
+	
+	public static boolean imagesClickBackIsEmpty (String folder) throws InterruptedException, AWTException {
+		boolean b = false;
+		File file = new File (
+				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
+		if(!file.exists ()){
+			file = new File (
+					System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
+		}
+		if (file.exists ()) {
+			for (int i = 0; i <numEmpty; i++) {
+				Thread.sleep (5000);
+				if (ImagesBackRec.imagesRecognitionIsEmpty (folder)) {
+					logger.info ("图片匹配成功,该图片在当前页面存在");
+					b = true;
+					break;
+				}
+				else {
+					logger.error ("在每5秒的检测中，第" + (i + 1) + "次检查未发现该图片");
+				}
+				if(i==numEmpty-1){
+					logger.info (folder + "路径下，图片未找到");
+				}
+			}
+		}
+		else {
+			logger.info ("图标路径不存在");
+		}
+		return b;
+	}
+	
+	public static void imagesClickBackNumber (String folder, Integer number) throws InterruptedException, AWTException {
+		File file= new File (
+				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
+		if (file.exists ()) {
+			for (int i = 0; i < number; i++) {
+				Thread.sleep (3000);
+				if (ImagesBackRec.imagesRecognitionIsEmpty (folder)) {
+					logger.info ("图片匹配成功");
+					Thread.sleep (1000);
+					ImagesBackRec.imagesRecognition (folder);
+					Thread.sleep (1000);
+					logger.info ("点击操作成功");
+					break;
+				}
+				else {
+					logger.error ("在每5秒的检测中，第" + (i + 1) + "次检查未发现该图片");
+				}
+				if(i==num-1){
+					logger.info (folder + "路径下，图片未找到");
+				}
+			}
+		}
+		else {
+			logger.info ("图标路径不存在");
+		}
+	}
 }
 

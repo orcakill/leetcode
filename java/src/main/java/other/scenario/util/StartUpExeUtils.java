@@ -3,7 +3,12 @@ package other.scenario.util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * java启动本地exe程序工具类
@@ -172,4 +177,6 @@ public class StartUpExeUtils {
 		}
 		return existProc;
 	}
+	
+
 }
