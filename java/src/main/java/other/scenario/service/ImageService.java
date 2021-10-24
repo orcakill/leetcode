@@ -29,5 +29,24 @@ public interface ImageService {
 		 return  ImageServiceImpl.imagesClickIsEmpty (folder);
     }
 	
+	/*多张图片识别*/
+	static 	void  imagesClickNumber (String folder,Integer number) throws InterruptedException, AWTException{
+		ImageServiceImpl.imagesClickNumber (folder,number);
+	}
+	
+	/*多张图片识别*/
+	static 	void  imagesClickBack (String folder) throws InterruptedException, AWTException{
+		ImageServiceImpl.imagesClickBack (folder);
+	}
+	
+	/*多张图片识别,判断图片在当前页面是否存在*/
+	static boolean imagesClickBackIsEmpty (String folder) throws AWTException, InterruptedException{
+		return  ImageServiceImpl.imagesClickBackIsEmpty (folder);
+	}
+	
+	/*多张图片识别*/
+	static 	void  imagesClickBackNumber (String folder,Integer number) throws InterruptedException, AWTException{
+		ImageServiceImpl.imagesClickBackNumber (folder,number);
+	}
 	
 }
