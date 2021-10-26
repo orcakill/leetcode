@@ -80,7 +80,7 @@ public class MouseClick {
 		
 	}
 	
-	
+//	向后台进程发送鼠标点击事件
 	public  static  void  mouseClickBack(List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList){
 		HWND hwnd = User32.INSTANCE.FindWindow (null, "夜神模拟器");
 		mouseClickBackground (hwnd,pictureIdentifyWorkPOList);
@@ -93,30 +93,30 @@ public class MouseClick {
 	 */
 	public static void mouseClickBackground (HWND hwnd,List<PictureIdentifyWorkPO> mouseMessages) {
 		
-		for (int i = 0; i < mouseMessages.size(); i++) {
+		for (PictureIdentifyWorkPO mouseMessage : mouseMessages) {
 			// 解析鼠标坐标参数,低位为X轴,高位为Y轴坐标
-			String X = Integer.toHexString(mouseMessages.get(i).getX ());
-			String Y = Integer.toHexString(mouseMessages.get(i).getY ());
-			while (X.length() < 4) {
-				X = "0" + X;
+			StringBuilder X = new StringBuilder (Integer.toHexString (mouseMessage.getX ()));
+			StringBuilder Y = new StringBuilder (Integer.toHexString (mouseMessage.getY ()));
+			while (X.length () < 4) {
+				X.insert (0, "0");
 			}
-			while (Y.length() < 4) {
-				Y = "0" + Y;
+			while (Y.length () < 4) {
+				Y.insert (0, "0");
 			}
-			Integer in = Integer.valueOf(Y + X, 16);
+			Integer in = Integer.valueOf (Y.toString () + X, 16);
 			WinDef.LPARAM lPARAM = new WinDef.LPARAM (in);
-			int moveTime = (int) (Math.random() * 400 + 300);
-			int mousePressTime = (int) (Math.random() * 500 + 400);
+			int moveTime = (int) (Math.random () * 400 + 300);
+			int mousePressTime = (int) (Math.random () * 500 + 400);
 			try {
 				// 模拟计算鼠标按下的间隔并且按下鼠标
-				Thread.sleep(moveTime);
+				Thread.sleep (moveTime);
 				ScanningProcess.User32.INSTANCE.PostMessage (hwnd, 513, new WinDef.WPARAM (513), lPARAM);
-				Thread.sleep(mousePressTime);
+				Thread.sleep (mousePressTime);
 				ScanningProcess.User32.INSTANCE.PostMessage (hwnd, 514, new WinDef.WPARAM (514), lPARAM);
 				
 			} catch (InterruptedException e) {
 				
-				e.printStackTrace();
+				e.printStackTrace ();
 				
 			}
 			
