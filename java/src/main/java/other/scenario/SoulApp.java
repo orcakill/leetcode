@@ -36,12 +36,12 @@ public class SoulApp {
 			String file1 = "scenario/temp/御魂/挑战";
 			logger.info ("准备开始御魂挑战");
 			ImageService.imagesClickBack (file1);
-			logger.info ("第" + (i + 1) +"挑战中，等待挑战完成");
-			Thread.sleep (getRandom (25, 35) * 1000L);
+			logger.info ("第" + (i + 1) +"次挑战中，等待挑战完成");
+			Thread.sleep (getRandom(40, 50) * 1000L);
 			
 			String file2 = "scenario/temp/御魂/角色头像";
 			logger.info ("准备点击角色头像");
-			ImageService.imagesClickBackNumber (file2,2 );
+			ImageService.imagesClickBackNumber (file2,30);
 			logger.info ("点击角色头像完成");
 			
 			Thread.sleep (getRandom (2,4) * 1000L);

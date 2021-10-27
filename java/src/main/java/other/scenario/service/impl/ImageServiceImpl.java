@@ -10,6 +10,8 @@ import other.scenario.util.ImagesRecognition;
 import java.awt.*;
 import java.io.File;
 
+import static other.scenario.util.RandomUtil.getRandom;
+
 /**
  * @author orcakill
  * @version 1.0.0
@@ -229,14 +231,14 @@ public class ImageServiceImpl  {
 				Thread.sleep (3000);
 				if (ImagesBackRec.imagesRecognitionIsEmpty (folder)) {
 					logger.info ("图片匹配成功");
-					Thread.sleep (1000);
+					Thread.sleep (getRandom (1, 2) * 1000L);
 					ImagesBackRec.imagesRecognition (folder);
-					Thread.sleep (1000);
+					Thread.sleep (getRandom (1, 2) * 1000L);
 					logger.info ("点击操作成功");
 					break;
 				}
 				else {
-					logger.error ("在每5秒的检测中，第" + (i + 1) + "次检查未发现该图片");
+					logger.error ("在每3秒的检测中，第" + (i + 1) + "次检查未发现该图片");
 				}
 				if(i==num-1){
 					logger.info (folder + "路径下，图片未找到");
