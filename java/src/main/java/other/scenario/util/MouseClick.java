@@ -81,7 +81,7 @@ public class MouseClick {
 	}
 	
 //	向后台进程发送鼠标点击事件
-	public  static  void  mouseClickBack(List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList){
+	public  static  void  mouseClickBack(List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList) throws AWTException {
 		HWND hwnd = User32.INSTANCE.FindWindow (null, "夜神模拟器");
 		mouseClickBackground (hwnd,pictureIdentifyWorkPOList);
 	}
@@ -91,12 +91,12 @@ public class MouseClick {
 	/**
 	 * 本方法可以向后台进程窗口发送鼠标事件从而实现后台操作游戏
 	 */
-	public static void mouseClickBackground (HWND hwnd,List<PictureIdentifyWorkPO> mouseMessages) {
-		
+	public static void mouseClickBackground (HWND hwnd,List<PictureIdentifyWorkPO> mouseMessages) throws AWTException {
+		Double bl = ComputerScaling.getScale ();
 		for (PictureIdentifyWorkPO mouseMessage : mouseMessages) {
 			// 解析鼠标坐标参数,低位为X轴,高位为Y轴坐标
-			StringBuilder X = new StringBuilder (Integer.toHexString (mouseMessage.getX ()));
-			StringBuilder Y = new StringBuilder (Integer.toHexString (mouseMessage.getY ()));
+			StringBuilder X = new StringBuilder (Integer.toHexString ((int) (mouseMessage.getX () / bl)));
+			StringBuilder Y = new StringBuilder (Integer.toHexString ((int) (mouseMessage.getY () / bl)));
 			while (X.length () < 4) {
 				X.insert (0, "0");
 			}
