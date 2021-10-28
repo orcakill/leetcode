@@ -56,7 +56,7 @@ public class ImageServiceImpl  {
 		boolean b = false;
 		if (file.exists ()) {
 			for (int i = 0; i < numEmpty; i++) {
-				Thread.sleep (5000);
+				Thread.sleep (3000);
 				if (ImageRecognition.imageRecognitionIsEmpty (file)) {
 					logger.info ("图片匹配成功,该图片在当前页面存在");
 					b = true;

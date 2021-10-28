@@ -37,7 +37,8 @@ public class SoulApp {
 			logger.info ("准备开始御魂挑战");
 			ImageService.imagesClickBack (file1);
 			logger.info ("第" + (i + 1) +"次挑战中，等待挑战完成");
-			Thread.sleep (getRandom(40, 50) * 1000L);
+			Thread.sleep (getRandom(20, 25) * 1000L);
+			
 			
 			String file2 = "scenario/temp/御魂/角色头像";
 			logger.info ("准备点击角色头像");
