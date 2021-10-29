@@ -21,7 +21,6 @@ public class MessageService {
 		Calendar calendar = Calendar.getInstance ();
 		Date date=new Date ();
 		calendar.setTime(date);
-		int week = calendar.get (Calendar.DAY_OF_WEEK);
 		calendar.add (Calendar.DATE,-6);
 		Date  date1=calendar.getTime ();
 		
@@ -70,7 +69,7 @@ public class MessageService {
 			messageEventPO.setMessageType (0);
 			messageEventPOList.add (messageEventPO);
 		}
-		calendar.add(calendar.DATE,4);
+		calendar.add (Calendar.DATE,4);
 		Date  lastTwoDay=calendar.getTime ();
 		if(commitDTOS.get (0).getCommitDate ().getTime ()<lastTwoDay.getTime ()){
 			MessageEventPO messageEventPO1=new MessageEventPO ();
@@ -97,9 +96,9 @@ public class MessageService {
 		Elements elements = document.getElementsByClass ("list-item");
 		String  str=elements.get(0).select ("a").text ();
 		String  strDate=elements.get (0).getElementsByClass ("list-item-date").text ();
-		SimpleDateFormat dateFormat=new SimpleDateFormat ("yyyy-mm-dd");
+		SimpleDateFormat dateFormat=new SimpleDateFormat ("yyyy-MM-dd");
 		Date date2=dateFormat.parse (strDate);
-		if(str.indexOf ("事业单位")!=-1){
+		if(str.contains ("事业单位")){
 		   if(date1.getTime ()<date2.getTime ()){
 			   MessageEventPO messageEventPO1=new MessageEventPO ();
 			   messageEventPO1.setMessageDate (date);
@@ -109,6 +108,13 @@ public class MessageService {
 			   messageEventPOList.add (messageEventPO1);
 		   }
 		}
+		return  messageEventPOList;
+	}
+	
+	public static List<MessageEventPO>  weiboMessage() throws Exception {
+		List<MessageEventPO> messageEventPOList=new ArrayList<> ();
+		String   url="https://weibo.com/u/6021104853";
+		Document document = Jsoup.parse (HttpClient.getITHttpClient (url));
 		return  messageEventPOList;
 	}
 }
