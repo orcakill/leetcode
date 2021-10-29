@@ -23,9 +23,9 @@ public class SoulApp {
 	public static final Logger logger = LogManager.getLogger (SoulApp.class);
 
 	public static void main (String[] args) throws Exception {
-//	     御魂120次
+//	     御魂150次
 //		 soul (120);
-		soulBack (120);
+		soulBack (150);
 	}
 	
 	public static void soulBack(Integer num) throws Exception {

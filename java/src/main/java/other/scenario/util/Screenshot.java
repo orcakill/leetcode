@@ -43,12 +43,12 @@ public class Screenshot {
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 		BufferedImage screenshot = scanningProcess(hwnd,2560,1600);
 		// 写入文件
-		try {
-			ImageIO.write(screenshot, "jpg", new File("D://123.jpg"));
+//		try {
+//			ImageIO.write(screenshot, "jpg", new File("D://123.jpg"));
 //			System.out.println("截屏成功！");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		return  screenshot;
 	}
 	

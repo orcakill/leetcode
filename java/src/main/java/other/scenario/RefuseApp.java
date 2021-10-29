@@ -22,7 +22,7 @@ public class RefuseApp {
 	}
 	
 	public static   void  refuse() throws InterruptedException, AWTException {
-		for(int i=0;i<=120;i++){
+		for(int i=0;i<=150;i++){
 			String file1 = "scenario/temp/御魂/拒接协战";
 			ImageService.imagesClickBackNumber (file1,30);
 			
