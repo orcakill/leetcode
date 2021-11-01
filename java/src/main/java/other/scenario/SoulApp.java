@@ -3,11 +3,8 @@ package other.scenario;
 import other.scenario.service.ImageService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import other.scenario.service.LoginService;
-import other.scenario.util.RandomUtil;
-import other.scenario.util.StartUpExeUtils;
 
-import java.awt.*;
+
 
 import static other.scenario.util.RandomUtil.getRandom;
 

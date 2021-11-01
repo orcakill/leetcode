@@ -12,8 +12,8 @@ import java.util.List;
  */
 public class TransferUtil {
 	public static void main(String[] args) throws FFmpegException {
-		boolean flag = transform("D:/study/utils/ffmpeg/bin/ffmpeg.exe", "F:\\test\\video_target\\a.mp4",
-				"F:\\test\\video_high\\a.mp4","1920x1080");
+		boolean flag = transform("D:/study/utils/ffmpeg/bin/ffmpeg.exe", "D:\\test\\video_high\\d.mp4",
+				"D:\\test\\video_high\\e.mp4","1920*1080");
 		System.out.println(flag);
 	}
 	
