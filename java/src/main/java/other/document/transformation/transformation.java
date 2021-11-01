@@ -11,9 +11,9 @@ import static other.document.utils.ConvertVideo.process;
  */
 public class transformation {
 	public static void main(String[] args) {
-		String inputPath="F:\\test\\video_find\\a.flv";
-		String outputPath="F:\\test\\video_target\\a.mp4";
-		String outputPath1="F:\\test\\video_middle";
+		String inputPath="D:\\test\\video_find\\a.flv";
+		String outputPath="D:\\test\\video_target\\a.mp4";
+		String outputPath1="D:\\test\\video_middle";
 		process(inputPath,outputPath,outputPath1);
 	}
 }

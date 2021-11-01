@@ -1,5 +1,12 @@
 package other.document.find.video_1;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import other.mail.util.GetJson;
+import other.mail.util.HttpClient;
+
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
@@ -10,15 +17,21 @@ import java.net.URLConnection;
  **/
 public class video_1 {
        /*爬取b站的1个视频,使用手动获取url*/
-       public static void main(String[] args) {
+       public static void main(String[] args) throws Exception {
            System.out.println("开始");
            long start = System.currentTimeMillis();
            /**
             *  从json中获取到的 url
             *  请获取后手动填写
             */
-           String lastUrl = "https://upos-sz-mirrorcos.bilivideo.com/upgcxcode/22/48/111804822/111804822_nb2-1-64.flv?e=ig8euxZM2rNcNbN1hbdVhwdlhbRghwdVhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=&uipk=5&nbs=1&deadline=1635736449&gen=playurlv2&os=cosbv&oi=3661349261&trid=9f742a24a52c4f0d97209eaa8515b871u&platform=pc&upsig=db2c59d85742b581f2a1f2bddebd7c7a&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=0&bvc=vod&nettype=0&orderid=0,3&agrr=0&logo=80000000";
-           //自定义文件名称
+           String url="https://api.bilibili.com/x/player/playurl?cid=111804822&otype=json&avid=58906853&fnver=0&fnval" +
+                      "=2&player=1&qn=112\n";
+           String  str= GetJson.getHttpJson (url);
+           JSONObject jsonObject=JSONObject.parseObject (str);
+           JSONArray  jsonArray=jsonObject.getJSONObject ("data").getJSONArray ("durl");
+           String lastUrl =jsonArray.getJSONObject (0).get ("url").toString ();
+          //自定义文件名称
+          
            String fileName = "a.flv";
            downloadMovie(lastUrl, fileName);
 
@@ -42,7 +55,7 @@ public class video_1 {
             e.printStackTrace();
         }
         //定义路径
-        String path = "F:\\test\\video_find\\" + fileName;
+        String path = "D:\\test\\video_find\\" + fileName;
         File file = new File(path);
         int i = 1;
         try {

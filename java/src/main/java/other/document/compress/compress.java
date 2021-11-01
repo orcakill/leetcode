@@ -13,15 +13,15 @@ import static other.document.compress.FileZip.ZipCompress;
  */
 public class compress {
 	public static void main(String[] args) throws Exception {
-		String s1="F:\\test\\video_high\\a.mp4";
-		String s2="F:\\test\\video_compress\\a.zip";
+		String s1="D:\\test\\video_high\\a.mp4";
+		String s2="D:\\test\\video_compress\\a.zip";
 		//ZipCompress(s1,s2);
-		String s3="F:\\test\\video_high";
+		String s3="D:\\test\\video_high";
 		String s4="a.mp4";
-		String s5="b.mp4";
-		//VideoUtil.compressionVideo (s3,s4,s5);
-		String s6="F:\\test\\video_high\\b.mp4";
-		String s7="F:\\test\\video_compress\\b.7z";
-		File7z.Compress7z (s6,s7);
+		String s5="d.mp4";
+		VideoUtil.compressionVideo (s3,s4,s5);
+		String s6="D:\\test\\video_high\\b.mp4";
+		String s7="D:\\test\\video_compress\\b.7z";
+		//File7z.Compress7z (s6,s7);
 	}
 }

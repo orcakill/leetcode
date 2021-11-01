@@ -9,5 +9,6 @@ package other.document;
  */
 public class VideoApp {
 //	通过url获取视频
+
 //	将视频转换为480*320
 }
