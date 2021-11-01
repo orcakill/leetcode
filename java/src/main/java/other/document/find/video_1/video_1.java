@@ -17,9 +17,9 @@ public class video_1 {
             *  从json中获取到的 url
             *  请获取后手动填写
             */
-           String lastUrl = "https://upos-hz-mirrorakam.akamaized.net/upgcxcode/22/48/111804822/111804822_nb2-1-80.flv?e=ig8euxZM2rNcNbuM7WdVhoMa7wUVhwdEto8g5X10ugNcXBlqNxHxNEVE5XREto8KqJZHUa6m5J0SqE85tZvEuENvNo8g2ENvNo8i8o859r1qXg8xNEVE5XREto8GuFGv2U7SuxI72X6fTr859r1qXg8gNEVE5XREto8z5JZC2X2gkX5L5F1eTX1jkXlsTXHeux_f2o859IB_&uipk=5&nbs=1&deadline=1620291477&gen=playurlv2&os=akam&oi=804332179&trid=41e6ed23a5c441d096898098d08b4eaau&platform=pc&upsig=6d47a91d34af00efaf9b8ce82e3c46e1&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&hdnts=exp=1620291477~hmac=4a6298d916753170fe9e7358ced00d6fcded1922eff79e726df838a0d9a96262&mid=179559763&orderid=0,1&agrr=1&logo=80000000";
+           String lastUrl = "https://upos-sz-mirrorcos.bilivideo.com/upgcxcode/22/48/111804822/111804822_nb2-1-64.flv?e=ig8euxZM2rNcNbN1hbdVhwdlhbRghwdVhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=&uipk=5&nbs=1&deadline=1635736449&gen=playurlv2&os=cosbv&oi=3661349261&trid=9f742a24a52c4f0d97209eaa8515b871u&platform=pc&upsig=db2c59d85742b581f2a1f2bddebd7c7a&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=0&bvc=vod&nettype=0&orderid=0,3&agrr=0&logo=80000000";
            //自定义文件名称
-           String fileName = "a.mp4";
+           String fileName = "a.flv";
            downloadMovie(lastUrl, fileName);
 
            long end = System.currentTimeMillis();
