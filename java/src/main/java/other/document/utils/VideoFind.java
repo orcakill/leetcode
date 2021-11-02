@@ -1,4 +1,4 @@
-package other.document.find.video_1;
+package other.document.utils;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -15,31 +15,7 @@ import java.net.URLConnection;
  * @author orcakill
  * @date 2021/4/15  16:48
  **/
-public class video_1 {
-       /*爬取b站的1个视频,使用手动获取url*/
-       public static void main(String[] args) throws Exception {
-           System.out.println("开始");
-           long start = System.currentTimeMillis();
-           /**
-            *  从json中获取到的 url
-            *  请获取后手动填写
-            */
-           String url="https://api.bilibili.com/x/player/playurl?cid=111804822&otype=json&avid=58906853&fnver=0&fnval" +
-                      "=2&player=1&qn=112\n";
-           String  str= GetJson.getHttpJson (url);
-           JSONObject jsonObject=JSONObject.parseObject (str);
-           JSONArray  jsonArray=jsonObject.getJSONObject ("data").getJSONArray ("durl");
-           String lastUrl =jsonArray.getJSONObject (0).get ("url").toString ();
-          //自定义文件名称
-          
-           String fileName = "a.flv";
-           downloadMovie(lastUrl, fileName);
-
-           long end = System.currentTimeMillis();
-           System.out.println("完成 ");
-           System.err.println("总共耗时：" + (end - start) / 1000 + "s");
-       }
-
+public class VideoFind {
     public static void downloadMovie(String BLUrl, String fileName) {
         InputStream inputStream = null;
         try {
@@ -55,8 +31,7 @@ public class video_1 {
             e.printStackTrace();
         }
         //定义路径
-        String path = "D:\\test\\video_find\\" + fileName;
-        File file = new File(path);
+        File file = new File(fileName);
         int i = 1;
         try {
             assert inputStream != null;
