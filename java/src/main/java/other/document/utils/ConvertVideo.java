@@ -18,7 +18,22 @@ public class ConvertVideo {
 		private static String ffmpegPath  = "D:/study/utils/ffmpeg/bin/ffmpeg.exe";
 		
 		private static String mplayerPath = "D:/study/utils/mencoder/mencoder.exe";
+	
+	
+	public static void main(String[] args) {
+		//本地文件地址
+		String inputPath = "D:\\test\\video_high\\a.flv";
+		//目标文件地址
+		String outputPath ="D:\\test\\video_high\\c.mp4";
+		//中间文件随机数
+		String uuidname = UUID.randomUUID().toString();
+		//中间文件地址,需要两次转换的情况下会用到该中间文件.直接转换为MP4的文件不会生成中间文件.
+		String path = "E:/video/";
+		String outputPath1 = path  + uuidname + ".avi";
+		//执行转换
+		ConvertVideo.process(inputPath,outputPath,outputPath1);//执行完毕后可以删除没用的文件
 		
+	}
 		
 		/**
 		 * 视频格式转换入口
@@ -175,48 +190,7 @@ public class ConvertVideo {
 				return false;
 			}
 		}
-		public static void main(String[] args) {
-			//本地文件地址
-			String inputPath = "E:/test/11.flv";
-			//目标文件地址
-			String outputPath ="E:/video/11.mp4";
-			//中间文件随机数
-			String uuidname = UUID.randomUUID().toString();
-			//中间文件地址,需要两次转换的情况下会用到该中间文件.直接转换为MP4的文件不会生成中间文件.
-			String path = "E:/video/";
-			String outputPath1 = path  + uuidname + ".avi";
-			//执行转换
-			ConvertVideo.process(inputPath,outputPath,outputPath1);//执行完毕后可以删除没用的文件
-			
-		}
+
 	}
 	
-	/**
-	 * 资源释放流.避免内存溢出导致进程阻塞
-	 */
-	class PrintStream extends Thread {
-		
-		java.io.InputStream __is = null;
-		
-		public PrintStream(java.io.InputStream is) {
-			__is = is;
-		}
-		
-		public void run() {
-			try {
-				while (this != null) {
-					int _ch = __is.read();
-					if (_ch != -1)
-						System.out.print((char) _ch);
-					else break;
-				}
-				__is.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		
-		
-	}
-
+	
