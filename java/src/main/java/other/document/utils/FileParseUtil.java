@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,16 @@ import java.util.Map;
 public class FileParseUtil {
 	
 	public static final Logger LOGGER = LoggerFactory.getLogger (FileParseUtil.class);
+	
+	public static void main(String[] args) throws Exception{
+		Date date=new Date ();
+//	   获取视频的格式信息，分别是初始文件，转换后文件，解压后文件
+		Map map= FileParseUtil.getEncodingFormat ("D:\\test\\video_target\\a.flv");
+		Map map1= FileParseUtil.getEncodingFormat ("D:\\test\\video_target\\b.avi");
+		Map map2= FileParseUtil.getEncodingFormat ("D:\\test\\video_target\\c.mp4");
+		Map map3= FileParseUtil.getEncodingFormat ("D:\\test\\video_target\\d.mp4");
+		System.out.println ((System.currentTimeMillis ()-date.getTime ())/1000+"秒");
+	}
 	
 	/**
 	 * 提取音频、视频编码等信息
@@ -37,7 +48,7 @@ public class FileParseUtil {
 			try {
 				String regexDuration = "Duration: (.*?), start: (.*?), bitrate: (\\d*) kb\\/s";
 				String regexVideo = "Video: (.*?), (.*?), (.*?)[,\\s]";
-				String regexAudio = "Audio: (\\w*),(\\d*) Hz";
+				String regexAudio = "Audio: (.*?), (.*?)[,\\s]";
 				
 				Pattern patternDuration = compiler.compile (regexDuration, Perl5Compiler.CASE_INSENSITIVE_MASK);
 				PatternMatcher matcherDuration = new Perl5Matcher ();
@@ -107,13 +118,13 @@ public class FileParseUtil {
 			
 			StringBuffer sb = new StringBuffer ();
 			while ((line = buf.readLine ()) != null) {
-				System.out.println (line);
+				//System.out.println (line);
 				sb.append (line).append ("\r\n");
 				continue;
 			}
 			int ret = p.waitFor ();//这里线程阻塞，将等待外部转换进程运行成功运行结束后，才往下执行
 //1. end
-			return sb.toString ();
+			return sb.toString ().replaceAll ("(tv, bt709/unknown/bt709, progressive)","");
 		} catch (Exception e) {
 			LOGGER.error ("-- processFLV error, message is {}", e);
 			return null;

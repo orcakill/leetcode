@@ -12,8 +12,8 @@ import java.util.List;
  */
 public class TransferUtil {
 	public static void main(String[] args) throws FFmpegException {
-		boolean flag = transform("D:/study/utils/ffmpeg/bin/ffmpeg.exe", "D:\\test\\video_high\\d.mp4",
-				"D:\\test\\video_high\\e.mp4","1920*1080");
+		boolean flag = transform("D:/study/utils/ffmpeg/bin/ffmpeg.exe", "D:\\test\\video_high\\c.mp4",
+				"D:\\test\\video_high\\d.mp4","1920*1080");
 		System.out.println(flag);
 	}
 	
@@ -55,7 +55,7 @@ public class TransferUtil {
 		command.add("-i"); // 添加参数＂-i＂，该参数指定要转换的文件
 		command.add(oldfilepath); // 添加要转换格式的视频文件的路径
 		command.add("-qscale"); // 指定转换的质量
-		command.add("4");
+		command.add("0.01");
         
         /*command.add("-ab"); //设置音频码率
         command.add("64");
@@ -65,7 +65,7 @@ public class TransferUtil {
         command.add("22050");*/
 		
 		command.add("-r"); // 设置帧速率
-		command.add("24");
+		command.add("29.97 ");
 		command.add("-s"); // 设置分辨率
 		command.add(resolution);
 		command.add("-y"); // 添加参数＂-y＂，该参数指定将覆盖已存在的文件
@@ -74,23 +74,3 @@ public class TransferUtil {
 	}
 }
 
-class FFmpegException extends Exception {
-	
-	private static final long serialVersionUID = 1L;
-	
-	public FFmpegException() {
-		super();
-	}
-	
-	public FFmpegException(String message) {
-		super(message);
-	}
-	
-	public FFmpegException(Throwable cause) {
-		super(cause);
-	}
-	
-	public FFmpegException(String message, Throwable cause) {
-		super(message, cause);
-	}
-}
