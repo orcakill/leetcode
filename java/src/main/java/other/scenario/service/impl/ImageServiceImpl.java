@@ -143,7 +143,7 @@ public class ImageServiceImpl  {
 				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
 		if (file.exists ()) {
 			for (int i = 0; i < number; i++) {
-				Thread.sleep (3000);
+				Thread.sleep (1000);
 				if (ImagesRecognition.imagesRecognitionIsEmpty (folder)) {
 					logger.info ("图片匹配成功");
 					Thread.sleep (1000);
