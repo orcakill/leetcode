@@ -49,4 +49,6 @@ public interface ImageService {
 		ImageServiceImpl.imagesClickBackNumber (folder,number);
 	}
 	
+
+	
 }
