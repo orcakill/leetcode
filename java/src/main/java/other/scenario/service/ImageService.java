@@ -49,4 +49,10 @@ public interface ImageService {
 		ImageServiceImpl.imagesClickBackNumber (folder,number);
 	}
 	
+	/*多张图片识别，按顺序点击第一张图片、第二张图片，或者是直接第二张图片*/
+	static 	void  imagesClickBackNumberOrder (String folder1,String folder2,Integer number) throws InterruptedException,
+	                                                                                         AWTException{
+		ImageServiceImpl.imagesClickBackNumberOrder (folder1,folder2,number);
+	}
+	
 }

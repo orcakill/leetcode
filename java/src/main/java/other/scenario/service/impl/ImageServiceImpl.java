@@ -240,8 +240,44 @@ public class ImageServiceImpl  {
 				else {
 					logger.error ("在每3秒的检测中，第" + (i + 1) + "次检查未发现该图片");
 				}
-				if(i==num-1){
-					logger.info (folder + "路径下，图片未找到");
+			}
+		}
+		else {
+			logger.info ("图标路径不存在");
+		}
+	}
+	
+	public static void imagesClickBackNumberOrder (String folder1, String folder2, Integer number) throws
+	                                                                                               InterruptedException,
+	                                                                                               AWTException {
+		File file1= new File (
+				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder1);
+		File file2= new File (
+				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder2);
+		if (file1.exists ()&&file2.exists ()) {
+			for (int i = 0; i < number; i++) {
+				Thread.sleep (3000);
+				boolean a=ImagesBackRec.imagesRecognitionIsEmpty (folder1);
+				boolean b=ImagesBackRec.imagesRecognitionIsEmpty (folder2);
+				if (a) {
+					logger.info ("图片匹配成功");
+					Thread.sleep (getRandom (1, 2) * 1000L);
+					ImagesBackRec.imagesRecognition (folder1);
+					Thread.sleep (getRandom (2, 3) * 1000L);
+					logger.info ("点击操作成功");
+					imagesClickBackNumber(folder2,30);
+					break;
+				}
+				else if (b){
+					logger.info ("图片匹配成功");
+					Thread.sleep (getRandom (1, 2) * 1000L);
+					ImagesBackRec.imagesRecognition (folder2);
+					Thread.sleep (getRandom (1, 2) * 1000L);
+					logger.info ("点击操作成功");
+					break;
+				}
+				else {
+					logger.error ("在每3秒的检测中，第" + (i + 1) + "次检查未发现该图片");
 				}
 			}
 		}
