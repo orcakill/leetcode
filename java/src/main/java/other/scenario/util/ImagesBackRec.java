@@ -77,7 +77,6 @@ public class ImagesBackRec {
 	 * @return - 返回图片在屏幕的坐标集合
 	 */
 	public static List<PictureIdentifyWorkPO> FindAllImgData(BufferedImage Window, List<int[][]> ImagesData) {
-		
 		List<PictureIdentifyWorkPO> mouseMessages = new ArrayList<>();
 		// 解析屏幕图片数据
 		int width = Window.getWidth();
@@ -137,8 +136,10 @@ b:
 								mouseXY.setX (x);
 								mouseXY.setY (y);
 								mouseMessages.add (mouseXY);
+								if(mouseMessages.size ()>=5){
+									return mouseMessages;
+								}
 								break a;
-								
 							}
 							
 						}
