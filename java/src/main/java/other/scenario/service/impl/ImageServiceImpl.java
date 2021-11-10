@@ -203,7 +203,7 @@ public class ImageServiceImpl  {
 		}
 		if (file.exists ()) {
 			for (int i = 0; i <numEmpty; i++) {
-				Thread.sleep (5000);
+				Thread.sleep (2000);
 				if (ImagesBackRec.imagesRecognitionIsEmpty (folder)) {
 					logger.info ("图片匹配成功,该图片在当前页面存在");
 					b = true;
@@ -211,9 +211,6 @@ public class ImageServiceImpl  {
 				}
 				else {
 					logger.error ("在每5秒的检测中，第" + (i + 1) + "次检查未发现该图片");
-				}
-				if(i==numEmpty-1){
-					logger.info (folder + "路径下，图片未找到");
 				}
 			}
 		}
