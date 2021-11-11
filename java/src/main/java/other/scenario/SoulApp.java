@@ -38,7 +38,7 @@ public class SoulApp {
 			String file2 = "scenario/temp/御魂/角色头像";
 			String file3 = "scenario/temp/御魂/退出挑战";
 			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战");
-			ImageService.imagesClickBackNumberOrder (file2,file3,3);
+			ImageService.imagesClickBackNumberOrder (file2,file3,30);
 
 			logger.info ("退出挑战完成");
 			num--;
