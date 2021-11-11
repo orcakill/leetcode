@@ -137,6 +137,9 @@ b:
 								mouseXY.setX (x);
 								mouseXY.setY (y);
 								mouseMessages.add (mouseXY);
+								if(mouseMessages.size ()>=5){
+									return mouseMessages;
+								}
 								break a;
 								
 							}
