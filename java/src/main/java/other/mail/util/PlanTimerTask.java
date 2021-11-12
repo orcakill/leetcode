@@ -34,7 +34,7 @@ public class PlanTimerTask extends TimerTask {
 		Calendar calendar = Calendar.getInstance ();
 		calendar.setTime (date);
 		int hour = calendar.get (Calendar.HOUR_OF_DAY);
-		int minute = calendar.get (Calendar.MINUTE)+1;
+		int minute = calendar.get (Calendar.MINUTE);
 		planTimes.add (hour + ":" + minute);
 		planTimes.add ("20:0");
 		

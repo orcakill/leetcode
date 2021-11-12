@@ -10,10 +10,7 @@ import other.mail.model.entity.*;
 import other.mail.util.*;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class MessageService {
 	public static List<MessageEventPO>  commitMessage (){
@@ -112,9 +109,43 @@ public class MessageService {
 	}
 	
 	public static List<MessageEventPO>  weiboMessage() throws Exception {
-		List<MessageEventPO> messageEventPOList=new ArrayList<> ();
-		String   url="https://weibo.com/u/6021104853";
-		Document document = Jsoup.parse (HttpClient.getITHttpClient (url));
+		List<MessageEventPO> messageEventPOList = new ArrayList<> ();
+		Calendar calendar = Calendar.getInstance ();
+		Date date=new Date ();
+		calendar.setTime(date);
+		calendar.add (Calendar.DATE,-6);
+		Date  date1=calendar.getTime ();
+		
+		String   url="https://api.weibo.com/2/statuses/user_timeline.json?access_token=2.0067wTZGS4qCCC364c0530c10qYHUM";
+		List<CommitDTO> commitDTOS=new ArrayList<> ();
+		int num=1;
+		while(true){
+			String  str= GetJson.getHttpJson (url);
+			JSONArray jsonArray=JSONObject.parseObject (str).getJSONArray ("statuses");
+			if(jsonArray.size ()==0){
+				break;
+			}
+			for(int i=0;i<jsonArray.size ();i++){
+				JSONObject jsonObject1=jsonArray.getJSONObject (i);
+				String content=jsonObject1.getString ("text");
+				String  strDate=jsonObject1.getString ("created_at");
+				
+				SimpleDateFormat sdf=new SimpleDateFormat("EEE MMM dd hh:mm:ss Z yyyy", Locale.US);
+				Date commitDate=sdf.parse(strDate);
+                SimpleDateFormat  simpleDateFormat=new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+                String s1=simpleDateFormat.format (commitDate);
+				if(commitDate.getTime ()<date1.getTime ()){
+					break;
+				}
+
+				CommitDTO commitDTO=new CommitDTO ();
+				commitDTO.setCommitDate (commitDate);
+				commitDTO.setCommitContent (content);
+				commitDTOS.add (commitDTO);
+			}
+			num++;
+			
+		}
 		return  messageEventPOList;
 	}
 }
