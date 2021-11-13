@@ -109,18 +109,19 @@ public class MessageService {
 	}
 	
 	public static List<MessageEventPO>  weiboMessage() throws Exception {
+		int days=30;
 		List<MessageEventPO> messageEventPOList = new ArrayList<> ();
 		Calendar calendar = Calendar.getInstance ();
 		Date date=new Date ();
 		calendar.setTime(date);
-		calendar.add (Calendar.DATE,-6);
+		calendar.add (Calendar.DATE,-days);
 		Date  date1=calendar.getTime ();
 		
-		String   url="https://api.weibo.com/2/statuses/user_timeline.json?access_token=2.0067wTZGS4qCCC364c0530c10qYHUM";
+		String   url="https://api.weibo.com/2/statuses/home_timeline.json?access_token=2.0067wTZGS4qCCC364c0530c10qYHUM&page=";
 		List<CommitDTO> commitDTOS=new ArrayList<> ();
 		int num=1;
 		while(true){
-			String  str= GetJson.getHttpJson (url);
+			String  str= GetJson.getHttpJson (url+num);
 			JSONArray jsonArray=JSONObject.parseObject (str).getJSONArray ("statuses");
 			if(jsonArray.size ()==0){
 				break;
@@ -129,6 +130,8 @@ public class MessageService {
 				JSONObject jsonObject1=jsonArray.getJSONObject (i);
 				String content=jsonObject1.getString ("text");
 				String  strDate=jsonObject1.getString ("created_at");
+				JSONObject jsonObject2=jsonObject1.getJSONObject ("user");
+				String   name=jsonObject2.getString ("screen_name");
 				
 				SimpleDateFormat sdf=new SimpleDateFormat("EEE MMM dd hh:mm:ss Z yyyy", Locale.US);
 				Date commitDate=sdf.parse(strDate);
@@ -137,14 +140,88 @@ public class MessageService {
 				if(commitDate.getTime ()<date1.getTime ()){
 					break;
 				}
+                if(name.equals ("逆戟之刃")){
+	                CommitDTO commitDTO=new CommitDTO ();
+	                commitDTO.setCommitDate (commitDate);
+	                commitDTO.setCommitContent (content);
+	                commitDTOS.add (commitDTO);
+                }
 
-				CommitDTO commitDTO=new CommitDTO ();
-				commitDTO.setCommitDate (commitDate);
-				commitDTO.setCommitContent (content);
-				commitDTOS.add (commitDTO);
 			}
 			num++;
 			
+		}
+//		判断xx天内有无微博记录
+		if(commitDTOS.size ()==0){
+			MessageEventPO messageEventPO=new MessageEventPO ();
+			messageEventPO.setMessageDate (date);
+			messageEventPO.setMessageTitle ("微博");
+			messageEventPO.setMessageContent ("近"+days+"没有微博记录");
+			messageEventPO.setMessageType (0);
+			messageEventPOList.add (messageEventPO);
+		}
+		else{
+//			查找最近的百词斩分享的记录日期
+			Date  dateEnglish=null;
+			for(int i=0;i<commitDTOS.size ();i++){
+				CommitDTO commitDTO=commitDTOS.get (i);
+				String  commitMessage=commitDTO.getCommitContent ();
+				int x = commitMessage.indexOf ("百词斩");
+				if (x != -1) {
+					dateEnglish=commitDTO.getCommitDate ();
+					break;
+				}
+			}
+//			判断百词斩日期是否为空
+			if(dateEnglish==null){
+				MessageEventPO messageEventPO=new MessageEventPO ();
+				messageEventPO.setMessageDate (date);
+				messageEventPO.setMessageTitle ("微博");
+				messageEventPO.setMessageContent ("微博上近"+days+"天没有百词斩背单词记录");
+				messageEventPO.setMessageType (0);
+				messageEventPOList.add (messageEventPO);
+			}
+			else{
+				int DayEnglish=(int) ((date.getTime() - dateEnglish.getTime()) / (1000*3600*24));
+				if(DayEnglish>=2){
+					MessageEventPO messageEventPO=new MessageEventPO ();
+					messageEventPO.setMessageDate (date);
+					messageEventPO.setMessageTitle ("微博");
+					messageEventPO.setMessageContent ("微博上近"+DayEnglish+"天没有百词斩背单词记录");
+					messageEventPO.setMessageType (0);
+					messageEventPOList.add (messageEventPO);
+				}
+			}
+			Date  dateFenBi=null;
+			for(int i=0;i<commitDTOS.size ();i++){
+				CommitDTO commitDTO=commitDTOS.get (i);
+				String  commitMessage=commitDTO.getCommitContent ();
+				int x = commitMessage.indexOf ("粉笔事业单位笔试");
+				if (x != -1) {
+					dateFenBi=commitDTO.getCommitDate ();
+					break;
+				}
+			}
+//			判断粉笔事业单位笔试日期是否为空
+			if(dateFenBi==null){
+				MessageEventPO messageEventPO=new MessageEventPO ();
+				messageEventPO.setMessageDate (date);
+				messageEventPO.setMessageTitle ("微博");
+				messageEventPO.setMessageContent ("微博上近"+days+"天没有粉笔事业单位笔试记录");
+				messageEventPO.setMessageType (0);
+				messageEventPOList.add (messageEventPO);
+			}
+			else{
+				int DayFenBi=(int) ((date.getTime() - dateFenBi.getTime()) / (1000*3600*24));
+				if(DayFenBi>=2){
+					MessageEventPO messageEventPO=new MessageEventPO ();
+					messageEventPO.setMessageDate (date);
+					messageEventPO.setMessageTitle ("微博");
+					messageEventPO.setMessageContent ("微博上近"+DayFenBi+"天没有粉笔事业单位笔试记录");
+					messageEventPO.setMessageType (0);
+					messageEventPOList.add (messageEventPO);
+				}
+			}
 		}
 		return  messageEventPOList;
 	}
