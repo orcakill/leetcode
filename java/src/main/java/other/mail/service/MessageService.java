@@ -107,6 +107,13 @@ public class MessageService {
 		}
 		return  messageEventPOList;
 	}
+	/*** 
+	 * @description: 检查是否超2天微博上没有分享百词斩的记录
+	 * @param  
+	 * @return: java.util.List<other.mail.model.entity.MessageEventPO>
+	 * @author: orcakill
+	 * @date: 2021/11/16 15:54
+	 */
 	
 	public static List<MessageEventPO>  weiboMessage() throws Exception {
 		int days=30;
@@ -188,36 +195,6 @@ public class MessageService {
 					messageEventPO.setMessageDate (date);
 					messageEventPO.setMessageTitle ("微博");
 					messageEventPO.setMessageContent ("微博上近"+DayEnglish+"天没有百词斩背单词记录");
-					messageEventPO.setMessageType (0);
-					messageEventPOList.add (messageEventPO);
-				}
-			}
-			Date  dateFenBi=null;
-			for(int i=0;i<commitDTOS.size ();i++){
-				CommitDTO commitDTO=commitDTOS.get (i);
-				String  commitMessage=commitDTO.getCommitContent ();
-				int x = commitMessage.indexOf ("粉笔事业单位笔试");
-				if (x != -1) {
-					dateFenBi=commitDTO.getCommitDate ();
-					break;
-				}
-			}
-//			判断粉笔事业单位笔试日期是否为空
-			if(dateFenBi==null){
-				MessageEventPO messageEventPO=new MessageEventPO ();
-				messageEventPO.setMessageDate (date);
-				messageEventPO.setMessageTitle ("微博");
-				messageEventPO.setMessageContent ("微博上近"+days+"天没有粉笔事业单位笔试记录");
-				messageEventPO.setMessageType (0);
-				messageEventPOList.add (messageEventPO);
-			}
-			else{
-				int DayFenBi=(int) ((date.getTime() - dateFenBi.getTime()) / (1000*3600*24));
-				if(DayFenBi>=2){
-					MessageEventPO messageEventPO=new MessageEventPO ();
-					messageEventPO.setMessageDate (date);
-					messageEventPO.setMessageTitle ("微博");
-					messageEventPO.setMessageContent ("微博上近"+DayFenBi+"天没有粉笔事业单位笔试记录");
 					messageEventPO.setMessageType (0);
 					messageEventPOList.add (messageEventPO);
 				}
