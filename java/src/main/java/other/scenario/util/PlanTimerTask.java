@@ -108,9 +108,6 @@ public class PlanTimerTask extends TimerTask {
 			initTaskListPOList ();
 //			执行任务
 			dealTaskList ();
-// int minute1 = RandomUtil.randomMinute (60);
-// planTimes.remove (0);
-// planTimes.add ("0:" + minute1);
 		}
 		else {
 			stringBuilder.append (",不在计划时间点内");

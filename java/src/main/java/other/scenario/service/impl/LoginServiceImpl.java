@@ -37,19 +37,11 @@ public class LoginServiceImpl{
 	}
 
 	public static void loginService () throws Exception {
-//	    启动程序
-		StartUpExeUtils.startUpExe ("CMD /C " + ExeAddress.exeAddress (), "Nox.exe");
-
 //      单击阴阳师图标
 		String file1 = "scenario/阴阳师图标";
 		logger.info ("单击阴阳师图标，进入登录页面");
 		ImageService.imagesClick (file1);
-//      模拟器全屏
-//		File file2 = new File ("java/src/main/resources/image/scenario/模拟器全屏.png");
-//		logger.info ("单击窗口最大化");
-//		ImageService.imageClick (file2);
-//		logger.info ("窗口最大化最大化成功");
-	
+		
 	}
 
 	public static void loginAreaService (String userName) throws Exception {
