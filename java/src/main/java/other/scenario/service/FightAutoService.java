@@ -12,13 +12,6 @@ import java.io.IOException;
  * @Created by orcakill
  */
 public interface FightAutoService {
-	/***
-	 * @description: 刷御魂
-	 * @param
-	 * @return: boolean
-	 * @author: orcakill
-	 * @date: 2021/10/16 15:42
-	 */
 	static int cherrySoul(Integer num) throws InterruptedException, AWTException {
 		return FightAutoServiceImpl.cherrySoul(num);
 	}
@@ -51,5 +44,25 @@ public interface FightAutoService {
 	static boolean friendScreen(String userName) throws InterruptedException, AWTException, IOException {
 		return FightAutoServiceImpl.friendScreen(userName) ;
 	}
+	/***
+	 * @description: 固定次数刷御魂
+	 * @param num
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2021/11/14 17:27
+	 */
+	static void  soulBack(Integer num) throws InterruptedException, AWTException {
+		FightAutoServiceImpl.soulBack(num);
+	}
 	
+	/***
+	 * @description: 拒接协战
+	 * @param
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2021/11/14 17:31
+	 */
+	static void  refuseBack() throws InterruptedException, AWTException {
+		FightAutoServiceImpl.refuseBack();
+	}
 }

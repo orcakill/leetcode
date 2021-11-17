@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static other.scenario.util.RandomUtil.getRandom;
+
 /**
  * @Classname FightAutoServiceImpl
  * @Description TODO
@@ -343,6 +345,38 @@ public class FightAutoServiceImpl {
 			return true;
 		}
 		return false;
+	}
+	
+	public static void soulBack (Integer num) throws InterruptedException, AWTException {
+		Thread.sleep (3000);
+		logger.info ("开始");
+//		开始挑战,处理剩余次数的御魂
+		for (int i = 0; num > 0; i++) {
+			String file1 = "scenario/temp/御魂/挑战";
+			logger.info ("准备开始挑战");
+			ImageService.imagesClickBack (file1);
+			logger.info ("第" + (i + 1) +"次挑战中，等待挑战完成");
+			Thread.sleep (getRandom(5, 6) * 1000L);
+			
+			String file2 = "scenario/temp/御魂/角色头像";
+			String file3 = "scenario/temp/御魂/退出挑战";
+			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战");
+			ImageService.imagesClickBackNumberOrder (file2,file3,30);
+			
+			logger.info ("退出挑战完成");
+			num--;
+			Thread.sleep ((long) getRandom (1, 2) * getRandom (500,1000));
+			logger.info ("第" + (i + 1) + "次挑战完成，剩余" + (num) + "次");
+			
+		}
+	}
+	
+	public static void refuseBack () throws InterruptedException, AWTException {
+		for(int i=0;i<=150;i++){
+			String file1 = "scenario/temp/御魂/拒接协战";
+			ImageService.imagesClickBackNumber (file1,30,false);
+			
+		}
 	}
 }
 
