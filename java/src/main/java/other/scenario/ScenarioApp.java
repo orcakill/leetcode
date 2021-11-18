@@ -17,7 +17,7 @@ public class ScenarioApp {
 	}
 }
 
-//	小号做协战，自动登录，完成每日任务（协战拒接）
+//	小号做协战，检测到登录图标后，自动登录，完成每日任务（协战拒接）
 class ScenarioApp1 {
 	public static void main (String[] args) throws Exception {
 		Calendar calendar = Calendar.getInstance ();
@@ -32,7 +32,7 @@ class ScenarioApp1 {
 	}
 }
 
-//	大号刷御魂，自动登录，御魂150次（协战拒接）
+//	大号刷御魂，检测到登录图标后，自动登录，自动御魂150次（协战拒接）
 class ScenarioApp2 {
 	public static void main (String[] args) throws Exception {
 		Calendar calendar = Calendar.getInstance ();
@@ -48,8 +48,24 @@ class ScenarioApp2 {
 	
 }
 
-//	大号刷御灵，自动登录，自动刷御灵->自动刷结界->自动刷御灵（协战拒接）
+//	大号刷御魂，检测到登录图标后，自动登录，自动御魂（协战拒接），自动个人结界，自动阴阳寮结界
 class ScenarioApp3 {
+	public static void main (String[] args) throws Exception {
+		Calendar calendar = Calendar.getInstance ();
+		TimerTask task = new PlanTimerTask ();
+		Date firstTime = calendar.getTime ();
+		//间隔：1分钟
+		long period = 1000 * 60;
+		
+		Timer timer = new Timer ();
+		timer.schedule (task, firstTime, period);
+		
+	}
+	
+}
+
+//	大号刷御灵，检测到登录图标后，自动登录，自动刷御灵->自动刷结界->自动刷御灵（协战拒接）
+class ScenarioApp4 {
 	public static void main (String[] args) throws Exception {
 		Calendar calendar = Calendar.getInstance ();
 		TimerTask task = new PlanTimerTask ();

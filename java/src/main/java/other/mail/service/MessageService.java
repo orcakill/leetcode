@@ -108,13 +108,12 @@ public class MessageService {
 		return  messageEventPOList;
 	}
 	/*** 
-	 * @description: 检查是否超2天微博上没有分享百词斩的记录
+	 * @description: 检查是否超2天微博上没有分享百词斩背单词的记录
 	 * @param  
 	 * @return: java.util.List<other.mail.model.entity.MessageEventPO>
 	 * @author: orcakill
 	 * @date: 2021/11/16 15:54
 	 */
-	
 	public static List<MessageEventPO>  weiboMessage() throws Exception {
 		int days=30;
 		List<MessageEventPO> messageEventPOList = new ArrayList<> ();
@@ -202,4 +201,17 @@ public class MessageService {
 		}
 		return  messageEventPOList;
 	}
+	
+	public static List<MessageEventPO>  birthdayMessage() throws Exception {
+		List<MessageEventPO> messageEventPOList = new ArrayList<> ();
+		Date date=new Date ();
+		MessageEventPO messageEventPO=new MessageEventPO ();
+		messageEventPO.setMessageDate (date);
+		messageEventPO.setMessageTitle ("QQ");
+		messageEventPO.setMessageContent ("QQ音乐绿钻会员需要续费");
+		messageEventPO.setMessageType (0);
+		messageEventPOList.add (messageEventPO);
+		return  messageEventPOList;
+	}
+	
 }
