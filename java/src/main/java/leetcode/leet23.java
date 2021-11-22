@@ -12,7 +12,7 @@ import leetclass.ListNode;
 public class leet23 {
 	public static void main(String[] args) {
 		int[][] lists = {{1,4,5},{1,3,4},{2,6}};
-		System.out.println (mergeKLists(ListNode.makeNodeArray (lists)));
+		System.out.println (ListNode.traverse (mergeKLists(ListNode.makeNodeArray (lists))));
 	}
 	
 	public static ListNode mergeKLists (ListNode[] lists) {
@@ -20,7 +20,7 @@ public class leet23 {
 		for(int i=0;i<lists.length;i++){
 		    ans=mergeTwoLists (ans,lists[i]);
 		}
-		return  null;
+		return  ans;
 	}
 	
 	public  static  ListNode mergeTwoLists(ListNode a, ListNode b) {
@@ -29,6 +29,18 @@ public class leet23 {
 		}
 		ListNode head=new ListNode (0);
 		ListNode tail=head,aPtr=a,bPtr=b;
-		return  a;
+		while(aPtr!=null&&bPtr!=null){
+			if(aPtr.val<bPtr.val){
+				tail.next=aPtr;
+				aPtr=aPtr.next;
+			}
+			else{
+				tail.next=bPtr;
+				bPtr=bPtr.next;
+			}
+			tail=tail.next;
+		}
+		tail.next=(aPtr!=null?aPtr:bPtr);
+		return  head.next;
 	}
 }
