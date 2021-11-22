@@ -13,7 +13,7 @@ import java.util.TimerTask;
 public class ScenarioApp {
 	public static void main (String[] args) throws Exception {
 //	    启动程序
-		StartUpExeUtils.startUpExe ("CMD /C " + ExeAddress.exeAddress (), "Nox.exe");
+		StartUpExeUtils.startUpExeOnly ("CMD /C " + ExeAddress.exeAddress ());
 	}
 }
 
