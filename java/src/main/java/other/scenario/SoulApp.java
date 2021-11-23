@@ -1,14 +1,15 @@
 package other.scenario;
 
-import other.scenario.controller.AutoLogin;
+import other.scenario.controller.AutoLoginController;
+import other.scenario.map.ExeAddress;
 import other.scenario.service.ImageService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import other.scenario.util.StartUpExeUtils;
 
 import java.awt.*;
 
 import static other.scenario.service.FightAutoService.soulBack;
-import static other.scenario.util.RandomUtil.getRandom;
 
 /**
  * @Classname TempApp
@@ -27,6 +28,14 @@ public class SoulApp {
           soulBack (150);
 	}
 	
+}
+
+//	启动模拟器，需要调整成全屏后隐藏到后台
+class loginApp {
+	public static void main (String[] args) throws Exception {
+//	    启动程序
+		StartUpExeUtils.startUpExeOnly ("CMD /C " + ExeAddress.exeAddress ());
+	}
 }
 
 /*拒接协战*/
@@ -55,6 +64,6 @@ class RefuseApp {
 	//	自动登录到御灵界面
 	class LoginSpiritApp {
 		public static void main (String[] args) throws Exception {
-			AutoLogin.spirit ();
+			AutoLoginController.spirit ();
 		}
 	}

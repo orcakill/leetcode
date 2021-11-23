@@ -106,12 +106,11 @@ public class MouseClick {
 			Integer in = Integer.valueOf (Y.toString () + X, 16);
 			WinDef.LPARAM lPARAM = new WinDef.LPARAM (in);
 			int moveTime = (int) (Math.random () * 400 + 300);
-			int mousePressTime = (int) (Math.random () * 500 + 400);
+			int mousePressTime = (int) (Math.random () * 500 + 100);
 			try {
 				// 模拟计算鼠标按下的间隔并且按下鼠标
 				Thread.sleep (moveTime);
 				ScanningProcess.User32.INSTANCE.PostMessage (hwnd, 513, new WinDef.WPARAM (513), lPARAM);
-				Thread.sleep (mousePressTime);
 				ScanningProcess.User32.INSTANCE.PostMessage (hwnd, 514, new WinDef.WPARAM (514), lPARAM);
 				
 			} catch (InterruptedException e) {
