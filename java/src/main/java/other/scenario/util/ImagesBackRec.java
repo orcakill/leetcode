@@ -55,7 +55,7 @@ public class ImagesBackRec {
 	
 	public static PictureIdentifyWorkPO imagesRecognitionMouse(String FolderName) throws AWTException {
 //		屏幕截图
-		BufferedImage Window=Screenshot.screenshot ();
+		BufferedImage Window=Screenshot.screenshotBack ();
 //		图片
 		List<int[][]> ImagesData=imageToDate(FolderName);
 //		屏幕截图和图片对比
