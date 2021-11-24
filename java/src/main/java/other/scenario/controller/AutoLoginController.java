@@ -3,6 +3,7 @@ package other.scenario.controller;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import other.scenario.entity.PictureIdentifyWorkPO;
+import other.scenario.service.FightAutoService;
 import other.scenario.service.ImageService;
 import other.scenario.util.ImageRecognition;
 import other.scenario.util.ImagesBackRec;
@@ -90,8 +91,22 @@ public class AutoLoginController {
 			Thread.sleep (3 * 1000);
 		}
 	    //进入御灵
-	    //进入御灵挑战
+		String file6="scenario/御灵";
+		logger.info ("准备点击御灵");
+		ImageService.imagesClickBack(file6);
+		logger.info ("打开御灵成功");
+	    //选择御灵
+		String file7="scenario/选择御灵";
+		logger.info ("准备选择御灵");
+		ImageService.imagesClickBack(file6);
+		logger.info ("选择御灵成功");
 	    //选择御灵三层
-        //开始挑战
+		//选择御灵
+		String file8="scenario/选择御灵三层";
+		logger.info ("准备选择御灵三层");
+		ImageService.imagesClickBack(file8);
+		logger.info ("选择御灵三层成功");
+		//开始挑战
+		FightAutoService.soulBack (150);
 	}
 }
