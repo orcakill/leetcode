@@ -220,7 +220,8 @@ public class ImageServiceImpl  {
 		return b;
 	}
 	
-	public static void imagesClickBackNumber (String folder, Integer number) throws InterruptedException, AWTException {
+	public static void imagesClickBackNumber (String folder, Integer number,boolean b) throws InterruptedException,
+	                                                                                 AWTException {
 		File file= new File (
 				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
 		if (file.exists ()) {
@@ -235,7 +236,9 @@ public class ImageServiceImpl  {
 					break;
 				}
 				else {
+					if(b){
 					logger.error ("在每3秒的检测中，第" + (i + 1) + "次检查未发现该图片");
+					}
 				}
 			}
 		}
@@ -262,7 +265,7 @@ public class ImageServiceImpl  {
 					ImagesBackRec.imagesRecognition (folder1);
 					Thread.sleep (getRandom (1, 2) * 1000L);
 					logger.info ("点击操作成功");
-					imagesClickBackNumber (folder2,30);
+					imagesClickBackNumber (folder2,30,true);
 					break;
 				}
 				else if(b){

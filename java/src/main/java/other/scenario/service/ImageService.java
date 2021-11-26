@@ -4,6 +4,7 @@ import other.scenario.service.impl.ImageServiceImpl;
 
 import java.awt.*;
 import java.io.File;
+import java.util.List;
 
 public interface ImageService {
 	
@@ -45,13 +46,14 @@ public interface ImageService {
 	/*多张图片后台识别，可设定识别次数，是否返回日志信息*/
 	static void imagesClickBackNumber (String folder, Integer number, boolean b) throws InterruptedException,
 	                                                                                    AWTException {
-		ImageServiceImpl.imagesClickBackNumber (folder, number);
+		ImageServiceImpl.imagesClickBackNumber (folder, number,b);
 	}
 	
 	/*多张图片后台识别,判断第一张图片识别后点击第二张图片或直接点击第二张图片*/
-	static void imagesClickBackNumberOrder (String folder1, String folder2, Integer number) throws InterruptedException,
-	                                                                                               AWTException {
-		ImageServiceImpl.imagesClickBackNumberOrder (folder1, folder2, number);
+	static void imagesClickBackNumberOrder (String folder1,String folder2, Integer number) throws InterruptedException,
+	                                                                                     AWTException {
+		ImageServiceImpl.imagesClickBackNumberOrder (folder1,folder2, number);
 	}
+	
 	
 }

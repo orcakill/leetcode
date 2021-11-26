@@ -1,10 +1,10 @@
 package other.scenario;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import other.scenario.controller.AutoLoginController;
 import other.scenario.map.ExeAddress;
 import other.scenario.service.ImageService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import other.scenario.util.StartUpExeUtils;
 
 import java.awt.*;
@@ -18,24 +18,25 @@ import static other.scenario.service.FightAutoService.soulBack;
  * @Created by orcakill
  */
 /*刷御魂*/
-public class SoulApp {
-	
-	//	记录日志
-	public static final Logger logger = LogManager.getLogger (SoulApp.class);
-
-	public static void main (String[] args) throws Exception {
-//	     重复 挑战150次
-          soulBack (150);
-	}
-	
-}
-
 //	启动模拟器，需要调整成全屏后隐藏到后台
-class loginApp {
+public class TempApp {
 	public static void main (String[] args) throws Exception {
-//	    启动程序
+		//启动程序
 		StartUpExeUtils.startUpExeOnly ("CMD /C " + ExeAddress.exeAddress ());
 	}
+}
+
+/*直接重复挑战*/
+class SoulApp {
+	
+	//记录日志
+	public static final Logger logger = LogManager.getLogger (SoulApp.class);
+	
+	public static void main (String[] args) throws Exception {
+		//重复 挑战150次
+		soulBack (150);
+	}
+	
 }
 
 /*拒接协战*/
@@ -55,15 +56,24 @@ class RefuseApp {
 		}
 	}
 }
-	
-	//	自动登录到御魂界面
-	class LoginSoulApp {
-	
+
+//	自动刷御灵
+class LoginSpiritApp {
+	public static void main (String[] args) throws Exception {
+		AutoLoginController.spirit (0);
 	}
-	
-	//	自动登录到御灵界面
-	class LoginSpiritApp {
-		public static void main (String[] args) throws Exception {
-			AutoLoginController.spirit ();
-		}
+}
+
+//	自动刷御魂
+class LoginSoulApp {
+	public static void main (String[] args) throws Exception {
+		AutoLoginController.spirit (1);
 	}
+}
+
+//	自动刷个人结界
+class LoginBorderApp {
+	public static void main (String[] args) throws Exception {
+		AutoLoginController.spirit (2);
+	}
+}
