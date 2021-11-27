@@ -2,7 +2,8 @@ package other.dao;
 
 
 
-import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.Logger;
+
 
 import java.sql.*;
 import java.text.SimpleDateFormat;

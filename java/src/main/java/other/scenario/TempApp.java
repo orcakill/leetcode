@@ -77,3 +77,11 @@ class LoginBorderApp {
 		AutoLoginController.spirit (2);
 	}
 }
+
+
+//	自动刷探索
+class LoginExploreApp {
+	public static void main (String[] args) throws Exception {
+		AutoLoginController.spirit (3);
+	}
+}
