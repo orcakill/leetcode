@@ -28,31 +28,21 @@ public class TempApp {
 
 /*直接重复挑战*/
 class SoulApp {
-	
-	//记录日志
-	public static final Logger logger = LogManager.getLogger (SoulApp.class);
-	
 	public static void main (String[] args) throws Exception {
 		//重复 挑战150次
 		soulBack (150);
 	}
-	
 }
 
 /*拒接协战*/
 class RefuseApp {
-	//	记录日志
-	public static final Logger logger = LogManager.getLogger (RefuseApp.class);
-	
 	public static void main (String[] args) throws Exception {
 		refuse ();
 	}
-	
 	public static void refuse () throws InterruptedException, AWTException {
 		for (int i = 0; i <= 150; i++) {
 			String file1 = "scenario/temp/御魂/拒接协战";
 			ImageService.imagesClickBackNumber (file1, 30, false);
-			
 		}
 	}
 }
