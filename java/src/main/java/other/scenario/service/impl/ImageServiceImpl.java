@@ -226,7 +226,7 @@ public class ImageServiceImpl  {
 				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
 		if (file.exists ()) {
 			for (int i = 0; i < number; i++) {
-				Thread.sleep (3000);
+				Thread.sleep (5000);
 				if (ImagesBackRec.imagesRecognitionIsEmpty (folder)) {
 					logger.info ("图片匹配成功");
 					Thread.sleep (getRandom (1, 2) * 1000L);
@@ -237,7 +237,7 @@ public class ImageServiceImpl  {
 				}
 				else {
 					if(b){
-					logger.error ("在每3秒的检测中，第" + (i + 1) + "次检查未发现该图片");
+					logger.error ("在每5秒的检测中，第" + (i + 1) + "次检查未发现该图片");
 					}
 				}
 			}
