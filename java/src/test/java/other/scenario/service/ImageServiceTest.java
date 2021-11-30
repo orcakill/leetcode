@@ -28,11 +28,11 @@ public class ImageServiceTest {
 	
 	@Test
 	public void   imagesClickIsEmpty () throws InterruptedException, AWTException {
-		String folderName="scenario/切换";
+		String folderName="scenario/首页体力";
 		File file = new File (
 				System.getProperty ("user.dir") + "/src/main/resources/image/" + folderName);
 		if(file.exists ()){
-			boolean b=ImageService.imagesClickIsEmpty (folderName);
+			boolean b=ImageService.imagesClickBackIsEmpty (folderName);
 			System.out.println (b);
 		}
 		else{
