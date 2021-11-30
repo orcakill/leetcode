@@ -47,31 +47,18 @@ class RefuseApp {
 	}
 }
 
-//	自动刷御灵
+//	自动登录,刷魂十一，个人结界，阴阳寮结界
 class LoginSpiritApp {
 	public static void main (String[] args) throws Exception {
-		AutoLoginController.spirit (0);
+		AutoLoginController.login ();
 	}
 }
 
-//	自动刷御魂
+//	自动登录，刷魂十，个人结界，阴阳寮结界
 class LoginSoulApp {
 	public static void main (String[] args) throws Exception {
-		AutoLoginController.spirit (1);
-	}
-}
-
-//	自动刷个人结界
-class LoginBorderApp {
-	public static void main (String[] args) throws Exception {
-		AutoLoginController.spirit (2);
+		AutoLoginController.login ();
 	}
 }
 
 
-//	自动刷探索
-class LoginExploreApp {
-	public static void main (String[] args) throws Exception {
-		AutoLoginController.spirit (3);
-	}
-}
