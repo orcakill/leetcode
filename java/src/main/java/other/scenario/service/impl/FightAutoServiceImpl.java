@@ -352,14 +352,14 @@ public class FightAutoServiceImpl {
 		logger.info ("开始");
 //		开始挑战,处理剩余次数的御魂
 		for (int i = 0; num > 0; i++) {
-			String file1 = "scenario/temp/御魂/挑战";
+			String file1 = "scenario/御魂/挑战";
 			logger.info ("准备开始挑战");
 			ImageService.imagesClickBack (file1);
 			logger.info ("第" + (i + 1) +"次挑战中，等待挑战完成");
 			Thread.sleep (getRandom(5, 6) * 1000L);
 			
-			String file2 = "scenario/temp/御魂/角色头像";
-			String file3 = "scenario/temp/御魂/退出挑战";
+			String file2 = "scenario/御魂/角色头像";
+			String file3 = "scenario/御魂/退出挑战";
 			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战");
 			ImageService.imagesClickBackNumberOrder (file2,file3,30);
 			
@@ -377,6 +377,59 @@ public class FightAutoServiceImpl {
 			ImageService.imagesClickBackNumber (file1,30,false);
 			
 		}
+	}
+	
+	public static void borderCheck () throws InterruptedException, AWTException {
+		//进入结界挑战
+		String file="scenario/结界突破/结界突破";
+		logger.info ("准备进入结界突破");
+		ImageService.imagesClickBack (file);
+		logger.info ("进入结界突破");
+		//判断结界挑战劵是否为0
+		String file1="scenario/结界突破/结界挑战劵数";
+		while(!ImageService.imagesClickBackIsEmpty (file1,3)){
+			//不为0则进行结界挑战
+			logger.info ("结界劵数不为零");
+			String file2="scenario/结界突破/个人结界";
+			logger.info ("选择个人结界");
+			//判断能否选择个人结界
+			if(ImageService.imagesClickBackIsEmpty (file2,3)){
+				ImageService.imagesClickBack (file2);
+				logger.info ("点击个人结界成功，准备进攻");
+				String file3="scenario/结界突破/进攻";
+				ImageService.imagesClickBack (file3);
+				logger.info ("开始进攻");
+				String file4 = "scenario/御魂/角色头像";
+				String file5 = "scenario/御魂/退出挑战";
+				String file51 = "scenario/御魂/失败";
+				logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败");
+				ImageService.imagesClickBackNumberOrder (file4,file5,30);
+				if(ImageService.imagesClickBackIsEmpty (file5,4)){
+					logger.info ("每打完三个有额外奖励");
+					ImageService.imagesClickBack (file5);
+					logger.info ("领取额外奖励成功");
+				}
+			}
+			else{
+				String file6="scenario/结界突破/刷新";
+				logger.info ("有结界挑战劵，没有可攻打的结界，准备刷新");
+				//判断不处于刷新冷却期
+				if(ImageService.imagesClickBackIsEmpty (file6,4)){
+					ImageService.imagesClickBack (file6);
+				}
+				else{
+					ImageService.imagesClickBackNumber(file6,60,true);
+				}
+				String file7="scenario/结界突破/确认";
+				ImageService.imagesClickBack (file7);
+				logger.info ("刷新成功");
+			}
+		}
+	    //为0则不进行结界挑战
+	    //退出到探索
+		String file2="scenario/结界突破/刷新";
+		ImageService.imagesClickBack (file2);
+		logger.info ("退出到探索");
 	}
 }
 

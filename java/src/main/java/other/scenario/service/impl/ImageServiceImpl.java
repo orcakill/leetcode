@@ -193,7 +193,8 @@ public class ImageServiceImpl  {
 		}
 	}
 	
-	public static boolean imagesClickBackIsEmpty (String folder) throws InterruptedException, AWTException {
+	public static boolean imagesClickBackIsEmpty (String folder,Integer nums) throws InterruptedException,
+	                                                                                 AWTException {
 		boolean b = false;
 		File file = new File (
 				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
@@ -202,7 +203,7 @@ public class ImageServiceImpl  {
 					System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
 		}
 		if (file.exists ()) {
-			for (int i = 0; i <numEmpty; i++) {
+			for (int i = 0; i <nums; i++) {
 				Thread.sleep (2000);
 				if (ImagesBackRec.imagesRecognitionIsEmpty (folder)) {
 					logger.info ("图片匹配成功,该图片在当前页面存在");
@@ -210,7 +211,7 @@ public class ImageServiceImpl  {
 					break;
 				}
 				else {
-					logger.error ("在每5秒的检测中，第" + (i + 1) + "次检查未发现该图片");
+					logger.error ("在每2秒的检测中，第" + (i + 1) + "次检查未发现该图片");
 				}
 			}
 		}
@@ -284,6 +285,56 @@ public class ImageServiceImpl  {
 		else {
 			logger.info ("图标路径不存在");
 		}
+	}
+	
+	public static void imagesClickBackNumberOrderThree (String folder1, String folder2, String folder3, Integer number) throws
+	                                                                                                                    InterruptedException,
+	                                                                                                                    AWTException {
+			File file1= new File (
+					System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder1);
+			File file2= new File (
+					System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder2);
+		    File file3= new File (
+				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder3);
+			if (file1.exists ()&&file2.exists ()&&file3.exists ()) {
+				for (int i = 0; i < number; i++) {
+					Thread.sleep (getRandom (2, 3)*1000L);
+					boolean a=ImagesBackRec.imagesRecognitionIsEmpty (folder1);
+					boolean b=ImagesBackRec.imagesRecognitionIsEmpty (folder2);
+					boolean c=ImagesBackRec.imagesRecognitionIsEmpty (folder3);
+					if (a) {
+						logger.info ("图片匹配成功");
+						Thread.sleep (getRandom (1, 2) * 1000L);
+						ImagesBackRec.imagesRecognition (folder1);
+						Thread.sleep (getRandom (1, 2) * 1000L);
+						logger.info ("点击操作成功");
+						imagesClickBackNumber (folder2,30,true);
+						break;
+					}
+					else if(b){
+						logger.info ("图片匹配成功");
+						Thread.sleep (getRandom (1, 2) * 1000L);
+						ImagesBackRec.imagesRecognition (folder2);
+						Thread.sleep (getRandom (1, 2) * 1000L);
+						logger.info ("点击操作成功");
+						break;
+					}
+					else if(c){
+						logger.info ("图片匹配成功");
+						Thread.sleep (getRandom (1, 2) * 1000L);
+						ImagesBackRec.imagesRecognition (folder3);
+						Thread.sleep (getRandom (1, 2) * 1000L);
+						logger.info ("点击操作成功");
+						break;
+					}
+					else{
+						logger.error ("在每2-3秒的检测中，第" + (i + 1) + "次检查未发现该图片");
+					}
+				}
+			}
+			else {
+				logger.info ("图标路径不存在");
+			}
 	}
 }
 
