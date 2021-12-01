@@ -32,7 +32,7 @@ public class ImageServiceTest {
 		File file = new File (
 				System.getProperty ("user.dir") + "/src/main/resources/image/" + folderName);
 		if(file.exists ()){
-			boolean b=ImageService.imagesClickBackIsEmpty (folderName);
+			boolean b=ImageService.imagesClickBackIsEmpty (folderName,3);
 			System.out.println (b);
 		}
 		else{

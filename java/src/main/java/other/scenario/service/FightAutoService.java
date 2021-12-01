@@ -65,4 +65,8 @@ public interface FightAutoService {
 	static void  refuseBack() throws InterruptedException, AWTException {
 		FightAutoServiceImpl.refuseBack();
 	}
+	
+	static  void borderCheck() throws InterruptedException, AWTException {
+		FightAutoServiceImpl.borderCheck();
+	}
 }

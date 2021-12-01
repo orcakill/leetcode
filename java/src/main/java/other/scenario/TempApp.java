@@ -47,16 +47,20 @@ class RefuseApp {
 	}
 }
 
-//	自动登录,刷魂十一，个人结界，阴阳寮结界
-class LoginSpiritApp {
+//	自动登录,刷魂十一，个人结界
+class LoginSoulElevenApp {
 	public static void main (String[] args) throws Exception {
+		//自动登录到探索
 		AutoLoginController.login ();
+	   //刷魂十一或者刷个人结界
+		AutoLoginController.soulEleven (3);
 	}
 }
 
-//	自动登录，刷魂十，个人结界，阴阳寮结界
-class LoginSoulApp {
+//	自动登录，刷魂十，个人结界
+class SoulTenApp {
 	public static void main (String[] args) throws Exception {
+		//自动登录到探索
 		AutoLoginController.login ();
 	}
 }

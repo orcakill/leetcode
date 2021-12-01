@@ -39,8 +39,8 @@ public interface ImageService {
 	}
 	
 	/*多张图片后台识别,判断图片在当前页面是否存在*/
-	static boolean imagesClickBackIsEmpty (String folder) throws AWTException, InterruptedException {
-		return ImageServiceImpl.imagesClickBackIsEmpty (folder);
+	static boolean imagesClickBackIsEmpty (String folder,Integer nums) throws AWTException, InterruptedException {
+		return ImageServiceImpl.imagesClickBackIsEmpty (folder,nums);
 	}
 	
 	/*多张图片后台识别，可设定识别次数，是否返回日志信息*/
@@ -55,5 +55,10 @@ public interface ImageService {
 		ImageServiceImpl.imagesClickBackNumberOrder (folder1,folder2, number);
 	}
 	
+	/*多张图片后台识别,判断第一张图片识别后点击第二张图片或直接点击第二张图片或者第三张图片*/
+	static void imagesClickBackNumberOrderThree (String folder1,String folder2,String folder3,  Integer number) throws InterruptedException,
+	                                                                                              AWTException {
+		ImageServiceImpl.imagesClickBackNumberOrderThree(folder1,folder2,folder3,number);
+	}
 	
 }
