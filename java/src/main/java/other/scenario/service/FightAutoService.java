@@ -69,4 +69,8 @@ public interface FightAutoService {
 	static  void borderCheck() throws InterruptedException, AWTException {
 		FightAutoServiceImpl.borderCheck();
 	}
+	
+	static void soulEleven (int i) throws InterruptedException, AWTException {
+		FightAutoServiceImpl.soulEleven(i);
+	}
 }

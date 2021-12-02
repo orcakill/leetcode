@@ -403,7 +403,7 @@ public class FightAutoServiceImpl {
 				String file5 = "scenario/御魂/退出挑战";
 				String file51 = "scenario/御魂/失败";
 				logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败");
-				ImageService.imagesClickBackNumberOrder (file4,file5,30);
+				ImageService.imagesClickBackNumberOrderThree (file4,file5,file51,30);
 				if(ImageService.imagesClickBackIsEmpty (file5,4)){
 					logger.info ("每打完三个有额外奖励");
 					ImageService.imagesClickBack (file5);
@@ -427,9 +427,23 @@ public class FightAutoServiceImpl {
 		}
 	    //为0则不进行结界挑战
 	    //退出到探索
-		String file2="scenario/结界突破/刷新";
+		String file2="scenario/返回";
 		ImageService.imagesClickBack (file2);
 		logger.info ("退出到探索");
+	}
+	
+	public static void soulEleven (int i) throws InterruptedException, AWTException {
+		String  file="scenario/御魂/御魂图标";
+		logger.info ("准备进入御魂");
+		ImageService.imagesClickBack (file);
+		logger.info ("进入御魂成功，准备选择八岐大蛇");
+		String  file1="scenario/御魂/八岐大蛇";
+		ImageService.imagesClickBack (file1);
+		logger.info ("进入八岐大蛇挑战页面，准备开启加成");
+	    //获取加成地址，手动测试出御魂加成的坐标，然后存储到代码，然后根据当前分辨率获取唯一坐标
+	    //退出加成页面
+	    //选择魂十或魂十一
+	    //开始挑战
 	}
 }
 

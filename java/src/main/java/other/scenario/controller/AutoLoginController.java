@@ -101,6 +101,8 @@ public class AutoLoginController {
 		for (int i = 0; i < num; i++) {
 			//处理结界挑战劵
 			FightAutoService.borderCheck ();
+		    //御魂-魂十一挑战120次
+			FightAutoService.soulEleven (11);
 		}
 		
 	}
