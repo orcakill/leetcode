@@ -3,6 +3,7 @@ package other.scenario.service.impl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import other.scenario.entity.PictureIdentifyWorkPO;
+import other.scenario.map.CoordinateAddress;
 import other.scenario.service.FightAutoService;
 import other.scenario.service.ImageService;
 import other.scenario.service.IndexService;
@@ -384,7 +385,7 @@ public class FightAutoServiceImpl {
 		String file="scenario/结界突破/结界突破";
 		logger.info ("准备进入结界突破");
 		ImageService.imagesClickBack (file);
-		logger.info ("进入结界突破");
+		logger.info ("进入结界突破，检查结界挑战劵");
 		//判断结界挑战劵是否为0
 		String file1="scenario/结界突破/结界挑战劵数";
 		while(!ImageService.imagesClickBackIsEmpty (file1,3)){
@@ -401,13 +402,17 @@ public class FightAutoServiceImpl {
 				logger.info ("开始进攻");
 				String file4 = "scenario/御魂/角色头像";
 				String file5 = "scenario/御魂/退出挑战";
-				String file51 = "scenario/御魂/失败";
+				String file51 = "scenario/结界突破/失败";
 				logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败");
-				ImageService.imagesClickBackNumberOrderThree (file4,file5,file51,30);
+				ImageService.imagesClickBackNumberOrderThree (file4,file5,file51,90);
+				logger.info ("退出挑战完成");
 				if(ImageService.imagesClickBackIsEmpty (file5,4)){
 					logger.info ("每打完三个有额外奖励");
 					ImageService.imagesClickBack (file5);
 					logger.info ("领取额外奖励成功");
+				}
+				else{
+					logger.info ("没有额外奖励");
 				}
 			}
 			else{
@@ -424,8 +429,10 @@ public class FightAutoServiceImpl {
 				ImageService.imagesClickBack (file7);
 				logger.info ("刷新成功");
 			}
+			logger.info ("检查是否还有结界挑战劵");
 		}
 	    //为0则不进行结界挑战
+		logger.info ("结界劵数为0");
 	    //退出到探索
 		String file2="scenario/返回";
 		ImageService.imagesClickBack (file2);
@@ -440,10 +447,30 @@ public class FightAutoServiceImpl {
 		String  file1="scenario/御魂/八岐大蛇";
 		ImageService.imagesClickBack (file1);
 		logger.info ("进入八岐大蛇挑战页面，准备开启加成");
+		String  file2="scenario/御魂/加成";
+		ImageService.imagesClickBack (file2);
+		logger.info ("点击加成");
 	    //获取加成地址，手动测试出御魂加成的坐标，然后存储到代码，然后根据当前分辨率获取唯一坐标
-	    //退出加成页面
+		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList= CoordinateAddress.getCoordinate ("御魂加成");
+		logger.info ("点击加成成功，准备点击御魂加成");
+		MouseClick.mouseClickBack (pictureIdentifyWorkPOList);
+		logger.info ("点击御魂加成成功，准备退出");
+		ImageService.imagesClickBack (file2);
+		//退出加成页面
+		logger.info ("退出加成页面");
 	    //选择魂十或魂十一
+		if(i==11){
+		   String file3="scenario/御魂/层数/魂十一";
+			logger.info ("选择魂十一");
+			ImageService.imagesClickBack (file3);
+		}
+		else if(i==10){
+			String file3="scenario/御魂/层数/魂十";
+			logger.info ("选择魂十");
+			ImageService.imagesClickBack (file3);
+		}
 	    //开始挑战
+		soulBack (120);
 	}
 }
 

@@ -28,7 +28,7 @@ public class ImageServiceTest {
 	
 	@Test
 	public void   imagesClickIsEmpty () throws InterruptedException, AWTException {
-		String folderName="scenario/首页体力";
+		String folderName="scenario/御魂/御魂加成";
 		File file = new File (
 				System.getProperty ("user.dir") + "/src/main/resources/image/" + folderName);
 		if(file.exists ()){
