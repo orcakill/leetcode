@@ -416,6 +416,7 @@ public class FightAutoServiceImpl {
 				}
 			}
 			else{
+				System.exit(0);
 				String file6="scenario/结界突破/刷新";
 				logger.info ("有结界挑战劵，没有可攻打的结界，准备刷新");
 				//判断不处于刷新冷却期
@@ -449,10 +450,9 @@ public class FightAutoServiceImpl {
 		logger.info ("进入八岐大蛇挑战页面，准备开启加成");
 		String  file2="scenario/御魂/加成";
 		ImageService.imagesClickBack (file2);
-		logger.info ("点击加成");
+		logger.info ("点击加成成功，准备点击御魂加成");
 	    //获取加成地址，手动测试出御魂加成的坐标，然后存储到代码，然后根据当前分辨率获取唯一坐标
 		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList= CoordinateAddress.getCoordinate ("御魂加成");
-		logger.info ("点击加成成功，准备点击御魂加成");
 		MouseClick.mouseClickBack (pictureIdentifyWorkPOList);
 		logger.info ("点击御魂加成成功，准备退出");
 		ImageService.imagesClickBack (file2);
@@ -471,6 +471,19 @@ public class FightAutoServiceImpl {
 		}
 	    //开始挑战
 		soulBack (120);
+		//关闭加成
+		ImageService.imagesClickBack (file2);
+		logger.info ("点击加成成功，准备关闭御魂加成");
+		MouseClick.mouseClickBack (pictureIdentifyWorkPOList);
+		logger.info ("关闭御魂加成成功，准备退出");
+		ImageService.imagesClickBack (file2);
+		//退出加成页面
+		logger.info ("退出加成页面");
+		//退出到探索
+		String file3="scenario/返回";
+		ImageService.imagesClickBack (file3);
+		//退出到探索
+		ImageService.imagesClickBack (file3);
 	}
 }
 

@@ -1,7 +1,6 @@
 package other.scenario;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 import other.scenario.controller.AutoLoginController;
 import other.scenario.map.ExeAddress;
 import other.scenario.service.ImageService;
@@ -30,7 +29,7 @@ public class TempApp {
 class SoulApp {
 	public static void main (String[] args) throws Exception {
 		//重复 挑战150次
-		soulBack (150);
+		soulBack (120);
 	}
 }
 
@@ -41,14 +40,14 @@ class RefuseApp {
 	}
 	public static void refuse () throws InterruptedException, AWTException {
 		for (int i = 0; i <= 150; i++) {
-			String file1 = "scenario/temp/御魂/拒接协战";
+			String file1 = "scenario/御魂/拒接协战";
 			ImageService.imagesClickBackNumber (file1, 30, false);
 		}
 	}
 }
 
 //	自动登录,刷魂十一，个人结界
-class LoginSoulElevenApp {
+class SoulElevenApp {
 	public static void main (String[] args) throws Exception {
 		//自动登录到探索
 		AutoLoginController.login ();
@@ -62,6 +61,8 @@ class SoulTenApp {
 	public static void main (String[] args) throws Exception {
 		//自动登录到探索
 		AutoLoginController.login ();
+		//刷魂十或者刷个人结界
+		AutoLoginController.soulTen (3);
 	}
 }
 
