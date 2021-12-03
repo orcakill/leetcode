@@ -28,8 +28,8 @@ public class CoordinateAddress {
 		}
 		else if(windows_width==1920){
 			if(name.equals ("御魂加成")){
-				pictureIdentifyWorkPO.setX (1567);
-				pictureIdentifyWorkPO.setY (487);
+				pictureIdentifyWorkPO.setX (1169);
+				pictureIdentifyWorkPO.setY (312);
 			}
 		}
 		pictureIdentifyWorkPOList.add(pictureIdentifyWorkPO);

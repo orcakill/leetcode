@@ -57,9 +57,10 @@ public class AutoLoginController {
 			if (pictureIdentifyWorkPO2.getX () == null) {
 				logger.info ("没找到反馈的坐标");
 			}
+			GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ();
+			int windows_width =gd.getDisplayMode ().getWidth ();
 			int y = pictureIdentifyWorkPO1.getY ();
-			int x = pictureIdentifyWorkPO1.getX () +
-			        (int) ((pictureIdentifyWorkPO2.getX () - pictureIdentifyWorkPO1.getX ()) * 0.5);
+			int x = (int) (windows_width * 0.5);
 			List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList = new ArrayList<> ();
 			PictureIdentifyWorkPO pictureIdentifyWorkPO3 = new PictureIdentifyWorkPO ();
 			pictureIdentifyWorkPO3.setX (x);
@@ -105,5 +106,14 @@ public class AutoLoginController {
 			FightAutoService.soulEleven (11);
 		}
 		
+	}
+	
+	public static void soulTen (Integer num) throws InterruptedException, AWTException {
+		for (int i = 0; i < num; i++) {
+			//处理结界挑战劵
+			FightAutoService.borderCheck ();
+			//御魂-魂十一挑战120次
+			FightAutoService.soulEleven (10);
+		}
 	}
 }
