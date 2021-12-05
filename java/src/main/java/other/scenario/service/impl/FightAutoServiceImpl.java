@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -440,24 +441,27 @@ public class FightAutoServiceImpl {
 		logger.info ("退出到探索");
 	}
 	
-	public static void soulEleven (int i) throws InterruptedException, AWTException {
+	public static void soulEleven (int i,boolean b) throws InterruptedException, AWTException {
 		String  file="scenario/御魂/御魂图标";
 		logger.info ("准备进入御魂");
 		ImageService.imagesClickBack (file);
 		logger.info ("进入御魂成功，准备选择八岐大蛇");
 		String  file1="scenario/御魂/八岐大蛇";
 		ImageService.imagesClickBack (file1);
-		logger.info ("进入八岐大蛇挑战页面，准备开启加成");
-		String  file2="scenario/御魂/加成";
-		ImageService.imagesClickBack (file2);
-		logger.info ("点击加成成功，准备点击御魂加成");
-	    //获取加成地址，手动测试出御魂加成的坐标，然后存储到代码，然后根据当前分辨率获取唯一坐标
+		logger.info ("进入八岐大蛇挑战页面");
+		//获取加成地址，手动测试出御魂加成的坐标，然后存储到代码，然后根据当前分辨率获取唯一坐标
 		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList= CoordinateAddress.getCoordinate ("御魂加成");
-		MouseClick.mouseClickBack (pictureIdentifyWorkPOList);
-		logger.info ("点击御魂加成成功，准备退出");
-		ImageService.imagesClickBack (file2);
-		//退出加成页面
-		logger.info ("退出加成页面");
+		String  file2="scenario/御魂/加成";
+		if(b){
+			logger.info ("准备开启加成");
+			ImageService.imagesClickBack (file2);
+			logger.info ("点击加成成功，准备点击御魂加成");
+			MouseClick.mouseClickBack (pictureIdentifyWorkPOList);
+			logger.info ("点击御魂加成成功，准备退出");
+			ImageService.imagesClickBack (file2);
+			//退出加成页面
+			logger.info ("退出加成页面");
+		}
 	    //选择魂十或魂十一
 		if(i==11){
 		   String file3="scenario/御魂/层数/魂十一";
@@ -470,20 +474,66 @@ public class FightAutoServiceImpl {
 			ImageService.imagesClickBack (file3);
 		}
 	    //开始挑战
-		soulBack (120);
-		//关闭加成
-		ImageService.imagesClickBack (file2);
-		logger.info ("点击加成成功，准备关闭御魂加成");
-		MouseClick.mouseClickBack (pictureIdentifyWorkPOList);
-		logger.info ("关闭御魂加成成功，准备退出");
-		ImageService.imagesClickBack (file2);
-		//退出加成页面
-		logger.info ("退出加成页面");
+		soulBack (3);
+		//挑战结束
+		if(b){
+			//关闭加成
+			ImageService.imagesClickBack (file2);
+			logger.info ("点击加成成功，准备关闭御魂加成");
+			MouseClick.mouseClickBack (pictureIdentifyWorkPOList);
+			logger.info ("关闭御魂加成成功，准备退出");
+			ImageService.imagesClickBack (file2);
+			//退出加成页面
+			logger.info ("退出加成页面");
+		}
 		//退出到探索
 		String file3="scenario/返回";
 		ImageService.imagesClickBack (file3);
-		//退出到探索
-		ImageService.imagesClickBack (file3);
+	}
+	
+	public static void spirit () throws InterruptedException, AWTException {
+		String  file="scenario/御灵/御灵图标";
+		logger.info ("准备进入御灵");
+		ImageService.imagesClickBack (file);
+		logger.info ("进入御灵");
+		//判断当前是星期几，周一无法打御灵，周二神龙，周三白藏主，周四黑豹，周五孔雀，周六周日白藏主
+		Date today = new Date();
+		Calendar c = Calendar.getInstance ();
+		c.setTime(today);
+		int weekday = c.get(Calendar.DAY_OF_WEEK);
+		//周一
+		if(weekday==2){
+			logger.info ("无法打御灵");
+			System.exit(0);
+		}
+		//周二
+		else if (weekday==3){
+			String  file1="scenario/御灵/神龙";
+			logger.info ("准备进入御灵神龙");
+			ImageService.imagesClickBack (file1);
+			logger.info ("进入御灵神龙");
+		}
+		//周三
+		else if (weekday==4){
+			String  file1="scenario/御灵/白藏主";
+			logger.info ("准备进入御灵白藏主");
+			ImageService.imagesClickBack (file1);
+			logger.info ("进入御灵白藏主");
+		}
+		//周四
+		else if (weekday==5){
+			String  file1="scenario/御灵/黑豹";
+			logger.info ("准备进入御灵黑豹");
+			ImageService.imagesClickBack (file1);
+			logger.info ("进入御灵黑豹");
+		}
+		//周五
+		else if (weekday==6){
+			String  file1="scenario/御灵/孔雀";
+			logger.info ("准备进入御灵孔雀");
+			ImageService.imagesClickBack (file1);
+			logger.info ("进入御灵孔雀");
+		}
 	}
 }
 
