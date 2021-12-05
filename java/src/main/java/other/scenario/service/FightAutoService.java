@@ -70,7 +70,11 @@ public interface FightAutoService {
 		FightAutoServiceImpl.borderCheck();
 	}
 	
-	static void soulEleven (int i) throws InterruptedException, AWTException {
-		FightAutoServiceImpl.soulEleven(i);
+	static void soulEleven (int i,boolean b) throws InterruptedException, AWTException {
+		FightAutoServiceImpl.soulEleven(i,b);
+	}
+	
+	static void spirit () throws InterruptedException, AWTException {
+		FightAutoServiceImpl.spirit ();
 	}
 }

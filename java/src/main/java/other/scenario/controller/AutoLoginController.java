@@ -24,6 +24,7 @@ public class AutoLoginController {
 	
 	public static void login () throws Exception {
 		String fileOne = "scenario/首页/探索妖字";
+		logger.info ("判断当前是未登录还是已探索");
 		if (ImageService.imagesClickBackIsEmpty (fileOne, 3)) {
 			logger.info ("当前已是探索界面");
 		}
@@ -57,8 +58,10 @@ public class AutoLoginController {
 			if (pictureIdentifyWorkPO2.getX () == null) {
 				logger.info ("没找到反馈的坐标");
 			}
-			GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ();
-			int windows_width =gd.getDisplayMode ().getWidth ();
+			GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ()
+			                                       .getDefaultScreenDevice ();
+			int windows_width = gd.getDisplayMode ()
+			                      .getWidth ();
 			int y = pictureIdentifyWorkPO1.getY ();
 			int x = (int) (windows_width * 0.5);
 			List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList = new ArrayList<> ();
@@ -98,22 +101,29 @@ public class AutoLoginController {
 		}
 	}
 	
-	public static void soulEleven (Integer num) throws InterruptedException, AWTException {
-		for (int i = 0; i < num; i++) {
-			//处理结界挑战劵
-			FightAutoService.borderCheck ();
-		    //御魂-魂十一挑战120次
-			FightAutoService.soulEleven (11);
-		}
-		
-	}
-	
-	public static void soulTen (Integer num) throws InterruptedException, AWTException {
+	public static void soulEleven (Integer num, boolean b) throws InterruptedException, AWTException {
 		for (int i = 0; i < num; i++) {
 			//处理结界挑战劵
 			FightAutoService.borderCheck ();
 			//御魂-魂十一挑战120次
-			FightAutoService.soulEleven (10);
+			FightAutoService.soulEleven (11, b);
 		}
+		
+	}
+	
+	public static void soulTen (Integer num, boolean b) throws InterruptedException, AWTException {
+		for (int i = 0; i < num; i++) {
+			//处理结界挑战劵
+			FightAutoService.borderCheck ();
+			//御魂-魂十一挑战120次
+			FightAutoService.soulEleven (10, b);
+		}
+	}
+	
+	public static void spirit (int num) throws InterruptedException, AWTException {
+		for (int i = 0; i < num; i++) {
+			FightAutoService.spirit();
+		}
+		
 	}
 }

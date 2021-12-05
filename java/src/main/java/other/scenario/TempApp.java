@@ -52,7 +52,12 @@ class SoulElevenApp {
 		//自动登录到探索
 		AutoLoginController.login ();
 	   //刷魂十一或者刷个人结界
-		AutoLoginController.soulEleven (3);
+		//攻打轮次
+		int num=3;
+		//开启加成
+		boolean b=true;
+		AutoLoginController.soulEleven (num,b);
+		
 	}
 }
 
@@ -62,7 +67,23 @@ class SoulTenApp {
 		//自动登录到探索
 		AutoLoginController.login ();
 		//刷魂十或者刷个人结界
-		AutoLoginController.soulTen (3);
+		//攻打轮次
+		int num=3;
+		//开启加成
+		boolean b=false;
+		AutoLoginController.soulTen (num,b);
+	}
+}
+
+//	自动登录，刷御灵
+class SpiritApp {
+	public static void main (String[] args) throws Exception {
+		//自动登录到探索
+		AutoLoginController.login ();
+		//刷魂十或者刷个人结界
+		//攻打轮次
+		int num=3;
+		AutoLoginController.spirit(num);
 	}
 }
 
