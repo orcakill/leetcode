@@ -12,6 +12,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static other.scenario.util.RandomUtil.getRandom;
+
 /**
  * @author orcakill
  * @version 1.0.0
@@ -125,5 +127,13 @@ public class AutoLoginController {
 			FightAutoService.spirit();
 		}
 		
+	}
+	
+	public static void fightHome (int num) throws InterruptedException, AWTException {
+		for (int i = 0; i < num; i++) {
+		     FightAutoService.fightHome();
+			//打一轮间隔 40-50分钟
+			Thread.sleep ((long) getRandom (35, 50) * 60 * 1000);
+		}
 	}
 }

@@ -77,4 +77,8 @@ public interface FightAutoService {
 	static void spirit () throws InterruptedException, AWTException {
 		FightAutoServiceImpl.spirit ();
 	}
+	
+	static void fightHome () throws InterruptedException, AWTException {
+		FightAutoServiceImpl.fightHome ();
+	}
 }

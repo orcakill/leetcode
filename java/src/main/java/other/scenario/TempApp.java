@@ -87,4 +87,16 @@ class SpiritApp {
 	}
 }
 
+//	自动登录，刷寮突破
+class FightHomeApp {
+	public static void main (String[] args) throws Exception {
+		//自动登录到探索
+		AutoLoginController.login ();
+		//刷魂十或者刷个人结界
+		//攻打轮次
+		int num=12;
+		AutoLoginController.fightHome(num);
+	}
+}
+
 
