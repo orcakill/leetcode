@@ -206,11 +206,20 @@ public class MessageService {
 		List<MessageEventPO> messageEventPOList = new ArrayList<> ();
 		Date date=new Date ();
 		MessageEventPO messageEventPO=new MessageEventPO ();
-		messageEventPO.setMessageDate (date);
-		messageEventPO.setMessageTitle ("QQ");
-		messageEventPO.setMessageContent ("QQ音乐绿钻会员需要续费");
-		messageEventPO.setMessageType (0);
-		messageEventPOList.add (messageEventPO);
+		Calendar cal = Calendar.getInstance();
+		int month = cal.get(Calendar.MONTH) + 1;
+		int day = cal.get(Calendar.DATE);
+		boolean b=false;
+		if(day==22||day==23||day==24){
+			b=true;
+		}
+		if(month==10&&b){
+			messageEventPO.setMessageDate (date);
+			messageEventPO.setMessageTitle ("QQ");
+			messageEventPO.setMessageContent ("QQ音乐绿钻会员需要续费");
+			messageEventPO.setMessageType (0);
+			messageEventPOList.add (messageEventPO);
+		}
 		return  messageEventPOList;
 	}
 	

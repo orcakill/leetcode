@@ -535,6 +535,39 @@ public class FightAutoServiceImpl {
 			logger.info ("进入御灵孔雀");
 		}
 	}
+	
+	public static void fightHome () throws InterruptedException, AWTException {
+		//进入结界挑战
+		String file="scenario/结界突破/结界突破";
+		logger.info ("准备进入结界突破");
+		ImageService.imagesClickBack (file);
+		logger.info ("进入结界突破，准备点击阴阳寮");
+		String file1="scenario/结界突破/阴阳寮";
+		ImageService.imagesClickBack (file1);
+		logger.info ("进入寮突破，判断当前有无挑战次数");
+		String file2="scenario/结界突破/挑战次数";
+		String file3="scenario/结界突破/寮结界";
+		while (!ImageService.imagesClickBackIsEmpty (file2,3)&&ImageService.imagesClickBackIsEmpty (file3,3)){
+			logger.info ("存在可攻打结界，且存在挑战次数");
+			logger.info ("准备选择结界");
+			ImageService.imagesClickBack (file3);
+			logger.info ("选择结界成功，准备进攻");
+			String file4="scenario/结界突破/进攻";
+			ImageService.imagesClickBack (file4);
+			logger.info ("开始进攻");
+			String file5 = "scenario/御魂/角色头像";
+			String file6 = "scenario/御魂/退出挑战";
+			String file7 = "scenario/结界突破/失败";
+			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败");
+			ImageService.imagesClickBackNumberOrderThree (file5,file6,file7,90);
+			logger.info ("退出挑战完成");
+		}
+		logger.info ("无挑战次数或无可攻打结界");
+		//退出到探索
+		String file4="scenario/返回";
+		ImageService.imagesClickBack (file4);
+		logger.info ("退出到探索");
+	}
 }
 
 
