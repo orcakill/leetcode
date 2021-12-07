@@ -53,6 +53,7 @@ public class AutoLoginController {
 			if (pictureIdentifyWorkPO1.getX () == null) {
 				logger.info ("没找到适龄提示的坐标");
 			}
+			Thread.sleep (2000);
 			//		反馈的坐标
 			logger.info ("查找反馈的坐标");
 			String file3 = "scenario/登录/反馈";
@@ -133,7 +134,9 @@ public class AutoLoginController {
 		for (int i = 0; i < num; i++) {
 		     FightAutoService.fightHome();
 			//打一轮间隔 40-50分钟
-			Thread.sleep ((long) getRandom (35, 50) * 60 * 1000);
+			long l= (long) getRandom (35, 50) ;
+			logger.info ("等待"+l+"分钟");
+			Thread.sleep (l*60*1000);
 		}
 	}
 }
