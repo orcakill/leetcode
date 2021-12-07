@@ -169,6 +169,10 @@ public class ImageServiceImpl  {
 	public static void imagesClickBack (String folder) throws InterruptedException, AWTException {
 		File file = new File (
 				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
+		if(!file.exists ()){
+			file=new File (
+					System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
+		}
 		if (file.exists ()) {
 			for (int i = 0; i < num; i++) {
 				Thread.sleep (5000);
