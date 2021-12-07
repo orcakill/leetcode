@@ -28,7 +28,7 @@ public class ImageServiceTest {
 	
 	@Test
 	public void   imagesClickIsEmpty () throws InterruptedException, AWTException {
-		String folderName="scenario/御魂/御魂加成";
+		String folderName="scenario/首页/再次召唤";
 		File file = new File (
 				System.getProperty ("user.dir") + "/src/main/resources/image/" + folderName);
 		if(file.exists ()){
@@ -37,6 +37,21 @@ public class ImageServiceTest {
 		}
 		else{
 			System.out.println ("图片文件路径不存在");
+		}
+	}
+	
+	@Test
+	public void   imagesClick () throws InterruptedException, AWTException {
+		for(int i=0;i<800;i++){
+			String folderName="scenario/首页/再次召唤";
+			File file= new File (
+					System.getProperty ("user.dir") + "/src/main/resources/image/" + folderName);
+			if(file.exists ()){
+				ImageService.imagesClickBack (folderName);
+			}
+			else{
+				System.out.println ("图片文件路径不存在");
+			}
 		}
 	}
 	
