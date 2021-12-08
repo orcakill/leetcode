@@ -123,6 +123,8 @@ public class AutoLoginController {
 		}
 	}
 	
+
+	
 	public static void spirit (int num) throws InterruptedException, AWTException {
 		for (int i = 0; i < num; i++) {
 			FightAutoService.spirit();
@@ -134,7 +136,7 @@ public class AutoLoginController {
 		for (int i = 0; i < num; i++) {
 		     FightAutoService.fightHome();
 			//打一轮间隔 40-50分钟
-			long l= (long) getRandom (35, 50) ;
+			long l= (long) getRandom (20, 30) ;
 			logger.info ("等待"+l+"分钟");
 			Thread.sleep (l*60*1000);
 		}

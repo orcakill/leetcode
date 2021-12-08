@@ -81,4 +81,6 @@ public interface FightAutoService {
 	static void fightHome () throws InterruptedException, AWTException {
 		FightAutoServiceImpl.fightHome ();
 	}
+	
+
 }
