@@ -17,7 +17,7 @@ import static other.scenario.service.FightAutoService.soulBack;
  * @Created by orcakill
  */
 /*刷御魂*/
-//	启动模拟器，需要调整成全屏后隐藏到后台
+//启动模拟器，需要调整成全屏后隐藏到后台
 public class TempApp {
 	public static void main (String[] args) throws Exception {
 		//启动程序
