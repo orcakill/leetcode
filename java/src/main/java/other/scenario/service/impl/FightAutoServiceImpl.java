@@ -474,7 +474,7 @@ public class FightAutoServiceImpl {
 			ImageService.imagesClickBack (file3);
 		}
 	    //开始挑战
-		soulBack (3);
+		soulBack (120);
 		//挑战结束
 		if(b){
 			//关闭加成
@@ -551,6 +551,7 @@ public class FightAutoServiceImpl {
 			logger.info ("存在可攻打结界，且存在挑战次数");
 			logger.info ("准备选择结界");
 			ImageService.imagesClickBack (file3);
+			Thread.sleep (2000);
 			logger.info ("选择结界成功，准备进攻");
 			String file4="scenario/结界突破/进攻";
 			ImageService.imagesClickBack (file4);
@@ -559,7 +560,7 @@ public class FightAutoServiceImpl {
 			String file6 = "scenario/御魂/退出挑战";
 			String file7 = "scenario/结界突破/失败";
 			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败");
-			ImageService.imagesClickBackNumberOrderThree (file5,file6,file7,90);
+			ImageService.imagesClickBackNumberOrderThree (file5,file6,file7,100);
 			logger.info ("退出挑战完成");
 		}
 		logger.info ("无挑战次数或无可攻打结界");
