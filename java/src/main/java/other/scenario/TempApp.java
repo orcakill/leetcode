@@ -29,7 +29,7 @@ public class TempApp {
 class SoulApp {
 	public static void main (String[] args) throws Exception {
 		//重复 挑战150次
-		soulBack (120);
+		soulBack (50);
 	}
 }
 

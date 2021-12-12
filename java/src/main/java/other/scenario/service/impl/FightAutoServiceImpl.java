@@ -513,12 +513,17 @@ public class FightAutoServiceImpl {
 			ImageService.imagesClickBack (file1);
 			logger.info ("进入御灵神龙");
 		}
-		//周三
-		else if (weekday==4){
+		//周三、周六和周日
+		else if (weekday==4||weekday==7||weekday==1){
 			String  file1="scenario/御灵/白藏主";
 			logger.info ("准备进入御灵白藏主");
 			ImageService.imagesClickBack (file1);
 			logger.info ("进入御灵白藏主");
+			logger.info ("选择第三层");
+			String  file2="scenario/御灵/第三层";
+			ImageService.imagesClickBack (file2);
+			logger.info ("开始挑战");
+			soulBack (120);
 		}
 		//周四
 		else if (weekday==5){
