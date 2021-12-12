@@ -441,7 +441,7 @@ public class FightAutoServiceImpl {
 		logger.info ("退出到探索");
 	}
 	
-	public static void soulEleven (int i,boolean b) throws InterruptedException, AWTException {
+	public static void soulEleven (int i,int j,boolean b) throws InterruptedException, AWTException {
 		String  file="scenario/御魂/御魂图标";
 		logger.info ("准备进入御魂");
 		ImageService.imagesClickBack (file);
@@ -474,7 +474,7 @@ public class FightAutoServiceImpl {
 			ImageService.imagesClickBack (file3);
 		}
 	    //开始挑战
-		soulBack (120);
+		soulBack (j);
 		//挑战结束
 		if(b){
 			//关闭加成

@@ -104,22 +104,22 @@ public class AutoLoginController {
 		}
 	}
 	
-	public static void soulEleven (Integer num, boolean b) throws InterruptedException, AWTException {
+	public static void soulEleven (Integer num,Integer num1,boolean b) throws InterruptedException, AWTException {
 		for (int i = 0; i < num; i++) {
 			//处理结界挑战劵
 			FightAutoService.borderCheck ();
-			//御魂-魂十一挑战120次
-			FightAutoService.soulEleven (11, b);
+			//御魂-魂十一挑战num1次
+			FightAutoService.soulEleven (11,num1,b);
 		}
 		
 	}
 	
-	public static void soulTen (Integer num, boolean b) throws InterruptedException, AWTException {
+	public static void soulTen (Integer num,int num1, boolean b) throws InterruptedException, AWTException {
 		for (int i = 0; i < num; i++) {
 			//处理结界挑战劵
 			FightAutoService.borderCheck ();
 			//御魂-魂十一挑战120次
-			FightAutoService.soulEleven (10, b);
+			FightAutoService.soulEleven (10,num1, b);
 		}
 	}
 	
@@ -132,13 +132,29 @@ public class AutoLoginController {
 		
 	}
 	
-	public static void fightHome (int num) throws InterruptedException, AWTException {
+	public static void fightHome (int num,boolean b) throws InterruptedException, AWTException {
 		for (int i = 0; i < num; i++) {
 		     FightAutoService.fightHome();
-			//打一轮间隔 40-50分钟
-			long l= (long) getRandom (20, 30) ;
-			logger.info ("等待"+l+"分钟");
-			Thread.sleep (l*60*1000);
+			 if(b){
+				 //打一轮间隔 40-50分钟
+				 long l= (long) getRandom (20, 30) ;
+				 logger.info ("等待"+l+"分钟");
+				 Thread.sleep (l*60*1000);
+			 }
+		}
+	}
+	
+	public static void soulAll (int num) throws InterruptedException, AWTException {
+		for (int i = 0; i < num; i++) {
+			logger.info ("处理阴阳寮结界");
+			FightAutoService.fightHome();
+			logger.info ("阴阳寮结界处理完成");
+			logger.info ("处理个人结界");
+			FightAutoService.borderCheck ();
+			logger.info ("个人结界处理完成");
+			logger.info ("魂十一60次");
+			FightAutoService.soulEleven (11,60,true);
+			
 		}
 	}
 }
