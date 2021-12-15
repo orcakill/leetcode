@@ -291,7 +291,7 @@ public class ImageServiceImpl  {
 		}
 	}
 	
-	public static void imagesClickBackNumberOrderThree (String folder1, String folder2, String folder3, Integer number) throws
+	public static boolean imagesClickBackNumberOrderThree (String folder1, String folder2, String folder3, Integer number) throws
 	                                                                                                                    InterruptedException,
 	                                                                                                                    AWTException {
 			File file1= new File (
@@ -329,7 +329,7 @@ public class ImageServiceImpl  {
 						ImagesBackRec.imagesRecognition (folder3);
 						Thread.sleep (getRandom (1, 2) * 1000L);
 						logger.info ("点击操作成功");
-						break;
+						return  false;
 					}
 					else{
 						logger.error ("在每2-3秒的检测中，第" + (i + 1) + "次检查未发现该图片");
@@ -339,6 +339,7 @@ public class ImageServiceImpl  {
 			else {
 				logger.info ("图标路径不存在");
 			}
+			return  true;
 	}
 }
 
