@@ -405,7 +405,11 @@ public class FightAutoServiceImpl {
 				String file5 = "scenario/御魂/退出挑战";
 				String file51 = "scenario/结界突破/失败";
 				logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败");
-				ImageService.imagesClickBackNumberOrderThree (file4,file5,file51,90);
+				boolean b=ImageService.imagesClickBackNumberOrderThree (file4,file5,file51,90);
+				if(!b){
+					logger.info ("个人结界战斗失败，请更换阵容手动挑战");
+					System.exit(0);
+				}
 				logger.info ("退出挑战完成");
 				if(ImageService.imagesClickBackIsEmpty (file5,4)){
 					logger.info ("每打完三个有额外奖励");
@@ -552,6 +556,7 @@ public class FightAutoServiceImpl {
 		logger.info ("进入寮突破，判断当前有无挑战次数");
 		String file2="scenario/结界突破/挑战次数";
 		String file3="scenario/结界突破/寮结界";
+		int num=0;
 		while (!ImageService.imagesClickBackIsEmpty (file2,3)&&ImageService.imagesClickBackIsEmpty (file3,3)){
 			logger.info ("存在可攻打结界，且存在挑战次数");
 			logger.info ("准备选择结界");
@@ -567,6 +572,11 @@ public class FightAutoServiceImpl {
 			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败");
 			ImageService.imagesClickBackNumberOrderThree (file5,file6,file7,100);
 			logger.info ("退出挑战完成");
+			if(num==8){
+				logger.info ("阴阳寮挑战超过8次");
+				break;
+			}
+			num++;
 		}
 		logger.info ("无挑战次数或无可攻打结界");
 		//退出到探索

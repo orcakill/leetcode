@@ -63,6 +63,18 @@ class SoulElevenApp {
 	}
 }
 
+
+//	自动登录，刷寮突破,处理个人结界，刷魂十一
+class soulAllApp {
+	public static void main (String[] args) throws Exception {
+		//自动登录到探索
+		AutoLoginController.login ();
+		//攻打轮次
+		int num=12;
+		AutoLoginController.soulAll(num);
+	}
+}
+
 //	自动登录，刷魂十，个人结界
 class SoulTenApp {
 	public static void main (String[] args) throws Exception {
@@ -103,15 +115,23 @@ class FightHomeApp {
 	}
 }
 
-//	自动登录，刷寮突破,处理个人结界，刷魂十一
-class soulAllApp {
+
+//	自动登录，刷业原火，个人结界
+class SoulFireApp {
 	public static void main (String[] args) throws Exception {
 		//自动登录到探索
 		AutoLoginController.login ();
+		//刷魂十或者刷个人结界
 		//攻打轮次
-		int num=12;
-		AutoLoginController.soulAll(num);
+		int num=3;
+		//每轮次攻打次数
+		int num1=120;
+		//开启加成
+		boolean b=false;
+		AutoLoginController.soulTen (num,num1,b);
 	}
 }
+
+
 
 
