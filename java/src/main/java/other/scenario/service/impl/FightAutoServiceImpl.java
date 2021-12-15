@@ -449,46 +449,72 @@ public class FightAutoServiceImpl {
 		String  file="scenario/御魂/御魂图标";
 		logger.info ("准备进入御魂");
 		ImageService.imagesClickBack (file);
-		logger.info ("进入御魂成功，准备选择八岐大蛇");
-		String  file1="scenario/御魂/八岐大蛇";
-		ImageService.imagesClickBack (file1);
-		logger.info ("进入八岐大蛇挑战页面");
-		//获取加成地址，手动测试出御魂加成的坐标，然后存储到代码，然后根据当前分辨率获取唯一坐标
-		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList= CoordinateAddress.getCoordinate ("御魂加成");
-		String  file2="scenario/御魂/加成";
-		if(b){
-			logger.info ("准备开启加成");
-			ImageService.imagesClickBack (file2);
-			logger.info ("点击加成成功，准备点击御魂加成");
-			MouseClick.mouseClickBack (pictureIdentifyWorkPOList);
-			logger.info ("点击御魂加成成功，准备退出");
-			ImageService.imagesClickBack (file2);
-			//退出加成页面
-			logger.info ("退出加成页面");
+		if(i==10||i==11){
+			logger.info ("进入御魂成功，准备选择八岐大蛇");
+			String  file1="scenario/御魂/御魂类型/八岐大蛇";
+			ImageService.imagesClickBack (file1);
+			logger.info ("进入八岐大蛇挑战页面");
+			//获取加成地址，手动测试出御魂加成的坐标，然后存储到代码，然后根据当前分辨率获取唯一坐标
+			List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList= CoordinateAddress.getCoordinate ("御魂加成");
+			String  file2="scenario/御魂/加成";
+			if(b){
+				logger.info ("准备开启加成");
+				ImageService.imagesClickBack (file2);
+				logger.info ("点击加成成功，准备点击御魂加成");
+				MouseClick.mouseClickBack (pictureIdentifyWorkPOList);
+				logger.info ("点击御魂加成成功，准备退出");
+				ImageService.imagesClickBack (file2);
+				//退出加成页面
+				logger.info ("退出加成页面");
+			}
+			//选择魂十或魂十一
+			if(i==11){
+				String file3="scenario/御魂/层数/魂十一";
+				logger.info ("选择魂十一");
+				ImageService.imagesClickBack (file3);
+			}
+			else if(i==10){
+				String file3="scenario/御魂/层数/魂十";
+				logger.info ("选择魂十");
+				ImageService.imagesClickBack (file3);
+			}
+			//开始挑战
+			soulBack (j);
+			//挑战结束
+			if(b){
+				//关闭加成
+				ImageService.imagesClickBack (file2);
+				logger.info ("点击加成成功，准备关闭御魂加成");
+				MouseClick.mouseClickBack (pictureIdentifyWorkPOList);
+				logger.info ("关闭御魂加成成功，准备退出");
+				ImageService.imagesClickBack (file2);
+				//退出加成页面
+				logger.info ("退出加成页面");
+			}
 		}
-	    //选择魂十或魂十一
-		if(i==11){
-		   String file3="scenario/御魂/层数/魂十一";
-			logger.info ("选择魂十一");
-			ImageService.imagesClickBack (file3);
-		}
-		else if(i==10){
-			String file3="scenario/御魂/层数/魂十";
-			logger.info ("选择魂十");
-			ImageService.imagesClickBack (file3);
-		}
-	    //开始挑战
-		soulBack (j);
-		//挑战结束
-		if(b){
-			//关闭加成
+		if(i==21){
+			logger.info ("进入御魂成功，准备选择业原火");
+			String  file1="scenario/御魂/御魂类型/业原火";
+			ImageService.imagesClickBack (file1);
+			logger.info ("进入业原火");
+			logger.info ("选择业原火第三层");
+			String  file2="scenario/御魂/层数/业原火第三层";
 			ImageService.imagesClickBack (file2);
-			logger.info ("点击加成成功，准备关闭御魂加成");
-			MouseClick.mouseClickBack (pictureIdentifyWorkPOList);
-			logger.info ("关闭御魂加成成功，准备退出");
+			logger.info ("开始挑战");
+			//开始挑战
+			soulBack (j);
+		}
+		if(i==31){
+			logger.info ("进入御魂成功，准备选择日轮之陨");
+			String  file1="scenario/御魂/御魂类型/日轮之陨";
+			ImageService.imagesClickBack (file1);
+			logger.info ("进入日轮之陨");
+			logger.info ("选择日轮之陨第三层");
+			String  file2="scenario/御魂/层数/日轮之陨第三层";
 			ImageService.imagesClickBack (file2);
-			//退出加成页面
-			logger.info ("退出加成页面");
+			logger.info ("开始挑战");
+			//开始挑战
+			soulBack (j);
 		}
 		//退出到探索
 		String file3="scenario/返回";
