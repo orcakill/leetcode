@@ -121,14 +121,30 @@ class SoulFireApp {
 	public static void main (String[] args) throws Exception {
 		//自动登录到探索
 		AutoLoginController.login ();
-		//刷魂十或者刷个人结界
+		//刷魂业原火或者刷个人结界
 		//攻打轮次
 		int num=3;
 		//每轮次攻打次数
 		int num1=120;
 		//开启加成
 		boolean b=false;
-		AutoLoginController.soulTen (num,num1,b);
+		AutoLoginController.soulFire (num,num1,b);
+	}
+}
+
+//	自动登录，刷日轮之陨，个人结界
+class SoulSunApp {
+	public static void main (String[] args) throws Exception {
+		//自动登录到探索
+		AutoLoginController.login ();
+		//刷魂业原火或者刷个人结界
+		//攻打轮次
+		int num=3;
+		//每轮次攻打次数
+		int num1=50;
+		//开启加成
+		boolean b=false;
+		AutoLoginController.soulSun (num,num1,b);
 	}
 }
 
