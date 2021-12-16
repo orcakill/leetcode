@@ -25,7 +25,7 @@ public class AutoLoginController {
 	private static final Logger logger = LogManager.getLogger (AutoLoginController.class);
 	
 	public static void login () throws Exception {
-		String fileOne = "scenario/首页/探索妖字";
+		String fileOne = "scenario/御魂/御魂图标";
 		logger.info ("判断当前是未登录还是已探索");
 		if (ImageService.imagesClickBackIsEmpty (fileOne, 3)) {
 			logger.info ("当前已是探索界面");
