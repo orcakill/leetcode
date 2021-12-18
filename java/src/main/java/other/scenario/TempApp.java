@@ -25,14 +25,6 @@ public class TempApp {
 	}
 }
 
-/*直接重复挑战*/
-class SoulApp {
-	public static void main (String[] args) throws Exception {
-		//重复 挑战150次
-		soulBack (50);
-	}
-}
-
 /*拒接协战*/
 class RefuseApp {
 	public static void main (String[] args) throws Exception {
@@ -45,6 +37,16 @@ class RefuseApp {
 		}
 	}
 }
+
+/*直接重复挑战*/
+class SoulApp {
+	public static void main (String[] args) throws Exception {
+		//重复 挑战150次
+		soulBack (50);
+	}
+}
+
+
 
 //	自动登录,刷魂十一，个人结界
 class SoulElevenApp {
@@ -71,9 +73,26 @@ class soulAllApp {
 		AutoLoginController.login ();
 		//攻打轮次
 		int num=12;
-		AutoLoginController.soulAll(num);
+		//御魂类型
+		int num1=11;
+		AutoLoginController.soulAll(num,num1);
 	}
 }
+
+//	自动登录，刷寮突破,处理个人结界，刷业原火
+class soulAll2App {
+	public static void main (String[] args) throws Exception {
+		//自动登录到探索
+		AutoLoginController.login ();
+		//攻打轮次
+		int num=12;
+		//御魂类型
+		int num1=21;
+		AutoLoginController.soulAll(num,num1);
+	}
+}
+
+
 
 //	自动登录，刷魂十，个人结界
 class SoulTenApp {
