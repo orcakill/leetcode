@@ -144,7 +144,7 @@ public class AutoLoginController {
 		}
 	}
 	
-	public static void soulAll (int num) throws InterruptedException, AWTException {
+	public static void soulAll (int num,int num1) throws InterruptedException, AWTException {
 		for (int i = 0; i < num; i++) {
 			logger.info ("处理阴阳寮结界");
 			FightAutoService.fightHome();
@@ -153,7 +153,7 @@ public class AutoLoginController {
 			FightAutoService.borderCheck ();
 			logger.info ("个人结界处理完成");
 			logger.info ("魂十一60次");
-			FightAutoService.soulEleven (11,60,true);
+			FightAutoService.soulEleven (num1,60,true);
 			
 		}
 	}
@@ -176,4 +176,6 @@ public class AutoLoginController {
 			FightAutoService.soulEleven (31,num1, b);
 		}
 	}
+	
+
 }
