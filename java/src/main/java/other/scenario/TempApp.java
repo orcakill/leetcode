@@ -121,7 +121,7 @@ class SpiritApp {
 		AutoLoginController.spirit(num);
 	}
 }
-
+ 
 //	自动登录，刷寮突破
 class FightHomeApp {
 	public static void main (String[] args) throws Exception {
