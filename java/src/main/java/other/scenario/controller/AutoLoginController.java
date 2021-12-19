@@ -152,8 +152,15 @@ public class AutoLoginController {
 			logger.info ("处理个人结界");
 			FightAutoService.borderCheck ();
 			logger.info ("个人结界处理完成");
-			logger.info ("魂十一60次");
-			FightAutoService.soulEleven (num1,60,true);
+			if(num1==11){
+				logger.info ("魂十一60次");
+				FightAutoService.soulEleven (num1,60,true);
+			}
+			if(num1==21){
+				logger.info ("业原火30次");
+				FightAutoService.soulEleven (num1,30,true);
+			}
+			
 			
 		}
 	}
