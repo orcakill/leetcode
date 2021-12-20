@@ -176,11 +176,8 @@ public class ImageServiceImpl  {
 		if (file.exists ()) {
 			for (int i = 0; i < num; i++) {
 				Thread.sleep ((long) getRandom (1,2) * getRandom (500,1000));
-				if (ImagesBackRec.imagesRecognitionIsEmpty (folder)) {
+				if (ImagesBackRec.imagesRecognition (folder)) {
 					logger.info ("图片匹配成功");
-					Thread.sleep ((long) getRandom (1,2) * getRandom (500,1000));
-					ImagesBackRec.imagesRecognition (folder);
-					Thread.sleep ((long) getRandom (1,2) * getRandom (500,1000));
 					logger.info ("点击成功");
 					break;
 				}
@@ -232,11 +229,8 @@ public class ImageServiceImpl  {
 		if (file.exists ()) {
 			for (int i = 0; i < number; i++) {
 				Thread.sleep ((long) getRandom (1,2) * getRandom (500,1000));
-				if (ImagesBackRec.imagesRecognitionIsEmpty (folder)) {
+				if (ImagesBackRec.imagesRecognition (folder)) {
 					logger.info ("图片匹配成功");
-					Thread.sleep ((long) getRandom (1,2) * getRandom (500,1000));
-					ImagesBackRec.imagesRecognition (folder);
-					Thread.sleep ((long) getRandom (1,2) * getRandom (500,1000));
 					logger.info ("点击操作成功");
 					break;
 				}
@@ -266,7 +260,6 @@ public class ImageServiceImpl  {
 				boolean b=ImagesBackRec.imagesRecognitionIsEmpty (folder2);
 				if (a) {
 					logger.info ("图片匹配成功");
-					Thread.sleep ((long) getRandom (1,2) * getRandom (500,1000));
 					ImagesBackRec.imagesRecognition (folder1);
 					Thread.sleep ((long) getRandom (1,2) * getRandom (500,1000));
 					logger.info ("点击操作成功");
@@ -275,7 +268,6 @@ public class ImageServiceImpl  {
 				}
 				else if(b){
 					logger.info ("图片匹配成功");
-					Thread.sleep ((long) getRandom (1,2) * getRandom (500,1000));
 					ImagesBackRec.imagesRecognition (folder2);
 					Thread.sleep ((long) getRandom (1,2) * getRandom (500,1000));
 					logger.info ("点击操作成功");
