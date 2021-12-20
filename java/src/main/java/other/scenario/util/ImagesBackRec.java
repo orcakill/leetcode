@@ -20,7 +20,7 @@ import java.util.List;
 public class ImagesBackRec {
 	private static final Logger logger = LogManager.getLogger (ImagesBackRec.class);
 	
-	public static void  imagesRecognition (String FolderName) throws AWTException {
+	public static boolean imagesRecognition (String FolderName) throws AWTException {
 //		屏幕截图
 		BufferedImage Window=Screenshot.screenshotBack ();
 //		图片
@@ -34,10 +34,9 @@ public class ImagesBackRec {
 			int num=RandomUtil.randomMinute (mouseXY.size ());
 			mouseXY1.add (mouseXY.get (num));
 			MouseClick.mouseClickBack (mouseXY1);
+			return  true;
 		}
-		else{
-			MouseClick.mouseClickBack (mouseXY);
-		}
+		return  false;
 	}
 	
 	
@@ -136,7 +135,7 @@ b:
 								mouseXY.setX (x);
 								mouseXY.setY (y);
 								mouseMessages.add (mouseXY);
-								if(mouseMessages.size ()>=5){
+								if(mouseMessages.size ()>=3){
 									return mouseMessages;
 								}
 								break a;

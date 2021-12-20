@@ -359,16 +359,12 @@ public class FightAutoServiceImpl {
 			logger.info ("准备开始挑战");
 			ImageService.imagesClickBackNumber  (file1,120,true);
 			logger.info ("第" + (i + 1) +"次挑战中，等待挑战完成");
-			Thread.sleep (getRandom(5, 6) * 1000L);
-			
 			String file2 = "scenario/御魂/角色头像";
 			String file3 = "scenario/御魂/退出挑战";
 			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战");
 			ImageService.imagesClickBackNumberOrder (file2,file3,120);
-			
 			logger.info ("退出挑战完成");
 			num--;
-			Thread.sleep ((long) getRandom (0,1) * getRandom (500,1000));
 			logger.info ("第" + (i + 1) + "次挑战完成，剩余" + (num) + "次");
 			long b= System.currentTimeMillis();//获取当前系统时间(毫秒)
 			logger.info ("该次挑战使用时间为"+(b-a)+"毫秒");
@@ -588,7 +584,7 @@ public class FightAutoServiceImpl {
 		String file2="scenario/结界突破/挑战次数";
 		String file3="scenario/结界突破/寮结界";
 		int num=0;
-		while (!ImageService.imagesClickBackIsEmpty (file2,10)&&ImageService.imagesClickBackIsEmpty (file3,10)){
+		while (!ImageService.imagesClickBackIsEmpty (file2,5)&&ImageService.imagesClickBackIsEmpty (file3,5)){
 			logger.info ("存在可攻打结界，且存在挑战次数");
 			logger.info ("准备选择结界");
 			ImageService.imagesClickBack (file3);
