@@ -79,9 +79,10 @@ public class AutoLoginController {
 			//进入首页底部功能菜单
 			String file = "scenario/首页/底部菜单";
 			logger.info ("准备点击底部菜单栏");
-			ImageService.imagesClickBack (file);
+			ImageService.imagesClickBackNumber(file,300,true);
 			logger.info ("打开底部菜单栏成功");
 			//进入探索
+			Thread.sleep (3000);
 			String file4 = "scenario/首页/首页勾玉";
 			PictureIdentifyWorkPO pictureIdentifyWorkPO4 = ImagesBackRec.imagesRecognitionMouse (file4);
 			String file5 = "scenario/首页/首页体力";
@@ -153,12 +154,12 @@ public class AutoLoginController {
 			FightAutoService.borderCheck ();
 			logger.info ("个人结界处理完成");
 			if(num1==11){
-				logger.info ("魂十一60次");
-				FightAutoService.soulEleven (num1,60,true);
+				logger.info ("魂十一40次");
+				FightAutoService.soulEleven (num1,40,true);
 			}
 			if(num1==21){
-				logger.info ("业原火30次");
-				FightAutoService.soulEleven (num1,30,true);
+				logger.info ("业原火20次");
+				FightAutoService.soulEleven (num1,20,true);
 			}
 			
 			
