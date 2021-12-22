@@ -39,13 +39,17 @@ public class AutoLoginController {
 			//进入游戏
 			logger.info ("查找适龄提示的坐标");
 			String file2 = "scenario/登录/适龄提示";
-			for (int i = 0; i < 30; i++) {
+			String file21 = "scenario/登录/公告关闭";
+			for (int i = 0; i < 120; i++) {
 				if (ImagesBackRec.imagesRecognitionIsEmpty (file2)) {
 					logger.info ("找到适龄提示的图片，确定进入登录界面");
 					break;
 				}
 				else {
 					logger.info ("没找到适龄提示的图片，尚未进入游戏");
+					if(ImagesBackRec.imagesRecognition(file21)){
+						logger.info ("有公告,关闭公告");
+					}
 				}
 				Thread.sleep (2000);
 			}
@@ -79,8 +83,9 @@ public class AutoLoginController {
 			//进入首页底部功能菜单
 			Thread.sleep (3000);
 			String file = "scenario/首页/底部菜单";
+			String file0 = "scenario/首页/取消";
 			logger.info ("准备点击底部菜单栏");
-			ImageService.imagesClickBackNumber(file,300,true);
+			ImageService.imagesClickBackNumberOrder (file0,file,300);
 			logger.info ("打开底部菜单栏成功");
 			//进入探索
 			Thread.sleep (3000);
@@ -139,7 +144,7 @@ public class AutoLoginController {
 		     FightAutoService.fightHome();
 			 if(b){
 				 //打一轮间隔 40-50分钟
-				 long l= (long) getRandom (20, 30) ;
+				 long l= getRandom (20, 30);
 				 logger.info ("等待"+l+"分钟");
 				 Thread.sleep (l*60*1000);
 			 }
