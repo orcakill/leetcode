@@ -46,7 +46,6 @@ public interface FightAutoService {
 	}
 	/***
 	 * @description: 固定次数刷御魂
-	 * @param num
 	 * @return: void
 	 * @author: orcakill
 	 * @date: 2021/11/14 17:27

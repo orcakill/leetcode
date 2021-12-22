@@ -159,7 +159,7 @@ class SoulSunApp {
 		AutoLoginController.login ();
 		//刷魂业原火或者刷个人结界
 		//攻打轮次
-		int num=3;
+		int num=1;
 		//每轮次攻打次数
 		int num1=50;
 		//开启加成

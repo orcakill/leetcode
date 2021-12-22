@@ -136,7 +136,7 @@ public class ScanningProcess {
 	}
 	
 	interface GDI32 extends com.sun.jna.platform.win32.GDI32 {
-		GDI32 INSTANCE = (GDI32) Native.loadLibrary (GDI32.class);
+		GDI32 INSTANCE = Native.loadLibrary (GDI32.class);
 		
 		boolean BitBlt(HDC hdcDest, int nXDest, int nYDest, int nWidth,
 		               int nHeight, HDC hdcSrc, int nXSrc, int nYSrc, int dwRop);
@@ -156,7 +156,7 @@ public class ScanningProcess {
 	}
 	
 	interface User32 extends com.sun.jna.platform.win32.User32 {
-		User32 INSTANCE = (User32) Native.loadLibrary (User32.class,
+		User32 INSTANCE = Native.loadLibrary (User32.class,
 				W32APIOptions.UNICODE_OPTIONS);
 		
 		HWND GetDesktopWindow();

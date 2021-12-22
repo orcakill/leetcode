@@ -114,7 +114,7 @@ public class OnmyojiInfoMapper {
 	/*删除全部数据*/
 	public static void deleteAll () throws SQLException {
 		String sql = "delete  from onmyoji_info";
-		Sql.deleteSQL (sql, (org.apache.logging.log4j.core.Logger) logger);
+		Sql.deleteSQL (sql, logger);
 	}
 	
 	/*根据主键删除数据*/

@@ -18,11 +18,11 @@ import java.util.Set;
  */
 public class StartUpExeUtils {
 	
-	private static boolean startExeStatus = true;//exe启动状态
+	private static final boolean startExeStatus = true;//exe启动状态
 	
 	//仅启动exe客户端，不检查进程
 	public static void startUpExeOnly (String exePath) throws IOException {
-		if (exePath != "") {
+		if (!exePath.equals ("")) {
 			Runtime.getRuntime ()
 			       .exec (exePath);
 		}
@@ -36,7 +36,7 @@ public class StartUpExeUtils {
 	 * @throws IOException
 	 */
 	public static void killExeOnly (String procName) throws IOException {
-		if (procName != "") {
+		if (!procName.equals ("")) {
 			String command = "taskkill /F /IM " + procName;
 			Runtime.getRuntime ()
 			       .exec ("cmd /c " + command);
@@ -45,7 +45,7 @@ public class StartUpExeUtils {
 	
 	//启动exe客户端
 	public static boolean startUpExe (String exePath, String procName) {
-		if (exePath != "" && procName != "") {
+		if (!exePath.equals ("") && !procName.equals ("")) {
 			String result = checkProcess (procName);//检查exe进程
 			if (result.isEmpty ()) {
 				try {
@@ -63,7 +63,7 @@ public class StartUpExeUtils {
 	//启动exe客户端,并传参
 	public static boolean startUpExe (String exePath, String procName, int subId, String curModeId, String riskSet1,
 	                                  String riskSet2, String riskSet3) {
-		if (exePath != "" && procName != "") {
+		if (!exePath.equals ("") && !procName.equals ("")) {
 			String result = checkProcess (procName);//检查exe进程
 			if (result.isEmpty ()) {
 				try {
@@ -117,7 +117,7 @@ public class StartUpExeUtils {
 		if (existProc) {
 			BufferedReader br = null;
 			try {
-				if (procName != "") {
+				if (!procName.equals ("")) {
 					//执行cmd命令
 					String command = "taskkill /F /IM " + procName;
 					Runtime runtime = Runtime.getRuntime ();
