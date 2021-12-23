@@ -86,6 +86,7 @@ public class AutoLoginController {
 			String file0 = "scenario/首页/取消";
 			logger.info ("准备点击底部菜单栏");
 			ImageService.imagesClickBackNumberOrder (file0,file,300);
+			Thread.sleep (3000);
 			logger.info ("打开底部菜单栏成功");
 			//进入探索
 			Thread.sleep (3000);

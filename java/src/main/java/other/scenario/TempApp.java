@@ -22,22 +22,19 @@ public class TempApp {
 	public static void main (String[] args) throws Exception {
 		//启动程序
 		StartUpExeUtils.startUpExeOnly ("CMD /C " + ExeAddress.exeAddress ());
-	}
-}
-
-/*拒接协战*/
-class RefuseApp {
-	public static void main (String[] args) throws Exception {
+		/*拒接协战*/
 		refuse ();
 	}
+	
 	public static void refuse () throws InterruptedException, AWTException {
-		for (int i = 0; i <= 150; i++) {
-			String file1 = "scenario/御魂/拒接协战";
-			Thread.sleep (3000);
-			ImageService.imagesClickBackNumber (file1, 30, false);
+		String file1 = "scenario/御魂/拒接协战";
+		for (int i = 0; i <= 300; i++) {
+			Thread.sleep (30*1000);
+			ImageService.imagesClickBackNumber (file1, 3, false);
 		}
 	}
 }
+
 
 /*直接重复挑战*/
 class SoulApp {
@@ -46,8 +43,6 @@ class SoulApp {
 		soulBack (50);
 	}
 }
-
-
 
 //	自动登录,刷魂十一，个人结界
 class SoulElevenApp {

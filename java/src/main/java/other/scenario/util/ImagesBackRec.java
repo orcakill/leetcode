@@ -77,6 +77,7 @@ public class ImagesBackRec {
 	 */
 	public static List<PictureIdentifyWorkPO> FindAllImgData(BufferedImage Window, List<int[][]> ImagesData) {
 		List<PictureIdentifyWorkPO> mouseMessages = new ArrayList<>();
+		PictureIdentifyWorkPO mouseXY = new PictureIdentifyWorkPO ();
 		// 解析屏幕图片数据
 		int width = Window.getWidth();
 		int height = Window.getHeight();
@@ -129,7 +130,6 @@ b:
 								
 								logger.info ("在屏幕上找到图片了,坐标:( " + x + " , " + y + " )");
 								// 这是专门存储数据的类
-								PictureIdentifyWorkPO mouseXY = new PictureIdentifyWorkPO ();
 								x += (int) (Math.random () * imgWidth);
 								y += (int) (Math.random () * imgHeight);
 								mouseXY.setX (x);
@@ -194,6 +194,7 @@ b:
 				String[] filelist = Folder.list();
 				// 将所有照片存储并且返回
 				assert filelist != null;
+				
 				for (String s : filelist) {
 					File file = new File (Folder + File.separator + s);
 					// 判断是否为照片文件
@@ -233,11 +234,13 @@ b:
 		
 		List<int[][]> ImagesData = new ArrayList<> ();
 		
+		int width;
+		int height;
+		int[][] img;
 		for (BufferedImage bufferedImage : imgs) {
-			
-			int width = bufferedImage.getWidth ();
-			int height = bufferedImage.getHeight ();
-			int[][] img = new int[width][height];
+			width = bufferedImage.getWidth ();
+			height = bufferedImage.getHeight ();
+			img =new int[width][height];
 			
 			for (int w = 0; w < width; w++)
 				for (int h = 0; h < height; h++) {
