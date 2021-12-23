@@ -236,7 +236,7 @@ public class ImageServiceImpl  {
 				}
 				else {
 					if(b){
-					logger.error ("在每0-3秒的检测中，第" + (i + 1) + "次检查未发现该图片");
+					logger.error ("在每0.5-2秒的检测中，第" + (i + 1) + "次检查未发现该图片");
 					}
 				}
 			}
@@ -292,12 +292,15 @@ public class ImageServiceImpl  {
 					System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder2);
 		    File file3= new File (
 				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder3);
+			boolean a=false;
+			boolean b=false;
+			boolean c=false;
 			if (file1.exists ()&&file2.exists ()&&file3.exists ()) {
 				for (int i = 0; i < number; i++) {
 					Thread.sleep (getRandom (1, 2)*1000L);
-					boolean a=ImagesBackRec.imagesRecognitionIsEmpty (folder1);
-					boolean b=ImagesBackRec.imagesRecognitionIsEmpty (folder2);
-					boolean c=ImagesBackRec.imagesRecognitionIsEmpty (folder3);
+					a=ImagesBackRec.imagesRecognitionIsEmpty (folder1);
+					b=ImagesBackRec.imagesRecognitionIsEmpty (folder2);
+					c=ImagesBackRec.imagesRecognitionIsEmpty (folder3);
 					if (a) {
 						logger.info ("图片匹配成功");
 						Thread.sleep (getRandom (1, 2) * 1000L);
