@@ -20,8 +20,6 @@ import static other.scenario.service.FightAutoService.soulBack;
 //启动模拟器，需要调整成全屏后隐藏到后台
 public class TempApp {
 	public static void main (String[] args) throws Exception {
-		//启动程序
-		StartUpExeUtils.startUpExeOnly ("CMD /C " + ExeAddress.exeAddress ());
 		/*拒接协战*/
 		refuse ();
 	}
