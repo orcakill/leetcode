@@ -15,7 +15,7 @@ import java.util.TimerTask;
 public class ScenarioApp {
 	public static void main (String[] args) throws Exception {
 		//启动程序
-		StartUpExeUtils.startUpExeOnly ("CMD /C " + ExeAddress.exeAddress ());
+		//StartUpExeUtils.startUpExeOnly ("CMD /C " + ExeAddress.exeAddress ());
 		/*拒接协战*/
 		refuse ();
 	}
