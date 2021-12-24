@@ -599,12 +599,12 @@ public class FightAutoServiceImpl {
 			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败");
 			ImageService.imagesClickBackNumberOrderThree (file5,file6,file7,100);
 			logger.info ("退出挑战完成");
+			num++;
 			if(num==8){
-				logger.info ("阴阳寮挑战超过8次");
+				logger.info ("阴阳寮挑战到达8次");
 				break;
 			}
 			logger.info ("阴阳寮挑战第"+num+"次");
-			num++;
 		}
 		logger.info ("无挑战次数或无可攻打结界");
 		//退出到探索
