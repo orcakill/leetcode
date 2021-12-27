@@ -175,7 +175,7 @@ public class ImageServiceImpl  {
 		}
 		if (file.exists ()) {
 			for (int i = 0; i < num; i++) {
-				Thread.sleep ((long) getRandom (1,2) * getRandom (1000,1000));
+				Thread.sleep (getRandom (1,2) * 1000L);
 				if (ImagesBackRec.imagesRecognition (folder)) {
 					logger.info ("图片匹配成功");
 					logger.info ("点击成功");
@@ -205,7 +205,7 @@ public class ImageServiceImpl  {
 		}
 		if (file.exists ()) {
 			for (int i = 0; i <nums; i++) {
-				Thread.sleep (2000);
+				Thread.sleep (getRandom (1,2) * 1000L);
 				if (ImagesBackRec.imagesRecognitionIsEmpty (folder)) {
 					logger.info ("图片匹配成功,该图片在当前页面存在");
 					b = true;
@@ -228,7 +228,7 @@ public class ImageServiceImpl  {
 				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
 		if (file.exists ()) {
 			for (int i = 0; i < number; i++) {
-				Thread.sleep ((long) getRandom (1,2) * getRandom (1000,1000));
+				Thread.sleep (getRandom (1,2) * 1000L);
 				if (ImagesBackRec.imagesRecognition (folder)) {
 					logger.info ("图片匹配成功");
 					logger.info ("点击操作成功");
@@ -255,13 +255,13 @@ public class ImageServiceImpl  {
 				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder2);
 		if (file1.exists ()&&file2.exists ()) {
 			for (int i = 0; i < number; i++) {
-				Thread.sleep ((long) getRandom (1,2) * getRandom (1000,1000));
+				Thread.sleep (getRandom (1,2) * 1000L);
 				boolean a=ImagesBackRec.imagesRecognitionIsEmpty (folder1);
 				boolean b=ImagesBackRec.imagesRecognitionIsEmpty (folder2);
 				if (a) {
 					logger.info ("图片匹配成功");
 					ImagesBackRec.imagesRecognition (folder1);
-					Thread.sleep ((long) getRandom (1,2) * getRandom (1000,1000));
+					Thread.sleep (getRandom (1,2) * 1000L);
 					logger.info ("点击操作成功");
 					imagesClickBackNumber (folder2,30,true);
 					break;
@@ -269,7 +269,7 @@ public class ImageServiceImpl  {
 				else if(b){
 					logger.info ("图片匹配成功");
 					ImagesBackRec.imagesRecognition (folder2);
-					Thread.sleep ((long) getRandom (1,2) * getRandom (1000,1000));
+					Thread.sleep (getRandom (1,2) * 1000L);
 					logger.info ("点击操作成功");
 					break;
 				}
@@ -297,32 +297,32 @@ public class ImageServiceImpl  {
 			boolean c=false;
 			if (file1.exists ()&&file2.exists ()&&file3.exists ()) {
 				for (int i = 0; i < number; i++) {
-					Thread.sleep ((long) getRandom (1,2) * getRandom (1000,1000));
+					Thread.sleep (getRandom (1,2) * 1000L);
 					a=ImagesBackRec.imagesRecognitionIsEmpty (folder1);
 					b=ImagesBackRec.imagesRecognitionIsEmpty (folder2);
 					c=ImagesBackRec.imagesRecognitionIsEmpty (folder3);
 					if (a) {
 						logger.info ("图片匹配成功");
-						Thread.sleep ((long) getRandom (1,2) * getRandom (1000,1000));
+						Thread.sleep (getRandom (1,2) * 1000L);
 						ImagesBackRec.imagesRecognition (folder1);
-						Thread.sleep ((long) getRandom (1,2) * getRandom (1000,1000));
+						Thread.sleep (getRandom (1,2) * 1000L);
 						logger.info ("点击操作成功");
 						imagesClickBackNumber (folder2,30,true);
 						break;
 					}
 					else if(b){
 						logger.info ("图片匹配成功");
-						Thread.sleep ((long) getRandom (1,2) * getRandom (1000,1000));
+						Thread.sleep (getRandom (1,2) * 1000L);
 						ImagesBackRec.imagesRecognition (folder2);
-						Thread.sleep ((long) getRandom (1,2) * getRandom (1000,1000));
+						Thread.sleep (getRandom (1,2) * 1000L);
 						logger.info ("点击操作成功");
 						break;
 					}
 					else if(c){
 						logger.info ("图片匹配成功");
-						Thread.sleep ((long) getRandom (1,2) * getRandom (1000,1000));
+						Thread.sleep (getRandom (1,2) * 1000L);
 						ImagesBackRec.imagesRecognition (folder3);
-						Thread.sleep ((long) getRandom (1,2) * getRandom (1000,1000));
+						Thread.sleep (getRandom (1,2) * 1000L);
 						logger.info ("点击操作成功");
 						return  false;
 					}

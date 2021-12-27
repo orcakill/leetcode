@@ -597,7 +597,7 @@ public class FightAutoServiceImpl {
 			ImageService.imagesClickBack (file4);
 			logger.info ("开始进攻");
 			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败");
-			ImageService.imagesClickBackNumberOrderThree (file5,file6,file7,100);
+			ImageService.imagesClickBackNumberOrderThree (file5,file6,file7,500);
 			logger.info ("退出挑战完成");
 			num++;
 			if(num==8){
