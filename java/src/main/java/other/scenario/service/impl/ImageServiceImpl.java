@@ -22,13 +22,12 @@ import static other.scenario.util.RandomUtil.getRandom;
 @Service
 public class ImageServiceImpl  {
 	public  static  final Logger logger = LogManager.getLogger (ImageServiceImpl.class);
-	private  static final int num=60;
-	private  static final int numEmpty=10;
+
 	
 
 	public static void imageClick (File file) throws InterruptedException, AWTException {
 		if (file.exists ()) {
-			for (int i = 0; i <num; i++) {
+			for (int i = 0; i <60; i++) {
 				Thread.sleep (5000);
 				if (ImageRecognition.imageRecognitionIsEmpty (file)) {
 					logger.info ("图片匹配成功");
@@ -41,7 +40,7 @@ public class ImageServiceImpl  {
 				else {
 					logger.error ("在每5秒的检测中，第" + (i + 1) + "次检查未发现该图片");
 				}
-				if(i==num-1){
+				if(i==60-1){
 					logger.info (file + "图片未找到");
 				}
 			}
@@ -55,7 +54,7 @@ public class ImageServiceImpl  {
 	public static boolean imageClickIsEmpty (File file) throws InterruptedException, AWTException {
 		boolean b = false;
 		if (file.exists ()) {
-			for (int i = 0; i < numEmpty; i++) {
+			for (int i = 0; i < 10; i++) {
 				Thread.sleep (3000);
 				if (ImageRecognition.imageRecognitionIsEmpty (file)) {
 					logger.info ("图片匹配成功,该图片在当前页面存在");
@@ -65,7 +64,7 @@ public class ImageServiceImpl  {
 				else {
 					logger.error ("在每5秒的检测中，第" + (i + 1) + "次检查未发现该图片");
 				}
-				if(i==numEmpty-1){
+				if(i==10-1){
 					logger.info (file + "图片未找到");
 				}
 			}
@@ -81,7 +80,7 @@ public class ImageServiceImpl  {
 		File file = new File (
 				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
 		if (file.exists ()) {
-			for (int i = 0; i < num; i++) {
+			for (int i = 0; i <60; i++) {
 				Thread.sleep (5000);
 				if (ImagesRecognition.imagesRecognitionIsEmpty (folder)) {
 					logger.info ("图片匹配成功");
@@ -94,7 +93,7 @@ public class ImageServiceImpl  {
 				else {
 					logger.error ("在每5秒的检测中，第" + (i + 1) + "次检查未发现该图片");
 				}
-				if(i==num-1){
+				if(i==60-1){
 					logger.info (folder + "路径下，图片未找到");
 				}
 			}
@@ -115,7 +114,7 @@ public class ImageServiceImpl  {
 					System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
 		}
 		if (file.exists ()) {
-			for (int i = 0; i <numEmpty; i++) {
+			for (int i = 0; i <10; i++) {
 				Thread.sleep (5000);
 				if (ImagesRecognition.imagesRecognitionIsEmpty (folder)) {
 					logger.info ("图片匹配成功,该图片在当前页面存在");
@@ -125,7 +124,7 @@ public class ImageServiceImpl  {
 				else {
 					logger.error ("在每5秒的检测中，第" + (i + 1) + "次检查未发现该图片");
 				}
-				if(i==numEmpty-1){
+				if(i==10-1){
 					logger.info (folder + "路径下，图片未找到");
 				}
 			}
@@ -155,7 +154,7 @@ public class ImageServiceImpl  {
 				else {
 					logger.error ("在每5秒的检测中，第" + (i + 1) + "次检查未发现该图片");
 				}
-				if(i==num-1){
+				if(i==number-1){
 					logger.info (folder + "路径下，图片未找到");
 				}
 			}
@@ -174,7 +173,7 @@ public class ImageServiceImpl  {
 					System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
 		}
 		if (file.exists ()) {
-			for (int i = 0; i < num; i++) {
+			for (int i = 0; i < 60; i++) {
 				Thread.sleep (getRandom (1,2) * 1000L);
 				if (ImagesBackRec.imagesRecognition (folder)) {
 					logger.info ("图片匹配成功");
@@ -184,7 +183,7 @@ public class ImageServiceImpl  {
 				else {
 					logger.error ("在每1-2秒的检测中，第" + (i + 1) + "次检查未发现该图片");
 				}
-				if(i==num-1){
+				if(i==60-1){
 					logger.info (folder + "路径下，图片未找到");
 				}
 			}
