@@ -470,11 +470,21 @@ public class FightAutoServiceImpl {
 			if(i==11){
 				String file3="scenario/御魂/层数/魂十一";
 				logger.info ("选择魂十一");
+				boolean  b1=ImageService.imagesClickBackIsEmpty (file3,30);
+				if(!b1){
+					logger.info ("没有选择到魂十一");
+					System.exit(0);
+				}
 				ImageService.imagesClickBack (file3);
 			}
 			else if(i==10){
 				String file3="scenario/御魂/层数/魂十";
 				logger.info ("选择魂十");
+				boolean  b1=ImageService.imagesClickBackIsEmpty (file3,30);
+				if(!b1){
+					logger.info ("没有选择到魂十");
+					System.exit(0);
+				}
 				ImageService.imagesClickBack (file3);
 			}
 			//开始挑战
@@ -498,6 +508,11 @@ public class FightAutoServiceImpl {
 			logger.info ("进入业原火");
 			logger.info ("选择业原火第三层");
 			String  file2="scenario/御魂/层数/业原火第三层";
+			boolean  b1=ImageService.imagesClickBackIsEmpty (file2,30);
+			if(!b1){
+				logger.info ("没有选择到业原火第三层");
+				System.exit(0);
+			}
 			ImageService.imagesClickBack (file2);
 			logger.info ("开始挑战");
 			//开始挑战
@@ -510,6 +525,11 @@ public class FightAutoServiceImpl {
 			logger.info ("进入日轮之陨");
 			logger.info ("选择日轮之陨第三层");
 			String  file2="scenario/御魂/层数/日轮之陨第三层";
+			boolean  b1=ImageService.imagesClickBackIsEmpty (file2,30);
+			if(!b1){
+				logger.info ("没有选择到日轮之陨第三层");
+				System.exit(0);
+			}
 			ImageService.imagesClickBack (file2);
 			logger.info ("开始挑战");
 			//开始挑战

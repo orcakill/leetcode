@@ -49,7 +49,7 @@ class SoulElevenApp {
 		AutoLoginController.login ();
 	    //刷魂十一或者刷个人结界
 		//攻打轮次
-		int num=3;
+		int num=1;
 		//每轮次攻打次数
 		int num1=120;
 		//开启加成
@@ -79,7 +79,7 @@ class soulAll2App {
 		//自动登录到探索
 		AutoLoginController.login ();
 		//攻打轮次
-		int num=12;
+		int num=1;
 		//御魂类型
 		int num1=21;
 		AutoLoginController.soulAll(num,num1);
@@ -95,7 +95,7 @@ class SoulTenApp {
 		AutoLoginController.login ();
 		//刷魂十或者刷个人结界
 		//攻打轮次
-		int num=3;
+		int num=1;
 		//每轮次攻打次数
 		int num1=120;
 		//开启加成
@@ -111,7 +111,7 @@ class SpiritApp {
 		AutoLoginController.login ();
 		//刷魂十或者刷个人结界
 		//攻打轮次
-		int num=3;
+		int num=1;
 		AutoLoginController.spirit(num);
 	}
 }
@@ -123,7 +123,7 @@ class FightHomeApp {
 		AutoLoginController.login ();
 		//刷魂十或者刷个人结界
 		//攻打轮次
-		int num=12;
+		int num=1;
 		AutoLoginController.fightHome(num,true);
 	}
 }
@@ -136,7 +136,7 @@ class SoulFireApp {
 		AutoLoginController.login ();
 		//刷魂业原火或者刷个人结界
 		//攻打轮次
-		int num=3;
+		int num=1;
 		//每轮次攻打次数
 		int num1=120;
 		//开启加成
