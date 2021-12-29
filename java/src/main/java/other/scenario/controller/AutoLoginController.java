@@ -114,6 +114,7 @@ public class AutoLoginController {
 	
 	public static void soulEleven (Integer num,Integer num1,boolean b) throws InterruptedException, AWTException {
 		for (int i = 0; i < num; i++) {
+			System.gc();
 			//处理结界挑战劵
 			FightAutoService.borderCheck ();
 			//御魂-魂十一挑战num1次
@@ -124,6 +125,7 @@ public class AutoLoginController {
 	
 	public static void soulTen (Integer num,int num1, boolean b) throws InterruptedException, AWTException {
 		for (int i = 0; i < num; i++) {
+			System.gc();
 			//处理结界挑战劵
 			FightAutoService.borderCheck ();
 			//御魂-魂十一挑战120次
@@ -135,6 +137,7 @@ public class AutoLoginController {
 	
 	public static void spirit (int num) throws InterruptedException, AWTException {
 		for (int i = 0; i < num; i++) {
+			System.gc();
 			FightAutoService.spirit();
 		}
 		
@@ -142,6 +145,7 @@ public class AutoLoginController {
 	
 	public static void fightHome (int num,boolean b) throws InterruptedException, AWTException {
 		for (int i = 0; i < num; i++) {
+			System.gc();
 		     FightAutoService.fightHome();
 			 if(b){
 				 //打一轮间隔 40-50分钟
@@ -154,6 +158,7 @@ public class AutoLoginController {
 	
 	public static void soulAll (int num,int num1) throws InterruptedException, AWTException {
 		for (int i = 0; i < num; i++) {
+			System.gc();
 			logger.info ("处理阴阳寮结界");
 			FightAutoService.fightHome();
 			logger.info ("阴阳寮结界处理完成");
@@ -176,6 +181,7 @@ public class AutoLoginController {
 	//业原火
 	public static void soulFire (int num, int num1, boolean b) throws InterruptedException, AWTException {
 		for (int i = 0; i < num; i++) {
+			System.gc();
 			//处理结界挑战劵
 			FightAutoService.borderCheck ();
 			//御魂-魂十一挑战120次
@@ -185,6 +191,7 @@ public class AutoLoginController {
 	//日轮之城
 	public static void soulSun (int num, int num1, boolean b) throws InterruptedException, AWTException {
 		for (int i = 0; i < num; i++) {
+			System.gc();
 			//处理结界挑战劵
 			FightAutoService.borderCheck ();
 			//御魂-魂十一挑战120次
