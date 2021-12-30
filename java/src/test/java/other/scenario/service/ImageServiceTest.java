@@ -43,7 +43,7 @@ public class ImageServiceTest {
 	@Test
 	public void   imagesClick () throws InterruptedException, AWTException {
 		for(int i=0;i<800;i++){
-			String folderName="scenario/首页/再次召唤";
+			String folderName="scenario/结界突破/失败";
 			File file= new File (
 					System.getProperty ("user.dir") + "/src/main/resources/image/" + folderName);
 			if(file.exists ()){

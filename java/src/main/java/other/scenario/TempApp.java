@@ -38,7 +38,7 @@ public class TempApp {
 class SoulApp {
 	public static void main (String[] args) throws Exception {
 		//重复 挑战150次
-		soulBack (50);
+		soulBack (300);
 	}
 }
 
@@ -66,7 +66,7 @@ class soulAllApp {
 		//自动登录到探索
 		AutoLoginController.login ();
 		//攻打轮次
-		int num=12;
+		int num=1;
 		//御魂类型
 		int num1=11;
 		AutoLoginController.soulAll(num,num1);

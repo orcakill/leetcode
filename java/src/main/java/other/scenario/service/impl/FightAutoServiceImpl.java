@@ -352,22 +352,23 @@ public class FightAutoServiceImpl {
 	public static void soulBack (Integer num) throws InterruptedException, AWTException {
 		Thread.sleep (3000);
 		logger.info ("开始");
+		String file1 = "scenario/御魂/挑战";
+		String file2 = "scenario/御魂/角色头像";
+		String file3 = "scenario/御魂/退出挑战";
+		String file4 = "scenario/结界突破/失败";
 //		开始挑战,处理剩余次数的御魂
 		for (int i = 0; num > 0; i++) {
 			long a= System.currentTimeMillis();//获取当前系统时间(毫秒)
-			String file1 = "scenario/御魂/挑战";
+
 			logger.info ("准备开始挑战");
 			ImageService.imagesClickBackNumber  (file1,120,true);
 			logger.info ("第" + (i + 1) +"次挑战中，等待挑战完成");
-			String file2 = "scenario/御魂/角色头像";
-			String file3 = "scenario/御魂/退出挑战";
-			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战");
-			ImageService.imagesClickBackNumberOrder (file2,file3,120);
+			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败");
+			ImageService.imagesClickBackNumberOrderThree  (file2,file3,file4,120);
 			logger.info ("退出挑战完成");
 			num--;
 			logger.info ("第" + (i + 1) + "次挑战完成，剩余" + (num) + "次");
-			long b= System.currentTimeMillis();//获取当前系统时间(毫秒)
-			logger.info ("该次挑战使用时间为"+(b-a)+"毫秒");
+			logger.info ("该次挑战使用时间为"+(System.currentTimeMillis()-a)/1000+"秒");
 			
 		}
 	}

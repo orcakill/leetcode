@@ -83,9 +83,8 @@ public class AutoLoginController {
 			//进入首页底部功能菜单
 			Thread.sleep (3000);
 			String file = "scenario/首页/底部菜单";
-			String file0 = "scenario/首页/取消";
 			logger.info ("准备点击底部菜单栏");
-			ImageService.imagesClickBackNumberOrder (file0,file,300);
+			ImageService.imagesClickBackNumber (file,300,true);
 			Thread.sleep (3000);
 			logger.info ("打开底部菜单栏成功");
 			//进入探索
@@ -94,7 +93,7 @@ public class AutoLoginController {
 			PictureIdentifyWorkPO pictureIdentifyWorkPO4 = ImagesBackRec.imagesRecognitionMouse (file4);
 			String file5 = "scenario/首页/首页体力";
 			PictureIdentifyWorkPO pictureIdentifyWorkPO5 = ImagesBackRec.imagesRecognitionMouse (file5);
-			if (pictureIdentifyWorkPO4 != null && pictureIdentifyWorkPO5 != null) {
+			if (pictureIdentifyWorkPO4.getX ()>0&& pictureIdentifyWorkPO5.getX ()>0) {
 				//进入探索，通过首页勾玉和首页体力图标判断探索的位置点击按比例计算的探索
 				int x1 = pictureIdentifyWorkPO4.getX ();
 				int y1 =
