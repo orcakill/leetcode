@@ -142,7 +142,7 @@ public class ImageServiceImpl  {
 				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
 		if (file.exists ()) {
 			for (int i = 0; i < number; i++) {
-				Thread.sleep (1000);
+				Thread.sleep (2000);
 				if (ImagesRecognition.imagesRecognitionIsEmpty (folder)) {
 					logger.info ("图片匹配成功");
 					Thread.sleep (1000);
@@ -174,7 +174,7 @@ public class ImageServiceImpl  {
 		}
 		if (file.exists ()) {
 			for (int i = 0; i < 60; i++) {
-				Thread.sleep (getRandom (1,2) * 1000L);
+				Thread.sleep (2000);
 				if (ImagesBackRec.imagesRecognition (folder)) {
 					logger.info ("图片匹配成功");
 					logger.info ("点击成功");
@@ -204,7 +204,7 @@ public class ImageServiceImpl  {
 		}
 		if (file.exists ()) {
 			for (int i = 0; i <nums; i++) {
-				Thread.sleep (getRandom (1,2) * 1000L);
+				Thread.sleep (2000);
 				if (ImagesBackRec.imagesRecognitionIsEmpty (folder)) {
 					logger.info ("图片匹配成功,该图片在当前页面存在");
 					b = true;
@@ -227,7 +227,7 @@ public class ImageServiceImpl  {
 				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
 		if (file.exists ()) {
 			for (int i = 0; i < number; i++) {
-				Thread.sleep (getRandom (1,2) * 1000L);
+				Thread.sleep (2000);
 				if (ImagesBackRec.imagesRecognition (folder)) {
 					logger.info ("图片匹配成功");
 					logger.info ("点击操作成功");
@@ -235,7 +235,7 @@ public class ImageServiceImpl  {
 				}
 				else {
 					if(b){
-					logger.error ("在每1-2秒的检测中，第" + (i + 1) + "次检查未发现该图片");
+					logger.error ("在每2秒的检测中，第" + (i + 1) + "次检查未发现该图片");
 					}
 				}
 			}
@@ -254,7 +254,7 @@ public class ImageServiceImpl  {
 				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder2);
 		if (file1.exists ()&&file2.exists ()) {
 			for (int i = 0; i < number; i++) {
-				Thread.sleep (getRandom (1,2) * 1000L);
+				Thread.sleep (2000);
 				boolean a=ImagesBackRec.imagesRecognitionIsEmpty (folder1);
 				boolean b=ImagesBackRec.imagesRecognitionIsEmpty (folder2);
 				if (a) {
@@ -273,7 +273,7 @@ public class ImageServiceImpl  {
 					break;
 				}
 				else {
-					logger.error ("在每1-2秒的检测中，第" + (i + 1) + "次检查未发现该图片");
+					logger.error ("在每2秒的检测中，第" + (i + 1) + "次检查未发现该图片");
 				}
 			}
 		}
@@ -296,7 +296,7 @@ public class ImageServiceImpl  {
 			boolean c=false;
 			if (file1.exists ()&&file2.exists ()&&file3.exists ()) {
 				for (int i = 0; i < number; i++) {
-					Thread.sleep (getRandom (1,2) * 1000L);
+					Thread.sleep (2000);
 					a=ImagesBackRec.imagesRecognitionIsEmpty (folder1);
 					b=ImagesBackRec.imagesRecognitionIsEmpty (folder2);
 					c=ImagesBackRec.imagesRecognitionIsEmpty (folder3);
@@ -326,7 +326,7 @@ public class ImageServiceImpl  {
 						return  false;
 					}
 					else{
-						logger.error ("在每1-2秒的检测中，第" + (i + 1) + "次检查未发现该图片");
+						logger.error ("在每2秒的检测中，第" + (i + 1) + "次检查未发现该图片");
 					}
 				}
 			}
