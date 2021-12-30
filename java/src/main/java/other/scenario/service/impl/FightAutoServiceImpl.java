@@ -633,6 +633,14 @@ public class FightAutoServiceImpl {
 		ImageService.imagesClickBack (file41);
 		logger.info ("退出到探索");
 	}
+	
+	public static void soulFriend () throws InterruptedException, AWTException {
+		String file = "scenario/御魂/角色头像";
+		String file1 = "scenario/御魂/退出挑战";
+		logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战");
+		ImageService.imagesClickBackNumberOrder (file,file1,120);
+		logger.info ("退出挑战完成");
+	}
 }
 
 

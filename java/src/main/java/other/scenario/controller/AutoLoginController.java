@@ -198,5 +198,9 @@ public class AutoLoginController {
 		}
 	}
 	
-
+	public static void soulFriend () throws InterruptedException, AWTException {
+		for (int i = 0; i < 200; i++) {
+			FightAutoService.soulFriend ();
+		}
+	}
 }
