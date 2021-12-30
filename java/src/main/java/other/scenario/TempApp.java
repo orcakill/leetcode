@@ -2,9 +2,7 @@ package other.scenario;
 
 
 import other.scenario.controller.AutoLoginController;
-import other.scenario.map.ExeAddress;
 import other.scenario.service.ImageService;
-import other.scenario.util.StartUpExeUtils;
 
 import java.awt.*;
 
@@ -38,7 +36,7 @@ public class TempApp {
 class SoulApp {
 	public static void main (String[] args) throws Exception {
 		//重复 挑战150次
-		soulBack (300);
+		soulBack (60);
 	}
 }
 
@@ -160,6 +158,14 @@ class SoulSunApp {
 		AutoLoginController.soulSun (num,num1,b);
 	}
 }
+
+//组队挑战
+class SoulFriendApp {
+	public static void main (String[] args)throws Exception {
+		AutoLoginController.soulFriend();
+	}
+}
+
 
 
 

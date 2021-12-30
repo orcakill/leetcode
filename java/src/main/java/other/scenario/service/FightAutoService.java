@@ -81,5 +81,7 @@ public interface FightAutoService {
 		FightAutoServiceImpl.fightHome ();
 	}
 	
-
+	static void soulFriend () throws InterruptedException, AWTException {
+		FightAutoServiceImpl.soulFriend ();
+	}
 }
