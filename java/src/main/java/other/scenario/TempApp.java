@@ -36,7 +36,7 @@ public class TempApp {
 class SoulApp {
 	public static void main (String[] args) throws Exception {
 		//重复 挑战150次
-		soulBack (60);
+		soulBack (81);
 	}
 }
 
