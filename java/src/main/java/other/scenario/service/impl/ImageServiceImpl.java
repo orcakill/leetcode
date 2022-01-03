@@ -282,7 +282,9 @@ public class ImageServiceImpl  {
 		}
 	}
 	
-	public static boolean imagesClickBackNumberOrderThree (String folder1, String folder2, String folder3, Integer number) throws
+	public static boolean imagesClickBackNumberOrderNumbers (String folder1, String folder2, String folder3,
+	                                                         String folder4,
+	                                                   Integer number) throws
 	                                                                                                                    InterruptedException,
 	                                                                                                                    AWTException {
 			File file1= new File (
@@ -291,15 +293,21 @@ public class ImageServiceImpl  {
 					System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder2);
 		    File file3= new File (
 				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder3);
+		    File file4= new File (
+				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder3);
 			boolean a=false;
 			boolean b=false;
 			boolean c=false;
-			if (file1.exists ()&&file2.exists ()&&file3.exists ()) {
+		    boolean d=false;
+			if (file1.exists ()&&file2.exists ()&&file3.exists ()&&file4.exists ()) {
 				for (int i = 0; i < number; i++) {
 					Thread.sleep (2000);
 					a=ImagesBackRec.imagesRecognitionIsEmpty (folder1);
 					b=ImagesBackRec.imagesRecognitionIsEmpty (folder2);
 					c=ImagesBackRec.imagesRecognitionIsEmpty (folder3);
+					if(i>=number/2){
+						d=ImagesBackRec.imagesRecognitionIsEmpty (folder4);
+					}
 					if (a) {
 						logger.info ("图片匹配成功");
 						Thread.sleep (getRandom (1,2) * 1000L);
@@ -321,6 +329,14 @@ public class ImageServiceImpl  {
 						logger.info ("图片匹配成功");
 						Thread.sleep (getRandom (1,2) * 1000L);
 						ImagesBackRec.imagesRecognition (folder3);
+						Thread.sleep (getRandom (1,2) * 1000L);
+						logger.info ("点击操作成功");
+						return  false;
+					}
+					else if(d){
+						logger.info ("图片匹配成功");
+						Thread.sleep (getRandom (1,2) * 1000L);
+						ImagesBackRec.imagesRecognition (folder4);
 						Thread.sleep (getRandom (1,2) * 1000L);
 						logger.info ("点击操作成功");
 						return  false;

@@ -5,6 +5,7 @@ import other.scenario.controller.AutoLoginController;
 import other.scenario.service.ImageService;
 
 import java.awt.*;
+import java.util.Scanner;
 
 import static other.scenario.service.FightAutoService.soulBack;
 
@@ -36,7 +37,10 @@ public class TempApp {
 class SoulApp {
 	public static void main (String[] args) throws Exception {
 		//重复 挑战150次
-		soulBack (81);
+		Scanner myInput=new Scanner (System.in);
+		System.out.println("请输入一个整数:");
+		int x=myInput.nextInt();
+		soulBack (x);
 	}
 }
 
