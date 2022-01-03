@@ -56,9 +56,10 @@ public interface ImageService {
 	}
 	
 	/*多张图片后台识别,判断第一张图片识别后点击第二张图片或直接点击第二张图片或者第三张图片*/
-	static  boolean imagesClickBackNumberOrderThree (String folder1,String folder2,String folder3,  Integer number) throws InterruptedException,
+	static  boolean imagesClickBackNumberOrderNumbers (String folder1,String folder2,String folder3,
+	                                                String folder4, Integer number) throws InterruptedException,
 	                                                                                              AWTException {
-	   return 	ImageServiceImpl.imagesClickBackNumberOrderThree(folder1,folder2,folder3,number);
+	   return 	ImageServiceImpl.imagesClickBackNumberOrderNumbers(folder1,folder2,folder3,folder4,number);
 	}
 	
 }

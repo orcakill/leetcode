@@ -356,6 +356,7 @@ public class FightAutoServiceImpl {
 		String file2 = "scenario/御魂/角色头像";
 		String file3 = "scenario/御魂/退出挑战";
 		String file4 = "scenario/结界突破/失败";
+		String file5 = "scenario/御魂/胜利";
 //		开始挑战,处理剩余次数的御魂
 		for (int i = 0; num > 0; i++) {
 			long a= System.currentTimeMillis();//获取当前系统时间(毫秒)
@@ -363,8 +364,8 @@ public class FightAutoServiceImpl {
 			logger.info ("准备开始挑战");
 			ImageService.imagesClickBackNumber  (file1,120,true);
 			logger.info ("第" + (i + 1) +"次挑战中，等待挑战完成");
-			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败");
-			ImageService.imagesClickBackNumberOrderThree  (file2,file3,file4,120);
+			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败或胜利");
+			ImageService.imagesClickBackNumberOrderNumbers (file2,file3,file4,file5,120);
 			logger.info ("退出挑战完成");
 			num--;
 			logger.info ("第" + (i + 1) + "次挑战完成，剩余" + (num) + "次");
@@ -407,7 +408,7 @@ public class FightAutoServiceImpl {
 				ImageService.imagesClickBack (file3);
 				logger.info ("开始进攻");
 				logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败");
-				boolean b=ImageService.imagesClickBackNumberOrderThree (file4,file5,file51,90);
+				boolean b=ImageService.imagesClickBackNumberOrderNumbers (file4,file5,file51,null,90);
 				if(!b){
 					logger.info ("个人结界战斗失败，请更换阵容手动挑战");
 					System.exit(0);
@@ -466,28 +467,50 @@ public class FightAutoServiceImpl {
 				ImageService.imagesClickBack (file2);
 				//退出加成页面
 				logger.info ("退出加成页面");
+				if(i==11){
+					String file3="scenario/御魂/层数/魂十一";
+					logger.info ("选择魂十一");
+					boolean  b1=ImageService.imagesClickBackIsEmpty (file3,30);
+					if(!b1){
+						logger.info ("没有选择到魂十一");
+						System.exit(0);
+					}
+					ImageService.imagesClickBack (file3);
+				}
+				else if(i==10){
+					String file3="scenario/御魂/层数/魂十";
+					logger.info ("选择魂十");
+					boolean  b1=ImageService.imagesClickBackIsEmpty (file3,30);
+					if(!b1){
+						logger.info ("没有选择到魂十");
+						System.exit(0);
+					}
+					ImageService.imagesClickBack (file3);
+				}
+			}
+			else {
+				if(i == 11){
+					String file3="scenario/御魂/层数/魂十一";
+					logger.info ("选择魂十一");
+					boolean  b1=ImageService.imagesClickBackIsEmpty (file3,30);
+					if(!b1){
+						logger.info ("没有选择到魂十一");
+						System.exit(0);
+					}
+					ImageService.imagesClickBack (file3);
+				}
+				else if(i==10){
+					String file3="scenario/御魂/层数/魂十";
+					logger.info ("选择魂十");
+					boolean  b1=ImageService.imagesClickBackIsEmpty (file3,30);
+					if(!b1){
+						logger.info ("没有选择到魂十");
+						System.exit(0);
+					}
+					ImageService.imagesClickBack (file3);
+				}
 			}
 			//选择魂十或魂十一
-			if(i==11){
-				String file3="scenario/御魂/层数/魂十一";
-				logger.info ("选择魂十一");
-				boolean  b1=ImageService.imagesClickBackIsEmpty (file3,30);
-				if(!b1){
-					logger.info ("没有选择到魂十一");
-					System.exit(0);
-				}
-				ImageService.imagesClickBack (file3);
-			}
-			else if(i==10){
-				String file3="scenario/御魂/层数/魂十";
-				logger.info ("选择魂十");
-				boolean  b1=ImageService.imagesClickBackIsEmpty (file3,30);
-				if(!b1){
-					logger.info ("没有选择到魂十");
-					System.exit(0);
-				}
-				ImageService.imagesClickBack (file3);
-			}
 			//开始挑战
 			soulBack (j);
 			//挑战结束
@@ -618,7 +641,7 @@ public class FightAutoServiceImpl {
 			ImageService.imagesClickBack (file4);
 			logger.info ("开始进攻");
 			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败");
-			ImageService.imagesClickBackNumberOrderThree (file5,file6,file7,500);
+			ImageService.imagesClickBackNumberOrderNumbers (file5,file6,file7,null,500);
 			logger.info ("退出挑战完成");
 			num++;
 			if(num==8){
