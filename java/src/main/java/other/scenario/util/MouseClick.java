@@ -93,10 +93,14 @@ public class MouseClick {
 	 */
 	public static void mouseClickBackground (HWND hwnd,List<PictureIdentifyWorkPO> mouseMessages) throws AWTException {
 		Double bl = ComputerScaling.getScale ();
+		StringBuilder X;
+		StringBuilder Y;
+		int moveTime = (int) (Math.random () * 400 + 300);
+		int mousePressTime = (int) (Math.random () * 500 + 100);
 		for (PictureIdentifyWorkPO mouseMessage : mouseMessages) {
 			// 解析鼠标坐标参数,低位为X轴,高位为Y轴坐标
-			StringBuilder X = new StringBuilder (Integer.toHexString ((int) (mouseMessage.getX () / bl)));
-			StringBuilder Y = new StringBuilder (Integer.toHexString ((int) (mouseMessage.getY () / bl)));
+			X = new StringBuilder (Integer.toHexString ((int) (mouseMessage.getX () / bl)));
+			Y = new StringBuilder (Integer.toHexString ((int) (mouseMessage.getY () / bl)));
 			while (X.length () < 4) {
 				X.insert (0, "0");
 			}
@@ -105,8 +109,6 @@ public class MouseClick {
 			}
 			Integer in = Integer.valueOf (Y.toString () + X, 16);
 			WinDef.LPARAM lPARAM = new WinDef.LPARAM (in);
-			int moveTime = (int) (Math.random () * 400 + 300);
-			int mousePressTime = (int) (Math.random () * 500 + 100);
 			try {
 				// 模拟计算鼠标按下的间隔并且按下鼠标
 				Thread.sleep (moveTime);

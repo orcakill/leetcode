@@ -2,7 +2,9 @@ package other.scenario;
 
 
 import other.scenario.controller.AutoLoginController;
+import other.scenario.map.ExeAddress;
 import other.scenario.service.ImageService;
+import other.scenario.util.StartUpExeUtils;
 
 import java.awt.*;
 import java.util.Scanner;
@@ -19,28 +21,17 @@ import static other.scenario.service.FightAutoService.soulBack;
 //启动模拟器，需要调整成全屏后隐藏到后台
 public class TempApp {
 	public static void main (String[] args) throws Exception {
-		/*拒接协战*/
-		refuse ();
-	}
-	
-	public static void refuse () throws InterruptedException, AWTException {
-		String file1 = "scenario/御魂/拒接协战";
-		for (int i = 0; i <= 300; i++) {
-			Thread.sleep (30*1000);
-			ImageService.imagesClickBackNumber (file1, 3, false);
-		}
+		//启动程序
+		StartUpExeUtils.startUpExeOnly ("CMD /C " + ExeAddress.exeAddress ());
 	}
 }
-
-
 /*直接重复挑战*/
 class SoulApp {
 	public static void main (String[] args) throws Exception {
-		//重复 挑战150次
-		Scanner myInput=new Scanner (System.in);
-		System.out.println("请输入一个整数:");
-		int x=myInput.nextInt();
-		soulBack (x);
+		ThreadFirst t1 = new ThreadFirst();
+		ThreadSecond  t2 = new ThreadSecond ();
+		t1.start();
+		t2.start();
 	}
 }
 
