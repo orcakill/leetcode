@@ -25,7 +25,7 @@ public class TempApp {
 		StartUpExeUtils.startUpExeOnly ("CMD /C " + ExeAddress.exeAddress ());
 	}
 }
-/*直接重复挑战*/
+/*直接重复挑战 1,2*/
 class SoulApp {
 	public static void main (String[] args) throws Exception {
 		ThreadFirst t1 = new ThreadFirst();
@@ -35,7 +35,7 @@ class SoulApp {
 	}
 }
 
-//	自动登录,刷魂十一，个人结界
+//	自动登录,刷魂十一，个人结界 1 3
 class SoulElevenApp {
 	public static void main (String[] args) throws Exception {
 		ThreadFirst t1 = new ThreadFirst();
@@ -46,7 +46,7 @@ class SoulElevenApp {
 }
 
 
-//	自动登录，刷寮突破,处理个人结界，刷魂十一
+//	自动登录，刷寮突破,处理个人结界，刷魂十一 1 4
 class soulAllApp {
 	public static void main (String[] args) throws Exception {
 		ThreadFirst t1 = new ThreadFirst();
@@ -56,7 +56,7 @@ class soulAllApp {
 	}
 }
 
-//	自动登录，刷寮突破,处理个人结界，刷业原火
+//	自动登录，刷寮突破,处理个人结界，刷业原火 1 5
 class soulAll2App {
 	public static void main (String[] args) throws Exception {
 		ThreadFirst t1 = new ThreadFirst();
@@ -68,7 +68,7 @@ class soulAll2App {
 
 
 
-//	自动登录，刷魂十，个人结界
+//	自动登录，刷魂十，个人结界 1 6
 class SoulTenApp {
 	public static void main (String[] args) throws Exception {
 		ThreadFirst t1 = new ThreadFirst();
@@ -78,7 +78,7 @@ class SoulTenApp {
 	}
 }
 
-//	自动登录，刷御灵
+//	自动登录，刷御灵 1 7
 class SpiritApp {
 	public static void main (String[] args) throws Exception {
 		ThreadFirst t1 = new ThreadFirst();
@@ -88,7 +88,7 @@ class SpiritApp {
 	}
 }
  
-//	自动登录，刷寮突破
+//	自动登录，刷寮突破 1 8
 class FightHomeApp {
 	public static void main (String[] args) throws Exception {
 		ThreadFirst t1 = new ThreadFirst();
@@ -99,42 +99,33 @@ class FightHomeApp {
 }
 
 
-//	自动登录，刷业原火，个人结界
+//	自动登录，刷业原火，个人结界 1 9
 class SoulFireApp {
 	public static void  main (String[] args) throws Exception {
-		//自动登录到探索
-		AutoLoginController.login ();
-		//刷魂业原火或者刷个人结界
-		//攻打轮次
-		int num=1;
-		//每轮次攻打次数
-		int num1=120;
-		//开启加成
-		boolean b=false;
-		AutoLoginController.soulFire (num,num1,b);
+		ThreadFirst t1 = new ThreadFirst();
+		ThreadNinth t2 = new ThreadNinth();
+		t1.start();
+		t2.start();
 	}
 }
 
-//	自动登录，刷日轮之陨，个人结界
+//	自动登录，刷日轮之陨，个人结界 1 10
 class SoulSunApp {
 	public static void main (String[] args) throws Exception {
-		//自动登录到探索
-		AutoLoginController.login ();
-		//刷魂业原火或者刷个人结界
-		//攻打轮次
-		int num=1;
-		//每轮次攻打次数
-		int num1=50;
-		//开启加成
-		boolean b=false;
-		AutoLoginController.soulSun (num,num1,b);
+		ThreadFirst t1 = new ThreadFirst();
+		ThreadTenth t2 = new ThreadTenth();
+		t1.start();
+		t2.start();
 	}
 }
 
-//组队挑战
+//组队挑战 1 11
 class SoulFriendApp {
 	public static void main (String[] args)throws Exception {
-		AutoLoginController.soulFriend();
+		ThreadFirst t1 = new ThreadFirst();
+		ThreadEleventh t2 = new ThreadEleventh();
+		t1.start();
+		t2.start();
 	}
 }
 

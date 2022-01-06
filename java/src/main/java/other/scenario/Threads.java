@@ -31,50 +31,47 @@ class   ThreadFirst extends  Thread{
 }
 
 
-class   ThreadSecond extends  Thread{
+class   ThreadSecond extends  Thread {
 	@SneakyThrows
-	public void run (){
-		System.out.println("重复挑战");
+	public void run () {
+		System.out.println ("重复挑战");
 		//重复 挑战150次
-		Scanner myInput=new Scanner (System.in);
-		System.out.println("请输入一个整数:");
-		int x=myInput.nextInt();
+		Scanner myInput = new Scanner (System.in);
+		System.out.println ("请输入一个整数:");
+		int x = myInput.nextInt ();
 		soulBack (x);
 	}
 }
-
-
-class   ThreadThird extends  Thread{
-	@SneakyThrows
-	public void run (){
-		System.out.println("自动登录,刷魂十一,刷个人结界");
-		//自动登录到探索
-		AutoLoginController.login ();
-		//刷魂十一或者刷个人结界
-		//攻打轮次
-		int num=1;
-		//每轮次攻打次数
-		int num1=120;
-		//开启加成
-		boolean b=true;
-		AutoLoginController.soulEleven (num,num1,b);
-	}
+class   ThreadThird extends  Thread {
+		@SneakyThrows
+		public void run () {
+			System.out.println ("自动登录,刷魂十一，个人结界");
+			//自动登录到探索
+			AutoLoginController.login ();
+			//刷魂十一或者刷个人结界
+			//攻打轮次
+			int num=1;
+			//每轮次攻打次数
+			int num1=120;
+			//开启加成
+			boolean b=true;
+			AutoLoginController.soulEleven (num,num1,b);
+		}
 }
-
-
-class   ThreadFourth extends  Thread{
+class   ThreadFourth extends  Thread {
 	@SneakyThrows
-	public void run (){
-		System.out.println("自动登录，刷寮突破,处理个人结界，刷魂十一");
+	public void run () {
+		System.out.println ("自动登录，刷寮突破,处理个人结界，刷业原火");
 		//自动登录到探索
 		AutoLoginController.login ();
 		//攻打轮次
-		int num=1;
+		int num=2;
 		//御魂类型
 		int num1=11;
 		AutoLoginController.soulAll(num,num1);
 	}
 }
+
 
 class   ThreadFifth extends  Thread{
 	@SneakyThrows
@@ -139,12 +136,42 @@ class   ThreadEighth extends  Thread{
 class   ThreadNinth extends  Thread{
 	@SneakyThrows
 	public void run (){
-		System.out.println("自动登录，刷寮突破");
+		System.out.println("自动登录，刷业原火，个人结界");
 		//自动登录到探索
 		AutoLoginController.login ();
-		//刷魂十或者刷个人结界
+		//刷魂业原火或者刷个人结界
 		//攻打轮次
 		int num=1;
-		AutoLoginController.fightHome(num,true);
+		//每轮次攻打次数
+		int num1=120;
+		//开启加成
+		boolean b=false;
+		AutoLoginController.soulFire (num,num1,b);
+	}
+}
+
+
+class   ThreadTenth extends  Thread{
+	@SneakyThrows
+	public void run (){
+		System.out.println("自动登录，刷日轮之陨，个人结界");
+		//自动登录到探索
+		AutoLoginController.login ();
+		//刷魂业原火或者刷个人结界
+		//攻打轮次
+		int num=1;
+		//每轮次攻打次数
+		int num1=50;
+		//开启加成
+		boolean b=false;
+		AutoLoginController.soulSun (num,num1,b);
+	}
+}
+
+class   ThreadEleventh extends  Thread{
+	@SneakyThrows
+	public void run (){
+		System.out.println("组队挑战");
+		AutoLoginController.soulFriend();
 	}
 }
