@@ -176,7 +176,7 @@ public class AutoLoginController {
 				logger.info ("业原火20次");
 				FightAutoService.soulEleven (num1,20,true);
 			}
-			
+			logger.info (num+"次处理完成");
 			
 		}
 	}

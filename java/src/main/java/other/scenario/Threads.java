@@ -1,6 +1,7 @@
 package other.scenario;
 
 import lombok.SneakyThrows;
+import other.scenario.controller.AutoLoginController;
 import other.scenario.service.ImageService;
 
 import java.util.Scanner;
@@ -39,5 +40,111 @@ class   ThreadSecond extends  Thread{
 		System.out.println("请输入一个整数:");
 		int x=myInput.nextInt();
 		soulBack (x);
+	}
+}
+
+
+class   ThreadThird extends  Thread{
+	@SneakyThrows
+	public void run (){
+		System.out.println("自动登录,刷魂十一,刷个人结界");
+		//自动登录到探索
+		AutoLoginController.login ();
+		//刷魂十一或者刷个人结界
+		//攻打轮次
+		int num=1;
+		//每轮次攻打次数
+		int num1=120;
+		//开启加成
+		boolean b=true;
+		AutoLoginController.soulEleven (num,num1,b);
+	}
+}
+
+
+class   ThreadFourth extends  Thread{
+	@SneakyThrows
+	public void run (){
+		System.out.println("自动登录，刷寮突破,处理个人结界，刷魂十一");
+		//自动登录到探索
+		AutoLoginController.login ();
+		//攻打轮次
+		int num=1;
+		//御魂类型
+		int num1=11;
+		AutoLoginController.soulAll(num,num1);
+	}
+}
+
+class   ThreadFifth extends  Thread{
+	@SneakyThrows
+	public void run (){
+		System.out.println("自动登录，刷寮突破,处理个人结界，刷业原火");
+		//自动登录到探索
+		AutoLoginController.login ();
+		//攻打轮次
+		int num=1;
+		//御魂类型
+		int num1=21;
+		AutoLoginController.soulAll(num,num1);
+	}
+}
+
+
+class   ThreadSixth extends  Thread{
+	@SneakyThrows
+	public void run (){
+		System.out.println("自动登录，刷魂十，个人结界");
+		//自动登录到探索
+		AutoLoginController.login ();
+		//刷魂十或者刷个人结界
+		//攻打轮次
+		int num=1;
+		//每轮次攻打次数
+		int num1=120;
+		//开启加成
+		boolean b=false;
+		AutoLoginController.soulTen (num,num1,b);
+	}
+}
+
+
+class   ThreadSeventh extends  Thread{
+	@SneakyThrows
+	public void run (){
+		System.out.println("自动登录，刷御灵");
+		//自动登录到探索
+		AutoLoginController.login ();
+		//刷御灵
+		//攻打轮次
+		int num=1;
+		AutoLoginController.spirit(num);
+	}
+}
+
+class   ThreadEighth extends  Thread{
+	@SneakyThrows
+	public void run (){
+		System.out.println("自动登录，刷寮突破");
+		//自动登录到探索
+		AutoLoginController.login ();
+		//刷魂十或者刷个人结界
+		//攻打轮次
+		int num=1;
+		AutoLoginController.fightHome(num,true);
+	}
+}
+
+
+class   ThreadNinth extends  Thread{
+	@SneakyThrows
+	public void run (){
+		System.out.println("自动登录，刷寮突破");
+		//自动登录到探索
+		AutoLoginController.login ();
+		//刷魂十或者刷个人结界
+		//攻打轮次
+		int num=1;
+		AutoLoginController.fightHome(num,true);
 	}
 }

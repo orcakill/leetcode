@@ -38,17 +38,10 @@ class SoulApp {
 //	自动登录,刷魂十一，个人结界
 class SoulElevenApp {
 	public static void main (String[] args) throws Exception {
-		//自动登录到探索
-		AutoLoginController.login ();
-	    //刷魂十一或者刷个人结界
-		//攻打轮次
-		int num=1;
-		//每轮次攻打次数
-		int num1=120;
-		//开启加成
-		boolean b=true;
-		AutoLoginController.soulEleven (num,num1,b);
-		
+		ThreadFirst t1 = new ThreadFirst();
+		ThreadThird  t2 = new ThreadThird ();
+		t1.start();
+		t2.start();
 	}
 }
 
@@ -56,26 +49,20 @@ class SoulElevenApp {
 //	自动登录，刷寮突破,处理个人结界，刷魂十一
 class soulAllApp {
 	public static void main (String[] args) throws Exception {
-		//自动登录到探索
-		AutoLoginController.login ();
-		//攻打轮次
-		int num=1;
-		//御魂类型
-		int num1=11;
-		AutoLoginController.soulAll(num,num1);
+		ThreadFirst t1 = new ThreadFirst();
+		ThreadFourth  t2 = new ThreadFourth ();
+		t1.start();
+		t2.start();
 	}
 }
 
 //	自动登录，刷寮突破,处理个人结界，刷业原火
 class soulAll2App {
 	public static void main (String[] args) throws Exception {
-		//自动登录到探索
-		AutoLoginController.login ();
-		//攻打轮次
-		int num=1;
-		//御魂类型
-		int num1=21;
-		AutoLoginController.soulAll(num,num1);
+		ThreadFirst t1 = new ThreadFirst();
+		ThreadFifth  t2 = new ThreadFifth ();
+		t1.start();
+		t2.start();
 	}
 }
 
@@ -84,47 +71,37 @@ class soulAll2App {
 //	自动登录，刷魂十，个人结界
 class SoulTenApp {
 	public static void main (String[] args) throws Exception {
-		//自动登录到探索
-		AutoLoginController.login ();
-		//刷魂十或者刷个人结界
-		//攻打轮次
-		int num=1;
-		//每轮次攻打次数
-		int num1=120;
-		//开启加成
-		boolean b=false;
-		AutoLoginController.soulTen (num,num1,b);
+		ThreadFirst t1 = new ThreadFirst();
+		ThreadSixth  t2 = new ThreadSixth ();
+		t1.start();
+		t2.start();
 	}
 }
 
 //	自动登录，刷御灵
 class SpiritApp {
 	public static void main (String[] args) throws Exception {
-		//自动登录到探索
-		AutoLoginController.login ();
-		//刷魂十或者刷个人结界
-		//攻打轮次
-		int num=1;
-		AutoLoginController.spirit(num);
+		ThreadFirst t1 = new ThreadFirst();
+		ThreadSeventh  t2 = new ThreadSeventh();
+		t1.start();
+		t2.start();
 	}
 }
  
 //	自动登录，刷寮突破
 class FightHomeApp {
 	public static void main (String[] args) throws Exception {
-		//自动登录到探索
-		AutoLoginController.login ();
-		//刷魂十或者刷个人结界
-		//攻打轮次
-		int num=1;
-		AutoLoginController.fightHome(num,true);
+		ThreadFirst t1 = new ThreadFirst();
+		ThreadEighth t2 = new ThreadEighth();
+		t1.start();
+		t2.start();
 	}
 }
 
 
 //	自动登录，刷业原火，个人结界
 class SoulFireApp {
-	public static void main (String[] args) throws Exception {
+	public static void  main (String[] args) throws Exception {
 		//自动登录到探索
 		AutoLoginController.login ();
 		//刷魂业原火或者刷个人结界
