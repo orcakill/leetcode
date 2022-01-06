@@ -305,7 +305,7 @@ public class ImageServiceImpl  {
 					a=ImagesBackRec.imagesRecognitionIsEmpty (folder1);
 					b=ImagesBackRec.imagesRecognitionIsEmpty (folder2);
 					c=ImagesBackRec.imagesRecognitionIsEmpty (folder3);
-					if(i>=number/2){
+					if(i>=number/2&&folder4!=null){
 						d=ImagesBackRec.imagesRecognitionIsEmpty (folder4);
 					}
 					if (a) {
