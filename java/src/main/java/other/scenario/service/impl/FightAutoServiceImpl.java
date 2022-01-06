@@ -362,6 +362,7 @@ public class FightAutoServiceImpl {
 			long a= System.currentTimeMillis();//获取当前系统时间(毫秒)
 
 			logger.info ("准备开始挑战");
+			Thread.sleep (1000);
 			ImageService.imagesClickBackNumber  (file1,120,true);
 			logger.info ("第" + (i + 1) +"次挑战中，等待挑战完成");
 			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败或胜利");
@@ -531,7 +532,7 @@ public class FightAutoServiceImpl {
 			ImageService.imagesClickBack (file1);
 			logger.info ("进入业原火");
 			logger.info ("选择业原火第三层");
-			String  file2="scenario/御魂/层数/业原火第三层";
+			String  file2="scenario/御魂/层数/业原火三层";
 			boolean  b1=ImageService.imagesClickBackIsEmpty (file2,30);
 			if(!b1){
 				logger.info ("没有选择到业原火第三层");
@@ -548,7 +549,7 @@ public class FightAutoServiceImpl {
 			ImageService.imagesClickBack (file1);
 			logger.info ("进入日轮之陨");
 			logger.info ("选择日轮之陨第三层");
-			String  file2="scenario/御魂/层数/日轮之陨第三层";
+			String  file2="scenario/御魂/层数/日轮之陨三层";
 			boolean  b1=ImageService.imagesClickBackIsEmpty (file2,30);
 			if(!b1){
 				logger.info ("没有选择到日轮之陨第三层");
