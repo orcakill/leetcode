@@ -1,15 +1,7 @@
 package other.scenario;
 
-
-import other.scenario.controller.AutoLoginController;
 import other.scenario.map.ExeAddress;
-import other.scenario.service.ImageService;
 import other.scenario.util.StartUpExeUtils;
-
-import java.awt.*;
-import java.util.Scanner;
-
-import static other.scenario.service.FightAutoService.soulBack;
 
 /**
  * @Classname TempApp
