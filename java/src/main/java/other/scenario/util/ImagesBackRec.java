@@ -34,10 +34,8 @@ public class ImagesBackRec {
 			int num=RandomUtil.randomMinute (mouseXY.size ());
 			mouseXY1.add (mouseXY.get (num));
 			MouseClick.mouseClickBack (mouseXY1);
-			System.gc();
 			return  true;
 		}
-		System.gc();
 		return  false;
 	}
 	

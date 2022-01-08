@@ -56,6 +56,21 @@ public class ImageServiceTest {
 	}
 	
 	@Test
+	public void   imagesClick1 () throws InterruptedException, AWTException {
+		for(int i=0;i<800;i++){
+			String folderName="scenario/返回";
+			File file= new File (
+					System.getProperty ("user.dir") + "/src/main/resources/image/" + folderName);
+			if(file.exists ()){
+				ImageService.imagesClickBack (folderName);
+			}
+			else{
+				System.out.println ("图片文件路径不存在");
+			}
+		}
+	}
+	
+	@Test
 	public void   imagesClickWheel() throws InterruptedException, AWTException {
 		Thread.sleep (3*1000);
 		System.out.println ("准备开始");
