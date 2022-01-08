@@ -366,7 +366,7 @@ public class FightAutoServiceImpl {
 			ImageService.imagesClickBackNumber  (file1,120,true);
 			logger.info ("第" + (i + 1) +"次挑战中，等待挑战完成");
 			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败或胜利");
-			ImageService.imagesClickBackNumberOrderNumbers (file2,file3,file4,file5,120);
+			ImageService.imagesClickBackNumberOrderNumbers (file2,file3,file4,null,120);
 			logger.info ("退出挑战完成");
 			num--;
 			logger.info ("第" + (i + 1) + "次挑战完成，剩余" + (num) + "次");
@@ -632,6 +632,7 @@ public class FightAutoServiceImpl {
 		String file5 = "scenario/御魂/角色头像";
 		String file6 = "scenario/御魂/退出挑战";
 		String file7 = "scenario/结界突破/失败";
+		String file8 = "scenario/结界突破/退出进攻";
 		int num=0;
 		while (!ImageService.imagesClickBackIsEmpty (file2,5)&&ImageService.imagesClickBackIsEmpty (file3,5)){
 			logger.info ("存在可攻打结界，且存在挑战次数");
@@ -641,6 +642,13 @@ public class FightAutoServiceImpl {
 			logger.info ("选择结界成功，准备进攻");
 			ImageService.imagesClickBack (file4);
 			logger.info ("开始进攻");
+			boolean b=ImageService.imagesClickBackIsEmpty (file4,3);
+			if(b){
+				logger.info ("结界已被攻破，退出进攻");
+				ImageService.imagesClickBack (file8);
+				logger.info ("重新判断是否有结界可以攻打");
+				continue;
+			}
 			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败");
 			ImageService.imagesClickBackNumberOrderNumbers (file5,file6,file7,null,500);
 			logger.info ("退出挑战完成");
