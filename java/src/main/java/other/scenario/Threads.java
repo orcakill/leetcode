@@ -61,7 +61,7 @@ class   ThreadThird extends  Thread {
 class   ThreadFourth extends  Thread {
 	@SneakyThrows
 	public void run () {
-		System.out.println ("自动登录，刷寮突破,处理个人结界，刷业原火");
+		System.out.println ("自动登录，刷寮突破,处理个人结界，刷魂十一");
 		//自动登录到探索
 		AutoLoginController.login ();
 		//攻打轮次
