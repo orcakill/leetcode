@@ -27,7 +27,7 @@ public class ImageServiceTest {
 	}
 	
 	@Test
-	public void   imagesClickIsEmpty () throws InterruptedException, AWTException {
+	public void   imagesClickIsEmpty () throws Exception {
 		String folderName="scenario/首页/再次召唤";
 		File file = new File (
 				System.getProperty ("user.dir") + "/src/main/resources/image/" + folderName);
