@@ -54,22 +54,12 @@ public interface FightAutoService {
 		FightAutoServiceImpl.soulBack(num);
 	}
 	
-	/***
-	 * @description: 拒接协战
-	 * @param
-	 * @return: void
-	 * @author: orcakill
-	 * @date: 2021/11/14 17:31
-	 */
-	static void  refuseBack() throws InterruptedException, AWTException {
-		FightAutoServiceImpl.refuseBack();
-	}
 	
-	static  void borderCheck() throws InterruptedException, AWTException {
+	static  void borderCheck() throws Exception {
 		FightAutoServiceImpl.borderCheck();
 	}
 	
-	static void soulEleven (int i,int j,boolean b) throws InterruptedException, AWTException {
+	static void soulEleven (int i,int j,boolean b) throws Exception {
 		FightAutoServiceImpl.soulEleven(i,j,b);
 	}
 	
@@ -77,7 +67,7 @@ public interface FightAutoService {
 		FightAutoServiceImpl.spirit ();
 	}
 	
-	static void fightHome () throws InterruptedException, AWTException {
+	static void fightHome () throws Exception {
 		FightAutoServiceImpl.fightHome ();
 	}
 	

@@ -193,8 +193,7 @@ public class ImageServiceImpl  {
 		}
 	}
 	
-	public static boolean imagesClickBackIsEmpty (String folder,Integer nums) throws InterruptedException,
-	                                                                                 AWTException {
+	public static boolean imagesClickBackIsEmpty (String folder,Integer nums) throws InterruptedException {
 		boolean b = false;
 		File file = new File (
 				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
@@ -293,10 +292,10 @@ public class ImageServiceImpl  {
 					System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder2);
 		    File file3= new File (
 				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder3);
-			boolean a=false;
-			boolean b=false;
-			boolean c=false;
-		    boolean d=false;
+			boolean a;
+			boolean b;
+			boolean c;
+		    boolean d = false;
 			if (file1.exists ()&&file2.exists ()&&file3.exists ()) {
 				for (int i = 0; i < number; i++) {
 					Thread.sleep (2000);

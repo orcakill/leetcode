@@ -22,7 +22,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import static other.scenario.util.RandomUtil.getRandom;
+import static java.lang.Thread.sleep;
 
 /**
  * @Classname FightAutoServiceImpl
@@ -68,12 +68,12 @@ public class FightAutoServiceImpl {
 				ImageService.imagesClick (file6);
 				logger.info ("等待挑战完成");
 				String file7 = "scenario/退出挑战";
-				Thread.sleep (20 * 1000);
+				sleep (20 * 1000);
 				logger.info ("准备退出挑战");
 				ImageService.imagesClick (file7);
 				logger.info ("退出挑战完成");
 				num--;
-				Thread.sleep (2 * 1000);
+				sleep (2 * 1000);
 				logger.info ("第" + (i + 1) + "次挑战完成，剩余" + (num) + "次");
 			}
 //			开始退出御魂挑战
@@ -139,10 +139,10 @@ public class FightAutoServiceImpl {
 				ImageService.imagesClick (file8);
 				logger.info ("自动战斗开始");
 //				等待自动战斗完成
-				Thread.sleep (20 * 60 * 1000);
+				sleep (20 * 60 * 1000);
 //				停止自动战斗
 				logger.info ("自动战斗停止");
-				Thread.sleep (5* 1000);
+				sleep (5* 1000);
 //				退出到首页
 				IndexService.indexBack ();
 				String file81 = "scenario/确认";
@@ -190,7 +190,7 @@ public class FightAutoServiceImpl {
 				String folder1 = "scenario/进攻";
 				ImageService.imagesClick (folder1);
 				logger.info ("等待进攻完成");
-				Thread.sleep (60 * 100);
+				sleep (60 * 100);
 				String folder2 = "scenario/退出挑战";
 				boolean b2 = ImageService.imagesClickIsEmpty (folder2);
 				if (b2) {
@@ -198,7 +198,7 @@ public class FightAutoServiceImpl {
 					ImageService.imagesClick (folder2);
 					num--;
 					logger.info ("第" + (i + 1) + "结界挑战完成");
-					Thread.sleep (3 * 1000);
+					sleep (3 * 1000);
 					boolean b3 = ImageService.imagesClickIsEmpty (folder2);
 					if (b3) {
 						ImageService.imagesClick (folder2);
@@ -247,7 +247,7 @@ public class FightAutoServiceImpl {
 				logger.info ("准备点击探索");
 				MouseClick.mouseClicks (pictureIdentifyWorkPOList);
 				logger.info ("进入探索");
-				Thread.sleep (3 * 1000);
+				sleep (3 * 1000);
 				return true;
 			}
 			
@@ -281,7 +281,7 @@ public class FightAutoServiceImpl {
 			logger.info ("准备进入花合战");
 			ImageService.imageClick (file1);
 			logger.info ("进入花合战");
-			Thread.sleep (2000);
+			sleep (2000);
 //			是否有全部领取
 			MouseClick.mouseClickNow (0,0);
 			File file11=new File ("java/src/main/resources/image/scenario/任务.png");
@@ -350,19 +350,19 @@ public class FightAutoServiceImpl {
 	}
 	
 	public static void soulBack (Integer num) throws InterruptedException, AWTException {
-		Thread.sleep (3000);
+		sleep (3000);
 		logger.info ("开始");
 		String file1 = "scenario/御魂/挑战";
 		String file2 = "scenario/御魂/角色头像";
 		String file3 = "scenario/御魂/退出挑战";
 		String file4 = "scenario/结界突破/失败";
-		String file5 = "scenario/御魂/胜利";
+//		String file5 = "scenario/御魂/胜利";
 //		开始挑战,处理剩余次数的御魂
 		for (int i = 0; num > 0; i++) {
 			long a= System.currentTimeMillis();//获取当前系统时间(毫秒)
 
 			logger.info ("准备开始挑战");
-			Thread.sleep (1000);
+			sleep (1000);
 			ImageService.imagesClickBackNumber  (file1,120,true);
 			logger.info ("第" + (i + 1) +"次挑战中，等待挑战完成");
 			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败或胜利");
@@ -383,7 +383,7 @@ public class FightAutoServiceImpl {
 		}
 	}
 	
-	public static void borderCheck () throws InterruptedException, AWTException {
+	public static void borderCheck () throws Exception {
 		//进入结界挑战
 		String file="scenario/结界突破/结界突破";
 		logger.info ("准备进入结界突破");
@@ -447,7 +447,7 @@ public class FightAutoServiceImpl {
 		logger.info ("退出到探索");
 	}
 	
-	public static void soulEleven (int i,int j,boolean b) throws InterruptedException, AWTException {
+	public static void soulEleven (int i,int j,boolean b) throws Exception {
 		String  file="scenario/御魂/御魂图标";
 		logger.info ("准备进入御魂");
 		ImageService.imagesClickBack (file);
@@ -478,7 +478,7 @@ public class FightAutoServiceImpl {
 					}
 					ImageService.imagesClickBack (file3);
 				}
-				else if(i==10){
+				else {
 					String file3="scenario/御魂/层数/魂十";
 					logger.info ("选择魂十");
 					boolean  b1=ImageService.imagesClickBackIsEmpty (file3,30);
@@ -500,7 +500,7 @@ public class FightAutoServiceImpl {
 					}
 					ImageService.imagesClickBack (file3);
 				}
-				else if(i==10){
+				else {
 					String file3="scenario/御魂/层数/魂十";
 					logger.info ("选择魂十");
 					boolean  b1=ImageService.imagesClickBackIsEmpty (file3,30);
@@ -615,16 +615,16 @@ public class FightAutoServiceImpl {
 		}
 	}
 	
-	public static void fightHome () throws InterruptedException, AWTException {
+	public static void fightHome () throws Exception {
 		//进入结界挑战
 		String file="scenario/结界突破/结界突破";
 		logger.info ("准备进入结界突破");
 		ImageService.imagesClickBack (file);
-		Thread.sleep (2000);
+		sleep (2000);
 		logger.info ("进入结界突破，准备点击阴阳寮");
 		String file1="scenario/结界突破/阴阳寮";
 		ImageService.imagesClickBack (file1);
-		Thread.sleep (2000);
+		sleep (2000);
 		logger.info ("进入寮突破，判断当前有无挑战次数");
 		String file2="scenario/结界突破/挑战次数";
 		String file3="scenario/结界突破/寮结界";
@@ -638,7 +638,7 @@ public class FightAutoServiceImpl {
 			logger.info ("存在可攻打结界，且存在挑战次数");
 			logger.info ("准备选择结界");
 			ImageService.imagesClickBack (file3);
-			Thread.sleep (2000);
+			sleep (2000);
 			logger.info ("选择结界成功，准备进攻");
 			ImageService.imagesClickBack (file4);
 			logger.info ("开始进攻");

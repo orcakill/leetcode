@@ -26,17 +26,13 @@ public class PlanTimerTask extends TimerTask {
 	 * 静态初始化
 	 * */
 	static {
-		try {
-			initPlanTimes ();
-		} catch (ParseException | SQLException e) {
-			e.printStackTrace ();
-		}
+		initPlanTimes ();
 	}
 	
 	/*
 	 * 初始化计划时间，只执行一次
 	 * */
-	private static void initPlanTimes () throws ParseException, SQLException {
+	private static void initPlanTimes () {
 		planTimes = new ArrayList<> ();
 		Date date = new Date ();
 		Calendar calendar = Calendar.getInstance ();

@@ -38,7 +38,6 @@ public class MouseClick {
 	
 	//根据当前坐标点击,传0就是原地点击，x1、y1不为0会产生移动
 	public static void mouseClickNow (double x1, double y1) throws AWTException {
-		Double bl = ComputerScaling.getScale ();
 		Robot robot1 = new Robot ();
 		Point p = MouseInfo.getPointerInfo ()
 		                   .getLocation ();
@@ -67,8 +66,6 @@ public class MouseClick {
 				for (int j = 0; j < 6; j++) {
 					robot1.mouseMove ((int) (findAllImgDatum.getX () / bl), (int) (findAllImgDatum.getY () / bl));
 				}
-				Point p = MouseInfo.getPointerInfo ()
-				                   .getLocation ();
 				Thread.sleep (2000);
 				robot1.mouseWheel (wheelAmt);
 			}
@@ -96,7 +93,7 @@ public class MouseClick {
 		StringBuilder X;
 		StringBuilder Y;
 		int moveTime = (int) (Math.random () * 400 + 300);
-		int mousePressTime = (int) (Math.random () * 500 + 100);
+		//int mousePressTime = (int) (Math.random () * 500 + 100);
 		for (PictureIdentifyWorkPO mouseMessage : mouseMessages) {
 			// 解析鼠标坐标参数,低位为X轴,高位为Y轴坐标
 			X = new StringBuilder (Integer.toHexString ((int) (mouseMessage.getX () / bl)));

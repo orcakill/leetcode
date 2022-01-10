@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @Classname ImagesBackRec
@@ -41,7 +42,7 @@ public class ImagesBackRec {
 	
 	
 	
-	public static boolean imagesRecognitionIsEmpty(String FolderName) throws AWTException {
+	public static boolean imagesRecognitionIsEmpty(String FolderName) {
 //		屏幕截图
 		BufferedImage Window=Screenshot.screenshotBack ();
 //		图片
@@ -53,7 +54,7 @@ public class ImagesBackRec {
 		return  mouseXY.size ()>0;
 	}
 	
-	public static PictureIdentifyWorkPO imagesRecognitionMouse(String FolderName) throws AWTException {
+	public static PictureIdentifyWorkPO imagesRecognitionMouse(String FolderName) {
 //		屏幕截图
 		BufferedImage Window=Screenshot.screenshotBack ();
 //		图片
@@ -107,8 +108,8 @@ a:
 								WindowData[x + imgWidth - 1][y + imgHeight - 1])
 						    && equalsRGB (imagesDatum[0][imgHeight - 1], WindowData[x][y + imgHeight - 1])) {
 							// 如果相等,进行二次匹配确认
-							int biggerX = 0;
-							int biggerY = 0;
+							int biggerX;
+							int biggerY;
 							boolean flag = true;
 b:
 							{
@@ -170,7 +171,7 @@ b:
 	
 	
 	public static List<int[][]> imageToDate(String FolderName){
-		return getImagesGRB(readFiles (FolderName));
+		return getImagesGRB (Objects.requireNonNull (readFiles (FolderName)));
 	}
 	
 	/**

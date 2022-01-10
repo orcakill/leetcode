@@ -4,7 +4,6 @@ import other.scenario.service.impl.ImageServiceImpl;
 
 import java.awt.*;
 import java.io.File;
-import java.util.List;
 
 public interface ImageService {
 	
@@ -39,7 +38,7 @@ public interface ImageService {
 	}
 	
 	/*多张图片后台识别,判断图片在当前页面是否存在*/
-	static boolean imagesClickBackIsEmpty (String folder,Integer nums) throws AWTException, InterruptedException {
+	static boolean imagesClickBackIsEmpty (String folder,Integer nums) throws Exception {
 		return ImageServiceImpl.imagesClickBackIsEmpty (folder,nums);
 	}
 	
