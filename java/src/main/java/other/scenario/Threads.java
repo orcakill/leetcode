@@ -127,7 +127,7 @@ class   ThreadEighth extends  Thread{
 		AutoLoginController.login ();
 		//刷魂十或者刷个人结界
 		//攻打轮次
-		int num=1;
+		int num=12;
 		AutoLoginController.fightHome(num,true);
 	}
 }

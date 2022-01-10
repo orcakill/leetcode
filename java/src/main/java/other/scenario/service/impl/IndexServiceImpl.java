@@ -25,7 +25,7 @@ public class IndexServiceImpl {
 			boolean b= ImageService.imagesClickIsEmpty (folderName);
 			if(b){
 				logger.info ("当前页是首页");
-				return b;
+				return true;
 			}
 			else{
 				logger.info ("当前页不是首页");

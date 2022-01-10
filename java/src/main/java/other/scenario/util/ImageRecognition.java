@@ -3,7 +3,6 @@ package other.scenario.util;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import other.scenario.entity.PictureIdentifyWorkPO;
-import other.scenario.service.LoginService;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -94,8 +93,8 @@ a:
 								WindowData[x + imgWidth - 1][y + imgHeight - 1])
 						    && equalsRGB (imagesDatum[0][imgHeight - 1], WindowData[x][y + imgHeight - 1])) {
 							// 如果相等,进行二次匹配确认
-							int biggerX = 0;
-							int biggerY = 0;
+							int biggerX;
+							int biggerY;
 							boolean flag = true;
 b:
 							{

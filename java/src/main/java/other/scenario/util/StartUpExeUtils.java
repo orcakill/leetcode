@@ -28,12 +28,12 @@ public class StartUpExeUtils {
 		}
 	}
 	
-	/**
-	 * 仅kill指定进程
-	 *
+	/***
+	 * @description: 仅kill指定进程
 	 * @param procName
-	 *
-	 * @throws IOException
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2022/1/10 8:40
 	 */
 	public static void killExeOnly (String procName) throws IOException {
 		if (!procName.equals ("")) {
@@ -88,13 +88,13 @@ public class StartUpExeUtils {
 	public static String checkProcess (String procName) {
 		String result = "";
 		//判断是否存在进程
-		Boolean existProc = false;
+		boolean existProc = false;
 		BufferedReader bufferedReader = null;
 		try {
 			Process proc = Runtime.getRuntime ()
 			                      .exec ("tasklist -fi " + '"' + "imagename eq " + procName + '"');
 			bufferedReader = new BufferedReader (new InputStreamReader (proc.getInputStream ()));
-			String line = null;
+			String line;
 			while ((line = bufferedReader.readLine ()) != null) {
 				if (line.contains (procName)) {
 					existProc = true;//存在
@@ -108,7 +108,7 @@ public class StartUpExeUtils {
 			if (bufferedReader != null) {
 				try {
 					bufferedReader.close ();
-				} catch (Exception ex) {
+				} catch (Exception ignored) {
 				}
 			}
 		}
@@ -123,11 +123,6 @@ public class StartUpExeUtils {
 					Runtime runtime = Runtime.getRuntime ();
 					Process process = runtime.exec ("cmd /c " + command);
 					br = new BufferedReader (new InputStreamReader (process.getInputStream (), StandardCharsets.UTF_8));
-					String line = null;
-					StringBuilder build = new StringBuilder ();
-					while ((line = br.readLine ()) != null) {
-						build.append (line);
-					}
 				}
 			} catch (Exception e) {
 				result = "关闭程序进程异常：" + e.getMessage ();
@@ -137,7 +132,7 @@ public class StartUpExeUtils {
 				if (br != null) {
 					try {
 						br.close ();
-					} catch (Exception ex) {
+					} catch (Exception ignored) {
 					}
 				}
 			}
@@ -152,13 +147,13 @@ public class StartUpExeUtils {
 	 */
 	public static boolean checkProcessOnly (String procName) {
 		//判断是否存在进程
-		Boolean existProc = false;
+		boolean existProc = false;
 		BufferedReader bufferedReader = null;
 		try {
 			Process proc = Runtime.getRuntime ()
 			                      .exec ("tasklist -fi " + '"' + "imagename eq " + procName + '"');
 			bufferedReader = new BufferedReader (new InputStreamReader (proc.getInputStream ()));
-			String line = null;
+			String line;
 			while ((line = bufferedReader.readLine ()) != null) {
 				if (line.contains (procName)) {
 					existProc = true;//存在
@@ -171,7 +166,7 @@ public class StartUpExeUtils {
 			if (bufferedReader != null) {
 				try {
 					bufferedReader.close ();
-				} catch (Exception ex) {
+				} catch (Exception ignored) {
 				}
 			}
 		}

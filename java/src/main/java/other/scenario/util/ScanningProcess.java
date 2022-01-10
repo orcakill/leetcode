@@ -62,7 +62,7 @@ public class ScanningProcess {
 				} finally {
 					GDI32.INSTANCE.SelectObject(blitDC, oldBitmap);
 				}
-				// 位图信息头,大小固定40字节
+				// 位图信息头,大小固定40个字节
 				BITMAPINFO bi = new BITMAPINFO(40);
 				bi.bmiHeader.biSize = 40;
 				// 函数获取指定兼容位图的位,然后将其作一个DIB—设备无关位图使用的指定格式复制到一个缓冲区中
@@ -72,8 +72,7 @@ public class ScanningProcess {
 					BITMAPINFOHEADER bih = bi.bmiHeader;
 					bih.biHeight = -Math.abs(bih.biHeight);
 					bi.bmiHeader.biCompression = 0;
-					BufferedImage img = bufferedImageFromBitmap(blitDC, outputBitmap, bi);
-					return img;
+					return bufferedImageFromBitmap (blitDC, outputBitmap, bi);
 				}
 			} finally {
 				GDI32.INSTANCE.DeleteObject(blitDC);
@@ -89,7 +88,7 @@ public class ScanningProcess {
 	private static BufferedImage bufferedImageFromBitmap(HDC blitDC, HBITMAP outputBitmap, BITMAPINFO bi) {
 		BITMAPINFOHEADER bih = bi.bmiHeader;
 		int height = Math.abs(bih.biHeight);
-		final ColorModel cm;
+		final DirectColorModel cm;
 		final DataBuffer buffer;
 		final WritableRaster raster;
 		int strideBits = (bih.biWidth * bih.biBitCount);
@@ -101,14 +100,14 @@ public class ScanningProcess {
 				cm = new DirectColorModel (16, 0x7C00, 0x3E0, 0x1F);
 				buffer = new DataBufferUShort (strideElementsAligned * height);
 				raster = Raster.createPackedRaster (buffer, bih.biWidth, height, strideElementsAligned,
-						((DirectColorModel) cm).getMasks(), null);
+						cm.getMasks (), null);
 				break;
 			case 32:
 				strideElementsAligned = strideBytesAligned / 4;
 				cm = new DirectColorModel(32, 0xFF0000, 0xFF00, 0xFF);
 				buffer = new DataBufferInt (strideElementsAligned * height);
-				raster = Raster.createPackedRaster(buffer, bih.biWidth, height, strideElementsAligned,
-						((DirectColorModel) cm).getMasks(), null);
+				raster = Raster.createPackedRaster (buffer, bih.biWidth, height, strideElementsAligned,
+						cm.getMasks (), null);
 				break;
 			default:
 				throw new IllegalArgumentException("检测到不支持的图片位数: " + bih.biBitCount);
@@ -116,12 +115,14 @@ public class ScanningProcess {
 		final boolean ok;
 		switch (buffer.getDataType()) {
 			case DataBuffer.TYPE_INT: {
-				int[] pixels = ((DataBufferInt) buffer).getData();
+				assert buffer instanceof DataBufferInt;
+				int[] pixels = ((DataBufferInt) buffer).getData ();
 				ok = GDI32.INSTANCE.GetDIBits (blitDC, outputBitmap, 0, raster.getHeight (), pixels, bi, 0);
 			}
 			break;
 			case DataBuffer.TYPE_USHORT: {
-				short[] pixels = ((DataBufferUShort) buffer).getData();
+				assert buffer instanceof DataBufferUShort;
+				short[] pixels = ((DataBufferUShort) buffer).getData ();
 				ok = GDI32.INSTANCE.GetDIBits(blitDC, outputBitmap, 0, raster.getHeight(), pixels, bi, 0);
 			}
 			break;

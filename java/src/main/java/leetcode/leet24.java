@@ -13,8 +13,9 @@ import java.util.ArrayList;
  */
 public class leet24 {
 	public static void main(String[] args) {
-		int a[]={1,2,3,4};
-	    //转换为listNode
+		int[] a;
+		a = new int[]{1,2};
+		//转换为listNode
 		ListNode listNode=ListNode.makeNode (a);
 	    //两两交换链表中的节点
 		ListNode listNode1=swapPairs (listNode);
@@ -25,7 +26,7 @@ public class leet24 {
 	}
 	
 	public static ListNode swapPairs(ListNode head) {
-		while (head==null||head.next==null){
+		if(head==null||head.next==null){
 			return  head;
 		}
 		ListNode newHead=head.next;

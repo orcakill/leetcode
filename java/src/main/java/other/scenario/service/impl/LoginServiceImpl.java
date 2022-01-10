@@ -25,12 +25,9 @@ import java.util.List;
 public class LoginServiceImpl{
 	private static final Logger logger = LogManager.getLogger (LoginServiceImpl.class);
 	
-	
-	private static double bl;
-	
 	static {
 		try {
-			bl = ComputerScaling.getScale ();
+			double bl = ComputerScaling.getScale ();
 		} catch (AWTException e) {
 			e.printStackTrace ();
 		}

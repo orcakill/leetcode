@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ImagesRecognition {
 	private static final Logger logger = LogManager.getLogger (ImagesRecognition.class);
@@ -102,8 +103,8 @@ a:
 								WindowData[x + imgWidth - 1][y + imgHeight - 1])
 						    && equalsRGB (imagesDatum[0][imgHeight - 1], WindowData[x][y + imgHeight - 1])) {
 							// 如果相等,进行二次匹配确认
-							int biggerX = 0;
-							int biggerY = 0;
+							int biggerX;
+							int biggerY;
 							boolean flag = true;
 b:
 							{
@@ -164,7 +165,7 @@ b:
 	
 	
 	public static List<int[][]> imageToDate(String FolderName){
-		return getImagesGRB(readFiles (FolderName));
+		return getImagesGRB (Objects.requireNonNull (readFiles (FolderName)));
 	}
 	
 	/**
