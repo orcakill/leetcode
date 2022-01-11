@@ -220,7 +220,7 @@ public class ImageServiceImpl  {
 		return b;
 	}
 	
-	public static void imagesClickBackNumber (String folder, Integer number,boolean b) throws InterruptedException,
+	public static boolean imagesClickBackNumber (String folder, Integer number,boolean b) throws InterruptedException,
 	                                                                                 AWTException {
 		File file= new File (
 				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
@@ -230,7 +230,7 @@ public class ImageServiceImpl  {
 				if (ImagesBackRec.imagesRecognition (folder)) {
 					logger.info ("图片匹配成功");
 					logger.info ("点击操作成功");
-					break;
+					return  true;
 				}
 				else {
 					if(b){
@@ -242,9 +242,10 @@ public class ImageServiceImpl  {
 		else {
 			logger.info ("图标路径不存在");
 		}
+		return  false;
 	}
 	
-	public static void imagesClickBackNumberOrder (String folder1, String folder2, Integer number) throws
+	public static boolean imagesClickBackNumberOrder (String folder1, String folder2, Integer number) throws
 	                                                                                               InterruptedException,
 	                                                                                               AWTException {
 		File file1= new File (
@@ -262,14 +263,14 @@ public class ImageServiceImpl  {
 					Thread.sleep (getRandom (1,2) * 1000L);
 					logger.info ("点击操作成功");
 					imagesClickBackNumber (folder2,30,true);
-					break;
+					return  true;
 				}
 				else if(b){
 					logger.info ("图片匹配成功");
 					ImagesBackRec.imagesRecognition (folder2);
 					Thread.sleep (getRandom (1,2) * 1000L);
 					logger.info ("点击操作成功");
-					break;
+					return  false;
 				}
 				else {
 					logger.error ("在每2秒的检测中，第" + (i + 1) + "次检查未发现该图片");
@@ -279,6 +280,7 @@ public class ImageServiceImpl  {
 		else {
 			logger.info ("图标路径不存在");
 		}
+		return  false;
 	}
 	
 	public static boolean imagesClickBackNumberOrderNumbers (String folder1, String folder2, String folder3,

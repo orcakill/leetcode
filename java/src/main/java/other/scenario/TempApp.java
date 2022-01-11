@@ -121,6 +121,16 @@ class SoulFriendApp {
 	}
 }
 
+//斗技 1 12
+class PVPApp {
+	public static void main (String[] args) {
+		ThreadFirst t1 = new ThreadFirst();
+		ThreadTwelfth t2 = new ThreadTwelfth ();
+		t1.start();
+		t2.start();
+	}
+}
+
 
 
 

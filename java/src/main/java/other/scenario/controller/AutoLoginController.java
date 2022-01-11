@@ -200,4 +200,10 @@ public class AutoLoginController {
 			FightAutoService.soulFriend ();
 		}
 	}
+	
+	public static void PVP () throws InterruptedException, AWTException {
+		for (int i = 0; i < 10; i++) {
+			FightAutoService.PVP();
+		}
+	}
 }

@@ -673,6 +673,46 @@ public class FightAutoServiceImpl {
 		ImageService.imagesClickBackNumberOrder (file,file1,120);
 		logger.info ("退出挑战完成");
 	}
+	
+	public static void PVP () throws InterruptedException, AWTException {
+		String file = "scenario/斗技/开始挑战";
+		String file1 = "scenario/斗技/自动选择";
+		String file2 = "scenario/斗技/自动战斗";
+		String file3 = "scenario/斗技/战斗数据";
+		String file5 = "scenario/斗技/战斗胜利";
+		String file51 = "scenario/斗技/战斗失败";
+		String file6 = "scenario/斗技/额外奖励";
+		boolean b;
+		boolean b1;
+		int num1=0;
+		int num2=0;
+		for(int i=1;i<100;i++){
+			logger.info ("准备挑战");
+			ImageService.imagesClickBack (file);
+			logger.info ("进入挑战，准备自动选择");
+			ImageService.imagesClickBack (file1);
+			logger.info ("自动选择完成，准备自动战斗");
+			ImageService.imagesClickBack (file2);
+			logger.info ("准备战斗数据、战斗胜利或战斗失败");
+			b=ImageService.imagesClickBackNumberOrderNumbers (file3,file5,file51,null,500);
+			if(b){
+				num1++;
+			}
+			else{
+				num2++;
+			}
+			logger.info ("判断是否有额外奖励");
+			b1=ImageService.imagesClickBackNumber (file6,5,true);
+			if (!b1) {
+				logger.info ("没有额外奖励");
+			}
+			else {
+				logger.info ("存在额外奖励");
+				ImageService.imagesClickBack (file6);
+			}
+			logger.info ("第"+i+"次挑战完成，胜利"+num1+"次，失败"+num2+"次，胜率"+num1*100/i+"%");
+		}
+	}
 }
 
 
