@@ -74,4 +74,8 @@ public interface FightAutoService {
 	static void soulFriend () throws InterruptedException, AWTException {
 		FightAutoServiceImpl.soulFriend ();
 	}
+	
+	static void PVP () throws InterruptedException, AWTException {
+		FightAutoServiceImpl.PVP();
+	}
 }

@@ -175,3 +175,11 @@ class   ThreadEleventh extends  Thread{
 		AutoLoginController.soulFriend();
 	}
 }
+
+class   ThreadTwelfth extends  Thread{
+	@SneakyThrows
+	public void run (){
+		System.out.println("斗技");
+		AutoLoginController.PVP();
+	}
+}
