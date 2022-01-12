@@ -24,8 +24,8 @@ class   ThreadFirst extends  Thread{
 		System.out.println("拒接协战");
 		String file1 = "scenario/御魂/拒接协战";
 		for (int i = 0; i <= 300; i++) {
-			Thread.sleep (30*1000);
 			ImageService.imagesClickBackNumber (file1, 3, false);
+			Thread.sleep (30*1000);
 		}
 	}
 }
