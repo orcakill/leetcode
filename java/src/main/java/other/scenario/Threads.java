@@ -80,7 +80,7 @@ class   ThreadFifth extends  Thread{
 		//自动登录到探索
 		AutoLoginController.login ();
 		//攻打轮次
-		int num=2;
+		int num=1;
 		//御魂类型
 		int num1=21;
 		AutoLoginController.soulAll(num,num1);

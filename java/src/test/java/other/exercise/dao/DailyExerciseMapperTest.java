@@ -24,12 +24,8 @@ public class DailyExerciseMapperTest {
 	
 	@Test
 	public void save1() throws SQLException, ParseException {
-
-		Scanner myInput=new Scanner (System.in);
-		System.out.println("请输入一个时刻，如14:00:00，记录锻炼结束时刻:");
-		String time=myInput.next ();
-		System.out.println("请输入一个时间，如60，记录锻炼时间:");
-		String time1=myInput.next ();
+		String time="12:30:00";
+		String time1="60";
 		Date date=new Date();
 		SimpleDateFormat simpleDateFormat=new SimpleDateFormat ("yyyy-MM-dd");
 		SimpleDateFormat simpleDateFormat1=new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
