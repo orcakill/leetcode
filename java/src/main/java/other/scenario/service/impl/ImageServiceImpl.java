@@ -178,6 +178,7 @@ public class ImageServiceImpl  {
 				if (ImagesBackRec.imagesRecognition (folder)) {
 					logger.info ("图片匹配成功");
 					logger.info ("点击成功");
+					Thread.sleep (1000);
 					break;
 				}
 				else {
