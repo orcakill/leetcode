@@ -115,7 +115,7 @@ public class AutoLoginController {
 		}
 	}
 	
-	public static void soulEleven (Integer num,Integer num1,boolean b) throws Exception {
+	public static void    soulEleven (Integer num,Integer num1,boolean b) throws Exception {
 		for (int i = 0; i < num; i++) {
 			//处理结界挑战劵
 			FightAutoService.borderCheck ();
