@@ -24,7 +24,7 @@ public class DailyExerciseMapperTest {
 	
 	@Test
 	public void save1() throws SQLException, ParseException {
-		String time="12:30:00";
+		String time="23:25:00";
 		String time1="60";
 		Date date=new Date();
 		SimpleDateFormat simpleDateFormat=new SimpleDateFormat ("yyyy-MM-dd");
