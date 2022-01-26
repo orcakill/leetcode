@@ -163,6 +163,10 @@ public class AutoLoginController {
 			logger.info ("处理个人结界");
 			FightAutoService.borderCheck ();
 			logger.info ("个人结界处理完成");
+			if(num1==10){
+				logger.info ("魂十40次");
+				FightAutoService.soulEleven (num1,60,true);
+			}
 			if(num1==11){
 				logger.info ("魂十一40次");
 				FightAutoService.soulEleven (num1,40,true);
