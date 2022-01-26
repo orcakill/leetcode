@@ -183,3 +183,17 @@ class   ThreadTwelfth extends  Thread{
 		AutoLoginController.PVP();
 	}
 }
+
+class   ThreadThirteenth extends  Thread{
+	@SneakyThrows
+	public void run () {
+		System.out.println ("自动登录，刷寮突破,处理个人结界，刷魂十");
+		//自动登录到探索
+		AutoLoginController.login ();
+		//攻打轮次
+		int num=1;
+		//御魂类型
+		int num1=10;
+		AutoLoginController.soulAll(num,num1);
+	}
+}

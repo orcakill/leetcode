@@ -131,7 +131,15 @@ class PVPApp {
 	}
 }
 
-
+//	自动登录，刷寮突破,处理个人结界，刷魂十一 1 13
+class soulAll3App {
+	public static void main (String[] args) {
+		ThreadFirst t1 = new ThreadFirst();
+		ThreadThirteenth  t2 = new ThreadThirteenth ();
+		t1.start();
+		t2.start();
+	}
+}
 
 
 
