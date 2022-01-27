@@ -100,7 +100,7 @@ class   ThreadSixth extends  Thread{
 		//每轮次攻打次数
 		int num1=120;
 		//开启加成
-		boolean b=false;
+		boolean b=true;
 		AutoLoginController.soulTen (num,num1,b);
 	}
 }
