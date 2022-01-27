@@ -593,11 +593,6 @@ public class FightAutoServiceImpl {
 			logger.info ("准备进入御灵白藏主");
 			ImageService.imagesClickBack (file1);
 			logger.info ("进入御灵白藏主");
-			logger.info ("选择第三层");
-			String  file2="scenario/御灵/第三层";
-			ImageService.imagesClickBack (file2);
-			logger.info ("开始挑战");
-			soulBack (120);
 		}
 		//周四
 		else if (weekday==5){
@@ -613,6 +608,11 @@ public class FightAutoServiceImpl {
 			ImageService.imagesClickBack (file1);
 			logger.info ("进入御灵孔雀");
 		}
+		logger.info ("选择第三层");
+		String  file2="scenario/御灵/第三层";
+		ImageService.imagesClickBack (file2);
+		logger.info ("开始挑战");
+		soulBack (120);
 	}
 	
 	public static void fightHome () throws Exception {
