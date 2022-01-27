@@ -357,6 +357,7 @@ public class FightAutoServiceImpl {
 		String file3 = "scenario/御魂/退出挑战";
 		String file4 = "scenario/结界突破/失败";
 //		String file5 = "scenario/御魂/胜利";
+		String file6 = "scenario/御魂/宠物奖励";
 //		开始挑战,处理剩余次数的御魂
 		for (int i = 0; num > 0; i++) {
 			long a= System.currentTimeMillis();//获取当前系统时间(毫秒)
@@ -366,7 +367,13 @@ public class FightAutoServiceImpl {
 			ImageService.imagesClickBackNumber  (file1,120,true);
 			logger.info ("第" + (i + 1) +"次挑战中，等待挑战完成");
 			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败或胜利");
-			ImageService.imagesClickBackNumberOrderNumbers (file2,file3,file4,null,120);
+			if(i==0){
+				/*第一次挑战可能有额外奖励*/
+				ImageService.imagesClickBackNumberOrderNumbers (file2,file3,file4,file6,120);
+			}
+			else{
+				ImageService.imagesClickBackNumberOrderNumbers (file2,file3,file4,null,120);
+			}
 			logger.info ("退出挑战完成");
 			num--;
 			logger.info ("第" + (i + 1) + "次挑战完成，剩余" + (num) + "次");
