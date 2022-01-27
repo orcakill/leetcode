@@ -91,7 +91,7 @@ class FightHomeApp {
 }
 
 
-//	自动登录，刷业原火，个人结界 1 9
+//	自动登录，刷业原火，个人结界 1 9·
 class SoulFireApp {
 	public static void  main (String[] args) {
 		ThreadFirst t1 = new ThreadFirst();

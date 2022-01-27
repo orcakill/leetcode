@@ -339,6 +339,7 @@ public class ImageServiceImpl  {
 						ImagesBackRec.imagesRecognition (folder4);
 						Thread.sleep (getRandom (1,2) * 1000L);
 						logger.info ("点击操作成功");
+						imagesClickBackNumber (folder2,30,true);
 						break;
 					}
 					else{
