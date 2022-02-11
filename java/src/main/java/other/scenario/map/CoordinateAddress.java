@@ -25,6 +25,10 @@ public class CoordinateAddress {
 				pictureIdentifyWorkPO.setX (1567);
 				pictureIdentifyWorkPO.setY (487);
 			}
+			if(name.equals ("地面点击")){
+				pictureIdentifyWorkPO.setX (1464);
+				pictureIdentifyWorkPO.setY (1425);
+			}
 		}
 		else if(windows_width==1920){
 			if(name.equals ("御魂加成")){

@@ -136,7 +136,7 @@ public class AutoLoginController {
 	
 
 	
-	public static void spirit (int num) throws InterruptedException, AWTException {
+	public static void spirit (int num) throws Exception {
 		for (int i = 0; i < num; i++) {
 			FightAutoService.spirit();
 		}
@@ -158,10 +158,10 @@ public class AutoLoginController {
 	public static void soulAll (int num,int num1) throws Exception {
 		for (int i = 0; i < num; i++) {
 			logger.info ("处理阴阳寮结界");
-			FightAutoService.fightHome();
+			//FightAutoService.fightHome();
 			logger.info ("阴阳寮结界处理完成");
 			logger.info ("处理个人结界");
-			FightAutoService.borderCheck ();
+			//FightAutoService.borderCheck ();
 			logger.info ("个人结界处理完成");
 			if(num1==10){
 				logger.info ("魂十40次");
@@ -175,6 +175,7 @@ public class AutoLoginController {
 				logger.info ("业原火20次");
 				FightAutoService.soulEleven (num1,20,true);
 			}
+
 			logger.info (num+"次处理完成");
 			
 		}

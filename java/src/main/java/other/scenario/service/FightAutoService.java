@@ -50,7 +50,7 @@ public interface FightAutoService {
 	 * @author: orcakill
 	 * @date: 2021/11/14 17:27
 	 */
-	static void  soulBack(Integer num) throws InterruptedException, AWTException {
+	static void  soulBack(Integer num) throws Exception {
 		FightAutoServiceImpl.soulBack(num);
 	}
 	
@@ -63,7 +63,7 @@ public interface FightAutoService {
 		FightAutoServiceImpl.soulEleven(i,j,b);
 	}
 	
-	static void spirit () throws InterruptedException, AWTException {
+	static void spirit () throws Exception {
 		FightAutoServiceImpl.spirit ();
 	}
 	
@@ -78,4 +78,6 @@ public interface FightAutoService {
 	static void PVP () throws InterruptedException, AWTException {
 		FightAutoServiceImpl.PVP();
 	}
+	
+
 }
