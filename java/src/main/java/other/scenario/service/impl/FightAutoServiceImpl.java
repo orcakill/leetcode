@@ -349,7 +349,7 @@ public class FightAutoServiceImpl {
 		return false;
 	}
 	
-	public static void soulBack (Integer num) throws InterruptedException, AWTException {
+	public static void soulBack (Integer num) throws Exception {
 		sleep (3000);
 		logger.info ("开始");
 		String file1 = "scenario/御魂/挑战";
@@ -366,13 +366,15 @@ public class FightAutoServiceImpl {
 			sleep (1000);
 			ImageService.imagesClickBackNumber  (file1,120,true);
 			logger.info ("第" + (i + 1) +"次挑战中，等待挑战完成");
-			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败或胜利");
+			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败或宠物奖励");
+			ImageService.imagesClickBackNumberOrderNumbers (file2,file3,file4,null,120);
 			if(i==0){
 				/*第一次挑战可能有额外奖励*/
-				ImageService.imagesClickBackNumberOrderNumbers (file2,file3,file4,file6,120);
-			}
-			else{
-				ImageService.imagesClickBackNumberOrderNumbers (file2,file3,file4,null,120);
+				sleep (1000);
+				boolean b=ImageService.imagesClickBackIsEmpty  (file6,3);
+				if(b){
+					ImageService.imagesClickBackNumber  (file6,120,true);
+				}
 			}
 			logger.info ("退出挑战完成");
 			num--;
@@ -405,12 +407,24 @@ public class FightAutoServiceImpl {
 		String file51 = "scenario/结界突破/失败";
 		String file6="scenario/结界突破/刷新";
 		String file7="scenario/结界突破/确认";
+		//战斗次数 默认为0次
+		int    num=0;
+		//上次战斗状态，默认为true,战斗成功
+		boolean   state=true;
+		//记录阵容是否发生切换,默认false
+		boolean   change=false;
 		while(!ImageService.imagesClickBackIsEmpty (file1,3)){
 			//不为0则进行结界挑战
 			logger.info ("结界劵数不为零");
-			logger.info ("选择个人结界");
-			//判断能否选择个人结界
+			//判断能否选择未挑战的个人结界
 			if(ImageService.imagesClickBackIsEmpty (file2,3)){
+				logger.info ("能选择个人结界");
+				//第一次战斗、上次战斗失败、前一次战斗失败上次战斗成功，需要更换阵容
+				//取消锁定
+				//点击个人结界，准备进攻
+				//更换阵容
+				//进攻
+				//退出挑战
 				ImageService.imagesClickBack (file2);
 				logger.info ("点击个人结界成功，准备进攻");
 				ImageService.imagesClickBack (file3);
@@ -420,6 +434,10 @@ public class FightAutoServiceImpl {
 				if(!b){
 					logger.info ("个人结界战斗失败，请更换阵容手动挑战");
 					System.exit(0);
+				}
+				else{
+					num++;
+					logger.info ("个人结界战斗胜利，第"+num+"次");
 				}
 				logger.info ("退出挑战完成");
 				if(ImageService.imagesClickBackIsEmpty (file5,4)){
@@ -572,7 +590,7 @@ public class FightAutoServiceImpl {
 		ImageService.imagesClickBack (file3);
 	}
 	
-	public static void spirit () throws InterruptedException, AWTException {
+	public static void spirit () throws Exception {
 		String  file="scenario/御灵/御灵图标";
 		logger.info ("准备进入御灵");
 		ImageService.imagesClickBack (file);
@@ -738,6 +756,8 @@ public class FightAutoServiceImpl {
 			logger.info ("第"+i+"次挑战完成，胜利"+num1+"次，失败"+num2+"次，胜率"+num1*100/i+"%");
 		}
 	}
+	
+	
 }
 
 

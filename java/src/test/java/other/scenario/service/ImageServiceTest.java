@@ -28,7 +28,7 @@ public class ImageServiceTest {
 	
 	@Test
 	public void   imagesClickIsEmpty () throws Exception {
-		String folderName="scenario/首页/再次召唤";
+		String folderName="scenario/探索/地面点击";
 		File file = new File (
 				System.getProperty ("user.dir") + "/src/main/resources/image/" + folderName);
 		if(file.exists ()){

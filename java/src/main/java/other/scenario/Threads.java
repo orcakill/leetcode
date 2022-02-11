@@ -50,9 +50,9 @@ class   ThreadThird extends  Thread {
 			AutoLoginController.login ();
 			//刷魂十一或者刷个人结界
 			//攻打轮次
-			int num=1;
+			int num=4;
 			//每轮次攻打次数
-			int num1=60;
+			int num1=120;
 			//开启加成
 			boolean b=true;
 			AutoLoginController.soulEleven (num,num1,b);
@@ -65,7 +65,7 @@ class   ThreadFourth extends  Thread {
 		//自动登录到探索
 		AutoLoginController.login ();
 		//攻打轮次
-		int num=1;
+		int num=3;
 		//御魂类型
 		int num1=11;
 		AutoLoginController.soulAll(num,num1);
@@ -96,9 +96,9 @@ class   ThreadSixth extends  Thread{
 		AutoLoginController.login ();
 		//刷魂十或者刷个人结界
 		//攻打轮次
-		int num=1;
+		int num=4;
 		//每轮次攻打次数
-		int num1=120;
+		int num1=150;
 		//开启加成
 		boolean b=true;
 		AutoLoginController.soulTen (num,num1,b);
@@ -197,3 +197,4 @@ class   ThreadThirteenth extends  Thread{
 		AutoLoginController.soulAll(num,num1);
 	}
 }
+
