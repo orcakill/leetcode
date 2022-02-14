@@ -17,14 +17,13 @@ public class leet28 {
             return 0;
         }
         int t=-1;
-        for(int i=0;i<haystack.length()-length+1;i++){
-            String h1=haystack.substring(i,i+length);
-            if(h1.equals(needle)){
-                t=i;
+        for(int i=0;i<haystack.length()-length+1;i++) {
+            String h1 = haystack.substring (i, i + length);
+            if (h1.equals (needle)) {
+                t = i;
                 break;
             }
         }
-
         return t;
     }
 }
