@@ -23,9 +23,15 @@ class   ThreadFirst extends  Thread{
 	public void run (){
 		System.out.println("拒接协战");
 		String file1 = "scenario/御魂/拒接协战";
+		String file2 = "scenario/登录/阴阳师图标";
 		for (int i = 0; i <= 300; i++) {
 			ImageService.imagesClickBackNumber (file1, 3, false);
 			Thread.sleep (30*1000);
+			boolean b=ImageService.imagesClickBackIsEmpty (file2,3);
+			if(b){
+				System.out.println ("异常退出");
+				System.exit(0);
+			}
 		}
 	}
 }
