@@ -49,8 +49,6 @@ public class ImagesBackRec {
 		List<int[][]> ImagesData=imageToDate(FolderName);
 //		屏幕截图和图片对比
 		List<PictureIdentifyWorkPO> mouseXY=FindAllImgData(Window,ImagesData);
-//		鼠标点击
-		System.gc();
 		return  mouseXY.size ()>0;
 	}
 	

@@ -27,7 +27,7 @@ public class AutoLoginController {
 	public static void login () throws Exception {
 		String fileOne = "scenario/御魂/御魂图标";
 		logger.info ("判断当前是未登录还是已探索");
-		if (ImageService.imagesClickBackIsEmpty (fileOne, 3)) {
+		if (ImageService.imagesClickBackIsEmpty (fileOne, 3,true)) {
 			logger.info ("当前已是探索界面");
 		}
 		else {
@@ -84,7 +84,7 @@ public class AutoLoginController {
 			Thread.sleep (3000);
 			String file = "scenario/首页/底部菜单";
 			logger.info ("准备点击底部菜单栏");
-			boolean b=ImageService.imagesClickBackIsEmpty (file,300);
+			boolean b=ImageService.imagesClickBackIsEmpty (file,300,true);
 			Thread.sleep (2000);
 			if(b){
 				ImageService.imagesClickBackNumber (file,300,true);

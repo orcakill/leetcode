@@ -371,7 +371,7 @@ public class FightAutoServiceImpl {
 			if(i==0){
 				/*第一次挑战可能有额外奖励*/
 				sleep (1000);
-				boolean b=ImageService.imagesClickBackIsEmpty  (file6,3);
+				boolean b=ImageService.imagesClickBackIsEmpty  (file6,3,true);
 				if(b){
 					ImageService.imagesClickBackNumber  (file6,120,true);
 				}
@@ -413,11 +413,11 @@ public class FightAutoServiceImpl {
 		boolean   state=true;
 		//记录阵容是否发生切换,默认false
 		boolean   change=false;
-		while(!ImageService.imagesClickBackIsEmpty (file1,3)){
+		while(!ImageService.imagesClickBackIsEmpty (file1,3,true)){
 			//不为0则进行结界挑战
 			logger.info ("结界劵数不为零");
 			//判断能否选择未挑战的个人结界
-			if(ImageService.imagesClickBackIsEmpty (file2,3)){
+			if(ImageService.imagesClickBackIsEmpty (file2,3,true)){
 				logger.info ("能选择个人结界");
 				//第一次战斗、上次战斗失败、前一次战斗失败上次战斗成功，需要更换阵容
 				//取消锁定
@@ -440,7 +440,7 @@ public class FightAutoServiceImpl {
 					logger.info ("个人结界战斗胜利，第"+num+"次");
 				}
 				logger.info ("退出挑战完成");
-				if(ImageService.imagesClickBackIsEmpty (file5,4)){
+				if(ImageService.imagesClickBackIsEmpty (file5,4,true)){
 					logger.info ("每打完三个有额外奖励");
 					ImageService.imagesClickBack (file5);
 					logger.info ("领取额外奖励成功");
@@ -453,7 +453,7 @@ public class FightAutoServiceImpl {
 				System.exit(0);
 				logger.info ("有结界挑战劵，没有可攻打的结界，准备刷新");
 				//判断不处于刷新冷却期
-				if(ImageService.imagesClickBackIsEmpty (file6,4)){
+				if(ImageService.imagesClickBackIsEmpty (file6,4,true)){
 					ImageService.imagesClickBack (file6);
 				}
 				else{
@@ -496,7 +496,7 @@ public class FightAutoServiceImpl {
 				if(i==11){
 					String file3="scenario/御魂/层数/魂十一";
 					logger.info ("选择魂十一");
-					boolean  b1=ImageService.imagesClickBackIsEmpty (file3,30);
+					boolean  b1=ImageService.imagesClickBackIsEmpty (file3,30,true);
 					if(!b1){
 						logger.info ("没有选择到魂十一");
 						System.exit(0);
@@ -506,7 +506,7 @@ public class FightAutoServiceImpl {
 				else {
 					String file3="scenario/御魂/层数/魂十";
 					logger.info ("选择魂十");
-					boolean  b1=ImageService.imagesClickBackIsEmpty (file3,30);
+					boolean  b1=ImageService.imagesClickBackIsEmpty (file3,30,true);
 					if(!b1){
 						logger.info ("没有选择到魂十");
 						System.exit(0);
@@ -518,7 +518,7 @@ public class FightAutoServiceImpl {
 				if(i == 11){
 					String file3="scenario/御魂/层数/魂十一";
 					logger.info ("选择魂十一");
-					boolean  b1=ImageService.imagesClickBackIsEmpty (file3,30);
+					boolean  b1=ImageService.imagesClickBackIsEmpty (file3,30,true);
 					if(!b1){
 						logger.info ("没有选择到魂十一");
 						System.exit(0);
@@ -528,7 +528,7 @@ public class FightAutoServiceImpl {
 				else {
 					String file3="scenario/御魂/层数/魂十";
 					logger.info ("选择魂十");
-					boolean  b1=ImageService.imagesClickBackIsEmpty (file3,30);
+					boolean  b1=ImageService.imagesClickBackIsEmpty (file3,30,true);
 					if(!b1){
 						logger.info ("没有选择到魂十");
 						System.exit(0);
@@ -558,7 +558,7 @@ public class FightAutoServiceImpl {
 			logger.info ("进入业原火");
 			logger.info ("选择业原火第三层");
 			String  file2="scenario/御魂/层数/业原火三层";
-			boolean  b1=ImageService.imagesClickBackIsEmpty (file2,30);
+			boolean  b1=ImageService.imagesClickBackIsEmpty (file2,30,true);
 			if(!b1){
 				logger.info ("没有选择到业原火第三层");
 				System.exit(0);
@@ -575,7 +575,7 @@ public class FightAutoServiceImpl {
 			logger.info ("进入日轮之陨");
 			logger.info ("选择日轮之陨第三层");
 			String  file2="scenario/御魂/层数/日轮之陨三层";
-			boolean  b1=ImageService.imagesClickBackIsEmpty (file2,30);
+			boolean  b1=ImageService.imagesClickBackIsEmpty (file2,30,true);
 			if(!b1){
 				logger.info ("没有选择到日轮之陨第三层");
 				System.exit(0);
@@ -665,14 +665,14 @@ public class FightAutoServiceImpl {
 		int num2=0;
 		boolean b;
 		boolean b1;
-		while (!ImageService.imagesClickBackIsEmpty (file2,5)&&ImageService.imagesClickBackIsEmpty (file3,5)){
+		while (!ImageService.imagesClickBackIsEmpty (file2,5,true)&&ImageService.imagesClickBackIsEmpty (file3,5,true)){
 			logger.info ("存在可攻打结界，且存在挑战次数");
 			logger.info ("准备选择结界");
 			ImageService.imagesClickBack (file3);
 			logger.info ("选择结界成功，准备进攻");
 			ImageService.imagesClickBack (file4);
 			logger.info ("开始进攻");
-			b=ImageService.imagesClickBackIsEmpty (file4,3);
+			b=ImageService.imagesClickBackIsEmpty (file4,3,true);
 			if(b){
 				ImageService.imagesClickBack (file8);
 				logger.info ("结界已被攻破，退出进攻");
