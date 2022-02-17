@@ -194,7 +194,7 @@ public class ImageServiceImpl  {
 		}
 	}
 	
-	public static boolean imagesClickBackIsEmpty (String folder,Integer nums) throws InterruptedException {
+	public static boolean imagesClickBackIsEmpty (String folder,Integer nums,boolean x) throws InterruptedException {
 		boolean b = false;
 		File file = new File (
 				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
@@ -211,7 +211,9 @@ public class ImageServiceImpl  {
 					break;
 				}
 				else {
-					logger.error ("在每2秒的检测中，第" + (i + 1) + "次检查未发现该图片");
+					if(x){
+						logger.error ("在每2秒的检测中，第" + (i + 1) + "次检查未发现该图片");
+					}
 				}
 			}
 		}
@@ -350,6 +352,10 @@ public class ImageServiceImpl  {
 			else {
 				logger.info ("图标路径不存在");
 			}
+			a=false;
+			b=false;
+			c=false;
+			d=false;
 			return  true;
 	}
 }

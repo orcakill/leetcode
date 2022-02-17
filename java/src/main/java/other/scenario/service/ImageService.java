@@ -38,8 +38,8 @@ public interface ImageService {
 	}
 	
 	/*多张图片后台识别,判断图片在当前页面是否存在*/
-	static boolean imagesClickBackIsEmpty (String folder,Integer nums) throws Exception {
-		return ImageServiceImpl.imagesClickBackIsEmpty (folder,nums);
+	static boolean imagesClickBackIsEmpty (String folder,Integer nums,boolean b) throws Exception {
+		return ImageServiceImpl.imagesClickBackIsEmpty (folder,nums,b);
 	}
 	
 	/*多张图片后台识别，可设定识别次数，是否返回日志信息*/
