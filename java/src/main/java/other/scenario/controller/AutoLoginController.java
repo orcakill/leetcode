@@ -149,7 +149,7 @@ public class AutoLoginController {
 			 if(b){
 				 //打一轮间隔 40-50分钟
 				 long l= getRandom (20, 30);
-				 logger.info ("等待"+l+"分钟");
+				 logger.info ("第"+(i+1)+"轮完成，等待"+l+"分钟");
 				 Thread.sleep (l*60*1000);
 			 }
 		}
@@ -158,10 +158,10 @@ public class AutoLoginController {
 	public static void soulAll (int num,int num1) throws Exception {
 		for (int i = 0; i < num; i++) {
 			logger.info ("处理阴阳寮结界");
-			//FightAutoService.fightHome();
+			FightAutoService.fightHome();
 			logger.info ("阴阳寮结界处理完成");
 			logger.info ("处理个人结界");
-			//FightAutoService.borderCheck ();
+			FightAutoService.borderCheck ();
 			logger.info ("个人结界处理完成");
 			if(num1==10){
 				logger.info ("魂十40次");
