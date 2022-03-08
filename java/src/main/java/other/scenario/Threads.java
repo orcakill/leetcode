@@ -72,7 +72,7 @@ class   ThreadFourth extends  Thread {
 		//自动登录到探索
 		AutoLoginController.login ();
 		//攻打轮次
-		int num=3;
+		int num=2;
 		//御魂类型
 		int num1=11;
 		AutoLoginController.soulAll(num,num1);
@@ -134,7 +134,7 @@ class   ThreadEighth extends  Thread{
 		AutoLoginController.login ();
 		//刷魂十或者刷个人结界
 		//攻打轮次
-		int num=12;
+		int num=3;
 		AutoLoginController.fightHome(num,true);
 	}
 }

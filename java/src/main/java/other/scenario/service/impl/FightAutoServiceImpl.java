@@ -577,7 +577,7 @@ public class FightAutoServiceImpl {
 			String  file2="scenario/御魂/层数/日轮之陨三层";
 			boolean  b1=ImageService.imagesClickBackIsEmpty (file2,30,true);
 			if(!b1){
-				logger.info ("没有选择到日轮之陨第三层");
+				logger.info ("没有选择到日轮之陨三层");
 				System.exit(0);
 			}
 			ImageService.imagesClickBack (file2);
