@@ -637,7 +637,10 @@ public class FightAutoServiceImpl {
 		String  file2="scenario/御灵/第三层";
 		ImageService.imagesClickBack (file2);
 		logger.info ("开始挑战");
-		soulBack (120);
+		soulBack (60);
+		//退出到探索
+		String file3="scenario/返回";
+		ImageService.imagesClickBack (file3);
 	}
 	
 	public static void fightHome () throws Exception {
