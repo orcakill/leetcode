@@ -79,5 +79,9 @@ public interface FightAutoService {
 		FightAutoServiceImpl.PVP();
 	}
 	
+	
+	static void sendMail () throws InterruptedException, AWTException {
+		FightAutoServiceImpl.sendMail();
+	}
 
 }

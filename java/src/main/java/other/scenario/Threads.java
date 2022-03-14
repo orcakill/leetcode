@@ -6,6 +6,7 @@ import other.scenario.service.ImageService;
 
 import java.util.Scanner;
 
+import static other.scenario.service.FightAutoService.sendMail;
 import static other.scenario.service.FightAutoService.soulBack;
 
 /**
@@ -47,6 +48,7 @@ class   ThreadSecond extends  Thread {
 		System.out.println ("请输入一个整数:");
 		int x = myInput.nextInt ();
 		soulBack (x);
+		sendMail ();
 	}
 }
 class   ThreadThird extends  Thread {
@@ -63,6 +65,7 @@ class   ThreadThird extends  Thread {
 			//开启加成
 			boolean b=true;
 			AutoLoginController.soulEleven (num,num1,b);
+			sendMail ();
 		}
 }
 class   ThreadFourth extends  Thread {
@@ -76,6 +79,7 @@ class   ThreadFourth extends  Thread {
 		//御魂类型
 		int num1=11;
 		AutoLoginController.soulAll(num,num1);
+		sendMail ();
 	}
 }
 
@@ -91,6 +95,7 @@ class   ThreadFifth extends  Thread{
 		//御魂类型
 		int num1=21;
 		AutoLoginController.soulAll(num,num1);
+		sendMail ();
 	}
 }
 
@@ -109,6 +114,7 @@ class   ThreadSixth extends  Thread{
 		//开启加成
 		boolean b=true;
 		AutoLoginController.soulTen (num,num1,b);
+		sendMail ();
 	}
 }
 
@@ -123,6 +129,7 @@ class   ThreadSeventh extends  Thread{
 		//攻打轮次
 		int num=1;
 		AutoLoginController.spirit(num);
+		sendMail ();
 	}
 }
 
@@ -136,6 +143,7 @@ class   ThreadEighth extends  Thread{
 		//攻打轮次
 		int num=3;
 		AutoLoginController.fightHome(num,true);
+		sendMail ();
 	}
 }
 
@@ -154,6 +162,7 @@ class   ThreadNinth extends  Thread{
 		//开启加成
 		boolean b=false;
 		AutoLoginController.soulFire (num,num1,b);
+		sendMail ();
 	}
 }
 
@@ -172,6 +181,7 @@ class   ThreadTenth extends  Thread{
 		//开启加成
 		boolean b=false;
 		AutoLoginController.soulSun (num,num1,b);
+		sendMail ();
 	}
 }
 
@@ -202,6 +212,7 @@ class   ThreadThirteenth extends  Thread{
 		//御魂类型
 		int num1=10;
 		AutoLoginController.soulAll(num,num1);
+		sendMail ();
 	}
 }
 

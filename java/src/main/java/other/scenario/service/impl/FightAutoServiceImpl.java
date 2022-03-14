@@ -2,6 +2,9 @@ package other.scenario.service.impl;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import other.mail.controller.EmailBoxController;
+import other.mail.model.entity.EmailBoxPO;
+import other.mail.model.entity.MessageEventPO;
 import other.scenario.entity.PictureIdentifyWorkPO;
 import other.scenario.map.CoordinateAddress;
 import other.scenario.service.FightAutoService;
@@ -23,6 +26,7 @@ import java.util.Date;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
+import static other.mail.util.SendMail.sendTextMail;
 
 /**
  * @Classname FightAutoServiceImpl
@@ -760,7 +764,22 @@ public class FightAutoServiceImpl {
 		}
 	}
 	
-	
+	public static void sendMail () {
+		Calendar calendar = Calendar.getInstance ();
+		Date date=new Date ();
+		calendar.setTime(date);
+		List<MessageEventPO> messageEventPOList=new ArrayList<> ();
+		MessageEventPO messageEventPO=new MessageEventPO ();
+		messageEventPO.setMessageDate (date);
+		messageEventPO.setMessageTitle ("结束");
+		messageEventPO.setMessageContent ("程序运行结束");
+		messageEventPO.setMessageType (0);
+		messageEventPOList.add (messageEventPO);
+		List<EmailBoxPO> emailBoxPOList= EmailBoxController.messageToEmail (messageEventPOList);
+		for(int i=0;i<+emailBoxPOList.size ();i++){
+			sendTextMail (emailBoxPOList.get (i));
+		}
+	}
 }
 
 
