@@ -149,8 +149,12 @@ public class AutoLoginController {
 			 if(b){
 				 //打一轮间隔 40-50分钟
 				 long l= getRandom (20, 30);
-				 logger.info ("第"+(i+1)+"轮完成，等待"+l+"分钟");
-				 Thread.sleep (l*60*1000);
+				 logger.info ("第"+(i+1)+"轮完成");
+				 if( i + 1<num){
+					 logger.info ("等待"+l+"分钟");
+					 Thread.sleep (l*60*1000);
+				 }
+				 logger.info ("结束全部战斗");
 			 }
 		}
 	}
