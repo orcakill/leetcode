@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author orcakill
  * @version 1.0.0
  * @ClassName leet25.java
- * @Description TODO
+ * @Description K 个一组翻转链表 TODO 未理解处理逻辑
  * @createTime 2022年01月11日 10:56:00
  */
 public class leet25 {
