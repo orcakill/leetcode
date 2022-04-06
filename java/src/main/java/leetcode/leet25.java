@@ -27,11 +27,15 @@ public class leet25 {
 	}
 	
 	public static ListNode reverseKGroup(ListNode head, int k) {
+		//声明一个ListNode类型的hair变量，1个数据为为0的链表节点
 		ListNode hair = new ListNode(0);
+		//将hair和head进行拼接为一个新的ListNode
 		hair.next = head;
+		//声明一个新的ListNode变量pre
 		ListNode pre = hair;
-		
+		//循环处理，head不为空
 		while (head != null) {
+			//声明一个新的ListNode的变量tail,用于表示剩余部分长度
 			ListNode tail = pre;
 			// 查看剩余部分长度是否大于等于 k
 			for (int i = 0; i < k; ++i) {
