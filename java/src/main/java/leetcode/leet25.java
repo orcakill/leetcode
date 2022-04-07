@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author orcakill
  * @version 1.0.0
  * @ClassName leet25.java
- * @Description K 个一组翻转链表 TODO 未理解处理逻辑
+ * @Description K 个一组翻转链表 TODO 简单理解了处理逻辑
  * @createTime 2022年01月11日 10:56:00
  */
 public class leet25 {
@@ -35,7 +35,7 @@ public class leet25 {
 		ListNode pre = hair;
 		//循环处理，head不为空
 		while (head != null) {
-			//声明一个新的ListNode的变量tail,用于表示剩余部分长度
+			//声明一个新的ListNode的变量tail,赋值剩余部分长度
 			ListNode tail = pre;
 			// 查看剩余部分长度是否大于等于 k
 			for (int i = 0; i < k; ++i) {
@@ -44,7 +44,10 @@ public class leet25 {
 					return hair.next;
 				}
 			}
+			//剩余部分长度大于k
+			//声明nex,剩余部分长度后链表
 			ListNode nex = tail.next;
+			//获取交换后的数组
 			ListNode[] reverse = myReverse(head, tail);
 			head = reverse[0];
 			tail = reverse[1];
@@ -59,8 +62,11 @@ public class leet25 {
 	}
 	
 	public static ListNode[] myReverse(ListNode head, ListNode tail) {
+		//声明变量prev
 		ListNode prev = tail.next;
+		//声明变量p
 		ListNode p = head;
+		//当p不等于tail时，循环处理
 		while (prev != tail) {
 			ListNode nex = p.next;
 			p.next = prev;
