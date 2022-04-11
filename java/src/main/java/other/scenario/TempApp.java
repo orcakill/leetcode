@@ -27,6 +27,17 @@ class SoulApp {
 	}
 }
 
+
+//	自动登录，刷寮突破 1 8
+class FightHomeApp {
+	public static void main (String[] args) {
+		ThreadFirst t1 = new ThreadFirst();
+		ThreadEighth t2 = new ThreadEighth();
+		t1.start();
+		t2.start();
+	}
+}
+
 //	自动登录,刷魂十一，个人结界 1 3
 class SoulElevenApp {
 	public static void main (String[] args) {
@@ -80,15 +91,7 @@ class SpiritApp {
 	}
 }
  
-//	自动登录，刷寮突破 1 8
-class FightHomeApp {
-	public static void main (String[] args) {
-		ThreadFirst t1 = new ThreadFirst();
-		ThreadEighth t2 = new ThreadEighth();
-		t1.start();
-		t2.start();
-	}
-}
+
 
 
 //	自动登录，刷业原火，个人结界 1 9·
