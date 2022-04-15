@@ -76,4 +76,15 @@ public class leet25 {
 		return new ListNode[]{tail, head};
 	}
 	
+	/***
+	 * @description: 根据个人理解的解题思路
+	 * @param head
+     * @param k
+	 * @return: leetclass.ListNode
+	 * @author: orcakill
+	 * @date: 2022/4/15 8:46
+	 */
+	public static ListNode reverseKGroupTest(ListNode head, int k) {
+		return  head;
+	}
 }
