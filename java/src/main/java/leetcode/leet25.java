@@ -48,6 +48,8 @@ public class leet25 {
 			//声明nex,剩余部分长度后链表
 			ListNode nex = tail.next;
 			//获取交换后的数组
+			ArrayList<Integer> list =ListNode.traverse (head);
+			ArrayList<Integer> list1 =ListNode.traverse (tail);
 			ListNode[] reverse = myReverse(head, tail);
 			head = reverse[0];
 			tail = reverse[1];
@@ -76,15 +78,4 @@ public class leet25 {
 		return new ListNode[]{tail, head};
 	}
 	
-	/***
-	 * @description: 根据个人理解的解题思路
-	 * @param head
-     * @param k
-	 * @return: leetclass.ListNode
-	 * @author: orcakill
-	 * @date: 2022/4/15 8:46
-	 */
-	public static ListNode reverseKGroupTest(ListNode head, int k) {
-		return  head;
-	}
 }
