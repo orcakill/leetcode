@@ -371,15 +371,7 @@ public class FightAutoServiceImpl {
 			ImageService.imagesClickBackNumber  (file1,120,true);
 			logger.info ("第" + (i + 1) +"次挑战中，等待挑战完成");
 			logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败或宠物奖励");
-			ImageService.imagesClickBackNumberOrderNumbers (file2,file3,file4,null,120);
-			if(i==0){
-				/*第一次挑战可能有额外奖励*/
-				sleep (1000);
-				boolean b=ImageService.imagesClickBackIsEmpty  (file6,3,true);
-				if(b){
-					ImageService.imagesClickBackNumber  (file6,120,true);
-				}
-			}
+			ImageService.imagesClickBackNumberOrderNumbers (file2,file3,file4,file6,120);
 			logger.info ("退出挑战完成");
 			num--;
 			logger.info ("第" + (i + 1) + "次挑战完成，剩余" + (num) + "次");
