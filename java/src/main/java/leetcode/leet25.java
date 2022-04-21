@@ -34,12 +34,22 @@ public class leet25 {
 		//声明一个新的ListNode变量pre
 		ListNode pre = hair;
 		//循环处理，head不为空
+		System.out.println ("hair"+" "+ListNode.traverse (hair));
+		System.out.println ("head"+" "+ListNode.traverse (head));
+		System.out.println ("pre"+" "+ListNode.traverse (pre));
+		int num=1;
 		while (head != null) {
+			System.out.println ("第"+num+"次处理");
 			//声明一个新的ListNode的变量tail,赋值剩余部分长度
 			ListNode tail = pre;
+			System.out.println ("hair"+" "+ListNode.traverse (hair));
+			System.out.println ("head"+" "+ListNode.traverse (head));
+			System.out.println ("pre"+" "+ListNode.traverse (pre));
+			System.out.println ("tail"+" "+ListNode.traverse (tail));
 			// 查看剩余部分长度是否大于等于 k
 			for (int i = 0; i < k; ++i) {
 				tail = tail.next;
+				System.out.println ("tail"+" "+ListNode.traverse (tail));
 				if (tail == null) {
 					return hair.next;
 				}
@@ -47,17 +57,27 @@ public class leet25 {
 			//剩余部分长度大于k
 			//声明nex,剩余部分长度后链表
 			ListNode nex = tail.next;
+			System.out.println ("nex"+" "+ListNode.traverse (nex));
 			//获取交换后的数组
-			ArrayList<Integer> list =ListNode.traverse (head);
-			ArrayList<Integer> list1 =ListNode.traverse (tail);
+			System.out.println ("交换前");
+			System.out.println ("head"+" "+ListNode.traverse (head));
+			System.out.println ("tail"+" "+ListNode.traverse (tail));
 			ListNode[] reverse = myReverse(head, tail);
 			head = reverse[0];
 			tail = reverse[1];
+			System.out.println ("交换后");
+			System.out.println ("head"+" "+ListNode.traverse (head));
+			System.out.println ("tail"+" "+ListNode.traverse (tail));
 			// 把子链表重新接回原链表
 			pre.next = head;
+			System.out.println ("pre"+" "+ListNode.traverse (pre));
 			tail.next = nex;
+			System.out.println ("tail"+" "+ListNode.traverse (tail));
 			pre = tail;
+			System.out.println ("pre"+" "+ListNode.traverse (pre));
 			head = tail.next;
+			System.out.println ("head"+" "+ListNode.traverse (head));
+			num++;
 		}
 		
 		return hair.next;
@@ -69,11 +89,20 @@ public class leet25 {
 		//声明变量p
 		ListNode p = head;
 		//当p不等于tail时，循环处理
+		System.out.println ("链表节点翻转");
+		System.out.println ("head"+" "+ListNode.traverse (head));
+		System.out.println ("tail"+" "+ListNode.traverse (tail));
+		System.out.println ("prev"+" "+ListNode.traverse (prev));
+		System.out.println ("p"+" "+ListNode.traverse (p));
 		while (prev != tail) {
 			ListNode nex = p.next;
+			System.out.println ("nex"+" "+ListNode.traverse (nex));
 			p.next = prev;
+			System.out.println ("p"+" "+ListNode.traverse (p));
 			prev = p;
+			System.out.println ("prev"+" "+ListNode.traverse (prev));
 			p = nex;
+			System.out.println ("p"+" "+ListNode.traverse (p));
 		}
 		return new ListNode[]{tail, head};
 	}
