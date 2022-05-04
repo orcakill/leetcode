@@ -42,7 +42,8 @@ class FightHomeApp {
 class SoulElevenApp {
 	public static void main (String[] args) {
 		ThreadFirst t1 = new ThreadFirst();
-		ThreadThird  t2 = new ThreadThird ();
+		ThreadThird  t2 =
+				new ThreadThird ();
 		t1.start();
 		t2.start();
 	}

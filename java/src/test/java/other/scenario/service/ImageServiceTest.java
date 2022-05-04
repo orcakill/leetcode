@@ -86,6 +86,31 @@ public class ImageServiceTest {
 	}
 	
 	@Test
+	public void   imagesClick3 () throws InterruptedException, AWTException {
+		for(int i=0;i<800;i++){
+			String folderName="scenario/首页/结界卡合成/继续添加";
+			File file= new File (
+					System.getProperty ("user.dir") + "/src/main/resources/image/" + folderName);
+			if(file.exists ()){
+				ImageService.imagesClickBack (folderName);
+			}
+			else{
+				System.out.println ("图片文件路径不存在");
+			}
+			Thread.sleep (1000);
+			String folderName1="scenario/首页/结界卡合成/开始合成";
+			File file1= new File (
+					System.getProperty ("user.dir") + "/src/main/resources/image/" + folderName1);
+			if(file1.exists ()){
+				ImageService.imagesClickBack (folderName1);
+			}
+			else{
+				System.out.println ("图片文件路径不存在");
+			}
+		}
+	}
+	
+	@Test
 	public void   imagesClickWheel() throws InterruptedException, AWTException {
 		Thread.sleep (3*1000);
 		System.out.println ("准备开始");
