@@ -89,20 +89,43 @@ public class leet25 {
 		//声明变量p
 		ListNode p = head;
 		//当p不等于tail时，循环处理
-		System.out.println ("链表节点翻转");
+		System.out.println ("链表节点翻转前");
 		System.out.println ("head"+" "+ListNode.traverse (head));
 		System.out.println ("tail"+" "+ListNode.traverse (tail));
 		System.out.println ("prev"+" "+ListNode.traverse (prev));
-		System.out.println ("p"+" "+ListNode.traverse (p));
+		System.out.println ("p"+" "+ListNode.traverse (p)+"\n\r");
+		int num=1;
 		while (prev != tail) {
+			System.out.println ("第"+num+"次循环");
 			ListNode nex = p.next;
-			System.out.println ("nex"+" "+ListNode.traverse (nex));
+			   System.out.println ("第一次");
+			   System.out.println ("head"+" "+ListNode.traverse (head));
+			   System.out.println ("tail"+" "+ListNode.traverse (tail));
+			   System.out.println ("prev"+" "+ListNode.traverse (prev));
+			   System.out.println ("p"+" "+ListNode.traverse (p));
+			   System.out.println ("nex"+" "+ListNode.traverse (nex));
 			p.next = prev;
-			System.out.println ("p"+" "+ListNode.traverse (p));
+			   System.out.println ("第二次");
+			   System.out.println ("head"+" "+ListNode.traverse (head));
+			   System.out.println ("tail"+" "+ListNode.traverse (tail));
+			   System.out.println ("prev"+" "+ListNode.traverse (prev));
+			   System.out.println ("p"+" "+ListNode.traverse (p));
+			   System.out.println ("nex"+" "+ListNode.traverse (nex));
 			prev = p;
-			System.out.println ("prev"+" "+ListNode.traverse (prev));
+			   System.out.println ("第三次");
+			   System.out.println ("head"+" "+ListNode.traverse (head));
+			   System.out.println ("tail"+" "+ListNode.traverse (tail));
+			   System.out.println ("prev"+" "+ListNode.traverse (prev));
+			   System.out.println ("p"+" "+ListNode.traverse (p));
+			   System.out.println ("nex"+" "+ListNode.traverse (nex));
 			p = nex;
-			System.out.println ("p"+" "+ListNode.traverse (p));
+			   System.out.println ("第四次");
+			   System.out.println ("head"+" "+ListNode.traverse (head));
+			   System.out.println ("tail"+" "+ListNode.traverse (tail));
+			   System.out.println ("prev"+" "+ListNode.traverse (prev));
+			   System.out.println ("p"+" "+ListNode.traverse (p));
+			   System.out.println ("nex"+" "+ListNode.traverse (nex));
+			num++;
 		}
 		return new ListNode[]{tail, head};
 	}
