@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6fcf3dc-0ed3-4533-a169-1c60589acd2c" name="默认变更列表" comment="fix(CSDN文章爬取): 完成目录部分爬取&#10;&#10;完成目录部分爬取">
+    <list default="true" id="b6fcf3dc-0ed3-4533-a169-1c60589acd2c" name="默认变更列表" comment="feat(菜鸟教程-python): 2.python基本数据类型">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/manage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python/runoob/2、python基本数据类型.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/runoob/2、python基本数据类型.py" afterDir="false" />
     </list>
     <list id="c8e9b634-82fc-4f22-bbc2-f9d046a0a64c" name="ignore" comment="" />
@@ -252,6 +251,7 @@
       <workItem from="1651934361264" duration="397000" />
       <workItem from="1651934769009" duration="599000" />
       <workItem from="1652005322308" duration="5196000" />
+      <workItem from="1652141132871" duration="2433000" />
     </task>
     <task id="LOCAL-00001" summary="feat(添加sql美化功能): 添加sql美化功能&#10;&#10;添加sql美化功能">
       <created>1626393824062</created>
@@ -337,7 +337,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627041170309</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="feat(菜鸟教程-python): 2.python基本数据类型">
+      <created>1652092827054</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1652092827054</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -364,7 +371,8 @@
     <MESSAGE value="feat(article文章管理): article添加查询单个、查询全部、编辑的功能&#10;&#10;article添加查询单个、查询全部、编辑的功能" />
     <MESSAGE value="fix(回滚planTimerTask): 回滚planTimerTask&#10;&#10;回滚planTimerTask" />
     <MESSAGE value="fix(CSDN文章爬取): 完成目录部分爬取&#10;&#10;完成目录部分爬取" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix(CSDN文章爬取): 完成目录部分爬取&#10;&#10;完成目录部分爬取" />
+    <MESSAGE value="feat(菜鸟教程-python): 2.python基本数据类型" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(菜鸟教程-python): 2.python基本数据类型" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
@@ -380,7 +388,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/leetcode$1python.coverage" NAME="1、python基础语法 覆盖结果" MODIFIED="1652022040837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python/runoob" />
-    <SUITE FILE_PATH="coverage/leetcode$2python.coverage" NAME="2、python基本数据类型 覆盖结果" MODIFIED="1652090827267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python/runoob" />
+    <SUITE FILE_PATH="coverage/leetcode$2python.coverage" NAME="2、python基本数据类型 覆盖结果" MODIFIED="1652144137841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python/runoob" />
     <SUITE FILE_PATH="coverage/leetcode$test.coverage" NAME="test 覆盖结果" MODIFIED="1651898709855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python/leetcode" />
   </component>
 </project>
