@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6fcf3dc-0ed3-4533-a169-1c60589acd2c" name="默认变更列表" comment="feat(菜鸟教程-python): 2.python基本数据类型">
+    <list default="true" id="b6fcf3dc-0ed3-4533-a169-1c60589acd2c" name="默认变更列表" comment="feat(leet1-python): leet1-python&#10;&#10;leet1-python">
+      <change afterPath="$PROJECT_DIR$/python/runoob/3、python数据类型转换.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/leetcode/leet1.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/leetcode/leet1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/runoob/2、python基本数据类型.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/runoob/2、python基本数据类型.py" afterDir="false" />
     </list>
     <list id="c8e9b634-82fc-4f22-bbc2-f9d046a0a64c" name="ignore" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -261,7 +260,7 @@
       <workItem from="1652005322308" duration="5196000" />
       <workItem from="1652141132871" duration="3038000" />
       <workItem from="1652227656301" duration="1955000" />
-      <workItem from="1652324461288" duration="3579000" />
+      <workItem from="1652324461288" duration="5868000" />
     </task>
     <task id="LOCAL-00001" summary="feat(添加sql美化功能): 添加sql美化功能&#10;&#10;添加sql美化功能">
       <created>1626393824062</created>
@@ -361,7 +360,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652179140980</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="feat(leet1-python): leet1-python&#10;&#10;leet1-python">
+      <created>1652335979578</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1652335979578</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,7 +395,8 @@
     <MESSAGE value="fix(回滚planTimerTask): 回滚planTimerTask&#10;&#10;回滚planTimerTask" />
     <MESSAGE value="fix(CSDN文章爬取): 完成目录部分爬取&#10;&#10;完成目录部分爬取" />
     <MESSAGE value="feat(菜鸟教程-python): 2.python基本数据类型" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(菜鸟教程-python): 2.python基本数据类型" />
+    <MESSAGE value="feat(leet1-python): leet1-python&#10;&#10;leet1-python" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(leet1-python): leet1-python&#10;&#10;leet1-python" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
@@ -404,7 +411,7 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/leetcode$leet1.coverage" NAME="leet1 覆盖结果" MODIFIED="1652335869039" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python/leetcode" />
+    <SUITE FILE_PATH="coverage/leetcode$leet1.coverage" NAME="leet1 覆盖结果" MODIFIED="1652337285907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python/leetcode" />
     <SUITE FILE_PATH="coverage/leetcode$1python.coverage" NAME="1、python基础语法 覆盖结果" MODIFIED="1652022040837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python/runoob" />
     <SUITE FILE_PATH="coverage/leetcode$2python.coverage" NAME="2、python基本数据类型 覆盖结果" MODIFIED="1652325897896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python/runoob" />
     <SUITE FILE_PATH="coverage/leetcode$test.coverage" NAME="test 覆盖结果" MODIFIED="1651898709855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python/leetcode" />
