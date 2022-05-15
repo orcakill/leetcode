@@ -5,7 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6fcf3dc-0ed3-4533-a169-1c60589acd2c" name="默认变更列表" comment="feat(runoob): 3、python数据类型转换&#10;&#10;3、python数据类型转换">
-      <change beforePath="$PROJECT_DIR$/python/leetpython.iml" beforeDir="false" afterPath="$PROJECT_DIR$/python/leetpython.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/androidTest/java/com/example/myapplication/ExampleInstrumentedTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/java/com/example/myapplication/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/app/src/test/java/com/example/myapplication/ExampleUnitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/onmyoji/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python/leetclass/ListCode.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python/leetcode/leet2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/runoob/2、python基本数据类型.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/runoob/2、python基本数据类型.py" afterDir="false" />
     </list>
     <list id="c8e9b634-82fc-4f22-bbc2-f9d046a0a64c" name="ignore" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -271,6 +308,7 @@
       <workItem from="1652368006787" duration="190000" />
       <workItem from="1652401812475" duration="6000" />
       <workItem from="1652401834593" duration="66000" />
+      <workItem from="1652626452132" duration="1798000" />
     </task>
     <task id="LOCAL-00001" summary="feat(添加sql美化功能): 添加sql美化功能&#10;&#10;添加sql美化功能">
       <created>1626393824062</created>
@@ -421,9 +459,9 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/leetcode$1python.coverage" NAME="1、python基础语法 覆盖结果" MODIFIED="1652022040837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python/runoob" />
     <SUITE FILE_PATH="coverage/leetcode$2python.coverage" NAME="2、python基本数据类型 覆盖结果" MODIFIED="1652325897896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python/runoob" />
-    <SUITE FILE_PATH="coverage/leetcode$test.coverage" NAME="test 覆盖结果" MODIFIED="1651898709855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python/leetcode" />
+    <SUITE FILE_PATH="coverage/leetcode$1python.coverage" NAME="1、python基础语法 覆盖结果" MODIFIED="1652022040837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python/runoob" />
     <SUITE FILE_PATH="coverage/leetcode$leet1.coverage" NAME="leet1 覆盖结果" MODIFIED="1652337285907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python/leetcode" />
+    <SUITE FILE_PATH="coverage/leetcode$test.coverage" NAME="test 覆盖结果" MODIFIED="1651898709855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python/leetcode" />
   </component>
 </project>
