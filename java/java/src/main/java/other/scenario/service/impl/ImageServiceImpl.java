@@ -78,7 +78,7 @@ public class ImageServiceImpl  {
 
 	public static void imagesClick (String folder ) throws InterruptedException, AWTException {
 		File file = new File (
-				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
+				System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
 		if (file.exists ()) {
 			for (int i = 0; i <60; i++) {
 				Thread.sleep (5000);
@@ -108,7 +108,7 @@ public class ImageServiceImpl  {
 	public static boolean imagesClickIsEmpty (String folder) throws AWTException, InterruptedException {
 		boolean b = false;
 		File file = new File (
-				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
+				System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
 		if(!file.exists ()){
 			file = new File (
 					System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
@@ -139,7 +139,7 @@ public class ImageServiceImpl  {
 	
 	public static void imagesClickNumber (String folder,Integer number) throws InterruptedException, AWTException {
 		File file= new File (
-				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
+				System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
 		if (file.exists ()) {
 			for (int i = 0; i < number; i++) {
 				Thread.sleep (2000);
@@ -167,7 +167,7 @@ public class ImageServiceImpl  {
 	
 	public static void imagesClickBack (String folder) throws InterruptedException, AWTException {
 		File file = new File (
-				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
+				System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
 		if(!file.exists ()){
 			file=new File (
 					System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
@@ -197,7 +197,7 @@ public class ImageServiceImpl  {
 	public static boolean imagesClickBackIsEmpty (String folder,Integer nums,boolean x) throws InterruptedException {
 		boolean b = false;
 		File file = new File (
-				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
+				System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
 		if(!file.exists ()){
 			file = new File (
 					System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
@@ -226,7 +226,7 @@ public class ImageServiceImpl  {
 	public static boolean imagesClickBackNumber (String folder, Integer number,boolean b) throws InterruptedException,
 	                                                                                 AWTException {
 		File file= new File (
-				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder);
+				System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
 		if (file.exists ()) {
 			for (int i = 0; i < number; i++) {
 				Thread.sleep (2000);
@@ -252,9 +252,9 @@ public class ImageServiceImpl  {
 	                                                                                               InterruptedException,
 	                                                                                               AWTException {
 		File file1= new File (
-				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder1);
+				System.getProperty ("user.dir") + "/src/main/resources/image/" + folder1);
 		File file2= new File (
-				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder2);
+				System.getProperty ("user.dir") + "/src/main/resources/image/" + folder2);
 		if (file1.exists ()&&file2.exists ()) {
 			for (int i = 0; i < number; i++) {
 				Thread.sleep (2000);
@@ -292,11 +292,11 @@ public class ImageServiceImpl  {
 	                                                                                                                    InterruptedException,
 	                                                                                                                    AWTException {
 			File file1= new File (
-					System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder1);
+					System.getProperty ("user.dir") + "/src/main/resources/image/" + folder1);
 			File file2= new File (
-					System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder2);
+					System.getProperty ("user.dir") + "/src/main/resources/image/" + folder2);
 		    File file3= new File (
-				System.getProperty ("user.dir") + "/java/src/main/resources/image/" + folder3);
+				System.getProperty ("user.dir") + "/src/main/resources/image/" + folder3);
 			boolean a;
 			boolean b;
 			boolean c;
