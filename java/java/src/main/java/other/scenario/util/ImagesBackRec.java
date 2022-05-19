@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 
@@ -130,13 +131,13 @@ b:
 								
 								logger.info ("在屏幕上找到图片了,坐标:( " + x + " , " + y + " )");
 								// 这是专门存储数据的类
-								x += (int) (Math.random () * imgWidth);
-								y += (int) (Math.random () * imgHeight);
+								x += (int) (Math.random () *0.1*imgWidth);
+								y += (int) (Math.random () *0.1*imgHeight);
 								mouseXY.setX (x);
 								mouseXY.setY (y);
 								mouseMessages.add (mouseXY);
-								if(mouseMessages.size ()>=3){
-									return mouseMessages;
+								if(mouseMessages.size ()>=1){
+									break  a;
 								}
 								break a;
 							}

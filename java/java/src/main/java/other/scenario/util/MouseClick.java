@@ -90,6 +90,7 @@ public class MouseClick {
 	 */
 	public static void mouseClickBackground (HWND hwnd,List<PictureIdentifyWorkPO> mouseMessages) throws AWTException {
 		Double bl = ComputerScaling.getScale ();
+		bl=1.0;
 		StringBuilder X;
 		StringBuilder Y;
 		int moveTime = (int) (Math.random () * 400 + 300);

@@ -182,7 +182,7 @@ public class ImageServiceImpl  {
 					break;
 				}
 				else {
-					logger.error ("在每1-2秒的检测中，第" + (i + 1) + "次检查未发现该图片");
+					logger.error ("在每1-2秒的检测中，第" + (i + 1) + "次检查，"+folder+"路径下的图片未发现");
 				}
 				if(i==60-1){
 					logger.info (folder + "路径下，图片未找到");
