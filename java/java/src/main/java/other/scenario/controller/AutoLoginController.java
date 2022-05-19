@@ -84,9 +84,10 @@ public class AutoLoginController {
 			Thread.sleep (3000);
 			String file = "scenario/首页/底部菜单";
 			logger.info ("准备点击底部菜单栏");
-			boolean b=ImageService.imagesClickBackIsEmpty (file,300,true);
+			boolean b=false;
 			Thread.sleep (2000);
-			if(b){
+			while (!b){
+				b=ImageService.imagesClickBackIsEmpty (file,300,true);
 				ImageService.imagesClickBackNumber (file,300,true);
 			}
 			Thread.sleep (3000);
