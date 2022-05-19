@@ -136,10 +136,10 @@ b:
 								mouseXY.setX (x);
 								mouseXY.setY (y);
 								mouseMessages.add (mouseXY);
-								if(mouseMessages.size ()>=1){
-									break  a;
+								if(mouseMessages.size ()>1){
+									return mouseMessages;
 								}
-								break a;
+								break  a;
 							}
 							
 						}
