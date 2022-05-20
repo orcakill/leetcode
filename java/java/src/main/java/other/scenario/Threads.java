@@ -26,7 +26,7 @@ class   ThreadFirst extends  Thread{
 		String file1 = "scenario/御魂/拒接协战";
 		String file2 = "scenario/登录/阴阳师图标";
 		boolean b;
-		for (int i = 0; i <= 300; i++) {
+		for (int i = 0; i <= 1000; i++) {
 			ImageService.imagesClickBackNumber (file1, 3, false);
 			Thread.sleep (30*1000);
 			b=ImageService.imagesClickBackIsEmpty(file2,3,false);
@@ -61,7 +61,7 @@ class   ThreadThird extends  Thread {
 			//攻打轮次
 			int num=1;
 			//每轮次攻打次数
-			int num1=120;
+			int num1=60;
 			//开启加成
 			boolean b=true;
 			AutoLoginController.soulEleven (num,num1,b);
