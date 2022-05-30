@@ -1,6 +1,6 @@
 from typing import Optional
 
-from leetclass.ListCode import make_node, node_list, ListNode
+from leetclass.list_code import make_node, node_list, ListNode
 
 
 class Solution:
