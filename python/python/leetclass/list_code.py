@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 
 class ListNode:
@@ -8,7 +8,7 @@ class ListNode:
 
 
 # 创建单链表
-def make_node(nums: List[int]) -> ListNode | None:
+def make_node(nums: List[int]) -> Optional[ListNode]:
     if len(nums) == 0:
         return None
     listNode = ListNode(nums[0])
