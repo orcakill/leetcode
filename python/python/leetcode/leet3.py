@@ -17,7 +17,7 @@ def lengthOfLongestSubstring_1(s: str) -> int:
 
 def lengthOfLongestSubstring_2(s: str) -> int:
     """
-    给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度-滑动窗口
+    给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度-滑动窗口，字符串不带重复
     """
     # 哈希集合，记录每个字符是否出现过
     occ = set()
