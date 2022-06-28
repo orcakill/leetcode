@@ -37,8 +37,6 @@ def lengthOfLongestSubstring_2(s: str) -> int:
     return ans
 
 
-
-
 if __name__ == '__main__':
     print(lengthOfLongestSubstring_1("abcabcbb"))
     print(lengthOfLongestSubstring_1("bbbbb"))

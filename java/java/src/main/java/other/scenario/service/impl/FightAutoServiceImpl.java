@@ -405,10 +405,6 @@ public class FightAutoServiceImpl {
 		String file7="scenario/结界突破/确认";
 		//战斗次数 默认为0次
 		int    num=0;
-		//上次战斗状态，默认为true,战斗成功
-		boolean   state=true;
-		//记录阵容是否发生切换,默认false
-		boolean   change=false;
 		while(!ImageService.imagesClickBackIsEmpty (file1,3,true)){
 			//不为0则进行结界挑战
 			logger.info ("结界劵数不为零");
@@ -428,8 +424,7 @@ public class FightAutoServiceImpl {
 				logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败");
 				boolean b=ImageService.imagesClickBackNumberOrderNumbers (file4,file5,file51,null,90);
 				if(!b){
-					logger.info ("个人结界战斗失败，请更换阵容手动挑战");
-					System.exit(0);
+					logger.info ("个人结界战斗失败");
 				}
 				else{
 					num++;
@@ -445,20 +440,7 @@ public class FightAutoServiceImpl {
 					logger.info ("没有额外奖励");
 				}
 			}
-			else{
-				System.exit(0);
-				logger.info ("有结界挑战劵，没有可攻打的结界，准备刷新");
-				//判断不处于刷新冷却期
-				if(ImageService.imagesClickBackIsEmpty (file6,4,true)){
-					ImageService.imagesClickBack (file6);
-				}
-				else{
-					ImageService.imagesClickBackNumber(file6,60,true);
-				}
-				ImageService.imagesClickBack (file7);
-				logger.info ("刷新成功");
-			}
-			logger.info ("检查是否还有结界挑战劵");
+			logger.info ("战斗后检查是否还有结界挑战劵");
 		}
 	    //为0则不进行结界挑战
 		logger.info ("结界劵数为0");

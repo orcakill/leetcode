@@ -61,7 +61,7 @@ class   ThreadThird extends  Thread {
 			//攻打轮次
 			int num=1;
 			//每轮次攻打次数
-			int num1=60;
+			int num1=50;
 			//开启加成
 			boolean b=true;
 			AutoLoginController.soulEleven (num,num1,b);
