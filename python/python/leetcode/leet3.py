@@ -26,7 +26,7 @@ def lengthOfLongestSubstring_2(s: str) -> int:
     rk, ans = -1, 0
     for i in range(n):
         if i != 0:
-            # 左指针向右移动一格，移除一个字符
+            # 左指针向右移动一格，移除一个字符，倒序删除
             occ.remove(s[i - 1])
         while rk + 1 < n and s[rk + 1] not in occ:
             # 不断地移动右指针
