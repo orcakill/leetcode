@@ -1,0 +1,21 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     tools:context=".MainActivity"
+     android:gravity="center"
+     android:background="#8fffad"
+    >
+<!--    textView 带阴影的文本框-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:shadowColor="#F9F900"
+        android:shadowDx="10.0"
+        android:shadowDy="10.0"
+        android:shadowRadius="3.0"
+        android:text="带阴影的TextView"
+        android:textColor="#4A4AFF"
+        android:textSize="30sp" />
+</RelativeLayout>
