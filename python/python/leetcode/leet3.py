@@ -29,7 +29,7 @@ def lengthOfLongestSubstring_2(s: str) -> int:
             # 左指针向右移动一格，移除一个字符，倒序删除
             occ.remove(s[i - 1])
         while rk + 1 < n and s[rk + 1] not in occ:
-            # 不断地移动右指针
+            # 不断地移动右指针，扩充字符
             occ.add(s[rk + 1])
             rk += 1
         # 第 i 到 rk 个字符是一个极长的无重复字符子串
