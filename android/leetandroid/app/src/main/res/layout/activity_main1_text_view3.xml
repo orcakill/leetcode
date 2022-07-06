@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+<!--    带边框的TextView-->
+    <TextView
+        android:id="@+id/txtOne"
+        android:layout_width="200dp"
+        android:layout_height="64dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:background="@drawable/runoob_text_view1"
+        android:text="矩形边框的TextView" />
+
+    <TextView
+        android:id="@+id/txtTwo"
+        android:layout_width="200dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:background="@drawable/runoob_text_view2"
+        android:text="圆角边框的TextView" />
+
+
+</LinearLayout>
