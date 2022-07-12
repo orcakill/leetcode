@@ -15,7 +15,7 @@ def lengthOfLongestSubstring_1(s: str) -> int:
     return max(list)
 
 
-def lengthOfLongestSubstring_2(s: str) -> int:
+def length_of_longest_substring_2(s: str) -> int:
     """
     给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度-滑动窗口，字符串不带重复
     """
@@ -42,6 +42,6 @@ if __name__ == '__main__':
     print(lengthOfLongestSubstring_1("bbbbb"))
     print(lengthOfLongestSubstring_1("pwwkew"))
 
-    print(lengthOfLongestSubstring_2("abcabcbb"))
-    print(lengthOfLongestSubstring_2("bbbbb"))
-    print(lengthOfLongestSubstring_2("pwwkew"))
+    print(length_of_longest_substring_2("abcabcbb"))
+    print(length_of_longest_substring_2("bbbbb"))
+    print(length_of_longest_substring_2("pwwkew"))
