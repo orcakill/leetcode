@@ -40,8 +40,10 @@ public class Screenshot {
 //		}
 		
 		// 获取屏幕尺寸
-		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-		BufferedImage screenshot = scanningProcess(hwnd,2560,1600);
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ();
+		int windows_width =gd.getDisplayMode ().getWidth ();
+		int windows_height = gd.getDisplayMode().getHeight();
+		BufferedImage screenshot = scanningProcess(hwnd,windows_width,windows_height);
 		// 写入文件
 //		try {
 //			ImageIO.write(screenshot, "jpg", new File("D://123.jpg"));
