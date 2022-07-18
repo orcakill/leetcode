@@ -197,6 +197,8 @@ class   ThreadTwelfth extends  Thread{
 	@SneakyThrows
 	public void run (){
 		System.out.println("斗技");
+		//自动登录到探索
+		AutoLoginController.login ();
 		AutoLoginController.PVP();
 	}
 }
