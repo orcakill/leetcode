@@ -401,26 +401,34 @@ public class FightAutoServiceImpl {
 		String file4 = "scenario/御魂/角色头像";
 		String file5 = "scenario/御魂/退出挑战";
 		String file51 = "scenario/结界突破/失败";
-		String file6="scenario/结界突破/刷新";
-		String file7="scenario/结界突破/确认";
+		String file6="scenario/结界突破/呱太结界";
+		String file7="scenario/结界突破/准备挑战";
+		boolean b1;
+		boolean b2=true;
 		//战斗次数 默认为0次
 		int    num=0;
 		while(!ImageService.imagesClickBackIsEmpty (file1,3,true)){
 			//不为0则进行结界挑战
 			logger.info ("结界劵数不为零");
 			//判断能否选择未挑战的个人结界
-			if(ImageService.imagesClickBackIsEmpty (file2,3,true)){
+			b1=ImageService.imagesClickBackIsEmpty (file2,3,true);
+			if(!b1) {
+				b2 = ImageService.imagesClickBackIsEmpty (file2, 3, true);
+			}
+			if(b1||b2){
 				logger.info ("能选择个人结界");
-				//第一次战斗、上次战斗失败、前一次战斗失败上次战斗成功，需要更换阵容
-				//取消锁定
-				//点击个人结界，准备进攻
-				//更换阵容
-				//进攻
-				//退出挑战
-				ImageService.imagesClickBack (file2);
+				if(b1) {
+					ImageService.imagesClickBack (file2);
+				}
+				if(b2){
+					ImageService.imagesClickBack (file6);
+				}
 				logger.info ("点击个人结界成功，准备进攻");
 				ImageService.imagesClickBack (file3);
 				logger.info ("开始进攻");
+				if(b2){
+					ImageService.imagesClickBack (file7);
+				}
 				logger.info ("准备点击角色头像、退出挑战或直接点击退出挑战或失败");
 				boolean b=ImageService.imagesClickBackNumberOrderNumbers (file4,file5,file51,null,90);
 				if(!b){
@@ -699,6 +707,8 @@ public class FightAutoServiceImpl {
 	}
 	
 	public static void PVP () throws InterruptedException, AWTException {
+		String file0="scenario/首页/町中";
+		String file01="scenario/斗技/斗技图标";
 		String file = "scenario/斗技/开始挑战";
 		String file1 = "scenario/斗技/自动选择";
 		String file2 = "scenario/斗技/自动战斗";
@@ -750,9 +760,7 @@ public class FightAutoServiceImpl {
 		messageEventPO.setMessageType (0);
 		messageEventPOList.add (messageEventPO);
 		List<EmailBoxPO> emailBoxPOList= EmailBoxController.messageToEmail (messageEventPOList);
-		for(int i=0;i<+emailBoxPOList.size ();i++){
-			sendTextMail (emailBoxPOList.get (i));
-		}
+		for(int i=0;i<+emailBoxPOList.size ();i++) sendTextMail (emailBoxPOList.get (i));
 	}
 }
 
