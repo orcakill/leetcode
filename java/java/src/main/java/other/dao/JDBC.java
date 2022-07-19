@@ -8,7 +8,7 @@ import static util.getPassWord.getTestMysqlPassword;
  * @author orcakill
  * @date 2021/1/19  8:51
  **/
-public class Jdbc {
+public class JDBC {
 
         //准备数据库的四大参数：
         private static final String driver ="com.mysql.cj.jdbc.Driver";
