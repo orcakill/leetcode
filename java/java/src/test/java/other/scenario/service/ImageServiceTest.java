@@ -9,6 +9,7 @@ import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class ImageServiceTest {
 
@@ -26,6 +27,13 @@ public class ImageServiceTest {
 
 	}
 	
+	
+	@Test
+	public void test(){
+			UUID uuid = UUID.randomUUID ();
+			System.out.println (uuid.toString ().replaceAll ("-","").toUpperCase ());
+	}
+
 	@Test
 	public void   imagesClickIsEmpty () throws Exception {
 		String folderName="scenario/探索/地面点击";
@@ -70,6 +78,9 @@ public class ImageServiceTest {
 		}
 	}
 	
+	
+
+	
 	@Test
 	public void   imagesClick2 () throws InterruptedException, AWTException {
 		for(int i=0;i<800;i++){
@@ -103,6 +114,21 @@ public class ImageServiceTest {
 					System.getProperty ("user.dir") + "/src/main/resources/image/" + folderName1);
 			if(file1.exists ()){
 				ImageService.imagesClickBack (folderName1);
+			}
+			else{
+				System.out.println ("图片文件路径不存在");
+			}
+		}
+	}
+	
+	@Test
+	public void   imagesClick4() throws InterruptedException, AWTException {
+		for(int i=0;i<800;i++){
+			String folderName="scenario/测试图片";
+			File file= new File (
+					System.getProperty ("user.dir") + "/src/main/resources/image/" + folderName);
+			if(file.exists ()){
+				ImageService.imagesClickBack (folderName);
 			}
 			else{
 				System.out.println ("图片文件路径不存在");

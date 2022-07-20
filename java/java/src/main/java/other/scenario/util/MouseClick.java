@@ -22,10 +22,10 @@ public class MouseClick {
 		Double bl = ComputerScaling.getScale ();
 		for (PictureIdentifyWorkPO findAllImgDatum : findAllImgData) {
 			Robot robot1 = new Robot ();
-			logger.debug ("目标坐标" + (int) (findAllImgDatum.getX () / bl) + "---" + (int) (findAllImgDatum.getY () / bl));
+			logger.debug ("目标坐标" + (int) (findAllImgDatum.getX () /bl) + "---" + (int) (findAllImgDatum.getY ()  / bl));
 			// 修复JDK8的移动不正确的BUG(亲测在JDK11,该BUG已经修复)
 			for (int j = 0; j < 6; j++) {
-				robot1.mouseMove ((int) (findAllImgDatum.getX () / bl), (int) (findAllImgDatum.getY () / bl));
+				robot1.mouseMove ((int) (findAllImgDatum.getX ()  / bl), (int) (findAllImgDatum.getY ()  / bl));
 			}
 			Point p = MouseInfo.getPointerInfo ()
 			                   .getLocation ();
