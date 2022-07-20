@@ -404,7 +404,7 @@ public class FightAutoServiceImpl {
 		String file6="scenario/结界突破/呱太结界";
 		String file7="scenario/结界突破/准备挑战";
 		boolean b1;
-		boolean b2=true;
+		boolean b2=false;
 		//战斗次数 默认为0次
 		int    num=0;
 		while(!ImageService.imagesClickBackIsEmpty (file1,3,true)){
