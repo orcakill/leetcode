@@ -723,9 +723,9 @@ public class FightAutoServiceImpl {
 			pictureIdentifyWorkPO1 = ImagesBackRec.imagesRecognitionMouse (file3);
 			pictureIdentifyWorkPO2 = ImagesBackRec.imagesRecognitionMouse (file4);
 		}
-		int x1 = pictureIdentifyWorkPO1.getX ()+pictureIdentifyWorkPO1.getY();
+		int x1 = (int)(pictureIdentifyWorkPO1.getX ()*1.15);
 		int y1 =
-						pictureIdentifyWorkPO1.getY () + (pictureIdentifyWorkPO2.getX () - pictureIdentifyWorkPO1.getX ()+pictureIdentifyWorkPO1.getY() );
+				(int)((pictureIdentifyWorkPO1.getY () + (pictureIdentifyWorkPO2.getX () - pictureIdentifyWorkPO1.getX ()))*1.35);
 		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList1 = new ArrayList<> ();
 		PictureIdentifyWorkPO pictureIdentifyWorkPO3 = new PictureIdentifyWorkPO ();
 		pictureIdentifyWorkPO3.setX (x1);
