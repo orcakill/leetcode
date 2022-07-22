@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import other.scenario.entity.PictureIdentifyWorkPO;
 import other.scenario.service.FightAutoService;
 import other.scenario.service.ImageService;
+import other.scenario.service.impl.FightAutoServiceImpl;
 import other.scenario.util.ImagesBackRec;
 import other.scenario.util.MouseClick;
 
@@ -104,21 +105,7 @@ public class AutoLoginController {
 			PictureIdentifyWorkPO pictureIdentifyWorkPO4 = ImagesBackRec.imagesRecognitionMouse (file4);
 			String file5 = "scenario/首页/首页体力";
 			PictureIdentifyWorkPO pictureIdentifyWorkPO5 = ImagesBackRec.imagesRecognitionMouse (file5);
-			if (pictureIdentifyWorkPO4.getX ()>0&& pictureIdentifyWorkPO5.getX ()>0) {
-				//进入探索，通过首页勾玉和首页体力图标判断探索的位置点击按比例计算的探索
-				int x1 = pictureIdentifyWorkPO4.getX ();
-				int y1 =
-						pictureIdentifyWorkPO4.getY () + (pictureIdentifyWorkPO5.getX () - pictureIdentifyWorkPO4.getX ());
-				List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList1 = new ArrayList<> ();
-				PictureIdentifyWorkPO pictureIdentifyWorkPO6 = new PictureIdentifyWorkPO ();
-				pictureIdentifyWorkPO6.setX (x1);
-				pictureIdentifyWorkPO6.setY (y1);
-				pictureIdentifyWorkPOList1.add (pictureIdentifyWorkPO6);
-				logger.info ("准备点击探索");
-				MouseClick.mouseClickBack (pictureIdentifyWorkPOList1);
-				logger.info ("进入探索");
-				Thread.sleep (3 * 1000);
-			}
+			FightAutoServiceImpl.comeExpore (pictureIdentifyWorkPO4, pictureIdentifyWorkPO5, logger);
 		}
 	}
 	
