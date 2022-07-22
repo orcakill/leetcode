@@ -42,7 +42,7 @@ public class FightAutoServiceImpl {
 	//	樱饼刷御魂
 	public static int cherrySoul (Integer num) throws InterruptedException, AWTException {
 		//		进入探索
-		boolean b = FightAutoService.comeExplore ();
+		boolean b =true;
 		if (b) {
 			//		        进入御魂
 			File file3 = new File ("java/src/main/resources/image/scenario/御魂.png");
@@ -98,7 +98,7 @@ public class FightAutoServiceImpl {
 	//	樱饼刷经验
 	public static boolean cherryExperience () throws InterruptedException, AWTException {
 		//		进入探索
-		boolean b = FightAutoService.comeExplore ();
+		boolean b = true;
 		if (b) {
 			//				选择经验关卡第一张，通过妖字和御魂的位置判断
 			File file3 = new File ("java/src/main/resources/image/scenario/探索关卡妖.png");
@@ -172,7 +172,7 @@ public class FightAutoServiceImpl {
 	
 	public static int friendBorder (Integer num) throws AWTException, InterruptedException {
 		//		进入探索
-		boolean b = FightAutoService.comeExplore ();
+		boolean b = true;
 		if (b) {
 			//			进入结界突破
 			logger.info ("准备进入结界突破");
@@ -225,40 +225,7 @@ public class FightAutoServiceImpl {
 		return num;
 	}
 	
-	//	进入探索
-	public static boolean comeExplore () throws InterruptedException, AWTException {
-		//		判断是否为首页
-		if (IndexService.indexEmpty ()) {
-			//进入首页底部功能菜单
-			File file = new File ("java/src/main/resources/image/scenario/底部菜单.png");
-			logger.info ("准备点击底部菜单栏");
-			ImageService.imageClick (file);
-			logger.info ("打开底部菜单栏成功");
-			//进入探索
-			File file1 = new File ("java/src/main/resources/image/scenario/首页勾玉.png");
-			PictureIdentifyWorkPO pictureIdentifyWorkPO1 = ImageRecognition.imageRecognitionMouse (file1);
-			File file2 = new File ("java/src/main/resources/image/scenario/首页体力.png");
-			PictureIdentifyWorkPO pictureIdentifyWorkPO2 = ImageRecognition.imageRecognitionMouse (file2);
-			if (pictureIdentifyWorkPO1 != null && pictureIdentifyWorkPO2 != null) {
-				//		        进入探索，通过首页勾玉和首页体力图标判断探索的位置点击按比例计算的探索
-				int x = pictureIdentifyWorkPO1.getX ();
-				int y =
-						pictureIdentifyWorkPO1.getY () + (pictureIdentifyWorkPO2.getX () - pictureIdentifyWorkPO1.getX ());
-				List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList = new ArrayList<> ();
-				PictureIdentifyWorkPO pictureIdentifyWorkPO3 = new PictureIdentifyWorkPO ();
-				pictureIdentifyWorkPO3.setX (x);
-				pictureIdentifyWorkPO3.setY (y);
-				pictureIdentifyWorkPOList.add (pictureIdentifyWorkPO3);
-				logger.info ("准备点击探索");
-				MouseClick.mouseClicks (pictureIdentifyWorkPOList);
-				logger.info ("进入探索");
-				sleep (3 * 1000);
-				return true;
-			}
-			
-		}
-		return false;
-	}
+	
 	
 	public static void fightFalse () throws InterruptedException, AWTException {
 		String folder = "scenario/挑战失败";
@@ -713,6 +680,8 @@ public class FightAutoServiceImpl {
 		String file2 = "scenario/首页/底部菜单";
 		String file3 = "scenario/首页/首页勾玉";
 		String file4 = "scenario/首页/首页体力";
+		String file5 = "scenario/斗技/町中武馆";
+		String file6 = "scenario/斗技/斗技图标";
 		ImageService.imagesClickBack (file1);
 		PictureIdentifyWorkPO pictureIdentifyWorkPO1 = ImagesBackRec.imagesRecognitionMouse (file3);
 		PictureIdentifyWorkPO pictureIdentifyWorkPO2 = ImagesBackRec.imagesRecognitionMouse (file4);
@@ -735,19 +704,10 @@ public class FightAutoServiceImpl {
 		MouseClick.mouseClickBack (pictureIdentifyWorkPOList1);
 		logger.info ("进入町中");
 		Thread.sleep (3 * 1000);
-		if(num==1){
-			int x2=  pictureIdentifyWorkPO1.getX () + (int)(pictureIdentifyWorkPO1.getY () * 2.45);
-			int y2 = (int)((pictureIdentifyWorkPO2.getX () - pictureIdentifyWorkPO1.getX ())*1.17);
-			List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList2 = new ArrayList<> ();
-			PictureIdentifyWorkPO pictureIdentifyWorkPO4= new PictureIdentifyWorkPO ();
-			pictureIdentifyWorkPO4.setX (x2);
-			pictureIdentifyWorkPO4.setY (y2);
-			pictureIdentifyWorkPOList2.add (pictureIdentifyWorkPO4);
-			logger.info ("准备点击斗技");
-			MouseClick.mouseClickBack (pictureIdentifyWorkPOList2);
-			logger.info ("进入斗技");
-			
-		}
+		ImageService.imagesClickBack (file5);
+		logger.info ("进入斗技");
+		ImageService.imagesClickBack (file6);
+		logger.info ("准备挑战");
 		
 		
 		
@@ -763,6 +723,9 @@ public class FightAutoServiceImpl {
 		String file6 = "scenario/斗技/额外奖励";
 		String file7 = "scenario/斗技/斗技图标";
 		String file8 = "scenario/斗技/段位晋升";
+		String file9 = "scenario/返回";
+		String file10 = "scenario/首页/首页勾玉";
+		String file11 = "scenario/首页/首页体力";
 		boolean b;
 		boolean b1;
 		boolean b2;
@@ -770,14 +733,14 @@ public class FightAutoServiceImpl {
 		int num2 = 0;
 		/*进入町中*/
 		Town(1);
-		for (int i = 1; i < 100; i++) {
+		for (int i = 1; i <=1; i++) {
 			logger.info ("准备挑战");
 			ImageService.imagesClickBack (file);
 			logger.info ("进入挑战，准备自动选择");
 			ImageService.imagesClickBack (file1);
 			logger.info ("自动选择完成，准备自动战斗");
 			Thread.sleep (2000);
-			if(ImageService.imagesClickBackNumber (file2, 5, true)){
+			if(ImageService.imagesClickBackNumber (file2, 10, true)){
 				ImageService.imagesClickBack (file2);
 			}
 			logger.info ("准备拔得头筹、战斗胜利或战斗失败");
@@ -789,7 +752,7 @@ public class FightAutoServiceImpl {
 				num2++;
 			}
 			logger.info ("判断是否段位晋升");
-			b2= ImageService.imagesClickBackNumber (file6, 5, true);
+			b2= ImageService.imagesClickBackNumber (file8, 5, true);
 			if (!b2) {
 				logger.info ("没有额外奖励");
 			}
@@ -809,11 +772,40 @@ public class FightAutoServiceImpl {
 			logger.info ("第" + i + "次挑战完成，胜利" + num1 + "次，失败" + num2 + "次，胜率" + num1 * 100 / i + "%");
 		}
 		//返回首页
-		
+		logger.info ("斗技结束");
+		ImageService.imagesClickBack (file9);
+		logger.info ("回町中武馆");
+		ImageService.imagesClickBack (file9);
+		logger.info ("回首页");
+		ImageService.imagesClickBack (file9);
 		//返回探索
+        Thread.sleep (3000);
+		PictureIdentifyWorkPO pictureIdentifyWorkPO1 = ImagesBackRec.imagesRecognitionMouse (file10);
+		PictureIdentifyWorkPO pictureIdentifyWorkPO2 = ImagesBackRec.imagesRecognitionMouse (file11);
+		comeExpore (pictureIdentifyWorkPO1, pictureIdentifyWorkPO2, logger);
+		
+	}
 	
-	
-}
+	public static void comeExpore (PictureIdentifyWorkPO pictureIdentifyWorkPO4,
+	                               PictureIdentifyWorkPO pictureIdentifyWorkPO5, Logger logger) throws
+	                                                                                                                                          AWTException,
+	                                                                                                                                          InterruptedException {
+		if (pictureIdentifyWorkPO4.getX ()>0&& pictureIdentifyWorkPO5.getX ()>0) {
+			//进入探索，通过首页勾玉和首页体力图标判断探索的位置点击按比例计算的探索
+			int x1 = pictureIdentifyWorkPO4.getX ();
+			int y1 =
+					pictureIdentifyWorkPO4.getY () + (pictureIdentifyWorkPO5.getX () - pictureIdentifyWorkPO4.getX ());
+			List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList1 = new ArrayList<> ();
+			PictureIdentifyWorkPO pictureIdentifyWorkPO6 = new PictureIdentifyWorkPO ();
+			pictureIdentifyWorkPO6.setX (x1);
+			pictureIdentifyWorkPO6.setY (y1);
+			pictureIdentifyWorkPOList1.add (pictureIdentifyWorkPO6);
+			logger.info ("准备点击探索");
+			MouseClick.mouseClickBack (pictureIdentifyWorkPOList1);
+			logger.info ("进入探索");
+			Thread.sleep (3 * 1000);
+		}
+	}
 	
 	public static void sendMail () {
 		Calendar calendar = Calendar.getInstance ();

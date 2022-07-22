@@ -26,10 +26,7 @@ public interface FightAutoService {
 		return FightAutoServiceImpl.friendBorder(num);
 	}
 	
-    //	进入探索
-	static  boolean comeExplore () throws InterruptedException, AWTException {
-		return  FightAutoServiceImpl.comeExplore ();
-	}
+
 //	 挑战失败
     static  void fightFalse () throws InterruptedException, AWTException {
 	   FightAutoServiceImpl.fightFalse ();
