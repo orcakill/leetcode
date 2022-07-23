@@ -733,14 +733,14 @@ public class FightAutoServiceImpl {
 		int num2 = 0;
 		/*进入町中*/
 		Town(1);
-		for (int i = 1; i <=1; i++) {
+		for (int i = 1; i <=10; i++) {
 			logger.info ("准备挑战");
 			ImageService.imagesClickBack (file);
 			logger.info ("进入挑战，准备自动选择");
 			ImageService.imagesClickBack (file1);
 			logger.info ("自动选择完成，准备自动战斗");
 			Thread.sleep (2000);
-			if(ImageService.imagesClickBackNumber (file2, 10, true)){
+			if(ImageService.imagesClickBackNumber (file2, 20, true)){
 				ImageService.imagesClickBack (file2);
 			}
 			logger.info ("准备拔得头筹、战斗胜利或战斗失败");
@@ -754,7 +754,7 @@ public class FightAutoServiceImpl {
 			logger.info ("判断是否段位晋升");
 			b2= ImageService.imagesClickBackNumber (file8, 5, true);
 			if (!b2) {
-				logger.info ("没有额外奖励");
+				logger.info ("没有段位晋升");
 			}
 			else {
 				logger.info ("存在额外奖励");
