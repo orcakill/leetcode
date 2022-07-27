@@ -85,13 +85,20 @@ public class AutoLoginController {
 			Thread.sleep (3000);
 			String file = "scenario/首页/底部菜单";
 			String file11 = "scenario/首页/底部菜单打开";
+			String file12 = "scenario/返回";
 			logger.info ("准备点击底部菜单栏");
 			boolean b=false;
+			boolean b1=false;
 			Thread.sleep (2000);
 			while (!b){
-				b=ImageService.imagesClickBackIsEmpty (file,300,true);
-				ImageService.imagesClickBackNumber (file,300,true);
+				b=ImageService.imagesClickBackIsEmpty (file,10,true);
+				b1=ImageService.imagesClickBackIsEmpty (file12,10,true);
+				if(b1){
+					logger.info ("存在需要返回的情况");
+					ImageService.imagesClickBackNumber (file12,10,true);
+				}
 			}
+			ImageService.imagesClickBackNumber (file,300,true);
 			Thread.sleep (3000);
 			logger.info ("初次点击底部菜单栏成功");
 			while(!ImageService.imagesClickBackIsEmpty (file11,300,true)){
