@@ -199,6 +199,9 @@ class   ThreadTwelfth extends  Thread{
 		System.out.println("斗技");
 		//自动登录到探索
 		AutoLoginController.login ();
+		//进入町中
+		AutoLoginController.Town (1);
+		//斗技
 		AutoLoginController.PVP();
 	}
 }
@@ -216,5 +219,18 @@ class   ThreadThirteenth extends  Thread{
 		AutoLoginController.soulAll(num,num1);
 		sendMail ();
 	}
+	
 }
 
+class   ThreadFourteenth extends Thread{
+	@SneakyThrows
+	public void run (){
+		System.out.println("为崽而战");
+		//自动登录到探索
+		AutoLoginController.login ();
+		//进入为崽而战界面
+		AutoLoginController.Town (2);
+		//斗技
+		AutoLoginController.PVP();
+	}
+}

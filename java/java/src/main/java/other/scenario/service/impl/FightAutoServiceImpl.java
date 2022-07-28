@@ -675,7 +675,7 @@ public class FightAutoServiceImpl {
 		logger.info ("退出挑战完成");
 	}
 	
-	public static void Town (Integer num) throws InterruptedException, AWTException {
+	public static void Town (Integer num,String name,double x,double y) throws InterruptedException, AWTException {
 		String file1 = "scenario/返回";
 		String file2 = "scenario/首页/底部菜单";
 		String file3 = "scenario/首页/首页勾玉";
@@ -692,25 +692,23 @@ public class FightAutoServiceImpl {
 			pictureIdentifyWorkPO1 = ImagesBackRec.imagesRecognitionMouse (file3);
 			pictureIdentifyWorkPO2 = ImagesBackRec.imagesRecognitionMouse (file4);
 		}
-		int x1 = (int)(pictureIdentifyWorkPO1.getX ()*1.15);
-		int y1 =
-				(int)((pictureIdentifyWorkPO1.getY () + (pictureIdentifyWorkPO2.getX () - pictureIdentifyWorkPO1.getX ()))*1.35);
+		int x1 = (int)(pictureIdentifyWorkPO1.getX ()*x);
+		int y1 = (int)(pictureIdentifyWorkPO1.getY ()*y);
 		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList1 = new ArrayList<> ();
 		PictureIdentifyWorkPO pictureIdentifyWorkPO3 = new PictureIdentifyWorkPO ();
 		pictureIdentifyWorkPO3.setX (x1);
 		pictureIdentifyWorkPO3.setY (y1);
 		pictureIdentifyWorkPOList1.add (pictureIdentifyWorkPO3);
-		logger.info ("准备点击町中");
+		logger.info ("准备点击"+name);
 		MouseClick.mouseClickBack (pictureIdentifyWorkPOList1);
-		logger.info ("进入町中");
+		logger.info ("进入"+name);
 		Thread.sleep (3 * 1000);
-		ImageService.imagesClickBack (file5);
-		logger.info ("进入斗技");
-		ImageService.imagesClickBack (file6);
-		logger.info ("准备挑战");
-		
-		
-		
+		if(num==1){
+			ImageService.imagesClickBack (file5);
+			logger.info ("进入斗技");
+			ImageService.imagesClickBack (file6);
+			logger.info ("准备挑战");
+		}
 	}
 	
 	public static void PVP () throws InterruptedException, AWTException {
@@ -731,8 +729,6 @@ public class FightAutoServiceImpl {
 		boolean b2;
 		int num1 = 0;
 		int num2 = 0;
-		/*进入町中*/
-		Town(1);
 		for (int i = 1; i <=10; i++) {
 			logger.info ("准备挑战");
 			ImageService.imagesClickBack (file);
@@ -822,6 +818,10 @@ public class FightAutoServiceImpl {
 		for (int i = 0; i < +emailBoxPOList.size (); i++) {
 			sendTextMail (emailBoxPOList.get (i));
 		}
+	}
+	
+	public static void activity (Integer num) {
+ 
 	}
 }
 

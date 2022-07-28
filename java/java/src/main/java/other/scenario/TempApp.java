@@ -135,6 +135,8 @@ class PVPApp {
 	}
 }
 
+
+
 //	自动登录，刷寮突破,处理个人结界，刷魂十 1 13
 class soulAll3App {
 	public static void main (String[] args) {
@@ -145,5 +147,23 @@ class soulAll3App {
 	}
 }
 
+//为崽而战 1 14
+class ChildApp {
+	public static void main (String[] args) {
+		ThreadFirst t1 = new ThreadFirst();
+		ThreadFourteenth t2 = new ThreadFourteenth ();
+		t1.start();
+		t2.start();
+	}
+}
 
+//活动 1 15
+class ActivityApp {
+	public static void main (String[] args) {
+		ThreadFirst t1 = new ThreadFirst();
+		ThreadTwelfth t2 = new ThreadTwelfth ();
+		t1.start();
+		t2.start();
+	}
+}
 
