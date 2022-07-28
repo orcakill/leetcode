@@ -214,4 +214,12 @@ public class AutoLoginController {
 	public static void PVP () throws InterruptedException, AWTException {
 			FightAutoService.PVP();
 	}
+	
+	public static void Town (Integer num) throws InterruptedException, AWTException {
+		FightAutoService.Town (num);
+	}
+	
+	public static void activity (Integer num) {
+		FightAutoService.activity (num);
+	}
 }

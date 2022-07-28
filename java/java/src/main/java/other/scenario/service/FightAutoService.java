@@ -76,9 +76,30 @@ public interface FightAutoService {
 		FightAutoServiceImpl.PVP();
 	}
 	
+	static void Town (Integer num) throws InterruptedException, AWTException {
+		String name;
+		double x,y;
+		if(num==1){
+			name="町中";
+			x=1.15;
+			y=5.3;
+			FightAutoServiceImpl.Town (num,name,x,y);
+		}
+		else if (num==2) {
+			name="活动";
+			x=1.5;
+			y=4.3;
+			FightAutoServiceImpl.Town (num,name,x,y);
+		}
+		
+	}
+	
 	
 	static void sendMail () throws InterruptedException, AWTException {
 		FightAutoServiceImpl.sendMail();
 	}
-
+	
+	static void activity (Integer num) {
+		FightAutoServiceImpl.activity(num);
+	}
 }
