@@ -724,6 +724,7 @@ public class FightAutoServiceImpl {
 		String file9 = "scenario/返回";
 		String file10 = "scenario/首页/首页勾玉";
 		String file11 = "scenario/首页/首页体力";
+		String file12 = "scenario/斗技/自动战斗位置反向计算";
 		boolean b;
 		boolean b1;
 		boolean b2;
@@ -736,8 +737,20 @@ public class FightAutoServiceImpl {
 			ImageService.imagesClickBack (file1);
 			logger.info ("自动选择完成，准备自动战斗");
 			Thread.sleep (2000);
-			if(ImageService.imagesClickBackNumber (file2, 20, true)){
-				ImageService.imagesClickBack (file2);
+			if(ImageService.imagesClickBackNumber (file12, 20, true)){
+				PictureIdentifyWorkPO pictureIdentifyWorkPO1 = ImagesBackRec.imagesRecognitionMouse (file12);
+				GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ();
+				int windows_height = gd.getDisplayMode().getHeight();
+				int x1 = (int)(pictureIdentifyWorkPO1.getX ());
+				int y1 = (int)(windows_height-pictureIdentifyWorkPO1.getY ());
+				List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList1 = new ArrayList<> ();
+				PictureIdentifyWorkPO pictureIdentifyWorkPO3 = new PictureIdentifyWorkPO ();
+				pictureIdentifyWorkPO3.setX (x1);
+				pictureIdentifyWorkPO3.setY (y1);
+				pictureIdentifyWorkPOList1.add (pictureIdentifyWorkPO3);
+				logger.info ("准备点击自动战斗");
+				MouseClick.mouseClickBack (pictureIdentifyWorkPOList1);
+				logger.info ("进入自动战斗");
 			}
 			logger.info ("准备拔得头筹、战斗胜利或战斗失败");
 			b = ImageService.imagesClickBackNumberOrderNumbers (file3, file5, file51, null, 500);
@@ -820,8 +833,9 @@ public class FightAutoServiceImpl {
 		}
 	}
 	
-	public static void activity (Integer num) {
- 
+	public static void activity (Integer num) throws InterruptedException, AWTException {
+		String file = "scenario/活动/为崽而战";
+		ImageService.imagesClickBack (file);
 	}
 }
 

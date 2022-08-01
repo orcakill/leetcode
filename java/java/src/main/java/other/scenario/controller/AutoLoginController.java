@@ -219,7 +219,7 @@ public class AutoLoginController {
 		FightAutoService.Town (num);
 	}
 	
-	public static void activity (Integer num) {
+	public static void activity (Integer num) throws InterruptedException, AWTException {
 		FightAutoService.activity (num);
 	}
 }

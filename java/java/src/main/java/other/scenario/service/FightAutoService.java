@@ -88,7 +88,7 @@ public interface FightAutoService {
 		else if (num==2) {
 			name="活动";
 			x=1.5;
-			y=4.3;
+			y=11;
 			FightAutoServiceImpl.Town (num,name,x,y);
 		}
 		
@@ -99,7 +99,7 @@ public interface FightAutoService {
 		FightAutoServiceImpl.sendMail();
 	}
 	
-	static void activity (Integer num) {
+	static void activity (Integer num) throws InterruptedException, AWTException {
 		FightAutoServiceImpl.activity(num);
 	}
 }
