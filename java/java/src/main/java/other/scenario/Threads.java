@@ -228,8 +228,10 @@ class   ThreadFourteenth extends Thread{
 		System.out.println("为崽而战");
 		//自动登录到探索
 		AutoLoginController.login ();
-		//进入为崽而战界面
+		//进入活动界面
 		AutoLoginController.Town (2);
+		//进入具体页面
+		AutoLoginController.activity (1);
 		//斗技
 		AutoLoginController.PVP();
 	}
