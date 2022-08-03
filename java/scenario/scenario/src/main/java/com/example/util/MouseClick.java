@@ -6,7 +6,7 @@ import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.platform.win32.WinDef.HWND;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import other.scenario.entity.PictureIdentifyWorkPO;
+
 
 import java.awt.*;
 import java.awt.event.InputEvent;
