@@ -1,74 +1,33 @@
 package com.example;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    //创建窗口
-    private Frame frame = new Frame("这里测试菜单相关组件");
-    
-    //创建菜单条
-    MenuBar menuBar = new MenuBar();
-    
-    //创建菜单组件
-    Menu fileMenu = new Menu("文件");
-    Menu editMenu = new Menu("编辑");
-    Menu formatMenu = new Menu("格式");
-    
-    //菜单项组件
-    MenuItem auto = new MenuItem("自动换行");
-    MenuItem copy = new MenuItem("复制");
-    MenuItem paste = new MenuItem("粘贴");
-    
-    MenuItem comment = new MenuItem("注释",new MenuShortcut(KeyEvent.VK_Q,true));//关联快捷键  ctrl+shift+Q
-    MenuItem cancelComment = new MenuItem("取消注释");
-    
-    TextArea ta = new TextArea(6,40);
-    
-    public void init(){
-        //组装视图
-        comment.addActionListener(new ActionListener () {
-            @Override
-            public void actionPerformed (ActionEvent e) {
-                ta.append("您点击了菜单项： "+e.getActionCommand()+"\n");
-            }
-        });
-        //comment.addActionListener(e -> ta.append("您点击了菜单项： "+e.getActionCommand()+"\n"));
-        
-        formatMenu.add(comment);
-        formatMenu.add(cancelComment);
-        
-        //组装编辑菜单
-        editMenu.add(auto);
-        editMenu.add(copy);
-        editMenu.add(paste);
-        editMenu.add(formatMenu);
-        
-        //组装菜单条
-        menuBar.add(fileMenu);
-        menuBar.add(editMenu);
-        
-        //把菜单条放入到Frame中
-        frame.setMenuBar(menuBar);
-        
-        frame.add(ta);
-        
-        //设置frame最佳大小并可见
-        frame.pack();
-        frame.setVisible(true);
-    }
-    
+import java.util.Scanner;
+
+public class App{
+    public  static  final Logger logger = LogManager.getLogger (App.class);
     
     public static void main(String[] args) {
-        new App ().init();
+        System.out.println(ClassLoader.getSystemResource("log4j.properties"));
+        System.out.println(ClassLoader.getSystemResource("log4j.xml"));
+        System.out.println (logger.getLevel ().toString ());
+        logger.info ("1 阴阳寮结界+个人结界+魂土40次");
+        logger.debug ("1 阴阳寮结界+个人结界+魂土40次");
+        logger.error ("1 阴阳寮结界+个人结界+魂土40次");
+        logger.warn ("1 阴阳寮结界+个人结界+魂土40次");
+        logger.info ("2 个人结界+魂土60次");
+        logger.info ("3 个人结界+业原火100张");
+        logger.info ("4 个人结界+日轮之陨50次");
+        logger.info ("5 个人结界+永生之海30次");
+        logger.info ("6 御灵60次");
+        logger.info ("7 斗技30次");
+        logger.info ("8 为崽而战30次");
+        Scanner scanner=new Scanner(System.in);
+        int a=scanner.nextInt();//输入一个轮次
+        int b=scanner.nextInt();//输入一个选项
+        System.out.println (a);
+        System.out.println (b);
     }
 
 }

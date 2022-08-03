@@ -3,7 +3,7 @@ package com.example.util;
 import com.example.model.entity.PictureIdentifyWorkPO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import other.scenario.entity.PictureIdentifyWorkPO;
+
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -13,12 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class ImagesRecognition {
-	private static final Logger logger = LogManager.getLogger (ImagesRecognition.class);
+/**
+ * @Classname ImagesBackRec
+ * @Description 图片后台识别
+ * @Date 2021/10/24 22:55
+ * @Created by orcakill
+ */
+public class ImagesBackRec {
+	private static final Logger logger = LogManager.getLogger (ImagesBackRec.class);
 	
-	public static void  imagesRecognition (String FolderName) throws AWTException {
+	//识别图片存在并点击或只识别不点击
+	public static boolean imagesRecognition (String FolderName,String process,boolean isClick) throws AWTException {
 //		屏幕截图
-		BufferedImage Window=Screenshot.screenshot ();
+		BufferedImage Window=Screenshot.screenshotBack (process);
 //		图片
 		List<int[][]> ImagesData=imageToDate(FolderName);
 //		屏幕截图和图片对比
@@ -27,31 +34,20 @@ public class ImagesRecognition {
 		List<PictureIdentifyWorkPO> mouseXY1=new ArrayList<> ();
 //		鼠标点击
 		if(mouseXY.size ()>0){
-			int num=RandomUtil.randomMinute (mouseXY.size ());
-			mouseXY1.add (mouseXY.get (num));
-			MouseClick.mouseClicks (mouseXY1);
+			if(isClick) {
+				int num = RandomUtil.randomMinute (mouseXY.size ());
+				mouseXY1.add (mouseXY.get (num));
+				MouseClick.mouseClickBack (mouseXY1);
+			}
+			return  true;
 		}
-		else{
-			MouseClick.mouseClicks (mouseXY);
-		}
+		return  false;
 	}
 	
-	
-	
-	public static boolean imagesRecognitionIsEmpty(String FolderName) throws AWTException {
+	//返回坐标
+	public static PictureIdentifyWorkPO imagesRecognitionMouse(String FolderName,String process) {
 //		屏幕截图
-		BufferedImage Window=Screenshot.screenshot ();
-//		图片
-		List<int[][]> ImagesData=imageToDate(FolderName);
-//		屏幕截图和图片对比
-		List<PictureIdentifyWorkPO> mouseXY=FindAllImgData(Window,ImagesData);
-//		鼠标点击
-		return  mouseXY.size ()>0;
-	}
-	
-	public static PictureIdentifyWorkPO imagesRecognitionMouse(String FolderName) throws AWTException {
-//		屏幕截图
-		BufferedImage Window=Screenshot.screenshot ();
+		BufferedImage Window=Screenshot.screenshotBack (process);
 //		图片
 		List<int[][]> ImagesData=imageToDate(FolderName);
 //		屏幕截图和图片对比
@@ -73,8 +69,8 @@ public class ImagesRecognition {
 	 * @return - 返回图片在屏幕的坐标集合
 	 */
 	public static List<PictureIdentifyWorkPO> FindAllImgData(BufferedImage Window, List<int[][]> ImagesData) {
-		
 		List<PictureIdentifyWorkPO> mouseMessages = new ArrayList<>();
+		PictureIdentifyWorkPO mouseXY = new PictureIdentifyWorkPO ();
 		// 解析屏幕图片数据
 		int width = Window.getWidth();
 		int height = Window.getHeight();
@@ -127,14 +123,15 @@ b:
 								
 								logger.info ("在屏幕上找到图片了,坐标:( " + x + " , " + y + " )");
 								// 这是专门存储数据的类
-								PictureIdentifyWorkPO mouseXY = new PictureIdentifyWorkPO ();
-								x += (int) (Math.random () * imgWidth);
-								y += (int) (Math.random () * imgHeight);
+								x += (int) (Math.random () *0.1*imgWidth);
+								y += (int) (Math.random () *0.1*imgHeight);
 								mouseXY.setX (x);
 								mouseXY.setY (y);
 								mouseMessages.add (mouseXY);
-								break a;
-								
+								if(mouseMessages.size ()>1){
+									return mouseMessages;
+								}
+								break  a;
 							}
 							
 						}
@@ -190,6 +187,7 @@ b:
 				String[] filelist = Folder.list();
 				// 将所有照片存储并且返回
 				assert filelist != null;
+				
 				for (String s : filelist) {
 					File file = new File (Folder + File.separator + s);
 					// 判断是否为照片文件
@@ -229,11 +227,13 @@ b:
 		
 		List<int[][]> ImagesData = new ArrayList<> ();
 		
+		int width;
+		int height;
+		int[][] img;
 		for (BufferedImage bufferedImage : imgs) {
-			
-			int width = bufferedImage.getWidth ();
-			int height = bufferedImage.getHeight ();
-			int[][] img = new int[width][height];
+			width = bufferedImage.getWidth ();
+			height = bufferedImage.getHeight ();
+			img =new int[width][height];
 			
 			for (int w = 0; w < width; w++)
 				for (int h = 0; h < height; h++) {
