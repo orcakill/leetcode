@@ -35,4 +35,17 @@ public interface ImageService {
 		return  ImageServiceImpl.imagesClickBack (folder,process,re_num,start_time,end_time,boole,isClick);
 	}
 	
+	//根据静态照片计算动态照片的坐标并点击
+	static boolean imagesClickBackCount(String file1,String file2,String name,double x,double y) throws
+	                                                                                             InterruptedException,
+	                                                                                             AWTException {
+		return  imagesClickBackCount(file1,file2,name,x,y,"夜神模拟器");
+	}
+	
+	//根据静态照片计算动态照片的坐标并点击
+	static boolean imagesClickBackCount(String file1,String file2,String name,double x,double y,String process) throws
+	                                                                                                            InterruptedException,
+	                                                                                                            AWTException {
+		return  ImageServiceImpl.imagesClickBackCount(file1,file2,name,x,y,process);
+	}
 }
