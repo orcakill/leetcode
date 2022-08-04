@@ -1,10 +1,14 @@
 package com.example.controller;
 
+import com.example.model.map.ExeAddress;
+import com.example.util.StartUpExeUtils;
 import lombok.SneakyThrows;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
+
+import static com.example.controller.LoginController.loginGame;
 
 public class ThreadSecondController extends Thread {
 	public  static  final Logger logger = LogManager.getLogger ("ThreadSecondController");
@@ -25,8 +29,12 @@ public class ThreadSecondController extends Thread {
 		int a=scanner.nextInt();//输入一个轮次
 		logger.info ("输入一个选项");
 		int b=scanner.nextInt();//输入一个选项
-		//  进入登录界面
+		//启动游戏
+		StartUpExeUtils.startUpExeOnly ("CMD /C " + ExeAddress.exeAddress ());
+		//  进入登录界面，默认直接登录，切换账号暂时无法实现
+		loginGame();
+     	//	开启轮次、选项循环
+		FightController.fightGame (a,b);
 		
-     	//	默认大号登录，选项为9则启用小号登录，小号登录
 	}
 }
