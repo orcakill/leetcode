@@ -15,6 +15,11 @@ public class App{
         ThreadSecondController t2 = new ThreadSecondController ();
         t1.start();
         t2.start();
+        //第二个进程结束，结束整个程序
+        if(!t2.isAlive ()){
+            logger.info ("程序结束");
+            System.exit (0);
+        }
     }
 
 }
