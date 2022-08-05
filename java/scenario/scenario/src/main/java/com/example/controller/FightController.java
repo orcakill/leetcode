@@ -23,8 +23,9 @@ public class FightController {
 				//阴阳寮结界
 				FightAutoController.fightHome ();
 				//个人结界
-				FightAutoController.fightHome ();
+				FightAutoController.borderCheck ();
 				num=40;//魂土，有阴阳寮战斗
+				FightAutoController.soulFight(11,num,true);
 			}
 			else if (b==2) {
 				num=60;//魂土，无阴阳寮战斗

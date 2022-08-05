@@ -333,7 +333,6 @@ public class FightAutoServiceImpl {
 		//		开始挑战,处理剩余次数的御魂
 		for (int i = 0; num > 0; i++) {
 			long a = System.currentTimeMillis ();//获取当前系统时间(毫秒)
-			
 			logger.info ("准备开始挑战");
 			sleep (1000);
 			ImageService.imagesClickBackNumber (file1, 120, true);
