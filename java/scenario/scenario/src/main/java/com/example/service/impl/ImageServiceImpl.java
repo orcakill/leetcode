@@ -4,6 +4,8 @@ import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import com.example.model.entity.PictureIdentifyWorkPO;
 import com.example.service.ImageService;
@@ -43,7 +45,7 @@ public class ImageServiceImpl {
 	                                                                                          AWTException {
 		File file = new File (
 				System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
-		int  num_time=0;
+		int  num_time;
 		if (file.exists ()) {
 			for (int i = 0; i <re_num; i++) {
 				num_time=getRandom (i1,i2);
@@ -61,6 +63,40 @@ public class ImageServiceImpl {
 			logger.info ("图标路径不存在");
 		}
 		return  false;
+	}
+	
+	public static String imagesClickBack (Map<String,String> files, String process, int re_num, int i1, int i2, boolean b,
+	                                      boolean isClick) throws InterruptedException, AWTException {
+		boolean b1=true;
+		boolean b2=true;
+		int  num_time;
+		for(Map.Entry folder:files.entrySet ()){
+			File file = new File (
+					System.getProperty ("user.dir") + "/src/main/resources/image/" + folder.getValue ());
+			if(!file.exists ()){
+				b1=false;
+			}
+			
+		}
+		if (b1) {
+			for (int i = 0; i <re_num; i++) {
+				num_time=getRandom (i1,i2);
+				Thread.sleep ( num_time* 1000L);
+				for(Map.Entry file:files.entrySet ()){
+					b2=ImagesBackRec.imagesRecognition (file.getValue ().toString (),process,isClick);
+					if(b2){
+						logger.info ("图片匹配成功,已点击");
+						return  file.getKey ().toString ();
+					}
+
+				}
+				
+			}
+		}
+		else {
+			logger.info ("集合中图标路径不存在");
+		}
+		return  null;
 	}
 	
 	public static boolean imagesClickBackCount (String file1, String file2, String name, double x, double y,
