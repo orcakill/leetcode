@@ -44,7 +44,7 @@ public class ImageServiceImpl {
 	                                                                                          InterruptedException,
 	                                                                                          AWTException {
 		File file = new File (
-				System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
+				System.getProperty ("user.dir") + "/scenario/src/main/resources/image/" + folder);
 		int  num_time;
 		if (file.exists ()) {
 			for (int i = 0; i <re_num; i++) {
@@ -55,12 +55,14 @@ public class ImageServiceImpl {
 					return  true;
 				}
 				else {
-					logger.error ("在"+num_time+"5秒的检测中，第" + (i + 1) + "次检查未发现"+folder+"的图片");
+					if(b) {
+						logger.error ("在" + num_time + "秒的检测中，第" + (i + 1) + "次检查未发现" + folder + "的图片");
+					}
 				}
 			}
 		}
 		else {
-			logger.info ("图标路径不存在");
+			logger.info (folder+"图标路径不存在");
 		}
 		return  false;
 	}
@@ -72,7 +74,7 @@ public class ImageServiceImpl {
 		int  num_time;
 		for(Map.Entry folder:files.entrySet ()){
 			File file = new File (
-					System.getProperty ("user.dir") + "/src/main/resources/image/" + folder.getValue ());
+					System.getProperty ("user.dir") + "/scenario/src/main/resources/image/" + folder.getValue ());
 			if(!file.exists ()){
 				b1=false;
 			}
@@ -88,13 +90,18 @@ public class ImageServiceImpl {
 						logger.info ("图片匹配成功,已点击");
 						return  file.getKey ().toString ();
 					}
+					else {
+						if(b) {
+							logger.error ("在"+num_time+"秒的检测中，第" + (i + 1) + "次检查未发现"+file+"的图片");
+						}
+					}
 
 				}
 				
 			}
 		}
 		else {
-			logger.info ("集合中图标路径不存在");
+			logger.info (files+"集合中图标路径不存在");
 		}
 		return  null;
 	}
@@ -103,6 +110,12 @@ public class ImageServiceImpl {
 	                                            String process) throws AWTException, InterruptedException {
 		//获取图片1的坐标
 		boolean boole;
+		boolean b1=false;
+		while (!b1){
+			logger.info ("等待2秒钟");
+			Thread.sleep (2000);
+			b1=ImageService.imagesClickBackIsEmpty (file1,1);
+		}
 		PictureIdentifyWorkPO pictureIdentifyWorkPO1 = ImagesBackRec.imagesRecognitionMouse (file1,process);
 		int x1 = (int)(pictureIdentifyWorkPO1.getX ()*x);
 		int y1 = (int)(pictureIdentifyWorkPO1.getY ()*y);

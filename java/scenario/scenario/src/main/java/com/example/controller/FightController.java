@@ -20,15 +20,20 @@ public class FightController {
 		//执行轮次
 		for(int i=0;i<a;i++){
 			if(b==1){
+				num=10;//魂土，有阴阳寮战斗
 				//阴阳寮结界
 				FightAutoController.fightHome ();
 				//个人结界
 				FightAutoController.borderCheck ();
-				num=40;//魂土，有阴阳寮战斗
+				//魂土
 				FightAutoController.soulFight(11,num,true);
 			}
 			else if (b==2) {
 				num=60;//魂土，无阴阳寮战斗
+				//个人结界
+				FightAutoController.borderCheck ();
+				//魂土
+				FightAutoController.soulFight(11,num,true);
 			}
 			else if (b==3) {
 				num=100;//业原火

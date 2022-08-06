@@ -21,6 +21,11 @@ public interface ImageService {
 		return  imagesClickBack (folder,"夜神模拟器",re_num,1,2,true,true);
 	}
 	
+	static boolean imagesClickBack (String folder,Integer re_num,Boolean boole) throws InterruptedException,
+	                                                                                 AWTException {
+		return  imagesClickBack (folder,"夜神模拟器",re_num,1,2,boole,true);
+	}
+	
 	
 	/*多张图片后台识别,参数默认，识别次数，识别起始间隔，识别结束间隔，是否返回日志信息,不点击*/
 	static  boolean imagesClickBackIsEmpty (String folder) throws InterruptedException, AWTException {
