@@ -177,10 +177,10 @@ b:
 		try {
 			// 获取当前目录下的指定文件夹
 			File Folder = new File(
-					System.getProperty("user.dir") + "/java/src/main/resources/image/"+ FolderName);
+					System.getProperty("user.dir") + "/scenario/java/src/main/resources/image/"+ FolderName);
 			if(!Folder.isDirectory()){
 				Folder = new File(
-						System.getProperty("user.dir") + "/src/main/resources/image/"+ FolderName);
+						System.getProperty("user.dir") + "/scenario/src/main/resources/image/"+ FolderName);
 			}			// 遍历文件夹的所有文件
 			if (Folder.isDirectory()) {
 				List<BufferedImage> files = new ArrayList<>();

@@ -11,7 +11,7 @@ public class ThreadFirstController extends Thread {
 		String file2 = "scenario/登录/阴阳师图标";
 		boolean b;
 		while (true){
-			ImageService.imagesClickBack (file1,1);
+			ImageService.imagesClickBack (file1,1,false);
 			Thread.sleep (60 * 1000);
 			b = ImageService.imagesClickBackIsEmpty (file2,1);
 			if (b) {
