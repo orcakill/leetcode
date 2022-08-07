@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.service.FightService;
 import com.example.service.ImageService;
 import com.example.util.ImagesBackRec;
 import org.apache.logging.log4j.LogManager;
@@ -25,36 +26,54 @@ public class LoginController {
 		String file2 = "scenario/登录/阴阳师图标";
 		String file3 = "scenario/登录/适龄提示";
 		String file4 = "scenario/登录/公告关闭";
+		String file5 = "scenario/首页/底部菜单";
+		String file6 = "scenario/首页/底部菜单打开";
+		String file7 = "scenario/返回";
 		//如皋已经是游戏首页，不需要登录
-		boolean boole1 = ImageService.imagesClickBackIsEmpty (file1, 3);
-		boolean boole2;
-		if (!boole1) {
+		boolean b1 = ImageService.imagesClickBackIsEmpty (file1, 3);
+		boolean b2;
+		boolean b3 = false;
+		boolean b4 = ImageService.imagesClickBackIsEmpty (file7, 3);
+		if (!b1) {
 			//单击阴阳师图标
-			logger.info ("单击阴阳师图标，进入登录页面");
-			ImageService.imagesClickBack (file2);
-			while (!ImageService.imagesClickBackIsEmpty (file3)) {
-				boole2 = ImageService.imagesClickBackIsEmpty (file4, 1);
-				if (boole2) {
-					logger.info ("有公告，关闭公告");
-					ImageService.imagesClickBack (file4);
-				}
-				Thread.sleep (5000);
+			if(b4){
+				FightService.returnHome ();
 			}
-			logger.info ("已进入游戏登录界面");
-			loginHome (0);
+			else {
+				logger.info ("单击阴阳师图标，进入登录页面");
+				ImageService.imagesClickBack (file2);
+				while (!ImageService.imagesClickBackIsEmpty (file3)) {
+					b2 = ImageService.imagesClickBackIsEmpty (file4, 1);
+					if (b2) {
+						logger.info ("有公告，关闭公告");
+						ImageService.imagesClickBack (file4);
+					}
+					Thread.sleep (5000);
+				}
+				logger.info ("已进入游戏登录界面");
+				loginHome (0);
+				logger.info ("打开底部菜单");
+				while (!b3) {
+					ImageService.imagesClickBack (file5);
+					b3 = ImageService.imagesClickBackIsEmpty (file6);
+					Thread.sleep (3000);
+				}
+				logger.info ("进入首页");
+			}
 		}
 		else {
 			logger.info ("当前已是首页");
 		}
+		
 	}
 	
 	//阴阳师游戏账号登录，进入游戏首页
 	public static void loginHome (Integer num) throws InterruptedException, AWTException {
 		String file1 = "scenario/登录/适龄提示";
-		String file2 = "scenario/首页/首页勾玉";
+		String file2 = "scenario/首页/底部菜单";
 		//默认0 直接登录，不进行账号、大区切换
 		if (num == 0) {
-			boolean boole = ImageService.imagesClickBackCount (file1, file2, "首页", 5, 1);
+			boolean boole = ImageService.imagesClickBackCount (file1, file2, "首页", 25, 1);
 			if (boole) {
 				logger.info ("进入游戏首页");
 			}

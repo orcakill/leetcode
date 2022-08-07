@@ -24,7 +24,7 @@ import static com.example.util.RandomUtil.getRandom;
  * @createTime 2022年08月03日 14:22:00
  */
 public class ImageServiceImpl {
-	public  static  final Logger logger = LogManager.getLogger (ImageServiceImpl.class);
+	public  static  final Logger logger = LogManager.getLogger ("ImageServiceImpl");
 	
 	/***
 	 * @description: 识别并点击成功或识别成功返回true、识别失败返回false
@@ -44,7 +44,7 @@ public class ImageServiceImpl {
 	                                                                                          InterruptedException,
 	                                                                                          AWTException {
 		File file = new File (
-				System.getProperty ("user.dir") + "/scenario/src/main/resources/image/" + folder);
+				System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
 		int  num_time;
 		if (file.exists ()) {
 			for (int i = 0; i <re_num; i++) {
@@ -74,7 +74,7 @@ public class ImageServiceImpl {
 		int  num_time;
 		for(Map.Entry folder:files.entrySet ()){
 			File file = new File (
-					System.getProperty ("user.dir") + "/scenario/src/main/resources/image/" + folder.getValue ());
+					System.getProperty ("user.dir") + "/src/main/resources/image/" + folder.getValue ());
 			if(!file.exists ()){
 				b1=false;
 			}

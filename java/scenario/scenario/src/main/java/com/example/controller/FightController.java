@@ -20,7 +20,7 @@ public class FightController {
 		//执行轮次
 		for(int i=0;i<a;i++){
 			if(b==1){
-				num=10;//魂土，有阴阳寮战斗
+				num=1;//魂土，有阴阳寮战斗
 				//阴阳寮结界
 				FightAutoController.fightHome ();
 				//个人结界
@@ -37,9 +37,17 @@ public class FightController {
 			}
 			else if (b==3) {
 				num=100;//业原火
+				//个人结界
+				FightAutoController.borderCheck ();
+				//魂土
+				FightAutoController.soulFight(21,num,true);
 			}
 			else if (b==4) {
 				num=50;//日轮之陨
+				//个人结界
+				FightAutoController.borderCheck ();
+				//魂土
+				FightAutoController.soulFight(31,num,true);
 			}
 			else if (b==5) {
 				num=30;//永生之海

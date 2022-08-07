@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
 
+import static com.example.App.ThreadSecondIsAlive;
 import static com.example.controller.LoginController.loginGame;
 
 public class ThreadSecondController extends Thread {
@@ -30,11 +31,15 @@ public class ThreadSecondController extends Thread {
 		logger.info ("输入一个选项");
 		int b=scanner.nextInt();//输入一个选项
 		//启动游戏
-		StartUpExeUtils.startUpExeOnly ("CMD /C " + ExeAddress.exeAddress ());
+		if(!StartUpExeUtils.checkProcessOnly ("Nox.exe")){
+			StartUpExeUtils.startUpExeOnly ("CMD /C " + ExeAddress.exeAddress ());
+		}
 		//  进入登录界面，默认直接登录，切换账号暂时无法实现
 		loginGame();
      	//	开启轮次、选项循环
 		FightController.fightGame (a,b);
+		//  结束进程2
+		ThreadSecondIsAlive=false;
 		
 	}
 }
