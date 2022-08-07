@@ -12,11 +12,15 @@ import java.awt.*;
  */
 public interface FightService {
 	
-	static boolean fightEnd () throws InterruptedException, AWTException {
-		return FightServiceImpl.fightEnd ();
+	static boolean fightEnd (Integer begin_num,Integer start_num,Integer end_num) throws InterruptedException, AWTException {
+		return FightServiceImpl.fightEnd (begin_num,start_num,end_num);
 	}
 	
-	static void soulBack(Integer num) throws InterruptedException, AWTException {
-		FightServiceImpl.soulBack(num);
+	static void soulBack(Integer begin_num,Integer num) throws InterruptedException, AWTException {
+		FightServiceImpl.soulBack(begin_num,num);
+	}
+	
+	static void returnHome() throws InterruptedException, AWTException {
+		FightServiceImpl.returnHome() ;
 	}
 }

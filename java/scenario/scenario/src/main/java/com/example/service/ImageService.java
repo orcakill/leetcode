@@ -36,6 +36,10 @@ public interface ImageService {
 		return imagesClickBack (folder,"夜神模拟器",re_num,1,2,true,false);
 	}
 	
+	static  boolean imagesClickBackIsEmpty (String folder,Integer re_num,boolean boole) throws InterruptedException,
+	                                                                                      AWTException {
+		return imagesClickBack (folder,"夜神模拟器",re_num,1,2,false,false);
+	}
 
 	
 	/*多张图片后台识别,手动设置参数*/
@@ -64,6 +68,10 @@ public interface ImageService {
 	                                                    InterruptedException,
 	                                                    AWTException {
 		return  imagesClickBack (files,"夜神模拟器",60,1,2,true,true);
+	}
+	
+	static String imagesClickBack (Map<String,String> files,Integer start_num,Integer end_num) throws InterruptedException, AWTException {
+		return  imagesClickBack (files,"夜神模拟器",60,start_num,end_num,true,true);
 	}
 	
 	static String imagesClickBack (Map<String,String> files,String process,Integer re_num,Integer start_time,

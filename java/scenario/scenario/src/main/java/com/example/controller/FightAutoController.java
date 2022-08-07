@@ -36,12 +36,8 @@ public class FightAutoController {
 		String file2 = "scenario/结界突破/挑战次数";
 		String file3 = "scenario/结界突破/寮结界";
 		String file4 = "scenario/结界突破/进攻";
-		String file5 = "scenario/御魂/角色头像";
-		String file6 = "scenario/御魂/退出挑战";
-		String file7 = "scenario/结界突破/失败";
 		String file8 = "scenario/结界突破/退出进攻";
 		String file41 = "scenario/返回";
-		String file9 = "scenario/首页";
 		int num = 0;
 		int num1 = 0;
 		int num2 = 0;
@@ -81,7 +77,7 @@ public class FightAutoController {
 			else {
 				logger.info ("结界未被攻破");
 			}
-			b1 = FightService.fightEnd ();
+			b1 = FightService.fightEnd (30,5,10);
 			if (b1) {
 				num1++;
 			}
@@ -115,7 +111,8 @@ public class FightAutoController {
 		String file7 = "scenario/结界突破/准备挑战";
 		boolean b1;
 		boolean b2 = false;
-		int num = 0; //战斗次数 默认为0次
+		logger.info ("准备进入探索");
+		loginExplore ();
 		//进入结界挑战
 		logger.info ("准备进入结界突破");
 		ImageService.imagesClickBack (file);
@@ -143,7 +140,7 @@ public class FightAutoController {
 				if (b2) {
 					ImageService.imagesClickBack (file7);
 				}
-				FightService.fightEnd ();
+				FightService.fightEnd (30,5,10);
 				if (ImageService.imagesClickBackIsEmpty (file5, 4)) {
 					logger.info ("每打完三个有额外奖励");
 					ImageService.imagesClickBack (file5);
@@ -179,6 +176,8 @@ public class FightAutoController {
 		boolean b1;
 		boolean b2;
 		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList = new ArrayList<> ();
+		logger.info ("准备进入探索");
+		loginExplore ();
 		logger.info ("准备进入御魂");
 		ImageService.imagesClickBack (file);
 		if (i == 10 || i == 11) {
@@ -220,7 +219,7 @@ public class FightAutoController {
 			
 			//选择魂十或魂十一
 			//开始挑战
-			soulBack (j);
+			soulBack (15,j);
 			//挑战结束
 			if (b) {
 				//关闭加成
@@ -248,7 +247,7 @@ public class FightAutoController {
 			ImageService.imagesClickBack (file21);
 			logger.info ("开始挑战");
 			//开始挑战
-			soulBack (j);
+			soulBack (60,j);
 		}
 		if (i == 31) {
 			logger.info ("进入御魂成功，准备选择日轮之陨");
@@ -265,7 +264,7 @@ public class FightAutoController {
 			ImageService.imagesClickBack (file23);
 			logger.info ("开始挑战");
 			//开始挑战
-			soulBack (j);
+			soulBack (15,j);
 		}
 		logger.info ("退出到探索");
 		//退出到探索
