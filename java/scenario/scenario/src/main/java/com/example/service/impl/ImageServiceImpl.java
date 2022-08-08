@@ -5,7 +5,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import com.example.model.entity.PictureIdentifyWorkPO;
 import com.example.service.ImageService;
@@ -125,12 +124,38 @@ public class ImageServiceImpl {
 		pictureIdentifyWorkPO3.setY (y1);
 		pictureIdentifyWorkPOList1.add (pictureIdentifyWorkPO3);
 		logger.info ("准备点击"+name);
-		MouseClick.mouseClickBack (pictureIdentifyWorkPOList1);
+		MouseClick.mouseClickBack (pictureIdentifyWorkPOList1,"夜神模拟器");
 		logger.info ("进入"+name);
 		boole= ImageService.imagesClickBackIsEmpty (file2,1);
 		if(boole){
 			logger.info (name+"已存在");
 			return  true;
+		}
+		return  false;
+	}
+	
+	public static boolean imagesClickBackDrag (String folder, double x, double y, String process, Integer re_num, Integer start_time, Integer end_time,
+	                                           Boolean boole) throws AWTException, InterruptedException {
+		File file = new File (
+				System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
+		int  num_time;
+		if (file.exists ()) {
+			for (int i = 0; i <re_num; i++) {
+				num_time=getRandom (start_time,end_time);
+				Thread.sleep ( num_time* 1000L);
+				if (ImagesBackRec.imagesRecognitionDrag (folder,x,y,process)) {
+					logger.info ("图片匹配成功,已点击");
+					return  true;
+				}
+				else {
+					if(boole) {
+						logger.error ("在" + num_time + "秒的检测中，第" + (i + 1) + "次检查未发现" + folder + "的图片");
+					}
+				}
+			}
+		}
+		else {
+			logger.info (folder+"图标路径不存在");
 		}
 		return  false;
 	}

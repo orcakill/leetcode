@@ -84,4 +84,31 @@ public class FightServiceImpl {
 		logger.info ("进入首页");
 		
 	}
+	
+	public static boolean fightEndPVP (Integer begin_num, Integer start_num, Integer end_num) throws InterruptedException, AWTException {
+		String file1 = "scenario/斗技/头筹";
+		String file2= "scenario/斗技/战斗胜利";
+		String file3 = "scenario/斗技/战斗失败";
+		Map<String,String> map=new HashMap<> ();
+		String mapString;
+		//数据预处理
+		map.put ("拔得头筹",file1);
+		map.put ("战斗胜利",file2);
+		map.put ("战斗失败",file3);
+		logger.info ("等待"+begin_num+"秒");
+		Thread.sleep (begin_num*1000);
+		logger.info ("准备点击拔的头筹、战斗胜利、失败");
+		mapString= ImageService.imagesClickBack (map,start_num,end_num);
+		if(mapString.equals ("拔得头筹")){
+			logger.info ("战斗胜利");
+			ImageService.imagesClickBack (file2);
+			logger.info ("退出挑战");
+		}
+		if(mapString.equals ("战斗失败")){
+			logger.info ("战斗失败");
+			return  false;
+		}
+		logger.info ("斗技完成");
+		return  true;
+	}
 }

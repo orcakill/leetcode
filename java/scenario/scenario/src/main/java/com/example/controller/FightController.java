@@ -51,12 +51,18 @@ public class FightController {
 			}
 			else if (b==5) {
 				num=30;//永生之海
+				FightAutoController.soulFight(41,num,true);
 			}
 			else if (b==6) {
 				num=60;//御灵
+				FightAutoController.spirit (60);
+				
 			}
 			else if (b==7||b==8) {
 				num=60;//斗技  为崽而战
+			
+            //  斗技
+				FightAutoController.pvp(num);
 			}
 		}
 	}
