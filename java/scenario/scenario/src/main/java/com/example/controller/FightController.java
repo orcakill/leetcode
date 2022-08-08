@@ -17,6 +17,8 @@ public class FightController {
 	//循环战斗
 	public  static void fightGame(Integer a,Integer b) throws InterruptedException, AWTException {
 		Integer num=0;
+		//检查寄养，无则先寄养
+		//FightAutoController.foster();
 		//执行轮次
 		for(int i=0;i<a;i++){
 			if(b==1){

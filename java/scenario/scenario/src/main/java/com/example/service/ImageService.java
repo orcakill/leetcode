@@ -2,6 +2,7 @@ package com.example.service;
 
 
 
+import com.example.model.entity.PictureIdentifyWorkPO;
 import com.example.service.impl.ImageServiceImpl;
 
 import java.awt.*;
@@ -81,13 +82,8 @@ public interface ImageService {
 		return  ImageServiceImpl.imagesClickBack (files,process,re_num,start_time,end_time,boole,isClick);
 	}
 	
-	//拖动点击
-	static boolean imagesClickBackDrag (String folder,double x,double y) throws InterruptedException, AWTException {
-		return  imagesClickBackDrag (folder,x,y,"夜神模拟器" ,60,1,2,true);
-	}
 	
-	static boolean imagesClickBackDrag (String folder,double x,double y,String process,Integer re_num,Integer start_time,
-	                                    Integer end_time,Boolean boole) throws InterruptedException, AWTException {
-		return  ImageServiceImpl.imagesClickBackDrag (folder,x,y,process,re_num,start_time,end_time,boole);
+	static boolean imagesClickBackDrag (PictureIdentifyWorkPO pictureIdentifyWorkPO1, PictureIdentifyWorkPO pictureIdentifyWorkPO2, String process) throws InterruptedException, AWTException {
+		return  ImageServiceImpl.imagesClickBackDrag (pictureIdentifyWorkPO1,pictureIdentifyWorkPO2,process);
 	}
 }
