@@ -23,4 +23,9 @@ public interface FightService {
 	static void returnHome() throws InterruptedException, AWTException {
 		FightServiceImpl.returnHome() ;
 	}
+	
+	static boolean fightEndPVP (Integer begin_num,Integer start_num,Integer end_num) throws InterruptedException, AWTException {
+		return FightServiceImpl.fightEndPVP (begin_num,start_num,end_num);
+	}
+	
 }

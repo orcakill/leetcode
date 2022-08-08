@@ -4,15 +4,14 @@ import com.example.model.entity.PictureIdentifyWorkPO;
 import com.example.model.map.CoordinateAddress;
 import com.example.service.FightService;
 import com.example.service.ImageService;
+import com.example.util.ImagesBackRec;
 import com.example.util.MouseClick;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 import static com.example.controller.LoginController.loginExplore;
 import static com.example.service.FightService.soulBack;
@@ -42,7 +41,7 @@ public class FightAutoController {
 		int num1 = 0;
 		int num2 = 0;
 		boolean b;
-		boolean b1 = true;
+		boolean b1;
 		//流程开始
 		logger.info ("准备进入探索");
 		loginExplore ();
@@ -190,7 +189,7 @@ public class FightAutoController {
 				logger.info ("准备开启加成");
 				ImageService.imagesClickBack (file2);
 				logger.info ("点击加成成功，准备点击御魂加成");
-				MouseClick.mouseClickBack (pictureIdentifyWorkPOList);
+				MouseClick.mouseClickBack (pictureIdentifyWorkPOList,"夜神模拟器");
 				logger.info ("点击御魂加成成功，准备退出");
 				ImageService.imagesClickBack (file2);
 				//退出加成页面
@@ -225,7 +224,7 @@ public class FightAutoController {
 				//关闭加成
 				ImageService.imagesClickBack (file2);
 				logger.info ("点击加成成功，准备关闭御魂加成");
-				MouseClick.mouseClickBack (pictureIdentifyWorkPOList);
+				MouseClick.mouseClickBack (pictureIdentifyWorkPOList,"夜神模拟器");
 				logger.info ("关闭御魂加成成功，准备退出");
 				ImageService.imagesClickBack (file2);
 				//退出加成页面
@@ -272,5 +271,128 @@ public class FightAutoController {
 		logger.info ("退出到首页");
 		//退出到首页
 		ImageService.imagesClickBack (file32);
+	}
+	
+	public static void spirit (int num) throws InterruptedException, AWTException {
+		String file = "scenario/御灵/御灵图标";
+		String file1 = "scenario/御灵/神龙";
+		String file2 = "scenario/御灵/白藏主";
+		String file3 = "scenario/御灵/黑豹";
+		String file4 = "scenario/御灵/孔雀";
+		String file5 = "scenario/御灵/第三层";
+		String file6 = "scenario/返回";
+		logger.info ("准备进入探索");
+		loginExplore ();
+		logger.info ("准备进入御灵");
+		ImageService.imagesClickBack (file);
+		logger.info ("进入御灵");
+		//判断当前是星期几，周一无法打御灵，周二神龙，周三白藏主，周四黑豹，周五孔雀，周六周日白藏主
+		Date today = new Date ();
+		Calendar c = Calendar.getInstance ();
+		c.setTime (today);
+		int weekday = c.get (Calendar.DAY_OF_WEEK);
+		//周一
+		if (weekday == 2) {
+			logger.info ("无法打御灵");
+			System.exit (0);
+		}
+		//周二
+		else if (weekday == 3) {
+			
+			logger.info ("准备进入御灵神龙");
+			ImageService.imagesClickBack (file1);
+			logger.info ("进入御灵神龙");
+		}
+		//周三、周六和周日
+		else if (weekday == 4 || weekday == 7 || weekday == 1) {
+
+			logger.info ("准备进入御灵白藏主");
+			ImageService.imagesClickBack (file2);
+			logger.info ("进入御灵白藏主");
+		}
+		//周四
+		else if (weekday == 5) {
+
+			logger.info ("准备进入御灵黑豹");
+			ImageService.imagesClickBack (file3);
+			logger.info ("进入御灵黑豹");
+		}
+		//周五
+		else if (weekday == 6) {
+
+			logger.info ("准备进入御灵孔雀");
+			ImageService.imagesClickBack (file4);
+			logger.info ("进入御灵孔雀");
+		}
+		logger.info ("选择第三层");
+		ImageService.imagesClickBack (file5);
+		logger.info ("开始挑战");
+		soulBack (15,num);
+		//退出到探索
+		logger.info ("退出到探索");
+		ImageService.imagesClickBack (file6);
+		//退出到探索
+		logger.info ("退出到首页");
+		ImageService.imagesClickBack (file6);
+	}
+	
+	public static void pvp (Integer num) throws InterruptedException, AWTException {
+		String file = "scenario/斗技/开始挑战";
+		String file1 = "scenario/斗技/自动选择";
+		String file2 = "scenario/斗技/段位晋升";
+		String file3 = "scenario/斗技/额外奖励";
+		String file4 = "scenario/返回";
+		String file5 = "scenario/斗技/斗技图标";
+		String file6 = "scenario/斗技/自动战斗";
+		boolean b;
+		boolean b1;
+		boolean b2;
+		int num1 = 0;
+		int num2 = 0;
+		//	进入町中
+		LoginController.loginTown ();
+		//  进入斗技
+		ImageService.imagesClickBack (file5);
+		for (int i = 1; i <=10; i++) {
+			logger.info ("准备挑战");
+			ImageService.imagesClickBack (file);
+			logger.info ("进入挑战，准备自动选择");
+			ImageService.imagesClickBack (file1);
+			logger.info ("自动选择完成，准备自动战斗");
+			Thread.sleep (2000);
+			logger.info ("等待");
+			logger.info ("准备拔得头筹、战斗胜利或战斗失败");
+			b = FightService.fightEndPVP (30,30,60);
+			if (b) {
+				num1++;
+			}
+			else {
+				num2++;
+			}
+			logger.info ("判断是否段位晋升");
+			b2= ImageService.imagesClickBack (file2, 5);
+			if (!b2) {
+				logger.info ("没有段位晋升");
+			}
+			else {
+				logger.info ("存在段位晋升");
+			}
+			logger.info ("判断是否有额外奖励");
+			b1 = ImageService.imagesClickBack (file3,6);
+			if (!b1) {
+				logger.info ("没有额外奖励");
+			}
+			else {
+				logger.info ("存在额外奖励");
+			}
+			logger.info ("第" + i + "次挑战完成，胜利" + num1 + "次，失败" + num2 + "次，胜率" + num1 * 100 / i + "%");
+		}
+		//返回首页
+		logger.info ("斗技结束");
+		ImageService.imagesClickBack (file4);
+		logger.info ("回町中武馆");
+		ImageService.imagesClickBack (file4);
+		logger.info ("回首页");
+		ImageService.imagesClickBack (file4);
 	}
 }

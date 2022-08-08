@@ -14,7 +14,7 @@ public interface ImageService {
 	
 	/*多张图片后台识别,参数默认，识别次数，识别起始间隔，识别结束间隔，是否返回日志信息,点击*/
 	static boolean imagesClickBack (String folder) throws InterruptedException, AWTException {
-		return  imagesClickBack (folder,"夜神模拟器",60,1,2,true,true);
+		return  imagesClickBack (folder,"夜神模拟器" ,60,1,2,true,true);
 	}
 	
 	static boolean imagesClickBack (String folder,Integer re_num) throws InterruptedException, AWTException {
@@ -79,5 +79,15 @@ public interface ImageService {
 	                                                    InterruptedException,
 	                                                    AWTException {
 		return  ImageServiceImpl.imagesClickBack (files,process,re_num,start_time,end_time,boole,isClick);
+	}
+	
+	//拖动点击
+	static boolean imagesClickBackDrag (String folder,double x,double y) throws InterruptedException, AWTException {
+		return  imagesClickBackDrag (folder,x,y,"夜神模拟器" ,60,1,2,true);
+	}
+	
+	static boolean imagesClickBackDrag (String folder,double x,double y,String process,Integer re_num,Integer start_time,
+	                                    Integer end_time,Boolean boole) throws InterruptedException, AWTException {
+		return  ImageServiceImpl.imagesClickBackDrag (folder,x,y,process,re_num,start_time,end_time,boole);
 	}
 }

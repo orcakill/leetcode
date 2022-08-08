@@ -17,13 +17,13 @@ import org.junit.Test;
  * @Date 2022/8/6 21:12
  * @Created by orcakill
  */
-public class ImageServiceTest extends TestCase {
+public class ImageServiceTest {
 	
 	public static final Logger logger = LogManager.getLogger ("ImageServiceTest ");
 	
 	@Test
 	public void   testImagesClick1() throws InterruptedException, AWTException {
-		Double bl = ComputerScaling.getScale ();
+		double bl = ComputerScaling.getScale ();
 		logger.info ("准备开始");
 		Thread.sleep (5000);
 		for(int i=0;i<10;i++){

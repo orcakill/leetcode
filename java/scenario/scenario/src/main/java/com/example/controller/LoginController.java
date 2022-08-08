@@ -91,5 +91,15 @@ public class LoginController {
 		}
 		
 	}
+	
+	public static void loginTown () throws InterruptedException, AWTException {
+		String file1 = "scenario/首页/首页勾玉";
+		String file2 = "scenario/斗技/町中武馆";
+		boolean boole = ImageService.imagesClickBackCount (file1, file2, "町中", 1, 3);
+		if (boole) {
+			logger.info ("进入町中");
+		}
+		
+	}
 }
 
