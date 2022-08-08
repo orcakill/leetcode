@@ -395,4 +395,25 @@ public class FightAutoController {
 		logger.info ("回首页");
 		ImageService.imagesClickBack (file4);
 	}
+	
+	//寄养
+	public static void foster () throws InterruptedException, AWTException {
+		String file1="scenario/阴阳寮/阴阳寮图标";
+		String file2="scenario/阴阳寮/结界";
+		String file3="scenario/阴阳寮/式神育成";
+		String file4="scenario/阴阳寮/可寄养";
+		String file5="scenario/阴阳寮/好友标题";
+		String file6="scenario/阴阳寮/太鼓";
+		String file7="scenario/阴阳寮/斗鱼";
+		String file8="scenario/阴阳寮/未放置";
+		String file9="scenario/阴阳寮/进入结界";
+		String file10="scenario/阴阳寮/大吉达摩";
+		String file11="scenario/通用/确认";
+		String file12="scenario/返回";
+		logger.info ("进入阴阳寮");
+		ImageService.imagesClickBack (file1);
+		logger.info ("进入结界");
+		ImageService.imagesClickBack (file2);
+		logger.info ("进入式神育成");
+	}
 }
