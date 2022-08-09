@@ -113,6 +113,7 @@ public class ImageServiceImpl {
 		while (!b1){
 			logger.info ("等待2秒钟");
 			Thread.sleep (2000);
+			logger.info ("准备识别"+file1);
 			b1=ImageService.imagesClickBackIsEmpty (file1,1);
 		}
 		PictureIdentifyWorkPO pictureIdentifyWorkPO1 = ImagesBackRec.imagesRecognitionMouse (file1,process);
@@ -127,11 +128,12 @@ public class ImageServiceImpl {
 		MouseClick.mouseClickBack (pictureIdentifyWorkPOList1,"夜神模拟器");
 		logger.info ("进入"+name);
 		boole= ImageService.imagesClickBackIsEmpty (file2,1);
-		if(boole){
-			logger.info (name+"已存在");
-			return  true;
+		if(!boole){
+			logger.info (file2+"未识别,"+name+"未进入");
+			logger.info ("重新尝试");
+			imagesClickBackCount(file1,file2,name,x,y,process);
 		}
-		return  false;
+		return  true;
 	}
 	
 	public static boolean imagesClickBackDrag (PictureIdentifyWorkPO pictureIdentifyWorkPO1, PictureIdentifyWorkPO pictureIdentifyWorkPO2,

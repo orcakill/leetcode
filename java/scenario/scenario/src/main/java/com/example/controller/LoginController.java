@@ -30,13 +30,18 @@ public class LoginController {
 		String file6 = "scenario/首页/底部菜单打开";
 		String file7 = "scenario/返回";
 		//如皋已经是游戏首页，不需要登录
+		logger.info ("判断是否是游戏首页");
 		boolean b1 = ImageService.imagesClickBackIsEmpty (file1, 3);
 		boolean b2;
 		boolean b3 = false;
-		boolean b4 = ImageService.imagesClickBackIsEmpty (file7, 3);
+		boolean b4;
 		if (!b1) {
+			logger.info ("不是游戏首页");
+			logger.info ("判断是否存在返回按钮");
 			//单击阴阳师图标
+			b4 = ImageService.imagesClickBackIsEmpty (file7, 3);
 			if(b4){
+				logger.info ("当前存在返回按钮，开始返回");
 				FightService.returnHome ();
 			}
 			else {

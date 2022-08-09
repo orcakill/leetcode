@@ -76,7 +76,7 @@ public class FightAutoController {
 			else {
 				logger.info ("结界未被攻破");
 			}
-			b1 = FightService.fightEnd (30,5,10);
+			b1 = FightService.fightEnd (30, 5, 10);
 			if (b1) {
 				num1++;
 			}
@@ -139,7 +139,7 @@ public class FightAutoController {
 				if (b2) {
 					ImageService.imagesClickBack (file7);
 				}
-				FightService.fightEnd (30,5,10);
+				FightService.fightEnd (30, 5, 10);
 				if (ImageService.imagesClickBackIsEmpty (file5, 4)) {
 					logger.info ("每打完三个有额外奖励");
 					ImageService.imagesClickBack (file5);
@@ -189,7 +189,7 @@ public class FightAutoController {
 				logger.info ("准备开启加成");
 				ImageService.imagesClickBack (file2);
 				logger.info ("点击加成成功，准备点击御魂加成");
-				MouseClick.mouseClickBack (pictureIdentifyWorkPOList,"夜神模拟器");
+				MouseClick.mouseClickBack (pictureIdentifyWorkPOList, "夜神模拟器");
 				logger.info ("点击御魂加成成功，准备退出");
 				ImageService.imagesClickBack (file2);
 				//退出加成页面
@@ -218,13 +218,13 @@ public class FightAutoController {
 			
 			//选择魂十或魂十一
 			//开始挑战
-			soulBack (15,j);
+			soulBack (15, j);
 			//挑战结束
 			if (b) {
 				//关闭加成
 				ImageService.imagesClickBack (file2);
 				logger.info ("点击加成成功，准备关闭御魂加成");
-				MouseClick.mouseClickBack (pictureIdentifyWorkPOList,"夜神模拟器");
+				MouseClick.mouseClickBack (pictureIdentifyWorkPOList, "夜神模拟器");
 				logger.info ("关闭御魂加成成功，准备退出");
 				ImageService.imagesClickBack (file2);
 				//退出加成页面
@@ -237,7 +237,7 @@ public class FightAutoController {
 			ImageService.imagesClickBack (file11);
 			logger.info ("进入业原火");
 			logger.info ("选择业原火第三层");
-
+			
 			b1 = ImageService.imagesClickBackIsEmpty (file21, 30);
 			if (!b1) {
 				logger.info ("没有选择到业原火第三层");
@@ -246,15 +246,15 @@ public class FightAutoController {
 			ImageService.imagesClickBack (file21);
 			logger.info ("开始挑战");
 			//开始挑战
-			soulBack (60,j);
+			soulBack (60, j);
 		}
 		if (i == 31) {
 			logger.info ("进入御魂成功，准备选择日轮之陨");
-
+			
 			ImageService.imagesClickBack (file13);
 			logger.info ("进入日轮之陨");
 			logger.info ("选择日轮之陨第三层");
-
+			
 			b1 = ImageService.imagesClickBackIsEmpty (file23, 30);
 			if (!b1) {
 				logger.info ("没有选择到日轮之陨三层");
@@ -263,7 +263,7 @@ public class FightAutoController {
 			ImageService.imagesClickBack (file23);
 			logger.info ("开始挑战");
 			//开始挑战
-			soulBack (15,j);
+			soulBack (15, j);
 		}
 		logger.info ("退出到探索");
 		//退出到探索
@@ -305,21 +305,21 @@ public class FightAutoController {
 		}
 		//周三、周六和周日
 		else if (weekday == 4 || weekday == 7 || weekday == 1) {
-
+			
 			logger.info ("准备进入御灵白藏主");
 			ImageService.imagesClickBack (file2);
 			logger.info ("进入御灵白藏主");
 		}
 		//周四
 		else if (weekday == 5) {
-
+			
 			logger.info ("准备进入御灵黑豹");
 			ImageService.imagesClickBack (file3);
 			logger.info ("进入御灵黑豹");
 		}
 		//周五
 		else if (weekday == 6) {
-
+			
 			logger.info ("准备进入御灵孔雀");
 			ImageService.imagesClickBack (file4);
 			logger.info ("进入御灵孔雀");
@@ -327,7 +327,7 @@ public class FightAutoController {
 		logger.info ("选择第三层");
 		ImageService.imagesClickBack (file5);
 		logger.info ("开始挑战");
-		soulBack (15,num);
+		soulBack (15, num);
 		//退出到探索
 		logger.info ("退出到探索");
 		ImageService.imagesClickBack (file6);
@@ -353,7 +353,7 @@ public class FightAutoController {
 		LoginController.loginTown ();
 		//  进入斗技
 		ImageService.imagesClickBack (file5);
-		for (int i = 1; i <=10; i++) {
+		for (int i = 1; i <= 10; i++) {
 			logger.info ("准备挑战");
 			ImageService.imagesClickBack (file);
 			logger.info ("进入挑战，准备自动选择");
@@ -362,7 +362,7 @@ public class FightAutoController {
 			Thread.sleep (2000);
 			logger.info ("等待");
 			logger.info ("准备拔得头筹、战斗胜利或战斗失败");
-			b = FightService.fightEndPVP (30,30,60);
+			b = FightService.fightEndPVP (30, 30, 60);
 			if (b) {
 				num1++;
 			}
@@ -370,7 +370,7 @@ public class FightAutoController {
 				num2++;
 			}
 			logger.info ("判断是否段位晋升");
-			b2= ImageService.imagesClickBack (file2, 5);
+			b2 = ImageService.imagesClickBack (file2, 5);
 			if (!b2) {
 				logger.info ("没有段位晋升");
 			}
@@ -378,7 +378,7 @@ public class FightAutoController {
 				logger.info ("存在段位晋升");
 			}
 			logger.info ("判断是否有额外奖励");
-			b1 = ImageService.imagesClickBack (file3,6);
+			b1 = ImageService.imagesClickBack (file3, 6);
 			if (!b1) {
 				logger.info ("没有额外奖励");
 			}
@@ -398,22 +398,122 @@ public class FightAutoController {
 	
 	//寄养
 	public static void foster () throws InterruptedException, AWTException {
-		String file1="scenario/阴阳寮/阴阳寮图标";
-		String file2="scenario/阴阳寮/结界";
-		String file3="scenario/阴阳寮/式神育成";
-		String file4="scenario/阴阳寮/可寄养";
-		String file5="scenario/阴阳寮/好友标题";
-		String file6="scenario/阴阳寮/太鼓";
-		String file7="scenario/阴阳寮/斗鱼";
-		String file8="scenario/阴阳寮/未放置";
-		String file9="scenario/阴阳寮/进入结界";
-		String file10="scenario/阴阳寮/大吉达摩";
-		String file11="scenario/通用/确认";
-		String file12="scenario/返回";
+		String fileYYLTB = "scenario/阴阳寮/阴阳寮图标";
+		String fileJJ = "scenario/阴阳寮/结界";
+		String fileSSYC = "scenario/阴阳寮/式神育成";
+		String fileKJY = "scenario/阴阳寮/可寄养";
+		String fileHYBT = "scenario/阴阳寮/好友标题";
+		String fileLXTG = "scenario/阴阳寮/六星太鼓";
+		String fileWXTG = "scenario/阴阳寮/五星太鼓";
+		String fileSXTG = "scenario/阴阳寮/四星太鼓";
+		String fileLXDY = "scenario/阴阳寮/六星斗鱼";
+		String fileWXDY = "scenario/阴阳寮/五星斗鱼";
+		String fileSXDY = "scenario/阴阳寮/四星斗鱼";
+		String fileJJK = fileLXTG;
+		String fileWFZ = "scenario/阴阳寮/未放置";
+		String fileJRJJ = "scenario/阴阳寮/进入结界";
+		String fileDJDM = "scenario/阴阳寮/大吉达摩";
+		String fileQR = "scenario/通用/确认";
+		String fileFH = "scenario/返回";
+		int num = 0;//退出后重新进入好友列表的次数
+		PictureIdentifyWorkPO pictureIdentifyWorkPO1 = new PictureIdentifyWorkPO ();//记录好友标题位置
+		PictureIdentifyWorkPO pictureIdentifyWorkPO2 = new PictureIdentifyWorkPO ();//记录滚动起始位置
+		PictureIdentifyWorkPO pictureIdentifyWorkPO3 = new PictureIdentifyWorkPO ();//记录滚动终止位置
+		PictureIdentifyWorkPO pictureIdentifyWorkPO4 = new PictureIdentifyWorkPO ();//记录退出好友列表位置
+		boolean booleanKJY = false;//寄养位是否为空，是则进行寄养，否则退出到首页
+		boolean booleanWFZ = false;//好友是否放置结界卡，是则判断是否满足要求，不是则退出更换条件重进
+		boolean booleanJJK = false;//结界卡是否满足当前要求，不满足则滚动，满足则进入结界
+		boolean booleanJSJY = false;//判断寄养是否结束
 		logger.info ("进入阴阳寮");
-		ImageService.imagesClickBack (file1);
+		ImageService.imagesClickBack (fileYYLTB);
 		logger.info ("进入结界");
-		ImageService.imagesClickBack (file2);
+		ImageService.imagesClickBack (fileJJ);
 		logger.info ("进入式神育成");
+		ImageService.imagesClickBack (fileSSYC);
+		logger.info ("判断是否可寄养");
+		booleanKJY = ImageService.imagesClickBack (fileKJY, 5);
+		if (booleanKJY) {
+			logger.info ("进入可寄养");
+			ImageService.imagesClickBackIsEmpty (fileHYBT);
+			Thread.sleep (3000);
+			logger.info ("已进入好友列表");
+			pictureIdentifyWorkPO1 = ImagesBackRec.imagesRecognitionMouse (fileHYBT, "夜神模拟器");
+			pictureIdentifyWorkPO2.setX (pictureIdentifyWorkPO1.getX ());
+			pictureIdentifyWorkPO2.setY ((int) (pictureIdentifyWorkPO1.getY () * 2.3));
+			pictureIdentifyWorkPO3.setX (pictureIdentifyWorkPO1.getX ());
+			pictureIdentifyWorkPO3.setY ((int) (pictureIdentifyWorkPO1.getY () * 1.6));
+			pictureIdentifyWorkPO4.setX (pictureIdentifyWorkPO1.getX ());
+			pictureIdentifyWorkPO4.setY ((int) (pictureIdentifyWorkPO1.getY () * 0.5));
+			//开循环，0 六星太鼓 1 五星太鼓 2 四星太鼓 3 六星斗鱼 4 五星斗鱼 5 四星斗鱼
+			while (!booleanJSJY) {
+				logger.info ("当前好友结界卡是否未放置");
+				booleanWFZ = ImageService.imagesClickBack (fileWFZ,2);
+				if (booleanWFZ) {
+					logger.info ("好友未放置结界卡，退出后重新进入");
+					if (num == 0) {
+						fileJJK = fileWXTG;
+					}
+					if (num == 1) {
+						fileJJK = fileSXTG;
+					}
+					if (num == 2) {
+						fileJJK = fileLXDY;
+					}
+					if (num == 3) {
+						fileJJK = fileWXDY;
+					}
+					if (num == 4) {
+						fileJJK = fileSXDY;
+					}
+					if (num > 4) {
+						logger.info ("无高星结界卡，开始退出");
+						break;
+					}
+					num++;
+					logger.info ("退出到可寄养界面");
+					MouseClick.mouseClickBack (pictureIdentifyWorkPO4, "夜神模拟器");
+					logger.info ("重新进入好友列表");
+					ImageService.imagesClickBack (fileKJY);
+				}
+				else {
+					logger.info ("存在结界卡，判断是否是高星结界卡");
+					booleanJJK = ImageService.imagesClickBack (fileJJK, 2);
+					if (!booleanJJK) {
+						logger.info ("当前结界不是" + fileJJK + ",不可放置,滚动到下一个");
+						ImageService.imagesClickBackDrag (pictureIdentifyWorkPO2, pictureIdentifyWorkPO3, "夜神模拟器");
+						logger.info ("滚动完成,点击终止位置坐标");
+						MouseClick.mouseClickBack (pictureIdentifyWorkPO3, "夜神模拟器");
+					}
+					else {
+						logger.info ("存在高星结界卡" + fileJJK);
+						ImageService.imagesClickBack (fileJRJJ);
+						logger.info ("进入结界");
+						ImageService.imagesClickBack (fileDJDM);
+						logger.info ("大吉达摩寄养");
+						ImageService.imagesClickBack (fileQR);
+						logger.info ("确认");
+						logger.info ("检查是否寄养成功");
+						ImageService.imagesClickBack (fileFH);
+						ImageService.imagesClickBack (fileFH);
+						logger.info ("返回到式神育成");
+						ImageService.imagesClickBack (fileSSYC);
+						logger.info ("进入育成界面");
+						booleanJSJY = ImageService.imagesClickBack (fileKJY, 3);
+						if (!booleanJSJY) {
+							logger.info ("寄养失败，重新进入好友列表");
+							ImageService.imagesClickBack (fileKJY);
+						}
+						else {
+							logger.info ("寄养成功");
+							
+						}
+					}
+				}
+				
+			}
+		}
+		//退出
+		FightService.returnHome ();
+		
 	}
 }
