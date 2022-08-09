@@ -243,18 +243,20 @@ b:
 		int width;
 		int height;
 		int[][] img;
-		for (BufferedImage bufferedImage : imgs) {
-			width = bufferedImage.getWidth ();
-			height = bufferedImage.getHeight ();
-			img = new int[width][height];
-			
-			for (int w = 0; w < width; w++) {
-				for (int h = 0; h < height; h++) {
-					img[w][h] = bufferedImage.getRGB (w, h);
+		if(imgs.size ()>0) {
+			for (BufferedImage bufferedImage : imgs) {
+				width = bufferedImage.getWidth ();
+				height = bufferedImage.getHeight ();
+				img = new int[width][height];
+				
+				for (int w = 0; w < width; w++) {
+					for (int h = 0; h < height; h++) {
+						img[w][h] = bufferedImage.getRGB (w, h);
+					}
 				}
+				
+				ImagesData.add (img);
 			}
-			
-			ImagesData.add (img);
 		}
 		
 		return ImagesData;

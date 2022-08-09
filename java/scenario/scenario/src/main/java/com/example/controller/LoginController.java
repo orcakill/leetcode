@@ -90,7 +90,7 @@ public class LoginController {
 		String file1 = "scenario/首页/首页勾玉";
 		String file2 = "scenario/御魂/御魂图标";
 		//默认0 直接登录，不进行账号、大区切换
-		boolean boole = ImageService.imagesClickBackCount (file1, file2, "探索", 1, 3);
+		boolean boole = ImageService.imagesClickBackCount (file1, file2, "探索", 1, 3.5);
 		if (boole) {
 			logger.info ("进入游戏探索界面");
 		}
@@ -100,7 +100,7 @@ public class LoginController {
 	public static void loginTown () throws InterruptedException, AWTException {
 		String file1 = "scenario/首页/首页勾玉";
 		String file2 = "scenario/斗技/町中武馆";
-		boolean boole = ImageService.imagesClickBackCount (file1, file2, "町中", 1, 3);
+		boolean boole = ImageService.imagesClickBackCount (file1, file2, "町中", 1.2, 5);
 		if (boole) {
 			logger.info ("进入町中");
 		}

@@ -499,7 +499,7 @@ public class FightAutoController {
 						ImageService.imagesClickBack (fileSSYC);
 						logger.info ("进入育成界面");
 						booleanJSJY = ImageService.imagesClickBack (fileKJY, 3);
-						if (!booleanJSJY) {
+						if (booleanJSJY) {
 							logger.info ("寄养失败，重新进入好友列表");
 							ImageService.imagesClickBack (fileKJY);
 						}
