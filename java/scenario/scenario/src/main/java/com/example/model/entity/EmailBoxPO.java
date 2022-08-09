@@ -2,13 +2,13 @@ package com.example.model.entity;
 
 import lombok.Data;
 
-import javax.persistence.Id;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
 public class EmailBoxPO {
-    @Id
+
     private BigDecimal emailId; /*邮件id*/
     private String sender; /*发送人*/
     private String receiver; /*收信人*/

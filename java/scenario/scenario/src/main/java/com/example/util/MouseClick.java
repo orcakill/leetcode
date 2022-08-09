@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 import java.awt.event.InputEvent;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MouseClick {
@@ -78,6 +79,13 @@ public class MouseClick {
 	public static void mouseClickBack (List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList,String process) throws AWTException {
 		HWND hwnd = User32.INSTANCE.FindWindow (null, process);
 		mouseClickBackground (hwnd, pictureIdentifyWorkPOList);
+	}
+	
+	public static void mouseClickBack (PictureIdentifyWorkPO pictureIdentifyWorkPOList,String process) throws AWTException {
+		HWND hwnd = User32.INSTANCE.FindWindow (null, process);
+		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOS=new ArrayList<> ();
+		pictureIdentifyWorkPOS.add (pictureIdentifyWorkPOList);
+		mouseClickBackground (hwnd, pictureIdentifyWorkPOS);
 	}
 	
 	

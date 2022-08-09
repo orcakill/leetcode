@@ -2,13 +2,13 @@ package com.example.model.entity;
 
 import lombok.Data;
 
-import javax.persistence.Id;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
 public class MessageEventPO {
-    @Id
+
     private BigDecimal messageId; /*消息id*/
     private Date messageDate; /*消息日期*/
     private String messageTitle; /*消息标题*/
