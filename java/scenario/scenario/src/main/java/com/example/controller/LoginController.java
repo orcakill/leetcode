@@ -1,8 +1,10 @@
 package com.example.controller;
 
+import com.example.model.entity.PictureIdentifyWorkPO;
 import com.example.service.FightService;
 import com.example.service.ImageService;
 import com.example.util.ImagesBackRec;
+import com.example.util.MouseClick;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -78,20 +80,27 @@ public class LoginController {
 	public static void loginHome (Integer num) throws InterruptedException, AWTException {
 		String file1 = "scenario/登录/适龄提示";
 		String file2 = "scenario/首页/底部菜单";
-		String file3 = "scenario/登录/新服集结";
-		boolean booleanXFJJ=false;/*是否存在新服集结*/
+		PictureIdentifyWorkPO pictureIdentifyWorkPO1=new PictureIdentifyWorkPO ();
+		boolean booleanSLTS=false;/*是否存在适龄提示*/
 		boolean booleanHome=false;//进入首页
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ();
+		int windows_width =gd.getDisplayMode ().getWidth ();
+		int windows_height = gd.getDisplayMode().getHeight();
 		//默认0 直接登录，不进行账号、大区切换
 		if (num == 0) {
-			logger.info ("判断是否有新服集结");
-			booleanXFJJ= ImageService.imagesClickBack (file3,2);
-			if(booleanXFJJ){
-				logger.info ("有新服集结，适龄提示坐标有变化,改为新服集结的坐标");
-				booleanHome = ImageService.imagesClickBackCount (file3, file2, "首页", 25, 1);
+			while (!booleanSLTS){
+				Thread.sleep (1000);
+				logger.info ("确定适龄提示存在");
+				booleanSLTS=ImageService.imagesClickBackIsEmpty (file1);
 			}
-			else {
-				logger.info ("正常识别适龄提示");
-				booleanHome = ImageService.imagesClickBackCount (file1, file2, "首页", 25, 1);
+			logger.info ("存在适龄提示");
+			pictureIdentifyWorkPO1=ImagesBackRec.imagesRecognitionMouse (file1,"夜神模拟器");
+			pictureIdentifyWorkPO1.setX (windows_width/2);
+			MouseClick.mouseClickBack (pictureIdentifyWorkPO1,"夜神模拟器");
+			while (!booleanHome){
+				Thread.sleep (1000);
+				logger.info ("确定首页存在");
+				booleanHome=ImageService.imagesClickBackIsEmpty (file2,3);
 			}
 			if (booleanHome) {
 				logger.info ("进入游戏首页");
