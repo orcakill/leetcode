@@ -29,7 +29,7 @@ public class ImageServiceTest {
 			logger.info ("准备开始");
 			Thread.sleep (5000);
 			for (int i = 0; i < 10; i++) {
-				String folderName = "scenario/登录/适龄提示";
+				String folderName = "scenario/首页/首页勾玉";
 				File file = new File (
 						System.getProperty ("user.dir") + "/src/main/resources/image/" + folderName);
 				if (file.exists ()) {
@@ -38,9 +38,9 @@ public class ImageServiceTest {
 					logger.info ("初始图片x坐标：" + pictureIdentifyWorkPO1.getX () + "    初始y坐标" + pictureIdentifyWorkPO1.getY ());
 					Point point = MouseInfo.getPointerInfo ()
 					                       .getLocation ();
-					logger.info ("当前x坐标：" + point.getX () * bl + "    当前y坐标" + point.getY () * bl);
+					logger.info ("当前x坐标：" + point.getX () * bl + "    当前y坐标" + point.getY () * bl/1.1);
 					double x = point.getX ()* bl  / pictureIdentifyWorkPO1.getX ();
-					double y = point.getY ()* bl  / pictureIdentifyWorkPO1.getY ();
+					double y = point.getY ()* bl  /1.1/ pictureIdentifyWorkPO1.getY ();
 					logger.info ("当前x系数：" + x + "    当前y系数" + y);
 				}
 				else {
