@@ -99,7 +99,7 @@ public class LoginController {
 			MouseClick.mouseClickBack (pictureIdentifyWorkPO1,"夜神模拟器");
 			while (!booleanHome){
 				Thread.sleep (1000);
-				logger.info ("确定首页存在");
+				logger.info ("未进入首页");
 				booleanHome=ImageService.imagesClickBackIsEmpty (file2,3);
 			}
 			if (booleanHome) {
@@ -123,7 +123,7 @@ public class LoginController {
 	public static void loginTown () throws InterruptedException, AWTException {
 		String file1 = "scenario/首页/首页勾玉";
 		String file2 = "scenario/斗技/町中武馆";
-		boolean boole = ImageService.imagesClickBackCount (file1, file2, "町中", 1.2, 5);
+		boolean boole = ImageService.imagesClickBackCount (file1, file2, "町中", 1.1, 4.7);
 		if (boole) {
 			logger.info ("进入町中");
 		}

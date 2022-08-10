@@ -344,23 +344,29 @@ public class FightAutoController {
 		String file4 = "scenario/返回";
 		String file5 = "scenario/斗技/斗技图标";
 		String file6 = "scenario/斗技/自动战斗";
+		String fileDZWG = "scenario/斗技/町中武馆";
+		String fileDJFH = "scenario/斗技/斗技返回";
 		boolean b;
 		boolean b1;
 		boolean b2;
+		boolean booleanDJFH=false;
 		int num1 = 0;
 		int num2 = 0;
+		logger.info ("开始斗技");
 		//	进入町中
 		LoginController.loginTown ();
+		ImageService.imagesClickBack (fileDZWG);
 		//  进入斗技
 		ImageService.imagesClickBack (file5);
 		for (int i = 1; i <= 10; i++) {
 			logger.info ("准备挑战");
 			ImageService.imagesClickBack (file);
 			logger.info ("进入挑战，准备自动选择");
-			ImageService.imagesClickBack (file1);
+			ImageService.imagesClickBack (file1,20);
 			logger.info ("自动选择完成，准备自动战斗");
 			Thread.sleep (2000);
-			logger.info ("等待");
+			logger.info ("等待选将");
+			Thread.sleep (30*1000);
 			logger.info ("准备拔得头筹、战斗胜利或战斗失败");
 			b = FightService.fightEndPVP (30, 30, 60);
 			if (b) {
