@@ -119,6 +119,8 @@ public class ImageServiceImpl {
 		PictureIdentifyWorkPO pictureIdentifyWorkPO1 = ImagesBackRec.imagesRecognitionMouse (file1,process);
 		int x1 = (int)(pictureIdentifyWorkPO1.getX ()*x);
 		int y1 = (int)(pictureIdentifyWorkPO1.getY ()*y);
+		logger.info (file1+"的坐标（"+pictureIdentifyWorkPO1.getX ()+","+pictureIdentifyWorkPO1.getY ());
+		logger.info ("目标坐标（"+x1+","+y1+")");
 		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList1 = new ArrayList<> ();
 		PictureIdentifyWorkPO pictureIdentifyWorkPO3 = new PictureIdentifyWorkPO ();
 		pictureIdentifyWorkPO3.setX (x1);

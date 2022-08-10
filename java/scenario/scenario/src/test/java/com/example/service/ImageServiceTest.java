@@ -29,7 +29,7 @@ public class ImageServiceTest {
 			logger.info ("准备开始");
 			Thread.sleep (5000);
 			for (int i = 0; i < 10; i++) {
-				String folderName = "scenario/首页/首页勾玉";
+				String folderName = "scenario/登录/适龄提示";
 				File file = new File (
 						System.getProperty ("user.dir") + "/src/main/resources/image/" + folderName);
 				if (file.exists ()) {
