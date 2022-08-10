@@ -1,9 +1,14 @@
 package other.test;
 
+
 import org.bytedeco.javacpp.BytePointer;
 import org.bytedeco.leptonica.PIX;
 import org.bytedeco.tesseract.TessBaseAPI;
+import other.scenario.util.Screenshot;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 
 import static org.bytedeco.leptonica.global.lept.pixDestroy;
@@ -20,10 +25,17 @@ public class ImageOcr {
 		public static void main(String[] args) throws Exception{
 			System.out.println("开始识别");
 			long starttime = System.currentTimeMillis();
+			//		屏幕截图
+			//BufferedImage Window= Screenshot.screenshotBack ();
+			//ImageIO.write (Window, "jpg", new File ("D://123.jpg"));
 			//获取当前程序执行绝对路径。
-			String langpath="D:\\software\\tesseract-ocr\\tessdata";
-			String imgeurl="D:\\project\\leetcode\\java\\src\\main\\resources\\image\\scenario\\捕获.png";
-			String text = Ocr("chi_sim",langpath, imgeurl);
+			//String langpath="D:\\software\\tesseract-ocr\\tessdata";
+			//String imgeurl="D:\\123.jpg";
+			//String text = Ocr("chi_sim",langpath, imgeurl);
+			
+			//获取当前程序执行绝对路径。
+			String currentfile=System.getProperty("user.dir");
+			String text = Ocr("chi_sim", currentfile, "D:\\123.jpg");
 			System.out.println("discriminate interval:" + (System.currentTimeMillis() - starttime) + ",ocr text:" + text);
 		}
 		
@@ -31,7 +43,7 @@ public class ImageOcr {
 			//创建字节容器。
 			BytePointer outtext;
 			//启动识别器
-			TessBaseAPI ocrapi = new TessBaseAPI();
+			TessBaseAPI ocrapi = new TessBaseAPI ();
 			//初始化识别器的语言包
 			if (ocrapi.Init(langpath, lang) != 0) {
 				System.out.println("Could not initialize tesseract");

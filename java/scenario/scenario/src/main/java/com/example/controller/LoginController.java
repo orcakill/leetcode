@@ -48,14 +48,16 @@ public class LoginController {
 				logger.info ("单击阴阳师图标，进入登录页面");
 				ImageService.imagesClickBack (file2);
 				while (!ImageService.imagesClickBackIsEmpty (file3)) {
-					b2 = ImageService.imagesClickBackIsEmpty (file4, 1);
-					if (b2) {
-						logger.info ("有公告，关闭公告");
-						ImageService.imagesClickBack (file4);
-					}
 					Thread.sleep (5000);
 				}
 				logger.info ("已进入游戏登录界面");
+				Thread.sleep (3000);
+				logger.info ("判断是否有公告");
+				b2 = ImageService.imagesClickBackIsEmpty (file4, 1);
+				if (b2) {
+					logger.info ("有公告，关闭公告");
+					ImageService.imagesClickBack (file4);
+				}
 				loginHome (0);
 				logger.info ("打开底部菜单");
 				while (!b3) {
@@ -76,10 +78,22 @@ public class LoginController {
 	public static void loginHome (Integer num) throws InterruptedException, AWTException {
 		String file1 = "scenario/登录/适龄提示";
 		String file2 = "scenario/首页/底部菜单";
+		String file3 = "scenario/登录/新服集结";
+		boolean booleanXFJJ=false;/*是否存在新服集结*/
+		boolean booleanHome=false;//进入首页
 		//默认0 直接登录，不进行账号、大区切换
 		if (num == 0) {
-			boolean boole = ImageService.imagesClickBackCount (file1, file2, "首页", 25, 1);
-			if (boole) {
+			logger.info ("判断是否有新服集结");
+			booleanXFJJ= ImageService.imagesClickBack (file3,2);
+			if(booleanXFJJ){
+				logger.info ("有新服集结，适龄提示坐标有变化,改为新服集结的坐标");
+				booleanHome = ImageService.imagesClickBackCount (file3, file2, "首页", 25, 1);
+			}
+			else {
+				logger.info ("正常识别适龄提示");
+				booleanHome = ImageService.imagesClickBackCount (file1, file2, "首页", 25, 1);
+			}
+			if (booleanHome) {
 				logger.info ("进入游戏首页");
 			}
 		}
