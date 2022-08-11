@@ -85,7 +85,6 @@ public class LoginController {
 		boolean booleanHome=false;//进入首页
 		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ();
 		int windows_width =gd.getDisplayMode ().getWidth ();
-		int windows_height = gd.getDisplayMode().getHeight();
 		//默认0 直接登录，不进行账号、大区切换
 		if (num == 0) {
 			while (!booleanSLTS){
