@@ -23,71 +23,68 @@ public class ImagesBackRec {
 	private static final Logger logger = LogManager.getLogger (ImagesBackRec.class);
 	
 	public static boolean imagesRecognition (String FolderName) throws AWTException {
-//		屏幕截图
-		BufferedImage Window=Screenshot.screenshotBack ();
-//		图片
-		List<int[][]> ImagesData=imageToDate(FolderName);
-//		屏幕截图和图片对比
-		List<PictureIdentifyWorkPO> mouseXY=FindAllImgData (Window,ImagesData);
-//		鼠标点击
-		List<PictureIdentifyWorkPO> mouseXY1=new ArrayList<> ();
-//		鼠标点击
-		if(mouseXY.size ()>0){
-			int num=RandomUtil.randomMinute (mouseXY.size ());
+		//		屏幕截图
+		BufferedImage Window = Screenshot.screenshotBack ();
+		//		图片
+		List<int[][]> ImagesData = imageToDate (FolderName);
+		//		屏幕截图和图片对比
+		List<PictureIdentifyWorkPO> mouseXY = FindAllImgData (Window, ImagesData);
+		//		鼠标点击
+		List<PictureIdentifyWorkPO> mouseXY1 = new ArrayList<> ();
+		//		鼠标点击
+		if (mouseXY.size () > 0) {
+			int num = RandomUtil.randomMinute (mouseXY.size ());
 			mouseXY1.add (mouseXY.get (num));
 			MouseClick.mouseClickBack (mouseXY1);
-			return  true;
+			return true;
 		}
-		return  false;
+		return false;
 	}
 	
-	
-	
-	public static boolean imagesRecognitionIsEmpty(String FolderName) {
-//		屏幕截图
-		BufferedImage Window=Screenshot.screenshotBack ();
-//		图片
-		List<int[][]> ImagesData=imageToDate(FolderName);
-//		屏幕截图和图片对比
-		List<PictureIdentifyWorkPO> mouseXY=FindAllImgData(Window,ImagesData);
-		return  mouseXY.size ()>0;
+	public static boolean imagesRecognitionIsEmpty (String FolderName) {
+		//		屏幕截图
+		BufferedImage Window = Screenshot.screenshotBack ();
+		//		图片
+		List<int[][]> ImagesData = imageToDate (FolderName);
+		//		屏幕截图和图片对比
+		List<PictureIdentifyWorkPO> mouseXY = FindAllImgData (Window, ImagesData);
+		return mouseXY.size () > 0;
 	}
 	
-	public static PictureIdentifyWorkPO imagesRecognitionMouse(String FolderName) {
-//		屏幕截图
-		BufferedImage Window=Screenshot.screenshotBack ();
-//		图片
-		List<int[][]> ImagesData=imageToDate(FolderName);
-//		屏幕截图和图片对比
-		List<PictureIdentifyWorkPO> mouseXY=FindAllImgData(Window,ImagesData);
-//		鼠标点击
-		PictureIdentifyWorkPO pictureIdentifyWorkPO=new PictureIdentifyWorkPO ();
-		if(mouseXY.size ()>0){
-			pictureIdentifyWorkPO=mouseXY.get (0);
+	public static PictureIdentifyWorkPO imagesRecognitionMouse (String FolderName) {
+		//		屏幕截图
+		BufferedImage Window = Screenshot.screenshotBack ();
+		//		图片
+		List<int[][]> ImagesData = imageToDate (FolderName);
+		//		屏幕截图和图片对比
+		List<PictureIdentifyWorkPO> mouseXY = FindAllImgData (Window, ImagesData);
+		//		鼠标点击
+		PictureIdentifyWorkPO pictureIdentifyWorkPO = new PictureIdentifyWorkPO ();
+		if (mouseXY.size () > 0) {
+			pictureIdentifyWorkPO = mouseXY.get (0);
 		}
 		return pictureIdentifyWorkPO;
 	}
 	
 	/**
 	 * 本方法会根据图片数据从屏幕里找寻相同的图片信息,找到后会返回其对应的坐标集合
-	 *
-	 * @param Window - 屏幕图像
+	 * @param Window     - 屏幕图像
 	 * @param ImagesData - 指定图片数据集合
-	 *
 	 * @return - 返回图片在屏幕的坐标集合
 	 */
-	public static List<PictureIdentifyWorkPO> FindAllImgData(BufferedImage Window, List<int[][]> ImagesData) {
-		List<PictureIdentifyWorkPO> mouseMessages = new ArrayList<>();
+	public static List<PictureIdentifyWorkPO> FindAllImgData (BufferedImage Window, List<int[][]> ImagesData) {
+		List<PictureIdentifyWorkPO> mouseMessages = new ArrayList<> ();
 		PictureIdentifyWorkPO mouseXY = new PictureIdentifyWorkPO ();
 		// 解析屏幕图片数据
-		int width = Window.getWidth();
-		int height = Window.getHeight();
+		int width = Window.getWidth ();
+		int height = Window.getHeight ();
 		int[][] WindowData = new int[width][height];
 		
-		for (int w = 0; w < width; w++)
+		for (int w = 0; w < width; w++) {
 			for (int h = 0; h < height; h++) {
-				WindowData[w][h] = Window.getRGB(w, h);
+				WindowData[w][h] = Window.getRGB (w, h);
 			}
+		}
 		
 		// 将屏幕与全部目标图片对比
 		for (int[][] imagesDatum : ImagesData) {
@@ -131,15 +128,15 @@ b:
 								
 								logger.info ("在屏幕上找到图片了,坐标:( " + x + " , " + y + " )");
 								// 这是专门存储数据的类
-								x += (int) (Math.random () *0.1*imgWidth);
-								y += (int) (Math.random () *0.1*imgHeight);
+								x += (int) (Math.random () * 0.1 * imgWidth);
+								y += (int) (Math.random () * 0.1 * imgHeight);
 								mouseXY.setX (x);
 								mouseXY.setY (y);
 								mouseMessages.add (mouseXY);
-								if(mouseMessages.size ()>1){
+								if (mouseMessages.size () > 1) {
 									return mouseMessages;
 								}
-								break  a;
+								break a;
 							}
 							
 						}
@@ -151,8 +148,9 @@ b:
 		return mouseMessages;
 		
 	}
+	
 	// 对比方法
-	public static boolean equalsRGB(int RGB1, int RGB2) {
+	public static boolean equalsRGB (int RGB1, int RGB2) {
 		
 		int R1 = (RGB1 & 0xff0000) >> 16;
 		int G1 = (RGB1 & 0xff00) >> 8;
@@ -165,34 +163,28 @@ b:
 		return Math.abs (R1 - R2) < 5 && Math.abs (G1 - G2) < 5 && Math.abs (B1 - B2) < 5;
 	}
 	
-	
-	
-	
-	
-	public static List<int[][]> imageToDate(String FolderName){
+	public static List<int[][]> imageToDate (String FolderName) {
 		return getImagesGRB (Objects.requireNonNull (readFiles (FolderName)));
 	}
 	
 	/**
 	 * 本方法根据文件夹名从当前项目中找文件夹并且返回文件夹所有照片文件
-	 *
-	 * @param FolderName    - 指定的文件夹名字
-	 *
+	 * @param FolderName - 指定的文件夹名字
 	 * @return - 返回指定文件夹内的所有照片文件
 	 */
-	public static List<BufferedImage> readFiles(String FolderName) {
+	public static List<BufferedImage> readFiles (String FolderName) {
 		
 		try {
 			// 获取当前目录下的指定文件夹
-			File Folder = new File(
-					System.getProperty("user.dir") + "/java/src/main/resources/image/"+ FolderName);
-			if(!Folder.isDirectory()){
-				Folder = new File(
-						System.getProperty("user.dir") + "/src/main/resources/image/"+ FolderName);
-			}			// 遍历文件夹的所有文件
-			if (Folder.isDirectory()) {
-				java.util.List<BufferedImage> files = new ArrayList<>();
-				String[] filelist = Folder.list();
+			File Folder = new File (
+					System.getProperty ("user.dir") + "/java/src/main/resources/image/" + FolderName);
+			if (!Folder.isDirectory ()) {
+				Folder = new File (
+						System.getProperty ("user.dir") + "/src/main/resources/image/" + FolderName);
+			}            // 遍历文件夹的所有文件
+			if (Folder.isDirectory ()) {
+				java.util.List<BufferedImage> files = new ArrayList<> ();
+				String[] filelist = Folder.list ();
 				// 将所有照片存储并且返回
 				assert filelist != null;
 				
@@ -214,7 +206,7 @@ b:
 			}
 		} catch (Exception e) {
 			
-			e.getStackTrace();
+			e.getStackTrace ();
 			
 		}
 		
@@ -222,13 +214,9 @@ b:
 		
 	}
 	
-	
-	
 	/**
 	 * 本方法将图片集合转化为图片数据集合
-	 *
 	 * @param imgs - 指定图片集合
-	 *
 	 * @return - 指定图片数据集合
 	 */
 	private static List<int[][]> getImagesGRB (List<BufferedImage> imgs) {
@@ -241,12 +229,13 @@ b:
 		for (BufferedImage bufferedImage : imgs) {
 			width = bufferedImage.getWidth ();
 			height = bufferedImage.getHeight ();
-			img =new int[width][height];
+			img = new int[width][height];
 			
-			for (int w = 0; w < width; w++)
+			for (int w = 0; w < width; w++) {
 				for (int h = 0; h < height; h++) {
 					img[w][h] = bufferedImage.getRGB (w, h);
 				}
+			}
 			
 			ImagesData.add (img);
 		}

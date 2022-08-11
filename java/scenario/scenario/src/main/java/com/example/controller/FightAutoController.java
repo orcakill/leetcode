@@ -511,7 +511,7 @@ public class FightAutoController {
 						}
 						else {
 							logger.info ("寄养成功");
-							
+							booleanJSJY=true;
 						}
 					}
 				}
