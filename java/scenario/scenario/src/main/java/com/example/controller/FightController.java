@@ -60,7 +60,7 @@ public class FightController {
 				
 			}
 			else if (b==7||b==8) {
-				num=60;//斗技  为崽而战
+				num=10;//斗技  为崽而战
 			
             //  斗技
 				FightAutoController.pvp(num);

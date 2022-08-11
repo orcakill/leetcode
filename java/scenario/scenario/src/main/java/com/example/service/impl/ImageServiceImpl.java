@@ -43,7 +43,11 @@ public class ImageServiceImpl {
 	                                                                                          InterruptedException,
 	                                                                                          AWTException {
 		File file = new File (
-				System.getProperty ("user.dir") + "/src/main/resources/image/" + folder);
+				"D:/project/leetcode/java/scenario/scenario/src/main/resources/image/" + folder);
+		if(!file.exists ()){
+			 file = new File (
+					System.getProperty ("user.dir") + "/image/" + folder);
+		}
 		int  num_time;
 		if (file.exists ()) {
 			for (int i = 0; i <re_num; i++) {
@@ -74,6 +78,11 @@ public class ImageServiceImpl {
 		for(Map.Entry folder:files.entrySet ()){
 			File file = new File (
 					System.getProperty ("user.dir") + "/src/main/resources/image/" + folder.getValue ());
+			if(!file.exists ()){
+				file = new File (
+						System.getProperty ("user.dir") + "/image/" + folder.getValue ());
+			}
+			
 			if(!file.exists ()){
 				b1=false;
 			}

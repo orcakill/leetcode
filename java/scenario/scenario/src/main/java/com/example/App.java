@@ -9,6 +9,8 @@ public class App{
     public  static  final Logger logger = LogManager.getLogger ("App");
     public  static   boolean ThreadSecondIsAlive=true;
     
+
+    
     public static void main(String[] args) {
         ThreadFirstController t1 = new ThreadFirstController ();
         ThreadSecondController t2 = new ThreadSecondController ();

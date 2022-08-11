@@ -112,7 +112,16 @@ public class LoginController {
 		String file1 = "scenario/首页/首页勾玉";
 		String file2 = "scenario/御魂/御魂图标";
 		//默认0 直接登录，不进行账号、大区切换
-		boolean boole = ImageService.imagesClickBackCount (file1, file2, "探索", 1, 3.5);
+		boolean boole=false;
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ();
+		int windows_width =gd.getDisplayMode ().getWidth ();
+		int windows_height = gd.getDisplayMode().getHeight();
+		if(windows_width==2560&&windows_height==1600){
+			boole = ImageService.imagesClickBackCount (file1, file2, "町中", 1.1, 3.5);
+		}
+		if(windows_width==1920&&windows_height==1080){
+			boole = ImageService.imagesClickBackCount (file1, file2, "町中", 1.1, 4.9);
+		}
 		if (boole) {
 			logger.info ("进入游戏探索界面");
 		}
@@ -122,7 +131,16 @@ public class LoginController {
 	public static void loginTown () throws InterruptedException, AWTException {
 		String file1 = "scenario/首页/首页勾玉";
 		String file2 = "scenario/斗技/町中武馆";
-		boolean boole = ImageService.imagesClickBackCount (file1, file2, "町中", 1.1, 4.7);
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ();
+		int windows_width =gd.getDisplayMode ().getWidth ();
+		int windows_height = gd.getDisplayMode().getHeight();
+		boolean boole=false;
+		if(windows_width==2560&&windows_height==1600){
+			boole = ImageService.imagesClickBackCount (file1, file2, "町中", 1.1, 4.7);
+		}
+		if(windows_width==1920&&windows_height==1080){
+			boole = ImageService.imagesClickBackCount (file1, file2, "町中", 1.1, 10);
+		}
 		if (boole) {
 			logger.info ("进入町中");
 		}
