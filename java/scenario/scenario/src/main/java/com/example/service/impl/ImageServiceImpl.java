@@ -46,7 +46,7 @@ public class ImageServiceImpl {
 				"D:/project/leetcode/java/scenario/scenario/src/main/resources/image/" + folder);
 		if(!file.exists ()){
 			 file = new File (
-					System.getProperty ("user.dir") + "/image/" + folder);
+					 "D:/study/Project/leetcode/java/scenario/scenario/src/main/resources/image/"  + folder);
 		}
 		int  num_time;
 		if (file.exists ()) {
