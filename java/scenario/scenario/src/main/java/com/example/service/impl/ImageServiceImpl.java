@@ -77,7 +77,7 @@ public class ImageServiceImpl {
 		int  num_time;
 		for(Map.Entry folder:files.entrySet ()){
 			File file = new File (
-					System.getProperty ("user.dir") + "/src/main/resources/image/" + folder.getValue ());
+					"D:/project/leetcode/java/scenario/scenario/src/main/resources/image/" + folder.getValue ());
 			if(!file.exists ()){
 				file = new File (
 						System.getProperty ("user.dir") + "/image/" + folder.getValue ());
@@ -128,7 +128,7 @@ public class ImageServiceImpl {
 		PictureIdentifyWorkPO pictureIdentifyWorkPO1 = ImagesBackRec.imagesRecognitionMouse (file1,process);
 		int x1 = (int)(pictureIdentifyWorkPO1.getX ()*x);
 		int y1 = (int)(pictureIdentifyWorkPO1.getY ()*y);
-		logger.info (file1+"的坐标（"+pictureIdentifyWorkPO1.getX ()+","+pictureIdentifyWorkPO1.getY ());
+		logger.info (file1+"的坐标（"+pictureIdentifyWorkPO1.getX ()+","+pictureIdentifyWorkPO1.getY ()+")");
 		logger.info ("目标坐标（"+x1+","+y1+")");
 		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList1 = new ArrayList<> ();
 		PictureIdentifyWorkPO pictureIdentifyWorkPO3 = new PictureIdentifyWorkPO ();
@@ -138,8 +138,8 @@ public class ImageServiceImpl {
 		logger.info ("准备点击"+name);
 		MouseClick.mouseClickBack (pictureIdentifyWorkPOList1,"夜神模拟器");
 		logger.info ("进入"+name);
-		Thread.sleep (2000);
-		boole= ImageService.imagesClickBackIsEmpty (file2,2);
+		Thread.sleep (5000);
+		boole= ImageService.imagesClickBackIsEmpty (file2,5);
         if(boole){
 			logger.info ("进入"+file2+"成功");
 			return  true;
