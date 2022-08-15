@@ -74,14 +74,15 @@ public class FightServiceImpl {
 		String file1 = "scenario/返回";
 		String file2 = "scenario/首页/首页勾玉";
 		logger.info ("判断有无返回按钮");
-		boolean b1=ImageService.imagesClickBackIsEmpty (file1,3);
 		boolean b2=false;
-		while (b1&&!b2){
-			logger.info ("有返回按钮，不在首页，开始返回首页");
-			b1=ImageService.imagesClickBack (file1,1);
+		while (!b2){
+			Thread.sleep (2000);
+			logger.info ("不在首页，开始返回首页");
+			ImageService.imagesClickBack (file1,1);
+			Thread.sleep (2000);
 			b2=ImageService.imagesClickBackIsEmpty (file2,1);
 		}
-		logger.info ("进入首页");
+		logger.info ("返回到首页");
 		
 	}
 	
