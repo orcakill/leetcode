@@ -26,7 +26,7 @@ public class FightController {
 		//执行轮次
 		for(int i=0;i<a;i++){
 			if(b==1){
-				num=1;//魂土，有阴阳寮战斗
+				num=40;//魂土，有阴阳寮战斗
 				//阴阳寮结界
 				FightAutoController.fightHome ();
 				//个人结界

@@ -68,6 +68,11 @@ public class FightServiceImpl {
 			logger.info ("第" + (i + 1) + "次挑战完成，剩余" + (num) + "次");
 			logger.info ("该次挑战使用时间为" + (System.currentTimeMillis () - a) / 1000 + "秒");
 		}
+		b1=ImageService.imagesClickBack (file1, 5);
+		while (!b1){
+			ImageService.imagesClickBack (file2, 5);
+			b1=ImageService.imagesClickBack (file1, 5);
+		}
 	}
 	
 	public static void returnHome () throws InterruptedException, AWTException {

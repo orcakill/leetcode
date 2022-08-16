@@ -25,7 +25,7 @@ public class ImageServiceTest {
 	@Test
 	public void   testImagesClick1() throws InterruptedException, AWTException {
 		double bl = ComputerScaling.getScale ();
-		boolean b1=true;
+		boolean b1=false;
 		if(!b1) {
 			logger.info ("准备开始");
 			Thread.sleep (5000);
@@ -41,7 +41,7 @@ public class ImageServiceTest {
 					                       .getLocation ();
 					logger.info ("当前x坐标：" + point.getX () * bl + "    当前y坐标" + point.getY () * bl/1.1);
 					double x = point.getX ()* bl  / pictureIdentifyWorkPO1.getX ();
-					double y = point.getY ()* bl  /1.1/ pictureIdentifyWorkPO1.getY ();
+					double y = point.getY ()* bl  / pictureIdentifyWorkPO1.getY ();
 					logger.info ("当前x系数：" + x + "    当前y系数" + y);
 				}
 				else {

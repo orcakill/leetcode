@@ -197,7 +197,7 @@ b:
 					"D:/project/leetcode/java/scenario/scenario/src/main/resources/image/" + FolderName);
 			if(!Folder.exists ()){
 				Folder = new File (
-						System.getProperty ("user.dir") + "/image/" + Folder);
+						"D:/study/Project/leetcode/java/scenario/scenario/src/main/resources/image/" + FolderName);
 			}
 			if (Folder.isDirectory ()) {
 				List<BufferedImage> files = new ArrayList<> ();
