@@ -26,6 +26,7 @@ public class ThreadSecondController extends Thread {
 		logger.info ("8 为崽而战30次");
 		logger.info ("9 小号刷大号协战");
 		logger.info ("10 阴阳寮结界");
+		logger.info ("11 阴阳寮结界+斗技5次");
 		Scanner scanner=new Scanner(System.in);
 		logger.info ("输入一个轮次");
 		int a=scanner.nextInt();//输入一个轮次
