@@ -63,8 +63,8 @@ public class LoginController {
 				loginHome (0);
 				logger.info ("打开底部菜单");
 				while (!b3) {
-					ImageService.imagesClickBack (file5);
-					b3 = ImageService.imagesClickBackIsEmpty (file6);
+					ImageService.imagesClickBack (file5,10);
+					b3 = ImageService.imagesClickBackIsEmpty (file6,10);
 					Thread.sleep (3000);
 				}
 				logger.info ("进入首页");

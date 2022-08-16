@@ -28,7 +28,7 @@ public class FightAutoController {
 	public static final Logger logger = LogManager.getLogger ("FightAutoController");
 	
 	//阴阳寮战斗
-	public static void fightHome () throws InterruptedException, AWTException {
+	public static List<Integer> fightHome () throws InterruptedException, AWTException {
 		//变量赋值
 		String file = "scenario/结界突破/结界突破";
 		String file1 = "scenario/结界突破/阴阳寮";
@@ -37,6 +37,7 @@ public class FightAutoController {
 		String file4 = "scenario/结界突破/进攻";
 		String file8 = "scenario/结界突破/退出进攻";
 		String file41 = "scenario/返回";
+		List<Integer> list =new ArrayList<> ();
 		int num = 0;
 		int num1 = 0;
 		int num2 = 0;
@@ -76,7 +77,7 @@ public class FightAutoController {
 			else {
 				logger.info ("结界未被攻破");
 			}
-			b1 = FightService.fightEnd (30, 5, 10);
+			b1 = FightService.fightEnd (30, 30,40 );
 			if (b1) {
 				num1++;
 			}
@@ -95,6 +96,10 @@ public class FightAutoController {
 		logger.info ("退出到探索");
 		ImageService.imagesClickBack (file41);
 		logger.info ("退出到首页");
+		list.add (num);
+		list.add (num1);
+		list.add(num2);
+		return  list;
 		
 	}
 	
@@ -349,7 +354,7 @@ public class FightAutoController {
 		boolean b;
 		boolean b1;
 		boolean b2;
-		boolean booleanDJFH=false;
+		boolean booleanYCQK=false;
 		int num1 = 0;
 		int num2 = 0;
 		logger.info ("开始斗技");
@@ -360,7 +365,26 @@ public class FightAutoController {
 		ImageService.imagesClickBack (file5);
 		for (int i = 1; i <= 10; i++) {
 			logger.info ("准备挑战");
-			ImageService.imagesClickBack (file);
+			booleanYCQK=ImageService.imagesClickBack (file,20);
+			while (!booleanYCQK){
+				logger.info ("判断是否段位晋升");
+				b2 = ImageService.imagesClickBack (file2, 5);
+				if (!b2) {
+					logger.info ("没有段位晋升");
+				}
+				else {
+					logger.info ("存在段位晋升");
+				}
+				logger.info ("判断是否有额外奖励");
+				b1 = ImageService.imagesClickBack (file3, 5);
+				if (!b1) {
+					logger.info ("没有额外奖励");
+				}
+				else {
+					logger.info ("存在额外奖励");
+				}
+				booleanYCQK=ImageService.imagesClickBack (file,20);
+			}
 			logger.info ("进入挑战，准备自动选择");
 			ImageService.imagesClickBack (file1,20);
 			logger.info ("自动选择完成，准备自动战斗");
@@ -374,22 +398,6 @@ public class FightAutoController {
 			}
 			else {
 				num2++;
-			}
-			logger.info ("判断是否段位晋升");
-			b2 = ImageService.imagesClickBack (file2, 5);
-			if (!b2) {
-				logger.info ("没有段位晋升");
-			}
-			else {
-				logger.info ("存在段位晋升");
-			}
-			logger.info ("判断是否有额外奖励");
-			b1 = ImageService.imagesClickBack (file3, 6);
-			if (!b1) {
-				logger.info ("没有额外奖励");
-			}
-			else {
-				logger.info ("存在额外奖励");
 			}
 			logger.info ("第" + i + "次挑战完成，胜利" + num1 + "次，失败" + num2 + "次，胜率" + num1 * 100 / i + "%");
 		}

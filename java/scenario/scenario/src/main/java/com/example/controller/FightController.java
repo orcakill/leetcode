@@ -4,6 +4,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.util.RandomUtil.getRandom;
 
@@ -20,6 +22,7 @@ public class FightController {
 	public  static void fightGame(Integer a,Integer b) throws InterruptedException, AWTException {
 		int num=0;
         int num1=0;
+		List<Integer> list=new ArrayList<> ();
 		//执行轮次
 		for(int i=0;i<a;i++){
 			if(b==1){
@@ -69,15 +72,26 @@ public class FightController {
 			}
 			else if (b==10) {
 				//阴阳寮结界
-				FightAutoController.fightHome ();
+				list=FightAutoController.fightHome ();
+				//检查寄养，无则寄养
+				FightAutoController.foster();
+				logger.info ("阴阳寮挑战第" + list.get (0)+ "次,成功" + list.get (1)+ "次，失败" + list.get (2) + "次");
 				if(i>0){
 					num1=getRandom (30,40);
 					logger.info ("等待"+num1+"分钟");
 					Thread.sleep ((long) num1 * 1000 * 60);
 				}
 			}
-			//检查寄养，无则寄养
-			FightAutoController.foster();
+			else if (b==11) {
+				num=5;
+				//阴阳寮结界
+				FightAutoController.fightHome ();
+				//斗技
+				FightAutoController.pvp(num);
+				//检查寄养，无则寄养
+				FightAutoController.foster();
+			}
+			
 		}
 
 	}
