@@ -76,8 +76,9 @@ public class FightController {
 					Thread.sleep ((long) num1 * 1000 * 60);
 				}
 			}
+			//检查寄养，无则寄养
+			FightAutoController.foster();
 		}
-		//检查寄养，无则寄养
-		FightAutoController.foster();
+
 	}
 }
