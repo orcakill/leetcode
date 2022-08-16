@@ -119,7 +119,7 @@ public class LoginController {
 		int windows_width =gd.getDisplayMode ().getWidth ();
 		int windows_height = gd.getDisplayMode().getHeight();
 		if(windows_width==2560&&windows_height==1600){
-			x=0.9;
+			x=1;
 			y=3.5;
 			logger.info ("x和y系数（"+x+","+y+")");
 			boole = ImageService.imagesClickBackCount (file1, file2, "探索", x, y);
