@@ -51,15 +51,15 @@ public class LoginController {
 				ImageService.imagesClickBack (file2);
 				while (!ImageService.imagesClickBackIsEmpty (file3)) {
 					Thread.sleep (5000);
+					logger.info ("判断是否有公告");
+					b2 = ImageService.imagesClickBackIsEmpty (file4, 1);
+					if (b2) {
+						logger.info ("有公告，关闭公告");
+						ImageService.imagesClickBack (file4);
+					}
 				}
 				logger.info ("已进入游戏登录界面");
 				Thread.sleep (3000);
-				logger.info ("判断是否有公告");
-				b2 = ImageService.imagesClickBackIsEmpty (file4, 1);
-				if (b2) {
-					logger.info ("有公告，关闭公告");
-					ImageService.imagesClickBack (file4);
-				}
 				loginHome (0);
 				logger.info ("打开底部菜单");
 				while (!b3) {

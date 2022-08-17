@@ -88,6 +88,16 @@ public class MouseClick {
 		mouseClickBackground (hwnd, pictureIdentifyWorkPOS);
 	}
 	
+	public static void mouseClickBack (double x,double y,String process) throws AWTException {
+		HWND hwnd = User32.INSTANCE.FindWindow (null, process);
+		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOS=new ArrayList<> ();
+		PictureIdentifyWorkPO pictureIdentifyWorkPO=new PictureIdentifyWorkPO ();
+		pictureIdentifyWorkPO.setX ((int) x);
+		pictureIdentifyWorkPO.setY ((int) y);
+		pictureIdentifyWorkPOS.add (pictureIdentifyWorkPO);
+		mouseClickBackground (hwnd, pictureIdentifyWorkPOS);
+	}
+	
 	
 	/**
 	 * 本方法可以向后台进程窗口发送鼠标事件从而实现后台操作游戏

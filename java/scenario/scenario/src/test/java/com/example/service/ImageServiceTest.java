@@ -22,11 +22,12 @@ public class ImageServiceTest {
 	
 	public static final Logger logger = LogManager.getLogger ("ImageServiceTest ");
 	
+	public static boolean b1=false;//是否开启测试
+	
 	@Test
 	public void   testImagesClick1() throws InterruptedException, AWTException {
 		double bl = ComputerScaling.getScale ();
-		boolean b1=false;
-		if(!b1) {
+		if(b1) {
 			logger.info ("准备开始");
 			Thread.sleep (5000);
 			for (int i = 0; i < 10; i++) {
@@ -54,10 +55,9 @@ public class ImageServiceTest {
 	@Test
 	public void   testImagesClick2() throws InterruptedException, AWTException {
 		double bl = ComputerScaling.getScale ();
-		boolean b1=true;
         String file1="scenario/寄养/好友标题";
 		logger.info ("准备开始");
-		if(!b1){
+		if(b1){
 		Thread.sleep (5000);
 		for(int i=0;i<10;i++){
 			File file= new File (
