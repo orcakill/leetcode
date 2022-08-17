@@ -108,45 +108,46 @@ public class FightAutoController {
 		String file1 = "scenario/结界突破/结界挑战劵数";
 		String file2 = "scenario/结界突破/个人结界";
 		String file3 = "scenario/结界突破/进攻";
-		String file4 = "scenario/御魂/角色头像";
 		String file5 = "scenario/御魂/退出挑战";
-		String file51 = "scenario/结界突破/失败";
-		String file6 = "scenario/结界突破/呱太结界";
 		String file7 = "scenario/结界突破/准备挑战";
-		boolean b1;
-		boolean b2 = false;
+		boolean booleanKXJJ;//可选结界
+		boolean booleanZBTJ;//准备挑战
 		logger.info ("准备进入探索");
 		loginExplore ();
 		//进入结界挑战
 		logger.info ("准备进入结界突破");
 		ImageService.imagesClickBack (file);
+		Thread.sleep (3000);
+		MouseClick.mouseClickBack (0,0,"夜神模拟器");
+		Thread.sleep (1000);
+		MouseClick.mouseClickBack (0,0,"夜神模拟器");
 		logger.info ("进入结界突破，检查结界挑战劵");
 		//判断结界挑战劵是否为0
 		while (!ImageService.imagesClickBackIsEmpty (file1, 3)) {
 			//不为0则进行结界挑战
 			logger.info ("结界劵数不为零");
-			//判断能否选择未挑战的个人结界
-			b1 = ImageService.imagesClickBackIsEmpty (file2, 3);
-			if (!b1) {
-				b2 = ImageService.imagesClickBackIsEmpty (file2, 3);
-			}
-			if (b1 || b2) {
+			//判断能否选择个人结界
+			booleanKXJJ= ImageService.imagesClickBackIsEmpty (file2, 3);
+			if (booleanKXJJ) {
 				logger.info ("能选择个人结界");
-				if (b1) {
-					ImageService.imagesClickBack (file2);
-				}
-				if (b2) {
-					ImageService.imagesClickBack (file6);
-				}
+				ImageService.imagesClickBack (file2);
 				logger.info ("点击个人结界成功，准备进攻");
 				ImageService.imagesClickBack (file3);
 				logger.info ("开始进攻");
-				if (b2) {
+				Thread.sleep (3000);
+				logger.info ("判断是否准备挑战");
+				booleanZBTJ=ImageService.imagesClickBackIsEmpty (file7,5);
+				if(booleanZBTJ){
+					logger.info ("准备挑战");
 					ImageService.imagesClickBack (file7);
 				}
+				else{
+					logger.info ("无需准备");
+				}
+				logger.info ("进入战斗");
 				FightService.fightEnd (30, 5, 10);
 				if (ImageService.imagesClickBackIsEmpty (file5, 4)) {
-					logger.info ("每打完三个有额外奖励");
+					logger.info ("判断是否有额外奖励");
 					ImageService.imagesClickBack (file5);
 					logger.info ("领取额外奖励成功");
 				}
@@ -363,7 +364,7 @@ public class FightAutoController {
 		ImageService.imagesClickBack (fileDZWG);
 		//  进入斗技
 		ImageService.imagesClickBack (file5);
-		for (int i = 1; i <= 10; i++) {
+		for (int i = 1; i <= num; i++) {
 			logger.info ("准备挑战");
 			booleanYCQK=ImageService.imagesClickBack (file,20);
 			while (!booleanYCQK){

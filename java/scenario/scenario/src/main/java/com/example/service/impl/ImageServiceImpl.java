@@ -59,13 +59,14 @@ public class ImageServiceImpl {
 				}
 				else {
 					if(b) {
-						logger.error ("在" + num_time + "秒的检测中，第" + (i + 1) + "次检查未发现" + folder + "的图片");
+						logger.info ("在" + num_time + "秒的检测中，第" + (i + 1) + "次检查未发现" + folder + "的图片");
 					}
 				}
 			}
 		}
 		else {
 			logger.info (folder+"图标路径不存在");
+			System.exit (0);
 		}
 		return  false;
 	}
@@ -100,7 +101,7 @@ public class ImageServiceImpl {
 					}
 					else {
 						if(b) {
-							logger.error ("在"+num_time+"秒的检测中，第" + (i + 1) + "次检查未发现"+file+"的图片");
+							logger.info ("在"+num_time+"秒的检测中，第" + (i + 1) + "次检查未发现"+file+"的图片");
 						}
 					}
 
@@ -110,6 +111,7 @@ public class ImageServiceImpl {
 		}
 		else {
 			logger.info (files+"集合中图标路径不存在");
+			System.exit (0);
 		}
 		return  null;
 	}

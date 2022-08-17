@@ -83,7 +83,7 @@ public class FightController {
 				}
 			}
 			else if (b==11) {
-				num=5;
+				num=4;
 				//阴阳寮结界
 				FightAutoController.fightHome ();
 				//斗技
