@@ -37,20 +37,31 @@ public class FightAutoController {
 		String file4 = "scenario/结界突破/进攻";
 		String file8 = "scenario/结界突破/退出进攻";
 		String file41 = "scenario/返回";
+		String fileGTRQ = "scenario/结界突破/呱太入侵";
 		List<Integer> list =new ArrayList<> ();
 		int num = 0;
 		int num1 = 0;
 		int num2 = 0;
 		boolean b;
 		boolean b1;
+		boolean booleanYYL;
 		//流程开始
 		logger.info ("准备进入探索");
 		loginExplore ();
 		logger.info ("准备进入结界突破");
 		ImageService.imagesClickBack (file);
-		sleep (2000);
 		logger.info ("进入结界突破，准备点击阴阳寮");
-		ImageService.imagesClickBack (file1);
+		booleanYYL=ImageService.imagesClickBack (file1,5);
+		while (!booleanYYL){
+			Thread.sleep (2000);
+			if (ImageService.imagesClickBackIsEmpty (fileGTRQ,5)){
+				logger.info ("有呱太入侵");
+				ImageService.imagesClickBack (fileGTRQ);
+				logger.info ("呱太入侵点击完成");
+				
+			}
+			booleanYYL=ImageService.imagesClickBack (file1,5);
+		}
 		sleep (2000);
 		logger.info ("进入寮突破，判断当前有无挑战次数");
 		//退出到探索

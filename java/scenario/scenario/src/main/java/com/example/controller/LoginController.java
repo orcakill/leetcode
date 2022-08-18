@@ -49,13 +49,18 @@ public class LoginController {
 			else {
 				logger.info ("单击阴阳师图标，进入登录页面");
 				ImageService.imagesClickBack (file2);
-				while (!ImageService.imagesClickBackIsEmpty (file3)) {
-					Thread.sleep (5000);
+				while (!ImageService.imagesClickBackIsEmpty (file3,10)) {
+					Thread.sleep (10000);
+					logger.info ("单击一下，防止有开场动画");
+					MouseClick.mouseClickBack (500,500,"夜神模拟器");
 					logger.info ("判断是否有公告");
 					b2 = ImageService.imagesClickBackIsEmpty (file4, 1);
 					if (b2) {
 						logger.info ("有公告，关闭公告");
 						ImageService.imagesClickBack (file4);
+					}
+					else{
+						logger.info ("无公告");
 					}
 				}
 				logger.info ("已进入游戏登录界面");
