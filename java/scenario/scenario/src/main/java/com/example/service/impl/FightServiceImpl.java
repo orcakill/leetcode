@@ -132,4 +132,24 @@ public class FightServiceImpl {
 		logger.info ("斗技完成");
 		return  true;
 	}
+	
+	public static boolean tryAgain (String file1, String file2) throws InterruptedException, AWTException {
+		ImageService.imagesClickBack (file1);
+		Thread.sleep (2000);
+		logger.info ("判断"+file2+"是否存在");
+		boolean b1;
+		boolean b2=ImageService.imagesClickBackIsEmpty (file2,5);
+		while (b2){
+			logger.info (file2+"不存在,判断"+file1+"是否存在");
+			b1=ImageService.imagesClickBackIsEmpty (file1,5);
+			if(b1){
+				logger.info (file1+"存在，重新点击");
+				ImageService.imagesClickBack (file1);
+			}
+			Thread.sleep (1000);
+			logger.info ("再次判断"+file2+"是否存在");
+			b2=ImageService.imagesClickBackIsEmpty (file2,5);
+		}
+		return  true;
+	}
 }
