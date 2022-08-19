@@ -450,12 +450,16 @@ public class FightAutoController {
 		boolean booleanWFZ = false;//好友是否放置结界卡，是则判断是否满足要求，不是则退出更换条件重进
 		boolean booleanJJK = false;//结界卡是否满足当前要求，不满足则滚动，满足则进入结界
 		boolean booleanJSJY = false;//判断寄养是否结束
+		Thread.sleep (2000);
 		logger.info ("进入阴阳寮");
 		ImageService.imagesClickBack (fileYYLTB);
+		Thread.sleep (2000);
 		logger.info ("进入结界");
 		ImageService.imagesClickBack (fileJJ);
+		Thread.sleep (2000);
 		logger.info ("进入式神育成");
 		ImageService.imagesClickBack (fileSSYC);
+		Thread.sleep (2000);
 		logger.info ("判断是否可寄养");
 		booleanKJY = ImageService.imagesClickBack (fileKJY, 5);
 		if (booleanKJY) {

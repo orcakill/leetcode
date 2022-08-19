@@ -28,4 +28,8 @@ public interface FightService {
 		return FightServiceImpl.fightEndPVP (begin_num,start_num,end_num);
 	}
 	
+	static boolean tryAgain (String  file1,String file2) throws InterruptedException, AWTException {
+		return FightServiceImpl.tryAgain(file1,file2);
+	}
+	
 }
