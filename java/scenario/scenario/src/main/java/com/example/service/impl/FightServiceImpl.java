@@ -59,8 +59,13 @@ public class FightServiceImpl {
 			sleep (1000);
 			b1=ImageService.imagesClickBack (file1, 5);
 			while (!b1){
+				logger.info ("判断是否有宠物奖励");
 				ImageService.imagesClickBack (file2, 5);
 				b1=ImageService.imagesClickBackIsEmpty (file1, 5);
+				if(b1){
+					logger.info ("再次点击挑战");
+					ImageService.imagesClickBack (file1, 5);
+				}
 			}
 			logger.info ("第" + (i + 1) + "次挑战中，等待挑战完成");
 			fightEnd (begin_num,1,2);
@@ -70,9 +75,12 @@ public class FightServiceImpl {
 		}
 		b1=ImageService.imagesClickBackIsEmpty (file1, 5);
 		while (!b1){
+			logger.info ("没找到挑战，判断有宠物奖励干扰");
 			ImageService.imagesClickBack (file2, 5);
+			logger.info ("处理宠物奖励");
 			b1=ImageService.imagesClickBackIsEmpty (file1, 5);
 		}
+		logger.info ("结束挑战");
 	}
 	
 	public static void returnHome () throws InterruptedException, AWTException {
