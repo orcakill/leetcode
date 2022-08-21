@@ -49,22 +49,26 @@ public class FightServiceImpl {
 	public static void soulBack (Integer begin_num,Integer num) throws InterruptedException, AWTException {
 		sleep (3000);
 		logger.info ("开始");
-		String file1 = "scenario/御魂/挑战";
-		String file2 = "scenario/御魂/宠物奖励";
+		String fileTZ = "scenario/御魂/挑战";
+		String fileCWJL = "scenario/御魂/宠物奖励";
+		String fileTCTZ = "scenario/御魂/退出挑战";
 		boolean b1;
+		boolean b2;
 		//		开始挑战,处理剩余次数的御魂
 		for (int i = 0; num > 0; i++) {
 			long a = System.currentTimeMillis ();//获取当前系统时间(毫秒)
 			logger.info ("准备开始挑战");
 			sleep (1000);
-			b1=ImageService.imagesClickBack (file1, 5);
+			b1=ImageService.imagesClickBack (fileTZ, 5);
 			while (!b1){
 				logger.info ("判断是否有宠物奖励");
-				ImageService.imagesClickBack (file2, 5);
-				b1=ImageService.imagesClickBackIsEmpty (file1, 5);
+				ImageService.imagesClickBack (fileCWJL, 5);
+				logger.info ("判断是否没退出挑战成功");
+				ImageService.imagesClickBack (fileTCTZ, 5);
+				b1=ImageService.imagesClickBackIsEmpty (fileTZ, 5);
 				if(b1){
 					logger.info ("再次点击挑战");
-					ImageService.imagesClickBack (file1, 5);
+					ImageService.imagesClickBack (fileTZ, 5);
 				}
 			}
 			logger.info ("第" + (i + 1) + "次挑战中，等待挑战完成");
@@ -73,12 +77,13 @@ public class FightServiceImpl {
 			logger.info ("第" + (i + 1) + "次挑战完成，剩余" + (num) + "次");
 			logger.info ("该次挑战使用时间为" + (System.currentTimeMillis () - a) / 1000 + "秒");
 		}
-		b1=ImageService.imagesClickBackIsEmpty (file1, 5);
+		b1=ImageService.imagesClickBackIsEmpty (fileTZ, 5);
 		while (!b1){
-			logger.info ("没找到挑战，判断有宠物奖励干扰");
-			ImageService.imagesClickBack (file2, 5);
-			logger.info ("处理宠物奖励");
-			b1=ImageService.imagesClickBackIsEmpty (file1, 5);
+			logger.info ("判断是否有宠物奖励");
+			ImageService.imagesClickBack (fileCWJL, 5);
+			logger.info ("判断是否没退出挑战成功");
+			ImageService.imagesClickBack (fileTCTZ, 5);
+			b1=ImageService.imagesClickBackIsEmpty (fileTZ, 5);
 		}
 		logger.info ("结束挑战");
 	}

@@ -42,7 +42,9 @@ public class FightController {
 				FightAutoController.soulFight(11,num,true);
 			}
 			else if (b==3) {
-				num=100;//业原火
+				num=40;//业原火
+				//阴阳寮结界
+				FightAutoController.fightHome ();
 				//个人结界
 				FightAutoController.borderCheck ();
 				//魂土
