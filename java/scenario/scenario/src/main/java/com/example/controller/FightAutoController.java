@@ -263,7 +263,7 @@ public class FightAutoController {
 			ImageService.imagesClickBack (file21);
 			logger.info ("开始挑战");
 			//开始挑战
-			soulBack (60, j);
+			soulBack (40 , j);
 		}
 		if (i == 31) {
 			logger.info ("进入御魂成功，准备选择日轮之陨");

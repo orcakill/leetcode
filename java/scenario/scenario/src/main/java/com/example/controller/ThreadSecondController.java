@@ -18,7 +18,7 @@ public class ThreadSecondController extends Thread {
 	public void run () {
 		logger.info ("1 阴阳寮结界+个人结界+魂土40次");
 		logger.info ("2 个人结界+魂土60次");
-		logger.info ("3 个人结界+业原火100张");
+		logger.info ("3 阴阳寮结界+个人结界+业原火40张");
 		logger.info ("4 个人结界+日轮之陨50次");
 		logger.info ("5 个人结界+永生之海30次");
 		logger.info ("6 御灵60次");
