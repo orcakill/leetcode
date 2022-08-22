@@ -360,9 +360,7 @@ public class FightAutoController {
 		String file3 = "scenario/斗技/额外奖励";
 		String file4 = "scenario/返回";
 		String file5 = "scenario/斗技/斗技图标";
-		String file6 = "scenario/斗技/自动战斗";
 		String fileDZWG = "scenario/斗技/町中武馆";
-		String fileDJFH = "scenario/斗技/斗技返回";
 		boolean b;
 		boolean b1;
 		boolean b2;
@@ -377,7 +375,7 @@ public class FightAutoController {
 		ImageService.imagesClickBack (file5);
 		for (int i = 1; i <= num; i++) {
 			logger.info ("准备挑战");
-			booleanYCQK=ImageService.imagesClickBack (file,20);
+			booleanYCQK=ImageService.imagesClickBack (file,5);
 			while (!booleanYCQK){
 				logger.info ("判断是否段位晋升");
 				b2 = ImageService.imagesClickBack (file2, 5);
