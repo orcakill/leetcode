@@ -37,9 +37,16 @@ public class ThreadSecondController extends Thread {
 			StartUpExeUtils.startUpExeOnly ("CMD /C " + ExeAddress.exeAddress ());
 		}
 		//  进入登录界面，默认直接登录，切换账号暂时无法实现
-		loginGame();
-     	//	开启轮次、选项循环
-		FightController.fightGame (a,b);
+		try{
+			loginGame();
+			//	开启轮次、选项循环
+			FightController.fightGame (a,b);
+		}
+		catch (Exception e) {
+			//  结束进程2
+			ThreadSecondIsAlive=false;
+			logger.info ("异常退出");
+		}
 		//  结束进程2
 		ThreadSecondIsAlive=false;
 		
