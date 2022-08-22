@@ -20,11 +20,11 @@ public class FightController {
 	
 	//循环战斗
 	public  static void fightGame(Integer a,Integer b) throws InterruptedException, AWTException {
-		int num=0;
-        int num1=0;
-		List<Integer> list=new ArrayList<> ();
+		int num;
+        int num1;
+		List<Integer> list;
 		//执行轮次
-		for(int i=0;i<a;i++){
+		for(int i=1;i<=a;i++){
 			if(b==1){
 				num=40;//魂土，有阴阳寮战斗
 				//阴阳寮结界
@@ -77,11 +77,14 @@ public class FightController {
 				list=FightAutoController.fightHome ();
 				//检查寄养，无则寄养
 				FightAutoController.foster();
-				logger.info ("阴阳寮挑战第" + list.get (0)+ "次,成功" + list.get (1)+ "次，失败" + list.get (2) + "次");
-				if(i>0&&i==a-1){
+				logger.info ("阴阳寮挑战第" +i+"轮,挑战"+list.get (0)+ "次,成功" + list.get (1)+ "次，失败" + list.get (2) + "次");
+				if(i<a){
 					num1=getRandom (30,40);
 					logger.info ("等待"+num1+"分钟");
 					Thread.sleep ((long) num1 * 1000 * 60);
+				}
+				else{
+					logger.info ("最后一轮，不等待");
 				}
 			}
 			else if (b==11) {
