@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="com.example.service.ImageServiceTest" time="0.8" errors="0" skipped="0">
+<testsuite tests="2" failures="0" name="com.example.service.ImageServiceTest" time="0.956" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="2022.2.1"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -31,7 +31,7 @@
     <property name="maven.ext.class.path" value="D:\software\toolbox\apps\IDEA-U\ch-0\222.3739.54\plugins\maven\lib\maven-event-listener.jar"/>
     <property name="classworlds.conf" value="D:\study\maven\apache-maven-3.8.1\bin\m2.conf"/>
     <property name="sun.jnu.encoding" value="GBK"/>
-    <property name="java.library.path" value="D:\study\java\jdk\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;F:\app\Administrator\product\11.2.0\client_1\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\software\VMware\bin\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\study\git\Git\cmd;D:\study\web\node\;D:\software\xshell7\;D:\software\tesseract-ocr;C:\Users\Administrator\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\Administrator\AppData\Local\Programs\Python\Python39\;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;C:\Users\Administrator\AppData\Roaming\npm;C:\Users\Administrator\AppData\Local\JetBrains\Toolbox\scripts;."/>
+    <property name="java.library.path" value="D:\study\java\jdk\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;F:\app\Administrator\product\11.2.0\client_1\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\software\VMware\bin\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\study\git\Git\cmd;D:\study\web\node\;D:\software\xshell7\;D:\software\tesseract-ocr;C:\Users\Administrator\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\Administrator\AppData\Local\Programs\Python\Python39\;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;C:\Users\Administrator\AppData\Roaming\npm;;C:\Users\Administrator\AppData\Local\JetBrains\Toolbox\scripts;."/>
     <property name="maven.conf" value="D:\study\maven\apache-maven-3.8.1/conf"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
@@ -64,6 +64,6 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.example.service.ImageServiceTest" name="testImagesClick1" time="0.711"/>
-  <testcase classname="com.example.service.ImageServiceTest" name="testImagesClick2" time="0.089"/>
+  <testcase classname="com.example.service.ImageServiceTest" name="testImagesClick1" time="0.824"/>
+  <testcase classname="com.example.service.ImageServiceTest" name="testImagesClick2" time="0.132"/>
 </testsuite>
