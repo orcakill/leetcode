@@ -45,6 +45,7 @@ public class ThreadSecondController extends Thread {
 		catch (Exception e) {
 			//  结束进程2
 			ThreadSecondIsAlive=false;
+			logger.info (e);
 			logger.info ("异常退出");
 		}
 		//  结束进程2
