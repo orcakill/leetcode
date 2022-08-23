@@ -28,7 +28,7 @@ public class FightAutoController {
 	public static final Logger logger = LogManager.getLogger ("FightAutoController");
 	
 	//阴阳寮战斗
-	public static List<Integer> fightHome () throws InterruptedException, AWTException {
+	public static Map<String,Integer> fightHome () throws InterruptedException, AWTException {
 		//变量赋值
 		String file = "scenario/结界突破/结界突破";
 		String file1 = "scenario/结界突破/阴阳寮";
@@ -38,7 +38,7 @@ public class FightAutoController {
 		String file8 = "scenario/结界突破/退出进攻";
 		String file41 = "scenario/返回";
 		String fileGTRQ = "scenario/结界突破/呱太入侵";
-		List<Integer> list =new ArrayList<> ();
+		Map<String,Integer> map=new HashMap<> ();
 		int num = 0;
 		int num1 = 0;
 		int num2 = 0;
@@ -96,21 +96,21 @@ public class FightAutoController {
 				num2++;
 			}
 			num++;
+			logger.info ("阴阳寮挑战第" + num + "次,成功" + num1 + "次，失败" + num2 + "次");
 			if (num == 8) {
 				logger.info ("阴阳寮挑战到达8次");
 				break;
 			}
-			logger.info ("阴阳寮挑战第" + num + "次,成功" + num1 + "次，失败" + num2 + "次");
 		}
 		logger.info ("无挑战次数或无可攻打结界");
 		ImageService.imagesClickBack (file41);
 		logger.info ("退出到探索");
 		ImageService.imagesClickBack (file41);
 		logger.info ("退出到首页");
-		list.add (num);
-		list.add (num1);
-		list.add(num2);
-		return  list;
+        map.put("阴阳寮本轮战斗",num);
+		map.put ("阴阳寮本轮战斗胜利",num1);
+		map.put ("阴阳寮本轮战斗失败",num2);
+		return  map;
 		
 	}
 	
@@ -353,7 +353,7 @@ public class FightAutoController {
 		ImageService.imagesClickBack (file6);
 	}
 	
-	public static void pvp (Integer num) throws InterruptedException, AWTException {
+	public static Map<String,Integer> pvp (Integer num) throws InterruptedException, AWTException {
 		String file = "scenario/斗技/开始挑战";
 		String file1 = "scenario/斗技/自动选择";
 		String file2 = "scenario/斗技/段位晋升";
@@ -361,6 +361,7 @@ public class FightAutoController {
 		String file4 = "scenario/返回";
 		String file5 = "scenario/斗技/斗技图标";
 		String fileDZWG = "scenario/斗技/町中武馆";
+		Map<String,Integer> map=new HashMap<> ();
 		boolean b;
 		boolean b1;
 		boolean b2;
@@ -418,6 +419,10 @@ public class FightAutoController {
 		ImageService.imagesClickBack (file4);
 		logger.info ("回首页");
 		ImageService.imagesClickBack (file4);
+		map.put ("斗技本轮战斗",num);
+		map.put ("斗技本轮战斗胜利",num1);
+		map.put ("斗技本轮战斗失败",num2);
+		return  map;
 	}
 	
 	//寄养
