@@ -35,7 +35,7 @@ public class LoginController {
 		logger.info ("判断是否是游戏首页");
 		boolean b1 = ImageService.imagesClickBackIsEmpty (file1, 3);
 		boolean b2;
-		boolean b3 = false;
+		boolean b3 = false;//底部菜单未打开
 		boolean b4;
 		if (!b1) {
 			logger.info ("不是游戏首页");
@@ -66,11 +66,15 @@ public class LoginController {
 				logger.info ("已进入游戏登录界面");
 				Thread.sleep (3000);
 				loginHome (0);
-				logger.info ("打开底部菜单");
+				
 				while (!b3) {
-					ImageService.imagesClickBack (file5,10);
-					b3 = ImageService.imagesClickBackIsEmpty (file6,10);
-					Thread.sleep (3000);
+					logger.info ("打开底部菜单");
+					ImageService.imagesClickBack (file5,5);
+					logger.info ("点击返回按钮");
+					ImageService.imagesClickBack (file7,5);
+					logger.info ("判断底部菜单是否打开");
+					b3 = ImageService.imagesClickBackIsEmpty (file6,5);
+					Thread.sleep (5000);
 				}
 				logger.info ("进入首页");
 			}
