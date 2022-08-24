@@ -85,7 +85,7 @@ public class FightController {
 				logger.info ("阴阳寮挑战第" + i + "轮,挑战" + map.get ("阴阳寮本轮战斗") + "次,成功" + map.get ("阴阳寮本轮战斗胜利") + "次，失败" + map.get ("阴阳寮本轮战斗失败") + "次");
 				if (b == 11) {
 					//斗技
-					Map<String, Integer> map2 = FightAutoController.pvp (3);
+					Map<String, Integer> map2 = FightAutoController.pvp (5);
 					map.put ("斗技本轮战斗", map2.get ("斗技本轮战斗"));
 					map.put ("斗技本轮战斗胜利", map2.get ("斗技本轮战斗胜利"));
 					map.put ("斗技本轮战斗失败", map2.get ("斗技本轮战斗失败"));
