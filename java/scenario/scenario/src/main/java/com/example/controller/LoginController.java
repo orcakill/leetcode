@@ -89,6 +89,7 @@ public class LoginController {
 	public static void loginHome (Integer num) throws InterruptedException, AWTException {
 		String file1 = "scenario/登录/适龄提示";
 		String file2 = "scenario/首页/底部菜单";
+		String fileBack = "scenario/返回";
 		PictureIdentifyWorkPO pictureIdentifyWorkPO1=new PictureIdentifyWorkPO ();
 		boolean booleanSLTS=false;/*是否存在适龄提示*/
 		boolean booleanHome=false;//进入首页
@@ -108,11 +109,11 @@ public class LoginController {
 			while (!booleanHome){
 				Thread.sleep (1000);
 				logger.info ("未进入首页");
+				logger.info ("点击返回按钮");
+				ImageService.imagesClickBack (fileBack,5);
 				booleanHome=ImageService.imagesClickBackIsEmpty (file2,3);
 			}
-			if (booleanHome) {
-				logger.info ("进入游戏首页");
-			}
+			logger.info ("进入游戏首页");
 		}
 		
 	}
