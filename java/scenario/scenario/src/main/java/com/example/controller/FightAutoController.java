@@ -413,12 +413,8 @@ public class FightAutoController {
 			logger.info ("第" + i + "次挑战完成，胜利" + num1 + "次，失败" + num2 + "次，胜率" + num1 * 100 / i + "%");
 		}
 		//返回首页
-		logger.info ("斗技结束");
-		ImageService.imagesClickBack (file4);
-		logger.info ("回町中武馆");
-		ImageService.imagesClickBack (file4);
-		logger.info ("回首页");
-		ImageService.imagesClickBack (file4);
+		logger.info ("斗技结束,返回首页");
+		FightService.returnHome ();
 		map.put ("斗技本轮战斗",num);
 		map.put ("斗技本轮战斗胜利",num1);
 		map.put ("斗技本轮战斗失败",num2);
