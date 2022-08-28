@@ -282,6 +282,22 @@ public class FightAutoController {
 			//开始挑战
 			soulBack (15, j);
 		}
+		if (i == 41) {
+			logger.info ("进入御魂成功，准备选择永生之海");
+			ImageService.imagesClickBack (file13);
+			logger.info ("进入日轮之陨");
+			logger.info ("选择日轮之陨第三层");
+			
+			b1 = ImageService.imagesClickBackIsEmpty (file23, 30);
+			if (!b1) {
+				logger.info ("没有选择到日轮之陨三层");
+				System.exit (0);
+			}
+			ImageService.imagesClickBack (file23);
+			logger.info ("开始挑战");
+			//开始挑战
+			soulBack (15, j);
+		}
 		logger.info ("退出到探索");
 		//退出到探索
 		ImageService.imagesClickBack (file32);
