@@ -45,6 +45,7 @@ public class FightAutoController {
 		boolean b;
 		boolean b1;
 		boolean booleanYYL;
+		boolean boolean_TCJG=false;
 		//流程开始
 		logger.info ("准备进入探索");
 		loginExplore ();
@@ -74,8 +75,13 @@ public class FightAutoController {
 			logger.info ("开始进攻");
 			b = ImageService.imagesClickBackIsEmpty (file4, 3);
 			if (b) {
-				ImageService.imagesClickBack (file8);
-				logger.info ("结界已被攻破，退出进攻");
+				boolean_TCJG=ImageService.imagesClickBackIsEmpty (file8);
+				while (boolean_TCJG){
+					logger.info ("结界已被攻破，退出进攻");
+					ImageService.imagesClickBack(file8);
+					logger.info ("判断是否退出进攻");
+					boolean_TCJG=ImageService.imagesClickBackIsEmpty (file8);
+				}
 				ImageService.imagesClickBack (file41);
 				logger.info ("退出到探索");
 				logger.info ("准备重新进入结界突破");
@@ -84,6 +90,7 @@ public class FightAutoController {
 				ImageService.imagesClickBack (file1);
 				logger.info ("重新判断是否有结界可以攻打");
 				continue;
+				
 			}
 			else {
 				logger.info ("结界未被攻破");
@@ -382,6 +389,7 @@ public class FightAutoController {
 		boolean b1;
 		boolean b2;
 		boolean booleanYCQK=false;
+		boolean booleanFH=false;
 		int num1 = 0;
 		int num2 = 0;
 		logger.info ("开始斗技");
@@ -430,6 +438,26 @@ public class FightAutoController {
 		}
 		//返回首页
 		logger.info ("斗技结束,返回首页");
+		booleanFH=ImageService.imagesClickBack (file4,5);
+		while (!booleanFH){
+			logger.info ("判断斗技结束后，是否段位晋升");
+			b2 = ImageService.imagesClickBack (file2, 5);
+			if (!b2) {
+				logger.info ("没有段位晋升");
+			}
+			else {
+				logger.info ("存在段位晋升");
+			}
+			logger.info ("判断斗技结束后，是否有额外奖励");
+			b1 = ImageService.imagesClickBack (file3, 5);
+			if (!b1) {
+				logger.info ("没有额外奖励");
+			}
+			else {
+				logger.info ("存在额外奖励");
+			}
+			booleanFH=ImageService.imagesClickBack (file4,20);
+		}
 		FightService.returnHome ();
 		map.put ("斗技本轮战斗",num);
 		map.put ("斗技本轮战斗胜利",num1);
