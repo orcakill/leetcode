@@ -2,7 +2,7 @@ from typing import List
 
 
 class Solution:
-    # 基础方案，遍历所有字符，判断字符是否是回文
+    # 基础方案，遍历所有字符，判断字符是否是回文,查出最大
     def longestPalindrome(self, s: str) -> str:
         ss=""
         max_length=0
