@@ -5,11 +5,12 @@ import com.example.controller.ThreadSecondController;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class App{
     public  static  final Logger logger = LogManager.getLogger ("App");
     public  static   boolean ThreadSecondIsAlive=true;
-    
-
     
     public static void main(String[] args) {
         ThreadFirstController t1 = new ThreadFirstController ();

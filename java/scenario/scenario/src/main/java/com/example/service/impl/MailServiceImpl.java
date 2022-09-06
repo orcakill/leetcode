@@ -32,7 +32,7 @@ public class MailServiceImpl {
 		return  emailBoxPOList;
 	}
 	
-	public static void sendMail (EmailBoxPO emailBoxPO) {
+	public static void sendMail () {
 		Calendar calendar = Calendar.getInstance ();
 		Date date = new Date ();
 		calendar.setTime (date);
