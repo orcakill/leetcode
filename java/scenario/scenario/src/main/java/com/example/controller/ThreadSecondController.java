@@ -39,7 +39,7 @@ public class ThreadSecondController extends Thread {
 		}
 		//  进入登录界面，默认直接登录，切换账号暂时无法实现
 		try{
-			 loginGame();
+			loginGame();
 			//	开启轮次、选项循环
 			FightController.fightGame (a,b);
 			sendMail();
