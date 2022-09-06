@@ -17,7 +17,7 @@ public class SendMail {
             // 邮箱服务器身份验证
             email.setAuthentication("orcakill@163.com", passWord);
             // 设置发件人邮箱(与用户名保持一致) 并且 设置发件人昵称
-            email.setFrom("orcakill@163.com","逆戟之刃");
+            email.setFrom("orcakill@163.com","小助手");
             // 邮件主题
             email.setSubject(emailBoxPO.getTitle ());
             // 邮件内容

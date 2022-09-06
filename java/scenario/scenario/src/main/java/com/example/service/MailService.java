@@ -12,7 +12,7 @@ import java.awt.*;
  * @Created by orcakill
  */
 public interface MailService {
-	static void sendMail(EmailBoxPO emailBoxPO) throws InterruptedException, AWTException {
-		MailServiceImpl.sendMail(emailBoxPO);
+	static void sendMail() throws InterruptedException, AWTException {
+		MailServiceImpl.sendMail();
 	}
 }

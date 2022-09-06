@@ -1,15 +1,17 @@
 package com.example.controller;
 
+import com.example.model.entity.EmailBoxPO;
+import com.example.model.entity.MessageEventPO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
+import static com.example.service.impl.MailServiceImpl.messageToEmail;
 import static com.example.util.RandomUtil.getRandom;
+import static com.example.util.SendMail.sendTextMail;
 
 /**
  * @Classname FigthController
@@ -39,12 +41,16 @@ public class FightController {
 				FightAutoController.borderCheck ();
 				//魂土
 				FightAutoController.soulFight (11, 40, true);
+				//检查寄养，无则寄养
+				FightAutoController.foster ();
 			}
 			else if (b == 2) {
 				//个人结界
 				FightAutoController.borderCheck ();
 				//魂土
 				FightAutoController.soulFight (11, 60, true);
+				//检查寄养，无则寄养
+				FightAutoController.foster ();
 			}
 			else if (b == 3) {
 				//阴阳寮结界
@@ -53,25 +59,35 @@ public class FightController {
 				FightAutoController.borderCheck ();
 				//魂土
 				FightAutoController.soulFight (21, 40, true);
+				//检查寄养，无则寄养
+				FightAutoController.foster ();
 			}
 			else if (b == 4) {
 				//个人结界
 				FightAutoController.borderCheck ();
 				//魂土
 				FightAutoController.soulFight (31, 50, true);
+				//检查寄养，无则寄养
+				FightAutoController.foster ();
 			}
 			else if (b == 5) {
 				//永生之海
 				FightAutoController.soulFight (41, 30, true);
+				//检查寄养，无则寄养
+				FightAutoController.foster ();
 			}
 			else if (b == 6) {
 				//御灵
 				FightAutoController.spirit (60);
+				//检查寄养，无则寄养
+				FightAutoController.foster ();
 				
 			}
 			else if (b == 7 || b == 8) {
 				//  斗技
 				FightAutoController.pvp (10);
+				//检查寄养，无则寄养
+				FightAutoController.foster ();
 			}
 			else if (b == 10 || b == 11) {
 				//阴阳寮结界
@@ -118,4 +134,8 @@ public class FightController {
 		}
 		
 	}
+	
+
+	
+	
 }
