@@ -511,9 +511,9 @@ public class FightAutoController {
 			Thread.sleep (3000);
 			logger.info ("已进入好友列表");
 			pictureIdentifyWorkPO1 = ImagesBackRec.imagesRecognitionMouse (fileHYBT, "夜神模拟器");
-			pictureIdentifyWorkPO2.setX (pictureIdentifyWorkPO1.getX ());
+			pictureIdentifyWorkPO2.setX ((int) (pictureIdentifyWorkPO1.getX ()*1.3));
 			pictureIdentifyWorkPO2.setY ((int) (pictureIdentifyWorkPO1.getY () * 2.3));
-			pictureIdentifyWorkPO3.setX (pictureIdentifyWorkPO1.getX ());
+			pictureIdentifyWorkPO3.setX ((int) (pictureIdentifyWorkPO1.getX ()*1.3));
 			pictureIdentifyWorkPO3.setY ((int) (pictureIdentifyWorkPO1.getY () * 1.6));
 			pictureIdentifyWorkPO4.setX (pictureIdentifyWorkPO1.getX ());
 			pictureIdentifyWorkPO4.setY ((int) (pictureIdentifyWorkPO1.getY () * 0.5));

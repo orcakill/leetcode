@@ -182,7 +182,7 @@ public class MouseClick {
 			// 模拟计算鼠标按下的间隔并且按下鼠标
 			Thread.sleep (moveTime);
 			ScanningProcess.User32.INSTANCE.PostMessage (hwnd, 513, new WinDef.WPARAM (513), lPARAM1);
-			Thread.sleep (0);
+			Thread.sleep (1000);
 			ScanningProcess.User32.INSTANCE.PostMessage (hwnd, 514, new WinDef.WPARAM (514), lPARAM2);
 			Thread.sleep (moveTime);
 		} catch (InterruptedException e) {
