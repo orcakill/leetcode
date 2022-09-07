@@ -36,11 +36,11 @@ public class FightController {
 		for (int i = 1; i <= a; i++) {
 			if (b == 1) {
 				//阴阳寮结界
-				//FightAutoController.fightHome ();
+				FightAutoController.fightHome ();
 				//个人结界
-				//FightAutoController.borderCheck ();
+				FightAutoController.borderCheck ();
 				//魂土
-				//FightAutoController.soulFight (11, 40, true);
+				FightAutoController.soulFight (11, 40, true);
 				//检查寄养，无则寄养
 				FightAutoController.foster ();
 			}

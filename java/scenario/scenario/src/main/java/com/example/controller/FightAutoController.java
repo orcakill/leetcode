@@ -242,7 +242,7 @@ public class FightAutoController {
 			
 			//选择魂十或魂十一
 			//开始挑战
-			soulBack (16, j);
+			soulBack (20, j);
 			//挑战结束
 			if (b) {
 				//关闭加成
