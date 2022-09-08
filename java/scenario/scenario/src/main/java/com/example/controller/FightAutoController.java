@@ -75,12 +75,12 @@ public class FightAutoController {
 			logger.info ("开始进攻");
 			b = ImageService.imagesClickBackIsEmpty (file4, 3);
 			if (b) {
-				boolean_TCJG=ImageService.imagesClickBackIsEmpty (file8);
+				boolean_TCJG=ImageService.imagesClickBackIsEmpty (file8,10);
 				while (boolean_TCJG){
 					logger.info ("结界已被攻破，退出进攻");
 					ImageService.imagesClickBack(file8);
 					logger.info ("判断是否退出进攻");
-					boolean_TCJG=ImageService.imagesClickBackIsEmpty (file8);
+					boolean_TCJG=ImageService.imagesClickBackIsEmpty (file8,10);
 				}
 				ImageService.imagesClickBack (file41);
 				logger.info ("退出到探索");
@@ -242,7 +242,7 @@ public class FightAutoController {
 			
 			//选择魂十或魂十一
 			//开始挑战
-			soulBack (20, j);
+			soulBack (22, j);
 			//挑战结束
 			if (b) {
 				//关闭加成

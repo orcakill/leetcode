@@ -4,11 +4,12 @@ import com.example.model.entity.EmailBoxPO;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 import org.apache.commons.mail.SimpleEmail;
+
 public class SendMail {
 
     //可用
     public  static void sendTextMail (EmailBoxPO emailBoxPO){
-        SimpleEmail email = new SimpleEmail();
+        SimpleEmail email = new SimpleEmail ();
         String  passWord=getPassWord.get163mail ();
         try {
             // 发送电子邮件的邮件服务器地址
