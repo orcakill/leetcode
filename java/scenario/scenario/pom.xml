@@ -110,20 +110,11 @@
           <version>4.13.2</version>
           <scope>test</scope>
       </dependency>
-
-      <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
       <dependency>
           <groupId>org.apache.commons</groupId>
           <artifactId>commons-email</artifactId>
           <version>1.5</version>
-          <exclusions>
-              <exclusion>
-                  <artifactId>javax.mail</artifactId>
-                  <groupId>com.sun.mail</groupId>
-              </exclusion>
-          </exclusions>
       </dependency>
-
 
 
   </dependencies>
