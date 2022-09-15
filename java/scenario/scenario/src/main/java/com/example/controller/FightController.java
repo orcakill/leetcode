@@ -1,17 +1,14 @@
 package com.example.controller;
 
-import com.example.model.entity.EmailBoxPO;
-import com.example.model.entity.MessageEventPO;
+import com.example.service.FightService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
-import java.util.*;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-import static com.example.service.impl.MailServiceImpl.messageToEmail;
 import static com.example.util.RandomUtil.getRandom;
-import static com.example.util.SendMail.sendTextMail;
 
 /**
  * @Classname FigthController
@@ -35,6 +32,7 @@ public class FightController {
 		//执行轮次
 		for (int i = 1; i <= a; i++) {
 			if (b == 1) {
+				FightService.returnHome ();
 				//阴阳寮结界
 				FightAutoController.fightHome ();
 				//个人结界
@@ -45,6 +43,7 @@ public class FightController {
 				FightAutoController.foster ();
 			}
 			else if (b == 2) {
+				FightService.returnHome ();
 				//个人结界
 				FightAutoController.borderCheck ();
 				//魂土
@@ -53,6 +52,7 @@ public class FightController {
 				FightAutoController.foster ();
 			}
 			else if (b == 3) {
+				FightService.returnHome ();
 				//阴阳寮结界
 				FightAutoController.fightHome ();
 				//个人结界
@@ -63,6 +63,7 @@ public class FightController {
 				FightAutoController.foster ();
 			}
 			else if (b == 4) {
+				FightService.returnHome ();
 				//个人结界
 				FightAutoController.borderCheck ();
 				//魂土
@@ -71,12 +72,14 @@ public class FightController {
 				FightAutoController.foster ();
 			}
 			else if (b == 5) {
+				FightService.returnHome ();
 				//永生之海
 				FightAutoController.soulFight (41, 30, true);
 				//检查寄养，无则寄养
 				FightAutoController.foster ();
 			}
 			else if (b == 6) {
+				FightService.returnHome ();
 				//御灵
 				FightAutoController.spirit (60);
 				//检查寄养，无则寄养
@@ -84,12 +87,14 @@ public class FightController {
 				
 			}
 			else if (b == 7 || b == 8) {
+				FightService.returnHome ();
 				//  斗技
 				FightAutoController.pvp (10);
 				//检查寄养，无则寄养
 				FightAutoController.foster ();
 			}
 			else if (b == 10 || b == 11) {
+				FightService.returnHome ();
 				//阴阳寮结界
 				Map<String, Integer> map1 = FightAutoController.fightHome ();
 				map.put ("阴阳寮本轮战斗", map1.get ("阴阳寮本轮战斗"));
