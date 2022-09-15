@@ -31,22 +31,26 @@ public class LoginController {
 		String file5 = "scenario/首页/底部菜单";
 		String file6 = "scenario/首页/底部菜单打开";
 		String file7 = "scenario/返回";
+		String file8 = "scenario/首页/庭院异常";
 		//如皋已经是游戏首页，不需要登录
 		logger.info ("判断是否是游戏首页");
 		boolean b1 = ImageService.imagesClickBackIsEmpty (file1, 3);
 		boolean b2;
 		boolean b3 = false;//底部菜单未打开
 		boolean b4;
+		boolean b5;
 		if (!b1) {
 			logger.info ("不是游戏首页");
 			logger.info ("判断是否存在返回按钮");
-			//单击阴阳师图标
 			b4 = ImageService.imagesClickBackIsEmpty (file7, 3);
-			if(b4){
-				logger.info ("当前存在返回按钮，开始返回");
+			logger.info ("判断是否存在庭院异常");
+			b5 = ImageService.imagesClickBackIsEmpty (file8, 3);
+			if(b4||b5){
+				logger.info ("当前存在返回按钮或者庭院异常时，初始化到首页");
 				FightService.returnHome ();
 			}
 			else {
+				//单击阴阳师图标
 				logger.info ("单击阴阳师图标，进入登录页面");
 				ImageService.imagesClickBack (file2);
 				while (!ImageService.imagesClickBackIsEmpty (file3,10)) {
@@ -90,7 +94,7 @@ public class LoginController {
 		String file1 = "scenario/登录/适龄提示";
 		String file2 = "scenario/首页/底部菜单";
 		String fileBack = "scenario/返回";
-		PictureIdentifyWorkPO pictureIdentifyWorkPO1=new PictureIdentifyWorkPO ();
+		PictureIdentifyWorkPO pictureIdentifyWorkPO1;
 		boolean booleanSLTS=false;/*是否存在适龄提示*/
 		boolean booleanHome=false;//进入首页
 		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ();

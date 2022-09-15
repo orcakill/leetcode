@@ -53,7 +53,6 @@ public class FightServiceImpl {
 		String fileCWJL = "scenario/御魂/宠物奖励";
 		String fileTCTZ = "scenario/御魂/退出挑战";
 		boolean b1;
-		boolean b2;
 		//		开始挑战,处理剩余次数的御魂
 		for (int i = 0; num > 0; i++) {
 			long a = System.currentTimeMillis ();//获取当前系统时间(毫秒)
@@ -89,23 +88,32 @@ public class FightServiceImpl {
 	}
 	
 	public static void returnHome () throws InterruptedException, AWTException {
-		String file1 = "scenario/返回";
-		String file2 = "scenario/首页/首页勾玉";
-		logger.info ("判断有无返回按钮");
-		boolean b1;
-		boolean b2=ImageService.imagesClickBackIsEmpty (file2,1);
-		while (!b2){
+		String file1 = "scenario/首页/首页勾玉";
+		String file2 = "scenario/返回";
+		String file3 = "scenario/首页/庭院异常";
+		logger.info ("初始化首页");
+		boolean booleanSFSY=ImageService.imagesClickBackIsEmpty (file1,1);
+		boolean booleanSFFH;
+		boolean booleanTYRQ;
+		while (!booleanSFSY){
 			Thread.sleep (2000);
 			logger.info ("不在首页，判断有无返回按钮");
-			b1=ImageService.imagesClickBackIsEmpty (file1,2);
-			if(b1){
+			booleanSFFH=ImageService.imagesClickBackIsEmpty (file2,2);
+			if(booleanSFFH){
 				logger.info ("有返回按钮");
-				ImageService.imagesClickBack (file1,2);
+				ImageService.imagesClickBack (file2,2);
 				logger.info ("返回上一页");
+			}
+			logger.info ("不在首页，判断有无庭院异常");
+			booleanTYRQ=ImageService.imagesClickBackIsEmpty (file3,2);
+			if(booleanTYRQ){
+				logger.info ("有庭院异常");
+				ImageService.imagesClickBack (file3,2);
+				logger.info ("去除异常");
 			}
 			Thread.sleep (2000);
 			logger.info ("判断是否回到首页");
-			b2=ImageService.imagesClickBackIsEmpty (file2,2);
+			booleanSFSY=ImageService.imagesClickBackIsEmpty (file1,2);
 		}
 		logger.info ("返回到首页");
 		
