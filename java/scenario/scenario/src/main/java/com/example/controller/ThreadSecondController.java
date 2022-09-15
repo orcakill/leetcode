@@ -37,6 +37,8 @@ public class ThreadSecondController extends Thread {
 		if(!StartUpExeUtils.checkProcessOnly ("Nox.exe")){
 			StartUpExeUtils.startUpExeOnly ("CMD /C " + ExeAddress.exeAddress ());
 		}
+		//logger.info ("等待6小时");
+		//Thread.sleep (1000*60*60*6);
 		//  进入登录界面，默认直接登录，切换账号暂时无法实现
 		try{
 			loginGame();
