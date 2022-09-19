@@ -1,6 +1,8 @@
 package com.example.controller;
 
 import com.example.model.entity.PictureIdentifyWorkPO;
+import com.example.model.enums.BackEnums;
+import com.example.model.enums.SoulEnums;
 import com.example.model.map.CoordinateAddress;
 import com.example.service.FightService;
 import com.example.service.ImageService;
@@ -186,58 +188,48 @@ public class FightAutoController {
 	}
 	
 	public static void soulFight (int i, int j, boolean b) throws InterruptedException, AWTException {
-		String file = "scenario/御魂/御魂图标";
-		String file1 = "scenario/御魂/御魂类型/八岐大蛇";
-		String file2 = "scenario/御魂/加成";
-		String file3 = "scenario/御魂/层数/魂十一";
-		String file31 = "scenario/御魂/层数/魂十";
-		String file11 = "scenario/御魂/御魂类型/业原火";
-		String file21 = "scenario/御魂/层数/业原火三层";
-		String file13 = "scenario/御魂/御魂类型/日轮之陨";
-		String file23 = "scenario/御魂/层数/日轮之陨三层";
-		String file32 = "scenario/返回";
 		boolean b1;
 		boolean b2;
 		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList = new ArrayList<> ();
 		logger.info ("准备进入探索");
 		loginExplore ();
 		logger.info ("准备进入御魂");
-		ImageService.imagesClickBack (file);
+		ImageService.imagesClickBack (SoulEnums.icon.getValue ());
 		if (i == 10 || i == 11) {
 			logger.info ("进入御魂成功，准备选择八岐大蛇");
-			ImageService.imagesClickBack (file1);
+			ImageService.imagesClickBack (SoulEnums.type_BQDS.getValue ());
 			logger.info ("进入八岐大蛇挑战页面");
 			//获取加成地址，手动测试出御魂加成的坐标，然后存储到代码，然后根据当前分辨率获取唯一坐标
 			pictureIdentifyWorkPOList = CoordinateAddress.getCoordinate ("御魂加成");
 			if (b) {
 				logger.info ("准备开启加成");
-				ImageService.imagesClickBack (file2);
+				ImageService.imagesClickBack (SoulEnums.addition.getValue ());
 				logger.info ("点击加成成功，准备点击御魂加成");
 				MouseClick.mouseClickBack (pictureIdentifyWorkPOList, "夜神模拟器");
 				logger.info ("点击御魂加成成功，准备退出");
-				ImageService.imagesClickBack (file2);
+				ImageService.imagesClickBack (SoulEnums.addition.getValue ());
 				//退出加成页面
 				logger.info ("退出加成页面");
 			}
 			if (i == 11) {
 				
 				logger.info ("选择魂十一");
-				b1 = ImageService.imagesClickBackIsEmpty (file3, 30);
+				b1 = ImageService.imagesClickBackIsEmpty (SoulEnums.type_HSY.getValue (), 30);
 				if (!b1) {
 					logger.info ("没有选择到魂十一");
 					System.exit (0);
 				}
-				ImageService.imagesClickBack (file3);
+				ImageService.imagesClickBack (SoulEnums.type_HSY.getValue ());
 			}
 			else {
 				
 				logger.info ("选择魂十");
-				b2 = ImageService.imagesClickBackIsEmpty (file31, 30);
+				b2 = ImageService.imagesClickBackIsEmpty (SoulEnums.type_HS.getValue (), 30);
 				if (!b2) {
 					logger.info ("没有选择到魂十");
 					System.exit (0);
 				}
-				ImageService.imagesClickBack (file3);
+				ImageService.imagesClickBack (SoulEnums.type_HSY.getValue ());
 			}
 			
 			//选择魂十或魂十一
@@ -246,11 +238,11 @@ public class FightAutoController {
 			//挑战结束
 			if (b) {
 				//关闭加成
-				ImageService.imagesClickBack (file2);
+				ImageService.imagesClickBack (SoulEnums.addition.getValue ());
 				logger.info ("点击加成成功，准备关闭御魂加成");
 				MouseClick.mouseClickBack (pictureIdentifyWorkPOList, "夜神模拟器");
 				logger.info ("关闭御魂加成成功，准备退出");
-				ImageService.imagesClickBack (file2);
+				ImageService.imagesClickBack (SoulEnums.addition.getValue ());
 				//退出加成页面
 				logger.info ("退出加成页面");
 			}
@@ -258,16 +250,16 @@ public class FightAutoController {
 		//业原火
 		if (i == 21) {
 			logger.info ("进入御魂成功，准备选择业原火");
-			ImageService.imagesClickBack (file11);
+			ImageService.imagesClickBack (SoulEnums.type_YYH.getValue ());
 			logger.info ("进入业原火");
 			logger.info ("选择业原火第三层");
 			
-			b1 = ImageService.imagesClickBackIsEmpty (file21, 30);
+			b1 = ImageService.imagesClickBackIsEmpty (SoulEnums.type_YYHSC.getValue (), 30);
 			if (!b1) {
 				logger.info ("没有选择到业原火第三层");
 				System.exit (0);
 			}
-			ImageService.imagesClickBack (file21);
+			ImageService.imagesClickBack (SoulEnums.type_YYHSC.getValue ());
 			logger.info ("开始挑战");
 			//开始挑战
 			soulBack (40 , j);
@@ -275,42 +267,40 @@ public class FightAutoController {
 		if (i == 31) {
 			logger.info ("进入御魂成功，准备选择日轮之陨");
 			
-			ImageService.imagesClickBack (file13);
+			ImageService.imagesClickBack (SoulEnums.type_RLZY.getValue ());
 			logger.info ("进入日轮之陨");
 			logger.info ("选择日轮之陨第三层");
-			
-			b1 = ImageService.imagesClickBackIsEmpty (file23, 30);
+			b1 = ImageService.imagesClickBackIsEmpty (SoulEnums.type_RLZYSC.getValue (), 30);
 			if (!b1) {
 				logger.info ("没有选择到日轮之陨三层");
 				System.exit (0);
 			}
-			ImageService.imagesClickBack (file23);
+			ImageService.imagesClickBack (SoulEnums.type_RLZYSC.getValue ());
 			logger.info ("开始挑战");
 			//开始挑战
 			soulBack (15, j);
 		}
 		if (i == 41) {
 			logger.info ("进入御魂成功，准备选择永生之海");
-			ImageService.imagesClickBack (file13);
-			logger.info ("进入日轮之陨");
-			logger.info ("选择日轮之陨第三层");
-			
-			b1 = ImageService.imagesClickBackIsEmpty (file23, 30);
+			ImageService.imagesClickBack (SoulEnums.type_YSZH.getValue ());
+			logger.info ("选择永生之海第四层");
+			b1 = ImageService.imagesClickBackIsEmpty (SoulEnums.type_YSZHSC.getValue (), 30);
 			if (!b1) {
-				logger.info ("没有选择到日轮之陨三层");
+				logger.info ("没有选择到永生之海四层");
 				System.exit (0);
 			}
-			ImageService.imagesClickBack (file23);
+			logger.info ("开启永生之海加成");
+			ImageService.imagesClickBack (SoulEnums.type_YSZHJC.getValue ());
 			logger.info ("开始挑战");
 			//开始挑战
 			soulBack (15, j);
 		}
 		logger.info ("退出到探索");
 		//退出到探索
-		ImageService.imagesClickBack (file32);
+		ImageService.imagesClickBack (BackEnums.back.getValue ());
 		logger.info ("退出到首页");
 		//退出到首页
-		ImageService.imagesClickBack (file32);
+		ImageService.imagesClickBack (BackEnums.back.getValue ());
 	}
 	
 	public static void spirit (int num) throws InterruptedException, AWTException {
