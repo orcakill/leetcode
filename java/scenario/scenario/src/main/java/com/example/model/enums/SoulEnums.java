@@ -34,7 +34,7 @@ public enum SoulEnums {
 	//御魂类型-日轮之陨
 	type_RLZY("scenario/御魂/御魂类型/日轮之陨"),
 	//御魂类型-永生之海
-	type_YSZH("scenario/御魂/御魂类型/日轮之陨"),
+	type_YSZH("scenario/御魂/御魂类型/永生之海"),
 	
 	//层数-魂十一
 	type_HSY("scenario/御魂/层数/魂十一"),
@@ -46,6 +46,8 @@ public enum SoulEnums {
 	type_RLZYSC("scenario/御魂/层数/日轮之陨三层"),
 	//层数-永生之海四层
 	type_YSZHSC("scenario/御魂/层数/永生之海四层"),
+	//层数-永生之海加成
+	type_YSZHJC("scenario/御魂/永生之海加成"),
 	;
 	
 	SoulEnums(String value) {
