@@ -104,12 +104,14 @@ public class FightServiceImpl {
 				ImageService.imagesClickBack (file2,2);
 				logger.info ("返回上一页");
 			}
-			logger.info ("不在首页，判断有无庭院异常");
-			booleanTYRQ=ImageService.imagesClickBackIsEmpty (file3,2);
-			if(booleanTYRQ){
-				logger.info ("有庭院异常");
-				ImageService.imagesClickBack (file3,2);
-				logger.info ("去除异常");
+			else {
+				logger.info ("不在首页，判断有无庭院异常");
+				booleanTYRQ = ImageService.imagesClickBackIsEmpty (file3, 2);
+				if (booleanTYRQ) {
+					logger.info ("有庭院异常");
+					ImageService.imagesClickBack (file3, 2);
+					logger.info ("去除异常");
+				}
 			}
 			Thread.sleep (2000);
 			logger.info ("判断是否回到首页");
