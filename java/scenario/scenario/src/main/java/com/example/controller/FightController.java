@@ -86,10 +86,17 @@ public class FightController {
 				FightAutoController.foster ();
 				
 			}
-			else if (b == 7 || b == 8) {
+			else if (b == 7 ) {
 				FightService.returnHome ();
 				//  斗技
 				FightAutoController.pvp (10);
+				//检查寄养，无则寄养
+				FightAutoController.foster ();
+			}
+			else if (b == 8) {
+				FightService.returnHome ();
+				//  活动战斗
+				ActivityController.ActivitySelect("20220921",899);
 				//检查寄养，无则寄养
 				FightAutoController.foster ();
 			}

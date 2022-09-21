@@ -579,4 +579,6 @@ public class FightAutoController {
 		FightService.returnHome ();
 		
 	}
+	
+
 }

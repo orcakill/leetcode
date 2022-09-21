@@ -3,6 +3,7 @@ package com.example.service;
 import com.example.model.entity.PictureIdentifyWorkPO;
 import com.example.util.ComputerScaling;
 import com.example.util.ImagesBackRec;
+import com.example.util.MouseClick;
 import com.example.util.StartUpExeUtils;
 import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
@@ -22,7 +23,7 @@ public class ImageServiceTest {
 	
 	public static final Logger logger = LogManager.getLogger ("ImageServiceTest ");
 	
-	public static boolean b1=false;//是否开启测试
+	public static boolean b1=true;//是否开启测试
 	
 	@Test
 	public void   testImagesClick1() throws InterruptedException, AWTException {
@@ -79,6 +80,32 @@ public class ImageServiceTest {
 			}
 		}
 	    }
+	}
+	
+	@Test
+	public void   testImagesClick3() throws InterruptedException, AWTException {
+		double bl = ComputerScaling.getScale ();
+		logger.info ("准备开始");
+		if(b1){
+			Thread.sleep (5000);
+			for(int i=0;i<1;i++){
+				Point point = MouseInfo.getPointerInfo ()
+				                       .getLocation ();
+				logger.info ("当前x坐标：" + point.getX () * bl + "    当前y坐标" + point.getY () * bl);
+				MouseClick.mouseClickBack (point.getX ()* bl,point.getY ()* bl,"夜神模拟器");
+			}
+		}
+	}
+	@Test
+	public void   testImagesClick4() throws InterruptedException, AWTException {
+		double bl = ComputerScaling.getScale ();
+		logger.info ("准备开始");
+		if(b1){
+			Thread.sleep (5000);
+			for(int i=0;i<1;i++){
+				MouseClick.mouseClickBack (964,326,"夜神模拟器");
+			}
+		}
 	}
 	
 }
