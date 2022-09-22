@@ -5,7 +5,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static java.lang.Thread.sleep;
@@ -18,6 +20,7 @@ import static java.lang.Thread.sleep;
  */
 public class FightServiceImpl {
 	public static final Logger logger = LogManager.getLogger ("FightServiceImpl");
+	
 	//退出挑战，结束战斗
 	public static boolean fightEnd (Integer begin_num,Integer start_num,Integer end_num) throws InterruptedException, AWTException {
 		String file1 = "scenario/御魂/角色头像";
@@ -74,7 +77,8 @@ public class FightServiceImpl {
 			fightEnd (begin_num,1,2);
 			num--;
 			logger.info ("第" + (i + 1) + "次挑战完成，剩余" + (num) + "次");
-			logger.info ("该次挑战使用时间为" + (System.currentTimeMillis () - a) / 1000 + "秒");
+			long b=(System.currentTimeMillis () - a) / 1000;
+			logger.info ("该次挑战使用时间为" + b+ "秒");
 		}
 		b1=ImageService.imagesClickBackIsEmpty (fileTZ, 5);
 		while (!b1){

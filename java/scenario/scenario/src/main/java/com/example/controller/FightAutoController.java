@@ -69,6 +69,7 @@ public class FightAutoController {
 		logger.info ("进入寮突破，判断当前有无挑战次数");
 		//退出到探索
 		while (!ImageService.imagesClickBackIsEmpty (file2, 5) && ImageService.imagesClickBackIsEmpty (file3, 5)) {
+			
 			logger.info ("存在可攻打结界，且存在挑战次数");
 			logger.info ("准备选择结界");
 			ImageService.imagesClickBack (file3);

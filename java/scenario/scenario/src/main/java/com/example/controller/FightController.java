@@ -96,7 +96,7 @@ public class FightController {
 			else if (b == 8) {
 				FightService.returnHome ();
 				//  活动战斗
-				ActivityController.ActivitySelect("20220921",899);
+				ActivityController.ActivitySelect("20220921",999);
 				//检查寄养，无则寄养
 				FightAutoController.foster ();
 			}
