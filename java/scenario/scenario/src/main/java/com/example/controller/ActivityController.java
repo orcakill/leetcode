@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,6 +18,8 @@ import java.util.Map;
  */
 public class ActivityController {
 	public static final Logger logger = LogManager.getLogger ("ActivityController ");
+	
+
 	
 	public static void ActivitySelect (String str,Integer num) throws InterruptedException, AWTException {
 	   if(str.equals ("20220921")){
@@ -39,17 +42,73 @@ public class ActivityController {
 		boolean boolean_file_SL;
 		boolean boolean_file_QR;
 		boolean boolean_file_LSQY;
+		if(windows_width==1920&&windows_height==1080){
+			//   进入千年之守
+			MouseClick.mouseClickBack (722,192,"夜神模拟器");
+			Thread.sleep (2000);
+		    //	 进入神武行
+			MouseClick.mouseClickBack (1447,549,"夜神模拟器");
+			Thread.sleep (2000);
+		    //	 进入风暴试炼
+			MouseClick.mouseClickBack (1110,577,"夜神模拟器");
+			Thread.sleep (2000);
+		    //   进入风暴试炼战斗准备
+			MouseClick.mouseClickBack (1699,803,"夜神模拟器");
+			Thread.sleep (5000);
+			//   进入风暴试炼战斗再准备
+			MouseClick.mouseClickBack (1503,736,"夜神模拟器");
+			Thread.sleep (2000);
+			boolean_file_LSQY=ImageService.imagesClickBackIsEmpty (file_LSQY,5);
+			if(boolean_file_LSQY){
+				MouseClick.mouseClickBack (1851,780,"夜神模拟器");
+			}
+			Thread.sleep (2000);
+			//   战斗循环
+            for(int i=1;i<=num;i++){
+	            long a = System.currentTimeMillis ();//获取当前系统时间(毫秒)
+				boolean_file_ZD=ImageService.imagesClickBackIsEmpty (file_ZD,5);
+				if(boolean_file_ZD){
+					ImageService.imagesClickBack (file_ZD);
+				}
+	            Thread.sleep (13*1000);
+	            boolean_file_HDJL=ImageService.imagesClickBackIsEmpty (file_HDJL,20);
+	            if(boolean_file_HDJL){
+		            MouseClick.mouseClickBack (984,882,"夜神模拟器");
+	            }
+	            Thread.sleep (2000);
+	            boolean_file_SL=ImageService.imagesClickBackIsEmpty  (file_SL,5);
+	            if(boolean_file_SL){
+		            ImageService.imagesClickBack (file_SL);
+	            }
+				logger.info ("战斗"+i+"次，剩余"+(num-i)+"次");
+				long b=(System.currentTimeMillis () - a) / 1000;
+	            logger.info ("该次挑战使用时间为" + b+ "秒");
+            }
+		//	开始退出
+			MouseClick.mouseClickBack (89,106,"夜神模拟器");
+			Thread.sleep (2000);
+			boolean_file_QR=ImageService.imagesClickBackIsEmpty  (file_QR,5);
+			if(boolean_file_QR){
+				ImageService.imagesClickBack (file_QR);
+			}
+			MouseClick.mouseClickBack (51,82,"夜神模拟器");
+			Thread.sleep (2000);
+			MouseClick.mouseClickBack (51,82,"夜神模拟器");
+			Thread.sleep (2000);
+			MouseClick.mouseClickBack (51,82,"夜神模拟器");
+			Thread.sleep (2000);
+		}
 		if(windows_width==2560&&windows_height==1600){
 			//   进入千年之守
 			MouseClick.mouseClickBack (964,326,"夜神模拟器");
 			Thread.sleep (2000);
-		    //	 进入神武行
+			//	 进入神武行
 			MouseClick.mouseClickBack (1882,934,"夜神模拟器");
 			Thread.sleep (2000);
-		    //	 进入风暴试炼
+			//	 进入风暴试炼
 			MouseClick.mouseClickBack (1444,982,"夜神模拟器");
 			Thread.sleep (2000);
-		    //   进入风暴试炼战斗准备
+			//   进入风暴试炼战斗准备
 			MouseClick.mouseClickBack (2209,1286,"夜神模拟器");
 			Thread.sleep (5000);
 			//   进入风暴试炼战斗再准备
@@ -61,25 +120,26 @@ public class ActivityController {
 			}
 			Thread.sleep (2000);
 			//   战斗循环
-            for(int i=0;i<num;i++){
+			for(int i=0;i<num;i++){
+				long a = System.currentTimeMillis ();//获取当前系统时间(毫秒)
 				boolean_file_ZD=ImageService.imagesClickBackIsEmpty (file_ZD,5);
 				if(boolean_file_ZD){
 					ImageService.imagesClickBack (file_ZD);
 				}
-	            Thread.sleep (20*1000);
-	            boolean_file_HDJL=ImageService.imagesClickBackIsEmpty (file_HDJL,20);
-	            if(boolean_file_HDJL){
-		            MouseClick.mouseClickBack (1280,1500,"夜神模拟器");
-	            }
-	            Thread.sleep (2000);
-	            boolean_file_SL=ImageService.imagesClickBackIsEmpty  (file_SL,5);
-	            if(boolean_file_SL){
-		            ImageService.imagesClickBack (file_SL);
-	            }
-				
-				
-            }
-		//	开始退出
+				Thread.sleep (20*1000);
+				boolean_file_HDJL=ImageService.imagesClickBackIsEmpty (file_HDJL,20);
+				if(boolean_file_HDJL){
+					MouseClick.mouseClickBack (1280,1500,"夜神模拟器");
+				}
+				Thread.sleep (2000);
+				boolean_file_SL=ImageService.imagesClickBackIsEmpty  (file_SL,5);
+				if(boolean_file_SL){
+					ImageService.imagesClickBack (file_SL);
+				}
+				logger.info ("战斗"+i+"次，剩余"+(num-i)+"次");
+				logger.info ("该次挑战使用时间为" + (System.currentTimeMillis () - a) / 1000 + "秒");
+			}
+			//	开始退出
 			MouseClick.mouseClickBack (116,181,"夜神模拟器");
 			Thread.sleep (2000);
 			boolean_file_QR=ImageService.imagesClickBackIsEmpty  (file_QR,5);
@@ -92,9 +152,6 @@ public class ActivityController {
 			Thread.sleep (2000);
 			MouseClick.mouseClickBack (67,140,"夜神模拟器");
 			Thread.sleep (2000);
-		}
-		if(windows_width==1920&&windows_height==1080){
-
 		}
 		
 		FightService.returnHome ();
