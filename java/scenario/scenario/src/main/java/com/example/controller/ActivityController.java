@@ -45,12 +45,12 @@ public class ActivityController {
 		if(windows_width==1920&&windows_height==1080){
 			//   进入千年之守
 			MouseClick.mouseClickBack (722,192,"夜神模拟器");
-			Thread.sleep (2000);
-		    //	 进入神武行
-			MouseClick.mouseClickBack (1447,549,"夜神模拟器");
+			Thread.sleep (4000);
+		    //	 进入星神游
+			MouseClick.mouseClickBack (585,636,"夜神模拟器");
 			Thread.sleep (2000);
 		    //	 进入风暴试炼
-			MouseClick.mouseClickBack (1110,577,"夜神模拟器");
+			MouseClick.mouseClickBack (1105,538,"夜神模拟器");
 			Thread.sleep (2000);
 		    //   进入风暴试炼战斗准备
 			MouseClick.mouseClickBack (1699,803,"夜神模拟器");
