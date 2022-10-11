@@ -101,12 +101,12 @@ public class ActivityController {
 		if(windows_width==2560&&windows_height==1600){
 			//   进入千年之守
 			MouseClick.mouseClickBack (964,326,"夜神模拟器");
-			Thread.sleep (2000);
+			Thread.sleep (4000);
 			//	 进入神武行
-			MouseClick.mouseClickBack (1882,934,"夜神模拟器");
+			MouseClick.mouseClickBack (760,928,"夜神模拟器");
 			Thread.sleep (2000);
 			//	 进入风暴试炼
-			MouseClick.mouseClickBack (1444,982,"夜神模拟器");
+			MouseClick.mouseClickBack (1475,788,"夜神模拟器");
 			Thread.sleep (2000);
 			//   进入风暴试炼战斗准备
 			MouseClick.mouseClickBack (2209,1286,"夜神模拟器");
@@ -126,7 +126,7 @@ public class ActivityController {
 				if(boolean_file_ZD){
 					ImageService.imagesClickBack (file_ZD);
 				}
-				Thread.sleep (20*1000);
+				Thread.sleep (13*1000);
 				boolean_file_HDJL=ImageService.imagesClickBackIsEmpty (file_HDJL,20);
 				if(boolean_file_HDJL){
 					MouseClick.mouseClickBack (1280,1500,"夜神模拟器");
