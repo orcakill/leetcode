@@ -23,7 +23,7 @@ public class ThreadSecondController extends Thread {
 		logger.info ("4 个人结界+日轮之陨50次");
 		logger.info ("5 个人结界+永生之海30次");
 		logger.info ("6 御灵60次");
-		logger.info ("7 斗技30次");
+		logger.info ("7 斗技10次");
 		logger.info ("8 当前活动战斗");
 		logger.info ("9 小号刷大号协战");
 		logger.info ("10 阴阳寮结界");
