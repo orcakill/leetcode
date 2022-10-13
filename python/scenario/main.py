@@ -1,21 +1,27 @@
 from loguru import logger
+import threading
+import time
 
-def print_hi(name):
-    # 在下面的代码行中使用断点来调试脚本。
-    logger.debug('this is a debug message')
-    print(f'Hi, {name}')  # 按 Ctrl+F8 切换断点。
+
+class FirstThread:
+
+    def first_thread(self):
+        logger.info("线程%s运行开始" % self)
+        time.sleep(2)
+        logger.info("线程%s运行结束" % self)
+
+
+class SecondThread:
+
+    def second_thread(self):
+        logger.info("线程%s运行开始" % self)
+        time.sleep(2)
+        logger.info("线程%s运行结束" % self)
 
 
 # 按间距中的绿色按钮以运行脚本。
 if __name__ == '__main__':
-    logger.debug('this is a debug message')
-    logger.info('this is another debug message')
-    logger.warning('this is another debug message')
-    print_hi('PyCharm1')
-    logger.error('this is another debug message')
-    logger.info('this is another debug message')
-    logger.success('this is success message!')
-    logger.critical('this is critical message!')
-    print_hi('PyCharm2')
-
-# 访问 https://www.jetbrains.com/help/pycharm/ 获取 PyCharm 帮助
+    t1 = threading.Thread(name='1', target=FirstThread.first_thread, args=(1,))
+    t2 = threading.Thread(name='2', target=SecondThread.second_thread, args=(2,))
+    t1.start()
+    t2.start()
