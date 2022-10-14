@@ -23,7 +23,7 @@ public class ImageServiceTest {
 	
 	public static final Logger logger = LogManager.getLogger ("ImageServiceTest ");
 	
-	public static boolean b1=true;//是否开启测试
+	public static boolean b1=false;//是否开启测试
 	
 	@Test
 	public void   testImagesClick1() throws InterruptedException, AWTException {
