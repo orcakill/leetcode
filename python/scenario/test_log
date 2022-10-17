@@ -11,3 +11,7 @@
 20221014 17:24:45 - MainProcess | Thread-2 | main.second_thread:19 - INFO -线程2运行开始
 20221014 17:24:47 - MainProcess | Thread-1 | main.first_thread:13 - INFO -线程1运行结束
 20221014 17:24:47 - MainProcess | Thread-2 | main.second_thread:21 - INFO -线程2运行结束
+20221014 17:57:26 - MainProcess | Thread-1 | main.first_thread:11 - INFO -线程1运行开始
+20221014 17:57:26 - MainProcess | Thread-2 | main.second_thread:19 - INFO -线程2运行开始
+20221014 17:57:28 - MainProcess | Thread-2 | main.second_thread:21 - INFO -线程2运行结束
+20221014 17:57:28 - MainProcess | Thread-1 | main.first_thread:13 - INFO -线程1运行结束
