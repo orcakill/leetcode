@@ -1,4 +1,3 @@
-from resources import my_logger
 import threading
 import time
 
