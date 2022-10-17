@@ -16,19 +16,21 @@ public class JDBCUtils {
         }
     }
 
-    public static Connection getConn(){
-        Connection conn=null;
-
+    public static Connection getConn() {
+        Connection conn = null;
+        String url="";
+        String user="";
+        String password="";
         try {
-            conn= DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test","test","test");
-        }catch (Exception exception){
+            conn = DriverManager.getConnection(url, user, password);
+        } catch (Exception exception) {
             exception.printStackTrace();
         }
 
         return conn;
     }
 
-    public  static  void close(Connection conn){
+    public static void close(Connection conn) {
         try {
             conn.close();
         } catch (SQLException e) {
