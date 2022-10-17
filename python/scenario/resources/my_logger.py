@@ -12,7 +12,7 @@ class MyLogger:
         self.logger.remove()
         # 添加控制台输出的格式,sys.stdout为输出到屏幕;关于这些配置还需要自定义请移步官网查看相关参数说明
         self.logger.add(sys.stdout,
-                        format="<green>{time:YYYYMMDD HH:mm:ss}</green> | "  # 颜色>时间
+                        format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | "  # 颜色>时间
                                "{process.name} | "  # 进程名
                                "{thread.name} | "  # 进程名
                                "<cyan>{module}</cyan>.<cyan>{function}</cyan>"  # 模块名.方法名
@@ -22,7 +22,7 @@ class MyLogger:
                         )
         # 输出到文件的格式,注释下面的add',则关闭日志写入
         self.logger.add(log_file_path, level='DEBUG',
-                        format='{time:YYYYMMDD HH:mm:ss} - '  # 时间
+                        format='{time:YYYY-MM-DD HH:mm:ss} - '  # 时间
                                "{process.name} | "  # 进程名
                                "{thread.name} | "  # 进程名
                                '{module}.{function}:{line} - {level} -{message}',  # 模块名.方法名:行号
