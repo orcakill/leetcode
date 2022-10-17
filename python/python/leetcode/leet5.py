@@ -29,6 +29,8 @@ class Solution:
         # 开始截取字符
         begin = 0
         # dp[i][j] 表示 s[i..j] 是否是回文串
+        # dp:[[False, False, False, False, False], [False, False, False, False, False], [False, False, False, False,
+        #     False], [False, False, False, False, False], [False, False, False, False, False]]
         dp = [[False] * n for _ in range(n)]
         for i in range(n):
             dp[i][i] = True
