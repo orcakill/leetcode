@@ -3,7 +3,6 @@ import time
 
 from resources.my_logger import MyLogger
 
-
 class FirstThread:
 
     def first_thread(self):
