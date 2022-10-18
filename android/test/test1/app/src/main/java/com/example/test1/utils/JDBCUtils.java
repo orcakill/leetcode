@@ -18,9 +18,9 @@ public class JDBCUtils {
 
     public static Connection getConn() {
         Connection conn = null;
-        String url="";
-        String user="";
-        String password="";
+        String url="jdbc:mysql://127.0.0.1:3306/test";
+        String user="test";
+        String password="test";
         try {
             conn = DriverManager.getConnection(url, user, password);
         } catch (Exception exception) {

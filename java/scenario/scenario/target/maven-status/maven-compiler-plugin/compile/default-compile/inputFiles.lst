@@ -6,17 +6,20 @@ D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\controller\
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\util\Screenshot.java
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\controller\ThreadSecondController.java
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\util\MouseClick.java
+D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\controller\ActivityController.java
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\util\StartUpExeUtils.java
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\service\impl\MailServiceImpl.java
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\controller\ThreadFirstController.java
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\service\ImageService.java
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\model\entity\MessageEventPO.java
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\model\entity\PictureIdentifyWorkPO.java
+D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\model\enums\BackEnums.java
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\util\RandomUtil.java
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\util\ScanningProcess.java
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\model\entity\EmailBoxPO.java
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\util\getPassWord.java
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\App.java
+D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\model\enums\SoulEnums.java
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\util\SendMail.java
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\util\ImagesBackRec.java
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\controller\FightAutoController.java
@@ -24,3 +27,4 @@ D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\model\map\C
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\model\map\ExeAddress.java
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\util\ComputerScaling.java
 D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\service\FightService.java
+D:\project\leetcode\java\scenario\scenario\src\main\java\com\example\model\enums\ActivityEnums.java
