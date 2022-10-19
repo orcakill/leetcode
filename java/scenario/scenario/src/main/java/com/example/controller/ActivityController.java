@@ -22,8 +22,13 @@ public class ActivityController {
 
 	
 	public static void ActivitySelect (String str,Integer num) throws InterruptedException, AWTException {
+		//千年之守 999
 	   if(str.equals ("20220921")){
 		   Activity20220921(num);
+	   }
+	   //超鬼王
+	   if(str.equals ("20221019")){
+			Activity20221019(num);
 	   }
 	
 	}
@@ -154,6 +159,55 @@ public class ActivityController {
 			Thread.sleep (2000);
 		}
 		
+		FightService.returnHome ();
+	}
+	
+	public static void Activity20221019 (Integer num) throws InterruptedException, AWTException {
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ();
+		int windows_width =gd.getDisplayMode ().getWidth ();
+		int windows_height = gd.getDisplayMode().getHeight();
+		String file_HYGW="scenario/活动/20221019/薰山笼数";
+		boolean bl_XSL=false;
+		
+		if(windows_width==1920&&windows_height==1080){
+			//   进入超鬼王
+			MouseClick.mouseClickBack (967,493,"夜神模拟器");
+			Thread.sleep (3000);
+			//   进入御隐香寻
+			MouseClick.mouseClickBack (1024,739,"夜神模拟器");
+			Thread.sleep (3000);
+			//   判断看是否有好友分享超鬼王，好友分享优先
+			if(!bl_XSL){
+				//   寻找超鬼王，确定超鬼王类型
+				//   选择超鬼王,选择普通战斗
+				//   开始战斗
+				//   根据超鬼王类型和挑战次数判断阵容
+				//   战斗结束
+				//   判断是否未挑战完成，未完成则挑战次数加1，继续挑战
+				//	 挑战完成，等待结算完成挑战
+				//   判断疲劳度是否到达100，100则退出挑战
+			}
+			else{
+			
+			}
+
+			MouseClick.mouseClickBack (722,192,"夜神模拟器");
+			Thread.sleep (4000);
+			//   战斗循环
+			for(int i=1;i<=num;i++){
+				long a = System.currentTimeMillis ();//获取当前系统时间(毫秒)
+
+				logger.info ("战斗"+i+"次，剩余"+(num-i)+"次");
+				long b=(System.currentTimeMillis () - a) / 1000;
+				logger.info ("该次挑战使用时间为" + b+ "秒");
+			}
+			//	开始退出
+			FightService.returnHome ();
+		}
+		if(windows_width==2560&&windows_height==1600) {
+			
+			FightService.returnHome ();
+		}
 		FightService.returnHome ();
 	}
 }
