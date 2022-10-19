@@ -13,6 +13,8 @@ import java.awt.*;
 import java.io.File;
 import org.junit.Test;
 
+import static com.example.service.FightService.soulBack;
+
 /**
  * @Classname ImageServiceTest
  * @Description TODO
@@ -23,7 +25,7 @@ public class ImageServiceTest {
 	
 	public static final Logger logger = LogManager.getLogger ("ImageServiceTest ");
 	
-	public static boolean b1=false;//是否开启测试
+	public static boolean b1=true;//是否开启测试
 	
 	@Test
 	public void   testImagesClick1() throws InterruptedException, AWTException {
@@ -107,5 +109,15 @@ public class ImageServiceTest {
 			}
 		}
 	}
+	//重复挑战
+	@Test
+	public void   testImagesClick5() throws InterruptedException, AWTException {
+		logger.info ("准备开始");
+		if(b1){
+			Thread.sleep (5000);
+			soulBack (10, 120);
+			}
+	}
+	
 	
 }
