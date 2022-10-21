@@ -155,7 +155,7 @@ public class FightAutoController {
 				logger.info ("点击个人结界成功，准备进攻");
 				ImageService.imagesClickBack (file3);
 				logger.info ("开始进攻");
-				Thread.sleep (3000);
+				Thread.sleep (10*1000);
 				logger.info ("判断是否准备挑战");
 				booleanZBTJ=ImageService.imagesClickBackIsEmpty (file7,5);
 				if(booleanZBTJ){
