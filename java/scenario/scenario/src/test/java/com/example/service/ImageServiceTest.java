@@ -25,7 +25,7 @@ public class ImageServiceTest {
 	
 	public static final Logger logger = LogManager.getLogger ("ImageServiceTest ");
 	
-	public static boolean b1=true;//是否开启测试
+	public static boolean b1=false;//是否开启测试
 	
 	@Test
 	public void   testImagesClick1() throws InterruptedException, AWTException {
@@ -105,7 +105,7 @@ public class ImageServiceTest {
 		if(b1){
 			Thread.sleep (5000);
 			for(int i=0;i<1;i++){
-				MouseClick.mouseClickBack (964,326,"夜神模拟器");
+				MouseClick.mouseClickBack (1726,326,"夜神模拟器");
 			}
 		}
 	}
@@ -114,7 +114,6 @@ public class ImageServiceTest {
 	public void   testImagesClick5() throws InterruptedException, AWTException {
 		logger.info ("准备开始");
 		if(b1){
-			Thread.sleep (5000);
 			soulBack (10, 120);
 			}
 	}

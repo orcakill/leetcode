@@ -159,7 +159,9 @@ b:
 		int R2 = (RGB2 & 0xff0000) >> 16;
 		int G2 = (RGB2 & 0xff00) >> 8;
 		int B2 = (RGB2 & 0xff);
-		
+		logger.info ("R:"+Math.abs (R1 - R2));
+		logger.info ("G:"+Math.abs (G1 - G2));
+		logger.info ("B:"+Math.abs (B1 - B2));
 		return Math.abs (R1 - R2) < 5 && Math.abs (G1 - G2) < 5 && Math.abs (B1 - B2) < 5;
 	}
 	
