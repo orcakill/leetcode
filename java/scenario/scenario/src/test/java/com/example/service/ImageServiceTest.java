@@ -118,7 +118,7 @@ public class ImageServiceTest {
 		logger.info ("准备开始");
 		if (b1) {
 			Thread.sleep (5000);
-			soulBack (6, 120);
+			soulBack (6, 150);
 		}
 	}
 	
