@@ -135,7 +135,7 @@ public class ImageServiceTest {
 		String file_YQ = "scenario/活动/20221019/邀请";
 		boolean boolean_YQ = false;
 		if (b1) {
-			for (int i = 1; i <= 60; i++) {
+			for (int i = 1; i <= 600; i++) {
 				logger.info ("判断是否有御香寻行，有则点击寻找超鬼王");
 				boolean_YXXX = ImageService.imagesClickBackIsEmpty (file_YXXX, 5);
 				if (boolean_YXXX) {
