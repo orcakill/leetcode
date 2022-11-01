@@ -1,4 +1,4 @@
-import os
+
 import pandas as pd
 import os
 import sys
@@ -60,7 +60,7 @@ def kettle_data(self):
                 if '<table>' in line:
                     line = line.replace(' ', '')
                     line = line.replace('<table>', '')
-                    line = line.replace('</table>', '').replace('\n', '').replace('\r', '')
+                    line = line.replace('</table>', '').replace('/n', '').replace('/r', '')
                     logger.info(filesPath[i] + ':' + line)
                     dir_file = {'路径': filesPath[i], '表名': line.lower()}
                     dir_files.append(dir_file)
