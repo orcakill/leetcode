@@ -177,6 +177,7 @@ b:
 		int G2 = (RGB2 & 0xff00) >> 8;
 		int B2 = (RGB2 & 0xff);
 		
+
 		return Math.abs (R1 - R2) < 5 && Math.abs (G1 - G2) < 5 && Math.abs (B1 - B2) < 5;
 	}
 	
