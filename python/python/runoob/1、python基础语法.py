@@ -20,8 +20,8 @@ print(str + "2")
 print('------------------------------')
 
 # 输出是否转译的区别
-print("hello\n run")
-print(r"hello\n run")
+print("hello/n run")
+print(r"hello/n run")
 
 # 输出时是否换行
 print(str, end="")
@@ -33,7 +33,7 @@ print('================Python import mode==========================')
 print('命令行参数为:')
 for i in sys.argv:
     print(i)
-print('\n python 路径为', sys.path)
+print('/n python 路径为', sys.path)
 
 from sys import argv, path  # 导入特定的成员
 

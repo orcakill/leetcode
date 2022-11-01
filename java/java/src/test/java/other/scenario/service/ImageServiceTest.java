@@ -9,6 +9,7 @@ import other.scenario.service.impl.FightAutoServiceImpl;
 import other.scenario.util.ComputerScaling;
 import other.scenario.util.ImagesBackRec;
 import other.scenario.util.MouseClick;
+import other.scenario.util.Screenshot;
 
 import java.awt.*;
 import java.io.File;
@@ -164,5 +165,10 @@ public class ImageServiceTest {
 				System.out.println ("图片文件路径不存在");
 			}
 		}
+	}
+	//截全屏图
+	@Test
+	public void   screenshotBack() throws InterruptedException, AWTException {
+		Screenshot.screenshotBack ();
 	}
 }

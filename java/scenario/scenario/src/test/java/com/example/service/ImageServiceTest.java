@@ -107,7 +107,7 @@ public class ImageServiceTest {
 		if (b1) {
 			Thread.sleep (5000);
 			for (int i = 0; i < 1; i++) {
-				MouseClick.mouseClickBack (964, 326, "夜神模拟器");
+				MouseClick.mouseClickBack (1362.5, 349, "夜神模拟器");
 			}
 		}
 	}
