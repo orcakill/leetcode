@@ -11,10 +11,11 @@ import org.opencv.imgproc.Imgproc;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.List;
+
+
 
 /**
  * @Classname ActivityImageTest
@@ -53,10 +54,18 @@ public class ActivityImageTest {
 	@Test
 	public void openCVImageTest () throws IOException {
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-		String file_src=System.getProperty ("user.dir") + "/src/main/resources/image/"+"scenario/english/exp/source/a.jpg";
-		String file_tem=System.getProperty ("user.dir") + "/src/main/resources/image/"+"scenario/english/exp/search/b.png";
-		Mat g_src= Imgcodecs.imread (file_src);
-		Mat g_tem= Imgcodecs.imread (file_tem);
+		String str_src= System.getProperty ("user.dir") + "/src/main/resources/image/" + "scenario/english/exp/来源/a.jpg";
+		String str_tem=System.getProperty ("user.dir") + "/src/main/resources/image/"+"scenario/english/exp/search/b.png";
+		
+		File file_src=new File (str_src);
+		BufferedImage 	bi = ImageIO.read(file_src);
+		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+		ImageIO.write(bi, "jpg", byteArrayOutputStream);
+		byteArrayOutputStream.flush();
+		Mat mat1=Imgcodecs.imdecode(new MatOfByte(byteArrayOutputStream.toByteArray()), Imgcodecs.IMREAD_UNCHANGED);
+
+		Mat g_src= mat1;
+		Mat g_tem= Imgcodecs.imread (str_tem);
 		int result_rows = g_src.rows() - g_tem.rows() + 1;
 		int result_cols = g_src.cols() - g_tem.cols() + 1;
 		Mat g_result = new Mat(result_rows, result_cols, CvType.CV_32FC1);
@@ -89,5 +98,7 @@ public class ActivityImageTest {
 		logger.info ("x："+(matchLocation.x+g_tem.cols()/2)+"y:"+(matchLocation.y+g_tem.rows()/2) );
 		//Imgcodecs.imwrite("D:\\match.jpg", g_src);
 	}
+	
+	
 	
 }

@@ -1,8 +1,5 @@
 package other.document.utils;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.core.mapper.Mapper;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.oro.text.regex.*;
 import org.slf4j.Logger;

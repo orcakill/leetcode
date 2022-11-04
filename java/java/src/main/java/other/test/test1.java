@@ -1,5 +1,9 @@
 package other.test;
 
+
+
+
+
 import net.sourceforge.tess4j.Tesseract;
 
 import javax.imageio.ImageIO;
@@ -16,7 +20,7 @@ import java.io.File;
 public class test1 {
 	
 	public static void main (String[] args) throws Exception {
-		String imgPath = "D:\\project\\leetcode\\java\\src\\main\\resources\\image\\scenario\\捕获.png";
+		String imgPath = "D:\\a.jpg";
 		String text = FindOCR (imgPath, true);
 		System.out.println (text);
 	}
