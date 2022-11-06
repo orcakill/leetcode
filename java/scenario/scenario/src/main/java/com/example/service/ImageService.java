@@ -6,25 +6,23 @@ import com.example.model.entity.PictureIdentifyWorkPO;
 import com.example.service.impl.ImageServiceImpl;
 
 import java.awt.*;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public interface ImageService {
 	
 	
 	/*多张图片后台识别,参数默认，识别次数，识别起始间隔，识别结束间隔，是否返回日志信息,点击*/
-	static boolean imagesClickBack (String folder) throws InterruptedException, AWTException {
-		return  imagesClickBack (folder,"夜神模拟器" ,60,1,2,true,true);
+	static void imagesClickBack (String folder) throws InterruptedException, AWTException {
+		imagesClickBack (folder, "夜神模拟器", 60, 1, 2, true, true);
 	}
 	
 	static boolean imagesClickBack (String folder,Integer re_num) throws InterruptedException, AWTException {
 		return  imagesClickBack (folder,"夜神模拟器",re_num,1,2,true,true);
 	}
 	
-	static boolean imagesClickBack (String folder,Integer re_num,Boolean boole) throws InterruptedException,
-	                                                                                 AWTException {
-		return  imagesClickBack (folder,"夜神模拟器",re_num,1,2,boole,true);
+	static void imagesClickBack (String folder, Integer re_num, Boolean boole) throws InterruptedException,
+	                                                                                  AWTException {
+		imagesClickBack (folder, "夜神模拟器", re_num, 1, 2, boole, true);
 	}
 	
 	
@@ -39,7 +37,7 @@ public interface ImageService {
 	
 	static  boolean imagesClickBackIsEmpty (String folder,Integer re_num,boolean boole) throws InterruptedException,
 	                                                                                      AWTException {
-		return imagesClickBack (folder,"夜神模拟器",re_num,1,2,false,false);
+		return imagesClickBack (folder,"夜神模拟器",re_num,1,2,boole,false);
 	}
 
 	
@@ -83,7 +81,7 @@ public interface ImageService {
 	}
 	
 	
-	static boolean imagesClickBackDrag (PictureIdentifyWorkPO pictureIdentifyWorkPO1, PictureIdentifyWorkPO pictureIdentifyWorkPO2, String process) throws InterruptedException, AWTException {
-		return  ImageServiceImpl.imagesClickBackDrag (pictureIdentifyWorkPO1,pictureIdentifyWorkPO2,process);
+	static void imagesClickBackDrag (PictureIdentifyWorkPO pictureIdentifyWorkPO1, PictureIdentifyWorkPO pictureIdentifyWorkPO2, String process) throws InterruptedException, AWTException {
+		ImageServiceImpl.imagesClickBackDrag (pictureIdentifyWorkPO1, pictureIdentifyWorkPO2, process);
 	}
 }

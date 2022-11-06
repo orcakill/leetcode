@@ -47,7 +47,7 @@ public class FightAutoController {
 		boolean b;
 		boolean b1;
 		boolean booleanYYL;
-		boolean boolean_TCJG=false;
+		boolean boolean_TCJG;
 		//流程开始
 		logger.info ("准备进入探索");
 		loginExplore ();
@@ -206,7 +206,7 @@ public class FightAutoController {
 				logger.info ("准备开启加成");
 				ImageService.imagesClickBack (SoulEnums.addition.getValue ());
 				logger.info ("点击加成成功，准备点击御魂加成");
-				MouseClick.mouseClickBack (pictureIdentifyWorkPOList, "夜神模拟器");
+				MouseClick.mouseClickBack (pictureIdentifyWorkPOList, "夜神模拟器",true);
 				logger.info ("点击御魂加成成功，准备退出");
 				ImageService.imagesClickBack (SoulEnums.addition.getValue ());
 				//退出加成页面
@@ -241,7 +241,7 @@ public class FightAutoController {
 				//关闭加成
 				ImageService.imagesClickBack (SoulEnums.addition.getValue ());
 				logger.info ("点击加成成功，准备关闭御魂加成");
-				MouseClick.mouseClickBack (pictureIdentifyWorkPOList, "夜神模拟器");
+				MouseClick.mouseClickBack (pictureIdentifyWorkPOList, "夜神模拟器",true);
 				logger.info ("关闭御魂加成成功，准备退出");
 				ImageService.imagesClickBack (SoulEnums.addition.getValue ());
 				//退出加成页面
