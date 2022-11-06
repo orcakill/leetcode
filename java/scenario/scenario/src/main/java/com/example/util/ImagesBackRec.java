@@ -29,18 +29,8 @@ public class ImagesBackRec {
 		List<int[][]> ImagesData = imageToDate (FolderName);
 		//		屏幕截图和图片对比
 		List<PictureIdentifyWorkPO> mouseXY = FindAllImgData (Window, ImagesData);
-		//		鼠标点击
-		List<PictureIdentifyWorkPO> mouseXY1 = new ArrayList<> ();
-		//		鼠标点击
-		if (mouseXY.size () > 0) {
-			if (isClick) {
-				int num = RandomUtil.randomMinute (mouseXY.size ());
-				mouseXY1.add (mouseXY.get (num));
-				MouseClick.mouseClickBack (mouseXY1,process);
-			}
-			return true;
-		}
-		return false;
+		//		识别+鼠标点击或仅识别
+		return MouseClick.mouseClickBack (mouseXY,process,isClick);
 	}
 	
 	//返回坐标
@@ -59,7 +49,7 @@ public class ImagesBackRec {
 		return pictureIdentifyWorkPO;
 	}
 	
-	//识别图片存在拖动点击或只识别不点击
+	//识别图片存在+拖动点击
 	public static boolean imagesRecognitionDrag (String FolderName, double x,double y,String process) throws AWTException {
 		//		屏幕截图
 		BufferedImage Window = Screenshot.screenshotBack (process);
@@ -68,7 +58,6 @@ public class ImagesBackRec {
 		//		屏幕截图和图片对比
 		List<PictureIdentifyWorkPO> mouseXY = FindAllImgData (Window, ImagesData);
 		//		鼠标点击
-		List<PictureIdentifyWorkPO> mouseXY1 = new ArrayList<> ();
 		PictureIdentifyWorkPO pictureIdentifyWorkPO1;
 		PictureIdentifyWorkPO pictureIdentifyWorkPO2 = new PictureIdentifyWorkPO ();
 		//		鼠标点击

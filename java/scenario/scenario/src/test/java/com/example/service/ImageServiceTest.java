@@ -4,15 +4,12 @@ import com.example.model.entity.PictureIdentifyWorkPO;
 import com.example.util.ComputerScaling;
 import com.example.util.ImagesBackRec;
 import com.example.util.MouseClick;
-import com.example.util.StartUpExeUtils;
-import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Test;
 
 import java.awt.*;
 import java.io.File;
-
-import org.junit.Test;
 
 import static com.example.service.FightService.soulBack;
 
@@ -99,6 +96,13 @@ public class ImageServiceTest {
 			}
 		}
 	}
+	/***
+	 * @description: 直接点击坐标，尝试是否可以点击
+	 * @param
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2022/11/6 2:26
+	 */
 	
 	@Test
 	public void testImagesClick4 () throws InterruptedException, AWTException {
@@ -107,7 +111,7 @@ public class ImageServiceTest {
 		if (b1) {
 			Thread.sleep (5000);
 			for (int i = 0; i < 1; i++) {
-				MouseClick.mouseClickBack (1362.5, 349, "夜神模拟器");
+				MouseClick.mouseClickBack (85, 1288, "夜神模拟器");
 			}
 		}
 	}

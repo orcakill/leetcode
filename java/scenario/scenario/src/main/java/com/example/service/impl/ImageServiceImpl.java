@@ -45,8 +45,8 @@ public class ImageServiceImpl {
 		File file = new File (
 				"D:/project/leetcode/java/scenario/scenario/src/main/resources/image/" + folder);
 		if(!file.exists ()){
-			 file = new File (
-					 "D:/study/Project/leetcode/java/scenario/scenario/src/main/resources/image/"  + folder);
+			file = new File (
+					"D:/study/Project/leetcode/java/scenario/scenario/src/main/resources/image/" + folder);
 		}
 		int  num_time;
 		if (file.exists ()) {
@@ -74,7 +74,7 @@ public class ImageServiceImpl {
 	public static String imagesClickBack (Map<String,String> files, String process, int re_num, int i1, int i2, boolean b,
 	                                      boolean isClick) throws InterruptedException, AWTException {
 		boolean b1=true;
-		boolean b2=true;
+		boolean b2;
 		int  num_time;
 		for(Map.Entry folder:files.entrySet ()){
 			File file = new File (
@@ -83,11 +83,9 @@ public class ImageServiceImpl {
 				file = new File (
 						"D:/study/Project/leetcode/java/scenario/scenario/src/main/resources/image/" + folder.getValue ());
 			}
-			
 			if(!file.exists ()){
 				b1=false;
 			}
-			
 		}
 		if (b1) {
 			for (int i = 0; i <re_num; i++) {
@@ -138,7 +136,7 @@ public class ImageServiceImpl {
 		pictureIdentifyWorkPO3.setY (y1);
 		pictureIdentifyWorkPOList1.add (pictureIdentifyWorkPO3);
 		logger.info ("准备点击"+name);
-		MouseClick.mouseClickBack (pictureIdentifyWorkPOList1,"夜神模拟器");
+		MouseClick.mouseClickBack (pictureIdentifyWorkPOList1,"夜神模拟器",true);
 		logger.info ("进入"+name);
 		Thread.sleep (5000);
 		boole= ImageService.imagesClickBackIsEmpty (file2,5);
@@ -153,9 +151,8 @@ public class ImageServiceImpl {
 		
 	}
 	
-	public static boolean imagesClickBackDrag (PictureIdentifyWorkPO pictureIdentifyWorkPO1, PictureIdentifyWorkPO pictureIdentifyWorkPO2,
-	                                           String process) throws AWTException, InterruptedException {
+	public static void imagesClickBackDrag (PictureIdentifyWorkPO pictureIdentifyWorkPO1, PictureIdentifyWorkPO pictureIdentifyWorkPO2,
+	                                        String process) throws AWTException, InterruptedException {
 		MouseClick.mouseClickBackDrag (pictureIdentifyWorkPO1,pictureIdentifyWorkPO2,process);
-		return  false;
 	}
 }

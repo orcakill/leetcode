@@ -8,77 +8,29 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
-import java.awt.event.InputEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MouseClick {
 	private static final Logger logger = LogManager.getLogger (MouseClick.class);
 	
-	//点击坐标
-	public static void mouseClicks (List<PictureIdentifyWorkPO> findAllImgData) throws AWTException {
-		Double bl = ComputerScaling.getScale ();
-		for (PictureIdentifyWorkPO findAllImgDatum : findAllImgData) {
-			Robot robot1 = new Robot ();
-			logger.debug ("目标坐标" + (int) (findAllImgDatum.getX () / bl) + "---" + (int) (findAllImgDatum.getY () / bl));
-			// 修复JDK8的移动不正确的BUG(亲测在JDK11,该BUG已经修复)
-			for (int j = 0; j < 6; j++) {
-				robot1.mouseMove ((int) (findAllImgDatum.getX () / bl), (int) (findAllImgDatum.getY () / bl));
-			}
-			Point p = MouseInfo.getPointerInfo ()
-			                   .getLocation ();
-			logger.debug ("当前坐标：" + p.getX () + "---" + p.getY ());
-			robot1.mousePress (InputEvent.BUTTON1_MASK);
-			robot1.mouseRelease (InputEvent.BUTTON1_MASK);
-		}
-		
-	}
-	
-	//根据当前坐标点击,传0就是原地点击，x1、y1不为0会产生移动
-	public static void mouseClickNow (double x1, double y1) throws AWTException {
-		Robot robot1 = new Robot ();
-		Point p = MouseInfo.getPointerInfo ()
-		                   .getLocation ();
-		logger.debug ("当前坐标：" + p.getX () + "---" + p.getY ());
-		double x = p.getX ();
-		double y = p.getY ();
-		// 修复JDK8的移动不正确的BUG(亲测在JDK11,该BUG已经修复)
-		for (int j = 0; j < 6; j++) {
-			robot1.mouseMove ((int) (x + x1), (int) (y + y1));
-		}
-		
-		robot1.mousePress (InputEvent.BUTTON1_MASK);
-		robot1.mouseRelease (InputEvent.BUTTON1_MASK);
-		
-	}
-	
-	//移动到坐标后，滚动一定刻度后单击
-	public static void mouseRoll (List<PictureIdentifyWorkPO> findAllImgData, Integer num, Integer wheelAmt) throws
-	                                                                                                         AWTException,
-	                                                                                                         InterruptedException {
-		Robot robot1 = new Robot ();
-		for (int i = 0; i < num; i++) {
-			Double bl = ComputerScaling.getScale ();
-			for (PictureIdentifyWorkPO findAllImgDatum : findAllImgData) {
-				// 修复JDK8的移动不正确的BUG(亲测在JDK11,该BUG已经修复)
-				for (int j = 0; j < 6; j++) {
-					robot1.mouseMove ((int) (findAllImgDatum.getX () / bl), (int) (findAllImgDatum.getY () / bl));
-				}
-				Thread.sleep (2000);
-				robot1.mouseWheel (wheelAmt);
-			}
-			
-		}
-		Thread.sleep (2000);
-		robot1.mousePress (InputEvent.BUTTON1_MASK);
-		robot1.mouseRelease (InputEvent.BUTTON1_MASK);
-		
-	}
 	
 	//	向后台进程发送鼠标点击事件
-	public static void mouseClickBack (List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList,String process) throws AWTException {
-		HWND hwnd = User32.INSTANCE.FindWindow (null, process);
-		mouseClickBackground (hwnd, pictureIdentifyWorkPOList);
+	public static boolean mouseClickBack (List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList,String process,boolean isClick) throws AWTException {
+		List<PictureIdentifyWorkPO> mouseXY1 = new ArrayList<> ();
+		//		鼠标点击
+		if (pictureIdentifyWorkPOList.size () > 0) {
+			if (isClick) {
+				int num = RandomUtil.randomMinute (pictureIdentifyWorkPOList.size ());
+				mouseXY1.add (pictureIdentifyWorkPOList.get (num));
+				HWND hwnd = User32.INSTANCE.FindWindow (null, process);
+				mouseClickBackground (hwnd,mouseXY1);
+			}
+			logger.info ("点击完成");
+			return true;
+		}
+		return false;
+
 	}
 	
 	public static void mouseClickBack (PictureIdentifyWorkPO pictureIdentifyWorkPOList,String process) throws AWTException {
@@ -118,7 +70,7 @@ public class MouseClick {
 			while (Y.length () < 4) {
 				Y.insert (0, "0");
 			}
-			Integer in = Integer.valueOf (Y.toString () + X.toString (), 16);
+			Integer in = Integer.valueOf (Y + X.toString (), 16);
 			WinDef.LPARAM lPARAM = new WinDef.LPARAM (in);
 			try {
 				// 模拟计算鼠标按下的间隔并且按下鼠标
@@ -173,8 +125,8 @@ public class MouseClick {
 			Y2.insert (0, "0");
 		}
 		
-		Integer in1 = Integer.valueOf (Y1.toString () + X1.toString (), 16);
-		Integer in2 = Integer.valueOf (Y2.toString () + X2.toString (), 16);
+		Integer in1 = Integer.valueOf (Y1 + X1.toString (), 16);
+		Integer in2 = Integer.valueOf (Y2 + X2.toString (), 16);
 		
 		WinDef.LPARAM lPARAM1 = new WinDef.LPARAM (in1);
 		WinDef.LPARAM lPARAM2 = new WinDef.LPARAM (in2);
