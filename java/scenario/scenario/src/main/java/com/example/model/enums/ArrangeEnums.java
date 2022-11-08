@@ -20,6 +20,7 @@ public enum ArrangeEnums {
 	arrange_SXQJG ("scenario/御魂整理/四星青吉鬼"),
 	arrange_QH ("scenario/御魂整理/强化"),
 	arrange_DJTS ("scenario/御魂整理/等级提升"),
+	arrange_ZSJYH ("scenario/御魂整理/左上角御魂"),
 	;
 	
 	ArrangeEnums(String value) {
