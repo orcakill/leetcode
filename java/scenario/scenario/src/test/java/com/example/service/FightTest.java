@@ -55,7 +55,7 @@ public class FightTest {
 		strengthenResultSet.put ("防御加成",ArrangeEnums.arrange_YHQHSX_FYJC.getValue ());
 		if (b1) {
 		      //循环强化速度御魂
-		      for(int i=1;i<=1;i++){
+		      for(int i=1;i<=3;i++){
 				  //设置强化状态
 			      reinforcementState=true;
 				  logger.info ("进入更换御魂");
