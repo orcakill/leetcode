@@ -21,6 +21,19 @@ public enum ArrangeEnums {
 	arrange_QH ("scenario/御魂整理/强化"),
 	arrange_DJTS ("scenario/御魂整理/等级提升"),
 	arrange_ZSJYH ("scenario/御魂整理/左上角御魂"),
+	arrange_YHQHSX_SD ("scenario/御魂整理/御魂强化属性/速度"),
+	arrange_YHQHSX_XGDK ("scenario/御魂整理/御魂强化属性/效果抵抗"),
+	arrange_YHQHSX_XGMZ ("scenario/御魂整理/御魂强化属性/效果命中"),
+	arrange_YHQHSX_BJ ("scenario/御魂整理/御魂强化属性/暴击"),
+	arrange_YHQHSX_BJSH ("scenario/御魂整理/御魂强化属性/暴击伤害"),
+	arrange_YHQHSX_GJ ("scenario/御魂整理/御魂强化属性/攻击"),
+	arrange_YHQHSX_GJJC ("scenario/御魂整理/御魂强化属性/攻击加成"),
+	arrange_YHQHSX_SM ("scenario/御魂整理/御魂强化属性/生命"),
+	arrange_YHQHSX_SMJC ("scenario/御魂整理/御魂强化属性/生命加成"),
+	arrange_YHQHSX_FY ("scenario/御魂整理/御魂强化属性/防御"),
+	arrange_YHQHSX_FYJC ("scenario/御魂整理/御魂强化属性/防御加成"),
+	arrange_QD ("scenario/御魂整理/确定"),
+	arrange_QZ ("scenario/御魂整理/弃置"),
 	;
 	
 	ArrangeEnums(String value) {
