@@ -33,7 +33,7 @@ public enum ArrangeEnums {
 	arrange_YHQHSX_FY ("scenario/御魂整理/御魂强化属性/防御"),
 	arrange_YHQHSX_FYJC ("scenario/御魂整理/御魂强化属性/防御加成"),
 	arrange_QD ("scenario/御魂整理/确定"),
-	arrange_QZ ("scenario/御魂整理/弃置"),
+	arrange_QZ ("scenario/御魂整理/弃置/未点击"),
 	;
 	
 	ArrangeEnums(String value) {
