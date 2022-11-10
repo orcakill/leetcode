@@ -214,7 +214,7 @@ public class ActivityImageTest {
 	 */
 	@Test
 	public void openCVImageTest4 () throws IOException, InterruptedException, AWTException {
-		String folderName="scenario/登录/用户中心";
+		String folderName="scenario/御魂整理/详细";
 		if(b1){
 			ImageOpenCVService.imagesOpenCV (folderName);
 		}
