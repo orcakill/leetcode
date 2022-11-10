@@ -59,7 +59,7 @@ public class ImageServiceImpl {
 				}
 				else {
 					if(b) {
-						logger.info ("在" + num_time + "秒的检测中，第" + (i + 1) + "次检查未发现" + folder + "的图片");
+						logger.info ("在{}秒的检测中，第{}次检查未发现{}的图片",num_time,(i + 1),folder);
 					}
 				}
 			}
@@ -99,7 +99,7 @@ public class ImageServiceImpl {
 					}
 					else {
 						if(b) {
-							logger.info ("在"+num_time+"秒的检测中，第" + (i + 1) + "次检查未发现"+file+"的图片");
+							logger.info ("在{}秒的检测中，第{}次检查未发现{}的图片",num_time,(i + 1),file);
 						}
 					}
 
@@ -152,7 +152,7 @@ public class ImageServiceImpl {
 	}
 	
 	public static void imagesClickBackDrag (PictureIdentifyWorkPO pictureIdentifyWorkPO1, PictureIdentifyWorkPO pictureIdentifyWorkPO2,
-	                                        String process) throws AWTException, InterruptedException {
+	                                        String process) throws AWTException{
 		MouseClick.mouseClickBackDrag (pictureIdentifyWorkPO1,pictureIdentifyWorkPO2,process);
 	}
 }

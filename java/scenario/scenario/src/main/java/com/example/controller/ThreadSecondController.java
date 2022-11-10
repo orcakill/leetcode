@@ -28,6 +28,7 @@ public class ThreadSecondController extends Thread {
 		logger.info ("9 小号刷大号协战");
 		logger.info ("10 阴阳寮结界");
 		logger.info ("11 阴阳寮结界+斗技5次");
+		logger.info ("12 御魂整理-速度强化-极限副属性");
 		Scanner scanner=new Scanner(System.in);
 		logger.info ("输入一个轮次");
 		int a=scanner.nextInt();//输入一个轮次
