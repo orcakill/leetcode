@@ -5,6 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +22,7 @@ public class FightController {
 	public static final Logger logger = LogManager.getLogger ("FightController");
 	
 	//循环战斗
-	public static void fightGame (Integer a, Integer b) throws InterruptedException, AWTException {
+	public static void fightGame (Integer a, Integer b) throws InterruptedException, AWTException, IOException {
 		int num1;
 		Map<String, Integer> map = new HashMap<> ();
 		map.put ("阴阳寮累计战斗", 0);

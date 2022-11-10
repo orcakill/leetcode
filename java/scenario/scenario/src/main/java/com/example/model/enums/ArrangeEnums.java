@@ -7,7 +7,9 @@ package com.example.model.enums;
  * @Created by orcakill
  */
 public enum ArrangeEnums {
-	
+	arrange_SSL ("scenario/御魂整理/式神录"),
+	arrange_XX ("scenario/御魂整理/详细"),
+	arrange_YCYH_WDJ ("scenario/御魂整理/右侧御魂/未点击"),
 	arrange_DZL_WDJ ("scenario/御魂整理/待整理/未点击"),
 	arrange_GHYH("scenario/御魂整理/更换御魂"),
 	arrange_ZL_WDJ("scenario/御魂整理/整理/未点击"),

@@ -6,6 +6,7 @@ import com.example.model.enums.BackEnums;
 import com.example.model.enums.SoulEnums;
 import com.example.model.map.CoordinateAddress;
 import com.example.service.FightService;
+import com.example.service.ImageOpenCVService;
 import com.example.service.ImageService;
 import com.example.util.ImagesBackRec;
 import com.example.util.MouseClick;
@@ -13,6 +14,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.*;
 import java.util.List;
 
@@ -582,7 +584,16 @@ public class FightAutoController {
 		
 	}
 	
-	public static void SoulEnhancements () throws InterruptedException, AWTException {
+	public static void SoulEnhancements () throws InterruptedException, AWTException, IOException {
+		logger.info ("进入式神录");
+		ImageService.imagesClickBack (ArrangeEnums.arrange_SSL.getValue ());
+		Thread.sleep (1000);
+		logger.info ("进入式神录详细");
+		ImageOpenCVService.imagesOpenCV (ArrangeEnums.arrange_XX.getValue ());
+		Thread.sleep (1000);
+		logger.info ("进入式神录右侧御魂");
+		ImageService.imagesClickBack  (ArrangeEnums.arrange_YCYH_WDJ.getValue ());
+		Thread.sleep (1000);
 		logger.info ("御魂整理开始");
 		//御魂强化属性
 		String soulSubduingEnhancementAttribute;
@@ -658,12 +669,12 @@ public class FightAutoController {
 					quantityOfConsumableMaterials = 5;
 				}
 				if (strengtheningTimes == 4) {
-					logger.info ("第四次强化，强化+12,9个四星青吉鬼");
-					quantityOfConsumableMaterials = 9;
+					logger.info ("第四次强化，强化+12,8个四星青吉鬼");
+					quantityOfConsumableMaterials = 8;
 				}
 				if (strengtheningTimes == 5) {
-					logger.info ("第五次强化，强化+15,12个四星青吉鬼");
-					quantityOfConsumableMaterials = 12;
+					logger.info ("第五次强化，强化+15,9个四星青吉鬼");
+					quantityOfConsumableMaterials = 9;
 				}
 				logger.info ("第{}次,点击{}个四星青吉鬼", strengtheningTimes, quantityOfConsumableMaterials);
 				for (int j = 1; j <= quantityOfConsumableMaterials; j++) {
@@ -675,12 +686,13 @@ public class FightAutoController {
 				logger.info ("等级提升");
 				levelPromotion = ImageService.imagesClickBackIsEmpty (ArrangeEnums.arrange_DJTS.getValue (), 5);
 				while (!levelPromotion) {
+					ImageService.imagesClickBack(ArrangeEnums.arrange_QD.getValue ());
 					Thread.sleep (1000);
 					levelPromotion = ImageService.imagesClickBackIsEmpty (ArrangeEnums.arrange_DJTS.getValue (), 5);
 				}
 				Thread.sleep (1000);
 				logger.info ("****开始判断御魂强化结果");
-				soulSubduingEnhancementAttribute = ImageService.imagesClickBack (strengthenResultSet, 2, 4);
+				soulSubduingEnhancementAttribute = ImageService.imagesClickBack (strengthenResultSet, 30, 60);
 				if (soulSubduingEnhancementAttribute == null) {
 					logger.info ("未找到御魂强化属性，程序退出");
 					System.exit (0);
@@ -746,13 +758,14 @@ public class FightAutoController {
 				}
 			}
 			logger.info ("返回更换御魂");
-			changeTheSoulState = ImageService.imagesClickBackIsEmpty (BackEnums.back.getValue ());
+			ImageService.imagesClickBack(BackEnums.back.getValue ());
 			Thread.sleep (1000);
-			while (changeTheSoulState) {
-				changeTheSoulState = ImageService.imagesClickBack (BackEnums.back.getValue (), 5);
-			}
+			logger.info ("返回更换御魂");
+			ImageService.imagesClickBack(BackEnums.back.getValue ());
+			Thread.sleep (1000);
 			logger.info ("结束本次御魂强化");
 		}
+		FightService.returnHome ();
 		
 	}
 }
