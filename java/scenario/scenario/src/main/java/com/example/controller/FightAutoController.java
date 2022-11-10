@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.model.entity.PictureIdentifyWorkPO;
+import com.example.model.enums.ArrangeEnums;
 import com.example.model.enums.BackEnums;
 import com.example.model.enums.SoulEnums;
 import com.example.model.map.CoordinateAddress;
@@ -30,7 +31,7 @@ public class FightAutoController {
 	public static final Logger logger = LogManager.getLogger ("FightAutoController");
 	
 	//阴阳寮战斗
-	public static Map<String,Integer> fightHome () throws InterruptedException, AWTException {
+	public static Map<String, Integer> fightHome () throws InterruptedException, AWTException {
 		//变量赋值
 		String file = "scenario/结界突破/结界突破";
 		String file1 = "scenario/结界突破/阴阳寮";
@@ -40,7 +41,7 @@ public class FightAutoController {
 		String file8 = "scenario/结界突破/退出进攻";
 		String file41 = "scenario/返回";
 		String fileGTRQ = "scenario/结界突破/呱太入侵";
-		Map<String,Integer> map=new HashMap<> ();
+		Map<String, Integer> map = new HashMap<> ();
 		int num = 0;
 		int num1 = 0;
 		int num2 = 0;
@@ -54,16 +55,16 @@ public class FightAutoController {
 		logger.info ("准备进入结界突破");
 		ImageService.imagesClickBack (file);
 		logger.info ("进入结界突破，准备点击阴阳寮");
-		booleanYYL=ImageService.imagesClickBack (file1,5);
-		while (!booleanYYL){
+		booleanYYL = ImageService.imagesClickBack (file1, 5);
+		while (!booleanYYL) {
 			Thread.sleep (2000);
-			if (ImageService.imagesClickBackIsEmpty (fileGTRQ,5)){
+			if (ImageService.imagesClickBackIsEmpty (fileGTRQ, 5)) {
 				logger.info ("有呱太入侵");
 				ImageService.imagesClickBack (fileGTRQ);
 				logger.info ("呱太入侵点击完成");
 				
 			}
-			booleanYYL=ImageService.imagesClickBack (file1,5);
+			booleanYYL = ImageService.imagesClickBack (file1, 5);
 		}
 		sleep (2000);
 		logger.info ("进入寮突破，判断当前有无挑战次数");
@@ -78,12 +79,12 @@ public class FightAutoController {
 			logger.info ("开始进攻");
 			b = ImageService.imagesClickBackIsEmpty (file4, 3);
 			if (b) {
-				boolean_TCJG=ImageService.imagesClickBackIsEmpty (file8,10);
-				while (boolean_TCJG){
+				boolean_TCJG = ImageService.imagesClickBackIsEmpty (file8, 10);
+				while (boolean_TCJG) {
 					logger.info ("结界已被攻破，退出进攻");
-					ImageService.imagesClickBack(file8);
+					ImageService.imagesClickBack (file8);
 					logger.info ("判断是否退出进攻");
-					boolean_TCJG=ImageService.imagesClickBackIsEmpty (file8,10);
+					boolean_TCJG = ImageService.imagesClickBackIsEmpty (file8, 10);
 				}
 				ImageService.imagesClickBack (file41);
 				logger.info ("退出到探索");
@@ -98,7 +99,7 @@ public class FightAutoController {
 			else {
 				logger.info ("结界未被攻破");
 			}
-			b1 = FightService.fightEnd (30, 30,40 );
+			b1 = FightService.fightEnd (30, 30, 40);
 			if (b1) {
 				num1++;
 			}
@@ -117,10 +118,10 @@ public class FightAutoController {
 		logger.info ("退出到探索");
 		ImageService.imagesClickBack (file41);
 		logger.info ("退出到首页");
-        map.put("阴阳寮本轮战斗",num);
-		map.put ("阴阳寮本轮战斗胜利",num1);
-		map.put ("阴阳寮本轮战斗失败",num2);
-		return  map;
+		map.put ("阴阳寮本轮战斗", num);
+		map.put ("阴阳寮本轮战斗胜利", num1);
+		map.put ("阴阳寮本轮战斗失败", num2);
+		return map;
 		
 	}
 	
@@ -139,30 +140,30 @@ public class FightAutoController {
 		logger.info ("准备进入结界突破");
 		ImageService.imagesClickBack (file);
 		Thread.sleep (3000);
-		MouseClick.mouseClickBack (0,0,"夜神模拟器");
+		MouseClick.mouseClickBack (0, 0, "夜神模拟器");
 		Thread.sleep (1000);
-		MouseClick.mouseClickBack (0,0,"夜神模拟器");
+		MouseClick.mouseClickBack (0, 0, "夜神模拟器");
 		logger.info ("进入结界突破，检查结界挑战劵");
 		//判断结界挑战劵是否为0
 		while (!ImageService.imagesClickBackIsEmpty (file1, 3)) {
 			//不为0则进行结界挑战
 			logger.info ("结界劵数不为零");
 			//判断能否选择个人结界
-			booleanKXJJ= ImageService.imagesClickBackIsEmpty (file2, 3);
+			booleanKXJJ = ImageService.imagesClickBackIsEmpty (file2, 3);
 			if (booleanKXJJ) {
 				logger.info ("能选择个人结界");
 				ImageService.imagesClickBack (file2);
 				logger.info ("点击个人结界成功，准备进攻");
 				ImageService.imagesClickBack (file3);
 				logger.info ("开始进攻");
-				Thread.sleep (10*1000);
+				Thread.sleep (10 * 1000);
 				logger.info ("判断是否准备挑战");
-				booleanZBTJ=ImageService.imagesClickBackIsEmpty (file7,5);
-				if(booleanZBTJ){
+				booleanZBTJ = ImageService.imagesClickBackIsEmpty (file7, 5);
+				if (booleanZBTJ) {
 					logger.info ("准备挑战");
 					ImageService.imagesClickBack (file7);
 				}
-				else{
+				else {
 					logger.info ("无需准备");
 				}
 				logger.info ("进入战斗");
@@ -206,7 +207,7 @@ public class FightAutoController {
 				logger.info ("准备开启加成");
 				ImageService.imagesClickBack (SoulEnums.addition.getValue ());
 				logger.info ("点击加成成功，准备点击御魂加成");
-				MouseClick.mouseClickBack (pictureIdentifyWorkPOList, "夜神模拟器",true);
+				MouseClick.mouseClickBack (pictureIdentifyWorkPOList, "夜神模拟器", true);
 				logger.info ("点击御魂加成成功，准备退出");
 				ImageService.imagesClickBack (SoulEnums.addition.getValue ());
 				//退出加成页面
@@ -241,7 +242,7 @@ public class FightAutoController {
 				//关闭加成
 				ImageService.imagesClickBack (SoulEnums.addition.getValue ());
 				logger.info ("点击加成成功，准备关闭御魂加成");
-				MouseClick.mouseClickBack (pictureIdentifyWorkPOList, "夜神模拟器",true);
+				MouseClick.mouseClickBack (pictureIdentifyWorkPOList, "夜神模拟器", true);
 				logger.info ("关闭御魂加成成功，准备退出");
 				ImageService.imagesClickBack (SoulEnums.addition.getValue ());
 				//退出加成页面
@@ -263,7 +264,7 @@ public class FightAutoController {
 			ImageService.imagesClickBack (SoulEnums.type_YYHSC.getValue ());
 			logger.info ("开始挑战");
 			//开始挑战
-			soulBack (40 , j);
+			soulBack (40, j);
 		}
 		if (i == 31) {
 			logger.info ("进入御魂成功，准备选择日轮之陨");
@@ -367,7 +368,7 @@ public class FightAutoController {
 		ImageService.imagesClickBack (file6);
 	}
 	
-	public static Map<String,Integer> pvp (Integer num) throws InterruptedException, AWTException {
+	public static Map<String, Integer> pvp (Integer num) throws InterruptedException, AWTException {
 		String file = "scenario/斗技/开始挑战";
 		String file1 = "scenario/斗技/自动选择";
 		String file2 = "scenario/斗技/段位晋升";
@@ -375,12 +376,12 @@ public class FightAutoController {
 		String file4 = "scenario/返回";
 		String file5 = "scenario/斗技/斗技图标";
 		String fileDZWG = "scenario/斗技/町中武馆";
-		Map<String,Integer> map=new HashMap<> ();
+		Map<String, Integer> map = new HashMap<> ();
 		boolean b;
 		boolean b1;
 		boolean b2;
-		boolean booleanYCQK=false;
-		boolean booleanFH=false;
+		boolean booleanYCQK = false;
+		boolean booleanFH = false;
 		int num1 = 0;
 		int num2 = 0;
 		logger.info ("开始斗技");
@@ -391,8 +392,8 @@ public class FightAutoController {
 		ImageService.imagesClickBack (file5);
 		for (int i = 1; i <= num; i++) {
 			logger.info ("准备挑战");
-			booleanYCQK=ImageService.imagesClickBack (file,5);
-			while (!booleanYCQK){
+			booleanYCQK = ImageService.imagesClickBack (file, 5);
+			while (!booleanYCQK) {
 				logger.info ("判断是否段位晋升");
 				b2 = ImageService.imagesClickBack (file2, 5);
 				if (!b2) {
@@ -409,14 +410,14 @@ public class FightAutoController {
 				else {
 					logger.info ("存在额外奖励");
 				}
-				booleanYCQK=ImageService.imagesClickBack (file,20);
+				booleanYCQK = ImageService.imagesClickBack (file, 20);
 			}
 			logger.info ("进入挑战，准备自动选择");
-			ImageService.imagesClickBack (file1,20);
+			ImageService.imagesClickBack (file1, 20);
 			logger.info ("自动选择完成，准备自动战斗");
 			Thread.sleep (2000);
 			logger.info ("等待选将");
-			Thread.sleep (30*1000);
+			Thread.sleep (30 * 1000);
 			logger.info ("准备拔得头筹、战斗胜利或战斗失败");
 			b = FightService.fightEndPVP (30, 30, 60);
 			if (b) {
@@ -429,8 +430,8 @@ public class FightAutoController {
 		}
 		//返回首页
 		logger.info ("斗技结束,返回首页");
-		booleanFH=ImageService.imagesClickBack (file4,5);
-		while (!booleanFH){
+		booleanFH = ImageService.imagesClickBack (file4, 5);
+		while (!booleanFH) {
 			logger.info ("判断斗技结束后，是否段位晋升");
 			b2 = ImageService.imagesClickBack (file2, 5);
 			if (!b2) {
@@ -447,13 +448,13 @@ public class FightAutoController {
 			else {
 				logger.info ("存在额外奖励");
 			}
-			booleanFH=ImageService.imagesClickBack (file4,20);
+			booleanFH = ImageService.imagesClickBack (file4, 20);
 		}
 		FightService.returnHome ();
-		map.put ("斗技本轮战斗",num);
-		map.put ("斗技本轮战斗胜利",num1);
-		map.put ("斗技本轮战斗失败",num2);
-		return  map;
+		map.put ("斗技本轮战斗", num);
+		map.put ("斗技本轮战斗胜利", num1);
+		map.put ("斗技本轮战斗失败", num2);
+		return map;
 	}
 	
 	//寄养
@@ -502,16 +503,16 @@ public class FightAutoController {
 			Thread.sleep (3000);
 			logger.info ("已进入好友列表");
 			pictureIdentifyWorkPO1 = ImagesBackRec.imagesRecognitionMouse (fileHYBT, "夜神模拟器");
-			pictureIdentifyWorkPO2.setX ((int) (pictureIdentifyWorkPO1.getX ()*1.3));
+			pictureIdentifyWorkPO2.setX ((int) (pictureIdentifyWorkPO1.getX () * 1.3));
 			pictureIdentifyWorkPO2.setY ((int) (pictureIdentifyWorkPO1.getY () * 2.3));
-			pictureIdentifyWorkPO3.setX ((int) (pictureIdentifyWorkPO1.getX ()*1.3));
+			pictureIdentifyWorkPO3.setX ((int) (pictureIdentifyWorkPO1.getX () * 1.3));
 			pictureIdentifyWorkPO3.setY ((int) (pictureIdentifyWorkPO1.getY () * 1.6));
 			pictureIdentifyWorkPO4.setX (pictureIdentifyWorkPO1.getX ());
 			pictureIdentifyWorkPO4.setY ((int) (pictureIdentifyWorkPO1.getY () * 0.5));
 			//开循环，0 六星太鼓 1 五星太鼓 2 四星太鼓 3 六星斗鱼 4 五星斗鱼 5 四星斗鱼
 			while (!booleanJSJY) {
 				logger.info ("当前好友结界卡是否未放置");
-				booleanWFZ = ImageService.imagesClickBack (fileWFZ,2);
+				booleanWFZ = ImageService.imagesClickBack (fileWFZ, 2);
 				if (booleanWFZ) {
 					logger.info ("好友未放置结界卡，退出后重新进入");
 					if (num == 0) {
@@ -569,7 +570,7 @@ public class FightAutoController {
 						}
 						else {
 							logger.info ("寄养成功");
-							booleanJSJY=true;
+							booleanJSJY = true;
 						}
 					}
 				}
@@ -581,5 +582,177 @@ public class FightAutoController {
 		
 	}
 	
-
+	public static void SoulEnhancements () throws InterruptedException, AWTException {
+		logger.info ("御魂整理开始");
+		//御魂强化属性
+		String soulSubduingEnhancementAttribute;
+		//御魂强化属性
+		String soulSubduingEnhancementAttributeLast = null;
+		//强化状态
+		boolean reinforcementState;
+		//等级提升状态
+		boolean levelPromotion;
+		//更换御魂状态
+		boolean changeTheSoulState;
+		//强化次数
+		int strengtheningTimes = 1;
+		//消耗材料数量
+		int quantityOfConsumableMaterials = 0;
+		//御魂强化属性结果
+		Map<String, String> strengthenResultSet = new HashMap<> ();
+		//初始化御魂强化结果
+		strengthenResultSet.put ("速度", ArrangeEnums.arrange_YHQHSX_SD.getValue ());
+		strengthenResultSet.put ("效果命中", ArrangeEnums.arrange_YHQHSX_XGMZ.getValue ());
+		strengthenResultSet.put ("效果抵抗", ArrangeEnums.arrange_YHQHSX_XGDK.getValue ());
+		strengthenResultSet.put ("暴击", ArrangeEnums.arrange_YHQHSX_BJ.getValue ());
+		strengthenResultSet.put ("暴击伤害", ArrangeEnums.arrange_YHQHSX_BJSH.getValue ());
+		strengthenResultSet.put ("攻击", ArrangeEnums.arrange_YHQHSX_GJ.getValue ());
+		strengthenResultSet.put ("攻击加成", ArrangeEnums.arrange_YHQHSX_GJJC.getValue ());
+		strengthenResultSet.put ("生命", ArrangeEnums.arrange_YHQHSX_SM.getValue ());
+		strengthenResultSet.put ("生命加成", ArrangeEnums.arrange_YHQHSX_SMJC.getValue ());
+		strengthenResultSet.put ("防御", ArrangeEnums.arrange_YHQHSX_FY.getValue ());
+		strengthenResultSet.put ("防御加成", ArrangeEnums.arrange_YHQHSX_FYJC.getValue ());
+		//循环强化速度御魂
+		for (int i = 1; i <= 3; i++) {
+			//设置强化状态
+			reinforcementState = true;
+			logger.info ("进入更换御魂");
+			ImageService.imagesClickBack (ArrangeEnums.arrange_GHYH.getValue ());
+			Thread.sleep (1000);
+			logger.info ("进入整理");
+			ImageService.imagesClickBack (ArrangeEnums.arrange_ZL_WDJ.getValue ());
+			Thread.sleep (1000);
+			logger.info ("进入方案");
+			ImageService.imagesClickBack (ArrangeEnums.arrange_FA_WDJ.getValue ());
+			Thread.sleep (1000);
+			logger.info ("进入方案下强化");
+			ImageService.imagesClickBack (ArrangeEnums.arrange_FAXQH_WDJ.getValue ());
+			Thread.sleep (1000);
+			logger.info ("进入方案速度提升");
+			ImageService.imagesClickBack (ArrangeEnums.arrange_FASDTS_WDJ.getValue ());
+			Thread.sleep (1000);
+			logger.info ("排序");
+			ImageService.imagesClickBack (ArrangeEnums.arrange_PX.getValue ());
+			Thread.sleep (1000);
+			logger.info ("点击左上角御魂");
+			ImageService.imagesClickBack (ArrangeEnums.arrange_ZSJYH.getValue ());
+			Thread.sleep (1000);
+			logger.info ("进入强化");
+			ImageService.imagesClickBack (ArrangeEnums.arrange_JRQH.getValue ());
+			Thread.sleep (1000);
+			logger.info ("*****当前强化状态为true,开始强化");
+			while (reinforcementState) {
+				if (strengtheningTimes > 1) {
+					logger.info ("当前强化状态为true,继续强化");
+				}
+				if (strengtheningTimes == 1) {
+					logger.info ("第一次强化，强化+3,2个四星青吉鬼");
+					quantityOfConsumableMaterials = 2;
+				}
+				if (strengtheningTimes == 2) {
+					logger.info ("第二次强化，强化+6,4个四星青吉鬼");
+					quantityOfConsumableMaterials = 4;
+				}
+				if (strengtheningTimes == 3) {
+					logger.info ("第三次强化，强化+9,5个四星青吉鬼");
+					quantityOfConsumableMaterials = 5;
+				}
+				if (strengtheningTimes == 4) {
+					logger.info ("第四次强化，强化+12,9个四星青吉鬼");
+					quantityOfConsumableMaterials = 9;
+				}
+				if (strengtheningTimes == 5) {
+					logger.info ("第五次强化，强化+15,12个四星青吉鬼");
+					quantityOfConsumableMaterials = 12;
+				}
+				logger.info ("第{}次,点击{}个四星青吉鬼", strengtheningTimes, quantityOfConsumableMaterials);
+				for (int j = 1; j <= quantityOfConsumableMaterials; j++) {
+					ImageService.imagesClickBack (ArrangeEnums.arrange_SXQJG.getValue ());
+					Thread.sleep (1000);
+				}
+				logger.info ("御魂强化");
+				ImageService.imagesClickBack (ArrangeEnums.arrange_QH.getValue ());
+				logger.info ("等级提升");
+				levelPromotion = ImageService.imagesClickBackIsEmpty (ArrangeEnums.arrange_DJTS.getValue (), 5);
+				while (!levelPromotion) {
+					Thread.sleep (1000);
+					levelPromotion = ImageService.imagesClickBackIsEmpty (ArrangeEnums.arrange_DJTS.getValue (), 5);
+				}
+				Thread.sleep (1000);
+				logger.info ("****开始判断御魂强化结果");
+				soulSubduingEnhancementAttribute = ImageService.imagesClickBack (strengthenResultSet, 2, 4);
+				if (soulSubduingEnhancementAttribute == null) {
+					logger.info ("未找到御魂强化属性，程序退出");
+					System.exit (0);
+				}
+				logger.info ("御魂强化属性为{}", soulSubduingEnhancementAttribute);
+				//如果强化属性为攻击、生命和防御，则直接弃置
+				if ((
+						    soulSubduingEnhancementAttribute.equals ("攻击") || soulSubduingEnhancementAttribute.equals ("生命") ||
+						    soulSubduingEnhancementAttribute.equals ("防御")) && strengtheningTimes < 4) {
+					logger.info ("御魂强化属性为{},直接弃置", soulSubduingEnhancementAttribute);
+					logger.info ("弃置");
+					ImageService.imagesClickBack (ArrangeEnums.arrange_QZ.getValue ());
+					Thread.sleep (1000);
+					logger.info ("确定强化结果，本轮强化结束");
+					ImageService.imagesClickBack (ArrangeEnums.arrange_QD.getValue ());
+					Thread.sleep (1000);
+					logger.info ("结束强化，强化状态置为false,强化次数置为1");
+					reinforcementState = false;
+					strengtheningTimes = 1;
+				}
+				else {
+					if (strengtheningTimes == 1) {
+						logger.info ("第一次强化，记录强化属性，继续强化");
+						soulSubduingEnhancementAttributeLast = soulSubduingEnhancementAttribute;
+						logger.info ("确定");
+						ImageService.imagesClickBack (ArrangeEnums.arrange_QD.getValue ());
+						logger.info ("御魂强化次数+1");
+						strengtheningTimes++;
+						Thread.sleep (1000);
+					}
+					else {
+						if (soulSubduingEnhancementAttribute.equals (soulSubduingEnhancementAttributeLast) || strengtheningTimes >= 4) {
+							logger.info ("御魂强化属性和上一次相同，或者御魂强化次数大于等4次");
+							logger.info ("确定强化结果，本轮强化结束");
+							ImageService.imagesClickBack (ArrangeEnums.arrange_QD.getValue ());
+							Thread.sleep (1000);
+							if (strengtheningTimes == 5) {
+								logger.info ("强化满级,本次强化结束");
+								logger.info ("结束强化，强化状态置为false,强化次数置为1");
+								reinforcementState = false;
+								strengtheningTimes = 1;
+							}
+							else {
+								logger.info ("强化未满级，进入下一轮");
+							}
+							logger.info ("御魂强化次数+1");
+							strengtheningTimes++;
+							
+						}
+						else {
+							logger.info ("御魂强化属性和上一次不同,且强化次数小于4次");
+							logger.info ("弃置");
+							ImageService.imagesClickBack (ArrangeEnums.arrange_QZ.getValue ());
+							Thread.sleep (1000);
+							logger.info ("确定强化结果，本轮强化结束");
+							ImageService.imagesClickBack (ArrangeEnums.arrange_QD.getValue ());
+							Thread.sleep (1000);
+							logger.info ("结束强化，强化状态置为false,强化次数置为1");
+							reinforcementState = false;
+							strengtheningTimes = 1;
+						}
+					}
+				}
+			}
+			logger.info ("返回更换御魂");
+			changeTheSoulState = ImageService.imagesClickBackIsEmpty (BackEnums.back.getValue ());
+			Thread.sleep (1000);
+			while (changeTheSoulState) {
+				changeTheSoulState = ImageService.imagesClickBack (BackEnums.back.getValue (), 5);
+			}
+			logger.info ("结束本次御魂强化");
+		}
+		
+	}
 }

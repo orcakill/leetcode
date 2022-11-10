@@ -142,8 +142,15 @@ public class FightController {
 				else {
 					logger.info ("最后一轮，不等待");
 				}
+				
 			}
-			
+			else if (b == 12) {
+				FightService.returnHome ();
+				//  御魂强化
+				FightAutoController.SoulEnhancements();
+				//检查寄养，无则寄养
+				FightAutoController.foster ();
+			}
 		}
 		
 	}
