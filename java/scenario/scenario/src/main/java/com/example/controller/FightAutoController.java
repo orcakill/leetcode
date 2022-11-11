@@ -784,7 +784,7 @@ public class FightAutoController {
 		PictureIdentifyWorkPO pictureIdentifyWorkPO2=new PictureIdentifyWorkPO ();
 		pictureIdentifyWorkPO1.setX (windows_width/2);
 		pictureIdentifyWorkPO1.setY (windows_height/2);
-		pictureIdentifyWorkPO2.setX (windows_width/8*3);
+		pictureIdentifyWorkPO2.setX (windows_width/8*6);
 		pictureIdentifyWorkPO2.setY (windows_height/2);
 		//探索章节状态
 		boolean chapterInterfaceOrNot;
@@ -811,7 +811,16 @@ public class FightAutoController {
 				if(littleMonsterState){
 					logger.info ("找到小怪，点击战斗");
 					ImageOpenCVService.imagesOpenCV (ExploreEnums.explore_XGZD.getValue ());
-					Thread.sleep (10*1000);
+					Thread.sleep (2000);
+					logger.info ("检查是否未点击成功");
+					littleMonsterState=ImageOpenCVService.imagesOpenCVIsEmpty (ExploreEnums.explore_XGZD.getValue (),1);
+					while (littleMonsterState){
+						logger.info ("小怪点击不成功，重新点击");
+						ImageOpenCVService.imagesOpenCV (ExploreEnums.explore_XGZD.getValue ());
+						Thread.sleep (1000);
+						littleMonsterState=ImageOpenCVService.imagesOpenCVIsEmpty (ExploreEnums.explore_XGZD.getValue (),1);
+					}
+					Thread.sleep (5*1000);
 					logger.info ("退出挑战");
 					ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue (),5);
 					Thread.sleep (1000);
