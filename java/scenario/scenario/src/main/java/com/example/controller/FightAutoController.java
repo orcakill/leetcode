@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.model.entity.PictureIdentifyWorkPO;
 import com.example.model.enums.ArrangeEnums;
 import com.example.model.enums.BackEnums;
+import com.example.model.enums.ExploreEnums;
 import com.example.model.enums.SoulEnums;
 import com.example.model.map.CoordinateAddress;
 import com.example.service.FightService;
@@ -767,5 +768,75 @@ public class FightAutoController {
 		}
 		FightService.returnHome ();
 		
+	}
+	/***
+	 * @description: 探索
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2022/11/11 8:29
+	 */
+	public static void explore (Integer num) throws InterruptedException, AWTException {
+		//探索章节状态
+		boolean chapterInterfaceOrNot;
+		//boss状态
+		boolean bossState;
+		//小怪状态
+		boolean littleMonsterState;
+		//自动轮换状态
+		boolean rotationStatus;
+		logger.info ("进入探索");
+		loginExplore ();
+		logger.info ("开始探索战斗");
+		chapterInterfaceOrNot=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TS.getValue (),5);
+		for(int i=1;i<=num;i++){
+			while (chapterInterfaceOrNot){
+				logger.info ("当前不在最后一章探索界面,刚进探索界面，出现石距，探索后出现奖励");
+				logger.info ("点击最后一章");
+				ImageService.imagesClickBack (ExploreEnums.explore_ZHYZ.getValue (),1);
+				Thread.sleep (1000);
+				logger.info ("点击额外奖励");
+				ImageService.imagesClickBack (ExploreEnums.explore_EWJL.getValue (),1);
+				Thread.sleep (1000);
+				chapterInterfaceOrNot=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TS.getValue (),1);
+				Thread.sleep (1000);
+			}
+			logger.info ("当前已在最后一章界面");
+			logger.info ("探索");
+			ImageService.imagesClickBack (ExploreEnums.explore_ZHYZ.getValue ());
+			Thread.sleep (1000);
+			logger.info ("检查自动轮换");
+			rotationStatus=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue (),5);
+			while (!rotationStatus){
+				logger.info ("开启自动轮换");
+				ImageService.imagesClickBack(ExploreEnums.explore_ZHYZ.getValue ());
+				rotationStatus=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue (),5);
+			}
+			logger.info ("当前探索中,检查是否有BOSS");
+			bossState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_BOSSZD.getValue (),5);
+			while (!bossState){
+				logger.info ("寻找小怪");
+				littleMonsterState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_XGZD.getValue (),5);
+				if(littleMonsterState){
+					logger.info ("找到小怪，点击战斗");
+					ImageService.imagesClickBack (ExploreEnums.explore_XGZD.getValue ());
+					Thread.sleep (5000);
+					logger.info ("退出挑战");
+					ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue ());
+					Thread.sleep (1000);
+				}
+				else{
+					logger.info ("没找到小怪，右移");
+				}
+				logger.info ("小怪战斗结束，检查是否出现BOSS");
+				bossState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_BOSSZD.getValue (),5);
+			}
+			logger.info ("小怪战斗结束，boss战");
+			ImageService.imagesClickBack (ExploreEnums.explore_BOSSZD.getValue ());
+			Thread.sleep (5000);
+			logger.info ("退出挑战");
+			ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue ());
+			Thread.sleep (1000);
+		    logger.info ("第{}轮挑战完成",i);
+		}
 	}
 }
