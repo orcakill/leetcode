@@ -46,10 +46,12 @@ public class ActivityImageTest {
 		BufferedImage window= ImageIO.read (file);
 		//		图片
 		List<int[][]> ImagesData = ImagesBackRec.imageToDate (folderName);
+		logger.info (window);
+		logger.info (ImagesData);
 	}
 	//opencv测试是否可正常使用
 	@Test
-	public void openCVTest () throws IOException {
+	public void openCVTest ()  {
 		URL url = ClassLoader.getSystemResource ("lib/opencv_java460.dll");
 		System.load(url.getPath());
 		//        System.loadLibrary( Core.NATIVE_LIBRARY_NAME );
@@ -59,7 +61,7 @@ public class ActivityImageTest {
 	
 	//opencv,特征匹配，测试图片匹配
 	@Test
-	public void openCVImageTest () throws IOException {
+	public void openCVImageTest () {
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 		String str_src= System.getProperty ("user.dir") + "/src/main/resources/image/" + "scenario/english/exp/source/a.jpg";
 		String str_tem=System.getProperty ("user.dir") + "/src/main/resources/image/"+"scenario/english/exp/search/b.png";
@@ -85,7 +87,7 @@ public class ActivityImageTest {
 		// Imgproc.matchTemplate(g_src, g_tem,g_result,Imgproc.TM_CCORR_NORMED);
 		// // 归一化相关匹配法
 		Core.normalize(g_result, g_result, 0, 1, Core.NORM_MINMAX, -1, new Mat());
-		Point matchLocation = new Point();
+		Point matchLocation;
 		Core.MinMaxLocResult mmlr = Core.minMaxLoc (g_result);
 		
 		matchLocation = mmlr.maxLoc; // 此处使用maxLoc还是minLoc取决于使用的匹配算法
@@ -104,13 +106,12 @@ public class ActivityImageTest {
 	
 	/***
 	 * @description: 在英文路径下，测试openCV的识别
-	 * @param
 	 * @return: void
 	 * @author: orcakill
 	 * @date: 2022/11/6 2:51
 	 */
 	@Test
-	public void openCVImageTest2 () throws IOException {
+	public void openCVImageTest2 () {
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 		String str_src= System.getProperty ("user.dir") + "/src/main/resources/image/" + "scenario/english/exp/source1/a.jpg";
 		String str_tem=System.getProperty ("user.dir") + "/src/main/resources/image/"+"scenario/english/exp/search1/b.png";
@@ -136,7 +137,7 @@ public class ActivityImageTest {
 		// Imgproc.matchTemplate(g_src, g_tem,g_result,Imgproc.TM_CCORR_NORMED);
 		// // 归一化相关匹配法
 		Core.normalize(g_result, g_result, 0, 1, Core.NORM_MINMAX, -1, new Mat());
-		Point matchLocation = new Point();
+		Point matchLocation;
 		Core.MinMaxLocResult mmlr = Core.minMaxLoc (g_result);
 		
 		matchLocation = mmlr.maxLoc; // 此处使用maxLoc还是minLoc取决于使用的匹配算法

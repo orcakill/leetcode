@@ -81,6 +81,7 @@ public class ImagesOpenCV {
 			byteArrayOutputStream2.flush();
 			Mat g_tem=BufferImageToMat.bufImg2Mat(imagesData,BufferedImage.TYPE_3BYTE_BGR,CvType.CV_8UC3);
 			assert g_src != null;
+			assert g_tem != null;
 			int result_rows = g_src.rows () - g_tem.rows () + 1;
 			int result_cols = g_src.cols() - g_tem.cols() + 1;
 			Mat g_result = new Mat(result_rows, result_cols, CvType.CV_32FC1);
@@ -100,9 +101,9 @@ public class ImagesOpenCV {
 				mouseMessages.add (pictureIdentifyWorkPO);
 			}
 			//识别出3个坐标后跳出
-			//if(mouseMessages.size ()>=3){
-			//	break;
-			//}
+			if(mouseMessages.size ()>=3){
+				break;
+			}
 		}
 		// 返回所有图片对应窗口坐标
 		return mouseMessages;
