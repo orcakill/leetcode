@@ -80,23 +80,21 @@ public class ImagesOpenCV {
 			ImageIO.write(imagesData, "jpg", byteArrayOutputStream2);
 			byteArrayOutputStream2.flush();
 			Mat g_tem=BufferImageToMat.bufImg2Mat(imagesData,BufferedImage.TYPE_3BYTE_BGR,CvType.CV_8UC3);
-			assert g_src != null;
-			assert g_tem != null;
 			int result_rows = g_src.rows () - g_tem.rows () + 1;
 			int result_cols = g_src.cols() - g_tem.cols() + 1;
 			Mat g_result = new Mat(result_rows, result_cols, CvType.CV_32FC1);
-			Imgproc.matchTemplate (g_src, g_tem, g_result, Imgproc.TM_CCORR_NORMED); // 归一化相关系数匹配法
+			Imgproc.matchTemplate (g_src, g_tem, g_result, Imgproc.TM_SQDIFF_NORMED); // 归一化相关系数匹配法
 			Core.normalize (g_result, g_result, 0, 1, Core.NORM_MINMAX, -1, new Mat());
 			Core.MinMaxLocResult core_result = Core.minMaxLoc (g_result);
-			Point matchLocation = core_result.maxLoc; // 此处使用maxLoc还是minLoc取决于使用的匹配算法
+			Point matchLocation = core_result.minLoc; // 此处使用maxLoc还是minLoc取决于使用的匹配算法
 			//目标坐标
 			PictureIdentifyWorkPO pictureIdentifyWorkPO=new PictureIdentifyWorkPO ();
 			//判断匹配系数大于预期，则返回坐标
-			if(core_result.maxVal>=coefficient) {
+			if(core_result.minVal<=2E-11&&core_result.minVal>=0) {
 				pictureIdentifyWorkPO.setX ((int) (matchLocation.x + g_tem.cols () / 2));
 				pictureIdentifyWorkPO.setY ((int) (matchLocation.y + g_tem.cols () / 2));
 				logger.info ("找到坐标了，（"+(pictureIdentifyWorkPO.getX ())+"，"+(pictureIdentifyWorkPO.getY ())+")");
-				logger.info ("匹配系数:"+core_result.maxVal);
+				logger.info ("匹配系数:"+core_result.minVal);
 				//坐标添加到返回参数中
 				mouseMessages.add (pictureIdentifyWorkPO);
 			}
@@ -109,4 +107,5 @@ public class ImagesOpenCV {
 		return mouseMessages;
 		
 	}
+
 }

@@ -775,60 +775,54 @@ public class FightAutoController {
 	 * @author: orcakill
 	 * @date: 2022/11/11 8:29
 	 */
-	public static void explore (Integer num) throws InterruptedException, AWTException {
+	public static void explore (Integer num) throws InterruptedException, AWTException, IOException {
+		//右移界面数据准备
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ();
+		int windows_width =gd.getDisplayMode ().getWidth ();
+		int windows_height = gd.getDisplayMode().getHeight();
+		PictureIdentifyWorkPO pictureIdentifyWorkPO1=new PictureIdentifyWorkPO ();
+		PictureIdentifyWorkPO pictureIdentifyWorkPO2=new PictureIdentifyWorkPO ();
+		pictureIdentifyWorkPO1.setX (windows_width/2);
+		pictureIdentifyWorkPO1.setY (windows_height/2);
+		pictureIdentifyWorkPO2.setX (windows_width/8*3);
+		pictureIdentifyWorkPO2.setY (windows_height/2);
 		//探索章节状态
 		boolean chapterInterfaceOrNot;
 		//boss状态
 		boolean bossState;
 		//小怪状态
 		boolean littleMonsterState;
-		//自动轮换状态
-		boolean rotationStatus;
+		//额外奖励
+		boolean rewardState;
 		logger.info ("进入探索");
 		loginExplore ();
 		logger.info ("开始探索战斗");
-		chapterInterfaceOrNot=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TS.getValue (),5);
 		for(int i=1;i<=num;i++){
-			while (chapterInterfaceOrNot){
-				logger.info ("当前不在最后一章探索界面,刚进探索界面，出现石距，探索后出现奖励");
-				logger.info ("点击最后一章");
-				ImageService.imagesClickBack (ExploreEnums.explore_ZHYZ.getValue (),1);
-				Thread.sleep (1000);
-				logger.info ("点击额外奖励");
-				ImageService.imagesClickBack (ExploreEnums.explore_EWJL.getValue (),1);
-				Thread.sleep (1000);
-				chapterInterfaceOrNot=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TS.getValue (),1);
-				Thread.sleep (1000);
-			}
+			exploreEnd ();
 			logger.info ("当前已在最后一章界面");
 			logger.info ("探索");
-			ImageService.imagesClickBack (ExploreEnums.explore_ZHYZ.getValue ());
+			ImageService.imagesClickBack (ExploreEnums.explore_TS.getValue ());
 			Thread.sleep (1000);
-			logger.info ("检查自动轮换");
-			rotationStatus=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue (),5);
-			while (!rotationStatus){
-				logger.info ("开启自动轮换");
-				ImageService.imagesClickBack(ExploreEnums.explore_ZHYZ.getValue ());
-				rotationStatus=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue (),5);
-			}
 			logger.info ("当前探索中,检查是否有BOSS");
-			bossState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_BOSSZD.getValue (),5);
+			bossState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_BOSSZD.getValue (),3);
 			while (!bossState){
 				logger.info ("寻找小怪");
-				littleMonsterState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_XGZD.getValue (),5);
+				littleMonsterState=ImageOpenCVService.imagesOpenCVIsEmpty (ExploreEnums.explore_XGZD.getValue (),3);
 				if(littleMonsterState){
 					logger.info ("找到小怪，点击战斗");
-					ImageService.imagesClickBack (ExploreEnums.explore_XGZD.getValue ());
-					Thread.sleep (5000);
+					ImageOpenCVService.imagesOpenCV (ExploreEnums.explore_XGZD.getValue ());
+					Thread.sleep (10*1000);
 					logger.info ("退出挑战");
-					ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue ());
+					ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue (),5);
 					Thread.sleep (1000);
 				}
 				else{
 					logger.info ("没找到小怪，右移");
+					ImageService.imagesClickBackDrag (pictureIdentifyWorkPO1,pictureIdentifyWorkPO2,"夜神模拟器");
 				}
+				Thread.sleep (1000);
 				logger.info ("小怪战斗结束，检查是否出现BOSS");
-				bossState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_BOSSZD.getValue (),5);
+				bossState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_BOSSZD.getValue (),2);
 			}
 			logger.info ("小怪战斗结束，boss战");
 			ImageService.imagesClickBack (ExploreEnums.explore_BOSSZD.getValue ());
@@ -837,6 +831,34 @@ public class FightAutoController {
 			ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue ());
 			Thread.sleep (1000);
 		    logger.info ("第{}轮挑战完成",i);
+		}
+		exploreEnd ();
+		FightService.returnHome ();
+	}
+	
+	public static void exploreEnd () throws InterruptedException, AWTException {
+		boolean chapterInterfaceOrNot;
+		boolean rewardState;
+		chapterInterfaceOrNot= ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TS.getValue (),3);
+		while (!chapterInterfaceOrNot){
+			logger.info ("当前不在最后一章探索界面,刚进探索界面，出现石距，探索后出现奖励");
+			logger.info ("点击最后一章");
+			ImageService.imagesClickBack (ExploreEnums.explore_ZHYZ.getValue (),1);
+			Thread.sleep (1000);
+			logger.info ("是否有额外奖励");
+			rewardState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_EWJL.getValue (),2);
+			while (rewardState){
+				logger.info ("有额外奖励");
+				ImageService.imagesClickBack (ExploreEnums.explore_EWJL.getValue (),1);
+				Thread.sleep (1000);
+				logger.info ("点击灰色返回一次");
+				ImageService.imagesClickBack (BackEnums.back.getValue (),1);
+				Thread.sleep (1000);
+				rewardState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_EWJL.getValue (),2);
+			}
+			Thread.sleep (1000);
+			chapterInterfaceOrNot=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TS.getValue (),1);
+			Thread.sleep (1000);
 		}
 	}
 }
