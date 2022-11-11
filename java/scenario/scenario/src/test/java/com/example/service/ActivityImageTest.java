@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.model.enums.ExploreEnums;
 import com.example.util.BufferImageToMat;
 import com.example.util.ImagesBackRec;
 import com.example.util.Screenshot;
@@ -113,14 +114,16 @@ public class ActivityImageTest {
 	@Test
 	public void openCVImageTest2 () {
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-		String str_src= System.getProperty ("user.dir") + "/src/main/resources/image/" + "scenario/english/exp/source1/a.jpg";
-		String str_tem=System.getProperty ("user.dir") + "/src/main/resources/image/"+"scenario/english/exp/search1/b.png";
+		//String str_src= System.getProperty ("user.dir") + "/src/main/resources/image/" + "scenario/english/exp/source1/a.jpg";
+		//String str_tem=System.getProperty ("user.dir") + "/src/main/resources/image/"+"scenario/english/exp/search1/b.png";
+		String str_src="D:/a.jpg";
+		String str_tem="D:/b.png";
 		Mat g_src= Imgcodecs.imread (str_src);
 		Mat g_tem= Imgcodecs.imread (str_tem);
 		int result_rows = g_src.rows() - g_tem.rows() + 1;
 		int result_cols = g_src.cols() - g_tem.cols() + 1;
 		Mat g_result = new Mat(result_rows, result_cols, CvType.CV_32FC1);
-		Imgproc.matchTemplate (g_src, g_tem, g_result, Imgproc.TM_CCORR_NORMED); // 归一化平方差匹配法
+		Imgproc.matchTemplate (g_src, g_tem, g_result, Imgproc.TM_CCOEFF_NORMED); // 归一化平方差匹配法
 		// Imgproc.matchTemplate(g_src, g_tem, g_result,
 		// Imgproc.TM_CCOEFF_NORMED); // 归一化相关系数匹配法
 		
@@ -160,7 +163,8 @@ public class ActivityImageTest {
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 		////模拟器截屏处理
 		BufferedImage Window = Screenshot.screenshotBack ("夜神模拟器");
-		String str_tem=System.getProperty ("user.dir") + "/src/main/resources/image/"+"scenario/登录/适龄提示/屏幕截图 2022-11-06 024603.png";
+		//String str_tem=System.getProperty ("user.dir") + "/src/main/resources/image/"+"scenario/登录/适龄提示/屏幕截图 2022-11-06 024603.png";
+		String str_tem=System.getProperty ("user.dir") + "/src/main/resources/image/"+"scenario/探索/小怪战斗/屏幕截图 2022-11-11 213517.png";
 		//目标图片文件处理
 		File file_tem=new File (str_tem);
 		BufferedImage 	bufferedImageTem = ImageIO.read(file_tem);
@@ -220,6 +224,12 @@ public class ActivityImageTest {
 			ImageOpenCVService.imagesOpenCV (folderName);
 		}
 	}
-	
+	//测试是否可以识别到后台桌面的图标
+	@Test
+	public void openCVImageTest5 () throws IOException, InterruptedException, AWTException {
+		if(b1){
+			ImageOpenCVService.imagesOpenCVIsEmpty (ExploreEnums.explore_XGZD.getValue (),5);
+		}
+	}
 	
 }

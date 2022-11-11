@@ -12,7 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MouseClick {
-	private static final Logger logger = LogManager.getLogger (MouseClick.class);
+
+	private static final Logger logger = LogManager.getLogger ("MouseClick");
 	
 	
 	//	向后台进程发送鼠标点击事件

@@ -156,9 +156,9 @@ public class FightController {
 				//初始化首页
 				FightService.returnHome ();
 				//个人结界
-				FightAutoController.borderCheck ();
+				//FightAutoController.borderCheck ();
 				//探索40次
-				FightAutoController.explore(40);
+				FightAutoController.explore(1);
 				//检查寄养，无则寄养
 				FightAutoController.foster ();
 			}

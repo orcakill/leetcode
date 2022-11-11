@@ -23,6 +23,10 @@ public interface ImageOpenCVService {
 		return  imagesOpenCV(folder, "夜神模拟器", 60, 1, 2, true, isClick,1.0);
 	}
 	
+	static  boolean imagesOpenCVIsEmpty (String folder,Integer re_num) throws InterruptedException, AWTException, IOException {
+		return imagesOpenCV(folder,"夜神模拟器",re_num,1,2,true,false,1.0);
+	}
+	
 	/*多张图片后台识别,参数默认，识别次数，识别起始间隔，识别结束间隔，是否返回日志信息,点击*/
 	static void imagesOpenCV (String folder,Double coefficient) throws InterruptedException, AWTException, IOException {
 		imagesOpenCV(folder, "夜神模拟器", 60, 1, 2, true, true,coefficient);

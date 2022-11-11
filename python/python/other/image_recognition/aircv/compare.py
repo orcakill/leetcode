@@ -1,9 +1,11 @@
 import aircv
 
 if __name__ == '__main__':
-    im_src = aircv.imread('./resources/a.jpg')
-    im_obj = aircv.imread('./resources/b.png')
+    # im_src = aircv.imread('./resources/a.jpg')
+    # im_obj = aircv.imread('./resources/b.png')
 
+    im_src = aircv.imread('d:/a.jpg')
+    im_obj = aircv.imread('d:/b.png')
     aircv_ret = aircv.find_template(im_src, im_obj, 0.5)
     print('结果:{}'.format(aircv_ret))
     print('demo尺寸:{}'.format(im_src.shape))
