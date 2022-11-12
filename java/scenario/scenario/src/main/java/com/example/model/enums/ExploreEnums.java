@@ -15,6 +15,7 @@ public enum ExploreEnums {
 	explore_BOSSZD("scenario/探索/boss战"),
 	explore_TCTZ("scenario/御魂/退出挑战"),
 	explore_EWJL("scenario/探索/额外奖励"),
+	explore_ZCBX("scenario/探索/左侧宝箱"),
 	;
 	
 	
