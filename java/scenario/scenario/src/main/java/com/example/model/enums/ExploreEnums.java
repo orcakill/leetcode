@@ -16,6 +16,8 @@ public enum ExploreEnums {
 	explore_TCTZ("scenario/御魂/退出挑战"),
 	explore_EWJL("scenario/探索/额外奖励"),
 	explore_ZCBX("scenario/探索/左侧宝箱"),
+	explore_QR("scenario/探索/确认"),
+	explore_ZJFH("scenario/探索/章节返回"),
 	;
 	
 	

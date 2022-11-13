@@ -789,12 +789,30 @@ public class FightAutoController {
 		boolean littleMonsterState;
 		//自动轮换
 		boolean rotationState;
+		//宝箱
+		boolean treasureChestState;
+		//额外奖励
+		boolean rewardState;
+		//探索界面判断
+		boolean exploreState;
 		logger.info ("进入探索");
 		loginExplore ();
 		logger.info ("开始探索战斗");
 		for(int i=1;i<=num;i++){
-			exploreEnd ();
-			logger.info ("当前已在最后一章界面");
+			logger.info ("当前探索界面");
+			logger.info ("检查左侧是否有宝箱");
+			treasureChestState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZCBX.getValue (),2);
+			while (treasureChestState){
+				logger.info ("有宝箱");
+				ImageService.imagesClickBack (ExploreEnums.explore_ZCBX.getValue (),1);
+				Thread.sleep (1000);
+				logger.info ("点击退出挑战");
+				ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue (),1);
+				Thread.sleep (1000);
+				treasureChestState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZCBX.getValue (),2);
+			}
+			logger.info ("最后一章");
+			ImageService.imagesClickBack (ExploreEnums.explore_ZHYZ.getValue ());
 			logger.info ("探索");
 			ImageService.imagesClickBack (ExploreEnums.explore_TS.getValue ());
 			Thread.sleep (1000);
@@ -812,7 +830,7 @@ public class FightAutoController {
 				littleMonsterState=ImageOpenCVService.imagesOpenCVIsEmpty (ExploreEnums.explore_XGZD.getValue (),3);
 				if(littleMonsterState){
 					logger.info ("找到小怪，点击战斗");
-					ImageOpenCVService.imagesOpenCV (ExploreEnums.explore_XGZD.getValue ());
+					ImageOpenCVService.imagesOpenCV (ExploreEnums.explore_XGZD.getValue (),3);
 					Thread.sleep (2000);
 					logger.info ("检查是否未点击成功");
 					littleMonsterState=ImageOpenCVService.imagesOpenCVIsEmpty (ExploreEnums.explore_XGZD.getValue (),1);
@@ -841,50 +859,30 @@ public class FightAutoController {
 			Thread.sleep (5000);
 			logger.info ("退出挑战");
 			ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue ());
-			Thread.sleep (1000);
+			Thread.sleep (3000);
+			logger.info ("判断是否已在探索界面");
+			exploreState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue (),2);
+			if(!exploreState){
+				logger.info ("未回到探索界面");
+				logger.info ("判断是否有未回到最后一章的探索界面，因额外奖励导致");
+				rewardState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TS.getValue (),2);
+				while (rewardState){
+					logger.info ("未回到探索，点击返回");
+					ImageService.imagesClickBack (BackEnums.back.getValue (),1);
+					Thread.sleep (1000);
+					logger.info ("确认");
+					ImageService.imagesClickBack (ExploreEnums.explore_QR.getValue (),1);
+					Thread.sleep (1000);
+					rewardState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TS.getValue (),2);
+				}
+				logger.info ("在最后一章探索界面，返回探索界面");
+				ImageService.imagesClickBack (BackEnums.back.getValue (),1);
+				Thread.sleep (1000);
+			}
+			logger.info ("当前已是探索界面");
 		    logger.info ("第{}轮挑战完成",i);
 		}
-		exploreEnd ();
 		FightService.returnHome ();
 	}
 	
-	public static void exploreEnd () throws InterruptedException, AWTException {
-		//探索界面
-		boolean chapterInterfaceOrNot;
-		//额外奖励
-		boolean rewardState;
-		//宝箱
-		boolean treasureChestState;
-		chapterInterfaceOrNot= ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TS.getValue (),3);
-		while (!chapterInterfaceOrNot){
-			logger.info ("当前不在最后一章探索界面,左侧宝箱，刚进探索界面，出现石距，探索后出现奖励");
-			logger.info ("点击最后一章");
-			ImageService.imagesClickBack (ExploreEnums.explore_ZHYZ.getValue (),1);
-			Thread.sleep (1000);
-			logger.info ("是否有额外奖励");
-			rewardState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_EWJL.getValue (),2);
-			while (rewardState){
-				logger.info ("有额外奖励");
-				ImageService.imagesClickBack (ExploreEnums.explore_EWJL.getValue (),1);
-				Thread.sleep (1000);
-				logger.info ("点击灰色返回一次");
-				ImageService.imagesClickBack (BackEnums.back.getValue (),1);
-				Thread.sleep (1000);
-				rewardState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_EWJL.getValue (),2);
-			}
-			logger.info ("是否有宝箱");
-			treasureChestState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZCBX.getValue (),2);
-			while (treasureChestState){
-				logger.info ("有宝箱");
-				ImageService.imagesClickBack (ExploreEnums.explore_ZCBX.getValue (),1);
-				Thread.sleep (1000);
-				logger.info ("点击退出挑战");
-				ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue (),1);
-				Thread.sleep (1000);
-				treasureChestState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZCBX.getValue (),2);
-			}
-			chapterInterfaceOrNot=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TS.getValue (),1);
-			Thread.sleep (1000);
-		}
-	}
 }
