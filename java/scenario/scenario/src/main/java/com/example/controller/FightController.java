@@ -158,7 +158,7 @@ public class FightController {
 				//个人结界
 				FightAutoController.borderCheck ();
 				//探索40次
-				FightAutoController.explore(5);
+				FightAutoController.explore(2);
 				//检查寄养，无则寄养
 				FightAutoController.foster ();
 			}

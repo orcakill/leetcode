@@ -780,9 +780,7 @@ public class FightAutoController {
 		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ();
 		int windows_width =gd.getDisplayMode ().getWidth ();
 		int windows_height = gd.getDisplayMode().getHeight();
-		PictureIdentifyWorkPO pictureIdentifyWorkPO1=new PictureIdentifyWorkPO ();
-		pictureIdentifyWorkPO1.setX (windows_width/8*5);
-		pictureIdentifyWorkPO1.setY (windows_height/5*3);
+		PictureIdentifyWorkPO pictureIdentifyWorkPO=new PictureIdentifyWorkPO ();
 		//boss状态
 		boolean bossState;
 		//小怪状态
@@ -795,10 +793,14 @@ public class FightAutoController {
 		boolean rewardState;
 		//探索界面判断
 		boolean exploreState;
+		//移动次数
+		Integer numberOfMoves;
 		logger.info ("进入探索");
 		loginExplore ();
 		logger.info ("开始探索战斗");
 		for(int i=1;i<=num;i++){
+			//初始化移动次数
+			numberOfMoves=0;
 			logger.info ("当前探索界面");
 			logger.info ("检查左侧是否有宝箱");
 			treasureChestState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZCBX.getValue (),2);
@@ -811,9 +813,10 @@ public class FightAutoController {
 				Thread.sleep (1000);
 				treasureChestState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZCBX.getValue (),2);
 			}
-			logger.info ("最后一章");
-			ImageService.imagesClickBack (ExploreEnums.explore_ZHYZ.getValue ());
+			Thread.sleep (1000);
 			logger.info ("探索");
+			ImageService.imagesClickBack (ExploreEnums.explore_ZHYZ.getValue ());
+			logger.info ("最后一章");
 			ImageService.imagesClickBack (ExploreEnums.explore_TS.getValue ());
 			Thread.sleep (1000);
 			logger.info ("当前探索中,检查是否未点击自动轮换");
@@ -846,9 +849,18 @@ public class FightAutoController {
 					Thread.sleep (1000);
 				}
 				else{
-					logger.info ("没找到小怪，右移");
-					logger.info ("坐标({},{})",pictureIdentifyWorkPO1.getX (),pictureIdentifyWorkPO1.getY ());
-					MouseClick.mouseClickBack (pictureIdentifyWorkPO1.getX (), pictureIdentifyWorkPO1.getY (), "夜神模拟器");;
+					logger.info ("没找到小怪，每10次改变移动方向");
+					if(numberOfMoves%10%2==0){
+						pictureIdentifyWorkPO.setX (windows_width/2);
+						pictureIdentifyWorkPO.setX (windows_height/8*6);
+					}
+					else{
+						pictureIdentifyWorkPO.setX (windows_width/2);
+						pictureIdentifyWorkPO.setX (windows_height/8*2);
+					}
+					logger.info ("坐标({},{})",pictureIdentifyWorkPO.getX (),pictureIdentifyWorkPO.getY ());
+					MouseClick.mouseClickBack (pictureIdentifyWorkPO.getX (), pictureIdentifyWorkPO.getY (), "夜神模拟器");
+					numberOfMoves++;
 				}
 				Thread.sleep (1000);
 				logger.info ("小怪战斗结束，检查是否出现BOSS");
@@ -861,23 +873,27 @@ public class FightAutoController {
 			ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue ());
 			Thread.sleep (3000);
 			logger.info ("判断是否已在探索界面");
-			exploreState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue (),2);
-			if(!exploreState){
-				logger.info ("未回到探索界面");
-				logger.info ("判断是否有未回到最后一章的探索界面，因额外奖励导致");
+			exploreState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue (),3);
+			while (exploreState){
+				logger.info ("未回到探索界面，因额外奖励导致，返回一次");
 				rewardState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TS.getValue (),2);
-				while (rewardState){
+				if (!rewardState){
 					logger.info ("未回到探索，点击返回");
 					ImageService.imagesClickBack (BackEnums.back.getValue (),1);
 					Thread.sleep (1000);
 					logger.info ("确认");
 					ImageService.imagesClickBack (ExploreEnums.explore_QR.getValue (),1);
 					Thread.sleep (1000);
-					rewardState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TS.getValue (),2);
 				}
-				logger.info ("在最后一章探索界面，返回探索界面");
-				ImageService.imagesClickBack (BackEnums.back.getValue (),1);
-				Thread.sleep (1000);
+				logger.info ("再次判断是否回探索，因最后一章导致，返回一次");
+				rewardState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TS.getValue (),2);
+				if(rewardState){
+					logger.info ("在最后一章探索界面，返回探索界面");
+					ImageService.imagesClickBack (BackEnums.back.getValue (),1);
+					Thread.sleep (1000);
+				}
+				logger.info ("判断是否回到探索界面");
+				exploreState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue (),3);
 			}
 			logger.info ("当前已是探索界面");
 		    logger.info ("第{}轮挑战完成",i);
