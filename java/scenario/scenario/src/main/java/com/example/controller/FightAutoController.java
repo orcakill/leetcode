@@ -849,14 +849,14 @@ public class FightAutoController {
 					Thread.sleep (1000);
 				}
 				else{
-					logger.info ("没找到小怪，每10次改变移动方向");
+					logger.info ("没找到小怪，每10次改变移动方向，当前移动次数{},余数{}",numberOfMoves,numberOfMoves%10%2);
 					if(numberOfMoves%10%2==0){
-						pictureIdentifyWorkPO.setX (windows_width/2);
-						pictureIdentifyWorkPO.setX (windows_height/8*6);
+						pictureIdentifyWorkPO.setX (windows_width/8*6);
+						pictureIdentifyWorkPO.setY (windows_height/8*6);
 					}
 					else{
-						pictureIdentifyWorkPO.setX (windows_width/2);
-						pictureIdentifyWorkPO.setX (windows_height/8*2);
+						pictureIdentifyWorkPO.setX (windows_width/8*3);
+						pictureIdentifyWorkPO.setY (windows_height/8*6);
 					}
 					logger.info ("坐标({},{})",pictureIdentifyWorkPO.getX (),pictureIdentifyWorkPO.getY ());
 					MouseClick.mouseClickBack (pictureIdentifyWorkPO.getX (), pictureIdentifyWorkPO.getY (), "夜神模拟器");
@@ -874,11 +874,11 @@ public class FightAutoController {
 			Thread.sleep (3000);
 			logger.info ("判断是否已在探索界面");
 			exploreState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue (),3);
-			while (exploreState){
-				logger.info ("未回到探索界面，因额外奖励导致，返回一次");
-				rewardState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TS.getValue (),2);
-				if (!rewardState){
-					logger.info ("未回到探索，点击返回");
+			while (!exploreState){
+				logger.info ("判断是否有额外奖励");
+				rewardState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TSSSL.getValue (),2);
+				if (rewardState){
+					logger.info ("未退出探索，点击返回");
 					ImageService.imagesClickBack (BackEnums.back.getValue (),1);
 					Thread.sleep (1000);
 					logger.info ("确认");

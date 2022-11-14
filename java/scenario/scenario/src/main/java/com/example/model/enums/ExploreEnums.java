@@ -18,6 +18,7 @@ public enum ExploreEnums {
 	explore_ZCBX("scenario/探索/左侧宝箱"),
 	explore_QR("scenario/探索/确认"),
 	explore_ZJFH("scenario/探索/章节返回"),
+	explore_TSSSL("scenario/探索/探索界面式神录"),
 	;
 	
 	
