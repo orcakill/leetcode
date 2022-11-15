@@ -585,7 +585,7 @@ public class FightAutoController {
 		
 	}
 	
-	public static void SoulEnhancements () throws InterruptedException, AWTException, IOException {
+	public static void SoulEnhancements (Integer num) throws InterruptedException, AWTException, IOException {
 		logger.info ("进入式神录");
 		ImageService.imagesClickBack (ArrangeEnums.arrange_SSL.getValue ());
 		Thread.sleep (1000);
@@ -625,7 +625,7 @@ public class FightAutoController {
 		strengthenResultSet.put ("防御", ArrangeEnums.arrange_YHQHSX_FY.getValue ());
 		strengthenResultSet.put ("防御加成", ArrangeEnums.arrange_YHQHSX_FYJC.getValue ());
 		//循环强化速度御魂
-		for (int i = 1; i <= 3; i++) {
+		for (int i = 1; i <= num; i++) {
 			//设置强化状态
 			reinforcementState = true;
 			logger.info ("进入更换御魂");
