@@ -148,7 +148,7 @@ public class FightController {
 			else if (b == 12) {
 				FightService.returnHome ();
 				//  御魂强化
-				FightAutoController.SoulEnhancements();
+				FightAutoController.SoulEnhancements(20);
 				//检查寄养，无则寄养
 				FightAutoController.foster ();
 			}
