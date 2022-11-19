@@ -69,6 +69,9 @@ public class ImagesOpenCV {
 	 * @return - 返回图片在屏幕的坐标集合
 	 */
 	public static List<PictureIdentifyWorkPO> FindAllImgDataOpenCv (BufferedImage Window, List<BufferedImage> ImagesData,Double coefficient) throws IOException {
+		if(coefficient==null){
+			coefficient=2E-11;
+		}
 		//声明 坐标列表
 		List<PictureIdentifyWorkPO> mouseMessages = new ArrayList<> ();
 		//获取来源图片.将来源图片转为Mat格式
@@ -90,13 +93,16 @@ public class ImagesOpenCV {
 			//目标坐标
 			PictureIdentifyWorkPO pictureIdentifyWorkPO=new PictureIdentifyWorkPO ();
 			//判断匹配系数大于预期，则返回坐标
-			if(core_result.minVal<=2E-11&&core_result.minVal>=0) {
+			if(core_result.minVal<=coefficient&&core_result.minVal>=0) {
 				pictureIdentifyWorkPO.setX ((int) (matchLocation.x + g_tem.cols () / 2));
 				pictureIdentifyWorkPO.setY ((int) (matchLocation.y + g_tem.cols () / 2));
-				logger.info ("找到坐标了，（"+(pictureIdentifyWorkPO.getX ())+"，"+(pictureIdentifyWorkPO.getY ())+")");
-				logger.info ("匹配系数:"+core_result.minVal);
+				logger.info ("找到坐标了,({},{})",pictureIdentifyWorkPO.getX (),pictureIdentifyWorkPO.getY ());
+				logger.info ("匹配系数:{}",core_result.minVal);
 				//坐标添加到返回参数中
 				mouseMessages.add (pictureIdentifyWorkPO);
+			}
+			else{
+				logger.info ("匹配系数:{}",core_result.minVal);
 			}
 			//识别出3个坐标后跳出
 			if(mouseMessages.size ()>=3){

@@ -590,7 +590,7 @@ public class FightAutoController {
 		ImageService.imagesClickBack (ArrangeEnums.arrange_SSL.getValue ());
 		Thread.sleep (1000);
 		logger.info ("进入式神录详细");
-		ImageOpenCVService.imagesOpenCV (ArrangeEnums.arrange_XX.getValue ());
+		ImageOpenCVService.imagesOpenCV (ArrangeEnums.arrange_XX.getValue (),2E-9);
 		Thread.sleep (1000);
 		logger.info ("进入式神录右侧御魂");
 		ImageService.imagesClickBack  (ArrangeEnums.arrange_YCYH_WDJ.getValue ());
