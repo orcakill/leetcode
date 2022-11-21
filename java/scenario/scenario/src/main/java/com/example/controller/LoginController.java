@@ -32,6 +32,9 @@ public class LoginController {
 		String file6 = "scenario/首页/底部菜单打开";
 		String file7 = "scenario/返回";
 		String file8 = "scenario/首页/庭院异常";
+		String downloadIllustration="scenario/首页/下载插画";
+		String donTPrompt="scenario/首页/不再提示";
+		String download="scenario/首页/下载";
 		//如皋已经是游戏首页，不需要登录
 		logger.info ("判断是否是游戏首页");
 		boolean b1 = ImageService.imagesClickBackIsEmpty (file1, 3);
@@ -39,6 +42,8 @@ public class LoginController {
 		boolean b3 = false;//底部菜单未打开
 		boolean b4;
 		boolean b5;
+		//判断是否有下载插画
+		boolean boolean_XZCH;
 		if (!b1) {
 			logger.info ("不是游戏首页");
 			logger.info ("判断是否存在返回按钮");
@@ -70,12 +75,27 @@ public class LoginController {
 				logger.info ("已进入游戏登录界面");
 				Thread.sleep (3000);
 				loginHome (0);
-				
 				while (!b3) {
 					logger.info ("打开底部菜单");
 					ImageService.imagesClickBack (file5,5);
+					Thread.sleep (1000);
 					logger.info ("点击返回按钮");
 					ImageService.imagesClickBack (file7,5);
+					Thread.sleep (1000);
+					//判断是否有下载插画
+					logger.info ("判断是否有下载插画");
+					boolean_XZCH=ImageService.imagesClickBackIsEmpty (downloadIllustration,3);
+					while (boolean_XZCH){
+						logger.info ("有下载插画,30天不再提示");
+						ImageService.imagesClickBack (donTPrompt,3);
+						Thread.sleep (1000);
+						logger.info ("确定下载");
+						ImageService.imagesClickBack (download,3);
+						Thread.sleep (1000);
+						logger.info ("再次判断是否有下载插画");
+						boolean_XZCH=ImageService.imagesClickBackIsEmpty (downloadIllustration,3);
+						
+					}
 					logger.info ("判断底部菜单是否打开");
 					b3 = ImageService.imagesClickBackIsEmpty (file6,5);
 					Thread.sleep (5000);
