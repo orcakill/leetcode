@@ -19,7 +19,7 @@ import java.util.Map;
 public class FightTest {
 	public static final Logger logger = LogManager.getLogger ("FightTest");
 	
-	public static boolean b1 = true;//是否开启测试
+	public static boolean b1 = false;//是否开启测试
 	
 	//御魂强化-提升速度
 	@Test
