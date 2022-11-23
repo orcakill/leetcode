@@ -842,23 +842,23 @@ public class FightAutoController {
 				if (littleMonsterState) {
 					logger.info ("找到小怪，点击战斗");
 					ImageOpenCVService.imagesOpenCV (ExploreEnums.explore_XGZD.getValue (), 3);
-					Thread.sleep (2000);
+					Thread.sleep (3000);
 					logger.info ("检查是否未点击成功");
 					littleMonsterState = ImageOpenCVService.imagesOpenCVIsEmpty (ExploreEnums.explore_XGZD.getValue (), 1);
 					while (littleMonsterState) {
 						logger.info ("小怪点击不成功，重新点击");
-						ImageOpenCVService.imagesOpenCV (ExploreEnums.explore_XGZD.getValue ());
+						ImageOpenCVService.imagesOpenCV (ExploreEnums.explore_XGZD.getValue (),10);
 						Thread.sleep (1000);
 						littleMonsterState = ImageOpenCVService.imagesOpenCVIsEmpty (ExploreEnums.explore_XGZD.getValue (), 1);
 					}
-					Thread.sleep (5 * 1000);
+					Thread.sleep (4 * 1000);
 					logger.info ("退出挑战");
 					ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue (), 5);
 					Thread.sleep (1000);
 				}
 				else {
 					logger.info ("没找到小怪，每10次改变移动方向，当前移动次数{},余数{}", numberOfMoves, numberOfMoves % 10 % 2);
-					if (numberOfMoves / 10 % 2 == 0) {
+					if (Math.ceil(numberOfMoves/10) % 2 == 0) {
 						pictureIdentifyWorkPO.setX (windows_width / 8 * 7);
 						pictureIdentifyWorkPO.setY (windows_height / 8 * 6);
 					}
@@ -904,7 +904,7 @@ public class FightAutoController {
 				exploreState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue (), 3);
 			}
 			logger.info ("当前已是探索界面");
-			logger.info ("*************第{}轮挑战完成", i);
+			logger.info ("****************************************************第{}轮挑战完成***************************************", i);
 			logger.info ("该次挑战使用时间为{}秒,{}分", (System.currentTimeMillis () - a) / 1000, (System.currentTimeMillis () - a) / 1000 / 60);
 		    b.add ((double)(System.currentTimeMillis () - a));
 		}
