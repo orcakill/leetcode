@@ -590,10 +590,10 @@ public class FightAutoController {
 		ImageService.imagesClickBack (ArrangeEnums.arrange_SSL.getValue ());
 		Thread.sleep (1000);
 		logger.info ("进入式神录详细");
-		ImageOpenCVService.imagesOpenCV (ArrangeEnums.arrange_XX.getValue (),2E-9);
+		ImageOpenCVService.imagesOpenCV (ArrangeEnums.arrange_XX.getValue (), 2E-9);
 		Thread.sleep (1000);
 		logger.info ("进入式神录右侧御魂");
-		ImageService.imagesClickBack  (ArrangeEnums.arrange_YCYH_WDJ.getValue ());
+		ImageService.imagesClickBack (ArrangeEnums.arrange_YCYH_WDJ.getValue ());
 		Thread.sleep (1000);
 		logger.info ("御魂整理开始");
 		//御魂强化属性
@@ -687,7 +687,7 @@ public class FightAutoController {
 				logger.info ("等级提升");
 				levelPromotion = ImageService.imagesClickBackIsEmpty (ArrangeEnums.arrange_DJTS.getValue (), 5);
 				while (!levelPromotion) {
-					ImageService.imagesClickBack(ArrangeEnums.arrange_QD.getValue ());
+					ImageService.imagesClickBack (ArrangeEnums.arrange_QD.getValue ());
 					Thread.sleep (1000);
 					levelPromotion = ImageService.imagesClickBackIsEmpty (ArrangeEnums.arrange_DJTS.getValue (), 5);
 				}
@@ -759,16 +759,17 @@ public class FightAutoController {
 				}
 			}
 			logger.info ("返回更换御魂");
-			ImageService.imagesClickBack(BackEnums.back.getValue ());
+			ImageService.imagesClickBack (BackEnums.back.getValue ());
 			Thread.sleep (1000);
 			logger.info ("返回更换御魂");
-			ImageService.imagesClickBack(BackEnums.back.getValue ());
+			ImageService.imagesClickBack (BackEnums.back.getValue ());
 			Thread.sleep (1000);
 			logger.info ("结束本次御魂强化");
 		}
 		FightService.returnHome ();
 		
 	}
+	
 	/***
 	 * @description: 探索
 	 * @return: void
@@ -777,10 +778,13 @@ public class FightAutoController {
 	 */
 	public static void explore (Integer num) throws InterruptedException, AWTException, IOException {
 		//右移界面数据准备
-		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ();
-		int windows_width =gd.getDisplayMode ().getWidth ();
-		int windows_height = gd.getDisplayMode().getHeight();
-		PictureIdentifyWorkPO pictureIdentifyWorkPO=new PictureIdentifyWorkPO ();
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ()
+		                                       .getDefaultScreenDevice ();
+		int windows_width = gd.getDisplayMode ()
+		                      .getWidth ();
+		int windows_height = gd.getDisplayMode ()
+		                       .getHeight ();
+		PictureIdentifyWorkPO pictureIdentifyWorkPO = new PictureIdentifyWorkPO ();
 		//boss状态
 		boolean bossState;
 		//小怪状态
@@ -794,24 +798,28 @@ public class FightAutoController {
 		//探索界面判断
 		boolean exploreState;
 		//移动次数
-		Integer numberOfMoves;
+		int numberOfMoves;
+		long a;
+		List<Double> b=new ArrayList<> ();
 		logger.info ("进入探索");
 		loginExplore ();
 		logger.info ("开始探索战斗");
-		for(int i=1;i<=num;i++){
+		for (int i = 1; i <= num; i++) {
+			logger.info ("*************第{}轮挑战开始", i);
+			a = System.currentTimeMillis ();//获取当前系统时间(毫秒)
 			//初始化移动次数
-			numberOfMoves=0;
+			numberOfMoves = 0;
 			logger.info ("当前探索界面");
 			logger.info ("检查左侧是否有宝箱");
-			treasureChestState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZCBX.getValue (),2);
-			while (treasureChestState){
+			treasureChestState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZCBX.getValue (), 2);
+			while (treasureChestState) {
 				logger.info ("有宝箱");
-				ImageService.imagesClickBack (ExploreEnums.explore_ZCBX.getValue (),1);
+				ImageService.imagesClickBack (ExploreEnums.explore_ZCBX.getValue (), 1);
 				Thread.sleep (1000);
 				logger.info ("点击退出挑战");
-				ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue (),1);
+				ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue (), 1);
 				Thread.sleep (1000);
-				treasureChestState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZCBX.getValue (),2);
+				treasureChestState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZCBX.getValue (), 2);
 			}
 			Thread.sleep (1000);
 			logger.info ("探索");
@@ -820,51 +828,51 @@ public class FightAutoController {
 			ImageService.imagesClickBack (ExploreEnums.explore_TS.getValue ());
 			Thread.sleep (1000);
 			logger.info ("当前探索中,检查是否未点击自动轮换");
-			rotationState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZDLH.getValue (),3);
-			if(rotationState){
+			rotationState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZDLH.getValue (), 3);
+			if (rotationState) {
 				logger.info ("自动轮换未点击");
-				ImageService.imagesClickBack(ExploreEnums.explore_ZDLH.getValue (),3);
+				ImageService.imagesClickBack (ExploreEnums.explore_ZDLH.getValue (), 3);
 				Thread.sleep (1000);
 			}
 			logger.info ("当前探索中,检查是否有BOSS");
-			bossState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_BOSSZD.getValue (),3);
-			while (!bossState){
+			bossState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_BOSSZD.getValue (), 3);
+			while (!bossState) {
 				logger.info ("寻找小怪");
-				littleMonsterState=ImageOpenCVService.imagesOpenCVIsEmpty (ExploreEnums.explore_XGZD.getValue (),3);
-				if(littleMonsterState){
+				littleMonsterState = ImageOpenCVService.imagesOpenCVIsEmpty (ExploreEnums.explore_XGZD.getValue (), 3);
+				if (littleMonsterState) {
 					logger.info ("找到小怪，点击战斗");
-					ImageOpenCVService.imagesOpenCV (ExploreEnums.explore_XGZD.getValue (),3);
+					ImageOpenCVService.imagesOpenCV (ExploreEnums.explore_XGZD.getValue (), 3);
 					Thread.sleep (2000);
 					logger.info ("检查是否未点击成功");
-					littleMonsterState=ImageOpenCVService.imagesOpenCVIsEmpty (ExploreEnums.explore_XGZD.getValue (),1);
-					while (littleMonsterState){
+					littleMonsterState = ImageOpenCVService.imagesOpenCVIsEmpty (ExploreEnums.explore_XGZD.getValue (), 1);
+					while (littleMonsterState) {
 						logger.info ("小怪点击不成功，重新点击");
 						ImageOpenCVService.imagesOpenCV (ExploreEnums.explore_XGZD.getValue ());
 						Thread.sleep (1000);
-						littleMonsterState=ImageOpenCVService.imagesOpenCVIsEmpty (ExploreEnums.explore_XGZD.getValue (),1);
+						littleMonsterState = ImageOpenCVService.imagesOpenCVIsEmpty (ExploreEnums.explore_XGZD.getValue (), 1);
 					}
-					Thread.sleep (5*1000);
+					Thread.sleep (5 * 1000);
 					logger.info ("退出挑战");
-					ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue (),5);
+					ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue (), 5);
 					Thread.sleep (1000);
 				}
-				else{
-					logger.info ("没找到小怪，每10次改变移动方向，当前移动次数{},余数{}",numberOfMoves,numberOfMoves%10%2);
-					if(numberOfMoves%10%2==0){
-						pictureIdentifyWorkPO.setX (windows_width/8*6);
-						pictureIdentifyWorkPO.setY (windows_height/8*6);
+				else {
+					logger.info ("没找到小怪，每10次改变移动方向，当前移动次数{},余数{}", numberOfMoves, numberOfMoves % 10 % 2);
+					if (numberOfMoves / 10 % 2 == 0) {
+						pictureIdentifyWorkPO.setX (windows_width / 8 * 7);
+						pictureIdentifyWorkPO.setY (windows_height / 8 * 6);
 					}
-					else{
-						pictureIdentifyWorkPO.setX (windows_width/8*3);
-						pictureIdentifyWorkPO.setY (windows_height/8*6);
+					else {
+						pictureIdentifyWorkPO.setX (windows_width / 8);
+						pictureIdentifyWorkPO.setY (windows_height / 8 * 6);
 					}
-					logger.info ("坐标({},{})",pictureIdentifyWorkPO.getX (),pictureIdentifyWorkPO.getY ());
+					logger.info ("坐标({},{})", pictureIdentifyWorkPO.getX (), pictureIdentifyWorkPO.getY ());
 					MouseClick.mouseClickBack (pictureIdentifyWorkPO.getX (), pictureIdentifyWorkPO.getY (), "夜神模拟器");
 					numberOfMoves++;
 				}
 				Thread.sleep (1000);
 				logger.info ("小怪战斗结束，检查是否出现BOSS");
-				bossState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_BOSSZD.getValue (),2);
+				bossState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_BOSSZD.getValue (), 2);
 			}
 			logger.info ("小怪战斗结束，boss战");
 			ImageService.imagesClickBack (ExploreEnums.explore_BOSSZD.getValue ());
@@ -873,31 +881,36 @@ public class FightAutoController {
 			ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue ());
 			Thread.sleep (3000);
 			logger.info ("判断是否已在探索界面");
-			exploreState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue (),3);
-			while (!exploreState){
+			exploreState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue (), 3);
+			while (!exploreState) {
 				logger.info ("判断是否有额外奖励");
-				rewardState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TSSSL.getValue (),2);
-				if (rewardState){
+				rewardState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TSSSL.getValue (), 2);
+				if (rewardState) {
 					logger.info ("未退出探索，点击返回");
-					ImageService.imagesClickBack (BackEnums.back.getValue (),1);
+					ImageService.imagesClickBack (BackEnums.back.getValue (), 1);
 					Thread.sleep (1000);
 					logger.info ("确认");
-					ImageService.imagesClickBack (ExploreEnums.explore_QR.getValue (),1);
+					ImageService.imagesClickBack (ExploreEnums.explore_QR.getValue (), 1);
 					Thread.sleep (1000);
 				}
 				logger.info ("再次判断是否回探索，因最后一章导致，返回一次");
-				rewardState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TS.getValue (),2);
-				if(rewardState){
+				rewardState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TS.getValue (), 2);
+				if (rewardState) {
 					logger.info ("在最后一章探索界面，返回探索界面");
-					ImageService.imagesClickBack (BackEnums.back.getValue (),1);
+					ImageService.imagesClickBack (BackEnums.back.getValue (), 1);
 					Thread.sleep (1000);
 				}
 				logger.info ("判断是否回到探索界面");
-				exploreState=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue (),3);
+				exploreState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue (), 3);
 			}
 			logger.info ("当前已是探索界面");
-		    logger.info ("第{}轮挑战完成",i);
+			logger.info ("*************第{}轮挑战完成", i);
+			logger.info ("该次挑战使用时间为{}秒,{}分", (System.currentTimeMillis () - a) / 1000, (System.currentTimeMillis () - a) / 1000 / 60);
+		    b.add ((double)(System.currentTimeMillis () - a));
 		}
+		
+		double average = b.stream ().mapToDouble ( Double :: valueOf).average ().getAsDouble ();
+		logger.info ("该次挑战使用时间为{}秒,{}分", average / 1000, average/1000 / 60);
 		FightService.returnHome ();
 	}
 	

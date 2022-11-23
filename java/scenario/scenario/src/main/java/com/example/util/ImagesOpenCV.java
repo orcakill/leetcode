@@ -15,6 +15,8 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import static com.example.util.ImagesBackRec.readFiles;
@@ -72,6 +74,7 @@ public class ImagesOpenCV {
 		if(coefficient==null){
 			coefficient=2E-11;
 		}
+		List<Double> doubleList=new ArrayList<> ();
 		//声明 坐标列表
 		List<PictureIdentifyWorkPO> mouseMessages = new ArrayList<> ();
 		//获取来源图片.将来源图片转为Mat格式
@@ -92,23 +95,25 @@ public class ImagesOpenCV {
 			Point matchLocation = core_result.minLoc; // 此处使用maxLoc还是minLoc取决于使用的匹配算法
 			//目标坐标
 			PictureIdentifyWorkPO pictureIdentifyWorkPO=new PictureIdentifyWorkPO ();
+			//将匹配系数填入结果集
+			if(core_result.minVal>0){
+				doubleList.add (core_result.minVal);
+			}
 			//判断匹配系数大于预期，则返回坐标
 			if(core_result.minVal<=coefficient&&core_result.minVal>=0) {
 				pictureIdentifyWorkPO.setX ((int) (matchLocation.x + g_tem.cols () / 2));
 				pictureIdentifyWorkPO.setY ((int) (matchLocation.y + g_tem.cols () / 2));
 				logger.info ("找到坐标了,({},{})",pictureIdentifyWorkPO.getX (),pictureIdentifyWorkPO.getY ());
-				logger.info ("匹配系数:{}",core_result.minVal);
+				logger.info ("已识别的匹配系数:{}",core_result.minVal);
 				//坐标添加到返回参数中
 				mouseMessages.add (pictureIdentifyWorkPO);
-			}
-			else{
-				logger.info ("匹配系数:{}",core_result.minVal);
 			}
 			//识别出3个坐标后跳出
 			if(mouseMessages.size ()>=3){
 				break;
 			}
 		}
+		logger.info ("最小匹配系数为{}", Collections.min (doubleList));
 		// 返回所有图片对应窗口坐标
 		return mouseMessages;
 		

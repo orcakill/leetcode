@@ -1,5 +1,6 @@
 package com.example.util;
 
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
 
 import java.awt.*;
@@ -13,6 +14,11 @@ import java.awt.image.DataBufferByte;
  * @Created by orcakill
  */
 public class BufferImageToMat {
+	
+	static {
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		// 得保证先执行该语句，用于加载库，才能调用其他操作库的语句，
+	}
 	/**
 	 * BufferedImage转换成Mat
 	 *
@@ -20,7 +26,7 @@ public class BufferImageToMat {
 	 * @param imgType  bufferedImage的类型 如 BufferedImage.TYPE_3BYTE_BGR
 	 * @param matType  转换成mat的type 如 CvType.CV_8UC3
 	 */
-	public static Mat bufImg2Mat(BufferedImage original, int imgType, int matType) {
+	public static Mat bufImg2Mat (BufferedImage original, int imgType, int matType) {
 		if (original == null) {
 			throw new IllegalArgumentException("original == null");
 		}
