@@ -54,13 +54,13 @@ public class ImageOpenCVServiceImpl {
 				}
 				else {
 					if(b) {
-						logger.info ("在" + num_time + "秒的检测中，第" + (i + 1) + "次检查未发现" + folder + "的图片");
+						logger.info ("在{}秒的检测中，第{}次检查未发现" + folder + "的图片",num_time,(i + 1));
 					}
 				}
 			}
 		}
 		else {
-			logger.info (folder+"图标路径不存在");
+			logger.info ("{}图标路径不存在",folder);
 			System.exit (0);
 		}
 		return  false;
