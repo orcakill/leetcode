@@ -883,6 +883,8 @@ public class FightAutoController {
 			logger.info ("判断是否已在探索界面");
 			exploreState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue (), 3);
 			while (!exploreState) {
+				logger.info ("再退出挑战一次");
+				ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue (),1);
 				logger.info ("判断是否有额外奖励");
 				rewardState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TSSSL.getValue (), 2);
 				if (rewardState) {
