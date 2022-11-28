@@ -23,7 +23,7 @@ public class ImageServiceTest {
 	
 	public static final Logger logger = LogManager.getLogger ("ImageServiceTest ");
 	
-	public static boolean b1 = false;//是否开启测试
+	public static boolean b1 = true;//是否开启测试
 	
 	@Test
 	public void testImagesClick1 () throws InterruptedException, AWTException {
@@ -165,6 +165,29 @@ public class ImageServiceTest {
 				}
 				logger.info ("等待一分钟");
 				Thread.sleep (60 * 1000);
+			}
+		}
+	}
+	
+	//重复挑战,需要再点击挑战
+	@Test
+	public void testImagesClick7 () throws InterruptedException, AWTException {
+		logger.info ("准备开始");
+		String exploration="scenario/活动/20221123/探查";
+		String challenge="scenario/活动/20221123/挑战";
+		String prepare="scenario/活动/20221123/准备";
+		String exitTheChallenge="scenario/活动/20221123/退出挑战";
+		if (b1) {
+			Thread.sleep (5000);
+			for(int i=0;i<20;i++){
+				ImageService.imagesClickBack (exploration);
+				Thread.sleep (1000);
+				ImageService.imagesClickBack (challenge);
+				Thread.sleep (1000);
+				ImageService.imagesClickBack (prepare);
+				Thread.sleep (1000);
+				ImageService.imagesClickBack (exitTheChallenge);
+				Thread.sleep (1000);
 			}
 		}
 	}

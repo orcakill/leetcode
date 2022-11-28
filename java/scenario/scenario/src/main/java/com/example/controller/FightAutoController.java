@@ -137,6 +137,7 @@ public class FightAutoController {
 		String file7 = "scenario/结界突破/准备挑战";
 		boolean booleanKXJJ;//可选结界
 		boolean booleanZBTJ;//准备挑战
+		boolean whetherAdditionalReward;
 		logger.info ("准备进入探索");
 		loginExplore ();
 		//进入结界挑战
@@ -171,9 +172,10 @@ public class FightAutoController {
 				}
 				logger.info ("进入战斗");
 				FightService.fightEnd (30, 5, 10);
-				if (ImageService.imagesClickBackIsEmpty (file5, 4)) {
-					logger.info ("判断是否有额外奖励");
-					ImageService.imagesClickBack (file5);
+				logger.info ("判断是否有额外奖励");
+				whetherAdditionalReward=ImageService.imagesClickBackIsEmpty (file5, 5);
+				if (whetherAdditionalReward) {
+					ImageService.imagesClickBack (file5,5);
 					logger.info ("领取额外奖励成功");
 				}
 				else {
@@ -800,7 +802,7 @@ public class FightAutoController {
 		//移动次数
 		int numberOfMoves;
 		long a;
-		List<Double> b=new ArrayList<> ();
+		List<Double> b = new ArrayList<> ();
 		logger.info ("进入探索");
 		loginExplore ();
 		logger.info ("开始探索战斗");
@@ -847,7 +849,7 @@ public class FightAutoController {
 					littleMonsterState = ImageOpenCVService.imagesOpenCVIsEmpty (ExploreEnums.explore_XGZD.getValue (), 1);
 					while (littleMonsterState) {
 						logger.info ("小怪点击不成功，重新点击");
-						ImageOpenCVService.imagesOpenCV (ExploreEnums.explore_XGZD.getValue (),10);
+						ImageOpenCVService.imagesOpenCV (ExploreEnums.explore_XGZD.getValue (), 10);
 						Thread.sleep (1000);
 						littleMonsterState = ImageOpenCVService.imagesOpenCVIsEmpty (ExploreEnums.explore_XGZD.getValue (), 1);
 					}
@@ -858,7 +860,7 @@ public class FightAutoController {
 				}
 				else {
 					logger.info ("没找到小怪，每10次改变移动方向，当前移动次数{},余数{}", numberOfMoves, numberOfMoves % 10 % 2);
-					if (Math.ceil(numberOfMoves/10) % 2 == 0) {
+					if (Math.ceil (numberOfMoves / 10) % 2 == 0) {
 						pictureIdentifyWorkPO.setX (windows_width / 8 * 7);
 						pictureIdentifyWorkPO.setY (windows_height / 8 * 6);
 					}
@@ -884,7 +886,7 @@ public class FightAutoController {
 			exploreState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue (), 3);
 			while (!exploreState) {
 				logger.info ("再退出挑战一次");
-				ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue (),1);
+				ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue (), 1);
 				logger.info ("判断是否有额外奖励");
 				rewardState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_TSSSL.getValue (), 2);
 				if (rewardState) {
@@ -908,12 +910,79 @@ public class FightAutoController {
 			logger.info ("当前已是探索界面");
 			logger.info ("****************************************************第{}轮挑战完成***************************************", i);
 			logger.info ("该次挑战使用时间为{}秒,{}分", (System.currentTimeMillis () - a) / 1000, (System.currentTimeMillis () - a) / 1000 / 60);
-		    b.add ((double)(System.currentTimeMillis () - a));
+			b.add ((double) (System.currentTimeMillis () - a));
 		}
 		
-		double average = b.stream ().mapToDouble ( Double :: valueOf).average ().getAsDouble ();
-		logger.info ("该次挑战使用时间为{}秒,{}分", average / 1000, average/1000 / 60);
+		double average = b.stream ()
+		                  .mapToDouble (Double::valueOf)
+		                  .average ()
+		                  .getAsDouble ();
+		logger.info ("该次挑战使用时间为{}秒,{}分", average / 1000, average / 1000 / 60);
 		FightService.returnHome ();
 	}
 	
+	public static void exploreFast (int num) throws InterruptedException, AWTException, IOException {
+		//小怪状态
+		boolean littleMonsterState;
+		//宝箱
+		boolean treasureChestState;
+		//退出挑战
+		boolean exitTheChallenge;
+		long a;
+		List<Double> b = new ArrayList<> ();
+		logger.info ("进入探索");
+		loginExplore ();
+		logger.info ("开始探索战斗");
+		for (int i = 1; i <= num; i++) {
+			logger.info ("*************第{}轮挑战开始", i);
+			a = System.currentTimeMillis ();//获取当前系统时间(毫秒)
+			logger.info ("当前探索界面");
+			logger.info ("探索");
+			ImageService.imagesClickBack (ExploreEnums.explore_ZHYZ.getValue ());
+			logger.info ("最后一章");
+			ImageService.imagesClickBack (ExploreEnums.explore_TS.getValue ());
+			Thread.sleep (1000);
+			logger.info ("当前探索中,检查是否有小怪，打2个静止不动的即可");
+			logger.info ("寻找小怪");
+			littleMonsterState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_JTXGZD.getValue (), 1);
+			while (littleMonsterState) {
+				logger.info ("找到小怪，点击战斗");
+				littleMonsterState=ImageService.imagesClickBack (ExploreEnums.explore_JTXGZD.getValue (), 3);
+				if(littleMonsterState){
+					logger.info ("点击成功，等待结束");
+					Thread.sleep (12 * 1000);
+					logger.info ("退出挑战");
+					exitTheChallenge=ImageService.imagesClickBack(ExploreEnums.explore_TCTZ.getValue (),10);
+					Thread.sleep (1000);
+					while (!exitTheChallenge){
+						logger.info ("未成功退出挑战，重新退出");
+						exitTheChallenge=ImageService.imagesClickBack(ExploreEnums.explore_TCTZ.getValue (),10);
+						Thread.sleep (1000);
+					}
+				}
+				logger.info ("小怪战斗结束，检查是否还有小怪");
+				littleMonsterState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_JTXGZD.getValue (), 1);
+			}
+			logger.info ("再退出一次挑战，防止退出不成功");
+			ImageService.imagesClickBack(ExploreEnums.explore_TCTZ.getValue (),1);
+			logger.info ("小怪战斗结束，退出");
+			logger.info ("未退出探索，点击返回");
+			ImageService.imagesClickBack (BackEnums.back.getValue (), 1);
+			logger.info ("确认");
+			ImageService.imagesClickBack (ExploreEnums.explore_QR.getValue (), 1);
+			logger.info ("在最后一章探索界面，返回探索界面");
+			Thread.sleep (1000);
+			ImageService.imagesClickBack (BackEnums.back.getValue (), 1);
+			logger.info ("当前已是探索界面");
+			logger.info ("****************************************************第{}轮挑战完成***************************************", i);
+			logger.info ("该次挑战使用时间为{}秒,{}分", (System.currentTimeMillis () - a) / 1000, (System.currentTimeMillis () - a) / 1000 / 60);
+			b.add ((double) (System.currentTimeMillis () - a));
+		}
+		double average = b.stream ()
+		                  .mapToDouble (Double::valueOf)
+		                  .average ()
+		                  .getAsDouble ();
+		logger.info ("该次挑战使用时间为{}秒,{}分", average / 1000, average / 1000 / 60);
+		FightService.returnHome ();
+	}
 }
