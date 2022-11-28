@@ -109,7 +109,7 @@ public class ImagesOpenCV {
 				mouseMessages.add (pictureIdentifyWorkPO);
 			}
 			//识别出3个坐标后跳出
-			if(mouseMessages.size ()>=3){
+			if(mouseMessages.size ()>=1){
 				break;
 			}
 		}

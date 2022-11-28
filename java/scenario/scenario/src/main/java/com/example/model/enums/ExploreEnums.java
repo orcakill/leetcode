@@ -12,6 +12,7 @@ public enum ExploreEnums {
 	explore_TS ("scenario/探索/探索"),
 	explore_ZDLH("scenario/探索/自动轮换"),
 	explore_XGZD("scenario/探索/小怪战斗"),
+	explore_JTXGZD("scenario/探索/静态小怪战斗"),
 	explore_BOSSZD("scenario/探索/boss战"),
 	explore_TCTZ("scenario/御魂/退出挑战"),
 	explore_EWJL("scenario/探索/额外奖励"),
