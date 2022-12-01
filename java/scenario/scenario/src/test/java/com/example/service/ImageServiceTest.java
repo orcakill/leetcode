@@ -180,13 +180,13 @@ public class ImageServiceTest {
 		if (b1) {
 			Thread.sleep (5000);
 			for(int i=0;i<20;i++){
-				ImageService.imagesClickBack (exploration);
+				ImageService.imagesClickBack (exploration,10);
 				Thread.sleep (1000);
-				ImageService.imagesClickBack (challenge);
+				ImageService.imagesClickBack (challenge,10);
 				Thread.sleep (1000);
-				ImageService.imagesClickBack (prepare);
-				Thread.sleep (1000);
-				ImageService.imagesClickBack (exitTheChallenge);
+				ImageService.imagesClickBack (prepare,10);
+				Thread.sleep (3*60*1000);
+				ImageService.imagesClickBack (exitTheChallenge,20);
 				Thread.sleep (1000);
 			}
 		}

@@ -928,6 +928,8 @@ public class FightAutoController {
 		boolean treasureChestState;
 		//退出挑战
 		boolean exitTheChallenge;
+		//探索界面
+		boolean whetherToExplore;
 		long a;
 		List<Double> b = new ArrayList<> ();
 		logger.info ("进入探索");
@@ -944,7 +946,7 @@ public class FightAutoController {
 			Thread.sleep (1000);
 			logger.info ("当前探索中,检查是否有小怪，打2个静止不动的即可");
 			logger.info ("寻找小怪");
-			littleMonsterState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_JTXGZD.getValue (), 1);
+			littleMonsterState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_JTXGZD.getValue (), 3);
 			while (littleMonsterState) {
 				logger.info ("找到小怪，点击战斗");
 				littleMonsterState=ImageService.imagesClickBack (ExploreEnums.explore_JTXGZD.getValue (), 3);
@@ -961,18 +963,22 @@ public class FightAutoController {
 					}
 				}
 				logger.info ("小怪战斗结束，检查是否还有小怪");
-				littleMonsterState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_JTXGZD.getValue (), 1);
+				littleMonsterState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_JTXGZD.getValue (), 3);
 			}
 			logger.info ("再退出一次挑战，防止退出不成功");
-			ImageService.imagesClickBack(ExploreEnums.explore_TCTZ.getValue (),1);
+			ImageService.imagesClickBack(ExploreEnums.explore_TCTZ.getValue (),3);
 			logger.info ("小怪战斗结束，退出");
 			logger.info ("未退出探索，点击返回");
-			ImageService.imagesClickBack (BackEnums.back.getValue (), 1);
+			ImageService.imagesClickBack (BackEnums.back.getValue (), 3);
 			logger.info ("确认");
-			ImageService.imagesClickBack (ExploreEnums.explore_QR.getValue (), 1);
+			ImageService.imagesClickBack (ExploreEnums.explore_QR.getValue (), 3);
 			logger.info ("在最后一章探索界面，返回探索界面");
-			Thread.sleep (1000);
-			ImageService.imagesClickBack (BackEnums.back.getValue (), 1);
+			ImageService.imagesClickBack (BackEnums.back.getValue (), 3);
+			whetherToExplore=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue ());
+			if(!whetherToExplore){
+				logger.info ("返回不成功，重新返回");
+				ImageService.imagesClickBack (BackEnums.back.getValue (), 3);
+			}
 			logger.info ("当前已是探索界面");
 			logger.info ("****************************************************第{}轮挑战完成***************************************", i);
 			logger.info ("该次挑战使用时间为{}秒,{}分", (System.currentTimeMillis () - a) / 1000, (System.currentTimeMillis () - a) / 1000 / 60);

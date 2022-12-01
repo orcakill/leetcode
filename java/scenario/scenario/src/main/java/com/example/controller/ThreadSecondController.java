@@ -43,18 +43,18 @@ public class ThreadSecondController extends Thread {
 		//logger.info ("等待6小时");
 		//Thread.sleep (1000*60*60*6);
 		//  进入登录界面，默认直接登录，切换账号暂时无法实现
-		try{
+		//try{
 			loginGame();
 			//	开启轮次、选项循环
 			FightController.fightGame (a,b);
 			sendMail();
-		}
-		catch (Exception e) {
-			//  结束进程2
-			ThreadSecondIsAlive=false;
-			logger.info (e);
-			logger.info ("异常退出");
-		}
+		//}
+		//catch (Exception e) {
+		//	//  结束进程2
+		//	ThreadSecondIsAlive=false;
+		//	logger.info (e);
+		//	logger.info ("异常退出");
+		//}
 		//  结束进程2
 		ThreadSecondIsAlive=false;
 		
