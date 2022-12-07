@@ -24,4 +24,3 @@ def is_number(s: str) -> bool:
 
 if __name__ == '__main__':
     print(Solution.num_different_integers('a123bc34d8ef34'))
-
