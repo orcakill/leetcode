@@ -122,9 +122,11 @@ public class ImageServiceTest {
 		logger.info ("准备开始");
 		if (b1) {
 			Thread.sleep (5000);
-			soulBack (6, 150);
+			soulBack (16, 150);
 		}
 	}
+	
+
 	
 	//好友邀请超鬼王
 	@Test
@@ -190,6 +192,32 @@ public class ImageServiceTest {
 				Thread.sleep (1000);
 			}
 		}
+	}
+	
+	//重复挑战,需要点击胜利和获取奖励
+	@Test
+	public void testImagesClick8 () throws InterruptedException, AWTException {
+		logger.info ("准备开始");
+		String exploration="scenario/活动/20221123/探查";
+		String challenge="scenario/活动/20221123/挑战";
+		String prepare="scenario/活动/20221123/准备";
+		String exitTheChallenge="scenario/活动/20221123/退出挑战";
+		if (b1) {
+			Thread.sleep (5000);
+			for(int i=0;i<20;i++){
+				ImageService.imagesClickBack (exploration,10);
+				Thread.sleep (1000);
+				ImageService.imagesClickBack (challenge,10);
+				Thread.sleep (1000);
+				ImageService.imagesClickBack (prepare,10);
+				Thread.sleep (3*60*1000);
+				ImageService.imagesClickBack (exitTheChallenge,20);
+				Thread.sleep (1000);
+			}
+		}
+	}
+	
+	public void testImagesClick9() throws InterruptedException, AWTException {
 	}
 	
 }
