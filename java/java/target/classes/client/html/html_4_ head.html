@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的 HTML 的第一页</title>
+    <base href="//www.runoob.com/images/" target="_blank">
+    <meta name="description" content="免费在线教程">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="runoob">
+</head>
+<body>
+<img src="logo.png"> - 注意这里我们设置了图片的相对地址。能正常显示是因为我们在 head 部分设置了 base 标签，该标签指定了页面上所有链接的默认 URL，所以该图片的访问地址为
+"http://www.runoob.com/images/logo.png"
+<br><br>
+<a href="//www.runoob.com">菜鸟教程</a> - 注意这个链接会在新窗口打开，即便它没有 target="_blank" 属性。因为在 base 标签里我们已经设置了 target 属性的值为 "_blank"。
+<script>
+    document.write("Hello World!")
+</script>
+</body>
+</html>
