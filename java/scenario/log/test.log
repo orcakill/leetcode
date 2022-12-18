@@ -1,0 +1,15 @@
+[18:30:11:389] [Thread-2] [INFO] - com.example.controller.ThreadSecondController.run(ThreadSecondController.java:20) - 1 阴阳寮结界+个人结界+魂土40次
+[18:30:11:391] [Thread-2] [INFO] - com.example.controller.ThreadSecondController.run(ThreadSecondController.java:21) - 2 个人结界+魂土60次
+[18:30:11:391] [Thread-2] [INFO] - com.example.controller.ThreadSecondController.run(ThreadSecondController.java:22) - 3 阴阳寮结界+个人结界+业原火40张
+[18:30:11:392] [Thread-2] [INFO] - com.example.controller.ThreadSecondController.run(ThreadSecondController.java:23) - 4 个人结界+日轮之陨50次
+[18:30:11:392] [Thread-2] [INFO] - com.example.controller.ThreadSecondController.run(ThreadSecondController.java:24) - 5 个人结界+永生之海30次
+[18:30:11:392] [Thread-2] [INFO] - com.example.controller.ThreadSecondController.run(ThreadSecondController.java:25) - 6 御灵60次
+[18:30:11:394] [Thread-2] [INFO] - com.example.controller.ThreadSecondController.run(ThreadSecondController.java:26) - 7 斗技10次
+[18:30:11:394] [Thread-2] [INFO] - com.example.controller.ThreadSecondController.run(ThreadSecondController.java:27) - 8 当前活动战斗
+[18:30:11:394] [Thread-2] [INFO] - com.example.controller.ThreadSecondController.run(ThreadSecondController.java:28) - 9 小号刷大号协战
+[18:30:11:395] [Thread-2] [INFO] - com.example.controller.ThreadSecondController.run(ThreadSecondController.java:29) - 10 阴阳寮结界
+[18:30:11:395] [Thread-2] [INFO] - com.example.controller.ThreadSecondController.run(ThreadSecondController.java:30) - 11 阴阳寮结界+斗技5次
+[18:30:11:395] [Thread-2] [INFO] - com.example.controller.ThreadSecondController.run(ThreadSecondController.java:31) - 12 御魂整理-速度强化-极限副属性
+[18:30:11:395] [Thread-2] [INFO] - com.example.controller.ThreadSecondController.run(ThreadSecondController.java:32) - 13 个人结界+探索20次(全打)
+[18:30:11:396] [Thread-2] [INFO] - com.example.controller.ThreadSecondController.run(ThreadSecondController.java:33) - 14 个人结界+探索60次(极限速度)
+[18:30:11:399] [Thread-2] [INFO] - com.example.controller.ThreadSecondController.run(ThreadSecondController.java:35) - 输入一个轮次
