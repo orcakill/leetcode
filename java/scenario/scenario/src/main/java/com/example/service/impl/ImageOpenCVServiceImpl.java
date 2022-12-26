@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 import static com.example.util.RandomUtil.getRandom;
 
@@ -18,7 +19,7 @@ import static com.example.util.RandomUtil.getRandom;
  * @createTime 2022年08月03日 14:22:00
  */
 public class ImageOpenCVServiceImpl {
-	public  static  final Logger logger = LogManager.getLogger ("ImageOpenCVServiceImpl");
+	public static final Logger logger = LogManager.getLogger ("ImageOpenCVServiceImpl");
 	
 	/***
 	 * @description: 识别并点击成功或识别成功返回true、识别失败返回false
@@ -33,38 +34,77 @@ public class ImageOpenCVServiceImpl {
 	 * @author: orcakill
 	 * @date: 2022/8/3 22:29
 	 */
-	public static boolean imagesClickBack (String folder, String process,int re_num, int i1, int i2, boolean b,
-	                                       boolean isClick,Double coefficient) throws
-	                                                                            InterruptedException,
-	                                                                            AWTException, IOException {
-		File file = new File (
-				"D:/project/leetcode/java/scenario/scenario/src/main/resources/image/" + folder);
-		if(!file.exists ()){
-			file = new File (
-					"D:/study/Project/leetcode/java/scenario/scenario/src/main/resources/image/" + folder);
+	public static boolean imagesClickBack (String folder, String process, int re_num, int i1, int i2, boolean b, boolean isClick, Double coefficient) throws InterruptedException, AWTException,
+	                                                                                                                                                         IOException {
+		File file = new File ("D:/project/leetcode/java/scenario/scenario/src/main/resources/image/" + folder);
+		if (!file.exists ()) {
+			file = new File ("D:/study/Project/leetcode/java/scenario/scenario/src/main/resources/image/" + folder);
 		}
-		int  num_time;
+		int num_time;
 		if (file.exists ()) {
-			for (int i = 0; i <re_num; i++) {
-				num_time=getRandom (i1,i2);
-				Thread.sleep ( num_time* 1000L);
-				if (ImagesOpenCV.imagesRecognitionOpenCv (folder,process,isClick,coefficient)) {
+			for (int i = 0; i < re_num; i++) {
+				num_time = getRandom (i1, i2);
+				Thread.sleep (num_time * 1000L);
+				if (ImagesOpenCV.imagesRecognitionOpenCv (folder, process, isClick, coefficient)) {
 					logger.info ("图片匹配成功,已点击");
-					return  true;
+					return true;
 				}
 				else {
-					if(b) {
-						logger.info ("在{}秒的检测中，第{}次检查未发现" + folder + "的图片",num_time,(i + 1));
+					if (b) {
+						logger.info ("在{}秒的检测中，第{}次检查未发现" + folder + "的图片", num_time, (i + 1));
 					}
 				}
 			}
 		}
 		else {
-			logger.info ("{}图标路径不存在",folder);
+			logger.info ("{}图标路径不存在", folder);
 			System.exit (0);
 		}
-		return  false;
+		return false;
 	}
 	
-	
+	public static String imagesClickBack (Map<String, String> files, String process, int re_num, int i1, int i2, boolean b, boolean isClick,
+	                                      double coefficient) throws InterruptedException, IOException, AWTException {
+		boolean b1 = true;
+		boolean b2;
+		int num_time;
+		for (Map.Entry folder : files.entrySet ()) {
+			File file = new File (
+					"D:/project/leetcode/java/scenario/scenario/src/main/resources/image/" + folder.getValue ());
+			if (!file.exists ()) {
+				file = new File (
+						"D:/study/Project/leetcode/java/scenario/scenario/src/main/resources/image/" + folder.getValue ());
+			}
+			if (!file.exists ()) {
+				b1 = false;
+			}
+		}
+		if (b1) {
+			for (int i = 0; i < re_num; i++) {
+				num_time = getRandom (i1, i2);
+				Thread.sleep (num_time * 1000L);
+				for (Map.Entry file : files.entrySet ()) {
+					b2 = ImagesOpenCV.imagesRecognitionOpenCv (file.getValue ()
+					                                               .toString (), process, isClick, coefficient);
+					if (b2) {
+						logger.info ("图片匹配成功,已点击");
+						return file.getKey ()
+						           .toString ();
+					}
+					else {
+						if (b) {
+							logger.info ("在{}秒的检测中，第{}次检查未发现{}的图片", num_time, (i + 1), file);
+						}
+					}
+					
+				}
+				
+			}
+		}
+		else {
+			logger.info (files + "集合中图标路径不存在");
+			System.exit (0);
+		}
+		return null;
+	}
 }

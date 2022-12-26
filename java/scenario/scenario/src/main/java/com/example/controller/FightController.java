@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.service.FightService.soulBack;
 import static com.example.util.RandomUtil.getRandom;
 
 /**
@@ -167,7 +166,7 @@ public class FightController {
 				//个人结界
 				FightAutoController.borderCheck ();
 				//探索40次
-				FightAutoController.exploreFast(100);				//检查寄养，无则寄养
+				FightAutoController.exploreFast (60);                //检查寄养，无则寄养
 				FightAutoController.foster ();
 			}
 		}
