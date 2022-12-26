@@ -16,8 +16,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 
 import static com.example.controller.LoginController.loginExplore;
 import static com.example.service.FightService.soulBack;
@@ -197,7 +197,7 @@ public class FightAutoController {
 	public static void soulFight (int i, int j, boolean b) throws InterruptedException, AWTException {
 		boolean b1;
 		boolean b2;
-		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList = new ArrayList<> ();
+		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList;
 		logger.info ("准备进入探索");
 		loginExplore ();
 		logger.info ("准备进入御魂");
@@ -385,8 +385,8 @@ public class FightAutoController {
 		boolean b;
 		boolean b1;
 		boolean b2;
-		boolean booleanYCQK = false;
-		boolean booleanFH = false;
+		boolean booleanYCQK;
+		boolean booleanFH;
 		int num1 = 0;
 		int num2 = 0;
 		logger.info ("开始斗技");
@@ -486,9 +486,9 @@ public class FightAutoController {
 		PictureIdentifyWorkPO pictureIdentifyWorkPO2 = new PictureIdentifyWorkPO ();//记录滚动起始位置
 		PictureIdentifyWorkPO pictureIdentifyWorkPO3 = new PictureIdentifyWorkPO ();//记录滚动终止位置
 		PictureIdentifyWorkPO pictureIdentifyWorkPO4 = new PictureIdentifyWorkPO ();//记录退出好友列表位置
-		boolean booleanKJY = false;//寄养位是否为空，是则进行寄养，否则退出到首页
-		boolean booleanWFZ = false;//好友是否放置结界卡，是则判断是否满足要求，不是则退出更换条件重进
-		boolean booleanJJK = false;//结界卡是否满足当前要求，不满足则滚动，满足则进入结界
+		boolean booleanKJY;//寄养位是否为空，是则进行寄养，否则退出到首页
+		boolean booleanWFZ;//好友是否放置结界卡，是则判断是否满足要求，不是则退出更换条件重进
+		boolean booleanJJK;//结界卡是否满足当前要求，不满足则滚动，满足则进入结界
 		boolean booleanJSJY = false;//判断寄养是否结束
 		Thread.sleep (2000);
 		logger.info ("进入阴阳寮");
@@ -607,7 +607,6 @@ public class FightAutoController {
 		//等级提升状态
 		boolean levelPromotion;
 		//更换御魂状态
-		boolean changeTheSoulState;
 		//强化次数
 		int strengtheningTimes = 1;
 		//消耗材料数量
@@ -924,8 +923,6 @@ public class FightAutoController {
 	public static void exploreFast (int num) throws InterruptedException, AWTException, IOException {
 		//小怪状态
 		boolean littleMonsterState;
-		//宝箱
-		boolean treasureChestState;
 		//退出挑战
 		boolean exitTheChallenge;
 		//探索界面

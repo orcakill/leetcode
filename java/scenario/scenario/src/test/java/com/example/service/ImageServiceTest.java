@@ -30,9 +30,8 @@ public class ImageServiceTest {
 		double bl = ComputerScaling.getScale ();
 		if (b1) {
 			logger.info ("准备开始");
-			Thread.sleep (5000);
 			for (int i = 0; i < 10; i++) {
-				String folderName = "scenario/首页/首页勾玉";
+				String folderName = "scenario/御魂整理/御魂强化属性/生命加成";
 				File file = new File (
 						System.getProperty ("user.dir") + "/src/main/resources/image/" + folderName);
 				if (file.exists ()) {
