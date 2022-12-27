@@ -161,6 +161,7 @@ public class FightController {
 				FightAutoController.foster ();
 			}
 			else if (b == 14) {
+				
 				//初始化首页
 				FightService.returnHome ();
 				//个人结界
