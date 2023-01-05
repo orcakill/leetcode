@@ -3,6 +3,7 @@ package com.example.service;
 import com.example.service.impl.FightServiceImpl;
 
 import java.awt.*;
+import java.io.IOException;
 
 /**
  * @Classname FigthService
@@ -20,8 +21,8 @@ public interface FightService {
 		FightServiceImpl.soulBack(begin_num,num);
 	}
 	
-	static void returnHome() throws InterruptedException, AWTException {
-		FightServiceImpl.returnHome() ;
+	static void returnHome () throws InterruptedException, AWTException, IOException {
+		FightServiceImpl.returnHome ();
 	}
 	
 	static boolean fightEndPVP (Integer begin_num,Integer start_num,Integer end_num) throws InterruptedException, AWTException {

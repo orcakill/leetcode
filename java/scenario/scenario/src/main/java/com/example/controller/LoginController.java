@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
+import java.io.IOException;
 
 /**
  * @author orcakill
@@ -23,7 +24,7 @@ public class LoginController {
 	
 	//阴阳师游戏账号登录，进入游戏登录界面
 	
-	public static void loginGame () throws InterruptedException, AWTException {
+	public static void loginGame () throws InterruptedException, AWTException, IOException {
 		String file1 = "scenario/首页/首页勾玉";
 		String file2 = "scenario/登录/阴阳师图标";
 		String file3 = "scenario/登录/适龄提示";

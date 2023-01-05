@@ -1,13 +1,13 @@
 package com.example.service.impl;
 
+import com.example.service.ImageOpenCVService;
 import com.example.service.ImageService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static java.lang.Thread.sleep;
@@ -91,21 +91,21 @@ public class FightServiceImpl {
 		logger.info ("结束挑战");
 	}
 	
-	public static void returnHome () throws InterruptedException, AWTException {
+	public static void returnHome () throws InterruptedException, AWTException, IOException {
 		String file1 = "scenario/首页/首页勾玉";
 		String file2 = "scenario/返回";
 		String file3 = "scenario/首页/庭院异常";
 		logger.info ("初始化首页");
-		boolean booleanSFSY=ImageService.imagesClickBackIsEmpty (file1,1);
+		boolean booleanSFSY = ImageService.imagesClickBackIsEmpty (file1, 1);
 		boolean booleanSFFH;
 		boolean booleanTYRQ;
-		while (!booleanSFSY){
+		while (!booleanSFSY) {
 			Thread.sleep (2000);
 			logger.info ("不在首页，判断有无返回按钮");
-			booleanSFFH=ImageService.imagesClickBackIsEmpty (file2,2);
+			booleanSFFH = ImageOpenCVService.imagesOpenCVIsEmpty (file2, 2);
 			if(booleanSFFH){
 				logger.info ("有返回按钮");
-				ImageService.imagesClickBack (file2,2);
+				ImageOpenCVService.imagesOpenCV (file2, 2);
 				logger.info ("返回上一页");
 			}
 			else {
