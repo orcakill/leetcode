@@ -112,7 +112,7 @@ public class ImagesOpenCVSIFT {
 		return mouseMessages;
 	}
 	
-	public static PictureIdentifyWorkPO matchImage (BufferedImage templateImageB, BufferedImage originalImageB, Double coefficient,
+	public static PictureIdentifyWorkPO matchImage (BufferedImage originalImageB,BufferedImage templateImageB, Double coefficient,
 	                                                Boolean printOrNot) {
 		PictureIdentifyWorkPO pictureIdentifyWorkPO = new PictureIdentifyWorkPO ();
 		Mat resT = new Mat ();
@@ -136,14 +136,14 @@ public class ImagesOpenCVSIFT {
 		
 		List<MatOfDMatch> matches = new LinkedList ();
 		DescriptorMatcher descriptorMatcher = DescriptorMatcher.create (DescriptorMatcher.FLANNBASED);
-		System.out.println ("寻找最佳匹配");
+		//System.out.println ("寻找最佳匹配");
 		
 		/**
 		 * knnMatch方法的作用就是在给定特征描述集合中寻找最佳匹配
 		 * 使用KNN-matching算法，令K=2，则每个match得到两个最接近的descriptor，然后计算最接近距离和次接近距离之间的比值，当比值大于既定值时，才作为最终match。
 		 */
 		descriptorMatcher.knnMatch (resT, resO, matches, 2);
-		System.out.println ("计算匹配结果");
+		//System.out.println ("计算匹配结果");
 		LinkedList<DMatch> goodMatchesList = new LinkedList ();
 		//对匹配结果进行筛选，依据distance进行筛选
 		matches.forEach (match -> {
@@ -159,7 +159,7 @@ public class ImagesOpenCVSIFT {
 		int matchesPointCount = goodMatchesList.size ();
 		//当匹配后的特征点大于等于 4 个，则认为模板图在原图中，该值可以自行调整
 		if (matchesPointCount >= 4) {
-			System.out.println ("模板图在原图匹配成功！");
+			//System.out.println ("模板图在原图匹配成功！");
 			
 			List<KeyPoint> templateKeyPointList = templateKeyPoints.toList ();
 			List<KeyPoint> originalKeyPointList = originalKeyPoints.toList ();
@@ -209,8 +209,9 @@ public class ImagesOpenCVSIFT {
 				}
 				Imgcodecs.imwrite ("D:\\match.jpg", originalImage);
 			}
-			pictureIdentifyWorkPO.setX ((int) (pointA[0] + originalImage.rows () / 2));
-			pictureIdentifyWorkPO.setX ((int) (pointA[1] + originalImage.cols () / 2));
+			pictureIdentifyWorkPO.setX ((int) ((pointA[0]+pointB[0]+pointC[0]+pointD[0])/4)+RandomUtil.getRandom (1,5));
+			pictureIdentifyWorkPO.setY ((int) ((pointA[1]+pointB[1]+pointC[1]+pointD[1])/4)+RandomUtil.getRandom (1,5));
+			logger.info ("目标坐标为（{}，{}）",pictureIdentifyWorkPO.getX (),pictureIdentifyWorkPO.getY ());
 			return pictureIdentifyWorkPO;
 		}
 		else {
