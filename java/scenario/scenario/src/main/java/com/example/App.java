@@ -4,7 +4,7 @@ import com.example.controller.ThreadFirstController;
 import com.example.controller.ThreadSecondController;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+import org.opencv.core.Core;
 
 public class App{
     //App日志
@@ -14,6 +14,7 @@ public class App{
     //图片库目录
     
     public static void main(String[] args) {
+	    System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
         ThreadFirstController t1 = new ThreadFirstController ();
         ThreadSecondController t2 = new ThreadSecondController ();
         t1.start();

@@ -7,8 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
 
 /**
  * @Classname ActivityController
@@ -19,29 +18,27 @@ import java.util.Map;
 public class ActivityController {
 	public static final Logger logger = LogManager.getLogger ("ActivityController ");
 	
-
-	
-	public static void ActivitySelect (String str,Integer num) throws InterruptedException, AWTException {
+	public static void ActivitySelect (String str, Integer num) throws InterruptedException, AWTException, IOException {
 		//千年之守 999
-	   if(str.equals ("20220921")){
-		   Activity20220921(num);
-	   }
-	   //超鬼王
-	   if(str.equals ("20221019")){
-			Activity20221019(num);
-	   }
-	
+		if (str.equals ("20220921")) {
+			Activity20220921 (num);
+		}
+		//超鬼王
+		if (str.equals ("20221019")) {
+			Activity20221019 (num);
+		}
+		
 	}
 	
-	public static void Activity20220921 (Integer num) throws InterruptedException, AWTException {
+	public static void Activity20220921 (Integer num) throws InterruptedException, AWTException, IOException {
 		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ();
-		int windows_width =gd.getDisplayMode ().getWidth ();
-		int windows_height = gd.getDisplayMode().getHeight();
-		String file_ZD="scenario/活动/20220921/战斗";
-		String file_HDJL="scenario/活动/20220921/获得奖励";
-		String file_SL="scenario/活动/20220921/胜利";
-		String file_QR="scenario/活动/20220921/确认";
-		String file_LSQY="scenario/活动/20220921/雷神契印";
+		int windows_width = gd.getDisplayMode ().getWidth ();
+		int windows_height = gd.getDisplayMode ().getHeight ();
+		String file_ZD = "scenario/活动/20220921/战斗";
+		String file_HDJL = "scenario/活动/20220921/获得奖励";
+		String file_SL = "scenario/活动/20220921/胜利";
+		String file_QR = "scenario/活动/20220921/确认";
+		String file_LSQY = "scenario/活动/20220921/雷神契印";
 		boolean boolean_file_ZD;
 		boolean boolean_file_HDJL;
 		boolean boolean_file_SL;
@@ -162,16 +159,16 @@ public class ActivityController {
 		FightService.returnHome ();
 	}
 	
-	public static void Activity20221019 (Integer num) throws InterruptedException, AWTException {
+	public static void Activity20221019 (Integer num) throws InterruptedException, AWTException, IOException {
 		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ();
-		int windows_width =gd.getDisplayMode ().getWidth ();
-		int windows_height = gd.getDisplayMode().getHeight();
-		String file_HYGW="scenario/活动/20221019/薰山笼数";
-		boolean bl_XSL=false;
+		int windows_width = gd.getDisplayMode ().getWidth ();
+		int windows_height = gd.getDisplayMode ().getHeight ();
+		String file_HYGW = "scenario/活动/20221019/薰山笼数";
+		boolean bl_XSL = false;
 		
-		if(windows_width==1920&&windows_height==1080){
+		if (windows_width == 1920 && windows_height == 1080) {
 			//   进入超鬼王
-			MouseClick.mouseClickBack (967,493,"夜神模拟器");
+			MouseClick.mouseClickBack (967, 493, "夜神模拟器");
 			Thread.sleep (3000);
 			//   进入御隐香寻
 			MouseClick.mouseClickBack (1024,739,"夜神模拟器");

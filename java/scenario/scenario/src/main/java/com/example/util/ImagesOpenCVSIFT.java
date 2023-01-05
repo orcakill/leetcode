@@ -34,18 +34,22 @@ public class ImagesOpenCVSIFT {
 	private static final Logger logger = LogManager.getLogger ("imagesOpenCVSIFT");
 	
 	//识别图片存在并点击或只识别不点击
-	public static boolean imagesRecognition (String FolderName, String process, boolean isClick, Double coefficient) throws AWTException,
-	                                                                                                                        IOException {
+	public static boolean imagesRecognition (String FolderName, String process, boolean isClick, Double coefficient,
+	                                         int characteristicPoint) throws AWTException, IOException {
 		//		屏幕截图
 		BufferedImage Window = Screenshot.screenshotBack (process);
 		//		图片集获取
 		List<BufferedImagePO> ImagesData = readFiles (FolderName);
 		
-		if (Objects.requireNonNull (ImagesData)
-		           .size () > 0) {
-			List<PictureIdentifyWorkPO> mouseXY = FindAllImgDataOpenCv (Window, ImagesData, coefficient);
+		if (Objects.requireNonNull (ImagesData).size () > 0) {
+			List<PictureIdentifyWorkPO> mouseXY = FindAllImgDataOpenCv (Window, ImagesData, coefficient, characteristicPoint);
 			//		识别+鼠标点击或仅识别
-			return MouseClick.mouseClickBack (mouseXY, process, isClick);
+			if (mouseXY.size () > 0) {
+				return MouseClick.mouseClickBack (mouseXY, process, isClick);
+			}
+			else {
+				return false;
+			}
 		}
 		else {
 			return false;
@@ -72,8 +76,7 @@ public class ImagesOpenCVSIFT {
 					String s = fileList[i];
 					File file = new File (Folder + File.separator + s);
 					// 判断是否为照片文件
-					String[] strArray = file.getName ()
-					                        .split ("\\.");
+					String[] strArray = file.getName ().split ("\\.");
 					int suffixIndex = strArray.length - 1;
 					// 存储照片文件
 					if (!file.isDirectory () && (strArray[suffixIndex].equals ("png") || strArray[suffixIndex].equals ("jpg"))) {
@@ -92,28 +95,34 @@ public class ImagesOpenCVSIFT {
 	}
 	
 	public static List<PictureIdentifyWorkPO> FindAllImgDataOpenCv (BufferedImage Window, List<BufferedImagePO> ImagesData,
-	                                                                Double coefficient) throws IOException {
+	                                                                Double coefficient, int characteristicPoint) throws IOException {
 		//声明 坐标列表
 		List<PictureIdentifyWorkPO> mouseMessages = new ArrayList<> ();
+		//声明 识别坐标
+		PictureIdentifyWorkPO pictureIdentifyWorkPO = new PictureIdentifyWorkPO ();
 		if (coefficient == null) {
 			coefficient = 0.7;
 		}
-		for (int i = 0; i < ImagesData.size (); i++) {
-			PictureIdentifyWorkPO pictureIdentifyWorkPO;
-			pictureIdentifyWorkPO = ImagesOpenCVSIFT.matchImage (Window, ImagesData.get (i)
-			                                                                       .getImage (), coefficient, false);
-			mouseMessages.add (pictureIdentifyWorkPO);
-			if (mouseMessages.size () > 1) {
-				logger.info ("当前识别的图片信息为{}", ImagesData.get (i)
-				                                                 .toString ());
+		for (BufferedImagePO imagesDatum : ImagesData) {
+			try {
+				pictureIdentifyWorkPO =
+						ImagesOpenCVSIFT.matchImage (Window, imagesDatum.getImage (), coefficient, false, characteristicPoint);
+			} catch (Exception e) {
+				logger.info (e);
+			}
+			if (pictureIdentifyWorkPO.getX () != null && pictureIdentifyWorkPO.getY () != null) {
+				mouseMessages.add (pictureIdentifyWorkPO);
+			}
+			if (mouseMessages.size () > 0) {
+				logger.info ("当前识别的图片信息为{}:{}", imagesDatum.getImageNumber () + 1, imagesDatum.getImageName ());
 				return mouseMessages;
 			}
 		}
 		return mouseMessages;
 	}
 	
-	public static PictureIdentifyWorkPO matchImage (BufferedImage originalImageB,BufferedImage templateImageB, Double coefficient,
-	                                                Boolean printOrNot) {
+	public static PictureIdentifyWorkPO matchImage (BufferedImage originalImageB, BufferedImage templateImageB, Double coefficient,
+	                                                Boolean printOrNot, int characteristicPoint) {
 		PictureIdentifyWorkPO pictureIdentifyWorkPO = new PictureIdentifyWorkPO ();
 		Mat resT = new Mat ();
 		Mat resO = new Mat ();
@@ -158,9 +167,9 @@ public class ImagesOpenCVSIFT {
 		
 		int matchesPointCount = goodMatchesList.size ();
 		//当匹配后的特征点大于等于 4 个，则认为模板图在原图中，该值可以自行调整
-		if (matchesPointCount >= 4) {
+		if (matchesPointCount >= characteristicPoint) {
 			//System.out.println ("模板图在原图匹配成功！");
-			
+			logger.info ("特征点：{}", matchesPointCount);
 			List<KeyPoint> templateKeyPointList = templateKeyPoints.toList ();
 			List<KeyPoint> originalKeyPointList = originalKeyPoints.toList ();
 			LinkedList<org.opencv.core.Point> objectPoints = new LinkedList ();
@@ -209,13 +218,10 @@ public class ImagesOpenCVSIFT {
 				}
 				Imgcodecs.imwrite ("D:\\match.jpg", originalImage);
 			}
-			pictureIdentifyWorkPO.setX ((int) ((pointA[0]+pointB[0]+pointC[0]+pointD[0])/4)+RandomUtil.getRandom (1,5));
-			pictureIdentifyWorkPO.setY ((int) ((pointA[1]+pointB[1]+pointC[1]+pointD[1])/4)+RandomUtil.getRandom (1,5));
-			logger.info ("目标坐标为（{}，{}）",pictureIdentifyWorkPO.getX (),pictureIdentifyWorkPO.getY ());
+			pictureIdentifyWorkPO.setX ((int) ((pointA[0] + pointB[0] + pointC[0] + pointD[0]) / 4) + RandomUtil.getRandom (1, 5));
+			pictureIdentifyWorkPO.setY ((int) ((pointA[1] + pointB[1] + pointC[1] + pointD[1]) / 4) + RandomUtil.getRandom (1, 5));
+			logger.info ("目标坐标为（{}，{}）", pictureIdentifyWorkPO.getX (), pictureIdentifyWorkPO.getY ());
 			return pictureIdentifyWorkPO;
-		}
-		else {
-			logger.info ("模板图不在原图中！");
 		}
 		return pictureIdentifyWorkPO;
 	}
@@ -231,10 +237,9 @@ public class ImagesOpenCVSIFT {
 	 */
 	public static Mat getMatify (BufferedImage im) {
 		BufferedImage bufferedImage = toBufferedImageOfType (im, BufferedImage.TYPE_3BYTE_BGR);
-		//将bufferedimage转换为字节数组
+		//将bufferedImage转换为字节数组
 		byte[] pixels = (
-				(DataBufferByte) bufferedImage.getRaster ()
-				                              .getDataBuffer ()).getData ();
+				(DataBufferByte) bufferedImage.getRaster ().getDataBuffer ()).getData ();
 		//        byte[] pixels = ((DataBufferByte) im.getRaster().getDataBuffer()).getData();
 		Mat image = new Mat (bufferedImage.getHeight (), bufferedImage.getWidth (), CvType.CV_8UC3);
 		

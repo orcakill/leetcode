@@ -373,7 +373,7 @@ public class FightAutoController {
 		ImageService.imagesClickBack (file6);
 	}
 	
-	public static Map<String, Integer> pvp (Integer num) throws InterruptedException, AWTException {
+	public static Map<String, Integer> pvp (Integer num) throws InterruptedException, AWTException, IOException {
 		String file = "scenario/斗技/开始挑战";
 		String file1 = "scenario/斗技/自动选择";
 		String file2 = "scenario/斗技/段位晋升";
@@ -463,7 +463,7 @@ public class FightAutoController {
 	}
 	
 	//寄养
-	public static void foster () throws InterruptedException, AWTException {
+	public static void foster () throws InterruptedException, AWTException, IOException {
 		String fileYYLTB = "scenario/阴阳寮/阴阳寮图标";
 		String fileJJ = "scenario/阴阳寮/结界";
 		String fileSSYC = "scenario/阴阳寮/式神育成";
@@ -590,10 +590,10 @@ public class FightAutoController {
 	public static void SoulEnhancements (Integer num) throws InterruptedException, AWTException, IOException {
 		logger.info ("进入式神录");
 		ImageService.imagesClickBack (ArrangeEnums.arrange_SSL.getValue ());
-		Thread.sleep (1000);
+		Thread.sleep (2000);
 		logger.info ("进入式神录详细");
-		ImageOpenCVService.imagesOpenCV (ArrangeEnums.arrange_XX.getValue (), 2E-9);
-		Thread.sleep (1000);
+		ImageOpenCVService.imagesOpenCV (ArrangeEnums.arrange_XX.getValue ());
+		Thread.sleep (2000);
 		logger.info ("进入式神录右侧御魂");
 		ImageService.imagesClickBack (ArrangeEnums.arrange_YCYH_WDJ.getValue ());
 		Thread.sleep (1000);
@@ -680,7 +680,7 @@ public class FightAutoController {
 				}
 				logger.info ("第{}次,点击{}个四星青吉鬼", strengtheningTimes, quantityOfConsumableMaterials);
 				for (int j = 1; j <= quantityOfConsumableMaterials; j++) {
-					ImageService.imagesClickBack (ArrangeEnums.arrange_SXQJG.getValue ());
+					ImageOpenCVService.imagesOpenCV (ArrangeEnums.arrange_SXQJG.getValue ());
 					Thread.sleep (1000);
 				}
 				logger.info ("御魂强化");
@@ -694,7 +694,7 @@ public class FightAutoController {
 				}
 				Thread.sleep (1000);
 				logger.info ("****开始判断御魂强化结果");
-				soulSubduingEnhancementAttribute = ImageService.imagesClickBack (strengthenResultSet, 30, 60);
+				soulSubduingEnhancementAttribute = ImageOpenCVService.imagesOpenCV (strengthenResultSet, 0.7, 10, 20);
 				if (soulSubduingEnhancementAttribute == null) {
 					logger.info ("未找到御魂强化属性，程序退出");
 					System.exit (0);
@@ -705,10 +705,10 @@ public class FightAutoController {
 						    soulSubduingEnhancementAttribute.equals ("攻击") || soulSubduingEnhancementAttribute.equals ("生命") ||
 						    soulSubduingEnhancementAttribute.equals ("防御")) && strengtheningTimes < 4) {
 					logger.info ("御魂强化属性为{},直接弃置", soulSubduingEnhancementAttribute);
-					logger.info ("弃置");
+					logger.info ("直接弃置");
 					ImageService.imagesClickBack (ArrangeEnums.arrange_QZ.getValue ());
 					Thread.sleep (1000);
-					logger.info ("确定强化结果，本轮强化结束");
+					logger.info ("确定强化结果，完全垃圾御魂，本轮强化结束");
 					ImageService.imagesClickBack (ArrangeEnums.arrange_QD.getValue ());
 					Thread.sleep (1000);
 					logger.info ("结束强化，强化状态置为false,强化次数置为1");
