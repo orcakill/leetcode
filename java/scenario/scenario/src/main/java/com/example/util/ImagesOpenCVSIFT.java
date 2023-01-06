@@ -167,6 +167,7 @@ public class ImagesOpenCVSIFT {
 		
 		int matchesPointCount = goodMatchesList.size ();
 		//当匹配后的特征点大于等于 4 个，则认为模板图在原图中，该值可以自行调整
+		logger.info ("当前特征点{}", matchesPointCount);
 		if (matchesPointCount >= characteristicPoint) {
 			//System.out.println ("模板图在原图匹配成功！");
 			logger.info ("特征点：{}", matchesPointCount);

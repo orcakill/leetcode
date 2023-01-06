@@ -57,6 +57,5 @@ public class ThreadSecondController extends Thread {
 		//}
 		//  结束进程2
 		ThreadSecondIsAlive=false;
-		
 	}
 }

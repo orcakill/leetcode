@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.model.entity.StrengthenResultPO;
 import com.example.model.enums.ArrangeEnums;
 import com.example.util.ImagesOpenCVSIFT;
 import com.example.util.Screenshot;
@@ -13,8 +14,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author orcakill
@@ -59,23 +60,31 @@ public class OpenCVSIFTTest {
 	
 	@Test
 	public void sift3 () throws IOException, InterruptedException, AWTException {
+		logger.info ("开始");
+		long start = System.currentTimeMillis ();
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		//御魂强化属性结果
-		Map<String, String> strengthenResultSet = new HashMap<> ();
+		List<StrengthenResultPO> strengthenResultSet = new ArrayList<> ();
 		//初始化御魂强化结果
-		strengthenResultSet.put ("速度", ArrangeEnums.arrange_YHQHSX_SD.getValue ());
-		strengthenResultSet.put ("效果命中", ArrangeEnums.arrange_YHQHSX_XGMZ.getValue ());
-		strengthenResultSet.put ("效果抵抗", ArrangeEnums.arrange_YHQHSX_XGDK.getValue ());
-		strengthenResultSet.put ("暴击", ArrangeEnums.arrange_YHQHSX_BJ.getValue ());
-		strengthenResultSet.put ("暴击伤害", ArrangeEnums.arrange_YHQHSX_BJSH.getValue ());
-		strengthenResultSet.put ("攻击", ArrangeEnums.arrange_YHQHSX_GJ.getValue ());
-		strengthenResultSet.put ("攻击加成", ArrangeEnums.arrange_YHQHSX_GJJC.getValue ());
-		strengthenResultSet.put ("生命", ArrangeEnums.arrange_YHQHSX_SM.getValue ());
-		strengthenResultSet.put ("生命加成", ArrangeEnums.arrange_YHQHSX_SMJC.getValue ());
-		strengthenResultSet.put ("防御", ArrangeEnums.arrange_YHQHSX_FY.getValue ());
-		strengthenResultSet.put ("防御加成", ArrangeEnums.arrange_YHQHSX_FYJC.getValue ());
-		String soulSubduingEnhancementAttribute = ImageOpenCVService.imagesOpenCV (strengthenResultSet, 2, 0.7, 5, 10, 120);
+		strengthenResultSet.add (new StrengthenResultPO ("速度", ArrangeEnums.arrange_YHQHSX_SD.getValue (), 100));
+		strengthenResultSet.add (new StrengthenResultPO ("暴击", ArrangeEnums.arrange_YHQHSX_BJ.getValue (), 100));
+		strengthenResultSet.add (new StrengthenResultPO ("攻击", ArrangeEnums.arrange_YHQHSX_GJ.getValue (), 100));
+		strengthenResultSet.add (new StrengthenResultPO ("生命", ArrangeEnums.arrange_YHQHSX_SM.getValue (), 100));
+		strengthenResultSet.add (new StrengthenResultPO ("防御", ArrangeEnums.arrange_YHQHSX_FY.getValue (), 100));
+		strengthenResultSet.add (new StrengthenResultPO ("生命加成", ArrangeEnums.arrange_YHQHSX_SMJC.getValue (), 120));
+		strengthenResultSet.add (new StrengthenResultPO ("攻击加成", ArrangeEnums.arrange_YHQHSX_GJJC.getValue (), 120));
+		strengthenResultSet.add (new StrengthenResultPO ("暴击伤害", ArrangeEnums.arrange_YHQHSX_BJSH.getValue (), 120));
+		strengthenResultSet.add (new StrengthenResultPO ("效果命中", ArrangeEnums.arrange_YHQHSX_XGMZ.getValue (), 120));
+		strengthenResultSet.add (new StrengthenResultPO ("效果抵抗", ArrangeEnums.arrange_YHQHSX_XGDK.getValue (), 120));
+		strengthenResultSet.add (new StrengthenResultPO ("防御加成", ArrangeEnums.arrange_YHQHSX_FYJC.getValue (), 120));
+		String soulSubduingEnhancementAttribute = ImageOpenCVService.imagesOpenCV (strengthenResultSet, 2, 0.7, 1, 1);
 		logger.info ("御魂强化属性为{}", soulSubduingEnhancementAttribute);
+		long end = System.currentTimeMillis ();
+		logger.info ("总时间 = " + (end - start) / 1000);
+	}
+	
+	@Test
+	public void sift4 () throws IOException, InterruptedException, AWTException {
 	}
 	
 }
