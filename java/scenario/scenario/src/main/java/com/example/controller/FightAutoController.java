@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.model.entity.PictureIdentifyWorkPO;
+import com.example.model.entity.StrengthenResultPO;
 import com.example.model.enums.ArrangeEnums;
 import com.example.model.enums.BackEnums;
 import com.example.model.enums.ExploreEnums;
@@ -612,19 +613,20 @@ public class FightAutoController {
 		//消耗材料数量
 		int quantityOfConsumableMaterials = 0;
 		//御魂强化属性结果
-		Map<String, String> strengthenResultSet = new HashMap<> ();
+		List<StrengthenResultPO> strengthenResultSet = new ArrayList<> ();
 		//初始化御魂强化结果
-		strengthenResultSet.put ("速度", ArrangeEnums.arrange_YHQHSX_SD.getValue ());
-		strengthenResultSet.put ("效果命中", ArrangeEnums.arrange_YHQHSX_XGMZ.getValue ());
-		strengthenResultSet.put ("效果抵抗", ArrangeEnums.arrange_YHQHSX_XGDK.getValue ());
-		strengthenResultSet.put ("暴击", ArrangeEnums.arrange_YHQHSX_BJ.getValue ());
-		strengthenResultSet.put ("暴击伤害", ArrangeEnums.arrange_YHQHSX_BJSH.getValue ());
-		strengthenResultSet.put ("攻击", ArrangeEnums.arrange_YHQHSX_GJ.getValue ());
-		strengthenResultSet.put ("攻击加成", ArrangeEnums.arrange_YHQHSX_GJJC.getValue ());
-		strengthenResultSet.put ("生命", ArrangeEnums.arrange_YHQHSX_SM.getValue ());
-		strengthenResultSet.put ("生命加成", ArrangeEnums.arrange_YHQHSX_SMJC.getValue ());
-		strengthenResultSet.put ("防御", ArrangeEnums.arrange_YHQHSX_FY.getValue ());
-		strengthenResultSet.put ("防御加成", ArrangeEnums.arrange_YHQHSX_FYJC.getValue ());
+		strengthenResultSet.add (new StrengthenResultPO ("速度", ArrangeEnums.arrange_YHQHSX_SD.getValue (), 100));
+		strengthenResultSet.add (new StrengthenResultPO ("暴击", ArrangeEnums.arrange_YHQHSX_BJ.getValue (), 100));
+		strengthenResultSet.add (new StrengthenResultPO ("攻击", ArrangeEnums.arrange_YHQHSX_GJ.getValue (), 100));
+		strengthenResultSet.add (new StrengthenResultPO ("生命", ArrangeEnums.arrange_YHQHSX_SM.getValue (), 100));
+		strengthenResultSet.add (new StrengthenResultPO ("防御", ArrangeEnums.arrange_YHQHSX_FY.getValue (), 100));
+		strengthenResultSet.add (new StrengthenResultPO ("生命加成", ArrangeEnums.arrange_YHQHSX_SMJC.getValue (), 100));
+		strengthenResultSet.add (new StrengthenResultPO ("攻击加成", ArrangeEnums.arrange_YHQHSX_GJJC.getValue (), 100));
+		strengthenResultSet.add (new StrengthenResultPO ("暴击伤害", ArrangeEnums.arrange_YHQHSX_BJSH.getValue (), 100));
+		strengthenResultSet.add (new StrengthenResultPO ("效果命中", ArrangeEnums.arrange_YHQHSX_XGMZ.getValue (), 100));
+		strengthenResultSet.add (new StrengthenResultPO ("效果抵抗", ArrangeEnums.arrange_YHQHSX_XGDK.getValue (), 100));
+		strengthenResultSet.add (new StrengthenResultPO ("防御加成", ArrangeEnums.arrange_YHQHSX_FYJC.getValue (), 100));
+		
 		//循环强化速度御魂
 		for (int i = 1; i <= num; i++) {
 			//设置强化状态
@@ -694,7 +696,7 @@ public class FightAutoController {
 				}
 				Thread.sleep (1000);
 				logger.info ("****开始判断御魂强化结果");
-				soulSubduingEnhancementAttribute = ImageOpenCVService.imagesOpenCV (strengthenResultSet, 2, 0.7, 3, 5, 120);
+				soulSubduingEnhancementAttribute = ImageOpenCVService.imagesOpenCV (strengthenResultSet, 2, 0.7, 1, 2);
 				if (soulSubduingEnhancementAttribute == null) {
 					logger.info ("未找到御魂强化属性，程序退出");
 					System.exit (0);

@@ -1,5 +1,6 @@
 package com.example.service.impl;
 
+import com.example.model.entity.StrengthenResultPO;
 import com.example.util.ImagesOpenCV;
 import com.example.util.ImagesOpenCVSIFT;
 import org.apache.logging.log4j.LogManager;
@@ -7,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.Map;
+import java.util.List;
 
 import static com.example.util.RandomUtil.getRandom;
 
@@ -62,33 +63,45 @@ public class ImageOpenCVServiceImpl {
 		return false;
 	}
 	
-	public static String imagesClickBack (Map<String, String> files, int identificationAlgorithmType, String process, int re_num, int i1,
-	                                      int i2, boolean b, boolean isClick, double coefficient, int characteristicPoint)
+	public static String imagesClickBack (List<StrengthenResultPO> files, int identificationAlgorithmType, String process, int re_num,
+	                                      int i1, int i2, boolean b, boolean isClick, double coefficient)
 			throws InterruptedException, IOException, AWTException {
 		boolean result = false;
 		int num_time;
 		for (int i = 0; i < re_num; i++) {
 			num_time = getRandom (i1, i2);
 			Thread.sleep (num_time * 1000L);
-			for (Map.Entry file : files.entrySet ()) {
+			for (StrengthenResultPO file : files) {
 				if (identificationAlgorithmType == 1) {
-					result = ImagesOpenCV.imagesRecognitionOpenCv (file.getValue ().toString (), process, isClick, coefficient);
+					result = ImagesOpenCV.imagesRecognitionOpenCv (file.getStrengtheningAddress (), process, isClick, coefficient);
 				}
 				if (identificationAlgorithmType == 2) {
-					result = ImagesOpenCVSIFT.imagesRecognition (file.getValue ().toString (), process, isClick, coefficient,
-					                                             characteristicPoint);
+					result = ImagesOpenCVSIFT.imagesRecognition (file.getStrengtheningAddress (), process, isClick, coefficient,
+					                                             file.getStrengthenAttributeFeaturePoints ());
 				}
 				if (result) {
 					logger.info ("图片匹配成功,已点击");
-					return file.getKey ().toString ();
+					return file.getStrengtheningAttribute ();
 				}
 				else {
 					if (b) {
-						logger.info ("在{}秒的检测中，第{}次检查未发现{}的图片", num_time, (i + 1), file);
+						logger.info ("在{}秒的检测中，第{}次检查未发现{}的图片", num_time, (i + 1), file.getStrengtheningAddress ());
 					}
 				}
-				
 			}
+			
+		}
+		return null;
+	}
+	
+	public static String imagesClickBack1 (List<StrengthenResultPO> files, int identificationAlgorithmType, String process, int re_num,
+	                                       int i1, int i2, boolean b, boolean isClick, double coefficient)
+			throws InterruptedException, IOException, AWTException {
+		final boolean[] result = {false};
+		int num_time;
+		for (int i = 0; i < re_num; i++) {
+			num_time = getRandom (i1, i2);
+			Thread.sleep (num_time * 1000L);
 			
 		}
 		return null;
