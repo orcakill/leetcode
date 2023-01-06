@@ -173,9 +173,9 @@ public class FightAutoController {
 				logger.info ("进入战斗");
 				FightService.fightEnd (30, 5, 10);
 				logger.info ("判断是否有额外奖励");
-				whetherAdditionalReward=ImageService.imagesClickBackIsEmpty (file5, 5);
+				whetherAdditionalReward = ImageService.imagesClickBackIsEmpty (file5, 5);
 				if (whetherAdditionalReward) {
-					ImageService.imagesClickBack (file5,5);
+					ImageService.imagesClickBack (file5, 5);
 					logger.info ("领取额外奖励成功");
 				}
 				else {
@@ -671,7 +671,7 @@ public class FightAutoController {
 					quantityOfConsumableMaterials = 5;
 				}
 				if (strengtheningTimes == 4) {
-					logger.info ("第四次强化，强化+12,8个四星青吉鬼");
+					logger.info ("第四次强化，强化+12,7个四星青吉鬼");
 					quantityOfConsumableMaterials = 8;
 				}
 				if (strengtheningTimes == 5) {
@@ -694,7 +694,7 @@ public class FightAutoController {
 				}
 				Thread.sleep (1000);
 				logger.info ("****开始判断御魂强化结果");
-				soulSubduingEnhancementAttribute = ImageOpenCVService.imagesOpenCV (strengthenResultSet, 0.7, 10, 20);
+				soulSubduingEnhancementAttribute = ImageOpenCVService.imagesOpenCV (strengthenResultSet, 2, 0.7, 3, 5, 120);
 				if (soulSubduingEnhancementAttribute == null) {
 					logger.info ("未找到御魂强化属性，程序退出");
 					System.exit (0);
@@ -779,12 +779,9 @@ public class FightAutoController {
 	 */
 	public static void explore (Integer num) throws InterruptedException, AWTException, IOException {
 		//右移界面数据准备
-		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ()
-		                                       .getDefaultScreenDevice ();
-		int windows_width = gd.getDisplayMode ()
-		                      .getWidth ();
-		int windows_height = gd.getDisplayMode ()
-		                       .getHeight ();
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ();
+		int windows_width = gd.getDisplayMode ().getWidth ();
+		int windows_height = gd.getDisplayMode ().getHeight ();
 		PictureIdentifyWorkPO pictureIdentifyWorkPO = new PictureIdentifyWorkPO ();
 		//boss状态
 		boolean bossState;
@@ -908,14 +905,12 @@ public class FightAutoController {
 			}
 			logger.info ("当前已是探索界面");
 			logger.info ("****************************************************第{}轮挑战完成***************************************", i);
-			logger.info ("该次挑战使用时间为{}秒,{}分", (System.currentTimeMillis () - a) / 1000, (System.currentTimeMillis () - a) / 1000 / 60);
+			logger.info ("该次挑战使用时间为{}秒,{}分", (System.currentTimeMillis () - a) / 1000,
+			             (System.currentTimeMillis () - a) / 1000 / 60);
 			b.add ((double) (System.currentTimeMillis () - a));
 		}
 		
-		double average = b.stream ()
-		                  .mapToDouble (Double::valueOf)
-		                  .average ()
-		                  .getAsDouble ();
+		double average = b.stream ().mapToDouble (Double::valueOf).average ().getAsDouble ();
 		logger.info ("该次挑战使用时间为{}秒,{}分", average / 1000, average / 1000 / 60);
 		FightService.returnHome ();
 	}
@@ -946,16 +941,16 @@ public class FightAutoController {
 			littleMonsterState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_JTXGZD.getValue (), 3);
 			while (littleMonsterState) {
 				logger.info ("找到小怪，点击战斗");
-				littleMonsterState=ImageService.imagesClickBack (ExploreEnums.explore_JTXGZD.getValue (), 3);
-				if(littleMonsterState){
+				littleMonsterState = ImageService.imagesClickBack (ExploreEnums.explore_JTXGZD.getValue (), 3);
+				if (littleMonsterState) {
 					logger.info ("点击成功，等待结束");
 					Thread.sleep (12 * 1000);
 					logger.info ("退出挑战");
-					exitTheChallenge=ImageService.imagesClickBack(ExploreEnums.explore_TCTZ.getValue (),10);
+					exitTheChallenge = ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue (), 10);
 					Thread.sleep (1000);
-					while (!exitTheChallenge){
+					while (!exitTheChallenge) {
 						logger.info ("未成功退出挑战，重新退出");
-						exitTheChallenge=ImageService.imagesClickBack(ExploreEnums.explore_TCTZ.getValue (),10);
+						exitTheChallenge = ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue (), 10);
 						Thread.sleep (1000);
 					}
 				}
@@ -963,7 +958,7 @@ public class FightAutoController {
 				littleMonsterState = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_JTXGZD.getValue (), 3);
 			}
 			logger.info ("再退出一次挑战，防止退出不成功");
-			ImageService.imagesClickBack(ExploreEnums.explore_TCTZ.getValue (),3);
+			ImageService.imagesClickBack (ExploreEnums.explore_TCTZ.getValue (), 3);
 			logger.info ("小怪战斗结束，退出");
 			logger.info ("未退出探索，点击返回");
 			ImageService.imagesClickBack (BackEnums.back.getValue (), 3);
@@ -971,20 +966,18 @@ public class FightAutoController {
 			ImageService.imagesClickBack (ExploreEnums.explore_QR.getValue (), 3);
 			logger.info ("在最后一章探索界面，返回探索界面");
 			ImageService.imagesClickBack (BackEnums.back.getValue (), 3);
-			whetherToExplore=ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue ());
-			if(!whetherToExplore){
+			whetherToExplore = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue ());
+			if (!whetherToExplore) {
 				logger.info ("返回不成功，重新返回");
 				ImageService.imagesClickBack (BackEnums.back.getValue (), 3);
 			}
 			logger.info ("当前已是探索界面");
 			logger.info ("****************************************************第{}轮挑战完成***************************************", i);
-			logger.info ("该次挑战使用时间为{}秒,{}分", (System.currentTimeMillis () - a) / 1000, (System.currentTimeMillis () - a) / 1000 / 60);
+			logger.info ("该次挑战使用时间为{}秒,{}分", (System.currentTimeMillis () - a) / 1000,
+			             (System.currentTimeMillis () - a) / 1000 / 60);
 			b.add ((double) (System.currentTimeMillis () - a));
 		}
-		double average = b.stream ()
-		                  .mapToDouble (Double::valueOf)
-		                  .average ()
-		                  .getAsDouble ();
+		double average = b.stream ().mapToDouble (Double::valueOf).average ().getAsDouble ();
 		logger.info ("该次挑战使用时间为{}秒,{}分", average / 1000, average / 1000 / 60);
 		FightService.returnHome ();
 	}
