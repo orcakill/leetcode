@@ -202,6 +202,10 @@ public class ImagesOpenCVSIFT {
 			double[] pointB = templateTransformResult.get (1, 0);
 			double[] pointC = templateTransformResult.get (2, 0);
 			double[] pointD = templateTransformResult.get (3, 0);
+			if (pointA[0] < 0 || pointA[1] < 0 || pointB[0] < 0 || pointB[1] < 0 || pointC[0] < 0 || pointC[1] < 0 || pointD[0] < 0 ||
+			    pointD[1] < 0) {
+				return null;
+			}
 			//是否打印
 			if (printOrNot) {
 				//将匹配的图像用用四条线框出来

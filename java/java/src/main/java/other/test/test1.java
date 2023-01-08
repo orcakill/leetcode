@@ -20,8 +20,8 @@ import java.io.File;
 public class test1 {
 	
 	public static void main (String[] args) throws Exception {
-		String imgPath = "D:\\a.jpg";
-		String text = FindOCR (imgPath, true);
+		String imgPath = "D:/a.png";
+		String text = FindOCR (imgPath, false);
 		System.out.println (text);
 	}
 	

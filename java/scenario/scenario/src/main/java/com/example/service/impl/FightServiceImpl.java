@@ -1,14 +1,18 @@
 package com.example.service.impl;
 
-import com.example.service.ImageOpenCVService;
+import com.example.model.entity.ScreenshotPointPO;
+import com.example.model.map.ScreenshotPointMap;
 import com.example.service.ImageService;
+import com.example.util.ImageTesseract;
+import com.example.util.Screenshot;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import java.util.*;
 
 import static java.lang.Thread.sleep;
 
@@ -102,24 +106,24 @@ public class FightServiceImpl {
 		while (!booleanSFSY) {
 			Thread.sleep (2000);
 			logger.info ("不在首页，判断有无返回按钮");
-			booleanSFFH = ImageOpenCVService.imagesOpenCVIsEmpty (file2, 2);
-			if(booleanSFFH){
+			booleanSFFH = ImageService.imagesClickBackIsEmpty (file2, 2);
+			if (booleanSFFH) {
 				logger.info ("有返回按钮");
-				ImageOpenCVService.imagesOpenCV (file2, 2);
+				ImageService.imagesClickBack (file2, 2);
 				logger.info ("返回上一页");
 			}
-			else {
-				logger.info ("不在首页，判断有无庭院异常");
-				booleanTYRQ = ImageService.imagesClickBackIsEmpty (file3, 2);
-				if (booleanTYRQ) {
-					logger.info ("有庭院异常");
-					ImageService.imagesClickBack (file3, 2);
-					logger.info ("去除异常");
-				}
-			}
+			//else {
+			//	logger.info ("不在首页，判断有无庭院异常");
+			//	booleanTYRQ = ImageService.imagesClickBackIsEmpty (file3, 2);
+			//	if (booleanTYRQ) {
+			//		logger.info ("有庭院异常");
+			//		ImageService.imagesClickBack (file3, 2);
+			//		logger.info ("去除异常");
+			//	}
+			//}
 			Thread.sleep (2000);
 			logger.info ("判断是否回到首页");
-			booleanSFSY=ImageService.imagesClickBackIsEmpty (file1,2);
+			booleanSFSY = ImageService.imagesClickBackIsEmpty (file1, 2);
 		}
 		logger.info ("返回到首页");
 		
@@ -161,14 +165,53 @@ public class FightServiceImpl {
 		while (b2){
 			logger.info (file2+"不存在,判断"+file1+"是否存在");
 			b1=ImageService.imagesClickBackIsEmpty (file1,5);
-			if(b1){
-				logger.info (file1+"存在，重新点击");
+			if (b1) {
+				logger.info (file1 + "存在，重新点击");
 				ImageService.imagesClickBack (file1);
 			}
 			Thread.sleep (1000);
-			logger.info ("再次判断"+file2+"是否存在");
-			b2=ImageService.imagesClickBackIsEmpty (file2,5);
+			logger.info ("再次判断" + file2 + "是否存在");
+			b2 = ImageService.imagesClickBackIsEmpty (file2, 5);
 		}
-		return  true;
+		return true;
+	}
+	
+	public static String soulLevelEnhancementRecognition () {
+		//模拟器截屏处理
+		BufferedImage Window = Screenshot.screenshotBack ("夜神模拟器");
+		//截图 1 2 3 的裁剪信息
+		ScreenshotPointPO screenshotPointPO1 = ScreenshotPointMap.getScreenshotPoint ("御魂等级强化第一部分");
+		ScreenshotPointPO screenshotPointPO2 = ScreenshotPointMap.getScreenshotPoint ("御魂等级强化第二部分");
+		ScreenshotPointPO screenshotPointPO3 = ScreenshotPointMap.getScreenshotPoint ("御魂等级强化第三部分");
+		//截图 1 2 3 裁剪
+		BufferedImage bufferedImage1 =
+				Window.getSubimage (screenshotPointPO1.getX (), screenshotPointPO1.getY (), screenshotPointPO1.getW (),
+				                    screenshotPointPO1.getH ());
+		BufferedImage bufferedImage2 =
+				Window.getSubimage (screenshotPointPO2.getX (), screenshotPointPO2.getY (), screenshotPointPO2.getW (),
+				                    screenshotPointPO2.getH ());
+		BufferedImage bufferedImage3 =
+				Window.getSubimage (screenshotPointPO3.getX (), screenshotPointPO3.getY (), screenshotPointPO3.getW (),
+				                    screenshotPointPO3.getH ());
+		//截图 1 2 3 图像文字识别
+		String s1 = ImageTesseract.findOCR (bufferedImage1, true).replaceAll ("(?m)^\\s*$(\\n|\\r\\n)", "");
+		String s2 = ImageTesseract.findOCR (bufferedImage2, false).replaceAll ("(?m)^\\s*$(\\n|\\r\\n)", "");
+		String s3 = ImageTesseract.findOCR (bufferedImage3, false).replaceAll ("(?m)^\\s*$(\\n|\\r\\n)", "");
+		//识别结果 1  2 3 string 转 list
+		List<String> list1 = Arrays.asList (s1.split ("\n"));
+		List<String> list2 = Arrays.asList (s2.split ("\n"));
+		List<String> list3 = Arrays.asList (s3.split ("\n"));
+		list1.removeAll (Collections.singleton (null));
+		list2.removeAll (Collections.singleton (null));
+		list3.removeAll (Collections.singleton (null));
+		//识别结果 1  2 3 识别出现等级变化的御魂属性
+		if (list1.size () == 5 && list1.size () == list2.size () || list2.size () == list3.size ()) {
+			for (int i = 1; i < 5; i++) {
+				if (!list2.get (i).equals (list3.get (i))) {
+					return list1.get (i);
+				}
+			}
+		}
+		return null;
 	}
 }

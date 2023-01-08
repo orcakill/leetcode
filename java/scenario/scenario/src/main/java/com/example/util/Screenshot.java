@@ -30,7 +30,4 @@ public class Screenshot {
 		BufferedImage screenshot = scanningProcess(hwnd,windows_width,windows_height);
 		return  screenshot;
 	}
-	
-	
-	
 }
