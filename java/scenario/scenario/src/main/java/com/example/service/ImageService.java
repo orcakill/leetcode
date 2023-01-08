@@ -84,4 +84,5 @@ public interface ImageService {
 	static void imagesClickBackDrag (PictureIdentifyWorkPO pictureIdentifyWorkPO1, PictureIdentifyWorkPO pictureIdentifyWorkPO2, String process) throws InterruptedException, AWTException {
 		ImageServiceImpl.imagesClickBackDrag (pictureIdentifyWorkPO1, pictureIdentifyWorkPO2, process);
 	}
+	
 }

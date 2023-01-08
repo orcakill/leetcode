@@ -1,11 +1,8 @@
 package com.example.controller;
 
+import com.example.model.entity.FightResultPO;
 import com.example.model.entity.PictureIdentifyWorkPO;
-import com.example.model.entity.StrengthenResultPO;
-import com.example.model.enums.ArrangeEnums;
-import com.example.model.enums.BackEnums;
-import com.example.model.enums.ExploreEnums;
-import com.example.model.enums.SoulEnums;
+import com.example.model.enums.*;
 import com.example.model.map.CoordinateAddress;
 import com.example.service.FightService;
 import com.example.service.ImageOpenCVService;
@@ -19,6 +16,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static com.example.controller.LoginController.loginExplore;
 import static com.example.service.FightService.soulBack;
@@ -129,7 +127,7 @@ public class FightAutoController {
 		
 	}
 	
-	public static void borderCheck () throws InterruptedException, AWTException {
+	public static void borderCheck () throws InterruptedException, AWTException, IOException {
 		String file = "scenario/结界突破/结界突破";
 		String file1 = "scenario/结界突破/结界挑战劵数";
 		String file2 = "scenario/结界突破/个人结界";
@@ -163,10 +161,10 @@ public class FightAutoController {
 				logger.info ("开始进攻");
 				Thread.sleep (10 * 1000);
 				logger.info ("判断是否准备挑战");
-				booleanZBTJ = ImageService.imagesClickBackIsEmpty (file7, 5);
+				booleanZBTJ = ImageOpenCVService.imagesOpenCVIsEmpty (file7, 5);
 				if (booleanZBTJ) {
 					logger.info ("准备挑战");
-					ImageService.imagesClickBack (file7);
+					ImageOpenCVService.imagesOpenCV (file7);
 				}
 				else {
 					logger.info ("无需准备");
@@ -613,22 +611,23 @@ public class FightAutoController {
 		//消耗材料数量
 		int quantityOfConsumableMaterials = 0;
 		//御魂强化属性结果
-		List<StrengthenResultPO> strengthenResultSet = new ArrayList<> ();
-		//初始化御魂强化结果
-		strengthenResultSet.add (new StrengthenResultPO ("速度", ArrangeEnums.arrange_YHQHSX_SD.getValue (), 100));
-		strengthenResultSet.add (new StrengthenResultPO ("暴击", ArrangeEnums.arrange_YHQHSX_BJ.getValue (), 100));
-		strengthenResultSet.add (new StrengthenResultPO ("攻击", ArrangeEnums.arrange_YHQHSX_GJ.getValue (), 100));
-		strengthenResultSet.add (new StrengthenResultPO ("生命", ArrangeEnums.arrange_YHQHSX_SM.getValue (), 100));
-		strengthenResultSet.add (new StrengthenResultPO ("防御", ArrangeEnums.arrange_YHQHSX_FY.getValue (), 100));
-		strengthenResultSet.add (new StrengthenResultPO ("生命加成", ArrangeEnums.arrange_YHQHSX_SMJC.getValue (), 100));
-		strengthenResultSet.add (new StrengthenResultPO ("攻击加成", ArrangeEnums.arrange_YHQHSX_GJJC.getValue (), 100));
-		strengthenResultSet.add (new StrengthenResultPO ("暴击伤害", ArrangeEnums.arrange_YHQHSX_BJSH.getValue (), 100));
-		strengthenResultSet.add (new StrengthenResultPO ("效果命中", ArrangeEnums.arrange_YHQHSX_XGMZ.getValue (), 100));
-		strengthenResultSet.add (new StrengthenResultPO ("效果抵抗", ArrangeEnums.arrange_YHQHSX_XGDK.getValue (), 100));
-		strengthenResultSet.add (new StrengthenResultPO ("防御加成", ArrangeEnums.arrange_YHQHSX_FYJC.getValue (), 100));
-		
+		//List<StrengthenResultPO> strengthenResultSet = new ArrayList<> ();
+		////初始化御魂强化结果
+		//strengthenResultSet.add (new StrengthenResultPO ("速度", ArrangeEnums.arrange_YHQHSX_SD.getValue (), 100));
+		//strengthenResultSet.add (new StrengthenResultPO ("暴击", ArrangeEnums.arrange_YHQHSX_BJ.getValue (), 100));
+		//strengthenResultSet.add (new StrengthenResultPO ("攻击", ArrangeEnums.arrange_YHQHSX_GJ.getValue (), 100));
+		//strengthenResultSet.add (new StrengthenResultPO ("生命", ArrangeEnums.arrange_YHQHSX_SM.getValue (), 100));
+		//strengthenResultSet.add (new StrengthenResultPO ("防御", ArrangeEnums.arrange_YHQHSX_FY.getValue (), 100));
+		//strengthenResultSet.add (new StrengthenResultPO ("生命加成", ArrangeEnums.arrange_YHQHSX_SMJC.getValue (), 100));
+		//strengthenResultSet.add (new StrengthenResultPO ("攻击加成", ArrangeEnums.arrange_YHQHSX_GJJC.getValue (), 100));
+		//strengthenResultSet.add (new StrengthenResultPO ("暴击伤害", ArrangeEnums.arrange_YHQHSX_BJSH.getValue (), 100));
+		//strengthenResultSet.add (new StrengthenResultPO ("效果命中", ArrangeEnums.arrange_YHQHSX_XGMZ.getValue (), 100));
+		//strengthenResultSet.add (new StrengthenResultPO ("效果抵抗", ArrangeEnums.arrange_YHQHSX_XGDK.getValue (), 100));
+		//strengthenResultSet.add (new StrengthenResultPO ("防御加成", ArrangeEnums.arrange_YHQHSX_FYJC.getValue (), 100));
+		//
 		//循环强化速度御魂
 		for (int i = 1; i <= num; i++) {
+			logger.info ("第{}个御魂", i);
 			//设置强化状态
 			reinforcementState = true;
 			logger.info ("进入更换御魂");
@@ -696,7 +695,7 @@ public class FightAutoController {
 				}
 				Thread.sleep (1000);
 				logger.info ("****开始判断御魂强化结果");
-				soulSubduingEnhancementAttribute = ImageOpenCVService.imagesOpenCV (strengthenResultSet, 2, 0.7, 1, 2);
+				soulSubduingEnhancementAttribute = FightService.soulLevelEnhancementRecognition ();
 				if (soulSubduingEnhancementAttribute == null) {
 					logger.info ("未找到御魂强化属性，程序退出");
 					System.exit (0);
@@ -729,8 +728,11 @@ public class FightAutoController {
 					}
 					else {
 						if (soulSubduingEnhancementAttribute.equals (soulSubduingEnhancementAttributeLast) || strengtheningTimes >= 4) {
+							logger.info ("御魂强化属性{}，御魂上次强化属性{}", soulSubduingEnhancementAttribute,
+							             soulSubduingEnhancementAttributeLast);
+							logger.info ("御魂强化次数{}", strengtheningTimes);
 							logger.info ("御魂强化属性和上一次相同，或者御魂强化次数大于等4次");
-							logger.info ("确定强化结果，本轮强化结束");
+							logger.info ("确定强化结果，本轮强化结束,继续强化");
 							ImageService.imagesClickBack (ArrangeEnums.arrange_QD.getValue ());
 							Thread.sleep (1000);
 							if (strengtheningTimes == 5) {
@@ -747,6 +749,9 @@ public class FightAutoController {
 							
 						}
 						else {
+							logger.info ("御魂强化属性{}，御魂上次强化属性{}", soulSubduingEnhancementAttribute,
+							             soulSubduingEnhancementAttributeLast);
+							logger.info ("御魂强化次数{}", strengtheningTimes);
 							logger.info ("御魂强化属性和上一次不同,且强化次数小于4次");
 							logger.info ("弃置");
 							ImageService.imagesClickBack (ArrangeEnums.arrange_QZ.getValue ());
@@ -917,19 +922,44 @@ public class FightAutoController {
 		FightService.returnHome ();
 	}
 	
-	public static void exploreFast (int num) throws InterruptedException, AWTException, IOException {
+	/***
+	 * @description: 探索  快速战斗 只打 2个
+	 * @param fightResultPOS  战斗结果
+	 * @param num   本轮战斗次数
+	 * @return: java.util.List<com.example.model.entity.FightResultPO>
+	 * @author: orcakill
+	 * @date: 2023/1/8 22:50
+	 */
+	public static List<FightResultPO> exploreFast (List<FightResultPO> fightResultPOS, int num)
+			throws InterruptedException, AWTException, IOException {
 		//小怪状态
 		boolean littleMonsterState;
 		//退出挑战
 		boolean exitTheChallenge;
 		//探索界面
 		boolean whetherToExplore;
+		//当前轮次 默认为 1
+		int currentRound = 1;
+		// 本次战斗开始时间
 		long a;
-		List<Double> b = new ArrayList<> ();
+		// 本次战斗结束时间
+		long b;
+		// 平均战斗时间
+		double avgTime = 0;
+		//  探索的历史数据
+		List<FightResultPO> fightResultPOList =
+				fightResultPOS.stream ().filter (fightResultPO -> fightResultPO.getFightName ().equals (FightResultEnums.result_TS))
+				              .collect (Collectors.toList ());
+		//探索轮次加一
+		if (fightResultPOList.size () > 0) {
+			currentRound = fightResultPOList.get (fightResultPOList.size () - 1).getThisRound () + 1;
+		}
 		logger.info ("进入探索");
 		loginExplore ();
 		logger.info ("开始探索战斗");
 		for (int i = 1; i <= num; i++) {
+			//战斗结果
+			FightResultPO fightResultPO = new FightResultPO ();
 			logger.info ("*************第{}轮挑战开始", i);
 			a = System.currentTimeMillis ();//获取当前系统时间(毫秒)
 			logger.info ("当前探索界面");
@@ -974,13 +1004,25 @@ public class FightAutoController {
 				ImageService.imagesClickBack (BackEnums.back.getValue (), 3);
 			}
 			logger.info ("当前已是探索界面");
-			logger.info ("****************************************************第{}轮挑战完成***************************************", i);
-			logger.info ("该次挑战使用时间为{}秒,{}分", (System.currentTimeMillis () - a) / 1000,
-			             (System.currentTimeMillis () - a) / 1000 / 60);
-			b.add ((double) (System.currentTimeMillis () - a));
+			b = System.currentTimeMillis ();//获取当前系统时间(毫秒)
+			//战斗类型
+			fightResultPO.setFightName (FightResultEnums.result_TS.getValue ());
+			//战斗胜利
+			fightResultPO.setFightWin (true);
+			//本次战斗用时 秒
+			fightResultPO.setFightTime (b - a);
+			//战斗轮次
+			fightResultPO.setThisRound (currentRound);
+			//本轮战斗次数
+			fightResultPO.setThisRoundNumber (i * 2);
+			//本次战斗信息入库
+			fightResultPOList.add (fightResultPO);
+			fightResultPOS.add (fightResultPO);
+			//计算平均战斗时间
+			avgTime = fightResultPOList.stream ().mapToDouble (fightResultPO::getFightTime).average ().getAsDouble ();
+			logger.info ("探索的平均战斗时间{}", avgTime);
 		}
-		double average = b.stream ().mapToDouble (Double::valueOf).average ().getAsDouble ();
-		logger.info ("该次挑战使用时间为{}秒,{}分", average / 1000, average / 1000 / 60);
 		FightService.returnHome ();
+		return fightResultPOS;
 	}
 }

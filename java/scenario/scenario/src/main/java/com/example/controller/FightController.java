@@ -1,12 +1,15 @@
 package com.example.controller;
 
+import com.example.model.entity.FightResultPO;
 import com.example.service.FightService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.example.util.RandomUtil.getRandom;
@@ -23,13 +26,15 @@ public class FightController {
 	//循环战斗
 	public static void fightGame (Integer a, Integer b) throws InterruptedException, AWTException, IOException {
 		int num1;
+		//*战斗结果*
+		List<FightResultPO> fightResultPOS = new ArrayList<> ();
 		Map<String, Integer> map = new HashMap<> ();
 		map.put ("阴阳寮累计战斗", 0);
-		map.put ("阴阳寮累计战斗胜利",0);
-		map.put ("阴阳寮累计战斗失败",0);
+		map.put ("阴阳寮累计战斗胜利", 0);
+		map.put ("阴阳寮累计战斗失败", 0);
 		map.put ("斗技累计战斗", 0);
-		map.put ("斗技累计战斗胜利",0);
-		map.put ("斗技累计战斗失败",0);
+		map.put ("斗技累计战斗胜利", 0);
+		map.put ("斗技累计战斗失败", 0);
 		//执行轮次
 		for (int i = 1; i <= a; i++) {
 			if (b == 1) {
@@ -167,7 +172,8 @@ public class FightController {
 				//个人结界
 				FightAutoController.borderCheck ();
 				//探索40次
-				FightAutoController.exploreFast (60);                //检查寄养，无则寄养
+				FightAutoController.exploreFast (fightResultPOS, 1);
+				//检查寄养，无则寄养
 				FightAutoController.foster ();
 			}
 		}
