@@ -2,6 +2,7 @@ package com.example.service.impl;
 
 import com.example.model.entity.ScreenshotPointPO;
 import com.example.model.map.ScreenshotPointMap;
+import com.example.service.ImageOpenCVService;
 import com.example.service.ImageService;
 import com.example.util.ImageTesseract;
 import com.example.util.Screenshot;
@@ -99,6 +100,7 @@ public class FightServiceImpl {
 		String file1 = "scenario/首页/首页勾玉";
 		String file2 = "scenario/返回";
 		String file3 = "scenario/首页/庭院异常";
+		int num = 1;
 		logger.info ("初始化首页");
 		boolean booleanSFSY = ImageService.imagesClickBackIsEmpty (file1, 1);
 		boolean booleanSFFH;
@@ -112,6 +114,15 @@ public class FightServiceImpl {
 				ImageService.imagesClickBack (file2, 2);
 				logger.info ("返回上一页");
 			}
+			if (num > 60) {
+				logger.info ("不在首页，openCV判断有无返回按钮");
+				booleanSFFH = ImageOpenCVService.imagesOpenCVIsEmpty (file2, 2);
+				if (booleanSFFH) {
+					logger.info ("有返回按钮，openCV点击");
+					ImageOpenCVService.imagesOpenCV (file2, 2);
+					logger.info ("返回上一页");
+				}
+			}
 			//else {
 			//	logger.info ("不在首页，判断有无庭院异常");
 			//	booleanTYRQ = ImageService.imagesClickBackIsEmpty (file3, 2);
@@ -124,6 +135,7 @@ public class FightServiceImpl {
 			Thread.sleep (2000);
 			logger.info ("判断是否回到首页");
 			booleanSFSY = ImageService.imagesClickBackIsEmpty (file1, 2);
+			num++;
 		}
 		logger.info ("返回到首页");
 		
