@@ -1,11 +1,13 @@
 package com.example.test;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @author orcakill
@@ -15,6 +17,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @createTime 2023年01月09日 08:37:00
  */
 public class MultithreadingTest {
+	
+	private static final Logger logger = LogManager.getLogger ("MultithreadingTest");
+	boolean b = false;
+	
 	@Test
 	public void test1 () {
 		long start = System.currentTimeMillis ();
@@ -49,67 +55,59 @@ public class MultithreadingTest {
 	}
 	
 	@Test
-	public  void  test3() {
+	public void test3 () {
 		long start = System.currentTimeMillis ();
-		
-		int CORE_POOL_SIZE = 5;
-		int MAX_POOL_SIZE = 10;
-		int QUEUE_CAPACITY = 100;
-		Long KEEP_ALIVE_TIME = 1L;
-		ThreadPoolExecutor executor = new ThreadPoolExecutor(
-				CORE_POOL_SIZE,
-				MAX_POOL_SIZE,
-				KEEP_ALIVE_TIME,
-				TimeUnit.SECONDS,
-				new ArrayBlockingQueue<> (QUEUE_CAPACITY),
-				new ThreadPoolExecutor.CallerRunsPolicy());
-
+		b = false;
 		List<Integer> list = new ArrayList<> ();
 		for (int i = 0; i < 20; i++) {
 			list.add (i);
 		}
+		ExecutorService executor = Executors.newFixedThreadPool (5);
 		for (int i = 0; i < list.size (); i++) {
-			//创建任务
-             Task task = new Task ("Task " + i, list.get (i));
-			 executor.execute(task);
+			Runnable worker = new WorkerThread ("" + i, list.get (i));
+			executor.execute (worker);
 		}
-		executor.shutdown();
+		executor.shutdown (); // This will make the executor accept no new threads and finish all existing threads in the queue
+		while (!executor.isTerminated ()) { // Wait until all threads are finish,and also you can use "executor.awaitTermination();" to
+			// wait
+		}
+		logger.info ("Finished all threads");
 		long end = System.currentTimeMillis ();
-		System.out.println ("doParallelStream cost:" + (end - start));
+		logger.info ("doParallelStream cost:" + (end - start) / 1000);
+		
 	}
 	
-	public  class Task implements Runnable {
-		private String name;
+	public class WorkerThread implements Runnable {
 		
-		private Integer value;
+		private String command;
 		
-
-		public Task (String name, Integer value) {
-			this.name = name;
-			this.value= value;
+		private int val;
+		
+		public WorkerThread (String s, int m) {
+			this.command = s;
+			this.val = m;
 		}
 		
-		public String getName() {
-			return name;
-		}
-		
-		public Integer getValue () {
-			return value;
-		}
-		
-		
-		public void run() {
-			try {
-				//Thread.sleep (1000);
-				//System.out.println("线程名 : " + name +"  值："+value);
-				Long duration = (long) (Math.random() * 10);
-				System.out.println("Executing : " + name+"  "+value);
-				TimeUnit.SECONDS.sleep(duration);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+		@Override
+		public void run () {
+			processCommand ();
+			logger.info ("{}:{}", command, val);
+			if (val == 2) {
+				b = true;
 			}
 		}
+		
+		private void processCommand () {
+			try {
+				Thread.sleep (1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace ();
+			}
+		}
+		
+		@Override
+		public String toString () {
+			return this.command;
+		}
 	}
-	
-	
 }
