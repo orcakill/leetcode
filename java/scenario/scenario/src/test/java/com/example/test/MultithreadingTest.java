@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.*;
 
 /**
@@ -80,6 +79,44 @@ public class MultithreadingTest {
 	}
 	
 	
+	private static String execute (int i, int val, CountDownLatch countDownLatch) {
+		try {
+			Thread.sleep (1000);
+		} catch (InterruptedException e) {
+			throw new RuntimeException (e);
+		}
+		logger.info (val);
+		if (val == 6) {
+			countDownLatch.countDown ();
+			return String.valueOf (val);
+		}
+		return null;
+	}
+	
+	@Test
+	public void test4 () throws ExecutionException, InterruptedException {
+		long start = System.currentTimeMillis ();
+		ExecutorService executor = Executors.newFixedThreadPool (5);
+		CountDownLatch countDownLatch = new CountDownLatch (1);
+		List<Future> futureList = new ArrayList<> ();
+		List<Integer> list = new ArrayList<> ();
+		for (int i = 0; i < 10; i++) {
+			list.add (i);
+		}
+		for (int i = 0; i < list.size (); i++) {
+			int finalI = i;
+			futureList.add (executor.submit (() -> execute (finalI, list.get (finalI), countDownLatch)));
+		}
+		countDownLatch.await ();
+		logger.info ("--------------------");
+		for (Future<?> future : futureList) {
+			future.cancel (true);
+		}
+		logger.info ("结果{}", futureList.get (0).get ());
+		long end = System.currentTimeMillis ();
+		logger.info ("总耗时 :{}秒", (end - start) / 1000);
+	}
+	
 	public static class FactorialCalculator implements Callable<Integer> {
 		
 		private final Integer number;
@@ -89,7 +126,7 @@ public class MultithreadingTest {
 		}
 		
 		public Integer call () throws Exception {
-            Thread.sleep (1000);
+			Thread.sleep (1000);
 			return number;
 		}
 	}
