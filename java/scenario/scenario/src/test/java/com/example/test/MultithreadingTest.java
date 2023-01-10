@@ -6,8 +6,8 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.Random;
+import java.util.concurrent.*;
 
 /**
  * @author orcakill
@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
 public class MultithreadingTest {
 	
 	private static final Logger logger = LogManager.getLogger ("MultithreadingTest");
-	boolean b = false;
+
 	
 	@Test
 	public void test1 () {
@@ -55,59 +55,42 @@ public class MultithreadingTest {
 	}
 	
 	@Test
-	public void test3 () {
+	public void test3 () throws ExecutionException, InterruptedException {
 		long start = System.currentTimeMillis ();
-		b = false;
 		List<Integer> list = new ArrayList<> ();
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 100; i++) {
 			list.add (i);
 		}
-		ExecutorService executor = Executors.newFixedThreadPool (5);
-		for (int i = 0; i < list.size (); i++) {
-			Runnable worker = new WorkerThread ("" + i, list.get (i));
-			executor.execute (worker);
+		ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
+		List<Future<Integer>> resultList = new ArrayList<> ();
+		for (int i = 0; i < list.size (); i ++) {
+			FactorialCalculator factorialCalculator = new FactorialCalculator (list.get (i));
+			Future<Integer> res = executor.submit (factorialCalculator);
+			resultList.add(res);
 		}
-		executor.shutdown (); // This will make the executor accept no new threads and finish all existing threads in the queue
-		while (!executor.isTerminated ()) { // Wait until all threads are finish,and also you can use "executor.awaitTermination();" to
-			// wait
-		}
-		logger.info ("Finished all threads");
+		do {
+			for (int i = 0; i < resultList.size(); i++) {
+				logger.info(resultList.get (i).get ());
+			}
+		} while (executor.getCompletedTaskCount() < resultList.size());
+		executor.shutdownNow ();
 		long end = System.currentTimeMillis ();
 		logger.info ("doParallelStream cost:" + (end - start) / 1000);
 		
 	}
 	
-	public class WorkerThread implements Runnable {
+	
+	public static class FactorialCalculator implements Callable<Integer> {
 		
-		private String command;
+		private final Integer number;
 		
-		private int val;
-		
-		public WorkerThread (String s, int m) {
-			this.command = s;
-			this.val = m;
+		public FactorialCalculator (Integer number) {
+			this.number = number;
 		}
 		
-		@Override
-		public void run () {
-			processCommand ();
-			logger.info ("{}:{}", command, val);
-			if (val == 2) {
-				b = true;
-			}
-		}
-		
-		private void processCommand () {
-			try {
-				Thread.sleep (1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace ();
-			}
-		}
-		
-		@Override
-		public String toString () {
-			return this.command;
+		public Integer call () throws Exception {
+            Thread.sleep (1000);
+			return number;
 		}
 	}
 }
