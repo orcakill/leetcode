@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.model.entity.BufferedImagePO;
 import com.example.model.entity.StrengthenResultPO;
 import com.example.model.enums.ArrangeEnums;
 import com.example.util.ImagesOpenCVSIFT;
@@ -36,7 +37,7 @@ public class OpenCVSIFTTest {
 		File file_tem = new File (str_tem);
 		BufferedImage bufferedImageSrc = ImageIO.read (file_src);
 		BufferedImage bufferedImageTem = ImageIO.read (file_tem);
-		ImagesOpenCVSIFT.matchImage (bufferedImageSrc, bufferedImageTem, 0.7, true, 4);
+		ImagesOpenCVSIFT.matchImage (bufferedImageSrc, new BufferedImagePO (1, "图片", bufferedImageTem), 0.7, true, 4);
 	}
 	
 	@Test
@@ -48,7 +49,7 @@ public class OpenCVSIFTTest {
 		File file_tem = new File (str_tem);
 		BufferedImage bufferedImageSrc = Window;
 		BufferedImage bufferedImageTem = ImageIO.read (file_tem);
-		ImagesOpenCVSIFT.matchImage (bufferedImageSrc, bufferedImageTem, 0.7, true, 4);
+		ImagesOpenCVSIFT.matchImage (bufferedImageSrc, new BufferedImagePO (1, "图片", bufferedImageTem), 0.7, true, 4);
 	}
 	
 	@Test

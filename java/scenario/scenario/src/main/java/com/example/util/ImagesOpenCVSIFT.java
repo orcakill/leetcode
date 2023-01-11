@@ -18,11 +18,11 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.*;
 
 /**
  * @Classname imagesOpenCVSIFT
@@ -32,10 +32,11 @@ import java.util.Objects;
  */
 public class ImagesOpenCVSIFT {
 	private static final Logger logger = LogManager.getLogger ("imagesOpenCVSIFT");
+	public static volatile int volatileNumber;
 	
 	//识别图片存在并点击或只识别不点击
 	public static boolean imagesRecognition (String FolderName, String process, boolean isClick, Double coefficient,
-	                                         int characteristicPoint) throws AWTException, IOException {
+	                                         int characteristicPoint) throws AWTException {
 		//		屏幕截图
 		BufferedImage Window = Screenshot.screenshotBack (process);
 		//		图片集获取
@@ -95,7 +96,7 @@ public class ImagesOpenCVSIFT {
 	}
 	
 	public static List<PictureIdentifyWorkPO> FindAllImgDataOpenCv (BufferedImage Window, List<BufferedImagePO> ImagesData,
-	                                                                Double coefficient, int characteristicPoint) throws IOException {
+	                                                                Double coefficient, int characteristicPoint) {
 		//声明 坐标列表
 		List<PictureIdentifyWorkPO> mouseMessages = new ArrayList<> ();
 		//声明 识别坐标
@@ -105,8 +106,7 @@ public class ImagesOpenCVSIFT {
 		}
 		for (BufferedImagePO imagesDatum : ImagesData) {
 			try {
-				pictureIdentifyWorkPO =
-						ImagesOpenCVSIFT.matchImage (Window, imagesDatum.getImage (), coefficient, false, characteristicPoint);
+				pictureIdentifyWorkPO = ImagesOpenCVSIFT.matchImage (Window, imagesDatum, coefficient, false, characteristicPoint);
 			} catch (Exception e) {
 				logger.info (e);
 			}
@@ -121,8 +121,141 @@ public class ImagesOpenCVSIFT {
 		return mouseMessages;
 	}
 	
-	public static PictureIdentifyWorkPO matchImage (BufferedImage originalImageB, BufferedImage templateImageB, Double coefficient,
+	public static List<PictureIdentifyWorkPO> FindAllImgDataOpenCvThread (BufferedImage Window, List<BufferedImagePO> ImagesData,
+	                                                                      Double coefficient, int characteristicPoint)
+			throws InterruptedException, ExecutionException {
+		//声明 坐标列表
+		List<PictureIdentifyWorkPO> mouseMessages = new ArrayList<> ();
+		//声明 识别坐标
+		PictureIdentifyWorkPO pictureIdentifyWorkPO;
+		if (coefficient == null) {
+			coefficient = 0.7;
+		}
+		ExecutorService executor = Executors.newFixedThreadPool (5);
+		CountDownLatch countDownLatch = new CountDownLatch (1);
+		List<Future> futureList = new ArrayList<> ();
+		for (BufferedImagePO imagesDatum : ImagesData) {
+			try {
+				Double finalCoefficient = coefficient;
+				futureList.add (executor.submit (
+						() -> matchImage (Window, imagesDatum, finalCoefficient, false, characteristicPoint, countDownLatch)));
+			} catch (Exception e) {
+				logger.info (e);
+			}
+		}
+		countDownLatch.await ();
+		for (Future<?> future : futureList) {
+			future.cancel (true);
+		}
+		pictureIdentifyWorkPO = (PictureIdentifyWorkPO) futureList.get (volatileNumber).get ();
+		mouseMessages.add (pictureIdentifyWorkPO);
+		return mouseMessages;
+	}
+	
+	public static List<PictureIdentifyWorkPO> FindAllImgDataOpenCvAll (BufferedImage originalImageB, List<BufferedImagePO> templateImageB,
+	                                                                   Double coefficient, int characteristicPoint) {
+		//声明 坐标列表
+		List<PictureIdentifyWorkPO> mouseMessages = new ArrayList<> ();
+		//声明 识别坐标
+		PictureIdentifyWorkPO pictureIdentifyWorkPO = new PictureIdentifyWorkPO ();
+		if (coefficient == null) {
+			coefficient = 0.7;
+		}
+		//特征匹配
+		Mat resT = new Mat ();
+		Mat resO = new Mat ();
+		List<MatOfDMatch> matches = new LinkedList<> ();
+		int matchesPointCount;
+		Mat templateImage;
+		Mat originalImage;
+		
+		MatOfKeyPoint templateKeyPoints = new MatOfKeyPoint ();
+		MatOfKeyPoint originalKeyPoints = new MatOfKeyPoint ();
+		//即当detector 又当Detector
+		SIFT sift = SIFT.create ();
+		originalImage = getMatify (originalImageB);
+		sift.detect (originalImage, originalKeyPoints);
+		sift.compute (originalImage, originalKeyPoints, resO);
+		for (BufferedImagePO imagesDatum : templateImageB) {
+			try {
+				LinkedList<DMatch> goodMatchesList = new LinkedList<> ();
+				templateImage = getMatify (imagesDatum.getImage ());
+				//获取模板图的特征点
+				sift.detect (templateImage, templateKeyPoints);
+				sift.compute (templateImage, templateKeyPoints, resT);
+				DescriptorMatcher descriptorMatcher = DescriptorMatcher.create (DescriptorMatcher.FLANNBASED);
+				//knnMatch方法的作用就是在给定特征描述集合中寻找最佳匹配
+				//使用KNN-matching算法，令K=2，则每个match得到两个最接近的descriptor，然后计算最接近距离和次接近距离之间的比值，当比值大于既定值时，才作为最终match。
+				descriptorMatcher.knnMatch (resT, resO, matches, 2);
+				//System.out.println ("计算匹配结果");
+				Double finalCoefficient = coefficient;
+				matches.forEach (match -> {
+					DMatch[] dmatcharray = match.toArray ();
+					DMatch m1 = dmatcharray[0];
+					DMatch m2 = dmatcharray[1];
+					if (m1.distance <= m2.distance * finalCoefficient) {
+						goodMatchesList.addLast (m1);
+					}
+				});
+				matchesPointCount = goodMatchesList.size ();
+				//当匹配后的特征点大于等于 4 个，则认为模板图在原图中，该值可以自行调整
+				logger.info ("{} {},特征点:{}", imagesDatum.getImageNumber (), imagesDatum.getImageName (), matchesPointCount);
+				if (matchesPointCount >= characteristicPoint) {
+					List<KeyPoint> templateKeyPointList = templateKeyPoints.toList ();
+					List<KeyPoint> originalKeyPointList = originalKeyPoints.toList ();
+					LinkedList<org.opencv.core.Point> objectPoints = new LinkedList ();
+					LinkedList<org.opencv.core.Point> scenePoints = new LinkedList<> ();
+					goodMatchesList.forEach (goodMatch -> {
+						objectPoints.addLast (templateKeyPointList.get (goodMatch.queryIdx).pt);
+						scenePoints.addLast (originalKeyPointList.get (goodMatch.trainIdx).pt);
+					});
+					MatOfPoint2f objMatOfPoint2f = new MatOfPoint2f ();
+					objMatOfPoint2f.fromList (objectPoints);
+					MatOfPoint2f scnMatOfPoint2f = new MatOfPoint2f ();
+					scnMatOfPoint2f.fromList (scenePoints);
+					//使用 findHomography 寻找匹配上的关键点的变换
+					Mat homography = Calib3d.findHomography (objMatOfPoint2f, scnMatOfPoint2f, Calib3d.RANSAC, 3);
+					//透视变换(Perspective Transformation)是将图片投影到一个新的视平面(Viewing Plane)，也称作投影映射(Projective Mapping)。
+					Mat templateCorners = new Mat (4, 1, CvType.CV_32FC2);
+					Mat templateTransformResult = new Mat (4, 1, CvType.CV_32FC2);
+					templateCorners.put (0, 0, 0, 0);
+					templateCorners.put (1, 0, templateImage.cols (), 0);
+					templateCorners.put (2, 0, templateImage.cols (), templateImage.rows ());
+					templateCorners.put (3, 0, 0, templateImage.rows ());
+					//使用 perspectiveTransform 将模板图进行透视变以矫正图象得到标准图片
+					Core.perspectiveTransform (templateCorners, templateTransformResult, homography);
+					//矩形四个顶点  匹配的图片经过旋转之后就这个矩形的四个点的位置就不是正常的 a、b、c、d了
+					double[] pointA = templateTransformResult.get (0, 0);
+					double[] pointB = templateTransformResult.get (1, 0);
+					double[] pointC = templateTransformResult.get (2, 0);
+					double[] pointD = templateTransformResult.get (3, 0);
+					if (pointA[0] < 0 || pointA[1] < 0 || pointB[0] < 0 || pointB[1] < 0 || pointC[0] < 0 || pointC[1] < 0 ||
+					    pointD[0] < 0 || pointD[1] < 0) {
+						return null;
+					}
+					pictureIdentifyWorkPO.setX ((int) ((pointA[0] + pointB[0] + pointC[0] + pointD[0]) / 4) + RandomUtil.getRandom (1, 5));
+					pictureIdentifyWorkPO.setY ((int) ((pointA[1] + pointB[1] + pointC[1] + pointD[1]) / 4) + RandomUtil.getRandom (1, 5));
+					if (pictureIdentifyWorkPO.getX () > 0 && pictureIdentifyWorkPO.getY () > 0) {
+						logger.info ("目标坐标为:({}，{})", pictureIdentifyWorkPO.getX (), pictureIdentifyWorkPO.getY ());
+						logger.info ("已识别的序号,图片:{}", imagesDatum.getImageName ());
+						break;
+					}
+				}
+			} catch (Exception e) {
+				logger.info (e);
+			}
+		}
+		mouseMessages.add (pictureIdentifyWorkPO);
+		return mouseMessages;
+	}
+	
+	public static PictureIdentifyWorkPO matchImage (BufferedImage originalImageB, BufferedImagePO templateImageB, Double coefficient,
 	                                                Boolean printOrNot, int characteristicPoint) {
+		return matchImage (originalImageB, templateImageB, coefficient, printOrNot, characteristicPoint, null);
+	}
+	
+	public static PictureIdentifyWorkPO matchImage (BufferedImage originalImageB, BufferedImagePO templateImageB, Double coefficient,
+	                                                Boolean printOrNot, int characteristicPoint, CountDownLatch countDownLatch) {
 		PictureIdentifyWorkPO pictureIdentifyWorkPO = new PictureIdentifyWorkPO ();
 		Mat resT = new Mat ();
 		Mat resO = new Mat ();
@@ -130,7 +263,7 @@ public class ImagesOpenCVSIFT {
 		//即当detector 又当Detector
 		SIFT sift = SIFT.create ();
 		
-		Mat templateImage = getMatify (templateImageB);
+		Mat templateImage = getMatify (templateImageB.getImage ());
 		Mat originalImage = getMatify (originalImageB);
 		
 		MatOfKeyPoint templateKeyPoints = new MatOfKeyPoint ();
@@ -143,17 +276,16 @@ public class ImagesOpenCVSIFT {
 		sift.compute (templateImage, templateKeyPoints, resT);
 		sift.compute (originalImage, originalKeyPoints, resO);
 		
-		List<MatOfDMatch> matches = new LinkedList ();
+		List<MatOfDMatch> matches = new LinkedList<> ();
 		DescriptorMatcher descriptorMatcher = DescriptorMatcher.create (DescriptorMatcher.FLANNBASED);
 		//System.out.println ("寻找最佳匹配");
-		
-		/**
-		 * knnMatch方法的作用就是在给定特征描述集合中寻找最佳匹配
-		 * 使用KNN-matching算法，令K=2，则每个match得到两个最接近的descriptor，然后计算最接近距离和次接近距离之间的比值，当比值大于既定值时，才作为最终match。
+		/*
+		  knnMatch方法的作用就是在给定特征描述集合中寻找最佳匹配
+		  使用KNN-matching算法，令K=2，则每个match得到两个最接近的descriptor，然后计算最接近距离和次接近距离之间的比值，当比值大于既定值时，才作为最终match。
 		 */
 		descriptorMatcher.knnMatch (resT, resO, matches, 2);
 		//System.out.println ("计算匹配结果");
-		LinkedList<DMatch> goodMatchesList = new LinkedList ();
+		LinkedList<DMatch> goodMatchesList = new LinkedList<> ();
 		//对匹配结果进行筛选，依据distance进行筛选
 		matches.forEach (match -> {
 			DMatch[] dmatcharray = match.toArray ();
@@ -167,14 +299,13 @@ public class ImagesOpenCVSIFT {
 		
 		int matchesPointCount = goodMatchesList.size ();
 		//当匹配后的特征点大于等于 4 个，则认为模板图在原图中，该值可以自行调整
-		logger.info ("当前特征点{}", matchesPointCount);
+		logger.info ("{} {},特征点:{}", templateImageB.getImageNumber (), templateImageB.getImageName (), matchesPointCount);
 		if (matchesPointCount >= characteristicPoint) {
 			//System.out.println ("模板图在原图匹配成功！");
-			logger.info ("特征点：{}", matchesPointCount);
 			List<KeyPoint> templateKeyPointList = templateKeyPoints.toList ();
 			List<KeyPoint> originalKeyPointList = originalKeyPoints.toList ();
 			LinkedList<org.opencv.core.Point> objectPoints = new LinkedList ();
-			LinkedList<org.opencv.core.Point> scenePoints = new LinkedList ();
+			LinkedList<org.opencv.core.Point> scenePoints = new LinkedList<> ();
 			goodMatchesList.forEach (goodMatch -> {
 				objectPoints.addLast (templateKeyPointList.get (goodMatch.queryIdx).pt);
 				scenePoints.addLast (originalKeyPointList.get (goodMatch.trainIdx).pt);
@@ -190,14 +321,14 @@ public class ImagesOpenCVSIFT {
 			 */
 			Mat templateCorners = new Mat (4, 1, CvType.CV_32FC2);
 			Mat templateTransformResult = new Mat (4, 1, CvType.CV_32FC2);
-			templateCorners.put (0, 0, new double[]{0, 0});
-			templateCorners.put (1, 0, new double[]{templateImage.cols (), 0});
-			templateCorners.put (2, 0, new double[]{templateImage.cols (), templateImage.rows ()});
-			templateCorners.put (3, 0, new double[]{0, templateImage.rows ()});
+			templateCorners.put (0, 0, 0, 0);
+			templateCorners.put (1, 0, templateImage.cols (), 0);
+			templateCorners.put (2, 0, templateImage.cols (), templateImage.rows ());
+			templateCorners.put (3, 0, 0, templateImage.rows ());
 			//使用 perspectiveTransform 将模板图进行透视变以矫正图象得到标准图片
 			Core.perspectiveTransform (templateCorners, templateTransformResult, homography);
 			
-			//矩形四个顶点  匹配的图片经过旋转之后就这个矩形的四个点的位置就不是正常的abcd了
+			//矩形四个顶点  匹配的图片经过旋转之后就这个矩形的四个点的位置就不是正常的 a、b、c、d了
 			double[] pointA = templateTransformResult.get (0, 0);
 			double[] pointB = templateTransformResult.get (1, 0);
 			double[] pointC = templateTransformResult.get (2, 0);
@@ -225,20 +356,24 @@ public class ImagesOpenCVSIFT {
 			}
 			pictureIdentifyWorkPO.setX ((int) ((pointA[0] + pointB[0] + pointC[0] + pointD[0]) / 4) + RandomUtil.getRandom (1, 5));
 			pictureIdentifyWorkPO.setY ((int) ((pointA[1] + pointB[1] + pointC[1] + pointD[1]) / 4) + RandomUtil.getRandom (1, 5));
-			logger.info ("目标坐标为（{}，{}）", pictureIdentifyWorkPO.getX (), pictureIdentifyWorkPO.getY ());
+			if (pictureIdentifyWorkPO.getX () > 0 && pictureIdentifyWorkPO.getY () > 0) {
+				logger.info ("目标坐标为:({}，{})", pictureIdentifyWorkPO.getX (), pictureIdentifyWorkPO.getY ());
+				logger.info ("已识别的序号,图片:{}", templateImageB.getImageName ());
+				if (countDownLatch != null) {
+					countDownLatch.countDown ();
+					volatileNumber = templateImageB.getImageNumber ();
+				}
+				return pictureIdentifyWorkPO;
+			}
 			return pictureIdentifyWorkPO;
 		}
 		return pictureIdentifyWorkPO;
 	}
 	
-	public static void printPic (String name, Mat pre) {
-		Imgcodecs.imwrite (name + ".jpg", pre);
-	}
-	
 	/**
 	 * 尝试把BufferedImage转换为Mat
-	 * @param im
-	 * @return
+	 * @param im 图像
+	 * @return image
 	 */
 	public static Mat getMatify (BufferedImage im) {
 		BufferedImage bufferedImage = toBufferedImageOfType (im, BufferedImage.TYPE_3BYTE_BGR);
@@ -255,9 +390,9 @@ public class ImagesOpenCVSIFT {
 	
 	/**
 	 * 转换图片类型
-	 * @param original
-	 * @param type
-	 * @return
+	 * @param original 图片
+	 * @param type     类型
+	 * @return BufferedImage
 	 */
 	public static BufferedImage toBufferedImageOfType (BufferedImage original, int type) {
 		if (original == null) {
