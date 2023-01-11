@@ -3,29 +3,22 @@ package com.example.test;
 import com.example.model.entity.BufferedImagePO;
 import com.example.model.entity.PictureIdentifyWorkPO;
 import com.example.util.ImagesOpenCVSIFT;
-import com.example.util.RandomUtil;
+import com.example.util.MouseClick;
+import com.example.util.Screenshot;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
-import org.opencv.calib3d.Calib3d;
-import org.opencv.core.*;
-import org.opencv.features2d.DescriptorMatcher;
-import org.opencv.features2d.Features2d;
-import org.opencv.features2d.SIFT;
-import org.opencv.imgcodecs.Imgcodecs;
-import org.opencv.imgproc.Imgproc;
+import org.opencv.core.Core;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.*;
-import java.util.stream.Collectors;
-
-import static com.example.util.ImagesOpenCVSIFT.getMatify;
 
 /**
  * @author orcakill
@@ -207,61 +200,79 @@ public class MultithreadingTest {
 			return null;
 		}
 	}
-	public  void  test() throws IOException {
+	
+	@Test
+	public void printPictures () throws IOException {
+		BufferedImage bufferedImage = Screenshot.screenshotBack ("夜神模拟器");
+		File file_Match = new File ("D:\\a.jpg");
+		if (file_Match.exists ()) {
+			file_Match.delete ();
+		}
+		ImageIO.write (bufferedImage, "jpg", new File ("D://a.jpg"));
+	}
+	
+	@Test
+	public void test6 () throws IOException, AWTException {
 		long start = System.currentTimeMillis ();
-		String str_src = "D:/a.png";
-		List<BufferedImagePO> ImagesData = ImagesOpenCVSIFT.readFiles ("scenario/阴阳寮/阴阳寮图标");
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		String str_src = "D:/a.jpg";
+		
+		List<BufferedImagePO> ImagesData = ImagesOpenCVSIFT.readFiles ("scenario/返回");
 		File file_src = new File (str_src);
-		BufferedImage bufferedImageSrc = ImageIO.read (file_src);
+		BufferedImage Window = ImageIO.read (file_src);
+		if (Objects.requireNonNull (ImagesData).size () > 0) {
+			List<PictureIdentifyWorkPO> mouseXY = ImagesOpenCVSIFT.FindAllImgDataOpenCv (Window, ImagesData, 0.7, 4);
+			if (mouseXY.size () > 0) {
+				MouseClick.mouseClickBack (mouseXY, "夜神模拟器", true);
+			}
+		}
 		long end = System.currentTimeMillis ();
 		logger.info ("总耗时 :{}秒", (end - start) / 1000);
 	}
 	
 	@Test
-	public  void  test7() throws IOException {
+	public void test7 () throws IOException, AWTException, ExecutionException, InterruptedException {
 		long start = System.currentTimeMillis ();
-		ExecutorService executor = Executors.newFixedThreadPool (5);
-		CountDownLatch countDownLatch = new CountDownLatch (1);
-		List<Future> futureList = new ArrayList<> ();
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
-		String str_src = "D:/a.png";
-		List<BufferedImagePO> ImagesData = ImagesOpenCVSIFT.readFiles ("scenario/阴阳寮/阴阳寮图标");
+		String str_src = "D:/a.jpg";
+		List<BufferedImagePO> ImagesData = ImagesOpenCVSIFT.readFiles ("scenario/返回");
+		List<BufferedImagePO> ImagesData1 = new ArrayList<> ();
+		for (int i = 0; i < ImagesData.size (); i++) {
+			ImagesData1.add (ImagesData.get (ImagesData.size () - i - 1));
+			ImagesData1.get (i).setImageNumber (i);
+		}
 		File file_src = new File (str_src);
-		BufferedImage bufferedImageSrc = ImageIO.read (file_src);
-	}
-	
-	public static class FactorialCalculator2 implements Callable<PictureIdentifyWorkPO> {
-		private final BufferedImage originalImageB;
-		
-		private final BufferedImage templateImageB;
-		
-		private final Double coefficient;
-		
-		private final Boolean printOrNot;
-		private final int characteristicPoint;
-		private final  CountDownLatch countDownLatch;
-		
-		public FactorialCalculator2 (BufferedImage originalImageB, BufferedImage templateImageB, Double coefficient,
-		                             Boolean printOrNot, int characteristicPoint,CountDownLatch countDownLatch) {
-			this.originalImageB = originalImageB;
-			this.templateImageB = templateImageB;
-			this.coefficient = coefficient;
-			this.printOrNot = printOrNot;
-			this.characteristicPoint = characteristicPoint;
-			this.countDownLatch=countDownLatch;
-		}
-	
-		
-		public PictureIdentifyWorkPO call () {
-			PictureIdentifyWorkPO pictureIdentifyWorkPO=ImagesOpenCVSIFT.matchImage (originalImageB,templateImageB,coefficient,
-			                                                                         printOrNot,characteristicPoint);
-			if (pictureIdentifyWorkPO.getX ()!=null&&pictureIdentifyWorkPO.getY ()!=null) {
-				countDownLatch.countDown ();
-				return pictureIdentifyWorkPO;
+		BufferedImage Window = ImageIO.read (file_src);
+		if (Objects.requireNonNull (ImagesData).size () > 0) {
+			List<PictureIdentifyWorkPO> mouseXY = ImagesOpenCVSIFT.FindAllImgDataOpenCvThread (Window, ImagesData1, 0.7, 4);
+			if (mouseXY.get (0).getX () != null && mouseXY.get (0).getY () != null) {
+				logger.info ("点击");
+				MouseClick.mouseClickBack (mouseXY, "夜神模拟器", true);
 			}
-			return pictureIdentifyWorkPO;
+			else {
+				logger.info ("坐标为:({},{})", mouseXY.get (0).getX (), mouseXY.get (0).getY ());
+			}
 		}
-		
+		long end = System.currentTimeMillis ();
+		logger.info ("总耗时 :{}秒", (end - start) / 1000);
 	}
-
+	
+	@Test
+	public void test8 () throws IOException, AWTException, ExecutionException, InterruptedException {
+		long start = System.currentTimeMillis ();
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		String str_src = "D:/a.jpg";
+		
+		List<BufferedImagePO> ImagesData = ImagesOpenCVSIFT.readFiles ("scenario/返回");
+		File file_src = new File (str_src);
+		BufferedImage Window = ImageIO.read (file_src);
+		if (Objects.requireNonNull (ImagesData).size () > 0) {
+			List<PictureIdentifyWorkPO> mouseXY = ImagesOpenCVSIFT.FindAllImgDataOpenCvAll (Window, ImagesData, 0.7, 4);
+			if (mouseXY.size () > 0) {
+				MouseClick.mouseClickBack (mouseXY, "夜神模拟器", true);
+			}
+		}
+		long end = System.currentTimeMillis ();
+		logger.info ("总耗时 :{}秒", (end - start) / 1000);
+	}
 }
