@@ -269,7 +269,7 @@ public class MultithreadingTest {
 		if (Objects.requireNonNull (ImagesData).size () > 0) {
 			List<PictureIdentifyWorkPO> mouseXY = ImagesOpenCVSIFT.FindAllImgDataOpenCvAll (Window, ImagesData, 0.7, 4);
 			if (mouseXY.size () > 0) {
-				MouseClick.mouseClickBack (mouseXY, "夜神模拟器", true);
+				MouseClick.mouseClickBack (mouseXY, "夜神模拟器", false);
 			}
 		}
 		long end = System.currentTimeMillis ();
