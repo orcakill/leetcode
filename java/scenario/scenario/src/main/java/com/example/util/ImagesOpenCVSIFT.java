@@ -43,7 +43,7 @@ public class ImagesOpenCVSIFT {
 		List<BufferedImagePO> ImagesData = readFiles (FolderName);
 		
 		if (Objects.requireNonNull (ImagesData).size () > 0) {
-			List<PictureIdentifyWorkPO> mouseXY = FindAllImgDataOpenCv (Window, ImagesData, coefficient, characteristicPoint);
+			List<PictureIdentifyWorkPO> mouseXY = FindAllImgDataOpenCvAll (Window, ImagesData, coefficient, characteristicPoint);
 			//		识别+鼠标点击或仅识别
 			if (mouseXY.size () > 0) {
 				return MouseClick.mouseClickBack (mouseXY, process, isClick);
@@ -164,7 +164,7 @@ public class ImagesOpenCVSIFT {
 		//特征匹配
 		Mat resT = new Mat ();
 		Mat resO = new Mat ();
-		List<MatOfDMatch> matches = new LinkedList<> ();
+		
 		int matchesPointCount;
 		Mat templateImage;
 		Mat originalImage;
@@ -178,6 +178,7 @@ public class ImagesOpenCVSIFT {
 		sift.compute (originalImage, originalKeyPoints, resO);
 		for (BufferedImagePO imagesDatum : templateImageB) {
 			try {
+				List<MatOfDMatch> matches = new LinkedList<> ();
 				LinkedList<DMatch> goodMatchesList = new LinkedList<> ();
 				templateImage = getMatify (imagesDatum.getImage ());
 				//获取模板图的特征点
@@ -189,21 +190,14 @@ public class ImagesOpenCVSIFT {
 				descriptorMatcher.knnMatch (resT, resO, matches, 2);
 				//System.out.println ("计算匹配结果");
 				Double finalCoefficient = coefficient;
-				matches.forEach (match -> {
-					DMatch[] dmatcharray = match.toArray ();
-					DMatch m1 = dmatcharray[0];
-					DMatch m2 = dmatcharray[1];
-					if (m1.distance <= m2.distance * finalCoefficient) {
-						goodMatchesList.addLast (m1);
-					}
-				});
+				goodMatchList (matches, goodMatchesList, finalCoefficient);
 				matchesPointCount = goodMatchesList.size ();
 				//当匹配后的特征点大于等于 4 个，则认为模板图在原图中，该值可以自行调整
 				logger.info ("{} {},特征点:{}", imagesDatum.getImageNumber (), imagesDatum.getImageName (), matchesPointCount);
 				if (matchesPointCount >= characteristicPoint) {
 					List<KeyPoint> templateKeyPointList = templateKeyPoints.toList ();
 					List<KeyPoint> originalKeyPointList = originalKeyPoints.toList ();
-					LinkedList<org.opencv.core.Point> objectPoints = new LinkedList ();
+					LinkedList<org.opencv.core.Point> objectPoints = new LinkedList<> ();
 					LinkedList<org.opencv.core.Point> scenePoints = new LinkedList<> ();
 					goodMatchesList.forEach (goodMatch -> {
 						objectPoints.addLast (templateKeyPointList.get (goodMatch.queryIdx).pt);
@@ -249,6 +243,17 @@ public class ImagesOpenCVSIFT {
 		return mouseMessages;
 	}
 	
+	private static void goodMatchList (List<MatOfDMatch> matches, LinkedList<DMatch> goodMatchesList, Double finalCoefficient) {
+		matches.forEach (match -> {
+			DMatch[] dmatcharray = match.toArray ();
+			DMatch m1 = dmatcharray[0];
+			DMatch m2 = dmatcharray[1];
+			if (m1.distance <= m2.distance * finalCoefficient) {
+				goodMatchesList.addLast (m1);
+			}
+		});
+	}
+	
 	public static PictureIdentifyWorkPO matchImage (BufferedImage originalImageB, BufferedImagePO templateImageB, Double coefficient,
 	                                                Boolean printOrNot, int characteristicPoint) {
 		return matchImage (originalImageB, templateImageB, coefficient, printOrNot, characteristicPoint, null);
@@ -287,15 +292,7 @@ public class ImagesOpenCVSIFT {
 		//System.out.println ("计算匹配结果");
 		LinkedList<DMatch> goodMatchesList = new LinkedList<> ();
 		//对匹配结果进行筛选，依据distance进行筛选
-		matches.forEach (match -> {
-			DMatch[] dmatcharray = match.toArray ();
-			DMatch m1 = dmatcharray[0];
-			DMatch m2 = dmatcharray[1];
-			
-			if (m1.distance <= m2.distance * coefficient) {
-				goodMatchesList.addLast (m1);
-			}
-		});
+		goodMatchList (matches, goodMatchesList, coefficient);
 		
 		int matchesPointCount = goodMatchesList.size ();
 		//当匹配后的特征点大于等于 4 个，则认为模板图在原图中，该值可以自行调整
