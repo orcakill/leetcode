@@ -86,6 +86,9 @@ public class OpenCVSIFTTest {
 	
 	@Test
 	public void sift4 () throws IOException, InterruptedException, AWTException {
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		String file = "scenario/斗技/町中武馆";
+		ImageOpenCVService.imagesOpenCV (file);
 	}
 	
 }

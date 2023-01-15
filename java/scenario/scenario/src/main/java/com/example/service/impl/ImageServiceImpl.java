@@ -1,17 +1,19 @@
 package com.example.service.impl;
 
-import java.awt.*;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import com.example.model.entity.PictureIdentifyWorkPO;
+import com.example.service.ImageOpenCVService;
 import com.example.service.ImageService;
 import com.example.util.ImagesBackRec;
 import com.example.util.MouseClick;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import static com.example.util.RandomUtil.getRandom;
 
@@ -114,18 +116,18 @@ public class ImageServiceImpl {
 		return  null;
 	}
 	
-	public static boolean imagesClickBackCount (String file1, String file2, String name, double x, double y,
-	                                            String process) throws AWTException, InterruptedException {
+	public static boolean imagesClickBackCount (String file1, String file2, String name, double x, double y, String process)
+			throws AWTException, InterruptedException, IOException {
 		//获取图片1的坐标
 		boolean boole;
-		boolean b1=false;
-		while (!b1){
+		boolean b1 = false;
+		while (!b1) {
 			logger.info ("等待2秒钟");
 			Thread.sleep (2000);
-			logger.info ("准备识别"+file1);
-			b1=ImageService.imagesClickBackIsEmpty (file1,1);
+			logger.info ("准备识别" + file1);
+			b1 = ImageService.imagesClickBackIsEmpty (file1, 1);
 		}
-		PictureIdentifyWorkPO pictureIdentifyWorkPO1 = ImagesBackRec.imagesRecognitionMouse (file1,process);
+		PictureIdentifyWorkPO pictureIdentifyWorkPO1 = ImagesBackRec.imagesRecognitionMouse (file1, process);
 		int x1 = (int)(pictureIdentifyWorkPO1.getX ()*x);
 		int y1 = (int)(pictureIdentifyWorkPO1.getY ()*y);
 		logger.info (file1+"的坐标（"+pictureIdentifyWorkPO1.getX ()+","+pictureIdentifyWorkPO1.getY ()+")");
@@ -139,7 +141,7 @@ public class ImageServiceImpl {
 		MouseClick.mouseClickBack (pictureIdentifyWorkPOList1,"夜神模拟器",true);
 		logger.info ("进入"+name);
 		Thread.sleep (5000);
-		boole= ImageService.imagesClickBackIsEmpty (file2,5);
+		boole = ImageOpenCVService.imagesOpenCVIsEmpty (file2, 5);
         if(boole){
 			logger.info ("进入"+file2+"成功");
 			return  true;

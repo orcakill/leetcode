@@ -6,6 +6,7 @@ import com.example.model.entity.PictureIdentifyWorkPO;
 import com.example.service.impl.ImageServiceImpl;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.Map;
 
 public interface ImageService {
@@ -49,17 +50,15 @@ public interface ImageService {
 	}
 	
 	//根据静态照片计算动态照片的坐标并点击
-	static boolean imagesClickBackCount(String file1,String file2,String name,double x,double y) throws
-	                                                                                             InterruptedException,
-	                                                                                             AWTException {
-		return  imagesClickBackCount(file1,file2,name,x,y,"夜神模拟器");
+	static boolean imagesClickBackCount (String file1, String file2, String name, double x, double y)
+			throws InterruptedException, AWTException, IOException {
+		return imagesClickBackCount (file1, file2, name, x, y, "夜神模拟器");
 	}
 	
 	//根据静态照片计算动态照片的坐标并点击
-	static boolean imagesClickBackCount(String file1,String file2,String name,double x,double y,String process) throws
-	                                                                                                            InterruptedException,
-	                                                                                                            AWTException {
-		return  ImageServiceImpl.imagesClickBackCount(file1,file2,name,x,y,process);
+	static boolean imagesClickBackCount (String file1, String file2, String name, double x, double y, String process)
+			throws InterruptedException, AWTException, IOException {
+		return ImageServiceImpl.imagesClickBackCount (file1, file2, name, x, y, process);
 	}
 	
 	//传入多个文件夹，返回识别的key

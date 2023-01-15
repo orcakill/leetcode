@@ -167,17 +167,15 @@ public class LoginController {
 		}
 	}
 	
-	public static void loginExplore () throws InterruptedException, AWTException {
+	public static void loginExplore () throws InterruptedException, AWTException, IOException {
 		String file1 = "scenario/首页/首页勾玉";
 		String file2 = "scenario/御魂/御魂图标";
 		double x;
 		double y;
 		//默认0 直接登录，不进行账号、大区切换
 		boolean boole = false;
-		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ()
-		                                       .getDefaultScreenDevice ();
-		int windows_width = gd.getDisplayMode ()
-		                      .getWidth ();
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ();
+		int windows_width = gd.getDisplayMode ().getWidth ();
 		int windows_height = gd.getDisplayMode ()
 		                       .getHeight ();
 		if (windows_width == 2560 && windows_height == 1600) {
@@ -198,17 +196,14 @@ public class LoginController {
 		
 	}
 	
-	public static void loginTown () throws InterruptedException, AWTException {
+	public static void loginTown () throws InterruptedException, AWTException, IOException {
 		String file1 = "scenario/首页/首页勾玉";
 		String file2 = "scenario/斗技/町中武馆";
 		double x;
 		double y;
-		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ()
-		                                       .getDefaultScreenDevice ();
-		int windows_width = gd.getDisplayMode ()
-		                      .getWidth ();
-		int windows_height = gd.getDisplayMode ()
-		                       .getHeight ();
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ();
+		int windows_width = gd.getDisplayMode ().getWidth ();
+		int windows_height = gd.getDisplayMode ().getHeight ();
 		boolean boole = false;
 		if (windows_width == 2560 && windows_height == 1600) {
 			x = 1.1;

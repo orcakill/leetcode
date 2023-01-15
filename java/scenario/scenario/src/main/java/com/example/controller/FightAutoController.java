@@ -33,7 +33,7 @@ public class FightAutoController {
 	public static final Logger logger = LogManager.getLogger ("FightAutoController");
 	
 	//阴阳寮战斗
-	public static Map<String, Integer> fightHome () throws InterruptedException, AWTException {
+	public static Map<String, Integer> fightHome () throws InterruptedException, AWTException, IOException {
 		//变量赋值
 		String file = "scenario/结界突破/结界突破";
 		String file1 = "scenario/结界突破/阴阳寮";
@@ -193,7 +193,7 @@ public class FightAutoController {
 		logger.info ("退出到首页");
 	}
 	
-	public static void soulFight (int i, int j, boolean b) throws InterruptedException, AWTException {
+	public static void soulFight (int i, int j, boolean b) throws InterruptedException, AWTException, IOException {
 		boolean b1;
 		boolean b2;
 		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList;
@@ -309,7 +309,7 @@ public class FightAutoController {
 		ImageService.imagesClickBack (BackEnums.back.getValue ());
 	}
 	
-	public static void spirit (int num) throws InterruptedException, AWTException {
+	public static void spirit (int num) throws InterruptedException, AWTException, IOException {
 		String file = "scenario/御灵/御灵图标";
 		String file1 = "scenario/御灵/神龙";
 		String file2 = "scenario/御灵/白藏主";
@@ -391,7 +391,7 @@ public class FightAutoController {
 		logger.info ("开始斗技");
 		//	进入町中
 		LoginController.loginTown ();
-		ImageService.imagesClickBack (fileDZWG);
+		ImageOpenCVService.imagesOpenCV (fileDZWG);
 		//  进入斗技
 		ImageService.imagesClickBack (file5);
 		for (int i = 1; i <= num; i++) {
