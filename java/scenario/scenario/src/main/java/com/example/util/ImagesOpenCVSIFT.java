@@ -45,7 +45,8 @@ public class ImagesOpenCVSIFT {
 		if (Objects.requireNonNull (ImagesData).size () > 0) {
 			List<PictureIdentifyWorkPO> mouseXY = FindAllImgDataOpenCvAll (Window, ImagesData, coefficient, characteristicPoint);
 			//		识别+鼠标点击或仅识别
-			if (mouseXY.size () > 0) {
+			assert mouseXY != null;
+			if (ListNoNull.pictureIdentifyWorkPOSEmpty (mouseXY)) {
 				return MouseClick.mouseClickBack (mouseXY, process, isClick);
 			}
 			else {
@@ -231,7 +232,7 @@ public class ImagesOpenCVSIFT {
 					pictureIdentifyWorkPO.setY ((int) ((pointA[1] + pointB[1] + pointC[1] + pointD[1]) / 4) + RandomUtil.getRandom (1, 5));
 					if (pictureIdentifyWorkPO.getX () > 0 && pictureIdentifyWorkPO.getY () > 0) {
 						logger.info ("目标坐标为:({}，{})", pictureIdentifyWorkPO.getX (), pictureIdentifyWorkPO.getY ());
-						logger.info ("已识别的序号,图片:{}", imagesDatum.getImageName ());
+						logger.info ("已识别的序号{},图片:{}", imagesDatum.getImageNumber (), imagesDatum.getImageName ());
 						break;
 					}
 				}
