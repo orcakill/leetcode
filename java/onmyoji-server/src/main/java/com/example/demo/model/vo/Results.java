@@ -1,10 +1,11 @@
 package com.example.demo.model.vo;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Builder;
-import lombok.Data;
-import lombok.experimental.Accessors;
+
+import com.example.demo.model.enums.IErrorInfo;
+import com.example.demo.utils.BlogUtils;
+import io.swagger.annotations.*;
+import lombok.*;
+import lombok.experimental.*;
 
 /**
  * @author orcakill
@@ -13,18 +14,18 @@ import lombok.experimental.Accessors;
  * @Description 通用接口返回对象
  * @createTime 2023年01月06日 17:30:00
  */
-@Data
-@Accessors (chain = true)
-@Builder
-@ApiModel ("通用接口返回对象")
+@Data  //lombok注解，简化setter、getter、以及构造函数的书写
+@Accessors (chain = true) //lombok注解，开启链式调用
+@Builder //lombok注解，可以使用 Builder方式创建对象
+@ApiModel ("通用接口返回对象")  //Swagger 注解，表示该类是一个接口模型
 public class Results<T> {
-	@ApiModelProperty (required = true, notes = "结果码", example = "0")
+	@ApiModelProperty (required = true, notes = "结果码", example = "0") // Swagger 注解，描述属性信息
 	private int code;
 	@ApiModelProperty (required = true, notes = "返回信息", example = "操作成功")
 	private String msg;
 	@ApiModelProperty (required = true, notes = "返回数据", example = "{\"id\":2001}")
 	private T data;
-	@ApiModelProperty (required = true, notes = "时间戳", example = "2020-06-29 09:07:34")
+	@ApiModelProperty (required = true, notes = "时间戳", example = "2023-01-01 00:00:00")
 	private String timestamp;
 	
 	public static <T> Results<T> ok (T data) {
