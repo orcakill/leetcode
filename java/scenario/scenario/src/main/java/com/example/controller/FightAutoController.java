@@ -494,7 +494,7 @@ public class FightAutoController {
 		ImageService.imagesClickBack (fileYYLTB);
 		Thread.sleep (2000);
 		logger.info ("进入结界");
-		ImageService.imagesClickBack (fileJJ);
+		ImageOpenCVService.imagesOpenCV (fileJJ);
 		Thread.sleep (2000);
 		logger.info ("进入式神育成");
 		ImageService.imagesClickBack (fileSSYC);
@@ -1019,8 +1019,7 @@ public class FightAutoController {
 			fightResultPOList.add (fightResultPO);
 			fightResultPOS.add (fightResultPO);
 			//计算平均战斗时间
-			avgTime = fightResultPOList.stream ().mapToDouble (fightResultPO::getFightTime).average ().getAsDouble ();
-			logger.info ("探索的平均战斗时间{}", avgTime);
+			logger.info ("探索的平均战斗时间{}秒", fightResultPO.getFightTime ()/fightResultPO.getThisRoundNumber ()/1000);
 		}
 		FightService.returnHome ();
 		return fightResultPOS;

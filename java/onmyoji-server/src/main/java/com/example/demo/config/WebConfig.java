@@ -24,5 +24,9 @@ public class WebConfig implements WebMvcConfigurer {
 		        .addResourceLocations("classpath:/META-INF/resources/");
 		registry.addResourceHandler("/webjars/**")
 		        .addResourceLocations("classpath:/META-INF/resources/webjars/");
+		//解决  No mapping for GET /favicon.ico 访问静态资源图标
+		registry.addResourceHandler("/**")
+		        .addResourceLocations("classpath:/static/")
+		        .addResourceLocations("classpath:/META-INF/resources/");
 	}
 }

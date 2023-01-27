@@ -19,7 +19,7 @@ public class ImageTesseract {
 			if (ZH_CN) {
 				instance.setLanguage ("chi_sim");//中文识别
 			}
-			String result = null;
+			String result;
 			result = instance.doOCR (textImage);
 			return result;
 		} catch (Exception e) {

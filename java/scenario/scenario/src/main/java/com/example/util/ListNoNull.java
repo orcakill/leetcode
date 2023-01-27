@@ -14,8 +14,10 @@ public class ListNoNull {
 	public static boolean pictureIdentifyWorkPOSEmpty (List<PictureIdentifyWorkPO> pictureIdentifyWorkPOS) {
 		if (pictureIdentifyWorkPOS != null && !pictureIdentifyWorkPOS.isEmpty ()) {
 			for (PictureIdentifyWorkPO pictureIdentifyWorkPO : pictureIdentifyWorkPOS) {
-				if (pictureIdentifyWorkPO.getX () > 0 && pictureIdentifyWorkPO.getY () > 0) {
-					return true;
+				if (pictureIdentifyWorkPO.getX () !=null && pictureIdentifyWorkPO.getY ()!=null) {
+					if (pictureIdentifyWorkPO.getX () > 0 && pictureIdentifyWorkPO.getY () > 0) {
+						return true;
+					}
 				}
 			}
 		}
