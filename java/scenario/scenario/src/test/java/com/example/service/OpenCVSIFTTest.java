@@ -15,8 +15,12 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author orcakill
@@ -91,4 +95,20 @@ public class OpenCVSIFTTest {
 		ImageOpenCVService.imagesOpenCV (file);
 	}
 	
+	@Test
+	public void sift5() throws IOException, InterruptedException, AWTException {
+		logger.info ("等待1秒,输出10个数");
+		TimerTask timerTask = new TimerTask() {
+			@Override
+			public void run() {
+				System.out.println("Hello world!");
+			}
+		};
+		
+		ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool (2);
+		
+		scheduledThreadPool.schedule (timerTask, 1000, TimeUnit.MILLISECONDS);
+		scheduledThreadPool.scheduleAtFixedRate(timerTask, 1000, 1000, TimeUnit.MILLISECONDS);
+		logger.info ("结束");
+	}
 }

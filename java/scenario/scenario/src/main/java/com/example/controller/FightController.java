@@ -172,7 +172,7 @@ public class FightController {
 				//个人结界
 				FightAutoController.borderCheck ();
 				//探索40次
-				FightAutoController.exploreFast (fightResultPOS, 1);
+				FightAutoController.exploreFast (fightResultPOS, 60);
 				//检查寄养，无则寄养
 				FightAutoController.foster ();
 			}

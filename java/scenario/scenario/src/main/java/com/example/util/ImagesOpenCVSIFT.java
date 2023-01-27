@@ -53,9 +53,7 @@ public class ImagesOpenCVSIFT {
 				return false;
 			}
 		}
-		else {
-			return false;
-		}
+		return false;
 	}
 	
 	/**
