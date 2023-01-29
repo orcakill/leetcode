@@ -3,15 +3,18 @@ package com.example.demo.global;
 import com.example.demo.exception.BlogException;
 import com.example.demo.model.enums.ErrorInfoEnum;
 import com.example.demo.model.vo.Results;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import lombok.extern.slf4j.*;
-import org.springframework.http.*;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.*;
 
 
 /**
@@ -20,7 +23,7 @@ import org.springframework.web.servlet.*;
  * @Date 2023/1/23 22:27
  * @Created by orcakill
  */
-@Slf4j //lombok 注解，自动注入log对象到容器，可以使用log对象打印日志
+@Log4j2 //Log4j2  注解，自动注入log对象到容器，可以使用log对象打印日志
 @ControllerAdvice  //表示这个类用于全局异常处理
 public class GlobalExceptionHandler {
   @ResponseBody

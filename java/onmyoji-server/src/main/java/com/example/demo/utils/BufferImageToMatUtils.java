@@ -13,7 +13,7 @@ import org.opencv.core.Mat;
  * @Date 2022/11/6 3:10
  * @Created by orcakill
  */
-public class BufferImageToMat {
+public class BufferImageToMatUtils {
 	
 	static {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);

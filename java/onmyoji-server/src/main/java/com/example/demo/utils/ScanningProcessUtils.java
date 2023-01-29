@@ -24,7 +24,7 @@ import java.awt.image.WritableRaster;
  * @Date 2021/10/24 20:38
  * @Created by orcakill
  */
-public class ScanningProcess {
+public class ScanningProcessUtils {
 	
 	/**
 	 * 本方法会根据游戏界面句柄扫描进程窗口,窗口尺寸并且返回窗口截图(进程不可以最小化)

@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import static com.example.demo.utils.SendMail.sendTextMail;
+import static com.example.demo.utils.SendMailUtils.sendTextMail;
 
 /**
  * @Classname MailServiceImpl

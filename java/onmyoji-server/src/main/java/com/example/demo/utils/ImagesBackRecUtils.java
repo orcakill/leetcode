@@ -4,14 +4,12 @@ import com.example.demo.model.entity.PictureIdentifyWorkPO;
 
 import java.awt.AWTException;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import javax.imageio.ImageIO;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import static com.example.demo.utils.ReadFileUtils.readFilesBufferedImage;
 
 /**
  * @Classname ImagesBackRec
@@ -19,25 +17,25 @@ import org.apache.logging.log4j.Logger;
  * @Date 2023/1/26 2:15
  * @Created by orcakill
  */
-public class ImagesBackRec {
+public class ImagesBackRecUtils {
 	private static final Logger logger = LogManager.getLogger ("ImagesBackRec");
 	
 	//识别图片存在并点击或只识别不点击
 	public static boolean imagesRecognition (String FolderName, String process, boolean isClick) throws AWTException {
 		//		屏幕截图
-		BufferedImage Window = Screenshot.screenshotBack (process);
+		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
 		//		图片
 		List<int[][]> ImagesData = imageToDate (FolderName);
 		//		屏幕截图和图片对比
 		List<PictureIdentifyWorkPO> mouseXY = FindAllImgData (Window, ImagesData);
 		//		识别+鼠标点击或仅识别
-		return MouseClick.mouseClickBack (mouseXY, process, isClick);
+		return MouseClickUtils.mouseClickBack (mouseXY, process, isClick);
 	}
 	
 	//返回坐标
 	public static PictureIdentifyWorkPO imagesRecognitionMouse (String FolderName, String process) {
 		//		屏幕截图
-		BufferedImage Window = Screenshot.screenshotBack (process);
+		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
 		//		图片
 		List<int[][]> ImagesData = imageToDate (FolderName);
 		//		屏幕截图和图片对比
@@ -146,55 +144,10 @@ public class ImagesBackRec {
 	}
 	
 	public static List<int[][]> imageToDate (String FolderName) {
-		return getImagesGRB (Objects.requireNonNull (readFiles (FolderName)));
+		return getImagesGRB (Objects.requireNonNull (readFilesBufferedImage (FolderName)));
 	}
 	
-	/**
-	 * 本方法根据文件夹名从当前项目中找文件夹并且返回文件夹所有照片文件
-	 * @param FolderName - 指定的文件夹名字
-	 * @return - 返回指定文件夹内的所有照片文件
-	 */
-	public static List<BufferedImage> readFiles (String FolderName) {
-		
-		try {
-			// 获取当前目录下的指定文件夹
-			File Folder = new File (
-					"D:/project/leetcode/java/scenario/scenario/src/main/resources/image/" + FolderName);
-			if (!Folder.exists ()) {
-				Folder = new File (
-						"D:/study/Project/leetcode/java/scenario/scenario/src/main/resources/image/" + FolderName);
-			}
-			if (Folder.isDirectory ()) {
-				List<BufferedImage> files = new ArrayList<> ();
-				String[] fileList = Folder.list ();
-				// 将所有照片存储并且返回
-				assert fileList != null;
-				
-				for (String s : fileList) {
-					File file = new File (Folder + File.separator + s);
-					// 判断是否为照片文件
-					String[] strArray = file.getName ()
-					                        .split ("\\.");
-					int suffixIndex = strArray.length - 1;
-					// 存储照片文件
-					if (!file.isDirectory ()
-					    && (strArray[suffixIndex].equals ("png") || strArray[suffixIndex].equals ("jpg"))) {
-						BufferedImage img = ImageIO.read (file);
-						files.add (img);
-					}
-					
-				}
-				return files;
-			}
-		} catch (Exception e) {
-			
-			e.getStackTrace ();
-			
-		}
-		
-		return null;
-		
-	}
+
 	
 	/**
 	 * 本方法将图片集合转化为图片数据集合

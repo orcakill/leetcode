@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.example.demo.utils.ImagesBackRec.readFiles;
+import static com.example.demo.utils.ReadFileUtils.readFilesBufferedImage;
 
 /**
  * @author orcakill
@@ -27,21 +27,21 @@ import static com.example.demo.utils.ImagesBackRec.readFiles;
  * @Description openCV模板图像识别
  * @createTime 2023年1月26日 22:13:00
  */
-public class ImagesOpenCV {
+public class ImagesOpenCVUtils {
 	public static final Logger logger = LogManager.getLogger ("ImagesOpenCV");
 	
 	//识别图片存在并点击或只识别不点击
 	public static boolean imagesRecognitionOpenCv (String FolderName, String process, boolean isClick,
 	                                               Double coefficient) throws AWTException, IOException {
 		//		屏幕截图
-		BufferedImage Window = Screenshot.screenshotBack (process);
+		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
 		//		图片集获取
-		List<BufferedImage> ImagesData = readFiles (FolderName);
+		List<BufferedImage> ImagesData = readFilesBufferedImage (FolderName);
 		//		屏幕截图和图片对比
 		assert ImagesData != null;
 		List<PictureIdentifyWorkPO> mouseXY = FindAllImgDataOpenCv (Window, ImagesData, coefficient);
 		//		识别+鼠标点击或仅识别
-		return MouseClick.mouseClickBack (mouseXY, process, isClick);
+		return MouseClickUtils.mouseClickBack (mouseXY, process, isClick);
 	}
 	
 	/**
@@ -61,14 +61,14 @@ public class ImagesOpenCV {
 		//声明 坐标列表
 		List<PictureIdentifyWorkPO> mouseMessages = new ArrayList<> ();
 		//获取来源图片.将来源图片转为Mat格式
-		Mat g_src = BufferImageToMat.bufImg2Mat (Window, BufferedImage.TYPE_3BYTE_BGR, CvType.CV_8UC3);
+		Mat g_src = BufferImageToMatUtils.bufImg2Mat (Window, BufferedImage.TYPE_3BYTE_BGR, CvType.CV_8UC3);
 		//处理目标图片
 		for (BufferedImage imagesData : ImagesData) {
 			//将目标图片转换为Mat
 			ByteArrayOutputStream byteArrayOutputStream2 = new ByteArrayOutputStream ();
 			ImageIO.write (imagesData, "jpg", byteArrayOutputStream2);
 			byteArrayOutputStream2.flush ();
-			Mat g_tem = BufferImageToMat.bufImg2Mat (imagesData, BufferedImage.TYPE_3BYTE_BGR, CvType.CV_8UC3);
+			Mat g_tem = BufferImageToMatUtils.bufImg2Mat (imagesData, BufferedImage.TYPE_3BYTE_BGR, CvType.CV_8UC3);
 			assert g_src != null;
 			assert g_tem != null;
 			int result_rows = g_src.rows () - g_tem.rows () + 1;

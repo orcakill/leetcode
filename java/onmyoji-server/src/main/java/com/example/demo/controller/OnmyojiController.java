@@ -32,11 +32,9 @@ public class OnmyojiController {
 	@GetMapping ("/dailyTask")
 	public Results<?> getArticles (
 			@ApiParam ("轮次")
-			@RequestParam (required = false, defaultValue = "1") Integer round,
-			@ApiParam ("每轮次数")
-			@RequestParam (required = false, defaultValue = "1") Integer number
+			@RequestParam (required = false, defaultValue = "1") Integer round
 	                              ) throws InterruptedException {
-		onmyojiService.onmyojiService (round,number);
+		onmyojiService.onmyojiService (1,round);
 		return Results.ok ("任务已启动");
 	}
 }

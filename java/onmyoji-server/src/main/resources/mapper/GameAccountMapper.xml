@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.dao.GameAccountMapper">
+    <select id="findList" parameterType="map" resultType="com.example.demo.model.entity.GameAccountPO">
+        SELECT
+        id,
+        account_name,
+        account_password,
+        game_region,
+        game_name,
+        account_type,
+        account_class,
+        account_number
+        FROM
+        game_account
+        where 1=1
+        <if test="map.id != null and map.id.size() > 0">
+            and id in
+            <foreach item="map.id" collection="map.id" separator="," open="(" close=")" index="index">
+                #{map.id}
+            </foreach>
+        </if>
+        <if test="map.accountClass != null and map.accountClass != ''">
+            and account_class=#{map.accountClass}
+        </if>
+        order by id,account_number
+    </select>
+</mapper>
