@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
  * @Date 2023/1/7 21:32
  * @Created by orcakill
  */
-public class ImageTesseract {
+public class ImageTesseractUtils {
 	public static String findOCR (BufferedImage textImage, boolean ZH_CN) {
 		try {
 			Tesseract instance = new Tesseract ();

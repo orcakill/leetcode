@@ -2,16 +2,17 @@ package com.example.demo.utils;
 
 
 import com.example.demo.model.entity.EmailBoxPO;
+import lombok.extern.log4j.Log4j2;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 import org.apache.commons.mail.SimpleEmail;
-
-public class SendMail {
+@Log4j2
+public class SendMailUtils {
 
     //可用
     public  static void sendTextMail (EmailBoxPO emailBoxPO){
         SimpleEmail email = new SimpleEmail ();
-        String  passWord=getPassWord.get163mail ();
+        String  passWord= getPassWordUtils.get163mail ();
         try {
             // 发送电子邮件的邮件服务器地址
             email.setHostName("smtp.163.com");
@@ -30,10 +31,10 @@ public class SendMail {
             email.setSSLOnConnect (true);
             // 邮件发送
             email.send();
-            System.out.println("邮件发送成功！");
+            log.info ("邮件发送成功！");
         }catch (EmailException e){
             e.printStackTrace();
-            System.err.println("邮件发送失败！");
+            log.info ("邮件发送失败！");
         }
     }
     

@@ -1,6 +1,6 @@
 package com.example.demo.utils;
 
-import static com.example.demo.utils.ScanningProcess.scanningProcess;
+import static com.example.demo.utils.ScanningProcessUtils.scanningProcess;
 
 import com.sun.jna.platform.win32.User32;
 import com.sun.jna.platform.win32.WinDef.HWND;
@@ -18,7 +18,7 @@ import java.awt.image.BufferedImage;
  * @Date 2023/1/26 21:45
  * @Created by orcakill
  */
-public class Screenshot {
+public class ScreenshotUtils {
 	//前台截图，截全屏
 	public static BufferedImage screenshot () throws AWTException {
 		Robot robot = new Robot ();

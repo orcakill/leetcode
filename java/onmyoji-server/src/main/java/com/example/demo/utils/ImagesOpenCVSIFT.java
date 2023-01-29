@@ -8,16 +8,15 @@ import org.opencv.calib3d.Calib3d;
 import org.opencv.core.*;
 import org.opencv.features2d.DescriptorMatcher;
 import org.opencv.features2d.SIFT;
-
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+
+import static com.example.demo.utils.ReadFileUtils.readFilesBufferedImagePO;
 
 /**
  * @Classname imagesOpenCVSIFT
@@ -31,16 +30,16 @@ public class ImagesOpenCVSIFT {
 	                                         Double coefficient,
 	                                         int characteristicPoint) throws AWTException {
 		//		屏幕截图
-		BufferedImage Window = Screenshot.screenshotBack (process);
+		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
 		//		图片集获取
-		List<BufferedImagePO> ImagesData = readFiles (FolderName);
+		List<BufferedImagePO> ImagesData = readFilesBufferedImagePO (FolderName);
 		
 		if (Objects.requireNonNull (ImagesData).size () > 0) {
 			List<PictureIdentifyWorkPO> mouseXY = FindAllImgDataOpenCvAll (Window, ImagesData, coefficient,
 			                                                               characteristicPoint);
 			//		识别+鼠标点击或仅识别
 			if (mouseXY!=null&&!mouseXY.isEmpty ()) {
-				return MouseClick.mouseClickBack (mouseXY, process, isClick);
+				return MouseClickUtils.mouseClickBack (mouseXY, process, isClick);
 			}
 			else {
 				return false;
@@ -49,48 +48,7 @@ public class ImagesOpenCVSIFT {
 		return false;
 	}
 	
-	/**
-	 * 本方法根据文件夹名从当前项目中找文件夹并且返回文件夹所有照片文件
-	 * @param FolderName - 指定的文件夹名字
-	 * @return - 返回指定文件夹内的所有照片文件
-	 */
-	public static List<BufferedImagePO> readFiles (String FolderName) {
-		try {
-			// 判断当前目录下的指定文件夹是否存在
-			File Folder = new File (
-					"D:/project/leetcode/java/scenario/scenario/src/main/resources/image/" + FolderName);
-			if (!Folder.exists ()) {
-				Folder = new File (
-						"D:/study/Project/leetcode/java/scenario/scenario/src/main/resources/image/"
-						+ FolderName);
-			}
-			if (Folder.isDirectory ()) {
-				List<BufferedImagePO> files = new ArrayList<> ();
-				String[] fileList = Folder.list ();
-				// 将所有照片存储并且返回
-				for (int i = 0; i < Objects.requireNonNull (fileList).length; i++) {
-					String s = fileList[i];
-					File file = new File (Folder + File.separator + s);
-					// 判断是否为照片文件
-					String[] strArray = file.getName ().split ("\\.");
-					int suffixIndex = strArray.length - 1;
-					// 存储照片文件
-					if (!file.isDirectory () && (
-							strArray[suffixIndex].equals ("png")
-							|| strArray[suffixIndex].equals ("jpg"))) {
-						BufferedImage img = ImageIO.read (file);
-						BufferedImagePO bufferedImagePO = new BufferedImagePO (i, s, img);
-						files.add (bufferedImagePO);
-					}
-				}
-				return files;
-			}
-		} catch (Exception e) {
-			e.getStackTrace ();
-			
-		}
-		return null;
-	}
+
 	
 	public static List<PictureIdentifyWorkPO> FindAllImgDataOpenCvAll (BufferedImage originalImageB,
 	                                                                   List<BufferedImagePO> templateImageB,
@@ -172,11 +130,11 @@ public class ImagesOpenCVSIFT {
 						return null;
 					}
 					pictureIdentifyWorkPO.setX (
-							(int) ((pointA[0] + pointB[0] + pointC[0] + pointD[0]) / 4) + RandomUtil.getRandom (1,
-							                                                                                    5));
+							(int) ((pointA[0] + pointB[0] + pointC[0] + pointD[0]) / 4) + RandomUtils.getRandom (1,
+							                                                                                     5));
 					pictureIdentifyWorkPO.setY (
-							(int) ((pointA[1] + pointB[1] + pointC[1] + pointD[1]) / 4) + RandomUtil.getRandom (1,
-							                                                                                    5));
+							(int) ((pointA[1] + pointB[1] + pointC[1] + pointD[1]) / 4) + RandomUtils.getRandom (1,
+							                                                                                     5));
 					if (pictureIdentifyWorkPO.getX () > 0 && pictureIdentifyWorkPO.getY () > 0) {
 						logger.info ("目标坐标为:({}，{})", pictureIdentifyWorkPO.getX (),
 						             pictureIdentifyWorkPO.getY ());

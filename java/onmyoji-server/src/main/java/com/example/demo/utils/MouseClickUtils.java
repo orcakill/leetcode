@@ -12,7 +12,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class MouseClick {
+public class MouseClickUtils {
 	
 	public static final Logger logger = LogManager.getLogger ("MouseClick");
 	
@@ -23,7 +23,7 @@ public class MouseClick {
 		//鼠标点击
 		if (pictureIdentifyWorkPOList.size () > 0) {
 			if (isClick) {
-				int num = RandomUtil.randomMinute (pictureIdentifyWorkPOList.size ());
+				int num = RandomUtils.randomMinute (pictureIdentifyWorkPOList.size ());
 				mouseXY1.add (pictureIdentifyWorkPOList.get (num));
 				HWND hwnd = User32.INSTANCE.FindWindow (null, process);
 				mouseClickBackground (hwnd, mouseXY1);
@@ -48,7 +48,7 @@ public class MouseClick {
 	 */
 	public static void mouseClickBackground (HWND hwnd, List<PictureIdentifyWorkPO> mouseMessages)
 			throws AWTException {
-		Double bl = ComputerScaling.getScale ();
+		Double bl = ComputerScalingUtils.getScale ();
 		StringBuilder X;
 		StringBuilder Y;
 		int moveTime = (int) (Math.random () * 400 + 300);
@@ -68,8 +68,8 @@ public class MouseClick {
 			try {
 				// 模拟计算鼠标按下的间隔并且按下鼠标
 				Thread.sleep (moveTime);
-				ScanningProcess.User32.INSTANCE.PostMessage (hwnd, 513, new WinDef.WPARAM (513), lPARAM);
-				ScanningProcess.User32.INSTANCE.PostMessage (hwnd, 514, new WinDef.WPARAM (514), lPARAM);
+				ScanningProcessUtils.User32.INSTANCE.PostMessage (hwnd, 513, new WinDef.WPARAM (513), lPARAM);
+				ScanningProcessUtils.User32.INSTANCE.PostMessage (hwnd, 514, new WinDef.WPARAM (514), lPARAM);
 				Thread.sleep (moveTime);
 			} catch (InterruptedException e) {
 				
@@ -84,7 +84,7 @@ public class MouseClick {
 	public static void mouseClickBackgroundDrag (HWND hwnd, PictureIdentifyWorkPO mouseMessages1,
 	                                             PictureIdentifyWorkPO mouseMessages2)
 			throws AWTException {
-		Double bl = ComputerScaling.getScale ();
+		Double bl = ComputerScalingUtils.getScale ();
 		StringBuilder X1;
 		StringBuilder Y1;
 		StringBuilder X2;
@@ -120,9 +120,9 @@ public class MouseClick {
 		try {
 			// 模拟计算鼠标按下的间隔并且按下鼠标
 			Thread.sleep (moveTime);
-			ScanningProcess.User32.INSTANCE.PostMessage (hwnd, 513, new WinDef.WPARAM (513), lPARAM1);
+			ScanningProcessUtils.User32.INSTANCE.PostMessage (hwnd, 513, new WinDef.WPARAM (513), lPARAM1);
 			Thread.sleep (1000);
-			ScanningProcess.User32.INSTANCE.PostMessage (hwnd, 514, new WinDef.WPARAM (514), lPARAM2);
+			ScanningProcessUtils.User32.INSTANCE.PostMessage (hwnd, 514, new WinDef.WPARAM (514), lPARAM2);
 			Thread.sleep (moveTime);
 		} catch (InterruptedException e) {
 			

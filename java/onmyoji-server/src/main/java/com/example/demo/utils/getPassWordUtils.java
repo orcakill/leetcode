@@ -7,7 +7,7 @@ import java.io.FileReader;
  * @author orcakill
  * @date 2021/1/14  15:13
  **/
-public class getPassWord {
+public class getPassWordUtils {
     public  static   String  get163mail() {
         String file = "D:\\study\\password\\163mail授权码.txt";
         return getString (file);

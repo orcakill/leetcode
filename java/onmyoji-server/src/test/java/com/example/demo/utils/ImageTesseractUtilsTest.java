@@ -15,13 +15,13 @@ import java.io.IOException;
  */
 
 @Log4j2
-class ImageTesseractTest {
+class ImageTesseractUtilsTest {
 
 	@Test
 	void findOCR () throws IOException {
 		File file=new File ("D:/a.jpg");
 		BufferedImage bufferedImage= ImageIO.read (file);
-		String s=ImageTesseract.findOCR (bufferedImage,true);
+		String s= ImageTesseractUtils.findOCR (bufferedImage, true);
 		log.info (s);
 	}
 }

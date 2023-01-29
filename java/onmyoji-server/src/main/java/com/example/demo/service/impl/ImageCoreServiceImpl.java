@@ -1,15 +1,14 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.utils.ImagesBackRec;
-import com.example.demo.utils.ImagesOpenCV;
+import com.example.demo.utils.ImagesBackRecUtils;
+import com.example.demo.utils.ImagesOpenCVUtils;
 import com.example.demo.utils.ImagesOpenCVSIFT;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.log4j.Log4j2;
 
 import java.awt.*;
 import java.io.IOException;
 
-import static com.example.demo.utils.RandomUtil.getRandom;
+import static com.example.demo.utils.RandomUtils.getRandom;
 
 /**
  * @Classname ImageCoreServiceImpl
@@ -17,9 +16,8 @@ import static com.example.demo.utils.RandomUtil.getRandom;
  * @Date 2023/1/26 22:33
  * @Created by orcakill
  */
+@Log4j2
 public class ImageCoreServiceImpl {
-	public static final Logger logger = LogManager.getLogger ("ImageCoreServiceImpl");
-	
 	/***
 	 * @description: 识别并点击成功或识别成功返回true、识别失败返回false
 	 * @param identificationAlgorithmType  图像识别算法类型（目前3种）
@@ -46,10 +44,10 @@ public class ImageCoreServiceImpl {
 			num_time = getRandom (i1, i2);
 			Thread.sleep (num_time * 1000L);
 			if (identificationAlgorithmType == 0) {
-				result = ImagesBackRec.imagesRecognition (folder, process, isClick);
+				result = ImagesBackRecUtils.imagesRecognition (folder, process, isClick);
 			}
 			if (identificationAlgorithmType == 1) {
-				result = ImagesOpenCV.imagesRecognitionOpenCv (folder, process, isClick, coefficient);
+				result = ImagesOpenCVUtils.imagesRecognitionOpenCv (folder, process, isClick, coefficient);
 			}
 			if (identificationAlgorithmType == 2) {
 				result =
@@ -57,12 +55,12 @@ public class ImageCoreServiceImpl {
 						                                    characteristicPoint);
 			}
 			if (result) {
-				logger.info ("图片识别成功");
+				log.info ("图片识别成功");
 				return true;
 			}
 			else {
 				if (b) {
-					logger.info ("在{}秒的检测中，第{}次检查未发现{}的图片", num_time, (i + 1), folder);
+					log.info ("在{}秒的检测中，第{}次检查未发现 {} 的图片", num_time, (i + 1), folder);
 				}
 			}
 		}

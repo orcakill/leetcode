@@ -20,7 +20,7 @@ public class ImageServiceImpl {
 	private static final int re_num0 = 60;/*默认识别次数*/
 	private static final int start_time0 = 1;     //识别开始间隔 如 1
 	private static final int end_time0 = 2;     //识别结束间隔 如 2
-	private static final boolean boole0 = true;    //是否显示日志 如 true 或false
+	private static final boolean boole0 = true;    //是否显示未识别日志 如 true 或false
 	private static final boolean isClick0 = true;     //是否点击如 true 或false
 	private static final double coefficient0 = 1;    //  相似系数  （默认）
 	private static final double coefficient1 = 2E-11;    //  相似系数  （1 算法专用）

@@ -9,7 +9,7 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 
-public class ComputerScaling {
+public class ComputerScalingUtils {
 	public  static Double getScale() throws AWTException {
 		Robot robot=new Robot ();
 		//      获取屏幕尺寸截屏

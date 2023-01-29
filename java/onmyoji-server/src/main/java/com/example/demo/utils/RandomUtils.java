@@ -2,7 +2,7 @@ package com.example.demo.utils;
 
 import java.util.Random;
 
-public class RandomUtil {
+public class RandomUtils {
 	public static int randomMinute (int num) {
 		Random random = new Random ();//默认构造方法
 		return random.nextInt (num);

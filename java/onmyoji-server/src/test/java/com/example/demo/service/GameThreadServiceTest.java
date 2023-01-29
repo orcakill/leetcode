@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.OnmyojiServerApplication;
 import com.example.demo.model.entity.GameThreadPO;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @Date 2023/1/26 0:17
  * @Created by orcakill
  */
-@Slf4j
+@Log4j2
 @SpringBootTest(classes = {OnmyojiServerApplication.class})
 class GameThreadServiceTest {
 

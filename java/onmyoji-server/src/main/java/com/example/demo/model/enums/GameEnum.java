@@ -7,10 +7,11 @@ package com.example.demo.model.enums;
  * @Created by orcakill
  */
 public enum GameEnum {
-  comm_JJXZ ("scenario/通用/拒接协战"),
-  comm_QR ("scenario/通用/确认"),
-
-  login_YYSTB("scenario/登录/阴阳师图标")
+  comm_JJXZ ("通用/拒接协战"),
+  comm_QR ("通用/确认"),
+  login_YYSTB("登录/阴阳师图标"),
+  
+  home_TS("首页/探索")
   ;
   private final String value;
 
