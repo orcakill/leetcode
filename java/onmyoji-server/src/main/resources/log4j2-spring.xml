@@ -119,7 +119,7 @@
 <!--        <Logger name="org.springframework" level="info" additivity="false">-->
 <!--            <AppenderRef ref="Console"/>-->
 <!--        </Logger>-->
-        <Logger name="com.example.demo.dao" level="debug " additivity="false">
+        <Logger name="com.example.demo.mapper" level="debug " additivity="false">
             <appender-ref ref="Console"/>
             <appender-ref ref="FileLog"/>
             <appender-ref ref="RollingFileInfo"/>

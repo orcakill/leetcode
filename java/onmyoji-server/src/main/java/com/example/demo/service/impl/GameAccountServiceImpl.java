@@ -1,6 +1,6 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.dao.GameAccountMapper;
+import com.example.demo.mapper.GameAccountMapper;
 import com.example.demo.exception.BlogException;
 import com.example.demo.model.entity.GameAccountPO;
 import com.example.demo.service.GameAccountService;
