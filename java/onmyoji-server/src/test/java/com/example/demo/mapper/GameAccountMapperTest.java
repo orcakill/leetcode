@@ -1,4 +1,4 @@
-package com.example.demo.dao;
+package com.example.demo.mapper;
 
 import com.example.demo.model.entity.GameAccountPO;
 import lombok.extern.log4j.Log4j2;

@@ -3,7 +3,7 @@ package com.example.demo.service.impl;
 import static com.example.demo.model.enums.ErrorInfoEnum.INVALID_ID;
 
 import cn.hutool.core.util.IdUtil;
-import com.example.demo.dao.GameThreadMapper;
+import com.example.demo.mapper.GameThreadMapper;
 import com.example.demo.exception.BlogException;
 import com.example.demo.model.entity.GameThreadPO;
 import com.example.demo.service.GameThreadService;

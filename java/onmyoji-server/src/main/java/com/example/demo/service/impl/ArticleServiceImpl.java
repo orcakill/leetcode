@@ -5,7 +5,7 @@ import static com.example.demo.model.enums.ErrorInfoEnum.INVALID_ID;
 import cn.hutool.core.util.IdUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.example.demo.dao.ArticleMapper;
+import com.example.demo.mapper.ArticleMapper;
 import com.example.demo.exception.BlogException;
 import com.example.demo.model.dto.ArticleDTO;
 import com.example.demo.model.entity.ArticlePO;
