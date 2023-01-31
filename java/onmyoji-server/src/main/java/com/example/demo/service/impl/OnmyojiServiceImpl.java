@@ -2,10 +2,10 @@ package com.example.demo.service.impl;
 
 import cn.hutool.core.util.IdUtil;
 import com.example.demo.model.entity.GameThreadPO;
+import com.example.demo.model.thread.FirstThread;
+import com.example.demo.model.thread.SecondThread;
 import com.example.demo.service.GameThreadService;
 import com.example.demo.service.OnmyojiService;
-import com.example.demo.thread.FirstThread;
-import com.example.demo.thread.SecondThread;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 

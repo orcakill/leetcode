@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.model.entity.GameAnnexPO;
 import com.example.demo.service.GameAnnexService;
 import com.example.demo.mapper.GameAnnexMapper;
+import com.github.jeffreyning.mybatisplus.service.MppServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 * @createDate 2023-01-30 21:25:19
 */
 @Service
-public class GameAnnexServiceImpl extends ServiceImpl<GameAnnexMapper, GameAnnexPO>
+public class GameAnnexServiceImpl extends MppServiceImpl<GameAnnexMapper, GameAnnexPO>
     implements GameAnnexService{
 
 }

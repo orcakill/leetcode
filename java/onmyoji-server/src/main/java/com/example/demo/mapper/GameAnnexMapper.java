@@ -2,6 +2,7 @@ package com.example.demo.mapper;
 
 import com.example.demo.model.entity.GameAnnexPO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.github.jeffreyning.mybatisplus.base.MppBaseMapper;
 
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,7 @@ import java.util.Map;
 * @createDate 2023-01-30 21:25:19
 * @Entity com.example.demo.model.entity.GameAnnexPO
 */
-public interface GameAnnexMapper extends BaseMapper<GameAnnexPO> {
+public interface GameAnnexMapper extends MppBaseMapper<GameAnnexPO> {
 	List<GameAnnexPO> findList(Map<String,Object> map);
 
 }

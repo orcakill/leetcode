@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.github.jeffreyning.mybatisplus.conf.EnableMPP;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,6 +10,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @SpringBootApplication
 @EnableAsync
 @Log4j2
+@EnableMPP
 public class OnmyojiServerApplication {
 	public static void main (String[] args) {
 		//SpringApplication.run (OnmyojiServerApplication.class, args);

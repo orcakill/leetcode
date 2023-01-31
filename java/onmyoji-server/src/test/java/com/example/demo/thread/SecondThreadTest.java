@@ -1,5 +1,6 @@
 package com.example.demo.thread;
 
+import com.example.demo.model.thread.SecondThread;
 import com.example.demo.service.GameThreadService;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
