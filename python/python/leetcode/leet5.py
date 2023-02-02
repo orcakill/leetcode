@@ -1,7 +1,7 @@
 
 class Solution:
     # 基础方案，遍历所有字符，判断字符是否是回文,查出最大
-    def longestPalindrome(self, s: str) -> str:
+    def  longest_palindrome(self, s: str) -> str:
         ss = ""
         max_length = 0
         for i in range(len(s)):
@@ -16,7 +16,7 @@ class Solution:
         return ss
 
     # 动态规划方案
-    def longestPalindrome1(self, s: str) -> str:
+    def longest_palindrome1(self, s: str) -> str:
         # 获取字符串长度  babad 字符串长度为5
         n = len(s)
         # 如果长度小于2，则直接返回该字符，单个字符必定为回文
@@ -60,5 +60,5 @@ class Solution:
 
 
 if __name__ == '__main__':
-    print(Solution.longestPalindrome(0, 'babad'))
-    print(Solution.longestPalindrome1(0, 'babad'))
+    print(Solution.longest_palindrome(0, 'babad'))
+    print(Solution.longest_palindrome1(0, 'babad'))
