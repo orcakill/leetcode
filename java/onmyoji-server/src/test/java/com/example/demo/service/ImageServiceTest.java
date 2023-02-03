@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.example.demo.model.enums.GameEnum.home_TS;
 
 /**
  * @Classname ImageServiceTest
@@ -34,7 +33,7 @@ class ImageServiceTest {
 	void imagesBack0 () throws IOException, InterruptedException, AWTException {
 		System.setProperty ("java.awt.headless", "false");
 		log.info ("测试开始");
-		boolean b = ImageService.imagesBack0 ("1");
+		boolean b = ImageService.imagesBack0 ("首页\\编号\\5561731");
 		log.info (b);
 	}
 	

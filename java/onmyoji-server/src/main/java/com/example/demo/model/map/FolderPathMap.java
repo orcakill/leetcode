@@ -41,8 +41,8 @@ public class FolderPathMap {
 	public static String photoPath () throws IOException {
 		String path = null;
 		String path1="D:\\study\\Project\\leetcode\\java\\onmyoji-server\\src\\main" +
-		             "\\resources\\static\\scenario";
-		String path2="D:\\project\\leetcode\\java\\onmyoji-server\\src\\main\\resources\\static\\scenario";
+		             "\\resources\\static\\scenario\\";
+		String path2="D:\\project\\leetcode\\java\\onmyoji-server\\src\\main\\resources\\static\\scenario\\";
 		File file=new File (path1);
 		File file1=new File (path2);
 		if(file.exists ()){

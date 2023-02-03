@@ -19,7 +19,7 @@ class ImageTesseractUtilsTest {
 
 	@Test
 	void findOCR () throws IOException {
-		File file=new File ("D:/a.jpg");
+		File file=new File ("D:/a.png");
 		BufferedImage bufferedImage= ImageIO.read (file);
 		String s= ImageTesseractUtils.findOCR (bufferedImage, true);
 		log.info (s);

@@ -11,7 +11,8 @@ public enum GameEnum {
   comm_QR ("通用/确认"),
   login_YYSTB("登录/阴阳师图标"),
   
-  home_TS("首页/探索")
+  home_TS("首页/探索"),
+  home_SYGY("首页/首页勾玉")
   ;
   private final String value;
 

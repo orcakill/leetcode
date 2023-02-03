@@ -35,7 +35,21 @@ public interface OnmyojiService {
 	 */
 	
 	void autoActivity (Integer type, Integer round);
+	/***
+	 * @description: 当前状态判断  阴阳师图标、服务器界面、首页、其他有返回按钮的界面
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/2/4 2:04
+	 */
 	
+	String thisState();
+	/***
+	 * @description: 返回首页
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/2/4 1:58
+	 */
+	void returnHome ();
 	/***
 	 * @description: 阴阳师游戏角色ID登录，默认登录大号角色
 	 * @param gameUserId 阴阳师游戏角色ID

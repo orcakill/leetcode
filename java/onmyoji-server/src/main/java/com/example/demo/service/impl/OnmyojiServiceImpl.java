@@ -1,22 +1,15 @@
 package com.example.demo.service.impl;
 
 import cn.hutool.core.util.IdUtil;
-import com.example.demo.model.entity.PictureCollectionPO;
 import com.example.demo.model.entity.GameThreadPO;
 import com.example.demo.model.thread.FirstThread;
 import com.example.demo.model.thread.SecondThread;
 import com.example.demo.service.GameThreadService;
+import com.example.demo.service.ImageService;
 import com.example.demo.service.OnmyojiService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-
-import static com.example.demo.utils.ReadFileUtils.readPictureMap;
 
 /**
  * @Classname OnmyojiServiceImpl
@@ -32,7 +25,6 @@ public class OnmyojiServiceImpl implements OnmyojiService {
   public OnmyojiServiceImpl(GameThreadService gameThreadService) {
     this.gameThreadService = gameThreadService;
   }
-  
   @Override
   public void onmyojiService(Integer type,Integer round) throws InterruptedException {
     //游戏进程id,游戏进程信息保存
@@ -100,11 +92,33 @@ public class OnmyojiServiceImpl implements OnmyojiService {
   
   @Override
   public void autoActivity (Integer type, Integer round) {
+     for(int i=0;i<round;i++){
+       //大号  阴阳寮突破+个人突破+魂十一40次+地域鬼王（每日一次）
+       if(type==1){
+       //  返回检查，先检查是否可以返回 允许返回则先返回到首页，不能返回则跳过
+       //  登录（大号） 阴阳师登录/大号首页登录/小号首页登录
+       //  阴阳寮突破
+       //  个人突破
+       //  魂十一（注意喂食宠物）
+       //  地域鬼王+领取花合战每日奖励，无未攻打则跳过
+       //  寄养检查，优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
+       //  好友添加、好友删除、赠送小号红心、赠送其他人红心（待定）
+       }
+     }
+  }
+  
+  @Override
+  public String thisState () {
+    
+    return null;
+  }
+  
+  @Override
+  public void returnHome () {
   
   }
   
   @Override
   public void login (String gameUserId) {
-  
   }
 }
