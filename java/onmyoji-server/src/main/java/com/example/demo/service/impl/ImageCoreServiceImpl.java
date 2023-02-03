@@ -46,12 +46,12 @@ public class ImageCoreServiceImpl {
 			throws InterruptedException, AWTException, IOException {
 		int num_time;
 		boolean result = false;
-		List<PictureCollectionPO> pictureCollectionPOList=photoCollection ().get(folder);
+		List<PictureCollectionPO> pictureCollectionPOList=photoCollection (folder).get (folder);
 		for (int i = 0; i < re_num; i++) {
 			num_time = getRandom (i1, i2);
 			//每20次重新初始化数据集
 			if(i%20==0){
-				pictureCollectionPOList=photoCollection ().get(folder);
+				pictureCollectionPOList=photoCollection (folder).get(folder);
 			}
 			Thread.sleep (num_time * 1000L);
 			if (identificationAlgorithmType == 0) {
@@ -78,8 +78,9 @@ public class ImageCoreServiceImpl {
 		return false;
 	}
 	
-	public static Map<String, java.util.List<PictureCollectionPO>> photoCollection () throws IOException {
-		return readPictureMap (FolderPathMap.folderPath ("图片总路径"));
+	public static Map<String, java.util.List<PictureCollectionPO>> photoCollection (String folder) throws IOException {
+		String path=FolderPathMap.folderPath ("图片总路径")+folder;
+		return readPictureMap (path);
 	}
 	
 }
