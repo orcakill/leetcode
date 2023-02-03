@@ -1,13 +1,22 @@
 package com.example.demo.service.impl;
 
 import cn.hutool.core.util.IdUtil;
+import com.example.demo.model.entity.PictureCollectionPO;
 import com.example.demo.model.entity.GameThreadPO;
 import com.example.demo.model.thread.FirstThread;
 import com.example.demo.model.thread.SecondThread;
 import com.example.demo.service.GameThreadService;
 import com.example.demo.service.OnmyojiService;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
+import static com.example.demo.utils.ReadFileUtils.readPictureMap;
 
 /**
  * @Classname OnmyojiServiceImpl
@@ -23,7 +32,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
   public OnmyojiServiceImpl(GameThreadService gameThreadService) {
     this.gameThreadService = gameThreadService;
   }
-
+  
   @Override
   public void onmyojiService(Integer type,Integer round) throws InterruptedException {
     //游戏进程id,游戏进程信息保存

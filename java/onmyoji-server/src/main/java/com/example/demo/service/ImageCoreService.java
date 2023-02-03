@@ -1,9 +1,11 @@
 package com.example.demo.service;
 
+import com.example.demo.model.entity.PictureCollectionPO;
 import com.example.demo.service.impl.ImageCoreServiceImpl;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @Classname ImageCoreService
@@ -16,7 +18,7 @@ public interface ImageCoreService {
 	/***
 	 * @description: 识别并点击成功或识别成功返回true、识别失败返回false
 	 * @param identificationAlgorithmType  图像识别算法类型（目前3种）
-	 * @param folder  文件夹
+	 * @param folder 文件夹
 	 * @param process 进程名
 	 * @param re_num  识别次数
 	 * @param start_time      识别开始间隔 如 1
@@ -26,14 +28,15 @@ public interface ImageCoreService {
 	 * @param coefficient      相似系数  （1，2 算法专用）
 	 * @param characteristicPoint 特征点 （2 算法专用）
 	 * @return: boolean
-	 * @author: orcakill
+	 * {@code @author:} orcakill
 	 * @date: 2023/1/26 22:26
 	 */
 	static boolean imagesBackClick (String folder, int identificationAlgorithmType, String process, Integer re_num,
-	                              Integer start_time,
-	                              Integer end_time, Boolean boole, boolean isClick, Double coefficient, int characteristicPoint)
+	                                Integer start_time,
+	                                Integer end_time, Boolean boole, boolean isClick, Double coefficient, int characteristicPoint)
 			throws InterruptedException, AWTException, IOException {
-		return ImageCoreServiceImpl.imagesBackClick (folder, identificationAlgorithmType, process, re_num, start_time, end_time, boole,
+		return ImageCoreServiceImpl.imagesBackClick (folder, identificationAlgorithmType, process, re_num, start_time,
+		                                             end_time, boole,
 		                                             isClick, coefficient, characteristicPoint);
 	}
 }

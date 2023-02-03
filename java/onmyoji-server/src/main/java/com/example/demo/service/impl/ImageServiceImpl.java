@@ -1,9 +1,11 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.model.entity.PictureCollectionPO;
 import com.example.demo.service.ImageCoreService;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @Classname ImageServiceImpl

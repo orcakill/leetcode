@@ -1,5 +1,6 @@
 package com.example.demo.utils;
 
+import com.example.demo.model.entity.PictureCollectionPO;
 import com.example.demo.model.entity.PictureIdentifyWorkPO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,18 +29,15 @@ import static com.example.demo.utils.ReadFileUtils.readFilesBufferedImage;
  * @createTime 2023年1月26日 22:13:00
  */
 public class ImagesOpenCVUtils {
-	public static final Logger logger = LogManager.getLogger ("ImagesOpenCV");
+	public static final Logger logger = LogManager.getLogger ("ImagesOpenCVUtils");
 	
 	//识别图片存在并点击或只识别不点击
-	public static boolean imagesRecognitionOpenCv (String FolderName, String process, boolean isClick,
+	public static boolean imagesRecognitionOpenCv (List<PictureCollectionPO> pictureCollectionPOList, String process, boolean isClick,
 	                                               Double coefficient) throws AWTException, IOException {
 		//		屏幕截图
 		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
-		//		图片集获取
-		List<BufferedImage> ImagesData = readFilesBufferedImage (FolderName);
 		//		屏幕截图和图片对比
-		assert ImagesData != null;
-		List<PictureIdentifyWorkPO> mouseXY = FindAllImgDataOpenCv (Window, ImagesData, coefficient);
+		List<PictureIdentifyWorkPO> mouseXY = FindAllImgDataOpenCv (Window, pictureCollectionPOList, coefficient);
 		//		识别+鼠标点击或仅识别
 		return MouseClickUtils.mouseClickBack (mouseXY, process, isClick);
 	}
@@ -47,12 +45,12 @@ public class ImagesOpenCVUtils {
 	/**
 	 * 本方法会根据图片数据从屏幕里找寻相同的图片信息,找到后会返回其对应的坐标集合-使用了openCV的归一性相关系数匹配法
 	 * @param Window      - 屏幕图像
-	 * @param ImagesData  - 指定图片数据集合
+	 * @param pictureCollectionPOList  - 指定图片数据集合
 	 * @param coefficient -识别系数
 	 * @return - 返回图片在屏幕的坐标集合
 	 */
 	public static List<PictureIdentifyWorkPO> FindAllImgDataOpenCv (BufferedImage Window,
-	                                                                List<BufferedImage> ImagesData, Double coefficient)
+	                                                                List<PictureCollectionPO> pictureCollectionPOList, Double coefficient)
 			throws IOException {
 		if (coefficient == null) {
 			coefficient = 2E-11;
@@ -63,12 +61,12 @@ public class ImagesOpenCVUtils {
 		//获取来源图片.将来源图片转为Mat格式
 		Mat g_src = BufferImageToMatUtils.bufImg2Mat (Window, BufferedImage.TYPE_3BYTE_BGR, CvType.CV_8UC3);
 		//处理目标图片
-		for (BufferedImage imagesData : ImagesData) {
+		for (PictureCollectionPO pictureCollectionPO : pictureCollectionPOList) {
 			//将目标图片转换为Mat
 			ByteArrayOutputStream byteArrayOutputStream2 = new ByteArrayOutputStream ();
-			ImageIO.write (imagesData, "jpg", byteArrayOutputStream2);
+			ImageIO.write ((BufferedImage) pictureCollectionPOList, "jpg", byteArrayOutputStream2);
 			byteArrayOutputStream2.flush ();
-			Mat g_tem = BufferImageToMatUtils.bufImg2Mat (imagesData, BufferedImage.TYPE_3BYTE_BGR, CvType.CV_8UC3);
+			Mat g_tem = BufferImageToMatUtils.bufImg2Mat ((BufferedImage) pictureCollectionPOList, BufferedImage.TYPE_3BYTE_BGR, CvType.CV_8UC3);
 			assert g_src != null;
 			assert g_tem != null;
 			int result_rows = g_src.rows () - g_tem.rows () + 1;

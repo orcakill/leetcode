@@ -13,7 +13,7 @@ import java.util.List;
  * @Date 2021/12/2 21:53
  * @Created by orcakill
  */
-public class CoordinateAddress {
+public class CoordinateAddressMap {
 	
 	public static List<PictureIdentifyWorkPO> getCoordinate (String name){
 		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList=new ArrayList<> ();
