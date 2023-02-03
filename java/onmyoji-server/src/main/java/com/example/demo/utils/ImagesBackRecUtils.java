@@ -1,5 +1,6 @@
 package com.example.demo.utils;
 
+import com.example.demo.model.entity.PictureCollectionPO;
 import com.example.demo.model.entity.PictureIdentifyWorkPO;
 
 import java.awt.AWTException;
@@ -18,43 +19,25 @@ import static com.example.demo.utils.ReadFileUtils.readFilesBufferedImage;
  * @Created by orcakill
  */
 public class ImagesBackRecUtils {
-	private static final Logger logger = LogManager.getLogger ("ImagesBackRec");
+	private static final Logger logger = LogManager.getLogger ("ImagesBackRecUtils");
 	
 	//识别图片存在并点击或只识别不点击
-	public static boolean imagesRecognition (String FolderName, String process, boolean isClick) throws AWTException {
+	public static boolean imagesRecognition (List<PictureCollectionPO> pictureCollectionPOList, String process, boolean isClick) throws AWTException {
 		//		屏幕截图
 		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
-		//		图片
-		List<int[][]> ImagesData = imageToDate (FolderName);
 		//		屏幕截图和图片对比
-		List<PictureIdentifyWorkPO> mouseXY = FindAllImgData (Window, ImagesData);
+		List<PictureIdentifyWorkPO> mouseXY = FindAllImgData (Window,pictureCollectionPOList);
 		//		识别+鼠标点击或仅识别
 		return MouseClickUtils.mouseClickBack (mouseXY, process, isClick);
-	}
-	
-	//返回坐标
-	public static PictureIdentifyWorkPO imagesRecognitionMouse (String FolderName, String process) {
-		//		屏幕截图
-		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
-		//		图片
-		List<int[][]> ImagesData = imageToDate (FolderName);
-		//		屏幕截图和图片对比
-		List<PictureIdentifyWorkPO> mouseXY = FindAllImgData (Window, ImagesData);
-		//		鼠标点击
-		PictureIdentifyWorkPO pictureIdentifyWorkPO = new PictureIdentifyWorkPO ();
-		if (mouseXY.size () > 0) {
-			pictureIdentifyWorkPO = mouseXY.get (0);
-		}
-		return pictureIdentifyWorkPO;
 	}
 	
 	/**
 	 * 本方法会根据图片数据从屏幕里找寻相同的图片信息,找到后会返回其对应的坐标集合
 	 * @param Window     - 屏幕图像
-	 * @param ImagesData - 指定图片数据集合
+	 * @param pictureCollectionPOList - 指定图片数据集合
 	 * @return - 返回图片在屏幕的坐标集合
 	 */
-	public static List<PictureIdentifyWorkPO> FindAllImgData (BufferedImage Window, List<int[][]> ImagesData) {
+	public static List<PictureIdentifyWorkPO> FindAllImgData (BufferedImage Window, List<PictureCollectionPO> pictureCollectionPOList) {
 		List<PictureIdentifyWorkPO> mouseMessages = new ArrayList<> ();
 		PictureIdentifyWorkPO mouseXY = new PictureIdentifyWorkPO ();
 		// 解析屏幕图片数据
@@ -67,9 +50,10 @@ public class ImagesBackRecUtils {
 				WindowData[w][h] = Window.getRGB (w, h);
 			}
 		}
-		
+		int [][] imagesDatum;
 		// 将屏幕与全部目标图片对比
-		for (int[][] imagesDatum : ImagesData) {
+		for (PictureCollectionPO pictureCollectionPO: pictureCollectionPOList) {
+			imagesDatum=pictureCollectionPO.getTwoArray ();
 			// 获取图片尺寸
 			int imgWidth = imagesDatum.length;
 			int imgHeight = imagesDatum[0].length;

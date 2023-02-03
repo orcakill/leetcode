@@ -1,7 +1,7 @@
 package com.example.demo.model.thread;
 
 import com.example.demo.model.entity.GameThreadPO;
-import com.example.demo.model.map.ExeAddress;
+import com.example.demo.model.map.FolderPathMap;
 import com.example.demo.service.GameThreadService;
 import com.example.demo.utils.StartUpExeUtils;
 import lombok.SneakyThrows;
@@ -45,7 +45,7 @@ public class SecondThread extends Thread {
 		//启动游戏
 		log.info ("运行线程，检查模拟器");
 		if (!StartUpExeUtils.checkProcessOnly ("Nox.exe")) {
-			StartUpExeUtils.startUpExeOnly ("CMD /C " + ExeAddress.exeAddress ());
+			StartUpExeUtils.startUpExeOnly ("CMD /C " + FolderPathMap.exeAddress ());
 		}
 		//	阴阳师自动化
 		log.info ("项目{}轮次{}",type,round);

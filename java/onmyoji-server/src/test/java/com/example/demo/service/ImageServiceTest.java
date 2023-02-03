@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.model.entity.BufferedImagePO;
+import com.example.demo.model.entity.PictureCollectionPO;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.opencv.core.Core;
@@ -34,7 +34,7 @@ class ImageServiceTest {
 	void imagesBack0 () throws IOException, InterruptedException, AWTException {
 		System.setProperty ("java.awt.headless", "false");
 		log.info ("测试开始");
-		boolean b = ImageService.imagesBack0 (home_TS.getValue ());
+		boolean b = ImageService.imagesBack0 ("1");
 		log.info (b);
 	}
 	
@@ -43,7 +43,7 @@ class ImageServiceTest {
 		System.setProperty ("java.awt.headless", "false");
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		log.info ("测试开始");
-		boolean b = ImageService.imagesBack (home_TS.getValue (), 2);
+		boolean b = ImageService.imagesBack ("1", 2);
 		log.info (b);
 	}
 	
@@ -52,7 +52,7 @@ class ImageServiceTest {
 		System.setProperty ("java.awt.headless", "false");
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		log.info ("测试开始");
-		boolean b = ImageService.imagesBackSingleHide (home_TS.getValue (), 2, 1, true);
+		boolean b = ImageService.imagesBackSingleHide ("1", 2, 1, true);
 		log.info (b);
 	}
 	
@@ -61,7 +61,7 @@ class ImageServiceTest {
 		System.setProperty ("java.awt.headless", "false");
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		log.info ("测试开始");
-		boolean b = ImageService.imagesBackSingleHideIsEmpty (home_TS.getValue (), 2, 1, true);
+		boolean b = ImageService.imagesBackSingleHideIsEmpty ("1", 2, 1, true);
 		log.info (b);
 	}
 	
@@ -75,8 +75,8 @@ class ImageServiceTest {
 		String path = null;
 		//Map<String,List<BufferedImagePO>> map=new HashMap<String,List<BufferedImagePO>>();
 		String path1="D:\\study\\Project\\leetcode\\java\\onmyoji-server\\src\\main" +
-		            "\\resources\\static\\scenario";
-		String path2="D:\\project\\leetcode\\java\\onmyoji-server\\src\\main\\resources\\static\\scenario";
+		            "\\resources\\static\\scenario\\";
+		String path2="D:\\project\\leetcode\\java\\onmyoji-server\\src\\main\\resources\\static\\scenario\\";
 		File file=new File (path1);
 		File file1=new File (path2);
 		if(file.exists ()){
@@ -85,16 +85,16 @@ class ImageServiceTest {
 		if(file1.exists ()){
 			path=path2;
 		}
-		Map<String, List<BufferedImagePO>> map =test (path);
-		Map<String, List<BufferedImagePO>> map1 =test1 (path);
+		Map<String, List<PictureCollectionPO>> map =test (path);
 		log.info (map.size ());
+		Map<String, List<PictureCollectionPO>> map1 =test1 (path);
 		log.info (map1.size ());
 		log.info ("测试结束");
 		long b=System.currentTimeMillis ();
 		log.info ("用时{}毫秒",b-a);
 	}
 	
-	private static Map<String, List<BufferedImagePO>> test(String path) throws IOException {
+	private static Map<String, List<PictureCollectionPO>> test (String path) throws IOException {
 		List<File> files =new ArrayList<> ();
 		try (Stream<Path> paths = Files.walk (Paths.get (path))){
 			files = paths.filter (Files::isRegularFile).map(l -> new File (l.toString ())).collect (Collectors.toList ());
@@ -102,22 +102,31 @@ class ImageServiceTest {
 			e.printStackTrace();
 		}
 		//创建map
-		Map<String, List<BufferedImagePO>> result = new TreeMap<> ();
+		Map<String, List<PictureCollectionPO>> result = new TreeMap<> ();
 		Map<String,Integer> map=new TreeMap<> ();
 		//遍历所有信息，添加map
 		for (File file : files) {
 			String name=file.getParent ().replace(path,"");
-			BufferedImagePO bufferedImagePO=new BufferedImagePO (1,name,ImageIO.read (file));
+			PictureCollectionPO pictureCollectionPO =new PictureCollectionPO (1, name,ImageIO.read (file), null);
+			int width = pictureCollectionPO.getImage ().getWidth ();
+			int height = pictureCollectionPO.getImage ().getHeight ();
+			int [][]img = new int[width][height];
+			for (int w = 0; w < width; w++) {
+				for (int h = 0; h < height; h++) {
+					img[w][h] = pictureCollectionPO.getImage ().getRGB (w, h);
+				}
+			}
+			pictureCollectionPO.setTwoArray (img);
 			if (result.containsKey(name)) { //包含相同编号，
 				int num=map.get(name);
-				bufferedImagePO.setImageNumber (num+1);
-				result.get(name).add(bufferedImagePO); //相同编号追加到集合中
+				pictureCollectionPO.setImageNumber (num + 1);
+				result.get(name).add (pictureCollectionPO); //相同编号追加到集合中
 				map.put(name, num+1);
 			}
 			else { //每组中只有一个的
-				ArrayList<BufferedImagePO> list = new ArrayList<>();
-				bufferedImagePO.setImageNumber (0);
-				list.add(bufferedImagePO);
+				ArrayList<PictureCollectionPO> list = new ArrayList<>();
+				pictureCollectionPO.setImageNumber (0);
+				list.add (pictureCollectionPO);
 				map.put (name,0);
 				result.put(name, list);//直接添加到集合中
 			}
@@ -126,7 +135,7 @@ class ImageServiceTest {
 		return result;
 	}
 	
-	private static Map<String, List<BufferedImagePO>> test1(String path) throws IOException {
+	private static Map<String, List<PictureCollectionPO>> test1 (String path) throws IOException {
 		List<File> files =new ArrayList<> ();
 		try (Stream<Path> paths = Files.walk (Paths.get (path))){
 			files = paths.filter (Files::isRegularFile).map(l -> new File (l.toString ())).collect (Collectors.toList ());
@@ -134,32 +143,40 @@ class ImageServiceTest {
 			e.printStackTrace();
 		}
 		//创建map
-		Map<String, List<BufferedImagePO> >result = new TreeMap<> ();
+		Map<String, List<PictureCollectionPO> >result = new TreeMap<> ();
 		//遍历所有信息，添加map
 		for (File file : files) {
 			String name=file.getParent ().replace(path,"");
-			BufferedImagePO bufferedImagePO=new BufferedImagePO (1,name,ImageIO.read (file));
+			PictureCollectionPO pictureCollectionPO =new PictureCollectionPO (1, name,ImageIO.read (file), null);
+			int width = pictureCollectionPO.getImage ().getWidth ();
+			int height = pictureCollectionPO.getImage ().getHeight ();
+			int [][]img = new int[width][height];
+			for (int w = 0; w < width; w++) {
+				for (int h = 0; h < height; h++) {
+					img[w][h] = pictureCollectionPO.getImage ().getRGB (w, h);
+				}
+			}
+			pictureCollectionPO.setTwoArray (img);
 			if (result.containsKey(name)) { //包含相同编号，
-				result.get(name).add(bufferedImagePO); //相同编号追加到集合中
+				result.get(name).add (pictureCollectionPO); //相同编号追加到集合中
 			}
 			else { //每组中只有一个的
-				ArrayList<BufferedImagePO> list = new ArrayList<>();
-				bufferedImagePO.setImageNumber (0);
-				list.add(bufferedImagePO);
+				ArrayList<PictureCollectionPO> list = new ArrayList<>();
+				pictureCollectionPO.setImageNumber (0);
+				list.add (pictureCollectionPO);
 				result.put(name, list);//直接添加到集合中
 			}
 		}
-		Set<Map.Entry<String, List<BufferedImagePO>>> entries = result.entrySet();
-		for (Map.Entry<String, List<BufferedImagePO>> entry : entries) {
-			List<BufferedImagePO> bufferedImagePOList=entry.getValue ();
-			for(int i=0;i<bufferedImagePOList.size ();i++){
-				BufferedImagePO bufferedImagePO=bufferedImagePOList.get (i);
-				bufferedImagePO.setImageNumber (i);
-				bufferedImagePOList.set(i,bufferedImagePO);
+		Set<Map.Entry<String, List<PictureCollectionPO>>> entries = result.entrySet ();
+		for (Map.Entry<String, List<PictureCollectionPO>> entry : entries) {
+			List<PictureCollectionPO> pictureCollectionPOList =entry.getValue ();
+			for(int i=0; i < pictureCollectionPOList.size ();i++){
+				PictureCollectionPO pictureCollectionPO = pictureCollectionPOList.get (i);
+				pictureCollectionPO.setImageNumber (i);
+				pictureCollectionPOList.set (i, pictureCollectionPO);
 			}
-			result.put (entry.getKey (),bufferedImagePOList);
+			result.put (entry.getKey (), pictureCollectionPOList);
 		}
-
 		return result;
 	}
 }

@@ -1,6 +1,6 @@
 package com.example.demo.utils;
 
-import com.example.demo.model.entity.BufferedImagePO;
+import com.example.demo.model.entity.PictureCollectionPO;
 import com.example.demo.model.entity.PictureIdentifyWorkPO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,50 +8,44 @@ import org.opencv.calib3d.Calib3d;
 import org.opencv.core.*;
 import org.opencv.features2d.DescriptorMatcher;
 import org.opencv.features2d.SIFT;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
-
-import static com.example.demo.utils.ReadFileUtils.readFilesBufferedImagePO;
 
 /**
  * @Classname imagesOpenCVSIFT
  * @Description openCV sift方法 特征匹配
  * @Date 2023/1/26 22:12
- * @Created by orcakill */
-public class ImagesOpenCVSIFT {
-	public static final Logger logger = LogManager.getLogger ("ImagesOpenCVSIFT");
+ * @Created by orcakill
+ */
+public class ImagesOpenCVSIFTUtils {
+	public static final Logger logger = LogManager.getLogger ("ImagesOpenCVSIFTUtils");
+	
 	//识别图片存在并点击或只识别不点击
-	public static boolean imagesRecognition (String FolderName, String process, boolean isClick,
+	public static boolean imagesRecognition (List<PictureCollectionPO> pictureCollectionPOList, String process,
+	                                         boolean isClick,
 	                                         Double coefficient,
 	                                         int characteristicPoint) throws AWTException {
 		//		屏幕截图
 		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
-		//		图片集获取
-		List<BufferedImagePO> ImagesData = readFilesBufferedImagePO (FolderName);
 		
-		if (Objects.requireNonNull (ImagesData).size () > 0) {
-			List<PictureIdentifyWorkPO> mouseXY = FindAllImgDataOpenCvAll (Window, ImagesData, coefficient,
-			                                                               characteristicPoint);
-			//		识别+鼠标点击或仅识别
-			if (mouseXY!=null&&!mouseXY.isEmpty ()) {
-				return MouseClickUtils.mouseClickBack (mouseXY, process, isClick);
-			}
-			else {
-				return false;
-			}
+		List<PictureIdentifyWorkPO> mouseXY = FindAllImgDataOpenCvAll (Window, pictureCollectionPOList, coefficient,
+		                                                               characteristicPoint);
+		//		识别+鼠标点击或仅识别
+		if (mouseXY != null && !mouseXY.isEmpty ()) {
+			return MouseClickUtils.mouseClickBack (mouseXY, process, isClick);
 		}
-		return false;
+		else {
+			return false;
+		}
 	}
 	
-
-	
 	public static List<PictureIdentifyWorkPO> FindAllImgDataOpenCvAll (BufferedImage originalImageB,
-	                                                                   List<BufferedImagePO> templateImageB,
+	                                                                   List<PictureCollectionPO> templateImageB,
 	                                                                   Double coefficient, int characteristicPoint) {
 		//声明 坐标列表
 		List<PictureIdentifyWorkPO> mouseMessages = new ArrayList<> ();
@@ -75,7 +69,7 @@ public class ImagesOpenCVSIFT {
 		originalImage = getMat (originalImageB);
 		sift.detect (originalImage, originalKeyPoints);
 		sift.compute (originalImage, originalKeyPoints, resO);
-		for (BufferedImagePO imagesDatum : templateImageB) {
+		for (PictureCollectionPO imagesDatum : templateImageB) {
 			try {
 				List<MatOfDMatch> matches = new LinkedList<> ();
 				LinkedList<DMatch> goodMatchesList = new LinkedList<> ();
