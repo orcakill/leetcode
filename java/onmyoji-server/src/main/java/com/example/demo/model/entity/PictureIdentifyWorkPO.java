@@ -6,4 +6,12 @@ import lombok.Data;
 public class PictureIdentifyWorkPO {
 	private  Integer X;
 	private  Integer Y;
+	
+	public PictureIdentifyWorkPO () {
+	}
+	
+	public PictureIdentifyWorkPO (Integer x, Integer y) {
+		X = x;
+		Y = y;
+	}
 }

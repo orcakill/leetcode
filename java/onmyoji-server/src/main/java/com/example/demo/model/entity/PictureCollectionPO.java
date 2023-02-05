@@ -15,16 +15,17 @@ import lombok.Data;
 public class PictureCollectionPO {
 	
 	private int ImageNumber; /*图片序号*/
+	private String ImageHome; /*图片目录*/
 	private String ImageName; /*图片名称*/
 	
-	@NotBlank(message = "图片不能为空")
 	private BufferedImage Image; /*图片BufferedImage*/
 	
 	private  int[][]  twoArray;/*图片二维数组*/
 	
-	public PictureCollectionPO (int imageNumber, String imageName, BufferedImage image,
+	public PictureCollectionPO (int imageNumber, String imageHome, String imageName, BufferedImage image,
 	                            int[][] twoArray) {
 		ImageNumber = imageNumber;
+		ImageHome = imageHome;
 		ImageName = imageName;
 		Image = image;
 		this.twoArray = twoArray;
