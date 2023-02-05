@@ -86,8 +86,8 @@ public class ImagesOpenCVSIFTUtils {
 				goodMatchList (matches, goodMatchesList, coefficient);
 				matchesPointCount = goodMatchesList.size ();
 				//当匹配后的特征点大于等于 4 个，则认为模板图在原图中，该值可以自行调整
-				logger.info ("{} {},特征点:{}", imagesDatum.getImageNumber (), imagesDatum.getImageName (),
-				             matchesPointCount);
+				logger.info ("{} {},特征点:{},预计特征点{}", imagesDatum.getImageNumber (), imagesDatum.getImageName (),
+				             matchesPointCount,characteristicPoint);
 				if (matchesPointCount >= characteristicPoint) {
 					List<KeyPoint> templateKeyPointList = templateKeyPoints.toList ();
 					List<KeyPoint> originalKeyPointList = originalKeyPoints.toList ();

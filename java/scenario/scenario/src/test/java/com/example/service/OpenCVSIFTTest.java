@@ -90,9 +90,19 @@ public class OpenCVSIFTTest {
 	
 	@Test
 	public void sift4 () throws IOException, InterruptedException, AWTException {
+		long start=System.currentTimeMillis ();
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
-		String file = "scenario/阴阳寮/结界";
+		String file = "scenario/首页/编号/5561731";
 		ImageOpenCVService.imagesOpenCV (file);
+		logger.info ("用时{}毫秒",System.currentTimeMillis ()-start);
+	}
+	
+	@Test
+	public void sift41 () throws IOException, InterruptedException, AWTException {
+		long start=System.currentTimeMillis ();
+		String file = "scenario/首页/编号/5561731";
+		ImageService.imagesClickBack (file);
+		logger.info ("用时{}毫秒",System.currentTimeMillis ()-start);
 	}
 	
 	@Test

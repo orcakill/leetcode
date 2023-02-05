@@ -35,6 +35,13 @@ public class MouseClickUtils {
 		
 	}
 	
+	public static void mouseClickBack (PictureIdentifyWorkPO pictureIdentifyWorkPO,String process) throws AWTException {
+		HWND hwnd = User32.INSTANCE.FindWindow (null, process);
+		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOS=new ArrayList<> ();
+		pictureIdentifyWorkPOS.add (pictureIdentifyWorkPO);
+		mouseClickBackground (hwnd, pictureIdentifyWorkPOS);
+	}
+	
 	//后台鼠标拖拽，坐标1，坐标2，进程名
 	public static void mouseClickBackDrag (PictureIdentifyWorkPO pictureIdentifyWorkPO1,
 	                                       PictureIdentifyWorkPO pictureIdentifyWorkPO2,

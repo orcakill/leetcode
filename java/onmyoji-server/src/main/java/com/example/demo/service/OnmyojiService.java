@@ -1,11 +1,9 @@
 package com.example.demo.service;
 
-import com.example.demo.model.entity.PictureCollectionPO;
 import org.springframework.scheduling.annotation.Async;
 
+import java.awt.*;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @Classname OnmyojiService
@@ -34,7 +32,7 @@ public interface OnmyojiService {
 	 * @date: 2023/1/28 23:42
 	 */
 	
-	void autoActivity (Integer type, Integer round);
+	void autoActivity (Integer type, Integer round) throws IOException, InterruptedException, AWTException;
 	/***
 	 * @description: 当前状态判断  阴阳师图标、服务器界面、首页、其他有返回按钮的界面
 	 * @return: void
@@ -42,7 +40,7 @@ public interface OnmyojiService {
 	 * @date: 2023/2/4 2:04
 	 */
 	
-	String thisState();
+	String thisState() throws IOException, InterruptedException, AWTException;
 	/***
 	 * @description: 返回首页
 	 * @return: void

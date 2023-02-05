@@ -1,18 +1,12 @@
 package com.example.demo.model.map;
 
-import com.example.demo.model.entity.PictureCollectionPO;
-
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
-import static com.example.demo.utils.ReadFileUtils.readPictureMap;
 
 public class FolderPathMap {
 	
-	public  static String folderPath (String key) throws IOException {
+	public  static String folderPath (String key) {
 		if(key.equals ("模拟器路径")){
 			return exeAddress ();
 		}
@@ -38,7 +32,7 @@ public class FolderPathMap {
 		return address;
 	}
 	
-	public static String photoPath () throws IOException {
+	public static String photoPath () {
 		String path = null;
 		String path1="D:\\study\\Project\\leetcode\\java\\onmyoji-server\\src\\main" +
 		             "\\resources\\static\\scenario\\";

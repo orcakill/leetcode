@@ -1,11 +1,9 @@
 package com.example.demo.service;
 
-import com.example.demo.model.entity.PictureCollectionPO;
 import com.example.demo.service.impl.ImageServiceImpl;
-
 import java.awt.*;
-import java.io.IOException;
 import java.util.List;
+import java.io.IOException;
 
 /**
  * @Classname ImageService
@@ -31,11 +29,18 @@ public interface ImageService {
 			       InterruptedException, AWTException {
 		return ImageServiceImpl.imagesClickBack (folder, identificationAlgorithmType, re_num, boole);
 	}
-	
+	 
 	//图片后台识别,文件夹下图片识别,可切换算法类型，指定识别次数，指定日志识别显示,但不点击
 	static boolean imagesBackSingleHideIsEmpty (String folder, Integer identificationAlgorithmType, Integer re_num,
 	                                       boolean boole) throws IOException,
 	                                                             InterruptedException, AWTException {
 		return ImageServiceImpl.imagesClickBackIsEmpty (folder, identificationAlgorithmType, re_num, boole, false);
+	}
+	
+	//图片后台识别,多组图片识别,可切换算法类型，指定识别次数，指定日志识别显示,但不点击
+	static String imagesBackListIsEmpty (List<String> folderList, Integer identificationAlgorithmType)
+			throws IOException,
+			       AWTException, InterruptedException {
+		return ImageServiceImpl.imagesBackListIsEmpty(folderList, identificationAlgorithmType,false);
 	}
 }

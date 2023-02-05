@@ -56,4 +56,12 @@ public class ImageServiceImpl {
 		                                         end_time0,
 		                                         boole,isClick,coefficient0,characteristicPoint0);
 	}
+	
+	public static String imagesBackListIsEmpty (List<String> folderList, Integer identificationAlgorithmType,
+	                                            boolean isClick)
+			throws IOException, InterruptedException, AWTException {
+		return ImageCoreService.imagesBackClickList (folderList,identificationAlgorithmType,process0,re_num0,start_time0,
+		                                         end_time0,
+		                                         boole0,isClick,coefficient0,characteristicPoint0);
+	}
 }

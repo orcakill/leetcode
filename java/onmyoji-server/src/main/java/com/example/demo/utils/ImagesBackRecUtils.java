@@ -2,15 +2,14 @@ package com.example.demo.utils;
 
 import com.example.demo.model.entity.PictureCollectionPO;
 import com.example.demo.model.entity.PictureIdentifyWorkPO;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.awt.AWTException;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import static com.example.demo.utils.ReadFileUtils.readFilesBufferedImage;
+
 
 /**
  * @Classname ImagesBackRec
@@ -90,7 +89,7 @@ public class ImagesBackRecUtils {
 							}
 							if (flag) {
 								
-								logger.info ("在屏幕上找到图片了,坐标:( " + x + " , " + y + " )");
+								logger.info ("在屏幕上找到图片了,坐标:({},{}),{}",x,y,pictureCollectionPO.getImageName ());
 								// 这是专门存储数据的类
 								x += (int) (Math.random () * 0.1 * imgWidth);
 								y += (int) (Math.random () * 0.1 * imgHeight);
@@ -125,43 +124,5 @@ public class ImagesBackRecUtils {
 		int B2 = (RGB2 & 0xff);
 		
 		return Math.abs (R1 - R2) < 5 && Math.abs (G1 - G2) < 5 && Math.abs (B1 - B2) < 5;
-	}
-	
-	public static List<int[][]> imageToDate (String FolderName) {
-		return getImagesGRB (Objects.requireNonNull (readFilesBufferedImage (FolderName)));
-	}
-	
-
-	
-	/**
-	 * 本方法将图片集合转化为图片数据集合
-	 * @param images - 指定图片集合
-	 * @return - 指定图片数据集合
-	 */
-	private static List<int[][]> getImagesGRB (List<BufferedImage> images) {
-		
-		List<int[][]> ImagesData = new ArrayList<> ();
-		
-		int width;
-		int height;
-		int[][] img;
-		if (images.size () > 0) {
-			for (BufferedImage bufferedImage : images) {
-				width = bufferedImage.getWidth ();
-				height = bufferedImage.getHeight ();
-				img = new int[width][height];
-				
-				for (int w = 0; w < width; w++) {
-					for (int h = 0; h < height; h++) {
-						img[w][h] = bufferedImage.getRGB (w, h);
-					}
-				}
-				
-				ImagesData.add (img);
-			}
-		}
-		
-		return ImagesData;
-		
 	}
 }

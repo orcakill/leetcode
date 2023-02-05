@@ -1,6 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.model.entity.PictureCollectionPO;
+import com.example.demo.model.map.FolderPathMap;
+import com.example.demo.utils.ImagesBackRecUtils;
+import com.example.demo.utils.ReadFileUtils;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.opencv.core.Core;
@@ -31,19 +34,24 @@ class ImageServiceTest {
 	//默认图像识别算法，RGB模板匹配
 	@Test
 	void imagesBack0 () throws IOException, InterruptedException, AWTException {
+		long start=System.currentTimeMillis ();
 		System.setProperty ("java.awt.headless", "false");
 		log.info ("测试开始");
-		boolean b = ImageService.imagesBack0 ("首页\\编号\\5561731");
+		String folder="首页\\编号\\5561731";
+		boolean b =ImageService.imagesBack0 (folder);
 		log.info (b);
+		log.info ("图片识别，用时{}毫秒",System.currentTimeMillis ()-start);
 	}
 	
 	@Test
 	void imagesBack () throws IOException, InterruptedException, AWTException {
+		long start=System.currentTimeMillis ();
 		System.setProperty ("java.awt.headless", "false");
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		log.info ("测试开始");
-		boolean b = ImageService.imagesBack ("1", 2);
+		boolean b = ImageService.imagesBack("首页\\编号\\5561731",2);
 		log.info (b);
+		log.info ("用时{}毫秒",System.currentTimeMillis ()-start);
 	}
 	
 	@Test
@@ -106,7 +114,7 @@ class ImageServiceTest {
 		//遍历所有信息，添加map
 		for (File file : files) {
 			String name=file.getParent ().replace(path,"");
-			PictureCollectionPO pictureCollectionPO =new PictureCollectionPO (1, name,ImageIO.read (file), null);
+			PictureCollectionPO pictureCollectionPO =new PictureCollectionPO (1, name,file.getName (),ImageIO.read (file), null);
 			int width = pictureCollectionPO.getImage ().getWidth ();
 			int height = pictureCollectionPO.getImage ().getHeight ();
 			int [][]img = new int[width][height];
@@ -145,8 +153,10 @@ class ImageServiceTest {
 		Map<String, List<PictureCollectionPO> >result = new TreeMap<> ();
 		//遍历所有信息，添加map
 		for (File file : files) {
-			String name=file.getParent ().replace(path,"");
-			PictureCollectionPO pictureCollectionPO =new PictureCollectionPO (1, name,ImageIO.read (file), null);
+			String home=file.getParent ().replace(path,"");
+			PictureCollectionPO pictureCollectionPO =new PictureCollectionPO (1, home,
+			                                                                  file.getName (),ImageIO.read (file),
+			                                                                  null);
 			int width = pictureCollectionPO.getImage ().getWidth ();
 			int height = pictureCollectionPO.getImage ().getHeight ();
 			int [][]img = new int[width][height];
@@ -156,14 +166,14 @@ class ImageServiceTest {
 				}
 			}
 			pictureCollectionPO.setTwoArray (img);
-			if (result.containsKey(name)) { //包含相同编号，
-				result.get(name).add (pictureCollectionPO); //相同编号追加到集合中
+			if (result.containsKey(home)) { //包含相同编号，
+				result.get(home).add (pictureCollectionPO); //相同编号追加到集合中
 			}
 			else { //每组中只有一个的
 				ArrayList<PictureCollectionPO> list = new ArrayList<>();
 				pictureCollectionPO.setImageNumber (0);
 				list.add (pictureCollectionPO);
-				result.put(name, list);//直接添加到集合中
+				result.put(home, list);//直接添加到集合中
 			}
 		}
 		Set<Map.Entry<String, List<PictureCollectionPO>>> entries = result.entrySet ();
