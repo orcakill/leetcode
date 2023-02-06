@@ -14,6 +14,9 @@ public enum GameEnum {
   home_YH_NJZR ("首页/用户/逆戟之刃"),
   home_YH_ORCAKILL ("首页/用户/orcakill"),
   home_YYSTB ("首页/阴阳师图标"),
+  login_CY ("登录/常用"),
+  login_SLTS ("登录/适龄提示"),
+  login_YHZX ("登录/用户中心"),
   login_YYSTB ("登录/阴阳师图标"),
   return_FH ("返回");
   private final String value;

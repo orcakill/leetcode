@@ -100,45 +100,60 @@ public class OnmyojiServiceImpl implements OnmyojiService {
   
   @Override
   public void autoActivity (Integer type, Integer round) throws IOException, InterruptedException, AWTException {
-     boolean initializeOrNot;//初始化完成标志
-     String  thisPicture;//当前状态
-     boolean announcementOrNot;//是否公告
+
      for(int i=0;i<round;i++){
-       initializeOrNot=false;
+
        //大号  阴阳寮突破+个人突破+魂十一40次+地域鬼王（每日一次）
        if(type==1){
-         //  当前状态初始化
-         while (!initializeOrNot){
-           thisPicture=thisState ();
-           log.info ("当前状态{}",thisPicture);
-           //阴阳师图标，需要点击应用图标->跳过登录动画->关闭公告
-           if(thisPicture.equals (home_YYSTB.getValue ())){
-              log.info ("点击阴阳师图标");
-              ImageService.imagesBack0 (home_YYSTB.getValue ());
-              Thread.sleep (10000);
-              log.info ("单击一下，防止有开场动画");
-              MouseClickUtils.mouseClickBack (new PictureIdentifyWorkPO (500,500),"夜神模拟器");
-              Thread.sleep (1000);
-              announcementOrNot=ImageService.imagesBackSingleHideIsEmpty (return_FH.getValue (),2,1,true);
-              if (announcementOrNot){
-                log.info ("有公告");
-                ImageService.imagesBackSingleHide (return_FH.getValue (),2,1,true);
-                Thread.sleep (1000);
-              }
-              
-           }
-         }
-           //  当前状态检查，桌面、角色首页、有返回
-           //  返回首页，先检查是否可以返回 允许返回则先返回到首页，不能返回则跳过
-           //  账号登录（大号） 阴阳师登录/大号首页登录/小号首页登录
+         //  当前状态初始化，进入角色首页
+         initializationState("5561731");
+         //  返回首页，先检查是否可以返回 允许返回则先返回到首页，不能返回则跳过
+         //  账号登录（大号） 阴阳师登录/大号首页登录/小号首页登录
          //  阴阳寮突破
          //  个人突破
          //  魂十一（注意喂食宠物）
          //  地域鬼王+领取花合战每日奖励，无未攻打则跳过
          //  寄养检查，优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
          //  好友添加、好友删除、赠送小号红心、赠送其他人红心（待定）
+         }
        }
-     }
+     
+  }
+  
+  @Override
+  public void initializationState (String userId) throws IOException, InterruptedException, AWTException {
+    boolean initializeOrNot=false;
+    String  thisPicture;//当前状态
+    boolean announcementOrNot;//是否公告
+    boolean  promptForAge=false;
+    while (!initializeOrNot){
+      thisPicture=thisState ();
+      log.info ("当前状态{}",thisPicture);
+      //阴阳师图标，需要点击应用图标->跳过登录动画->关闭公告->适龄提示
+      if(thisPicture.equals (home_YYSTB.getValue ())){
+        log.info ("点击阴阳师图标");
+        ImageService.imagesBack0 (home_YYSTB.getValue ());
+        while (!promptForAge){
+          Thread.sleep (10000);
+          log.info ("单击一下，防止有开场动画");
+          MouseClickUtils.mouseClickBack (new PictureIdentifyWorkPO (500,500),"夜神模拟器");
+          Thread.sleep (1000);
+          announcementOrNot=ImageService.imagesBackSingleHideIsEmpty (return_FH.getValue (),2,1,true);
+          if (announcementOrNot){
+            log.info ("有公告");
+            ImageService.imagesBackSingleHide (return_FH.getValue (),2,1,true);
+            Thread.sleep (1000);
+          }
+          promptForAge=ImageService.imagesBackSingleHideIsEmpty (login_SLTS.getValue (),2,1,true);
+          if(promptForAge){
+            log.info ("当前页面有适龄提示");
+          }
+        }
+        log.info ("切换用户和大区并登录到首页");
+        login (userId);
+        log.info ("当前用户首页");
+      }
+    }
   }
   
   @Override
@@ -161,6 +176,25 @@ public class OnmyojiServiceImpl implements OnmyojiService {
   }
   
   @Override
-  public void login (String gameUserId) {
+  public void login (String gameUserId) throws IOException, InterruptedException, AWTException {
+  boolean userHomePageOrNot=ImageService.imagesBackSingleHideIsEmpty (login_YHZX.getValue (),2,3,true);//是否有用户中心
+  if(userHomePageOrNot){
+    log.info ("点击用户中心图标");
+    ImageService.imagesBackSingleHide (login_YHZX.getValue (),2,3,true);
+    Thread.sleep (1000);
+    ImageService.imagesBackSingleHide (login_YHZX.getValue (),2,3,true);
+    Thread.sleep (1000);
+    log.info ("切换账号按钮");
+    log.info ("短板和");
+    log.info ("选择账号");
+    
+  }
+  
+
+
+  log.info ("点击切换大区");
+  log.info ("选择角色");
+  log.info ("开始游戏");
+  log.info ("底部菜单栏");
   }
 }
