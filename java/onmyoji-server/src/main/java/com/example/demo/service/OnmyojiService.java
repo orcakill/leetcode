@@ -33,13 +33,22 @@ public interface OnmyojiService {
 	 */
 	
 	void autoActivity (Integer type, Integer round) throws IOException, InterruptedException, AWTException;
+
+	/***
+	 * @description: 状态初始化，登录到目标首页
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/2/6 8:36
+	 */
+	
+	void initializationState(String userId) throws IOException, InterruptedException, AWTException;
+	
 	/***
 	 * @description: 当前状态判断  阴阳师图标、服务器界面、首页、其他有返回按钮的界面
 	 * @return: void
 	 * @author: orcakill
 	 * @date: 2023/2/4 2:04
 	 */
-	
 	String thisState() throws IOException, InterruptedException, AWTException;
 	/***
 	 * @description: 返回首页
@@ -55,5 +64,5 @@ public interface OnmyojiService {
 	 * @author: orcakill
 	 * @date: 2023/1/28 23:21
 	 */
-	void login (String gameUserId);
+	void login (String gameUserId) throws IOException, InterruptedException, AWTException;
 }
