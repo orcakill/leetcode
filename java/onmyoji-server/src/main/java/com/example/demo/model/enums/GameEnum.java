@@ -17,6 +17,7 @@ public enum GameEnum {
   login_CY ("登录/常用"),
   login_SLTS ("登录/适龄提示"),
   login_YHZX ("登录/用户中心"),
+  login_QHZH ("登录/切换账号"),
   login_YYSTB ("登录/阴阳师图标"),
   return_FH ("返回");
   private final String value;

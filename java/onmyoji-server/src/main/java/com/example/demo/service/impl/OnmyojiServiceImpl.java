@@ -163,7 +163,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
     stringList.add (home_YYSTB.getValue ());
     //大号 逆戟之刃
     stringList.add (home_YH_NJZR.getValue ());
-    //大号 逆戟之刃
+    //小号 orcakill
     stringList.add (home_YH_NJZR.getValue ());
     //返回
     stringList.add (return_FH.getValue ());
@@ -179,13 +179,13 @@ public class OnmyojiServiceImpl implements OnmyojiService {
   public void login (String gameUserId) throws IOException, InterruptedException, AWTException {
   boolean userHomePageOrNot=ImageService.imagesBackSingleHideIsEmpty (login_YHZX.getValue (),2,3,true);//是否有用户中心
   if(userHomePageOrNot){
-    log.info ("点击用户中心图标");
+    log.info ("点击用户中心");
     ImageService.imagesBackSingleHide (login_YHZX.getValue (),2,3,true);
     Thread.sleep (1000);
-    ImageService.imagesBackSingleHide (login_YHZX.getValue (),2,3,true);
+    log.info ("切换账号");
+    ImageService.imagesBackSingleHide (login_QHZH.getValue (),2,3,true);
     Thread.sleep (1000);
-    log.info ("切换账号按钮");
-    log.info ("短板和");
+    log.info ("常用");
     log.info ("选择账号");
     
   }
