@@ -57,11 +57,12 @@ public class ImageCoreServiceImpl {
 			                   pictureCollectionPOList);
 			if (result) {
 				log.info ("图片识别成功");
+				Thread.sleep (num_time * 1000L);
 				return true;
 			}
 			else {
 				if (b) {
-					log.info ("在{}秒的检测中，第{}次检查未发现 {} 的图片", num_time, (i + 1), folder);
+					log.info ("在间隔{}秒的检测中，第{}次检查未发现 {} 的图片", num_time, (i + 1), folder);
 				}
 			}
 		}
@@ -107,11 +108,12 @@ public class ImageCoreServiceImpl {
 				                   pictureCollectionPOList);
 				if (result) {
 					log.info ("图片识别成功");
+					Thread.sleep (num_time * 1000L);
 					return s;
 				}
 				else {
 					if (b) {
-						log.info ("在{}秒的检测中，第{}次检查未发现 {} 的图片", num_time, (i + 1), s);
+						log.info ("在间隔{}秒的检测中，第{}次检查未发现 {} 的图片", num_time, (i + 1), s);
 					}
 				}
 			}
