@@ -19,7 +19,7 @@ public class ImageServiceImpl {
 	private static final int identificationAlgorithmType1 = 1; /*模板匹配，openCV平方差法*/
 	private static final int identificationAlgorithmType2 = 2; /*特征匹配，openCV sift特征匹配*/
 	private static final String process0 = "夜神模拟器"; /*默认进程名*/
-	private static final int re_num0 = 60;/*默认识别次数*/
+	private static final int re_num0 = 10;/*默认识别次数*/
 	private static final int start_time0 = 1;     //识别开始间隔 如 1
 	private static final int end_time0 = 2;     //识别结束间隔 如 2
 	private static final boolean boole0 = true;    //是否显示未识别日志 如 true 或false

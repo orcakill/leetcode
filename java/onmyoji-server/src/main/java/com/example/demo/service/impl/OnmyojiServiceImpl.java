@@ -174,27 +174,38 @@ public class OnmyojiServiceImpl implements OnmyojiService {
   public void returnHome () {
   
   }
-  
+
   @Override
   public void login (String gameUserId) throws IOException, InterruptedException, AWTException {
-  boolean userHomePageOrNot=ImageService.imagesBackSingleHideIsEmpty (login_YHZX.getValue (),2,3,true);//是否有用户中心
+  boolean userHomePageOrNot=ImageService.imagesBackSingleHideIsEmpty (login_YHZX.getValue (),2,3,true);
   if(userHomePageOrNot){
     log.info ("点击用户中心");
-    ImageService.imagesBackSingleHide (login_YHZX.getValue (),2,3,true);
-    Thread.sleep (1000);
+    ImageService.imagesBack (login_YHZX.getValue (),2);
     log.info ("切换账号");
-    ImageService.imagesBackSingleHide (login_QHZH.getValue (),2,3,true);
-    Thread.sleep (1000);
+    ImageService.imagesBack (login_QHZH.getValue (),2);
     log.info ("常用");
+    ImageService.imagesBack (login_CY.getValue (),2);
     log.info ("选择账号");
+    if(gameUserId!=null){
+      if(gameUserId.equals ("5561731")){
+        log.info ("手机号178");
+        ImageService.imagesBack (login_XZZH_PHONE1.getValue (),2);
+      }
+      if(gameUserId.equals ("1")){
+        log.info ("邮箱号1");
+        ImageService.imagesBack (login_YHZX_EMAIIL1.getValue (),2);
+      }
+    }
+    log.info ("切换服务器");
+    if(gameUserId!=null){
+      if(gameUserId.equals ("5561731")){
+        log.info ("点击大号");
+      }
+    }
+    log.info ("开始游戏");
+    log.info ("底部菜单栏");
     
   }
-  
 
-
-  log.info ("点击切换大区");
-  log.info ("选择角色");
-  log.info ("开始游戏");
-  log.info ("底部菜单栏");
   }
 }
