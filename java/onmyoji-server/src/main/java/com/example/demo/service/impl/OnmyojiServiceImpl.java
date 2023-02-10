@@ -203,6 +203,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
       }
     }
     log.info ("开始游戏");
+
     log.info ("底部菜单栏");
     
   }

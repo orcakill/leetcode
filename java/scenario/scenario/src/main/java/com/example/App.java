@@ -34,6 +34,7 @@ public class App{
         logger.info ("12 御魂整理-速度强化-极限副属性");
         logger.info ("13 个人结界+探索20次(全打)");
         logger.info ("14 个人结界+一轮探索60次(极限速度)");
+        logger.info ("15 先寄养+阴阳寮结界+个人结界+魂土40次");
         Scanner scanner = new Scanner (System.in);
         logger.info ("输入一个轮次");
         int a = scanner.nextInt ();//输入一个轮次

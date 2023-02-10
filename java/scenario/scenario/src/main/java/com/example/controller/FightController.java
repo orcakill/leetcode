@@ -176,6 +176,17 @@ public class FightController {
 				//检查寄养，无则寄养
 				FightAutoController.foster ();
 			}
+			if (b == 15) {
+				//检查寄养，无则寄养
+				FightAutoController.foster ();
+				FightService.returnHome ();
+				//阴阳寮结界
+				FightAutoController.fightHome ();
+				//个人结界
+				FightAutoController.borderCheck ();
+				//魂土
+				FightAutoController.soulFight (11, 40, true);
+			}
 		}
 		
 	}
