@@ -11,10 +11,9 @@ import java.util.Scanner;
 public class App{
     //App日志
     public  static  final Logger logger = LogManager.getLogger ("App");
-    //执行进程
-    public  static   int ThreadSecondNumber=1;
     //进程结束标志
-    public  static  boolean ThreadSecondIsEnd=false;
+    public static boolean ThreadSecondIsEnd = false;
+    public static boolean mobileDesktop = false;
 
     
     public static void main(String[] args) throws InterruptedException {
@@ -41,37 +40,29 @@ public class App{
         logger.info ("输入一个选项");
         int b = scanner.nextInt ();//输入一个选项
         ThreadFirstController t = new ThreadFirstController ();
-        ThreadSecondController t1 = new ThreadSecondController (a,b);
-        ThreadSecondController t2 = new ThreadSecondController (a,b);
-        ThreadSecondController t3 = new ThreadSecondController (a,b);
+        ThreadSecondController t1 = new ThreadSecondController (a, b);
         logger.info ("启动监控线程");
-        t.start();
-        while (ThreadSecondNumber<=4){
-            if(ThreadSecondNumber==1 && !t1.isAlive ()&&!ThreadSecondIsEnd){
+        t.start ();
+        while (!ThreadSecondIsEnd) {
+            if (!t1.isAlive ()) {
                 logger.info ("启动线程1");
-                t1.start();
+                t1.start ();
             }
-            if(ThreadSecondNumber==2&&t1.isAlive ()&&!ThreadSecondIsEnd){
-                logger.info ("启动线程2");
-                t1.interrupt ();
-                t2.start();
+            if (mobileDesktop) {
+                logger.info ("异常退出，重启线程1");
+                t1.stop ();
+                t1 = new ThreadSecondController (a, b);
+                t1.start ();
+                mobileDesktop = false;
             }
-            if(ThreadSecondNumber==3&&t2.isAlive ()&&!ThreadSecondIsEnd){
-                logger.info ("启动线程3");
-                t2.interrupt ();
-                t3.start();
-            }
-            if(ThreadSecondIsEnd){
-                logger.info ("结束监控线程");
-                t.interrupt ();
-                break;
-            }
-            Thread.sleep (60*1000);
+            Thread.sleep (60 * 1000);
         }
-        long endTime=System.currentTimeMillis ();
-        long difference=endTime-startTime;
-        logger.info ("运行时间为{}分/{}秒",difference/1000/60,difference/1000);
-        
+        logger.info ("结束监控线程");
+        t.interrupt ();
+        long endTime = System.currentTimeMillis ();
+        long difference = endTime - startTime;
+        logger.info ("运行时间为{}分/{}秒", difference / 1000 / 60, difference / 1000);
+    
     }
     
 }
