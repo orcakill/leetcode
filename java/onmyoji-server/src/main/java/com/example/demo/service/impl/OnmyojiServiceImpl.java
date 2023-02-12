@@ -151,6 +151,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
         }
         log.info ("切换用户和大区并登录到首页");
         login (userId);
+        initializeOrNot=true;
         log.info ("当前用户首页");
       }
     }

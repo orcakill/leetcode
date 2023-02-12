@@ -5,8 +5,8 @@ import lombok.SneakyThrows;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static com.example.App.*;
-import static com.example.service.MailService.sendMail;
+import static com.example.App.ThreadSecondIsEnd;
+import static com.example.App.mobileDesktop;
 
 public class ThreadFirstController extends Thread {
 	public  static  final Logger logger = LogManager.getLogger ("ThreadFirstController");
@@ -20,9 +20,9 @@ public class ThreadFirstController extends Thread {
 			Thread.sleep (60 * 1000);
 			b = ImageService.imagesClickBackIsEmpty (file2,1,false);
 			if (b) {
-				logger.info ("线程数加一");
-				ThreadSecondNumber++;
-				Thread.sleep (5*60*1000);
+				logger.info ("检查到异常退出");
+				mobileDesktop = true;
+				Thread.sleep (5 * 60 * 1000);
 			}
 			
 		}
