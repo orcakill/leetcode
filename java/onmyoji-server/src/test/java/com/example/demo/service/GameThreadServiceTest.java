@@ -22,20 +22,19 @@ class GameThreadServiceTest {
 
   @Test
   void findById() {
-    GameThreadPO gameThreadPO=gameThreadService.findById("63d15dec64874132802986e2");
-    log.info("查询记录{}",gameThreadPO.toString());
+    GameThreadPO gameThreadPO=gameThreadService.findById("63ebbd67130f3f55d5608550");
+    log.info("查询记录: {}",gameThreadPO.toString());
   }
 
   @Test
   void save() {
     GameThreadPO gameThreadPO=new GameThreadPO();
     gameThreadPO.setThreadState(0);
-    gameThreadPO.setThreadNumber(1);
     gameThreadService.save(gameThreadPO);
   }
 
   @Test
   void delete() {
-    gameThreadService.delete("63d15dec64874132802986e2");
+    gameThreadService.delete(1);
   }
 }

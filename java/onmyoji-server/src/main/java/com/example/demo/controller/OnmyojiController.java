@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.UnknownHostException;
+
 /**
  * @Classname FightController
  * @Description 自动战斗
@@ -33,7 +35,7 @@ public class OnmyojiController {
 	public Results<?> getArticles (
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round
-	                              ) throws InterruptedException {
+	                              ) throws InterruptedException, UnknownHostException {
 		onmyojiService.onmyojiService (1,round);
 		return Results.ok ("任务已启动");
 	}
