@@ -4,6 +4,7 @@ import org.springframework.scheduling.annotation.Async;
 
 import java.awt.*;
 import java.io.IOException;
+import java.net.UnknownHostException;
 
 /**
  * @Classname OnmyojiService
@@ -21,7 +22,7 @@ public interface OnmyojiService {
 	 * @date: 2023/1/25 20:58
 	 */
 	@Async
-	void onmyojiService (Integer type, Integer round) throws InterruptedException;
+	void onmyojiService (Integer type, Integer round) throws InterruptedException, UnknownHostException;
 	
 	/***
 	 * @description: 开启自动游戏
