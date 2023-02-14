@@ -200,13 +200,14 @@ public class OnmyojiServiceImpl implements OnmyojiService {
     log.info ("切换服务器");
     if(gameUserId!=null){
       if(gameUserId.equals ("5561731")){
-        log.info ("点击大号");
+        log.info ("点击大号角色-缥缈之旅");
+        ImageService.imagesBack (login_FWQ_PMZL.getValue (),2);
       }
     }
     log.info ("开始游戏");
-
+    ImageService.imagesBack (login_KSYX.getValue (),2);
     log.info ("底部菜单栏");
-    
+    ImageService.imagesBack (home_DBCD.getValue (),2);
   }
 
   }

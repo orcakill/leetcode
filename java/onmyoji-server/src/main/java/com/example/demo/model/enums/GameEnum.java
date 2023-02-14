@@ -15,13 +15,16 @@ public enum GameEnum {
   home_YH_ORCAKILL ("首页/用户/orcakill"),
   home_YYSTB ("首页/阴阳师图标"),
   login_CY ("登录/常用"),
-  login_SLTS ("登录/适龄提示"),
-  login_YHZX ("登录/用户中心"),
+  login_FWQ_PMZL ("登录/服务器/缥缈之旅"),
   login_QHZH ("登录/切换账号"),
-  login_YYSTB ("登录/阴阳师图标"),
+  login_SLTS ("登录/适龄提示"),
   login_XZZH_PHONE1 ("登录/选择账号/手机号1"),
+  login_YHZX ("登录/用户中心"),
+  login_YHZX_EMAIIL1 ("登录/选择账号/邮箱号1"),
+  login_YYSTB ("登录/阴阳师图标"),
   return_FH ("返回"),
-  login_YHZX_EMAIIL1 ("登录/选择账号/邮箱号1");
+  login_KSYX ("登录/开始游戏"),
+  home_DBCD ("首页/底部菜单");
   private final String value;
   
   GameEnum (String value) {
