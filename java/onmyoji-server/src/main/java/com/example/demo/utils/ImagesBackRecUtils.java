@@ -2,8 +2,7 @@ package com.example.demo.utils;
 
 import com.example.demo.model.entity.PictureCollectionPO;
 import com.example.demo.model.entity.PictureIdentifyWorkPO;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.log4j.Log4j2;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -17,8 +16,9 @@ import java.util.List;
  * @Date 2023/1/26 2:15
  * @Created by orcakill
  */
+@Log4j2
 public class ImagesBackRecUtils {
-	private static final Logger logger = LogManager.getLogger ("ImagesBackRecUtils");
+
 	
 	//识别图片存在并点击或只识别不点击
 	public static boolean imagesRecognition (List<PictureCollectionPO> pictureCollectionPOList, String process, boolean isClick) throws AWTException {
@@ -51,61 +51,65 @@ public class ImagesBackRecUtils {
 		}
 		int [][] imagesDatum;
 		// 将屏幕与全部目标图片对比
-		for (PictureCollectionPO pictureCollectionPO: pictureCollectionPOList) {
-			imagesDatum=pictureCollectionPO.getTwoArray ();
-			// 获取图片尺寸
-			int imgWidth = imagesDatum.length;
-			int imgHeight = imagesDatum[0].length;
-            a:
-			{
-				for (int x = 0; x < width - imgWidth; x++) {
-					for (int y = 0; y < height - imgHeight; y++) {
-						// 判断图片的四个顶点的RGB是否相等
-						if (equalsRGB (imagesDatum[0][0], WindowData[x][y])
-						    && equalsRGB (imagesDatum[imgWidth - 1][0], WindowData[x + imgWidth - 1][y])
-						    && equalsRGB (imagesDatum[imgWidth - 1][imgHeight - 1],
-						                  WindowData[x + imgWidth - 1][y + imgHeight - 1])
-						    && equalsRGB (imagesDatum[0][imgHeight - 1], WindowData[x][y + imgHeight - 1])) {
-							// 如果相等,进行二次匹配确认
-							int biggerX;
-							int biggerY;
-							boolean flag = true;
-                            b:
-							{
-								for (int smallerX = 0; smallerX < imgWidth; smallerX++) {
-									biggerX = x + smallerX;
-									for (int smallerY = 0; smallerY < imgHeight; smallerY++) {
-										biggerY = y + smallerY;
-										// 如果对应点数据不同为假
-										if (!equalsRGB (imagesDatum[smallerX][smallerY],
-										                WindowData[biggerX][biggerY])) {
-											
-											flag = false;
-											break b;
-											
+		try {
+			for (PictureCollectionPO pictureCollectionPO: pictureCollectionPOList) {
+				imagesDatum=pictureCollectionPO.getTwoArray ();
+				// 获取图片尺寸
+				int imgWidth = imagesDatum.length;
+				int imgHeight = imagesDatum[0].length;
+a:
+				{
+					for (int x = 0; x < width - imgWidth; x++) {
+						for (int y = 0; y < height - imgHeight; y++) {
+							// 判断图片的四个顶点的RGB是否相等
+							if (equalsRGB (imagesDatum[0][0], WindowData[x][y])
+							    && equalsRGB (imagesDatum[imgWidth - 1][0], WindowData[x + imgWidth - 1][y])
+							    && equalsRGB (imagesDatum[imgWidth - 1][imgHeight - 1],
+							                  WindowData[x + imgWidth - 1][y + imgHeight - 1])
+							    && equalsRGB (imagesDatum[0][imgHeight - 1], WindowData[x][y + imgHeight - 1])) {
+								// 如果相等,进行二次匹配确认
+								int biggerX;
+								int biggerY;
+								boolean flag = true;
+b:
+								{
+									for (int smallerX = 0; smallerX < imgWidth; smallerX++) {
+										biggerX = x + smallerX;
+										for (int smallerY = 0; smallerY < imgHeight; smallerY++) {
+											biggerY = y + smallerY;
+											// 如果对应点数据不同为假
+											if (!equalsRGB (imagesDatum[smallerX][smallerY],
+											                WindowData[biggerX][biggerY])) {
+												
+												flag = false;
+												break b;
+												
+											}
 										}
 									}
 								}
-							}
-							if (flag) {
-								
-								logger.info ("在屏幕上找到图片了,坐标:({},{}),{}",x,y,pictureCollectionPO.getImageName ());
-								// 这是专门存储数据的类
-								x += (int) (Math.random () * 0.1 * imgWidth);
-								y += (int) (Math.random () * 0.1 * imgHeight);
-								mouseXY.setX (x);
-								mouseXY.setY (y);
-								mouseMessages.add (mouseXY);
-								if (mouseMessages.size () > 1) {
-									return mouseMessages;
+								if (flag) {
+									
+									log.info ("在屏幕上找到图片了,坐标:({},{}),{}",x,y,pictureCollectionPO.getImageName ());
+									// 这是专门存储数据的类
+									x += (int) (Math.random () * 0.1 * imgWidth);
+									y += (int) (Math.random () * 0.1 * imgHeight);
+									mouseXY.setX (x);
+									mouseXY.setY (y);
+									mouseMessages.add (mouseXY);
+									if (mouseMessages.size () > 1) {
+										return mouseMessages;
+									}
+									break a;
 								}
-								break a;
+								
 							}
-							
 						}
 					}
 				}
 			}
+		}catch (NullPointerException e){
+			log.info (e);
 		}
 		// 返回所有图片对应窗口坐标
 		return mouseMessages;

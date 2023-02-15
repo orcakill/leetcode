@@ -4,17 +4,16 @@ import com.example.demo.model.entity.PictureIdentifyWorkPO;
 import com.sun.jna.platform.win32.User32;
 import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.platform.win32.WinDef.HWND;
+import lombok.extern.log4j.Log4j2;
 
-import java.awt.AWTException;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+@Log4j2
 public class MouseClickUtils {
 	
-	public static final Logger logger = LogManager.getLogger ("MouseClick");
+
 	
 	//后台鼠标点击，坐标集，进程名，是否点击
 	public static boolean mouseClickBack (List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList,
@@ -27,7 +26,7 @@ public class MouseClickUtils {
 				mouseXY1.add (pictureIdentifyWorkPOList.get (num));
 				HWND hwnd = User32.INSTANCE.FindWindow (null, process);
 				mouseClickBackground (hwnd, mouseXY1);
-				logger.info ("点击完成");
+				log.info ("点击完成");
 			}
 			return true;
 		}

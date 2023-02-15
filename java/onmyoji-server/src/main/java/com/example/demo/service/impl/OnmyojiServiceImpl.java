@@ -31,15 +31,10 @@ import static com.example.demo.model.enums.GameEnum.*;
 @Log4j2
 public class OnmyojiServiceImpl implements OnmyojiService {
   private final GameThreadService gameThreadService;
-  private final OnmyojiService onmyojiService;
 
-  public OnmyojiServiceImpl (GameThreadService gameThreadService, OnmyojiService onmyojiService) {
+  public OnmyojiServiceImpl (GameThreadService gameThreadService) {
     this.gameThreadService = gameThreadService;
-    this.onmyojiService = onmyojiService;
   }
-  
-
-  
   
   @Override
   public void onmyojiService(Integer type,Integer round) throws InterruptedException, UnknownHostException {
@@ -55,10 +50,10 @@ public class OnmyojiServiceImpl implements OnmyojiService {
     gameThreadService.save (gameThreadPO);
     log.info ("进程信息初始化结束");
     //监控线程
-    FirstThread t= new FirstThread(gameThreadService);
+    FirstThread t= new FirstThread();
     t.setThreadId(threadId);
     //运行线程
-    SecondThread t1=new SecondThread (gameThreadService,onmyojiService);
+    SecondThread t1=new SecondThread ();
     t1.setType (type);
     t1.setRound (round);
     t1.setThreadId (threadId);
@@ -103,7 +98,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
     boolean initializeOrNot=false;
     String  thisPicture;//当前状态
     boolean announcementOrNot;//是否公告
-    boolean  promptForAge=false;
+    boolean  promptForAge=false;//是否适龄提示
     while (!initializeOrNot){
       thisPicture=thisState ();
       log.info ("当前状态{}",thisPicture);
@@ -112,17 +107,18 @@ public class OnmyojiServiceImpl implements OnmyojiService {
         log.info ("点击阴阳师图标");
         ImageService.imagesBack0 (home_YYSTB.getValue ());
         while (!promptForAge){
-          Thread.sleep (10000);
+          Thread.sleep (15000);
           log.info ("单击一下，防止有开场动画");
           MouseClickUtils.mouseClickBack (new PictureIdentifyWorkPO (500,500),"夜神模拟器");
           Thread.sleep (1000);
-          announcementOrNot=ImageService.imagesBackSingleHideIsEmpty (return_FH.getValue (),2,1,true);
+          log.info ("判断是否有公告需要返回");
+          announcementOrNot=ImageService.imagesBackIsEmpty (return_FH.getValue (),2,1);
           if (announcementOrNot){
             log.info ("有公告");
-            ImageService.imagesBackSingleHide (return_FH.getValue (),2,1,true);
+            ImageService.imagesBack (return_FH.getValue (),2,1);
             Thread.sleep (1000);
           }
-          promptForAge=ImageService.imagesBackSingleHideIsEmpty (login_SLTS.getValue (),2,1,true);
+          promptForAge=ImageService.imagesBackIsEmpty (login_SLTS.getValue (),2,1);
           if(promptForAge){
             log.info ("当前页面有适龄提示");
           }

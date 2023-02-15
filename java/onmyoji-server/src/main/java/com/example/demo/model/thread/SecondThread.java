@@ -18,14 +18,14 @@ import static com.example.demo.service.MailService.sendMail;
 @Component
 public class SecondThread extends Thread {
 
-	private final GameThreadService gameThreadService;
+	private  GameThreadService gameThreadService;
+	
+	private  OnmyojiService onmyojiService;
 	
 	public SecondThread (GameThreadService gameThreadService, OnmyojiService onmyojiService) {
 		this.gameThreadService = gameThreadService;
 		this.onmyojiService = onmyojiService;
 	}
-	
-	private final OnmyojiService onmyojiService;
 	
 	
 	private  String threadId;
@@ -33,7 +33,9 @@ public class SecondThread extends Thread {
 	private  int type;
 	private  int round;
 	
-
+	public SecondThread () {
+	
+	}
 	
 	public void setThreadId (String threadId) {
 		this.threadId = threadId;

@@ -28,6 +28,12 @@ public interface ImageService {
 			throws IOException, InterruptedException, AWTException {
 		return ImageServiceImpl.imagesClickBack (folder, identificationAlgorithmType,re_num, true);
 	}
+	
+	//图片后台识别,文件夹下图片识别,可切换算法类型、识别次数
+	static boolean imagesBackIsEmpty (String folder, Integer identificationAlgorithmType,Integer re_num)
+			throws IOException, InterruptedException, AWTException {
+		return  ImageServiceImpl.imagesClickBackIsEmpty (folder, identificationAlgorithmType, re_num, true, false);
+	}
 	//图片后台识别,文件夹下图片识别,可切换算法类型，指定识别次数，指定日志识别显示
 	static boolean imagesBackSingleHide (String folder, Integer identificationAlgorithmType, Integer re_num,
 	                                   boolean boole)
