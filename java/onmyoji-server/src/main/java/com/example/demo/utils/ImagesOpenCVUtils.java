@@ -63,9 +63,10 @@ public class ImagesOpenCVUtils {
 		for (PictureCollectionPO pictureCollectionPO : pictureCollectionPOList) {
 			//将目标图片转换为Mat
 			ByteArrayOutputStream byteArrayOutputStream2 = new ByteArrayOutputStream ();
-			ImageIO.write ((BufferedImage) pictureCollectionPOList, "jpg", byteArrayOutputStream2);
+			ImageIO.write (pictureCollectionPO.getImage (), "jpg", byteArrayOutputStream2);
 			byteArrayOutputStream2.flush ();
-			Mat g_tem = BufferImageToMatUtils.bufImg2Mat ((BufferedImage) pictureCollectionPOList, BufferedImage.TYPE_3BYTE_BGR, CvType.CV_8UC3);
+			Mat g_tem = BufferImageToMatUtils.bufImg2Mat (pictureCollectionPO.getImage (), BufferedImage.TYPE_3BYTE_BGR,
+			                                              CvType.CV_8UC3);
 			assert g_src != null;
 			assert g_tem != null;
 			int result_rows = g_src.rows () - g_tem.rows () + 1;

@@ -1,6 +1,7 @@
 package com.example.demo.utils;
 
 import com.example.demo.model.entity.PictureCollectionPO;
+import lombok.extern.log4j.Log4j2;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -19,6 +20,7 @@ import java.util.stream.Stream;
  * @Date 2023/1/28 16:49
  * @Created by orcakill
  */
+@Log4j2
 public class ReadFileUtils {
 	
 	public static Map<String, List<PictureCollectionPO>> readPictureMap (String path) throws IOException {
@@ -105,6 +107,9 @@ public class ReadFileUtils {
 						PictureCollectionPO pictureCollectionPO = new PictureCollectionPO (i, folder, s, img, null);
 						pictureCollectionPOList.add (pictureCollectionPO);
 					}
+				}
+				if(pictureCollectionPOList.size ()==0){
+					log.info ("图片路径无图片 {}",path + folder);
 				}
 				if(identificationAlgorithmType==0){
 					return getImagesGRB(pictureCollectionPOList);

@@ -10,6 +10,7 @@ import lombok.extern.log4j.Log4j2;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.demo.utils.RandomUtils.getRandom;
@@ -96,10 +97,9 @@ public class ImageCoreServiceImpl {
 		for (int i = 0; i < re_num; i++) {
 			num_time = getRandom (i1, i2);
 			for (String s : folderList) {
-				List<PictureCollectionPO> pictureCollectionPOList
-						= ReadFileUtils.readPictureCollectionPOList (path,s,identificationAlgorithmType);
+				List<PictureCollectionPO> pictureCollectionPOList=new ArrayList<> ();
 				//每20次重新初始化数据集
-				if (i % 20 == 0 && i > 0) {
+				if (i % 20 == 0) {
 					pictureCollectionPOList = ReadFileUtils.readPictureCollectionPOList (path, folderList.get (i),
 					                                                                     identificationAlgorithmType);
 				}

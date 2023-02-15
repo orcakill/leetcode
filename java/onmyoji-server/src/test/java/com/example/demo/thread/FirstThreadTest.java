@@ -24,7 +24,7 @@ class FirstThreadTest {
 		System.setProperty ("java.awt.headless", "false");
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		log.info ("测试开始");
-		FirstThread t1=new FirstThread (gameThreadService);
+		FirstThread t1=new FirstThread ();
 		t1.setThreadId ("63d4ebd00e25827a62f447fc");
 		t1.start ();
 		boolean b=t1.isAlive ();

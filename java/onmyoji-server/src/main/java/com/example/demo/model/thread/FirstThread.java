@@ -1,6 +1,5 @@
 package com.example.demo.model.thread;
 
-import com.example.demo.model.entity.GameThreadPO;
 import com.example.demo.service.GameThreadService;
 import com.example.demo.service.ImageService;
 import lombok.SneakyThrows;
@@ -14,24 +13,24 @@ import static com.example.demo.model.enums.GameEnum.comm_JJXZ;
 @Log4j2
 public class FirstThread extends Thread {
 	
-	private final GameThreadService gameThreadService;
+    private GameThreadService gameThreadService;
 	
-	public FirstThread(GameThreadService gameThreadService) {
+	private  String  threadId;
+	
+	public FirstThread (GameThreadService gameThreadService) {
 		this.gameThreadService = gameThreadService;
 	}
 	
+	public FirstThread () {
+	}
 	
-	private  String  threadId;
-
-
-	public void setThreadId(String threadId) {
+	public void setThreadId (String threadId) {
 		this.threadId = threadId;
 	}
 
 	@SneakyThrows
 	public void run () {
 		int threadState=gameThreadService.findById (threadId).getThreadState ();
-		GameThreadPO gameThreadPO;
 		log.info ("监控线程开始运行");
 		//每间隔1分钟运行一次，共运行一天
 		while (threadState!=2){
