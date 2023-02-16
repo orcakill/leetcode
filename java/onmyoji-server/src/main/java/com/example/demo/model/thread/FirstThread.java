@@ -7,7 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 
 import static com.example.demo.model.enums.GameEnum.comm_JJXZ;
-
+import static com.example.demo.model.param.ImageRecParam.paramMonitoring;
 
 @Component
 @Log4j2
@@ -35,7 +35,7 @@ public class FirstThread extends Thread {
 		//每间隔1分钟运行一次，共运行一天
 		while (threadState!=2){
 			//检查是否有悬赏封印，有则点击
-			ImageService.imagesBackSingleHide (comm_JJXZ.getValue (),0, 1, false);
+			ImageService.imagesBack (comm_JJXZ.getValue (),paramMonitoring());
 			threadState=gameThreadService.findById (threadId).getThreadState ();
 			//等待一分钟
 			Thread.sleep (10 * 1000);
