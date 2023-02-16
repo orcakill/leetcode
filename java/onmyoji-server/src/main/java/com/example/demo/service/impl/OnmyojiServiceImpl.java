@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.demo.model.enums.GameEnum.*;
+import static com.example.demo.model.param.ImageRecParam.paramRGB;
+import static com.example.demo.model.param.ImageRecParam.paramSIFT;
 
 /**
  * @Classname OnmyojiServiceImpl
@@ -105,20 +107,20 @@ public class OnmyojiServiceImpl implements OnmyojiService {
       //阴阳师图标，需要点击应用图标->跳过登录动画->关闭公告->适龄提示
       if(thisPicture.equals (home_YYSTB.getValue ())){
         log.info ("点击阴阳师图标");
-        ImageService.imagesBack0 (home_YYSTB.getValue ());
+        ImageService.imagesBack (home_YYSTB.getValue (), paramRGB ());
         while (!promptForAge){
           Thread.sleep (15000);
           log.info ("单击一下，防止有开场动画");
           MouseClickUtils.mouseClickBack (new PictureIdentifyWorkPO (500,500),"夜神模拟器");
           Thread.sleep (1000);
           log.info ("判断是否有公告需要返回");
-          announcementOrNot=ImageService.imagesBackIsEmpty (return_FH.getValue (),2,1);
+          announcementOrNot=ImageService.imagesBack(return_FH.getValue (),paramSIFT ());
           if (announcementOrNot){
             log.info ("有公告");
-            ImageService.imagesBack (return_FH.getValue (),2,1);
+            ImageService.imagesBack (return_FH.getValue (),paramSIFT ());
             Thread.sleep (1000);
           }
-          promptForAge=ImageService.imagesBackIsEmpty (login_SLTS.getValue (),2,1);
+          promptForAge=ImageService.imagesBack (login_SLTS.getValue (),paramSIFT ());
           if(promptForAge){
             log.info ("当前页面有适龄提示");
           }
@@ -142,7 +144,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
     stringList.add (home_YH_NJZR.getValue ());
     //返回
     stringList.add (return_FH.getValue ());
-    return ImageService.imagesBackListIsEmpty (stringList,2);
+    return ImageService.imagesBackList(stringList,paramRGB ());
   }
   
   @Override
@@ -152,36 +154,36 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 
   @Override
   public void login (String gameUserId) throws IOException, InterruptedException, AWTException {
-  boolean userHomePageOrNot=ImageService.imagesBackSingleHideIsEmpty (login_YHZX.getValue (),2,3,true);
+  boolean userHomePageOrNot=ImageService.imagesBack(login_YHZX.getValue (),paramSIFT ());
   if(userHomePageOrNot){
     log.info ("点击用户中心");
-    ImageService.imagesBack (login_YHZX.getValue (),2);
+    ImageService.imagesBack (login_YHZX.getValue (),paramSIFT ());
     log.info ("切换账号");
-    ImageService.imagesBack (login_QHZH.getValue (),2);
+    ImageService.imagesBack (login_QHZH.getValue (),paramSIFT ());
     log.info ("常用");
-    ImageService.imagesBack (login_CY.getValue (),2);
+    ImageService.imagesBack (login_CY.getValue (),paramSIFT ());
     log.info ("选择账号");
     if(gameUserId!=null){
       if(gameUserId.equals ("1")){
         log.info ("手机号178");
-        ImageService.imagesBack (login_XZZH_PHONE1.getValue (),2);
+        ImageService.imagesBack (login_XZZH_PHONE1.getValue (),paramSIFT ());
       }
       if(gameUserId.equals ("2")){
         log.info ("邮箱号1");
-        ImageService.imagesBack (login_YHZX_EMAIIL1.getValue (),2);
+        ImageService.imagesBack (login_YHZX_EMAIIL1.getValue (),paramSIFT ());
       }
     }
     log.info ("切换服务器");
     if(gameUserId!=null){
       if(gameUserId.equals ("1")){
         log.info ("点击大号角色-缥缈之旅");
-        ImageService.imagesBack (login_FWQ_PMZL.getValue (),2);
+        ImageService.imagesBack (login_FWQ_PMZL.getValue (),paramSIFT ());
       }
     }
     log.info ("开始游戏");
-    ImageService.imagesBack (login_KSYX.getValue (),2);
+    ImageService.imagesBack (login_KSYX.getValue (),paramSIFT ());
     log.info ("底部菜单栏");
-    ImageService.imagesBack (home_DBCD.getValue (),2);
+    ImageService.imagesBack (home_DBCD.getValue (),paramSIFT ());
   }
 
   }
