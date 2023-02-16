@@ -74,7 +74,8 @@ public class ImagesOpenCVUtils {
 			Mat g_result = new Mat (result_rows, result_cols, CvType.CV_32FC1);
 			Imgproc.matchTemplate (g_src, g_tem, g_result, Imgproc.TM_SQDIFF_NORMED); // 归一化相关系数匹配法
 			Core.normalize (g_result, g_result, 0, 1, Core.NORM_MINMAX, -1, new Mat ());
-			Core.MinMaxLocResult core_result = Core.minMaxLoc (g_result);
+			Core.MinMaxLocResult core_result =
+					Core.minMaxLoc (g_result);
 			Point matchLocation = core_result.minLoc; // 此处使用maxLoc还是minLoc取决于使用的匹配算法
 			//目标坐标
 			PictureIdentifyWorkPO pictureIdentifyWorkPO = new PictureIdentifyWorkPO ();
