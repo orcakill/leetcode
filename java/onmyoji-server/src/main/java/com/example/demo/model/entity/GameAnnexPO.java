@@ -1,38 +1,37 @@
 package com.example.demo.model.entity;
 
-
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-
 import com.github.jeffreyning.mybatisplus.anno.MppMultiId;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * 游戏附录信息
  * @TableName game_annex
  */
-@TableName(value ="game_annex")
+@TableName (value ="game_annex")
 @Data
 public class GameAnnexPO implements Serializable {
     /**
      * 代码
      */
     @MppMultiId
-    @TableField(value = "code")
+    @TableField (value = "code")
     private String code;
 
     /**
      * 父代码
      */
     @MppMultiId
-    @TableField(value = "parent_code")
+    @TableField  (value = "parent_code")
     private String parentCode;
 
     /**
      * 名称
      */
-    @TableField(value = "name")
+    @TableField (value = "name")
     private String name;
 
     /**

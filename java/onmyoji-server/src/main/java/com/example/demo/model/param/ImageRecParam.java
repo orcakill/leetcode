@@ -32,13 +32,20 @@ public class ImageRecParam {
 	//  特征点  默认4个特征点
 	private int characteristicPoint=4;
 	
+	public ImageRecParam () {
+	}
+	//监控参数常量
+	public static final ImageRecParam paramMonitoring=paramMonitoring ();
+	public  final static ImageRecParam paramRGB=paramRGB ();
+	public  final static ImageRecParam paramSIFT=paramSIFT ();
+	
 	/***
 	 * @description: 监控参数  算法为0 每分钟识别一次 不显示未识别日志
 	 * @return: com.example.demo.model.param.ImageRecParam
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
 	 */
-	public static ImageRecParam paramMonitoring (){
+	protected static ImageRecParam paramMonitoring (){
 		ImageRecParam imageRecParam=new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType (0);
 		imageRecParam.setRe_num (1);
@@ -52,12 +59,13 @@ public class ImageRecParam {
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
 	 */
-	public static ImageRecParam paramRGB (){
+	protected static ImageRecParam paramRGB (){
 		ImageRecParam imageRecParam=new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType (0);
 		imageRecParam.setRe_num (10);
 		return  imageRecParam;
 	}
+	
 	
 	/***
 	 * @description:  openCV sift 特征匹配 识别参数  算法为2  识别10次
@@ -65,10 +73,26 @@ public class ImageRecParam {
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
 	 */
-	public static ImageRecParam paramSIFT (){
+	protected static ImageRecParam paramSIFT (){
 		ImageRecParam imageRecParam=new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType (2);
 		imageRecParam.setRe_num (10);
 		return  imageRecParam;
 	}
+	/***
+	 * @description:  openCV sift 特征匹配 识别参数  算法为2  识别10次
+	 * @return: com.example.demo.model.param.ImageRecParam
+	 * @author: orcakill
+	 * @date: 2023/2/17 1:43
+	 */
+	public static ImageRecParam paramSIFT (int characteristicPoint){
+		ImageRecParam imageRecParam=new ImageRecParam ();
+		imageRecParam.setIdentificationAlgorithmType (2);
+		imageRecParam.setCharacteristicPoint (characteristicPoint);
+		imageRecParam.setRe_num (10);
+		return  imageRecParam;
+	}
+	
+	
+
 }
