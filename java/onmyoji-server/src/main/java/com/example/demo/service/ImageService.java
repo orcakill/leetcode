@@ -1,9 +1,10 @@
 package com.example.demo.service;
 
 import com.example.demo.model.param.ImageRecParam;
+import com.example.demo.model.param.MultipleImagesParam;
 import com.example.demo.service.impl.ImageServiceImpl;
+
 import java.awt.*;
-import java.util.List;
 import java.io.IOException;
 
 /**
@@ -20,11 +21,10 @@ public interface ImageService {
 		return ImageServiceImpl.imagesBack (folder, imageRecParam);
 	}
 	
-	
 	//图片后台识别,多文件夹多组图片识别
-	static String imagesBackList(List<String> folderList, ImageRecParam imageRecParam)
+	static String imagesBackList (MultipleImagesParam multipleImageParams)
 			throws IOException,
 			       AWTException, InterruptedException {
-		return ImageServiceImpl.imagesBackList(folderList,imageRecParam);
+		return ImageServiceImpl.imagesBackList (multipleImageParams);
 	}
 }

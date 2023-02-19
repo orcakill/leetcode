@@ -2,6 +2,8 @@ package com.example.demo.service.impl;
 
 import com.example.demo.model.entity.PictureCollectionPO;
 import com.example.demo.model.map.FolderPathMap;
+import com.example.demo.model.param.MultipleImageParam;
+import com.example.demo.model.param.MultipleImagesParam;
 import com.example.demo.utils.ImagesBackRecUtils;
 import com.example.demo.utils.ImagesOpenCVSIFTUtils;
 import com.example.demo.utils.ImagesOpenCVUtils;
@@ -72,48 +74,40 @@ public class ImageCoreServiceImpl {
 	
 	/***
 	 * @description: 识别并点击成功或识别成功返回true、识别失败返回false
-	 * @param identificationAlgorithmType  图像识别算法类型（目前3种）
-	 * @param folderList  文件夹
-	 * @param process 进程名
-	 * @param re_num  识别次数
-	 * @param i1      识别开始间隔 如 1
-	 * @param i2      识别结束间隔 如 2
-	 * @param b       是否显示日志 如 true 或false
-	 * @param isClick       是否点击如 true 或false
-	 * @param coefficient      相似系数  （1，2 算法专用）
-	 * @param characteristicPoint 特征点 （2 算法专用）
+	 * @param multipleImagesParam  多组图片不同算法识别
 	 * @return: boolean
 	 * @author: orcakill
 	 * @date: 2023/1/26 22:26
 	 */
-	public static String imagesBackClick (List<String> folderList, int identificationAlgorithmType, String process,
-	                                       int re_num,
-	                                       int i1, int i2, boolean b, boolean isClick, Double coefficient,
-	                                       int characteristicPoint)
+	public static String imagesBackClick (MultipleImagesParam multipleImagesParam)
 			throws AWTException, IOException, InterruptedException {
 		int num_time;
 		boolean result;
 		String path= FolderPathMap.folderPath ("图片总路径");
-		for (int i = 0; i < re_num; i++) {
-			num_time = getRandom (i1, i2);
-			for (String s : folderList) {
+		for (int i = 0; i < multipleImagesParam.getRe_num (); i++) {
+			num_time = getRandom (multipleImagesParam.getStart_time (), multipleImagesParam.getEnd_time ());
+			for (MultipleImageParam multipleImageParam : multipleImagesParam.getMultipleImageParamList ()) {
 				List<PictureCollectionPO> pictureCollectionPOList=new ArrayList<> ();
 				//每20次重新初始化数据集
 				if (i % 20 == 0) {
-					pictureCollectionPOList = ReadFileUtils.readPictureCollectionPOList (path, folderList.get (i),
-					                                                                     identificationAlgorithmType);
+					pictureCollectionPOList = ReadFileUtils.readPictureCollectionPOList (path,multipleImageParam.getFolder (),
+					                                                                     multipleImageParam.getImageRecParam ().getIdentificationAlgorithmType ());
 				}
 				Thread.sleep (num_time * 1000L);
-				result = isResult (identificationAlgorithmType, process, isClick, coefficient, characteristicPoint,
+				result = isResult (multipleImageParam.getImageRecParam ().getIdentificationAlgorithmType (),
+						           multipleImagesParam.getProcess (),
+						           multipleImagesParam.isClick (),
+						           multipleImageParam.getImageRecParam ().getCoefficient (),
+						           multipleImageParam.getImageRecParam ().getCharacteristicPoint (),
 				                   pictureCollectionPOList);
 				if (result) {
 					log.info ("图片识别成功");
 					Thread.sleep (num_time * 1000L);
-					return s;
+					return multipleImageParam.getFolder ();
 				}
 				else {
-					if (b) {
-						log.info ("在间隔{}秒的检测中，第{}次检查未发现 {} 的图片", num_time, (i + 1), s);
+					if (multipleImagesParam.getBoole ()) {
+						log.info ("在间隔{}秒的检测中，第{}次检查未发现 {} 的图片", num_time, (i + 1), multipleImageParam.getFolder ());
 					}
 				}
 			}

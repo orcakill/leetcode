@@ -37,7 +37,10 @@ public class ImageRecParam {
 	//监控参数常量
 	public static final ImageRecParam paramMonitoring=paramMonitoring ();
 	public  final static ImageRecParam paramRGB=paramRGB ();
+	public  final static ImageRecParam paramRGBNotClick=paramRGBNotClick();
+	
 	public  final static ImageRecParam paramSIFT=paramSIFT ();
+	public  final static ImageRecParam paramSIFTNotClick=paramSIFTNotClick ();
 	
 	/***
 	 * @description: 监控参数  算法为0 每分钟识别一次 不显示未识别日志
@@ -59,6 +62,35 @@ public class ImageRecParam {
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
 	 */
+	public static ImageRecParam paramTM_SQDIFF_NORMED (Double coefficient){
+		ImageRecParam imageRecParam=new ImageRecParam ();
+		imageRecParam.setIdentificationAlgorithmType (1);
+		imageRecParam.setRe_num (10);
+		imageRecParam.setCoefficient (coefficient);
+		return  imageRecParam;
+	}
+	
+	/***
+	 * @description: RGB识别参数  算法为0  识别10次 不点击
+	 * @return: com.example.demo.model.param.ImageRecParam
+	 * @author: orcakill
+	 * @date: 2023/2/17 1:43
+	 */
+	protected static ImageRecParam paramRGBNotClick (){
+		ImageRecParam imageRecParam=new ImageRecParam ();
+		imageRecParam.setIdentificationAlgorithmType (0);
+		imageRecParam.setRe_num (10);
+		imageRecParam.setClick (false);
+		return  imageRecParam;
+	}
+	
+	
+	/***
+	 * @description: 识别参数  算法为0  识别10次
+	 * @return: com.example.demo.model.param.ImageRecParam
+	 * @author: orcakill
+	 * @date: 2023/2/17 1:43
+	 */
 	protected static ImageRecParam paramRGB (){
 		ImageRecParam imageRecParam=new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType (0);
@@ -73,12 +105,27 @@ public class ImageRecParam {
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
 	 */
+	protected static ImageRecParam paramSIFTNotClick  (){
+		ImageRecParam imageRecParam=new ImageRecParam ();
+		imageRecParam.setIdentificationAlgorithmType (2);
+		imageRecParam.setRe_num (10);
+		imageRecParam.setClick (false);
+		return  imageRecParam;
+	}
+	
+	/***
+	 * @description:  openCV sift 特征匹配 识别参数  算法为2  识别10次  不点击
+	 * @return: com.example.demo.model.param.ImageRecParam
+	 * @author: orcakill
+	 * @date: 2023/2/17 1:43
+	 */
 	protected static ImageRecParam paramSIFT (){
 		ImageRecParam imageRecParam=new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType (2);
 		imageRecParam.setRe_num (10);
 		return  imageRecParam;
 	}
+	
 	/***
 	 * @description:  openCV sift 特征匹配 识别参数  算法为2  识别10次
 	 * @return: com.example.demo.model.param.ImageRecParam
