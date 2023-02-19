@@ -1,11 +1,11 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.param.ImageRecParam;
+import com.example.demo.model.param.MultipleImagesParam;
 import com.example.demo.service.ImageCoreService;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * @Classname ImageServiceImpl
@@ -31,18 +31,9 @@ public class ImageServiceImpl {
 	}
 	
 	
-	public static String imagesBackList(List<String> folderList,ImageRecParam imageRecParam)
+	public static String imagesBackList (MultipleImagesParam multipleImageParams)
 			throws IOException, InterruptedException, AWTException {
-		return ImageCoreService.imagesBackClickList (folderList,
-		                                             imageRecParam.getIdentificationAlgorithmType (),
-		                                             imageRecParam.getProcess (),
-		                                             imageRecParam.getRe_num (),
-		                                             imageRecParam.getStart_time (),
-		                                             imageRecParam.getEnd_time (),
-		                                             imageRecParam.getBoole (),
-		                                             imageRecParam.isClick (),
-		                                             imageRecParam.getCoefficient (),
-		                                             imageRecParam.getCharacteristicPoint ());
+		return ImageCoreService.imagesBackClickList (multipleImageParams);
 		
 	}
 }

@@ -97,7 +97,9 @@ public class ImagesOpenCVUtils {
 				break;
 			}
 		}
-		logger.info ("最小匹配系数为{}", Collections.min (doubleList));
+		if(doubleList.size ()>0){
+			logger.info ("最小匹配系数为{}", Collections.min (doubleList));
+		}
 		// 返回所有图片对应窗口坐标
 		return mouseMessages;
 		
