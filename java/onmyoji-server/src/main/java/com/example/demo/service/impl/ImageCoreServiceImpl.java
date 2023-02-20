@@ -47,13 +47,15 @@ public class ImageCoreServiceImpl {
 			throws AWTException, IOException, InterruptedException {
 		int num_time;
 		boolean result;
-		String path= FolderPathMap.folderPath ("图片总路径");
-		List<PictureCollectionPO> pictureCollectionPOList=ReadFileUtils.readPictureCollectionPOList (path,folder,identificationAlgorithmType);
+		String path = FolderPathMap.folderPath ("图片总路径");
+		List<PictureCollectionPO> pictureCollectionPOList =
+				ReadFileUtils.readPictureCollectionPOList (path, folder, identificationAlgorithmType);
 		for (int i = 0; i < re_num; i++) {
 			num_time = getRandom (i1, i2);
 			//每20次重新初始化数据集
-			if(i%20==0&&i>0){
-				pictureCollectionPOList=ReadFileUtils.readPictureCollectionPOList (path,folder,identificationAlgorithmType);
+			if (i % 20 == 0 && i > 0) {
+				pictureCollectionPOList =
+						ReadFileUtils.readPictureCollectionPOList (path, folder, identificationAlgorithmType);
 			}
 			Thread.sleep (num_time * 1000L);
 			result = isResult (identificationAlgorithmType, process, isClick, coefficient, characteristicPoint,
@@ -83,22 +85,24 @@ public class ImageCoreServiceImpl {
 			throws AWTException, IOException, InterruptedException {
 		int num_time;
 		boolean result;
-		String path= FolderPathMap.folderPath ("图片总路径");
+		String path = FolderPathMap.folderPath ("图片总路径");
 		for (int i = 0; i < multipleImagesParam.getRe_num (); i++) {
 			num_time = getRandom (multipleImagesParam.getStart_time (), multipleImagesParam.getEnd_time ());
 			for (MultipleImageParam multipleImageParam : multipleImagesParam.getMultipleImageParamList ()) {
-				List<PictureCollectionPO> pictureCollectionPOList=new ArrayList<> ();
+				List<PictureCollectionPO> pictureCollectionPOList = new ArrayList<> ();
 				//每20次重新初始化数据集
 				if (i % 20 == 0) {
-					pictureCollectionPOList = ReadFileUtils.readPictureCollectionPOList (path,multipleImageParam.getFolder (),
-					                                                                     multipleImageParam.getImageRecParam ().getIdentificationAlgorithmType ());
+					pictureCollectionPOList =
+							ReadFileUtils.readPictureCollectionPOList (path, multipleImageParam.getFolder (),
+							                                           multipleImageParam.getImageRecParam ()
+							                                                             .getIdentificationAlgorithmType ());
 				}
 				Thread.sleep (num_time * 1000L);
 				result = isResult (multipleImageParam.getImageRecParam ().getIdentificationAlgorithmType (),
-						           multipleImagesParam.getProcess (),
-						           multipleImagesParam.isClick (),
-						           multipleImageParam.getImageRecParam ().getCoefficient (),
-						           multipleImageParam.getImageRecParam ().getCharacteristicPoint (),
+				                   multipleImagesParam.getProcess (),
+				                   multipleImagesParam.isClick (),
+				                   multipleImageParam.getImageRecParam ().getCoefficient (),
+				                   multipleImageParam.getImageRecParam ().getCharacteristicPoint (),
 				                   pictureCollectionPOList);
 				if (result) {
 					log.info ("图片识别成功");
@@ -107,11 +111,12 @@ public class ImageCoreServiceImpl {
 				}
 				else {
 					if (multipleImagesParam.getBoole ()) {
-						log.info ("在间隔{}秒的检测中，第{}次检查未发现 {} 的图片", num_time, (i + 1), multipleImageParam.getFolder ());
+						log.info ("在间隔{}秒的检测中，第{}次检查未发现 {} 的图片", num_time, (i + 1),
+						          multipleImageParam.getFolder ());
 					}
 				}
 			}
-
+			
 		}
 		return null;
 	}
@@ -120,7 +125,7 @@ public class ImageCoreServiceImpl {
 	                                 Double coefficient, int characteristicPoint,
 	                                 List<PictureCollectionPO> pictureCollectionPOList)
 			throws AWTException, IOException {
-		boolean result=false;
+		boolean result = false;
 		if (identificationAlgorithmType == 0) {
 			result = ImagesBackRecUtils.imagesRecognition (pictureCollectionPOList, process, isClick);
 		}
