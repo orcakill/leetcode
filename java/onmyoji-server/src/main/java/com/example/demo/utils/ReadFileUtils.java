@@ -85,7 +85,8 @@ public class ReadFileUtils {
 	 * @return - 返回指定文件夹内的所有照片文件
 	 */
 	
-	public static List<PictureCollectionPO> readPictureCollectionPOList (String path, String folder,int identificationAlgorithmType)
+	public static List<PictureCollectionPO> readPictureCollectionPOList (String path, String folder,
+	                                                                     String identificationAlgorithmType)
 			throws IOException {
 		try {
 			// 判断当前目录下的指定文件夹是否存在
@@ -111,7 +112,7 @@ public class ReadFileUtils {
 				if(pictureCollectionPOList.size ()==0){
 					log.info ("图片路径无图片 {}",path + folder);
 				}
-				if(identificationAlgorithmType==0){
+				if(identificationAlgorithmType.equals ("RGB")){
 					return getImagesGRB(pictureCollectionPOList);
 				}
 				return pictureCollectionPOList;

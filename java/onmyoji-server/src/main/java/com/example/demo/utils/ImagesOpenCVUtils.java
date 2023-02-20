@@ -30,13 +30,13 @@ public class ImagesOpenCVUtils {
 	
 	//识别图片存在并点击或只识别不点击
 	public static boolean imagesRecognitionOpenCv (List<PictureCollectionPO> pictureCollectionPOList, String process,
-	                                               boolean isClick, Double coefficient)
+	                                               boolean isClick, Double coefficient,String method)
 			throws AWTException, IOException {
 		//		屏幕截图
 		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
 		//		屏幕截图和图片对比
 		List<PictureIdentifyWorkPO> mouseXY =
-				FindAllImgDataOpenCv (Window, pictureCollectionPOList, coefficient, false);
+				FindAllImgDataOpenCv (Window, pictureCollectionPOList, coefficient, false,method);
 		//		识别+鼠标点击或仅识别
 		return MouseClickUtils.mouseClickBack (mouseXY, process, isClick);
 	}
@@ -46,11 +46,13 @@ public class ImagesOpenCVUtils {
 	 * @param Window                  - 屏幕图像
 	 * @param pictureCollectionPOList - 指定图片数据集合
 	 * @param coefficient             -识别系数
+	 * @param coefficient             -识别算法
 	 * @return - 返回图片在屏幕的坐标集合
 	 */
 	public static List<PictureIdentifyWorkPO> FindAllImgDataOpenCv (BufferedImage Window,
 	                                                                List<PictureCollectionPO> pictureCollectionPOList,
-	                                                                Double coefficient, boolean printOrNot)
+	                                                                Double coefficient, boolean printOrNot,
+	                                                                String method)
 			throws IOException {
 		if (coefficient == null) {
 			coefficient = 2E-11;
@@ -74,7 +76,9 @@ public class ImagesOpenCVUtils {
 			int result_rows = g_src.rows () - g_tem.rows () + 1;
 			int result_cols = g_src.cols () - g_tem.cols () + 1;
 			Mat g_result = new Mat (result_rows, result_cols, CvType.CV_32FC1);
-			Imgproc.matchTemplate (g_src, g_tem, g_result, Imgproc.TM_SQDIFF_NORMED); // 归一化相关系数匹配法
+			if(method.equals ("TM_SQDIFF_NORMED")){
+				Imgproc.matchTemplate (g_src, g_tem, g_result, Imgproc.TM_SQDIFF_NORMED); // 归一化相关系数匹配法
+			}
 			Core.normalize (g_result, g_result, 0, 1, Core.NORM_MINMAX, -1, new Mat ());
 			Core.MinMaxLocResult core_result = Core.minMaxLoc (g_result);
 			Point matchLocation = core_result.minLoc; // 此处使用maxLoc还是minLoc取决于使用的匹配算法
@@ -93,12 +97,15 @@ public class ImagesOpenCVUtils {
 					                   new Scalar (0, 0, 0, 0));
 					File file_Match = new File ("D:\\match.jpg");
 					if (file_Match.exists ()) {
-						file_Match.delete ();
+						boolean deleteOrNot=file_Match.delete ();
+						if(deleteOrNot){
+							log.info ("已删除");
+						}
 					}
 					Imgcodecs.imwrite ("D:\\match.jpg", g_src);
 				}
 				pictureIdentifyWorkPO.setX ((int) (matchLocation.x + g_tem.cols () / 2));
-				pictureIdentifyWorkPO.setY ((int) (matchLocation.y + g_tem.cols () / 2));
+				pictureIdentifyWorkPO.setY ((int) (matchLocation.y + g_tem.rows () / 2));
 				log.info ("找到坐标了,({},{})", pictureIdentifyWorkPO.getX (), pictureIdentifyWorkPO.getY ());
 				log.info ("已识别的匹配系数:{}", core_result.minVal);
 				//坐标添加到返回参数中

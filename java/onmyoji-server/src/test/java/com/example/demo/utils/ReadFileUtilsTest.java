@@ -9,8 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.io.IOException;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  * @Classname ReadFileUtilsTest
  * @Description ReadFileUtilsTest
@@ -27,7 +25,7 @@ class ReadFileUtilsTest {
 		System.setProperty ("java.awt.headless", "false");
 		String path= FolderPathMap.folderPath ("图片总路径");
 		String folder="首页\\编号\\5561731";
-		List<PictureCollectionPO> pictureCollectionPOList=ReadFileUtils.readPictureCollectionPOList (path,folder,0);
+		List<PictureCollectionPO> pictureCollectionPOList=ReadFileUtils.readPictureCollectionPOList (path,folder,"TM_SQDIFF_NORMED");
 		log.info (pictureCollectionPOList);
 		log.info ("图片识别，用时{}毫秒",System.currentTimeMillis ()-start);
 	}

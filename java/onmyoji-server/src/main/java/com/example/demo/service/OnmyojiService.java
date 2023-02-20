@@ -57,7 +57,7 @@ public interface OnmyojiService {
 	 * @author: orcakill
 	 * @date: 2023/2/4 1:58
 	 */
-	void returnHome ();
+	void returnHome () throws IOException, InterruptedException, AWTException;
 	/***
 	 * @description: 阴阳师游戏角色ID登录，默认登录大号角色
 	 * @param gameUserId 阴阳师游戏角色ID

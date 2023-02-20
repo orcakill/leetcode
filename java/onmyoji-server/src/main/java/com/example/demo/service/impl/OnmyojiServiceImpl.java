@@ -102,103 +102,167 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		String thisPicture;//当前状态
 		boolean announcementOrNot;//是否公告
 		boolean promptForAge = false;//是否适龄提示
+		boolean targetHomePage = false;
+		boolean switchAccount=false;
 		while (!initializeOrNot) {
 			thisPicture = thisState ();
 			log.info ("当前状态{}", thisPicture);
-			//阴阳师图标，需要点击应用图标->跳过登录动画->关闭公告->适龄提示
-			if (thisPicture.equals (home_YYSTB.getValue ())) {
-				log.info ("点击阴阳师图标");
-				ImageService.imagesBack (home_YYSTB.getValue (), paramRGB);
-				while (!promptForAge) {
-					Thread.sleep (15000);
-					log.info ("单击一下，防止有开场动画");
-					MouseClickUtils.mouseClickBack (new PictureIdentifyWorkPO (500, 500), "夜神模拟器");
-					Thread.sleep (1000);
-					log.info ("判断是否有公告需要返回");
-					announcementOrNot = ImageService.imagesBack (return_FH.getValue (),paramRGB);
-					if (announcementOrNot) {
-						log.info ("有公告");
-						ImageService.imagesBack (return_FH.getValue (), paramSIFT);
+			if (userId.equals ("1")) {
+				if (thisPicture.equals (home_YH_NJZR.getValue ())) {
+					targetHomePage = true;
+				}
+			}
+			if (userId.equals ("2")) {
+				if (thisPicture.equals (home_YH_ORCAKILL.getValue ())) {
+					targetHomePage = true;
+				}
+			}
+			if(thisPicture.equals (return_FH.getValue ())){
+				log.info ("先返回到首页");
+				returnHome ();
+				log.info ("重新判断当前状态");
+				continue;
+			}
+			if (!targetHomePage) {
+				//  当前页面阴阳师图标，需要点击应用图标->跳过登录动画->关闭公告->适龄提示
+				if (thisPicture.equals (home_YYSTB.getValue ())) {
+					log.info ("点击阴阳师图标");
+					ImageService.imagesBack (home_YYSTB.getValue (), paramRGB);
+					while (!promptForAge) {
+						Thread.sleep (15000);
+						log.info ("单击一下，防止有开场动画");
+						MouseClickUtils.mouseClickBack (new PictureIdentifyWorkPO (500, 500), "夜神模拟器");
 						Thread.sleep (1000);
-					}
-					promptForAge = ImageService.imagesBack (login_SLTS.getValue (), paramSIFTNotClick);
-					if (promptForAge) {
-						log.info ("当前页面有适龄提示");
+						log.info ("判断是否有公告需要返回");
+						announcementOrNot = ImageService.imagesBack (return_FH.getValue (), paramRGB);
+						if (announcementOrNot) {
+							log.info ("有公告");
+							ImageService.imagesBack (return_FH.getValue (), paramSIFT);
+							Thread.sleep (1000);
+						}
+						promptForAge = ImageService.imagesBack (login_SLTS.getValue (), paramSIFTNotClick);
+						if (promptForAge) {
+							log.info ("当前页面有适龄提示");
+						}
 					}
 				}
-				log.info ("切换用户和大区并登录到首页");
-				login (userId);
-				initializeOrNot = true;
-				log.info ("当前用户首页");
+				// 当前页面非目标首页
+				if (thisPicture.equals (home_YH_NJZR.getValue ())) {
+					log.info ("点击用户头像");
+					ImageService.imagesBack (home_YH_NJZR.getValue (), paramSIFT (20));
+					log.info ("点击用户中心");
+					ImageService.imagesBack (home_TXYHZX.getValue (), paramSIFT (20));
+				}
+				if (thisPicture.equals (home_YH_ORCAKILL.getValue ())) {
+					log.info ("点击用户头像");
+					ImageService.imagesBack (home_YH_ORCAKILL.getValue (), paramSIFT (20));
+					log.info ("点击用户中心");
+					ImageService.imagesBack (home_TXYHZX.getValue (), paramSIFT (20));
+				}
+				// 当前页面适龄提示->点击用户中心
+				if (thisPicture.equals (login_SLTS.getValue ()) || promptForAge) {
+					log.info ("点击头像用户中心");
+					ImageService.imagesBack (login_YHZX.getValue (), paramSIFT);
+				}
+				log.info ("判断是否切换账号");
+				switchAccount=ImageService.imagesBack (login_QHZH.getValue (),paramSIFTNotClick);
+				if(switchAccount){
+					log.info ("切换用户和大区并登录到首页");
+					login (userId);
+					log.info ("当前用户首页");
+				}
 			}
+			else {
+				initializeOrNot = true;
+			}
+			
 		}
+		log.info ("当前状态初始化完成");
 	}
 	
 	@Override
 	public String thisState () throws IOException, InterruptedException, AWTException {
 		// 图像集
-		MultipleImagesParam multipleImagesParams =new MultipleImagesParam ();
-		List<MultipleImageParam> multipleImageParamList=new ArrayList<> ();
+		MultipleImagesParam multipleImagesParams = new MultipleImagesParam ();
+		List<MultipleImageParam> multipleImageParamList = new ArrayList<> ();
 		//桌面       阴阳师图标
-		multipleImageParamList.add (new MultipleImageParam(login_YYSTB.getValue (),paramRGB));
+		multipleImageParamList.add (new MultipleImageParam (login_YYSTB.getValue (), paramRGB));
+		//登录界面    适龄提示
+		multipleImageParamList.add (new MultipleImageParam (login_SLTS.getValue (), paramRGB));
 		//大号首页    缥缈之旅 逆戟之刃
-		multipleImageParamList.add (new MultipleImageParam(home_YH_NJZR.getValue (),paramSIFT(20)));
+		multipleImageParamList.add (new MultipleImageParam (home_YH_NJZR.getValue (), paramSIFT (20)));
 		//小号1首页   缥缈之旅 orcakill
-		multipleImageParamList.add (new MultipleImageParam(home_YH_ORCAKILL.getValue (),paramSIFT(20)));
-		//小号2首页   两情相悦 洪荒的修罗
+		multipleImageParamList.add (new MultipleImageParam (home_YH_ORCAKILL.getValue (), paramSIFT (20)));
+		//小号2首页   两情相悦  洪荒的修罗
 		//小号3首页   桃映春馨  炽热的惆怅物语
 		//返回       返回
-		multipleImageParamList.add (new MultipleImageParam(return_FH.getValue (),paramSIFT(20)));
+		multipleImageParamList.add (new MultipleImageParam (return_FH.getValue (), paramRGB));
+		multipleImageParamList.add (new MultipleImageParam (return_FH.getValue (), paramSIFT (4)));
 		multipleImagesParams.setClick (false);
 		multipleImagesParams.setMultipleImageParamList (multipleImageParamList);
 		return ImageService.imagesBackList (multipleImagesParams);
 	}
 	
 	@Override
-	public void returnHome () {
-	
+	public void returnHome () throws IOException, InterruptedException, AWTException {
+		int num=1;
+		log.info ("判断是否首页");
+		boolean homePageOrNot=ImageService.imagesBack (home_TS.getValue (),paramSIFTNotClick(1,20));
+		while (!homePageOrNot){
+			log.info ("开始返回到首页");
+			ImageService.imagesBack (return_FH.getValue (),paramRGB(1));
+			if(num>20){
+				ImageService.imagesBack (return_FH.getValue (),paramSIFT(1,20));
+				num=1;
+			}
+			num++;
+			homePageOrNot=ImageService.imagesBack (home_TS.getValue (),paramSIFTNotClick (1,20));
+		}
+		Thread.sleep (2000);
+		log.info ("判断底部菜单是否打开");
+		boolean bottomMenu=ImageService.imagesBack (home_DBCD.getValue (),paramSIFTNotClick (1,20));
+		if(bottomMenu){
+			log.info ("打开底部菜单");
+			ImageService.imagesBack (home_DBCD.getValue (),paramSIFT(3,20));
+		}
+		log.info ("返回首页完成");
 	}
 	
 	@Override
 	public void login (String gameUserId) throws IOException, InterruptedException, AWTException {
-		log.info ("判断是否有用户中心");
-		boolean userHomePageOrNot = ImageService.imagesBack (login_YHZX.getValue (), paramSIFTNotClick);
-		if (userHomePageOrNot) {
-			log.info ("点击用户中心");
-			ImageService.imagesBack (login_YHZX.getValue (), paramSIFT);
-			log.info ("切换账号");
-			ImageService.imagesBack (login_QHZH.getValue (), paramRGB);
-			log.info ("常用");
-			ImageService.imagesBack (login_CY.getValue (), paramRGB);
-			log.info ("选择账号");
-			if (gameUserId != null) {
-				if (gameUserId.equals ("1")) {
-					log.info ("手机号178");
-					ImageService.imagesBack (login_XZZH_PHONE1.getValue (), paramRGB);
-				}
-				if (gameUserId.equals ("2")) {
-					log.info ("邮箱号1");
-					ImageService.imagesBack (login_YHZX_EMAIIL1.getValue (), paramRGB);
-				}
+		log.info ("切换账号");
+		ImageService.imagesBack (login_QHZH.getValue (), paramSIFT);
+		log.info ("常用");
+		ImageService.imagesBack (login_CY.getValue (), paramTM_SQDIFF_NORMED (3E-10));
+		log.info ("选择账号");
+		if (gameUserId != null) {
+			if (gameUserId.equals ("1")) {
+				log.info ("手机号178");
+				ImageService.imagesBack (login_XZZH_PHONE1.getValue (), paramTM_SQDIFF_NORMED (2E-11));
 			}
-			log.info ("登录");
-			ImageService.imagesBack (login_DL.getValue (), paramSIFT);
-			log.info ("切换服务器");
-			ImageService.imagesBack (login_QH.getValue (), paramSIFT);
-			log.info ("点击小三角");
-			ImageService.imagesBack (login_XSJ.getValue (), paramRGB);
-			if (gameUserId != null) {
-				if (gameUserId.equals ("1")) {
-					log.info ("点击大号角色-缥缈之旅");
-					ImageService.imagesBack (login_FWQ_PMZL.getValue (), paramRGB);
-				}
+			if (gameUserId.equals ("2")) {
+				log.info ("邮箱号1");
+				ImageService.imagesBack (login_YHZX_EMAIIL1.getValue (), paramTM_SQDIFF_NORMED (2E-11));
 			}
-			log.info ("开始游戏");
-			ImageService.imagesBack (login_KSYX.getValue (), paramSIFT);
-			Thread.sleep (5*1000L);
-			log.info ("底部菜单栏");
-			ImageService.imagesBack (home_DBCD.getValue (), paramRGB);
 		}
-		
+		log.info ("登录");
+		ImageService.imagesBack (login_DL.getValue (), paramSIFT);
+		log.info ("切换服务器");
+		ImageService.imagesBack (login_QH.getValue (), paramSIFT);
+		log.info ("点击小三角");
+		ImageService.imagesBack (login_XSJ.getValue (), paramRGB);
+		if (gameUserId != null) {
+			if (gameUserId.equals ("1")) {
+				log.info ("点击大号角色-缥缈之旅");
+				ImageService.imagesBack (login_FWQ_PMZL.getValue (), paramRGB);
+			}
+		}
+		log.info ("开始游戏");
+		ImageService.imagesBack (login_KSYX.getValue (), paramTM_SQDIFF_NORMED (3E-10));
+		Thread.sleep (5 * 1000L);
+		log.info ("底部菜单栏");
+		ImageService.imagesBack (home_DBCD.getValue (), paramRGB);
+		Thread.sleep (2 * 1000L);
 	}
+	
 }
