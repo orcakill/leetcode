@@ -13,6 +13,7 @@ public enum GameEnum {
   home_SYGY ("首页/首页勾玉"),
   home_TS ("首页/探索"),
   home_YH_NJZR ("首页/用户/逆戟之刃"),
+  home_TXYHZX ("首页/头像用户中心"),
   home_YH_ORCAKILL ("首页/用户/orcakill"),
   home_YYSTB ("登录/阴阳师图标"),
   login_CY ("登录/常用"),

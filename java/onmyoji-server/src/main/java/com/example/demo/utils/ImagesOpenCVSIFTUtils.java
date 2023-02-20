@@ -4,13 +4,18 @@ import com.example.demo.model.entity.PictureCollectionPO;
 import com.example.demo.model.entity.PictureIdentifyWorkPO;
 import lombok.extern.log4j.Log4j2;
 import org.opencv.calib3d.Calib3d;
+import org.opencv.core.Point;
 import org.opencv.core.*;
 import org.opencv.features2d.DescriptorMatcher;
+import org.opencv.features2d.Features2d;
 import org.opencv.features2d.SIFT;
+import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.imgproc.Imgproc;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,7 +28,6 @@ import java.util.List;
  */
 @Log4j2
 public class ImagesOpenCVSIFTUtils {
-
 	
 	//识别图片存在并点击或只识别不点击
 	public static boolean imagesRecognition (List<PictureCollectionPO> pictureCollectionPOList, String process,
@@ -34,7 +38,7 @@ public class ImagesOpenCVSIFTUtils {
 		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
 		
 		List<PictureIdentifyWorkPO> mouseXY = FindAllImgDataOpenCvAll (Window, pictureCollectionPOList, coefficient,
-		                                                               characteristicPoint);
+		                                                               characteristicPoint, false);
 		//		识别+鼠标点击或仅识别
 		if (mouseXY != null && !mouseXY.isEmpty ()) {
 			return MouseClickUtils.mouseClickBack (mouseXY, process, isClick);
@@ -46,7 +50,8 @@ public class ImagesOpenCVSIFTUtils {
 	
 	public static List<PictureIdentifyWorkPO> FindAllImgDataOpenCvAll (BufferedImage originalImageB,
 	                                                                   List<PictureCollectionPO> templateImageB,
-	                                                                   Double coefficient, int characteristicPoint) {
+	                                                                   Double coefficient, int characteristicPoint,
+	                                                                   boolean printOrNot) {
 		//声明 坐标列表
 		List<PictureIdentifyWorkPO> mouseMessages = new ArrayList<> ();
 		//声明 识别坐标
@@ -59,14 +64,13 @@ public class ImagesOpenCVSIFTUtils {
 		Mat resO = new Mat ();
 		
 		int matchesPointCount;
-		Mat templateImage;
-		Mat originalImage;
-		
-		MatOfKeyPoint templateKeyPoints = new MatOfKeyPoint ();
-		MatOfKeyPoint originalKeyPoints = new MatOfKeyPoint ();
 		//即当detector 又当Detector
 		SIFT sift = SIFT.create ();
-		originalImage = getMat (originalImageB);
+		Mat templateImage;
+		Mat originalImage = getMat (originalImageB);
+		;
+		MatOfKeyPoint templateKeyPoints = new MatOfKeyPoint ();
+		MatOfKeyPoint originalKeyPoints = new MatOfKeyPoint ();
 		sift.detect (originalImage, originalKeyPoints);
 		sift.compute (originalImage, originalKeyPoints, resO);
 		try {
@@ -87,8 +91,9 @@ public class ImagesOpenCVSIFTUtils {
 					goodMatchList (matches, goodMatchesList, coefficient);
 					matchesPointCount = goodMatchesList.size ();
 					//当匹配后的特征点大于等于 4 个，则认为模板图在原图中，该值可以自行调整
-					log.info ("{} {},特征点:{},预计特征点{}", imagesDatum.getImageNumber (), imagesDatum.getImageName (),
-					             matchesPointCount,characteristicPoint);
+					log.info ("{} {},特征点:{},预计特征点{}", imagesDatum.getImageNumber (),
+					          imagesDatum.getImageName (),
+					          matchesPointCount, characteristicPoint);
 					if (matchesPointCount >= characteristicPoint) {
 						List<KeyPoint> templateKeyPointList = templateKeyPoints.toList ();
 						List<KeyPoint> originalKeyPointList = originalKeyPoints.toList ();
@@ -131,10 +136,34 @@ public class ImagesOpenCVSIFTUtils {
 								(int) ((pointA[1] + pointB[1] + pointC[1] + pointD[1]) / 4) + RandomUtils.getRandom (1,
 								                                                                                     5));
 						if (pictureIdentifyWorkPO.getX () > 0 && pictureIdentifyWorkPO.getY () > 0) {
+							if (printOrNot) {
+								Imgproc.rectangle (originalImage, new org.opencv.core.Point (pointA),
+								                   new Point (pointC), new Scalar (0, 255, 0));
+								MatOfDMatch goodMatches = new MatOfDMatch ();
+								goodMatches.fromList (goodMatchesList);
+								Mat matchOutput = new Mat (originalImage.rows () * 2, originalImage.cols () * 2,
+								                           Imgcodecs.IMREAD_COLOR);
+								Features2d.drawMatches (templateImage, templateKeyPoints, originalImage,
+								                        originalKeyPoints, goodMatches, matchOutput,
+								                        new Scalar (0, 255, 0), new Scalar (255, 0, 0),
+								                        new MatOfByte (), 2);
+								Features2d.drawMatches (templateImage, templateKeyPoints, originalImage,
+								                        originalKeyPoints, goodMatches, matchOutput,
+								                        new Scalar (0, 255, 0), new Scalar (255, 0, 0),
+								                        new MatOfByte (), 2);
+								File file_Match = new File ("D:\\match.jpg");
+								if (file_Match.exists ()) {
+									boolean deleteNot = file_Match.delete ();
+									if (deleteNot) {
+										log.info ("先删除");
+									}
+								}
+								Imgcodecs.imwrite ("D:\\match.jpg", originalImage);
+							}
 							log.info ("目标坐标为:({}，{})", pictureIdentifyWorkPO.getX (),
-							             pictureIdentifyWorkPO.getY ());
-							log.info ("已识别的序号{},图片:{}",imagesDatum.getImageNumber (),
-							             imagesDatum.getImageName ());
+							          pictureIdentifyWorkPO.getY ());
+							log.info ("已识别的序号{},图片:{}", imagesDatum.getImageNumber (),
+							          imagesDatum.getImageName ());
 							mouseMessages.add (pictureIdentifyWorkPO);
 							break;
 						}
@@ -143,7 +172,7 @@ public class ImagesOpenCVSIFTUtils {
 					log.info (e);
 				}
 			}
-		}catch (Exception e){
+		} catch (Exception e) {
 			log.info (e);
 		}
 		return mouseMessages;

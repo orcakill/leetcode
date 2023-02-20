@@ -30,7 +30,7 @@ public interface ImageCoreService {
 	 * {@code @author:} orcakill
 	 * @date: 2023/1/26 22:26
 	 */
-	static boolean imagesBackClick (String folder, int identificationAlgorithmType, String process, Integer re_num,
+	static boolean imagesBackClick (String folder, String identificationAlgorithmType, String process, Integer re_num,
 	                                Integer start_time,
 	                                Integer end_time, Boolean boole, boolean isClick, Double coefficient, int characteristicPoint)
 			throws AWTException, IOException, InterruptedException {

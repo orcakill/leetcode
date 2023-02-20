@@ -41,7 +41,7 @@ public class ImageCoreServiceImpl {
 	 * @author: orcakill
 	 * @date: 2023/1/26 22:26
 	 */
-	public static boolean imagesBackClick (String folder, int identificationAlgorithmType, String process, int re_num,
+	public static boolean imagesBackClick (String folder, String identificationAlgorithmType, String process, int re_num,
 	                                       int i1, int i2, boolean b, boolean isClick, Double coefficient,
 	                                       int characteristicPoint)
 			throws AWTException, IOException, InterruptedException {
@@ -86,10 +86,10 @@ public class ImageCoreServiceImpl {
 		int num_time;
 		boolean result;
 		String path = FolderPathMap.folderPath ("图片总路径");
+		List<PictureCollectionPO> pictureCollectionPOList = new ArrayList<> ();
 		for (int i = 0; i < multipleImagesParam.getRe_num (); i++) {
 			num_time = getRandom (multipleImagesParam.getStart_time (), multipleImagesParam.getEnd_time ());
 			for (MultipleImageParam multipleImageParam : multipleImagesParam.getMultipleImageParamList ()) {
-				List<PictureCollectionPO> pictureCollectionPOList = new ArrayList<> ();
 				//每20次重新初始化数据集
 				if (i % 20 == 0) {
 					pictureCollectionPOList =
@@ -121,20 +121,20 @@ public class ImageCoreServiceImpl {
 		return null;
 	}
 	
-	private static boolean isResult (int identificationAlgorithmType, String process, boolean isClick,
+	private static boolean isResult (String identificationAlgorithmType, String process, boolean isClick,
 	                                 Double coefficient, int characteristicPoint,
 	                                 List<PictureCollectionPO> pictureCollectionPOList)
 			throws AWTException, IOException {
 		boolean result = false;
-		if (identificationAlgorithmType == 0) {
+		if (identificationAlgorithmType.equals ("RGB")) {
 			result = ImagesBackRecUtils.imagesRecognition (pictureCollectionPOList, process, isClick);
 		}
-		if (identificationAlgorithmType == 1) {
+		if (identificationAlgorithmType.equals ("TM_SQDIFF_NORMED")) {
 			
 			result = ImagesOpenCVUtils.imagesRecognitionOpenCv (pictureCollectionPOList, process, isClick,
-			                                                    coefficient);
+			                                                    coefficient,identificationAlgorithmType);
 		}
-		if (identificationAlgorithmType == 2) {
+		if (identificationAlgorithmType.equals ("SIFT")) {
 			result =
 					ImagesOpenCVSIFTUtils.imagesRecognition (pictureCollectionPOList, process, isClick,
 					                                         coefficient,
