@@ -13,8 +13,6 @@ import java.util.List;
 @Log4j2
 public class MouseClickUtils {
 	
-
-	
 	//后台鼠标点击，坐标集，进程名，是否点击
 	public static boolean mouseClickBack (List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList,
 	                                      String process, boolean isClick) throws AWTException {
@@ -34,14 +32,31 @@ public class MouseClickUtils {
 		
 	}
 	
-	public static void mouseClickBack (PictureIdentifyWorkPO pictureIdentifyWorkPO,String process) throws AWTException {
+	/**
+	 * @param pictureIdentifyWorkPO 坐标信息
+	 * @param process               进程名
+	 * @description: 坐标点击
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/2/21 19:32
+	 */
+	public static void mouseClickBack (PictureIdentifyWorkPO pictureIdentifyWorkPO, String process)
+			throws AWTException {
 		HWND hwnd = User32.INSTANCE.FindWindow (null, process);
-		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOS=new ArrayList<> ();
+		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOS = new ArrayList<> ();
 		pictureIdentifyWorkPOS.add (pictureIdentifyWorkPO);
 		mouseClickBackground (hwnd, pictureIdentifyWorkPOS);
 	}
 	
-	//后台鼠标拖拽，坐标1，坐标2，进程名
+	/***
+	 * @description: 点击坐标1拖拽到坐标2
+	 * @param pictureIdentifyWorkPO1  坐标1
+	 * @param pictureIdentifyWorkPO2  坐标2
+	 * @param process  进程名
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/2/21 20:42
+	 */
 	public static void mouseClickBackDrag (PictureIdentifyWorkPO pictureIdentifyWorkPO1,
 	                                       PictureIdentifyWorkPO pictureIdentifyWorkPO2,
 	                                       String process) throws AWTException {

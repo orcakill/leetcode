@@ -1,12 +1,6 @@
 package com.example.demo.utils;
 
-import java.awt.AWTException;
-import java.awt.Dimension;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
-import java.awt.Robot;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class ComputerScalingUtils {

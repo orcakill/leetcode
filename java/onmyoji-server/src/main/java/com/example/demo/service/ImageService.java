@@ -3,7 +3,6 @@ package com.example.demo.service;
 import com.example.demo.model.entity.PictureIdentifyWorkPO;
 import com.example.demo.model.param.ImageRecParam;
 import com.example.demo.model.param.MultipleImagesParam;
-import com.example.demo.service.impl.ImageCoreServiceImpl;
 import com.example.demo.service.impl.ImageServiceImpl;
 
 import java.awt.*;

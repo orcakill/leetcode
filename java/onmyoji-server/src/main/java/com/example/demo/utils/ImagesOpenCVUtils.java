@@ -3,8 +3,8 @@ package com.example.demo.utils;
 import com.example.demo.model.entity.PictureCollectionPO;
 import com.example.demo.model.entity.PictureIdentifyWorkPO;
 import lombok.extern.log4j.Log4j2;
-import org.opencv.core.*;
 import org.opencv.core.Point;
+import org.opencv.core.*;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 

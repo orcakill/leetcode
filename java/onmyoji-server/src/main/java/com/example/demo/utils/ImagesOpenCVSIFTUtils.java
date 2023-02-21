@@ -60,6 +60,7 @@ public class ImagesOpenCVSIFTUtils {
 		                                                               characteristicPoint, false);
 		//		鼠标点击
 		PictureIdentifyWorkPO pictureIdentifyWorkPO = new PictureIdentifyWorkPO ();
+		assert mouseXY != null;
 		if (mouseXY.size () > 0) {
 			if(mouseXY.get (0).getX ()>0&&mouseXY.get (0).getY ()>0){
 				pictureIdentifyWorkPO = mouseXY.get (0);
@@ -88,7 +89,6 @@ public class ImagesOpenCVSIFTUtils {
 		SIFT sift = SIFT.create ();
 		Mat templateImage;
 		Mat originalImage = getMat (originalImageB);
-		;
 		MatOfKeyPoint templateKeyPoints = new MatOfKeyPoint ();
 		MatOfKeyPoint originalKeyPoints = new MatOfKeyPoint ();
 		sift.detect (originalImage, originalKeyPoints);
@@ -238,7 +238,7 @@ public class ImagesOpenCVSIFTUtils {
 		if (original == null) {
 			throw new IllegalArgumentException ("original == null");
 		}
-		// Don't convert if it already has correct type
+		// Don't convert if it already has correct Type
 		if (original.getType () == type) {
 			return original;
 		}

@@ -4,19 +4,4 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.GameThreadMapper">
 
-    <resultMap id="BaseResultMap" type="com.example.demo.model.entity.GameThreadPO">
-            <id property="id" column="id" jdbcType="VARCHAR"/>
-            <result property="threadState" column="thread_state" jdbcType="INTEGER"/>
-            <result property="threadNumber" column="thread_number" jdbcType="INTEGER"/>
-            <result property="createUser" column="create_user" jdbcType="VARCHAR"/>
-            <result property="createTime" column="create_time" jdbcType="BIGINT"/>
-            <result property="updateUser" column="update_user" jdbcType="VARCHAR"/>
-            <result property="updateTime" column="update_time" jdbcType="BIGINT"/>
-    </resultMap>
-
-    <sql id="Base_Column_List">
-        id,thread_state,thread_number,
-        create_user,create_time,update_user,
-        update_time
-    </sql>
 </mapper>

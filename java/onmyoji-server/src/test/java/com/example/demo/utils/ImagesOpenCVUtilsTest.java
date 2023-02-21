@@ -2,7 +2,6 @@ package com.example.demo.utils;
 
 import com.example.demo.model.entity.PictureCollectionPO;
 import com.example.demo.model.entity.PictureIdentifyWorkPO;
-import com.example.demo.model.enums.GameEnum;
 import com.example.demo.model.map.FolderPathMap;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
 
-
+import static com.example.demo.model.var.CommVar.login_KSYX;
 
 /**
  * @Classname ImagesOpenCVUtilsTest
@@ -34,7 +33,7 @@ class ImagesOpenCVUtilsTest {
 		BufferedImage Window = ScreenshotUtils.screenshotBack ("夜神模拟器");
 		String path = FolderPathMap.folderPath ("图片总路径");
 		List<PictureCollectionPO> pictureCollectionPOList =
-				ReadFileUtils.readPictureCollectionPOList (path, GameEnum.login_KSYX.getValue (), "TM_SQDIFF_NORMED");
+				ReadFileUtils.readPictureCollectionPOList (path, login_KSYX, "TM_SQDIFF_NORMED");
 		//		屏幕截图和图片对比
 		List<PictureIdentifyWorkPO> mouseXY =
 				ImagesOpenCVUtils.FindAllImgDataOpenCv (Window, pictureCollectionPOList, 4E-10, true,"TM_SQDIFF_NORMED");

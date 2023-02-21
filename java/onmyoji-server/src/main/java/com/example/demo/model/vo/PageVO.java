@@ -1,8 +1,9 @@
 package com.example.demo.model.vo;
 
-import java.util.List;
 import lombok.Builder;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * @Classname PageVO

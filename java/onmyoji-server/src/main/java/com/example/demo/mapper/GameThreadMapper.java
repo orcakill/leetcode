@@ -1,7 +1,7 @@
 package com.example.demo.mapper;
 
-import com.example.demo.model.entity.GameThreadPO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.demo.model.entity.GameThreadPO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

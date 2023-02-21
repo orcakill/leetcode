@@ -37,19 +37,18 @@ public class ProcessTest {
 			double freeMemory = 1.0 * freePhysicalMemorySize / GB;
 			double memoryUseRatio = 1.0 * (totalPhysicalMemorySize - freePhysicalMemorySize) / totalPhysicalMemorySize * 100;
 			
-			StringBuilder result = new StringBuilder();
-			result.append("系统CPU占用率: ")
-			      .append(twoDecimal(systemCpuLoad))
-			      .append("%，内存占用率：")
-			      .append(twoDecimal(memoryUseRatio))
-			      .append("%，系统总内存：")
-			      .append(twoDecimal(totalMemory))
-			      .append("GB，系统剩余内存：")
-			      .append(twoDecimal(freeMemory))
-			      .append("GB，该进程占用CPU：")
-			      .append(twoDecimal(processCpuLoad))
-			      .append("%");
-			System.out.println(result.toString());
+			String result = "系统CPU占用率: " +
+			                twoDecimal (systemCpuLoad) +
+			                "%，内存占用率：" +
+			                twoDecimal (memoryUseRatio) +
+			                "%，系统总内存：" +
+			                twoDecimal (totalMemory) +
+			                "GB，系统剩余内存：" +
+			                twoDecimal (freeMemory) +
+			                "GB，该进程占用CPU：" +
+			                twoDecimal (processCpuLoad) +
+			                "%";
+			System.out.println (result);
 			
 			try {
 				Thread.sleep(500);
