@@ -1,11 +1,12 @@
 package com.example.demo.model.vo;
 
-
 import com.example.demo.model.enums.IErrorInfo;
 import com.example.demo.utils.BlogUtils;
-import io.swagger.annotations.*;
-import lombok.*;
-import lombok.experimental.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Builder;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * @author orcakill

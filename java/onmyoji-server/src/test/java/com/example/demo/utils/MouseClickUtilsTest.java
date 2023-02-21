@@ -10,8 +10,6 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  * @Classname MouseClickUtilsTest
  * @Description 鼠标点击事件 测试类

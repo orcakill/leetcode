@@ -1,8 +1,8 @@
 package com.example.demo.model.entity;
 
-import java.awt.image.BufferedImage;
-import javax.validation.constraints.NotBlank;
 import lombok.Data;
+
+import java.awt.image.BufferedImage;
 
 
 /**

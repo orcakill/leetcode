@@ -86,8 +86,7 @@ public class ReadFileUtils {
 	 */
 	
 	public static List<PictureCollectionPO> readPictureCollectionPOList (String path, String folder,
-	                                                                     String identificationAlgorithmType)
-			throws IOException {
+	                                                                     String identificationAlgorithmType) {
 		try {
 			// 判断当前目录下的指定文件夹是否存在
 			File Folder = new File (path + folder);

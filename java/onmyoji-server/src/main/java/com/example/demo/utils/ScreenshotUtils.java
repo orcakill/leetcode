@@ -1,16 +1,12 @@
 package com.example.demo.utils;
 
-import static com.example.demo.utils.ScanningProcessUtils.scanningProcess;
-
 import com.sun.jna.platform.win32.User32;
 import com.sun.jna.platform.win32.WinDef.HWND;
 
-import java.awt.AWTException;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
-import java.awt.Robot;
+import java.awt.*;
 import java.awt.image.BufferedImage;
+
+import static com.example.demo.utils.ScanningProcessUtils.scanningProcess;
 
 /**
  * @Classname Screenshot

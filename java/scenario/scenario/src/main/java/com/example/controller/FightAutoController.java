@@ -96,7 +96,6 @@ public class FightAutoController {
 				ImageService.imagesClickBack (file1);
 				logger.info ("重新判断是否有结界可以攻打");
 				continue;
-				
 			}
 			else {
 				logger.info ("结界未被攻破");
@@ -228,7 +227,6 @@ public class FightAutoController {
 				ImageService.imagesClickBack (SoulEnums.type_HSY.getValue ());
 			}
 			else {
-				
 				logger.info ("选择魂十");
 				b2 = ImageService.imagesClickBackIsEmpty (SoulEnums.type_HS.getValue (), 30);
 				if (!b2) {

@@ -187,7 +187,7 @@ public class ImageCoreServiceImpl {
 	private static PictureIdentifyWorkPO getResult (String identificationAlgorithmType, String process,
 	                                                Double coefficient, int characteristicPoint,
 	                                                List<PictureCollectionPO> pictureCollectionPOList)
-			throws AWTException, IOException {
+			throws IOException {
 		PictureIdentifyWorkPO result = new PictureIdentifyWorkPO ();
 		if (identificationAlgorithmType.equals ("RGB")) {
 			result = ImagesBackRecUtils.imagesRecognitionMouse (pictureCollectionPOList, process);

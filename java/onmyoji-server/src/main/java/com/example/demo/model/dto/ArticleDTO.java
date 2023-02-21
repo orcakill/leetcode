@@ -1,11 +1,13 @@
 package com.example.demo.model.dto;
 
-import cn.hutool.core.bean.*;
+import cn.hutool.core.bean.BeanUtil;
 import com.example.demo.model.entity.ArticlePO;
-import io.swagger.annotations.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import org.hibernate.validator.constraints.Range;
+
 import javax.validation.constraints.NotEmpty;
-import lombok.*;
-import org.hibernate.validator.constraints.*;
 
 /**
  * @Classname ArticleDTO

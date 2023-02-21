@@ -2,7 +2,6 @@ package com.example.demo.utils;
 
 import com.example.demo.model.entity.PictureCollectionPO;
 import com.example.demo.model.entity.PictureIdentifyWorkPO;
-import com.example.demo.model.enums.GameEnum;
 import com.example.demo.model.map.FolderPathMap;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
@@ -13,6 +12,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
 
+import static com.example.demo.model.var.CommVar.home_TS;
 import static com.example.demo.utils.ImagesOpenCVSIFTUtils.FindAllImgDataOpenCvAll;
 
 /**
@@ -40,7 +40,7 @@ class ImagesOpenCVSIFTUtilsTest {
 		//pictureCollectionPOList.add (pictureCollectionPO);
 		String path = FolderPathMap.folderPath ("图片总路径");
 		List<PictureCollectionPO> pictureCollectionPOList =
-				ReadFileUtils.readPictureCollectionPOList (path, GameEnum.home_TS.getValue (), "SIFT");
+				ReadFileUtils.readPictureCollectionPOList (path,home_TS, "SIFT");
 		//		屏幕截图和图片对比
 		List<PictureIdentifyWorkPO> mouseXY = FindAllImgDataOpenCvAll (Window, pictureCollectionPOList, 0.7,
 		                                                               4,true);

@@ -16,8 +16,8 @@ public interface ArticleService {
 
 
   PageVO<ArticleVO> getArticles(int page, int limit);
-
-  String insArticle(ArticleDTO articleDTO);
+  
+  String insertArticle(ArticleDTO articleDTO);
 
   ArticleVO findById(String id);
 

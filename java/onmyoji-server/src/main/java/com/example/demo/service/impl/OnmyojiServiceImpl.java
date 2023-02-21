@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import cn.hutool.core.util.IdUtil;
 import com.example.demo.model.entity.GameThreadPO;
 import com.example.demo.model.entity.PictureIdentifyWorkPO;
+import com.example.demo.model.map.CoordinateAddressMap;
 import com.example.demo.model.param.MultipleImageParam;
 import com.example.demo.model.param.MultipleImagesParam;
 import com.example.demo.model.thread.FirstThread;
@@ -21,8 +22,11 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.demo.model.enums.GameEnum.*;
 import static com.example.demo.model.param.ImageRecParam.*;
+import static com.example.demo.model.var.CommVar.*;
+import static com.example.demo.service.ImageService.imagesBack;
+import static com.example.demo.service.ImageService.imagesBackList;
+import static java.lang.Thread.sleep;
 
 /**
  * @Classname OnmyojiServiceImpl
@@ -84,10 +88,13 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				//  当前状态初始化，进入角色首页
 				initializationState ("1");
 				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
+				toFoster ();
+				//  大号阴阳寮突破
+				fightHouse();
+				//  大号个人突破
+				borderCheck ();
+				//  御魂战斗-魂十一（注意喂食宠物）
 				
-				//  阴阳寮突破
-				//  个人突破
-				//  魂十一（注意喂食宠物）
 				//  地域鬼王+领取花合战每日奖励，无未攻打则跳过
 				//  好友添加、好友删除、赠送小号红心、赠送其他人红心（待定）
 			}
@@ -102,21 +109,21 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		boolean announcementOrNot;//是否公告
 		boolean promptForAge = false;//是否适龄提示
 		boolean targetHomePage = false;
-		boolean switchAccount=false;
+		boolean switchAccount;
 		while (!initializeOrNot) {
 			thisPicture = thisState ();
 			log.info ("当前状态{}", thisPicture);
 			if (userId.equals ("1")) {
-				if (thisPicture.equals (home_YH_NJZR.getValue ())) {
+				if (thisPicture.equals (home_YH_NJZR)) {
 					targetHomePage = true;
 				}
 			}
 			if (userId.equals ("2")) {
-				if (thisPicture.equals (home_YH_ORCAKILL.getValue ())) {
+				if (thisPicture.equals (home_YH_ORCAKILL)) {
 					targetHomePage = true;
 				}
 			}
-			if(thisPicture.equals (return_FH.getValue ())){
+			if (thisPicture.equals (return_FH)) {
 				log.info ("先返回到首页");
 				returnHome ();
 				log.info ("重新判断当前状态");
@@ -124,48 +131,48 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			}
 			if (!targetHomePage) {
 				//  当前页面阴阳师图标，需要点击应用图标->跳过登录动画->关闭公告->适龄提示
-				if (thisPicture.equals (home_YYSTB.getValue ())) {
+				if (thisPicture.equals (home_YYSTB)) {
 					log.info ("点击阴阳师图标");
-					ImageService.imagesBack (home_YYSTB.getValue (), paramRGB);
+					ImageService.imagesBack (home_YYSTB, paramRGB);
 					while (!promptForAge) {
 						Thread.sleep (15000);
 						log.info ("单击一下，防止有开场动画");
 						MouseClickUtils.mouseClickBack (new PictureIdentifyWorkPO (500, 500), "夜神模拟器");
 						Thread.sleep (1000);
 						log.info ("判断是否有公告需要返回");
-						announcementOrNot = ImageService.imagesBack (return_FH.getValue (), paramRGB);
+						announcementOrNot = ImageService.imagesBack (return_FH, paramRGB);
 						if (announcementOrNot) {
 							log.info ("有公告");
-							ImageService.imagesBack (return_FH.getValue (), paramSIFT);
+							ImageService.imagesBack (return_FH, paramSIFT);
 							Thread.sleep (1000);
 						}
-						promptForAge = ImageService.imagesBack (login_SLTS.getValue (), paramSIFTNotClick);
+						promptForAge = ImageService.imagesBack (login_SLTS, paramSIFTNotClick);
 						if (promptForAge) {
 							log.info ("当前页面有适龄提示");
 						}
 					}
 				}
 				// 当前页面非目标首页
-				if (thisPicture.equals (home_YH_NJZR.getValue ())) {
+				if (thisPicture.equals (home_YH_NJZR)) {
 					log.info ("点击用户头像");
-					ImageService.imagesBack (home_YH_NJZR.getValue (), paramSIFT (20));
+					ImageService.imagesBack (home_YH_NJZR, paramSIFT (20));
 					log.info ("点击用户中心");
-					ImageService.imagesBack (home_TXYHZX.getValue (), paramSIFT (20));
+					ImageService.imagesBack (home_TXYHZX, paramSIFT (20));
 				}
-				if (thisPicture.equals (home_YH_ORCAKILL.getValue ())) {
+				if (thisPicture.equals (home_YH_ORCAKILL)) {
 					log.info ("点击用户头像");
-					ImageService.imagesBack (home_YH_ORCAKILL.getValue (), paramSIFT (20));
+					ImageService.imagesBack (home_YH_ORCAKILL, paramSIFT (20));
 					log.info ("点击用户中心");
-					ImageService.imagesBack (home_TXYHZX.getValue (), paramSIFT (20));
+					ImageService.imagesBack (home_TXYHZX, paramSIFT (20));
 				}
 				// 当前页面适龄提示->点击用户中心
-				if (thisPicture.equals (login_SLTS.getValue ()) || promptForAge) {
+				if (thisPicture.equals (login_SLTS) || promptForAge) {
 					log.info ("点击头像用户中心");
-					ImageService.imagesBack (login_YHZX.getValue (), paramSIFT);
+					ImageService.imagesBack (login_YHZX, paramSIFT);
 				}
 				log.info ("判断是否切换账号");
-				switchAccount=ImageService.imagesBack (login_QHZH.getValue (),paramSIFTNotClick);
-				if(switchAccount){
+				switchAccount = ImageService.imagesBack (login_QHZH, paramSIFTNotClick);
+				if (switchAccount) {
 					log.info ("切换用户和大区并登录到首页");
 					login (userId);
 					log.info ("当前用户首页");
@@ -185,44 +192,44 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		MultipleImagesParam multipleImagesParams = new MultipleImagesParam ();
 		List<MultipleImageParam> multipleImageParamList = new ArrayList<> ();
 		//桌面       阴阳师图标
-		multipleImageParamList.add (new MultipleImageParam (login_YYSTB.getValue (), paramRGB));
+		multipleImageParamList.add (new MultipleImageParam (login_YYSTB, paramRGB));
 		//登录界面    适龄提示
-		multipleImageParamList.add (new MultipleImageParam (login_SLTS.getValue (), paramRGB));
+		multipleImageParamList.add (new MultipleImageParam (login_SLTS, paramRGB));
 		//大号首页    缥缈之旅 逆戟之刃
-		multipleImageParamList.add (new MultipleImageParam (home_YH_NJZR.getValue (), paramSIFT (20)));
+		multipleImageParamList.add (new MultipleImageParam (home_YH_NJZR, paramSIFT (20)));
 		//小号1首页   缥缈之旅 orcakill
-		multipleImageParamList.add (new MultipleImageParam (home_YH_ORCAKILL.getValue (), paramSIFT (20)));
+		multipleImageParamList.add (new MultipleImageParam (home_YH_ORCAKILL, paramSIFT (20)));
 		//小号2首页   两情相悦  洪荒的修罗
 		//小号3首页   桃映春馨  炽热的惆怅物语
 		//返回       返回
-		multipleImageParamList.add (new MultipleImageParam (return_FH.getValue (), paramRGB));
-		multipleImageParamList.add (new MultipleImageParam (return_FH.getValue (), paramSIFT (4)));
+		multipleImageParamList.add (new MultipleImageParam (return_FH, paramRGB));
+		multipleImageParamList.add (new MultipleImageParam (return_FH, paramSIFT (4)));
 		multipleImagesParams.setClick (false);
 		multipleImagesParams.setMultipleImageParamList (multipleImageParamList);
-		return ImageService.imagesBackList (multipleImagesParams);
+		return imagesBackList (multipleImagesParams);
 	}
 	
 	@Override
 	public void returnHome () throws IOException, InterruptedException, AWTException {
-		int num=1;
+		int num = 1;
 		log.info ("判断是否首页");
-		boolean homePageOrNot=ImageService.imagesBack (home_TS.getValue (),paramSIFTNotClick(1,20));
-		while (!homePageOrNot){
+		boolean homePageOrNot = ImageService.imagesBack (home_TS, paramSIFTNotClick (1, 20));
+		while (!homePageOrNot) {
 			log.info ("开始返回到首页");
-			ImageService.imagesBack (return_FH.getValue (),paramRGB(1));
-			if(num>20){
-				ImageService.imagesBack (return_FH.getValue (),paramSIFT(1,20));
-				num=1;
+			ImageService.imagesBack (return_FH, paramRGB (1));
+			if (num > 20) {
+				ImageService.imagesBack (return_FH, paramSIFT (1, 20));
+				num = 1;
 			}
 			num++;
-			homePageOrNot=ImageService.imagesBack (home_TS.getValue (),paramSIFTNotClick (1,20));
+			homePageOrNot = ImageService.imagesBack (home_TS, paramSIFTNotClick (1, 20));
 		}
 		Thread.sleep (2000);
 		log.info ("判断底部菜单是否打开");
-		boolean bottomMenu=ImageService.imagesBack (home_DBCD.getValue (),paramSIFTNotClick (1,20));
-		if(bottomMenu){
+		boolean bottomMenu = ImageService.imagesBack (home_DBCD, paramSIFTNotClick (1, 20));
+		if (bottomMenu) {
 			log.info ("打开底部菜单");
-			ImageService.imagesBack (home_DBCD.getValue (),paramSIFT(3,20));
+			ImageService.imagesBack (home_DBCD, paramSIFT (3, 20));
 		}
 		log.info ("返回首页完成");
 	}
@@ -230,47 +237,46 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 	@Override
 	public void login (String gameUserId) throws IOException, InterruptedException, AWTException {
 		log.info ("切换账号");
-		ImageService.imagesBack (login_QHZH.getValue (), paramSIFT);
+		ImageService.imagesBack (login_QHZH, paramSIFT);
 		log.info ("常用");
-		ImageService.imagesBack (login_CY.getValue (), paramTM_SQDIFF_NORMED (3E-10));
+		ImageService.imagesBack (login_CY, paramTM_SQDIFF_NORMED (3E-10));
 		log.info ("选择账号");
 		if (gameUserId != null) {
 			if (gameUserId.equals ("1")) {
 				log.info ("手机号178");
-				ImageService.imagesBack (login_XZZH_PHONE1.getValue (), paramTM_SQDIFF_NORMED (2E-11));
+				ImageService.imagesBack (login_XZZH_PHONE1, paramTM_SQDIFF_NORMED (2E-11));
 			}
 			if (gameUserId.equals ("2")) {
 				log.info ("邮箱号1");
-				ImageService.imagesBack (login_YHZX_EMAIIL1.getValue (), paramTM_SQDIFF_NORMED (2E-11));
+				ImageService.imagesBack (login_YHZX_EMAIIL1, paramTM_SQDIFF_NORMED (2E-11));
 			}
 		}
 		log.info ("登录");
-		ImageService.imagesBack (login_DL.getValue (), paramSIFT);
+		ImageService.imagesBack (login_DL, paramSIFT);
 		log.info ("切换服务器");
-		ImageService.imagesBack (login_QH.getValue (), paramSIFT);
+		ImageService.imagesBack (login_QH, paramSIFT);
 		log.info ("点击小三角");
-		ImageService.imagesBack (login_XSJ.getValue (), paramRGB);
+		ImageService.imagesBack (login_XSJ, paramRGB);
 		if (gameUserId != null) {
 			if (gameUserId.equals ("1")) {
 				log.info ("点击大号角色-缥缈之旅");
-				ImageService.imagesBack (login_FWQ_PMZL.getValue (), paramRGB);
+				ImageService.imagesBack (login_FWQ_PMZL, paramRGB);
 			}
 		}
 		log.info ("开始游戏");
-		ImageService.imagesBack (login_KSYX.getValue (), paramTM_SQDIFF_NORMED (3E-10));
+		ImageService.imagesBack (login_KSYX, paramTM_SQDIFF_NORMED (3E-10));
 		Thread.sleep (5 * 1000L);
 		log.info ("底部菜单栏");
-		ImageService.imagesBack (home_DBCD.getValue (), paramRGB);
+		ImageService.imagesBack (home_DBCD, paramRGB);
 		Thread.sleep (2 * 1000L);
 	}
 	
 	@Override
 	
 	public void toFoster () throws InterruptedException, IOException, AWTException {
-		
-		String fileJJK = house_JJK_TG_LXTG.getValue();
+		String fileJJK = house_JJK_TG_LXTG;
 		int num = 0;//退出后重新进入好友列表的次数
-		PictureIdentifyWorkPO pictureIdentifyWorkPO1 = new PictureIdentifyWorkPO ();//记录好友标题位置
+		PictureIdentifyWorkPO pictureIdentifyWorkPO1;//记录好友标题位置
 		PictureIdentifyWorkPO pictureIdentifyWorkPO2 = new PictureIdentifyWorkPO ();//记录滚动起始位置
 		PictureIdentifyWorkPO pictureIdentifyWorkPO3 = new PictureIdentifyWorkPO ();//记录滚动终止位置
 		PictureIdentifyWorkPO pictureIdentifyWorkPO4 = new PictureIdentifyWorkPO ();//记录退出好友列表位置
@@ -280,22 +286,22 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		boolean booleanJSJY = false;//判断寄养是否结束
 		Thread.sleep (2000);
 		log.info ("进入阴阳寮");
-		ImageService.imagesBack (house_YYLTB.getValue(),paramSIFT);
+		ImageService.imagesBack (house_YYLTB, paramSIFT);
 		Thread.sleep (2000);
 		log.info ("进入结界");
-		ImageService.imagesBack  (house_JJ.getValue(),paramSIFT);
+		ImageService.imagesBack (house_JJ, paramSIFT);
 		Thread.sleep (2000);
 		log.info ("进入式神育成");
-		ImageService.imagesBack (house_SSYC.getValue(),paramSIFT);
+		ImageService.imagesBack (house_SSYC, paramSIFT);
 		Thread.sleep (2000);
 		log.info ("判断是否可寄养");
-		booleanKJY = ImageService.imagesBack (house_KJY.getValue(), paramRGBNotClick(5));
+		booleanKJY = ImageService.imagesBack (house_KJY, paramRGBNotClick (5));
 		if (booleanKJY) {
 			log.info ("进入可寄养");
-			ImageService.imagesBack (house_HYBT.getValue(),paramRGB);
+			ImageService.imagesBack (house_HYBT, paramRGB);
 			Thread.sleep (3000);
 			log.info ("已进入好友列表");
-			pictureIdentifyWorkPO1 = ImageService.imagesBackGetCoordinate (house_HYBT.getValue (), paramRGB);
+			pictureIdentifyWorkPO1 = ImageService.imagesBackGetCoordinate (house_HYBT, paramRGB);
 			pictureIdentifyWorkPO2.setX ((int) (pictureIdentifyWorkPO1.getX () * 1.3));
 			pictureIdentifyWorkPO2.setY ((int) (pictureIdentifyWorkPO1.getY () * 2.3));
 			pictureIdentifyWorkPO3.setX ((int) (pictureIdentifyWorkPO1.getX () * 1.3));
@@ -305,23 +311,23 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			//开循环，0 六星太鼓 1 五星太鼓 2 四星太鼓 3 六星斗鱼 4 五星斗鱼 5 四星斗鱼
 			while (!booleanJSJY) {
 				log.info ("当前好友结界卡是否未放置");
-				booleanWFZ = ImageService.imagesBack (house_WFZ.getValue(), paramRGB);
+				booleanWFZ = ImageService.imagesBack (house_WFZ, paramRGB);
 				if (booleanWFZ) {
 					log.info ("好友未放置结界卡，退出后重新进入");
 					if (num == 0) {
-						fileJJK = house_JJK_TG_WXTG.getValue();
+						fileJJK = house_JJK_TG_WXTG;
 					}
 					if (num == 1) {
-						fileJJK = house_JJK_TG_SXTG.getValue();
+						fileJJK = house_JJK_TG_SXTG;
 					}
 					if (num == 2) {
-						fileJJK = house_JJK_DY_LXDY.getValue();
+						fileJJK = house_JJK_DY_LXDY;
 					}
 					if (num == 3) {
-						fileJJK = house_JJK_DY_WXDY.getValue() ;
+						fileJJK = house_JJK_DY_WXDY;
 					}
 					if (num == 4) {
-						fileJJK = house_JJK_DY_SXDY.getValue();
+						fileJJK = house_JJK_DY_SXDY;
 					}
 					if (num > 4) {
 						log.info ("无高星结界卡，开始退出");
@@ -331,47 +337,390 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 					log.info ("退出到可寄养界面");
 					MouseClickUtils.mouseClickBack (pictureIdentifyWorkPO4, "夜神模拟器");
 					log.info ("重新进入好友列表");
-					ImageService.imagesBack (house_KJY.getValue(),paramRGB);
+					ImageService.imagesBack (house_KJY, paramRGB);
 				}
-				//else {
-				//	log.info ("存在结界卡，判断是否是高星结界卡");
-				//	booleanJJK = ImageService.imagesBack (fileJJK, paramRGB(2));
-				//	if (!booleanJJK) {
-				//		log.info ("当前结界不是" + fileJJK + ",不可放置,滚动到下一个");
-				//		ImageService.imagesClickBackDrag (pictureIdentifyWorkPO2, pictureIdentifyWorkPO3, "夜神模拟器");
-				//		log.info ("滚动完成,点击终止位置坐标");
-				//		MouseClick.mouseClickBack (pictureIdentifyWorkPO3, "夜神模拟器");
-				//	}
-				//	else {
-				//		log.info ("存在高星结界卡" + fileJJK);
-				//		ImageService.imagesClickBack (house_JRJJ.getValue());
-				//		log.info ("进入结界");
-				//		ImageService.imagesClickBack (house_DJDM.getValue());
-				//		log.info ("大吉达摩寄养");
-				//		ImageService.imagesClickBack (comm_QR.getValue());
-				//		log.info ("确认");
-				//		log.info ("检查是否寄养成功");
-				//		ImageService.imagesClickBack (return_FH.getValue());
-				//		ImageService.imagesClickBack (return_FH.getValue());
-				//		log.info ("返回到式神育成");
-				//		ImageService.imagesClickBack (house_SSYC.getValue());
-				//		log.info ("进入育成界面");
-				//		booleanJSJY = ImageService.imagesClickBack (house_KJY.getValue(), 3);
-				//		if (booleanJSJY) {
-				//			log.info ("寄养失败，重新进入好友列表");
-				//			ImageService.imagesClickBack (house_KJY.getValue());
-				//		}
-				//		else {
-				//			log.info ("寄养成功");
-				//			booleanJSJY = true;
-				//		}
-				//	}
-				//}
+				else {
+					log.info ("存在结界卡，判断是否是高星结界卡");
+					booleanJJK = ImageService.imagesBack (fileJJK, paramRGB (2));
+					if (!booleanJJK) {
+						log.info ("当前结界不是" + fileJJK + ",不可放置,滚动到下一个");
+						MouseClickUtils.mouseClickBackDrag (pictureIdentifyWorkPO2, pictureIdentifyWorkPO3,
+						                                    "夜神模拟器");
+						log.info ("滚动完成,点击终止位置坐标");
+						MouseClickUtils.mouseClickBack (pictureIdentifyWorkPO3, "夜神模拟器");
+					}
+					else {
+						log.info ("存在高星结界卡" + fileJJK);
+						ImageService.imagesBack (house_JRJJ, paramRGB);
+						log.info ("进入结界");
+						ImageService.imagesBack (house_DJDM, paramRGB);
+						log.info ("大吉达摩寄养");
+						ImageService.imagesBack (comm_QR, paramRGB);
+						log.info ("确认");
+						log.info ("检查是否寄养成功");
+						ImageService.imagesBack (return_FH, paramRGB);
+						ImageService.imagesBack (return_FH, paramRGB);
+						log.info ("返回到式神育成");
+						ImageService.imagesBack (house_SSYC, paramRGB);
+						log.info ("进入育成界面");
+						booleanJSJY = ImageService.imagesBack (house_KJY, paramRGB (3));
+						if (booleanJSJY) {
+							log.info ("寄养失败，重新进入好友列表");
+							ImageService.imagesBack (house_KJY, paramRGB);
+						}
+						else {
+							log.info ("寄养成功");
+							booleanJSJY = true;
+						}
+					}
+				}
 				
 			}
 		}
 		//退出
 		returnHome ();
+	}
+	
+	@Override
+	public void fightHouse () throws IOException, InterruptedException, AWTException {
+		int num = 0;
+		int num1 = 0;
+		int num2 = 0;
+		boolean b;
+		boolean b1;
+		boolean booleanYYL;
+		boolean boolean_TCJG;
+		//流程开始
+		log.info ("准备进入探索");
+		ImageService.imagesBack (home_TS, paramSIFT);
+		log.info ("准备进入结界突破");
+		ImageService.imagesBack (region_JJTP, paramSIFT);
+		log.info ("进入结界突破，准备点击阴阳寮");
+		booleanYYL = ImageService.imagesBack (region_YYL, paramRGBNotClick (5));
+		while (!booleanYYL) {
+			sleep (2000);
+			if (ImageService.imagesBack (region_GTRQ, paramRGBNotClick (5))) {
+				log.info ("有呱太入侵");
+				ImageService.imagesBack (region_GTRQ, paramRGB);
+				log.info ("呱太入侵点击完成");
+				
+			}
+			booleanYYL = ImageService.imagesBack (region_YYL, paramRGB (5));
+		}
+		sleep (2000);
+		log.info ("进入寮突破，判断当前有无挑战次数");
+		//退出到探索
+		while (!ImageService.imagesBack (region_TZCS, paramRGB (5)) && ImageService.imagesBack (region_LJJ,
+		                                                                                        paramRGB (5))) {
+			log.info ("存在可攻打结界，且存在挑战次数");
+			log.info ("准备选择结界");
+			ImageService.imagesBack (region_LJJ, paramRGB);
+			log.info ("选择结界成功，准备进攻");
+			ImageService.imagesBack (region_JG, paramRGB);
+			log.info ("开始进攻");
+			b = ImageService.imagesBack (region_JG, paramRGBNotClick (3));
+			if (b) {
+				boolean_TCJG = ImageService.imagesBack (region_TCJG, paramRGB (10));
+				while (boolean_TCJG) {
+					log.info ("结界已被攻破，退出进攻");
+					ImageService.imagesBack (region_TCJG, paramRGB);
+					log.info ("判断是否退出进攻");
+					boolean_TCJG = ImageService.imagesBack (region_TCJG, paramRGB (10));
+				}
+				ImageService.imagesBack (return_FH, paramRGB);
+				log.info ("退出到探索");
+				log.info ("准备重新进入结界突破");
+				ImageService.imagesBack (region_JJTP, paramRGB);
+				log.info ("进入结界突破，准备点击阴阳寮");
+				ImageService.imagesBack (region_YYL, paramRGB);
+				log.info ("重新判断是否有结界可以攻打");
+				continue;
+			}
+			else {
+				log.info ("结界未被攻破");
+			}
+			b1 = fightEnd (30, 30, 40);
+			if (b1) {
+				num1++;
+			}
+			else {
+				num2++;
+			}
+			num++;
+			log.info ("阴阳寮挑战第" + num + "次,成功" + num1 + "次，失败" + num2 + "次");
+			if (num == 8) {
+				log.info ("阴阳寮挑战到达8次");
+				break;
+			}
+		}
+		log.info ("无挑战次数或无可攻打结界");
+		returnHome ();
+	}
+	
+	/**
+	 * @param begin_num 开始识别时间
+	 * @param start_num 识别间隔开始时间
+	 * @param end_num   识别间隔结束时间
+	 * @description: 战斗结果 挑战成功或失败 （统计战斗数据）
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/2/21 22:21
+	 */
+	@Override
+	public boolean fightEnd (Integer begin_num, Integer start_num, Integer end_num)
+			throws InterruptedException, IOException, AWTException {
+		// 图像集
+		MultipleImagesParam multipleImagesParams = new MultipleImagesParam ();
+		List<MultipleImageParam> multipleImageParamList = new ArrayList<> ();
+		//御魂 角色头像
+		multipleImageParamList.add (new MultipleImageParam (soul_JSTX, paramRGB));
+		//御魂 退出挑战
+		multipleImageParamList.add (new MultipleImageParam (soul_TCTZ, paramRGB));
+		//结界突破 失败
+		multipleImageParamList.add (new MultipleImageParam (region_SB, paramRGB));
+		multipleImagesParams.setClick (true);
+		multipleImagesParams.setStart_time (start_num);
+		multipleImagesParams.setEnd_time (end_num);
+		multipleImagesParams.setMultipleImageParamList (multipleImageParamList);
+		log.info ("战斗开始，等待" + begin_num + "秒");
+		sleep (begin_num * 1000);
+		log.info ("准备点击角色头像、点击退出挑战、失败、宠物奖励");
+		String thisState = imagesBackList (multipleImagesParams);
+		if (thisState.equals ("角色头像")) {
+			log.info ("点击角色头像");
+			ImageService.imagesBack (soul_TCTZ, paramRGB);
+			log.info ("退出挑战");
+		}
+		if (thisState.equals ("失败")) {
+			log.info ("战斗失败");
+			return false;
+		}
+		log.info ("退出挑战完成");
+		return true;
+	}
+	
+	/***
+	 * @description: 个人结界
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/2/22 1:19
+	 */
+	@Override
+	public void borderCheck () throws IOException, InterruptedException, AWTException {
+
+		boolean booleanKXJJ;//可选结界
+		boolean booleanZBTJ;//准备挑战
+		boolean whetherAdditionalReward;
+		log.info ("准备进入探索");
+		ImageService.imagesBack (home_TS,paramSIFT);
+		//进入结界挑战
+		log.info ("准备进入结界突破");
+		ImageService.imagesBack (region_JJTP,paramSIFT);
+		sleep (3000);
+		MouseClickUtils.mouseClickBack (new PictureIdentifyWorkPO (0, 0), "夜神模拟器");
+		sleep (1000);
+		MouseClickUtils.mouseClickBack (new PictureIdentifyWorkPO (0, 0), "夜神模拟器");
+		log.info ("进入结界突破，检查结界挑战劵");
+		//判断结界挑战劵是否为0
+		while (!ImageService.imagesBack (region_JJTPJS, paramRGB(3))) {
+			//不为0则进行结界挑战
+			log.info ("结界劵数不为零");
+			//判断能否选择个人结界
+			booleanKXJJ = ImageService.imagesBack (region_GRJJ, paramRGB(3));
+			if (booleanKXJJ) {
+				log.info ("能选择个人结界");
+				ImageService.imagesBack (region_GRJJ,paramRGB);
+				log.info ("点击个人结界成功，准备进攻");
+				ImageService.imagesBack (region_JG,paramRGB);
+				log.info ("开始进攻");
+				sleep (10 * 1000);
+				log.info ("判断是否准备挑战");
+				booleanZBTJ = ImageService.imagesBack (region_ZBTZ, paramSIFTNotClick (4));
+				if (booleanZBTJ) {
+					log.info ("准备挑战");
+					ImageService.imagesBack (region_ZBTZ,paramSIFT);
+				}
+				else {
+					log.info ("无需准备");
+				}
+				log.info ("进入战斗");
+				fightEnd (30, 5, 10);
+				log.info ("判断是否有额外奖励");
+				whetherAdditionalReward = imagesBack (soul_TCTZ, paramRGB(5));
+				if (whetherAdditionalReward) {
+					ImageService.imagesBack (soul_TCTZ, paramRGB(5));
+					log.info ("领取额外奖励成功");
+				}
+				else {
+					log.info ("没有额外奖励");
+				}
+			}
+			log.info ("战斗后检查是否还有结界挑战劵");
+		}
+		//为0则不进行结界挑战
+		log.info ("结界劵数为0,返回到首页");
+		//退出到探索
+		returnHome ();
+	}
+	
+	/***
+	 * @description: 御魂战斗  魂十一、魂一（协战用）、魂十、业原火、日轮之陨、永生之海
+	 * @param soulType 御魂类型
+	 * @param soulNum  战斗场次
+	 * @param addition  是否开启加成
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/2/22 1:37
+	 */
+	@Override
+	public void soulFight (int soulType, int soulNum, boolean addition)
+			throws IOException, InterruptedException, AWTException {
+		boolean b1;
+		boolean b2;
+		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList;
+		log.info ("准备进入探索");
+		imagesBack (home_TS,paramSIFT);
+		log.info ("准备进入御魂");
+		imagesBack (soul_Icon,paramSIFT);
+		if (soulType == 10 || soulType == 11) {
+			log.info ("进入御魂成功，准备选择八岐大蛇");
+			imagesBack (soul_YHLX_BQDS,paramSIFT);
+			log.info ("进入八岐大蛇挑战页面");
+			//获取加成地址，手动测试出御魂加成的坐标，然后存储到代码，然后根据当前分辨率获取唯一坐标
+			pictureIdentifyWorkPOList = CoordinateAddressMap.getCoordinate ("御魂加成");
+			if (addition) {
+				log.info ("准备开启加成");
+				imagesBack (soul_JC_BQDS,paramRGB);
+				log.info ("点击加成成功，准备点击御魂加成");
+				MouseClickUtils.mouseClickBack (pictureIdentifyWorkPOList, "夜神模拟器", true);
+				log.info ("点击御魂加成成功，准备退出");
+				imagesBack (soul_JC_BQDS,paramRGB);
+				//退出加成页面
+				log.info ("退出加成页面");
+			}
+			if (soulType == 11) {
+				
+				log.info ("选择魂十一");
+				b1 = imagesBack (soul_CS_HSY, paramRGBNotClick (30));
+				if (!b1) {
+					log.info ("没有选择到魂十一");
+				}
+				imagesBack (soul_CS_HSY,paramRGB);
+			}
+			else {
+				log.info ("选择魂十");
+				b2 = imagesBack (soul_CS_HS, paramRGBNotClick (30));
+				if (!b2) {
+					log.info ("没有选择到魂十");
+				}
+				imagesBack (soul_CS_HS,paramRGB);
+			}
+			
+			//选择魂十或魂十一
+			//开始挑战
+			soulBack (22, soulNum);
+			//挑战结束
+			if (addition) {
+				//关闭加成
+				imagesBack (soul_JC_BQDS,paramRGB);
+				log.info ("点击加成成功，准备关闭御魂加成");
+				MouseClickUtils.mouseClickBack (pictureIdentifyWorkPOList, "夜神模拟器", true);
+				log.info ("关闭御魂加成成功，准备退出");
+				imagesBack (soul_JC_BQDS,paramRGB);
+				//退出加成页面
+				log.info ("退出加成页面");
+			}
+		}
+		//业原火
+		if (soulType == 21) {
+			log.info ("进入御魂成功，准备选择业原火");
+			imagesBack (soul_YHLX_YYH,paramSIFT);
+			log.info ("进入业原火");
+			log.info ("选择业原火第三层");
+			b1 = imagesBack (soul_CS_YSZHSC,paramSIFT);
+			if (!b1) {
+				log.info ("没有选择到业原火第三层");
+			}
+			log.info ("开始挑战");
+			//开始挑战
+			soulBack (40, soulNum);
+		}
+		if (soulType == 31) {
+			log.info ("进入御魂成功，准备选择日轮之陨");
+			imagesBack (soul_YHLX_RLZY,paramSIFT);
+			log.info ("进入日轮之陨");
+			log.info ("选择日轮之陨第三层");
+			b1 = imagesBack (soul_CS_RLZYSC,paramSIFT);
+			if (!b1) {
+				log.info ("没有选择到日轮之陨三层");
+			}
+			log.info ("开始挑战");
+			//开始挑战
+			soulBack (15, soulNum);
+		}
+		if (soulType == 41) {
+			log.info ("进入御魂成功，准备选择永生之海");
+			imagesBack (soul_YHLX_YSZH,paramSIFT);
+			log.info ("选择永生之海第四层");
+			b1 = imagesBack (soul_CS_YYHSC,paramSIFT);
+			if (!b1) {
+				log.info ("没有选择到永生之海四层");
+			}
+			log.info ("开启永生之海加成");
+			imagesBack (soul_JC_YSZHJC,paramRGB);
+			log.info ("开始挑战");
+			//开始挑战
+			soulBack (15, soulNum);
+		}
+		returnHome ();
+	}
+	
+	/***
+	 * @description: 御魂战斗详情
+	 * @param begin_time  识别开始时间
+	 * @param soulNumber      战斗场次
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/2/22 2:11
+	 */
+	@Override
+	public void soulBack (int begin_time, int soulNumber) throws InterruptedException, IOException, AWTException {
+		sleep (3000);
+		log.info ("战斗开始");
+		boolean b1;
+		//开始挑战,处理剩余次数的御魂
+		for (int i = 0; soulNumber > 0; i++) {
+			long a = System.currentTimeMillis ();//获取当前系统时间(毫秒)
+			log.info ("准备开始挑战");
+			sleep (1000);
+			b1= imagesBack (soul_TZ, paramRGB(5));
+			while (!b1){
+				log.info ("判断是否有宠物奖励");
+				imagesBack (soul_CWJL, paramRGB(5));
+				log.info ("判断是否没退出挑战成功");
+				imagesBack (soul_TCTZ, paramRGB(5));
+				b1= imagesBack (soul_TZ, paramRGBNotClick (5));
+				if(b1){
+					log.info ("再次点击挑战");
+					imagesBack (soul_TZ, paramRGB(5));
+				}
+			}
+			log.info ("第{}次挑战中,等待挑战完成",(i + 1));
+			fightEnd (begin_time,1,2);
+			soulNumber--;
+			log.info ("第{}次挑战完成，剩余{}次",i+1,soulNumber);
+			long b=(System.currentTimeMillis () - a) / 1000;
+			log.info ("该次挑战使用时间为{}秒",b);
+		}
+		b1= imagesBack (soul_TZ, paramRGBNotClick (1));
+		while (!b1){
+			log.info ("判断是否有宠物奖励");
+			imagesBack (soul_CWJL, paramRGB(5));
+			log.info ("判断是否没退出挑战成功");
+			imagesBack (soul_TCTZ, paramRGB(5));
+			b1= imagesBack (soul_TZ, paramRGB(5));
+		}
+		log.info ("结束挑战");
 	}
 	
 }

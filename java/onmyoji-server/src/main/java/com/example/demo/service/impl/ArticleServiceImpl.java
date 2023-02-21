@@ -1,22 +1,23 @@
 package com.example.demo.service.impl;
 
-import static com.example.demo.model.enums.ErrorInfoEnum.INVALID_ID;
-
 import cn.hutool.core.util.IdUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.example.demo.mapper.ArticleMapper;
 import com.example.demo.exception.BlogException;
+import com.example.demo.mapper.ArticleMapper;
 import com.example.demo.model.dto.ArticleDTO;
 import com.example.demo.model.entity.ArticlePO;
 import com.example.demo.model.vo.ArticleVO;
 import com.example.demo.model.vo.PageVO;
 import com.example.demo.service.ArticleService;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import org.springframework.stereotype.Service;
+
+import static com.example.demo.model.enums.ErrorInfoEnum.INVALID_ID;
 
 /**
  * @Classname ArticleService
@@ -48,7 +49,7 @@ public class ArticleServiceImpl implements ArticleService {
         .build();
   }
 
-  public String insArticle(ArticleDTO articleDTO) {
+  public String insertArticle(ArticleDTO articleDTO) {
     ArticlePO po = articleDTO.toArticlePO(false);
     String id = IdUtil.objectId();
     po.setId(id);
