@@ -66,4 +66,12 @@ public interface OnmyojiService {
 	 * @date: 2023/1/28 23:21
 	 */
 	void login (String gameUserId) throws IOException, InterruptedException, AWTException;
+	/***
+	 * @description: 式神寄养 优先太鼓其次斗鱼，无则寄养第一个
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/2/21 10:04
+	 */
+	
+	void  toFoster() throws InterruptedException, IOException, AWTException;
 }

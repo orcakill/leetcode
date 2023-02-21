@@ -83,13 +83,12 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			if (type == 1) {
 				//  当前状态初始化，进入角色首页
 				initializationState ("1");
-				//  返回首页，先检查是否可以返回 允许返回则先返回到首页，不能返回则跳过
-				//  账号登录（大号） 阴阳师登录/大号首页登录/小号首页登录
+				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
+				
 				//  阴阳寮突破
 				//  个人突破
 				//  魂十一（注意喂食宠物）
 				//  地域鬼王+领取花合战每日奖励，无未攻打则跳过
-				//  寄养检查，优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
 				//  好友添加、好友删除、赠送小号红心、赠送其他人红心（待定）
 			}
 		}
@@ -263,6 +262,116 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		log.info ("底部菜单栏");
 		ImageService.imagesBack (home_DBCD.getValue (), paramRGB);
 		Thread.sleep (2 * 1000L);
+	}
+	
+	@Override
+	
+	public void toFoster () throws InterruptedException, IOException, AWTException {
+		
+		String fileJJK = house_JJK_TG_LXTG.getValue();
+		int num = 0;//退出后重新进入好友列表的次数
+		PictureIdentifyWorkPO pictureIdentifyWorkPO1 = new PictureIdentifyWorkPO ();//记录好友标题位置
+		PictureIdentifyWorkPO pictureIdentifyWorkPO2 = new PictureIdentifyWorkPO ();//记录滚动起始位置
+		PictureIdentifyWorkPO pictureIdentifyWorkPO3 = new PictureIdentifyWorkPO ();//记录滚动终止位置
+		PictureIdentifyWorkPO pictureIdentifyWorkPO4 = new PictureIdentifyWorkPO ();//记录退出好友列表位置
+		boolean booleanKJY;//寄养位是否为空，是则进行寄养，否则退出到首页
+		boolean booleanWFZ;//好友是否放置结界卡，是则判断是否满足要求，不是则退出更换条件重进
+		boolean booleanJJK;//结界卡是否满足当前要求，不满足则滚动，满足则进入结界
+		boolean booleanJSJY = false;//判断寄养是否结束
+		Thread.sleep (2000);
+		log.info ("进入阴阳寮");
+		ImageService.imagesBack (house_YYLTB.getValue(),paramSIFT);
+		Thread.sleep (2000);
+		log.info ("进入结界");
+		ImageService.imagesBack  (house_JJ.getValue(),paramSIFT);
+		Thread.sleep (2000);
+		log.info ("进入式神育成");
+		ImageService.imagesBack (house_SSYC.getValue(),paramSIFT);
+		Thread.sleep (2000);
+		log.info ("判断是否可寄养");
+		booleanKJY = ImageService.imagesBack (house_KJY.getValue(), paramRGBNotClick(5));
+		if (booleanKJY) {
+			log.info ("进入可寄养");
+			ImageService.imagesBack (house_HYBT.getValue(),paramRGB);
+			Thread.sleep (3000);
+			log.info ("已进入好友列表");
+			pictureIdentifyWorkPO1 = ImageService.imagesBackGetCoordinate (house_HYBT.getValue (), paramRGB);
+			pictureIdentifyWorkPO2.setX ((int) (pictureIdentifyWorkPO1.getX () * 1.3));
+			pictureIdentifyWorkPO2.setY ((int) (pictureIdentifyWorkPO1.getY () * 2.3));
+			pictureIdentifyWorkPO3.setX ((int) (pictureIdentifyWorkPO1.getX () * 1.3));
+			pictureIdentifyWorkPO3.setY ((int) (pictureIdentifyWorkPO1.getY () * 1.6));
+			pictureIdentifyWorkPO4.setX (pictureIdentifyWorkPO1.getX ());
+			pictureIdentifyWorkPO4.setY ((int) (pictureIdentifyWorkPO1.getY () * 0.5));
+			//开循环，0 六星太鼓 1 五星太鼓 2 四星太鼓 3 六星斗鱼 4 五星斗鱼 5 四星斗鱼
+			while (!booleanJSJY) {
+				log.info ("当前好友结界卡是否未放置");
+				booleanWFZ = ImageService.imagesBack (house_WFZ.getValue(), paramRGB);
+				if (booleanWFZ) {
+					log.info ("好友未放置结界卡，退出后重新进入");
+					if (num == 0) {
+						fileJJK = house_JJK_TG_WXTG.getValue();
+					}
+					if (num == 1) {
+						fileJJK = house_JJK_TG_SXTG.getValue();
+					}
+					if (num == 2) {
+						fileJJK = house_JJK_DY_LXDY.getValue();
+					}
+					if (num == 3) {
+						fileJJK = house_JJK_DY_WXDY.getValue() ;
+					}
+					if (num == 4) {
+						fileJJK = house_JJK_DY_SXDY.getValue();
+					}
+					if (num > 4) {
+						log.info ("无高星结界卡，开始退出");
+						break;
+					}
+					num++;
+					log.info ("退出到可寄养界面");
+					MouseClickUtils.mouseClickBack (pictureIdentifyWorkPO4, "夜神模拟器");
+					log.info ("重新进入好友列表");
+					ImageService.imagesBack (house_KJY.getValue(),paramRGB);
+				}
+				//else {
+				//	log.info ("存在结界卡，判断是否是高星结界卡");
+				//	booleanJJK = ImageService.imagesBack (fileJJK, paramRGB(2));
+				//	if (!booleanJJK) {
+				//		log.info ("当前结界不是" + fileJJK + ",不可放置,滚动到下一个");
+				//		ImageService.imagesClickBackDrag (pictureIdentifyWorkPO2, pictureIdentifyWorkPO3, "夜神模拟器");
+				//		log.info ("滚动完成,点击终止位置坐标");
+				//		MouseClick.mouseClickBack (pictureIdentifyWorkPO3, "夜神模拟器");
+				//	}
+				//	else {
+				//		log.info ("存在高星结界卡" + fileJJK);
+				//		ImageService.imagesClickBack (house_JRJJ.getValue());
+				//		log.info ("进入结界");
+				//		ImageService.imagesClickBack (house_DJDM.getValue());
+				//		log.info ("大吉达摩寄养");
+				//		ImageService.imagesClickBack (comm_QR.getValue());
+				//		log.info ("确认");
+				//		log.info ("检查是否寄养成功");
+				//		ImageService.imagesClickBack (return_FH.getValue());
+				//		ImageService.imagesClickBack (return_FH.getValue());
+				//		log.info ("返回到式神育成");
+				//		ImageService.imagesClickBack (house_SSYC.getValue());
+				//		log.info ("进入育成界面");
+				//		booleanJSJY = ImageService.imagesClickBack (house_KJY.getValue(), 3);
+				//		if (booleanJSJY) {
+				//			log.info ("寄养失败，重新进入好友列表");
+				//			ImageService.imagesClickBack (house_KJY.getValue());
+				//		}
+				//		else {
+				//			log.info ("寄养成功");
+				//			booleanJSJY = true;
+				//		}
+				//	}
+				//}
+				
+			}
+		}
+		//退出
+		returnHome ();
 	}
 	
 }

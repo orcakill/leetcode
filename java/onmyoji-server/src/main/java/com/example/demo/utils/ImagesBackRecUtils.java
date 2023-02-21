@@ -18,7 +18,6 @@ import java.util.List;
  */
 @Log4j2
 public class ImagesBackRecUtils {
-
 	
 	//识别图片存在并点击或只识别不点击
 	public static boolean imagesRecognition (List<PictureCollectionPO> pictureCollectionPOList, String process, boolean isClick) throws AWTException {
@@ -28,6 +27,23 @@ public class ImagesBackRecUtils {
 		List<PictureIdentifyWorkPO> mouseXY = FindAllImgData (Window,pictureCollectionPOList);
 		//		识别+鼠标点击或仅识别
 		return MouseClickUtils.mouseClickBack (mouseXY, process, isClick);
+	}
+	
+	
+	//返回坐标
+	public static PictureIdentifyWorkPO imagesRecognitionMouse (List<PictureCollectionPO> pictureCollectionPOList, String process) {
+		//		屏幕截图
+		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
+		//		屏幕截图和图片对比
+		List<PictureIdentifyWorkPO> mouseXY = FindAllImgData (Window,pictureCollectionPOList);
+		//		鼠标点击
+		PictureIdentifyWorkPO pictureIdentifyWorkPO = new PictureIdentifyWorkPO ();
+		if (mouseXY.size () > 0) {
+			if(mouseXY.get (0).getX ()>0&&mouseXY.get (0).getY ()>0){
+				pictureIdentifyWorkPO = mouseXY.get (0);
+			}
+		}
+		return pictureIdentifyWorkPO;
 	}
 	
 	/**
