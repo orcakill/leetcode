@@ -30,15 +30,35 @@ public class ImagesOpenCVUtils {
 	
 	//识别图片存在并点击或只识别不点击
 	public static boolean imagesRecognitionOpenCv (List<PictureCollectionPO> pictureCollectionPOList, String process,
-	                                               boolean isClick, Double coefficient,String method)
+	                                               boolean isClick, Double coefficient, String method)
 			throws AWTException, IOException {
 		//		屏幕截图
 		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
 		//		屏幕截图和图片对比
 		List<PictureIdentifyWorkPO> mouseXY =
-				FindAllImgDataOpenCv (Window, pictureCollectionPOList, coefficient, false,method);
+				FindAllImgDataOpenCv (Window, pictureCollectionPOList, coefficient, false, method);
 		//		识别+鼠标点击或仅识别
 		return MouseClickUtils.mouseClickBack (mouseXY, process, isClick);
+	}
+	
+	//返回坐标
+	public static PictureIdentifyWorkPO imagesRecognitionMouse (List<PictureCollectionPO> pictureCollectionPOList,
+	                                                            String process,
+	                                                            double coefficient,
+	                                                            String method) throws IOException {
+		//		屏幕截图
+		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
+		//		屏幕截图和图片对比
+		List<PictureIdentifyWorkPO> mouseXY =
+				FindAllImgDataOpenCv (Window, pictureCollectionPOList, coefficient, false, method);
+		//		鼠标点击
+		PictureIdentifyWorkPO pictureIdentifyWorkPO = new PictureIdentifyWorkPO ();
+		if (mouseXY.size () > 0) {
+			if (mouseXY.get (0).getX () > 0 && mouseXY.get (0).getY () > 0) {
+				pictureIdentifyWorkPO = mouseXY.get (0);
+			}
+		}
+		return pictureIdentifyWorkPO;
 	}
 	
 	/**
@@ -46,7 +66,6 @@ public class ImagesOpenCVUtils {
 	 * @param Window                  - 屏幕图像
 	 * @param pictureCollectionPOList - 指定图片数据集合
 	 * @param coefficient             -识别系数
-	 * @param coefficient             -识别算法
 	 * @return - 返回图片在屏幕的坐标集合
 	 */
 	public static List<PictureIdentifyWorkPO> FindAllImgDataOpenCv (BufferedImage Window,
@@ -76,7 +95,7 @@ public class ImagesOpenCVUtils {
 			int result_rows = g_src.rows () - g_tem.rows () + 1;
 			int result_cols = g_src.cols () - g_tem.cols () + 1;
 			Mat g_result = new Mat (result_rows, result_cols, CvType.CV_32FC1);
-			if(method.equals ("TM_SQDIFF_NORMED")){
+			if (method.equals ("TM_SQDIFF_NORMED")) {
 				Imgproc.matchTemplate (g_src, g_tem, g_result, Imgproc.TM_SQDIFF_NORMED); // 归一化相关系数匹配法
 			}
 			Core.normalize (g_result, g_result, 0, 1, Core.NORM_MINMAX, -1, new Mat ());
@@ -97,8 +116,8 @@ public class ImagesOpenCVUtils {
 					                   new Scalar (0, 0, 0, 0));
 					File file_Match = new File ("D:\\match.jpg");
 					if (file_Match.exists ()) {
-						boolean deleteOrNot=file_Match.delete ();
-						if(deleteOrNot){
+						boolean deleteOrNot = file_Match.delete ();
+						if (deleteOrNot) {
 							log.info ("已删除");
 						}
 					}

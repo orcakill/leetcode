@@ -48,6 +48,26 @@ public class ImagesOpenCVSIFTUtils {
 		}
 	}
 	
+	//返回坐标
+	public static PictureIdentifyWorkPO imagesRecognitionMouse (List<PictureCollectionPO> pictureCollectionPOList,
+	                                                            String process,
+	                                                            double coefficient,int characteristicPoint
+	                                                            ) {
+		//		屏幕截图
+		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
+		
+		List<PictureIdentifyWorkPO> mouseXY = FindAllImgDataOpenCvAll (Window, pictureCollectionPOList, coefficient,
+		                                                               characteristicPoint, false);
+		//		鼠标点击
+		PictureIdentifyWorkPO pictureIdentifyWorkPO = new PictureIdentifyWorkPO ();
+		if (mouseXY.size () > 0) {
+			if(mouseXY.get (0).getX ()>0&&mouseXY.get (0).getY ()>0){
+				pictureIdentifyWorkPO = mouseXY.get (0);
+			}
+		}
+		return pictureIdentifyWorkPO;
+	}
+	
 	public static List<PictureIdentifyWorkPO> FindAllImgDataOpenCvAll (BufferedImage originalImageB,
 	                                                                   List<PictureCollectionPO> templateImageB,
 	                                                                   Double coefficient, int characteristicPoint,

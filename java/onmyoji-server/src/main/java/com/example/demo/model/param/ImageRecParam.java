@@ -13,7 +13,6 @@ public class ImageRecParam {
 	//监控参数常量
 	public static final ImageRecParam paramMonitoring = paramMonitoring ();
 	public final static ImageRecParam paramRGB = paramRGB ();
-	public final static ImageRecParam paramRGBNotClick = paramRGBNotClick ();
 	public final static ImageRecParam paramSIFT = paramSIFT ();
 	public final static ImageRecParam paramSIFTNotClick = paramSIFTNotClick ();
 	//图像识别算法
@@ -74,10 +73,10 @@ public class ImageRecParam {
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
 	 */
-	protected static ImageRecParam paramRGBNotClick () {
+	public static ImageRecParam paramRGBNotClick (int re_num) {
 		ImageRecParam imageRecParam = new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType ("RGB");
-		imageRecParam.setRe_num (10);
+		imageRecParam.setRe_num (re_num);
 		imageRecParam.setClick (false);
 		return imageRecParam;
 	}
