@@ -24,9 +24,9 @@ public interface ImageOpenCVService {
 		imagesOpenCV0 (folder, identificationAlgorithmType, "夜神模拟器", 60, 1, 2, true, true, null, 4);
 	}
 	
-	static void imagesOpenCV (String folder, Integer re_num) throws InterruptedException, AWTException, IOException {
+	static Boolean imagesOpenCV (String folder, Integer re_num) throws InterruptedException, AWTException, IOException {
 		int identificationAlgorithmType = 2;
-		imagesOpenCV0 (folder, identificationAlgorithmType, "夜神模拟器", re_num, 1, 2, true, true, null, 4);
+		return  imagesOpenCV0 (folder, identificationAlgorithmType, "夜神模拟器", re_num, 1, 2, true, true, null, 4);
 	}
 	
 	/*多张图片后台识别,参数默认，识别次数1，识别起始间隔1，识别结束间隔2，是否返回日志信息是,点击*/
