@@ -15,6 +15,9 @@ public class CommVar {
 	public static final String home_TXYHZX        = "首页/头像用户中心";
 	public static final String home_YH_NJZR       = "首页/用户/逆戟之刃";
 	public static final String home_YH_ORCAKILL   = "首页/用户/orcakill";
+	
+	public static final String home_YH_HHXL   = "首页/用户/洪荒的修罗";
+	public static final String home_YH_CRDECCWY   = "首页/用户/炽热的惆怅物语";
 	public static final String home_YYSTB         = "登录/阴阳师图标";
 	public static final String house_DJDM         = "阴阳寮/大吉达摩";
 	public static final String house_HYBT         = "阴阳寮/好友标题";
@@ -33,6 +36,8 @@ public class CommVar {
 	public static final String login_CY           = "登录/常用";
 	public static final String login_DL           = "登录/登录";
 	public static final String login_FWQ_PMZL     = "登录/服务器/缥缈之旅";
+	public static final String login_FWQ_LQXY     = "登录/服务器/两情相悦";
+	public static final String login_FWQ_TYCX     = "登录/服务器/桃映春馨";
 	public static final String login_KSYX         = "登录/开始游戏";
 	public static final String login_QH           = "登录/切换";
 	public static final String login_QHZH         = "登录/切换账号";

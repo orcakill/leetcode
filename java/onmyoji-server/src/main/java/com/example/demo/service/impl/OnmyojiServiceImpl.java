@@ -123,6 +123,16 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 					targetHomePage = true;
 				}
 			}
+			if (userId.equals ("3")) {
+				if (thisPicture.equals (home_YH_HHXL)) {
+					targetHomePage = true;
+				}
+			}
+			if (userId.equals ("4")) {
+				if (thisPicture.equals (home_YH_CRDECCWY)) {
+					targetHomePage = true;
+				}
+			}
 			if (thisPicture.equals (return_FH)) {
 				log.info ("先返回到首页");
 				returnHome ();
@@ -200,7 +210,9 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		//小号1首页   缥缈之旅 orcakill
 		multipleImageParamList.add (new MultipleImageParam (home_YH_ORCAKILL, paramSIFT (20)));
 		//小号2首页   两情相悦  洪荒的修罗
+		multipleImageParamList.add (new MultipleImageParam (home_YH_HHXL, paramSIFT (20)));
 		//小号3首页   桃映春馨  炽热的惆怅物语
+		multipleImageParamList.add (new MultipleImageParam (home_YH_CRDECCWY, paramSIFT (20)));
 		//返回       返回
 		multipleImageParamList.add (new MultipleImageParam (return_FH, paramRGB));
 		multipleImageParamList.add (new MultipleImageParam (return_FH, paramSIFT (4)));
@@ -261,6 +273,22 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			if (gameUserId.equals ("1")) {
 				log.info ("点击大号角色-缥缈之旅");
 				ImageService.imagesBack (login_FWQ_PMZL, paramRGB);
+			}
+			if (gameUserId.equals ("2")) {
+				log.info ("点击小号角色1-缥缈之旅");
+				ImageService.imagesBack (login_FWQ_PMZL, paramRGB);
+			}
+			if (gameUserId.equals ("3")) {
+				log.info ("点击小号角色2-缥缈之旅");
+				ImageService.imagesBack (login_FWQ_PMZL, paramRGB);
+			}
+			if (gameUserId.equals ("4")) {
+				log.info ("点击小号角色2-两情相悦");
+				ImageService.imagesBack (login_FWQ_LQXY, paramRGB);
+			}
+			if (gameUserId.equals ("4")) {
+				log.info ("点击小号角色2-桃映春馨");
+				ImageService.imagesBack (login_FWQ_TYCX, paramRGB);
 			}
 		}
 		log.info ("开始游戏");

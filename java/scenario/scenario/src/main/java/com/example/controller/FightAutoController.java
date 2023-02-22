@@ -994,9 +994,10 @@ public class FightAutoController {
 			ImageService.imagesClickBack (BackEnums.back.getValue (), 3);
 			logger.info ("确认");
 			ImageService.imagesClickBack (ExploreEnums.explore_QR.getValue (), 3);
+			Thread.sleep (1000);
 			logger.info ("在最后一章探索界面，返回探索界面");
 			ImageService.imagesClickBack (BackEnums.back.getValue (), 3);
-			whetherToExplore = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue ());
+			whetherToExplore = ImageService.imagesClickBackIsEmpty (ExploreEnums.explore_ZHYZ.getValue (),2);
 			if (!whetherToExplore) {
 				logger.info ("返回不成功，重新返回");
 				ImageService.imagesClickBack (BackEnums.back.getValue (), 3);
