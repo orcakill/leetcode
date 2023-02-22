@@ -1,7 +1,6 @@
 package com.example.demo.service.impl;
 
 import cn.hutool.core.util.IdUtil;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.exception.BlogException;
 import com.example.demo.mapper.GameThreadMapper;
@@ -30,18 +29,12 @@ public class GameThreadServiceImpl extends ServiceImpl<GameThreadMapper, GameThr
 	
 	@Override
 	public GameThreadPO findById (String threadId) {
-		QueryWrapper<GameThreadPO> queryWrapper= new QueryWrapper<>();
-		queryWrapper.eq ("thread_id",threadId);
-		GameThreadPO gameThreadPO = gameThreadMapper.selectOne (queryWrapper);
-		if (Objects.isNull (gameThreadPO)) {
-			throw new BlogException (INVALID_ID);
-		}
-		return gameThreadPO;
+		return gameThreadMapper.selectById (threadId);
 	}
 	
 	@Override
 	public boolean save (GameThreadPO gameThreadPO) {
-		GameThreadPO gameThreadPO1 = gameThreadMapper.selectById(gameThreadPO.getId());
+		GameThreadPO gameThreadPO1 = gameThreadMapper.selectById(gameThreadPO.getThreadId ());
 		//    插入
 		if (Objects.isNull(gameThreadPO1)) {
 			if(gameThreadPO.getThreadId ()==null){
