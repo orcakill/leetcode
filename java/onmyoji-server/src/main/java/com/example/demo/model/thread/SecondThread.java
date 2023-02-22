@@ -1,5 +1,6 @@
 package com.example.demo.model.thread;
 
+import com.example.demo.config.BeanContextConfig;
 import com.example.demo.model.entity.GameThreadPO;
 import com.example.demo.model.map.FolderPathMap;
 import com.example.demo.service.GameThreadService;
@@ -17,25 +18,10 @@ import static com.example.demo.service.MailService.sendMail;
 @Log4j2
 @Component
 public class SecondThread extends Thread {
-
-	private  GameThreadService gameThreadService;
-	
-	private  OnmyojiService onmyojiService;
-	
-	public SecondThread (GameThreadService gameThreadService, OnmyojiService onmyojiService) {
-		this.gameThreadService = gameThreadService;
-		this.onmyojiService = onmyojiService;
-	}
-	
-	
 	private  String threadId;
 	
 	private  int type;
 	private  int round;
-	
-	public SecondThread () {
-	
-	}
 	
 	public void setThreadId (String threadId) {
 		this.threadId = threadId;
@@ -51,6 +37,8 @@ public class SecondThread extends Thread {
 	
 	@SneakyThrows
 	public void run () {
+		GameThreadService gameThreadService = BeanContextConfig.getApplicationContext ().getBean (GameThreadService.class);
+		OnmyojiService onmyojiService = BeanContextConfig.getApplicationContext ().getBean (OnmyojiService.class);
 		int threadState=gameThreadService.findById (threadId).getThreadState ();
 		while (threadState!=2){
 			//启动游戏

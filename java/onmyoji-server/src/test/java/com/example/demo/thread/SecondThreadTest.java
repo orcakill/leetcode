@@ -1,12 +1,9 @@
 package com.example.demo.thread;
 
 import com.example.demo.model.thread.SecondThread;
-import com.example.demo.service.GameThreadService;
-import com.example.demo.service.OnmyojiService;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.opencv.core.Core;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
@@ -20,19 +17,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 @Log4j2
 @SpringBootTest
 class SecondThreadTest {
-	@Autowired
-	private GameThreadService gameThreadService;
-	@Autowired
-	private OnmyojiService onmyojiService;
+
 	@Test
 	void test1() throws InterruptedException {
 		System.setProperty ("java.awt.headless", "false");
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		log.info ("测试开始");
-		SecondThread t1=new SecondThread (gameThreadService,onmyojiService);
+		SecondThread t1=new SecondThread ();
 		t1.setType (1);
 		t1.setRound (1);
-		t1.setThreadId ("63d4ebd00e25827a62f447fc");
+		t1.setThreadId ("63f64f8260a59767118e6300");
 		t1.start ();
 		boolean b=t1.isAlive ();
 		while (b){
