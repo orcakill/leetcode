@@ -9,7 +9,7 @@ import java.awt.*;
 import java.io.IOException;
 
 import static com.example.demo.model.param.ImageRecParam.paramSIFT;
-import static com.example.demo.model.var.CommVar.home_TS;
+import static com.example.demo.model.var.CommVar.login_XSJ;
 
 /**
  * @Classname ImageServiceTest
@@ -26,7 +26,7 @@ class ImageServiceTest {
 		log.info ("测试开始");
 		System.setProperty ("java.awt.headless", "false");
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
-		ImageService.imagesBack (home_TS, paramSIFT);
+		ImageService.imagesBack (login_XSJ, paramSIFT);
 		log.info ("测试结束");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}
