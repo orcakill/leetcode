@@ -7,6 +7,7 @@ import com.github.xiaoymin.knife4j.annotations.ApiSort;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.opencv.core.Core;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +37,7 @@ public class OnmyojiController {
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round
 	                              ) throws InterruptedException, UnknownHostException {
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		onmyojiService.onmyojiService (1,round);
 		return Results.ok ("任务已启动");
 	}

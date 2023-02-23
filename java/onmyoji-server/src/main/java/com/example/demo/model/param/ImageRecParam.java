@@ -123,7 +123,7 @@ public class ImageRecParam {
 	}
 	
 	/***
-	 * @description: openCV sift 特征匹配 识别参数  算法为2  识别10次  不点击
+	 * @description: openCV sift 特征匹配  识别10次  点击
 	 * @return: com.example.demo.model.param.ImageRecParam
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
@@ -137,7 +137,7 @@ public class ImageRecParam {
 	}
 	
 	/***
-	 * @description: openCV sift 特征匹配 识别参数  默认识别 10次
+	 * @description: openCV sift 特征匹配 特征点  默认识别 10次
 	 * @return: com.example.demo.model.param.ImageRecParam
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
@@ -148,6 +148,20 @@ public class ImageRecParam {
 		imageRecParam.setCharacteristicPoint (characteristicPoint);
 		imageRecParam.setRe_num (10);
 		imageRecParam.setCoefficient (0.7);
+		return imageRecParam;
+	}
+	/***
+	 * @description: openCV sift 特征匹配 相似度+特征点  默认识别 10次
+	 * @return: com.example.demo.model.param.ImageRecParam
+	 * @author: orcakill
+	 * @date: 2023/2/17 1:43
+	 */
+	public static ImageRecParam paramSIFT (double coefficient,int characteristicPoint) {
+		ImageRecParam imageRecParam = new ImageRecParam ();
+		imageRecParam.setIdentificationAlgorithmType ("SIFT");
+		imageRecParam.setCharacteristicPoint (characteristicPoint);
+		imageRecParam.setRe_num (10);
+		imageRecParam.setCoefficient (coefficient);
 		return imageRecParam;
 	}
 	

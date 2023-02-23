@@ -268,7 +268,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		log.info ("切换服务器");
 		ImageService.imagesBack (login_QH, paramSIFT);
 		log.info ("点击小三角");
-		ImageService.imagesBack (login_XSJ, paramRGB);
+		ImageService.imagesBack (login_XSJ, paramSIFT(0.8, 4));
 		if (gameUserId != null) {
 			if (gameUserId.equals ("1")) {
 				log.info ("点击大号角色-缥缈之旅");

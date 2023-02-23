@@ -73,26 +73,30 @@ public class ImagesOpenCVSIFTUtils {
 	                                                                   List<PictureCollectionPO> templateImageB,
 	                                                                   Double coefficient, int characteristicPoint,
 	                                                                   boolean printOrNot) {
+		long startTime = System.currentTimeMillis ();
 		//声明 坐标列表
 		List<PictureIdentifyWorkPO> mouseMessages = new ArrayList<> ();
 		//声明 识别坐标
 		PictureIdentifyWorkPO pictureIdentifyWorkPO = new PictureIdentifyWorkPO ();
+		// 图像灰度化
+		//originalImageB=ImageDealUtils.grayImage (originalImageB);
 		if (coefficient == null) {
 			coefficient = 0.7;
 		}
 		//特征匹配
 		Mat resT = new Mat ();
 		Mat resO = new Mat ();
-		
 		int matchesPointCount;
 		//即当detector 又当Detector
 		SIFT sift = SIFT.create ();
 		Mat templateImage;
 		Mat originalImage = getMat (originalImageB);
+		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 		MatOfKeyPoint templateKeyPoints = new MatOfKeyPoint ();
 		MatOfKeyPoint originalKeyPoints = new MatOfKeyPoint ();
 		sift.detect (originalImage, originalKeyPoints);
 		sift.compute (originalImage, originalKeyPoints, resO);
+		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 		try {
 			for (PictureCollectionPO imagesDatum : templateImageB) {
 				try {
