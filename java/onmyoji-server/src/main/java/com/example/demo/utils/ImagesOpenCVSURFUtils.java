@@ -53,11 +53,11 @@ public class ImagesOpenCVSURFUtils {
 		//-- 使用Lowe比率测试过滤匹配项
 		float ratioThresh = 0.75f;
 		List<DMatch> listOfGoodMatches = new ArrayList<>();
-		for (int i = 0; i < knnMatches.size(); i++) {
-			if (knnMatches.get(i).rows() > 1) {
-				DMatch[] matches = knnMatches.get(i).toArray();
+		for (MatOfDMatch knnMatch : knnMatches) {
+			if (knnMatch.rows () > 1) {
+				DMatch[] matches = knnMatch.toArray ();
 				if (matches[0].distance < ratioThresh * matches[1].distance) {
-					listOfGoodMatches.add(matches[0]);
+					listOfGoodMatches.add (matches[0]);
 				}
 			}
 		}
@@ -72,10 +72,10 @@ public class ImagesOpenCVSURFUtils {
 		List<Point> scene = new ArrayList<>();
 		List<KeyPoint> listOfKeypointsObject = keypointsObject.toList();
 		List<KeyPoint> listOfKeypointsScene = keypointsScene.toList();
-		for (int i = 0; i < listOfGoodMatches.size(); i++) {
+		for (DMatch listOfGoodMatch : listOfGoodMatches) {
 			//-- 从良好的匹配中获取关键点
-			obj.add(listOfKeypointsObject.get(listOfGoodMatches.get(i).queryIdx).pt);
-			scene.add(listOfKeypointsScene.get(listOfGoodMatches.get(i).trainIdx).pt);
+			obj.add (listOfKeypointsObject.get (listOfGoodMatch.queryIdx).pt);
+			scene.add (listOfKeypointsScene.get (listOfGoodMatch.trainIdx).pt);
 		}
 		MatOfPoint2f objMat = new MatOfPoint2f();
 		MatOfPoint2f sceneMat = new MatOfPoint2f();

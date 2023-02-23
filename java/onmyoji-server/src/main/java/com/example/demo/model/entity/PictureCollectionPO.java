@@ -4,7 +4,6 @@ import lombok.Data;
 
 import java.awt.image.BufferedImage;
 
-
 /**
  * @Classname BufferedImagePO
  * @Description BufferedImage图片类
