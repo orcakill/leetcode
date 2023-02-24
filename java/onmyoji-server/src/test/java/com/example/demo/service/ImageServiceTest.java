@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.model.param.ImageRecParam;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.opencv.core.Core;
@@ -8,8 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.awt.*;
 import java.io.IOException;
 
-import static com.example.demo.model.param.ImageRecParam.paramSIFT;
-import static com.example.demo.model.var.CommVar.login_XSJ;
+import static com.example.demo.model.var.CommVar.explore_JTXGZD;
 
 /**
  * @Classname ImageServiceTest
@@ -26,7 +26,7 @@ class ImageServiceTest {
 		log.info ("测试开始");
 		System.setProperty ("java.awt.headless", "false");
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
-		ImageService.imagesBack (login_XSJ, paramSIFT);
+		ImageService.imagesBack (explore_JTXGZD, ImageRecParam.paramSIFT(0,1,4));
 		log.info ("测试结束");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}
