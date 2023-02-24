@@ -37,7 +37,7 @@ public class ImagesOpenCVSIFTUtils {
 		//		屏幕截图
 		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
 		
-		List<PictureIdentifyWorkPO> mouseXY = FindAllImgDataOpenCvAll (Window, pictureCollectionPOList, coefficient,
+		List<PictureIdentifyWorkPO> mouseXY = findPictureIdentifyWorkPOList (Window, pictureCollectionPOList, coefficient,
 		                                                               characteristicPoint, false);
 		//		识别+鼠标点击或仅识别
 		if (mouseXY != null && !mouseXY.isEmpty ()) {
@@ -56,7 +56,7 @@ public class ImagesOpenCVSIFTUtils {
 		//		屏幕截图
 		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
 		
-		List<PictureIdentifyWorkPO> mouseXY = FindAllImgDataOpenCvAll (Window, pictureCollectionPOList, coefficient,
+		List<PictureIdentifyWorkPO> mouseXY = findPictureIdentifyWorkPOList (Window, pictureCollectionPOList, coefficient,
 		                                                               characteristicPoint, false);
 		//		鼠标点击
 		PictureIdentifyWorkPO pictureIdentifyWorkPO = new PictureIdentifyWorkPO ();
@@ -69,7 +69,7 @@ public class ImagesOpenCVSIFTUtils {
 		return pictureIdentifyWorkPO;
 	}
 	
-	public static List<PictureIdentifyWorkPO> FindAllImgDataOpenCvAll (BufferedImage originalImageB,
+	public static List<PictureIdentifyWorkPO> findPictureIdentifyWorkPOList (BufferedImage originalImageB,
 	                                                                   List<PictureCollectionPO> templateImageB,
 	                                                                   Double coefficient, int characteristicPoint,
 	                                                                   boolean printOrNot) {
@@ -78,11 +78,6 @@ public class ImagesOpenCVSIFTUtils {
 		List<PictureIdentifyWorkPO> mouseMessages = new ArrayList<> ();
 		//声明 识别坐标
 		PictureIdentifyWorkPO pictureIdentifyWorkPO = new PictureIdentifyWorkPO ();
-		// 图像灰度化
-		//originalImageB=ImageDealUtils.grayImage (originalImageB);
-		if (coefficient == null) {
-			coefficient = 0.7;
-		}
 		//特征匹配
 		Mat resT = new Mat ();
 		Mat resO = new Mat ();
