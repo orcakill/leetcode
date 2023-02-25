@@ -102,7 +102,7 @@ public class ImagesOpenCVSIFTUtils {
 					sift.detect (templateImage, templateKeyPoints);
 					sift.compute (templateImage, templateKeyPoints, resT);
 					DescriptorMatcher descriptorMatcher = DescriptorMatcher.create (
-							DescriptorMatcher.FLANNBASED);
+							DescriptorMatcher.BRUTEFORCE);
 					//knnMatch方法的作用就是在给定特征描述集合中寻找最佳匹配
 					//使用KNN-matching算法，令K=2，则每个match得到两个最接近的descriptor，然后计算最接近距离和次接近距离之间的比值，当比值大于既定值时，才作为最终match。
 					descriptorMatcher.knnMatch (resT, resO, matches, 2);
