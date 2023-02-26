@@ -22,6 +22,7 @@ public class SecondThread extends Thread {
 	
 	private  int type;
 	private  int round;
+	private  String process;
 	
 	public void setThreadId (String threadId) {
 		this.threadId = threadId;
@@ -33,6 +34,10 @@ public class SecondThread extends Thread {
 	
 	public void setRound (int round) {
 		this.round = round;
+	}
+	
+	public void setProcess (String process) {
+		this.process = process;
 	}
 	
 	@SneakyThrows
@@ -48,7 +53,7 @@ public class SecondThread extends Thread {
 			}
 			//	阴阳师自动化
 			log.info ("项目 {},轮次 {}",type,round);
-			onmyojiService.autoActivity(type,round);
+			onmyojiService.autoActivity(process,type,round);
 			// 进程结束,保存进程信息
 			log.info ("运行线程，游戏进程状态更新");
 			log.info ("运行线程，游戏进程ID{}",threadId);

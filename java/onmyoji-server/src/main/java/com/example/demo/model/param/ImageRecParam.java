@@ -10,11 +10,6 @@ import lombok.Data;
  */
 @Data
 public class ImageRecParam {
-	//监控参数常量
-	public static final ImageRecParam paramMonitoring = paramMonitoring ();
-	public final static ImageRecParam paramRGB = paramRGB ();
-	public final static ImageRecParam paramSIFT = paramSIFT ();
-	public final static ImageRecParam paramSIFTNotClick = paramSIFTNotClick ();
 	//图像识别算法
 	//0  模板匹配	 RGB识别法
 	//1  模板匹配 openCV
@@ -46,9 +41,10 @@ public class ImageRecParam {
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
 	 */
-	protected static ImageRecParam paramMonitoring () {
+	public static ImageRecParam paramMonitoring (String process) {
 		ImageRecParam imageRecParam = new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType ("RGB");
+		imageRecParam.setProcess(process);
 		imageRecParam.setRe_num (1);
 		imageRecParam.setBoole (false);
 		return imageRecParam;
@@ -60,9 +56,10 @@ public class ImageRecParam {
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
 	 */
-	public static ImageRecParam paramTM_SQDIFF_NORMED (Double coefficient) {
+	public static ImageRecParam paramTM_SQDIFF_NORMED (String process,Double coefficient) {
 		ImageRecParam imageRecParam = new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType ("TM_SQDIFF_NORMED");
+		imageRecParam.setProcess(process);
 		imageRecParam.setRe_num (10);
 		imageRecParam.setCoefficient (coefficient);
 		return imageRecParam;
@@ -74,9 +71,10 @@ public class ImageRecParam {
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
 	 */
-	public static ImageRecParam paramRGBNotClick (int re_num) {
+	public static ImageRecParam paramRGBNotClick (String process,int re_num) {
 		ImageRecParam imageRecParam = new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType ("RGB");
+		imageRecParam.setProcess(process);
 		imageRecParam.setRe_num (re_num);
 		imageRecParam.setClick (false);
 		return imageRecParam;
@@ -88,9 +86,10 @@ public class ImageRecParam {
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
 	 */
-	protected static ImageRecParam paramRGB () {
+	public static ImageRecParam paramRGB (String process) {
 		ImageRecParam imageRecParam = new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType ("RGB");
+		imageRecParam.setProcess(process);
 		imageRecParam.setRe_num (10);
 		return imageRecParam;
 	}
@@ -101,9 +100,10 @@ public class ImageRecParam {
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
 	 */
-	public static ImageRecParam paramRGB (int re_num) {
+	public static ImageRecParam paramRGB (String process,int re_num) {
 		ImageRecParam imageRecParam = new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType ("RGB");
+		imageRecParam.setProcess(process);
 		imageRecParam.setRe_num (re_num);
 		return imageRecParam;
 	}
@@ -114,9 +114,10 @@ public class ImageRecParam {
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
 	 */
-	protected static ImageRecParam paramSIFTNotClick () {
+	public static ImageRecParam paramSIFTNotClick (String process) {
 		ImageRecParam imageRecParam = new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType ("SIFT");
+		imageRecParam.setProcess(process);
 		imageRecParam.setRe_num (10);
 		imageRecParam.setClick (false);
 		imageRecParam.setCoefficient (0.7);
@@ -129,9 +130,10 @@ public class ImageRecParam {
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
 	 */
-	protected static ImageRecParam paramSIFT () {
+	public static ImageRecParam paramSIFT (String process) {
 		ImageRecParam imageRecParam = new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType ("SIFT");
+		imageRecParam.setProcess(process);
 		imageRecParam.setRe_num (10);
 		imageRecParam.setCoefficient (0.7);
 		return imageRecParam;
@@ -143,10 +145,11 @@ public class ImageRecParam {
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
 	 */
-	public static ImageRecParam paramSIFT (int characteristicPoint) {
+	public static ImageRecParam paramSIFT (String process,int characteristicPoint) {
 		ImageRecParam imageRecParam = new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType ("SIFT");
 		imageRecParam.setCharacteristicPoint (characteristicPoint);
+		imageRecParam.setProcess(process);
 		imageRecParam.setRe_num (10);
 		imageRecParam.setCoefficient (0.7);
 		return imageRecParam;
@@ -158,9 +161,10 @@ public class ImageRecParam {
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
 	 */
-	public static ImageRecParam paramSIFT (double coefficient, int characteristicPoint) {
+	public static ImageRecParam paramSIFT (String process,double coefficient, int characteristicPoint) {
 		ImageRecParam imageRecParam = new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType ("SIFT");
+		imageRecParam.setProcess(process);
 		imageRecParam.setCharacteristicPoint (characteristicPoint);
 		imageRecParam.setRe_num (10);
 		imageRecParam.setCoefficient (coefficient);
@@ -173,9 +177,10 @@ public class ImageRecParam {
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
 	 */
-	public static ImageRecParam paramSIFT (int re_num, int characteristicPoint) {
+	public static ImageRecParam paramSIFT (String process,int re_num, int characteristicPoint) {
 		ImageRecParam imageRecParam = new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType ("SIFT");
+		imageRecParam.setProcess(process);
 		imageRecParam.setCharacteristicPoint (characteristicPoint);
 		imageRecParam.setRe_num (re_num);
 		imageRecParam.setCoefficient (0.7);
@@ -187,9 +192,10 @@ public class ImageRecParam {
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
 	 */
-	public static ImageRecParam paramSIFT (int start_time,int end_time,int characteristicPoint) {
+	public static ImageRecParam paramSIFT (String process,int start_time,int end_time,int characteristicPoint) {
 		ImageRecParam imageRecParam = new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType ("SIFT");
+		imageRecParam.setProcess(process);
 		imageRecParam.setCharacteristicPoint (characteristicPoint);
 		imageRecParam.setCoefficient (0.7);
 		imageRecParam.setStart_time (start_time);
@@ -203,9 +209,10 @@ public class ImageRecParam {
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
 	 */
-	public static ImageRecParam paramSIFTNotClick (int characteristicPoint) {
+	public static ImageRecParam paramSIFTNotClick (String process,int characteristicPoint) {
 		ImageRecParam imageRecParam = new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType ("SIFT");
+		imageRecParam.setProcess(process);
 		imageRecParam.setCharacteristicPoint (characteristicPoint);
 		imageRecParam.setRe_num (10);
 		imageRecParam.setClick (false);
@@ -221,9 +228,10 @@ public class ImageRecParam {
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
 	 */
-	public static ImageRecParam paramSIFTNotClick (int re_num, int characteristicPoint) {
+	public static ImageRecParam paramSIFTNotClick (String process,int re_num, int characteristicPoint) {
 		ImageRecParam imageRecParam = new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType ("SIFT");
+		imageRecParam.setProcess(process);
 		imageRecParam.setCharacteristicPoint (characteristicPoint);
 		imageRecParam.setRe_num (re_num);
 		imageRecParam.setClick (false);

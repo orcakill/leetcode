@@ -3,13 +3,16 @@ package com.example.service;
 import com.example.model.entity.PictureIdentifyWorkPO;
 import com.example.util.ComputerScaling;
 import com.example.util.ImagesBackRec;
+import com.example.util.ImagesOpenCVSIFT;
 import com.example.util.MouseClick;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
+import org.opencv.core.Core;
 
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 
 import static com.example.service.FightService.soulBack;
 
@@ -216,7 +219,22 @@ public class ImageServiceTest {
 		}
 	}
 	
-	public void testImagesClick9() throws InterruptedException, AWTException {
+	@Test
+	public void testImagesClick9() throws InterruptedException, AWTException, IOException {
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		logger.info ("准备开始");
+		String challenge="scenario/活动/20230226/挑战";
+		String exitTheChallenge="scenario/活动/20221123/退出挑战";
+		if (b1) {
+			Thread.sleep (5000);
+			for(int i=0;i<90;i++){
+				Thread.sleep (1000);
+				ImageOpenCVService.imagesOpenCV (challenge, 10);
+				Thread.sleep (10*1000);
+				ImageService.imagesClickBack (exitTheChallenge,10);
+				Thread.sleep (1000);
+			}
+		}
 	}
 	
 }

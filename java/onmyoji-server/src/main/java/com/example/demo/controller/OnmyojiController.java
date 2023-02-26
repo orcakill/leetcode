@@ -35,10 +35,12 @@ public class OnmyojiController {
 	@GetMapping ("/dailyTask")
 	public Results<?> getArticles (
 			@ApiParam ("轮次")
-			@RequestParam (required = false, defaultValue = "1") Integer round
+			@RequestParam (required = false, defaultValue = "1") Integer round,
+			@ApiParam ("模拟器")
+			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
 	                              ) throws InterruptedException, UnknownHostException {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
-		onmyojiService.onmyojiService (1,round);
+		onmyojiService.onmyojiService (process,1,round);
 		return Results.ok ("任务已启动");
 	}
 }

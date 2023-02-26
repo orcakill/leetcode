@@ -10,6 +10,7 @@ import java.awt.*;
 import java.io.IOException;
 
 import static com.example.demo.model.var.CommVar.explore_JTXGZD;
+import static com.example.demo.model.var.CommVar.home_TS;
 
 /**
  * @Classname ImageServiceTest
@@ -26,7 +27,18 @@ class ImageServiceTest {
 		log.info ("测试开始");
 		System.setProperty ("java.awt.headless", "false");
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
-		ImageService.imagesBack (explore_JTXGZD, ImageRecParam.paramSIFT(0,1,4));
+		ImageService.imagesBack (explore_JTXGZD, ImageRecParam.paramSIFT("夜神模拟器",0,1,4));
+		log.info ("测试结束");
+		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
+	}
+	
+	@Test
+	void imageServiceTest1 () throws IOException, InterruptedException, AWTException {
+		long startTime = System.currentTimeMillis ();
+		log.info ("测试开始");
+		System.setProperty ("java.awt.headless", "false");
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		ImageService.imagesBack (home_TS, ImageRecParam.paramSIFT("夜神模拟器1",0,1,4));
 		log.info ("测试结束");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}

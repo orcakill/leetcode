@@ -15,10 +15,16 @@ import static com.example.demo.model.var.CommVar.comm_JJXZ;
 public class FirstThread extends Thread {
 	private  String  threadId;
 	
+	private  String  process;
+	
 	public void setThreadId (String threadId) {
 		this.threadId = threadId;
 	}
-
+	
+	public void setProcess (String process) {
+		this.process = process;
+	}
+	
 	@SneakyThrows
 	public void run () {
 		GameThreadService gameThreadService = BeanContextConfig.getApplicationContext ().getBean (GameThreadService.class);
@@ -27,7 +33,7 @@ public class FirstThread extends Thread {
 		//每间隔1分钟运行一次，共运行一天
 		while (threadState!=2){
 			//检查是否有悬赏封印，有则点击
-			ImageService.imagesBack (comm_JJXZ,paramMonitoring);
+			ImageService.imagesBack (comm_JJXZ,paramMonitoring(process));
 			threadState= gameThreadService.findById (threadId).getThreadState ();
 			//等待一分钟
 			Thread.sleep (10 * 1000);
