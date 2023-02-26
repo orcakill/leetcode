@@ -36,6 +36,8 @@ public class LoginController {
 		String downloadIllustration = "scenario/首页/下载插画";
 		String donTPrompt = "scenario/首页/不再提示";
 		String download = "scenario/首页/下载";
+		String login_DKLJ="scenario/登录/断开连接";
+		String login_QD="scenario/登录/确定";
 		//如皋已经是游戏首页，不需要登录
 		logger.info ("判断是否是游戏首页");
 		boolean b1 = ImageService.imagesClickBackIsEmpty (file1, 3);
@@ -43,6 +45,7 @@ public class LoginController {
 		boolean b3 = false;//底部菜单未打开
 		boolean b4;
 		boolean b5;
+		boolean b6;
 		//判断是否有下载插画
 		boolean boolean_XZCH;
 		if (!b1) {
@@ -51,26 +54,39 @@ public class LoginController {
 			b4 = ImageService.imagesClickBackIsEmpty (file7, 3);
 			logger.info ("判断是否存在庭院异常");
 			b5 = ImageService.imagesClickBackIsEmpty (file8, 3);
+			logger.info ("判断是否存在断开连接");
+			b6 = ImageService.imagesClickBackIsEmpty (login_DKLJ, 3);
 			if (b4 || b5) {
 				logger.info ("当前存在返回按钮或者庭院异常时，初始化到首页");
 				FightService.returnHome ();
 			}
 			else {
-				//单击阴阳师图标
-				logger.info ("单击阴阳师图标，进入登录页面");
-				ImageService.imagesClickBack (file2);
-				while (!ImageService.imagesClickBackIsEmpty (file3, 10)) {
-					Thread.sleep (10000);
-					logger.info ("单击一下，防止有开场动画");
-					MouseClick.mouseClickBack (500, 500, "夜神模拟器");
-					logger.info ("判断是否有公告");
-					b2 = ImageService.imagesClickBackIsEmpty (file4, 1);
-					if (b2) {
-						logger.info ("有公告，关闭公告");
-						ImageService.imagesClickBack (file4);
+				if(!b6){
+					//单击阴阳师图标
+					logger.info ("单击阴阳师图标，进入登录页面");
+					ImageService.imagesClickBack (file2);
+					while (!ImageService.imagesClickBackIsEmpty (file3, 10)) {
+						Thread.sleep (10000);
+						logger.info ("单击一下，防止有开场动画");
+						MouseClick.mouseClickBack (500, 500, "夜神模拟器");
+						logger.info ("判断是否有公告");
+						b2 = ImageService.imagesClickBackIsEmpty (file4, 1);
+						if (b2) {
+							logger.info ("有公告，关闭公告");
+							ImageService.imagesClickBack (file4);
+						}
+						else {
+							logger.info ("无公告");
+						}
 					}
-					else {
-						logger.info ("无公告");
+				}
+				if(b6){
+					logger.info("检查是否适龄提示");
+					while (!ImageService.imagesClickBackIsEmpty (file3, 5)) {
+						Thread.sleep (1000);
+						logger.info ("确定按钮");
+						ImageService.imagesClickBack(login_QD, 5);
+						Thread.sleep (1000);
 					}
 				}
 				logger.info ("已进入游戏登录界面");
@@ -102,6 +118,7 @@ public class LoginController {
 	public static void loginHome (Integer num) throws InterruptedException, AWTException {
 		String file1 = "scenario/登录/适龄提示";
 		String file2 = "scenario/首页/底部菜单";
+		String file3 = "scenario/首页/底部菜单打开";
 		String fileBack = "scenario/返回";
 		String downloadIllustration = "scenario/首页/下载插画";
 		String donTPrompt = "scenario/首页/不再提示";
@@ -134,6 +151,9 @@ public class LoginController {
 				//判断是否有下载插画
 				downloadIllustration (downloadIllustration, donTPrompt, download);
 				booleanHome = ImageService.imagesClickBackIsEmpty (file2, 3);
+				if(!booleanHome){
+					booleanHome = ImageService.imagesClickBackIsEmpty (file3, 3);
+				}
 			}
 			logger.info ("进入游戏首页");
 		}

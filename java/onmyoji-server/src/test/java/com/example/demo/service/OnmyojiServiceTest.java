@@ -37,7 +37,7 @@ class OnmyojiServiceTest {
 		// 炽热的惆怅物语首页
 		// 返回
 		log.info ("阴阳师-逆戟之刃-首页");
-		onmyojiService.initializationState ("1");
+		onmyojiService.initializationState ("1","夜神模拟器");
 		log.info ("测试结束");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}
