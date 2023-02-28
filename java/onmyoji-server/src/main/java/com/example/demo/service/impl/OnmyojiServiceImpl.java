@@ -98,7 +98,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				//  大号个人突破
 				borderCheck (process);
 				//  御魂战斗-魂十一（注意喂食宠物）
-				
+				soulFight(process,11,40,true);
 				//  地域鬼王+领取花合战每日奖励，无未攻打则跳过
 				//  好友添加、好友删除、赠送小号红心、赠送其他人红心（待定）
 			}
