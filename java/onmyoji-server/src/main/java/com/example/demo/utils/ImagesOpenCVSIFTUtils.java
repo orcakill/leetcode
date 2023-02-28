@@ -86,12 +86,10 @@ public class ImagesOpenCVSIFTUtils {
 		SIFT sift = SIFT.create ();
 		Mat templateImage;
 		Mat originalImage = getMat (originalImageB);
-		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 		MatOfKeyPoint templateKeyPoints = new MatOfKeyPoint ();
 		MatOfKeyPoint originalKeyPoints = new MatOfKeyPoint ();
 		sift.detect (originalImage, originalKeyPoints);
 		sift.compute (originalImage, originalKeyPoints, resO);
-		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 		try {
 			for (PictureCollectionPO imagesDatum : templateImageB) {
 				try {
