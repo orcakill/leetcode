@@ -61,7 +61,7 @@ public class ImageCoreServiceImpl {
 			}
 			else {
 				if (imageRecParam.getBoole ()) {
-					log.info ("在间隔{}秒的检测中，第{}次检查未发现 {} 的图片", num_time, (i + 1), folder);
+					log.info ("在{}间隔{}秒的检测中，第{}次检查未发现 {} 的图片",imageRecParam.getProcess (), num_time, (i + 1), folder);
 				}
 			}
 		}
@@ -105,7 +105,7 @@ public class ImageCoreServiceImpl {
 			}
 			else {
 				if (imageRecParam.getBoole ()) {
-					log.info ("在间隔{}秒的检测中，第{}次检查未发现 {} 的图片", num_time, (i + 1), folder);
+					log.info ("在{}间隔{}秒的检测中，第{}次未发现{}的图片",imageRecParam.getProcess (),num_time, (i + 1), folder);
 				}
 			}
 		}
@@ -149,7 +149,7 @@ public class ImageCoreServiceImpl {
 				}
 				else {
 					if (multipleImagesParam.getBoole ()) {
-						log.info ("在间隔{}秒的检测中，第{}次检查未发现 {} 的图片", num_time, (i + 1),
+						log.info ("在{}间隔{}秒的检测中，第{}次未发现{}的图片", multipleImagesParam.getProcess (),num_time, (i + 1),
 						          multipleImageParam.getFolder ());
 					}
 				}
