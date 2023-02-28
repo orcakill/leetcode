@@ -90,7 +90,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			//大号  阴阳寮突破+个人突破+魂十一40次+地域鬼王（每日一次）
 			if (type == 1) {
 				//  当前状态初始化，进入角色首页
-				initializationState ("1",process);
+				initializationState (process,"1");
 				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
 				toFoster (process);
 				//  大号阴阳寮突破
@@ -115,6 +115,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		boolean promptForAge = false;//是否适龄提示
 		boolean targetHomePage = false;
 		boolean switchAccount;
+		log.info ("当前状态初始化");
 		while (!initializeOrNot) {
 			thisPicture = thisState (process);
 			log.info ("当前状态{}", thisPicture);
@@ -146,9 +147,9 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			}
 			if (!targetHomePage) {
 				//  当前页面阴阳师图标，需要点击应用图标->跳过登录动画->关闭公告->适龄提示
-				if (thisPicture.equals (home_YYSTB)) {
+				if (thisPicture.equals (login_YYSTB)) {
 					log.info ("点击阴阳师图标");
-					ImageService.imagesBack (home_YYSTB, paramRGB(process));
+					ImageService.imagesBack (login_YYSTB, paramSIFT (process));
 					while (!promptForAge) {
 						Thread.sleep (15000);
 						log.info ("单击一下，防止有开场动画");
@@ -189,7 +190,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				switchAccount = ImageService.imagesBack (login_QHZH, paramSIFTNotClick(process));
 				if (switchAccount) {
 					log.info ("切换用户和大区并登录到首页");
-					login (userId,process);
+					login (process,userId);
 					log.info ("当前用户首页");
 				}
 			}
@@ -207,7 +208,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		MultipleImagesParam multipleImagesParams = new MultipleImagesParam ();
 		List<MultipleImageParam> multipleImageParamList = new ArrayList<> ();
 		//桌面       阴阳师图标
-		multipleImageParamList.add (new MultipleImageParam (login_YYSTB, paramRGB(process)));
+		multipleImageParamList.add (new MultipleImageParam (login_YYSTB, paramSIFT(process)));
 		//登录界面    适龄提示
 		multipleImageParamList.add (new MultipleImageParam (login_SLTS, paramRGB(process)));
 		//大号首页    缥缈之旅 逆戟之刃
@@ -239,14 +240,14 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				num = 1;
 			}
 			num++;
-			homePageOrNot = ImageService.imagesBack (home_TS, paramSIFTNotClick (process, 20));
+			homePageOrNot = ImageService.imagesBack (home_TS, paramSIFTNotClick (process, 1,20));
 		}
 		Thread.sleep (2000);
 		log.info ("判断底部菜单是否打开");
-		boolean bottomMenu = ImageService.imagesBack (home_DBCD, paramSIFTNotClick (process, 20));
+		boolean bottomMenu = ImageService.imagesBack (home_DBCD, paramSIFTNotClick (process,1,20));
 		if (bottomMenu) {
 			log.info ("打开底部菜单");
-			ImageService.imagesBack (home_DBCD, paramSIFT (process, 20));
+			ImageService.imagesBack (home_DBCD, paramSIFT (process, 1,20));
 		}
 		log.info ("返回首页完成");
 	}
@@ -300,7 +301,12 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		imagesBack (login_KSYX, paramTM_SQDIFF_NORMED (process,3E-10));
 		sleep (5 * 1000L);
 		log.info ("底部菜单栏");
-		imagesBack (home_DBCD, paramRGB(process));
+		imagesBack (home_DBCD, paramSIFT(process));
+		boolean openBottom=ImageService.imagesBack (home_DBCDDK,paramSIFT (process,1,4));
+		while (!openBottom){
+			imagesBack (home_DBCD, paramSIFT(process));
+			openBottom=ImageService.imagesBack (home_DBCDDK,paramSIFT (process,1,4));
+		}
 		sleep (2 * 1000L);
 	}
 	
@@ -555,20 +561,20 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		MouseClickUtils.mouseClickBack (new PictureIdentifyWorkPO (0, 0), "夜神模拟器");
 		log.info ("进入结界突破，检查结界挑战劵");
 		//判断结界挑战劵是否为0
-		while (!ImageService.imagesBack (region_JJTPJS, paramRGB(process,3))) {
+		while (!ImageService.imagesBack (region_JJTZJS, paramRGB(process,3))) {
 			//不为0则进行结界挑战
 			log.info ("结界劵数不为零");
 			//判断能否选择个人结界
-			booleanKXJJ = ImageService.imagesBack (region_GRJJ, paramRGB(process,3));
+			booleanKXJJ = ImageService.imagesBack (region_GRJJ, paramRGBNotClick (process,3));
 			if (booleanKXJJ) {
 				log.info ("能选择个人结界");
 				ImageService.imagesBack (region_GRJJ,paramRGB(process));
 				log.info ("点击个人结界成功，准备进攻");
 				ImageService.imagesBack (region_JG,paramRGB(process));
 				log.info ("开始进攻");
-				sleep (10 * 1000);
+				sleep (5 * 1000);
 				log.info ("判断是否准备挑战");
-				booleanZBTJ = ImageService.imagesBack (region_ZBTZ, paramSIFTNotClick (process,4));
+				booleanZBTJ = ImageService.imagesBack (region_ZBTZ, paramSIFTNotClick (process,3,4));
 				if (booleanZBTJ) {
 					log.info ("准备挑战");
 					ImageService.imagesBack (region_ZBTZ,paramSIFT(process));
@@ -577,7 +583,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 					log.info ("无需准备");
 				}
 				log.info ("进入战斗");
-				fightEnd (process,30, 5, 10);
+				fightEnd (process,10, 5, 10);
 				log.info ("判断是否有额外奖励");
 				whetherAdditionalReward = imagesBack (soul_TCTZ, paramRGB(process,5));
 				if (whetherAdditionalReward) {

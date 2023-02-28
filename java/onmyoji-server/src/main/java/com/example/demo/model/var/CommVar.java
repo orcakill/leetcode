@@ -11,6 +11,7 @@ public class CommVar {
 	public static final String comm_JJXZ          = "通用/拒接协战";
 	public static final String comm_QR            = "通用/确认";
 	public static final String home_DBCD          = "首页/底部菜单";
+	public static final String home_DBCDDK          = "首页/底部菜单打开";
 	public static final String home_TS            = "首页/探索";
 	public static final String home_TXYHZX        = "首页/头像用户中心";
 	public static final String home_YH_NJZR       = "首页/用户/逆戟之刃";
@@ -18,7 +19,6 @@ public class CommVar {
 	
 	public static final String home_YH_HHXL   = "首页/用户/洪荒的修罗";
 	public static final String home_YH_CRDECCWY   = "首页/用户/炽热的惆怅物语";
-	public static final String home_YYSTB         = "登录/阴阳师图标";
 	public static final String house_DJDM         = "阴阳寮/大吉达摩";
 	public static final String house_HYBT         = "阴阳寮/好友标题";
 	public static final String house_JJ           = "阴阳寮/结界";
@@ -52,7 +52,7 @@ public class CommVar {
 	public static final String region_GTRQ        = "结界突破/呱太入侵";
 	public static final String region_JG          = "结界突破/进攻";
 	public static final String region_JJTP        = "结界突破/结界突破";
-	public static final String region_JJTPJS      = "结界突破/结界突破劵数";
+	public static final String region_JJTZJS      = "结界突破/结界挑战劵数";
 	public static final String region_LJJ         = "结界突破/寮结界";
 	public static final String region_SB          = "结界突破/失败";
 	public static final String region_TCJG        = "结界突破/退出进攻";

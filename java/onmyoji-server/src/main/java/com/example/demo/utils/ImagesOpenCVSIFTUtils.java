@@ -53,6 +53,7 @@ public class ImagesOpenCVSIFTUtils {
 	                                                            String process,
 	                                                            double coefficient,int characteristicPoint
 	                                                            ) {
+		log.info ("应用窗口process {}",process);
 		//		屏幕截图
 		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
 		
