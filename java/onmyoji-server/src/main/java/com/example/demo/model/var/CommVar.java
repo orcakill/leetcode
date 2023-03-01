@@ -77,7 +77,7 @@ public class CommVar {
 	public static final String soul_JC_YSZHJC = "御魂/永生之海加成";
 	public static final String soul_JSTX = "御魂/角色头像";
 	public static final String soul_TCTZ = "御魂/退出挑战";
-	public static final String soul_TZ = "scenario/御魂/挑战";
+	public static final String soul_TZ = "御魂/挑战";
 	//御魂类型-八岐大蛇
 	public static final String soul_YHLX_BQDS = "御魂/御魂类型/八岐大蛇";
 	//御魂类型-日轮之陨
@@ -94,4 +94,15 @@ public class CommVar {
 	public static final String spirit_HB = "御灵/黑豹";
 	public static final String spirit_KQ = "御灵/孔雀";
 	public static final String spirit_DSC = "御灵/第三层";
+	
+	public static final String  contend_KSTZ = "斗技/开始挑战";
+	public static final String  contend_ZDXZ= "斗技/自动选择";
+	public static final String  contend_DWJS = "斗技/段位晋升";
+	public static final String  contend_EWJL= "斗技/额外奖励";
+	public static final String  contend_DJTB = "斗技/斗技图标";
+	public static final String  contend_DZWG = "斗技/町中武馆";
+	public static final String  contend_DZ = "斗技/町中";
+	public static final String  contend_TC = "斗技/头筹";
+	public static final String  contend_ZDSL = "斗技/战斗胜利";
+	public static final String  contend_ZDSB= "斗技/战斗失败";
 }

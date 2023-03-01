@@ -19,9 +19,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 import java.util.List;
 
 import static com.example.demo.model.param.ImageRecParam.*;
@@ -823,6 +821,128 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		}
 		log.info("结束御灵");
 		returnHome (process);
+	}
+	
+	/***
+	 * @description: 斗技
+	 * @param process  夜神模拟器
+	 * @param num  次数
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/3/1 22:30
+	 */
+	@Override
+	public void pvp (String process, int num) throws IOException, InterruptedException, AWTException {
+		int num1 = 0;
+		int num2 = 0;
+		log.info ("开始斗技");
+		//	进入町中
+		imagesBack (contend_DZ,paramSIFT (process));
+		log.info("町中武馆");
+		imagesBack(contend_DZWG,paramSIFT (process));
+		//  进入斗技
+		imagesBack (contend_DJTB,paramSIFT (process));
+		for (int i = 1; i <= num; i++) {
+			log.info ("准备挑战");
+			boolean booleanYCQK = imagesBack (contend_KSTZ,paramSIFT (process,1));
+			while (!booleanYCQK) {
+				log.info ("判断是否段位晋升");
+				boolean b2 =imagesBack  (contend_DWJS,paramSIFT (process,1));
+				if (!b2) {
+					log.info ("没有段位晋升");
+				}
+				else {
+					log.info ("存在段位晋升");
+				}
+				log.info ("判断是否有额外奖励");
+				boolean b1 = imagesBack(contend_EWJL, paramRGB (process));
+				if (!b1) {
+					log.info ("没有额外奖励");
+				}
+				else {
+					log.info ("存在额外奖励");
+				}
+				booleanYCQK = imagesBack (contend_KSTZ,paramSIFT (process,1));
+			}
+			log.info ("进入挑战，准备自动选择");
+			imagesBack (contend_ZDXZ, paramSIFT (process,1));
+			log.info ("自动选择完成，准备自动战斗");
+			sleep (2000);
+			log.info ("等待选将");
+			sleep (30 * 1000);
+			log.info ("准备拔得头筹、战斗胜利或战斗失败");
+			boolean b = fightPVP (process,30, 30, 60);
+			if (b) {
+				num1++;
+			}
+			else {
+				num2++;
+			}
+			log.info ("第" + i + "次挑战完成，胜利" + num1 + "次，失败" + num2 + "次，胜率" + num1 * 100 / i + "%");
+		}
+		boolean booleanFH = imagesBack (return_FH, paramRGBNotClick (process,2));
+		while (!booleanFH) {
+			log.info ("判断斗技结束后，是否段位晋升");
+			boolean b1 = imagesBack (contend_DWJS, paramRGB (process,1));
+			if (!b1) {
+				log.info ("没有段位晋升");
+			}
+			else {
+				log.info ("存在段位晋升");
+			}
+			log.info ("判断斗技结束后，是否有额外奖励");
+			boolean b2 = imagesBack (contend_EWJL, paramRGB (process,1));
+			if (!b2) {
+				log.info ("没有额外奖励");
+			}
+			else {
+				log.info ("存在额外奖励");
+			}
+			booleanFH = imagesBack (return_FH, paramRGBNotClick (process,1));
+		}
+		//返回首页
+		log.info ("斗技结束,返回首页");
+		returnHome (process);
+		
+	}
+	
+	/***
+	 * @description: 斗技战斗
+	 * @param process   夜神模拟器
+	 * @param begin_num  开始时间
+	 * @param start_num  开始间隔时间
+	 * @param end_num    结束间隔时间
+	 * @return: boolean
+	 * @author: orcakill
+	 * @date: 2023/3/2 0:17
+	 */
+	@Override
+	public boolean fightPVP (String process, Integer begin_num, Integer start_num, Integer end_num)
+			throws InterruptedException, IOException, AWTException {
+		// 图像集
+		MultipleImagesParam multipleImagesParams = new MultipleImagesParam ();
+		List<MultipleImageParam> multipleImageParamList = new ArrayList<> ();
+		multipleImagesParams.setClick (true);
+		//斗技 头筹
+		multipleImageParamList.add (new MultipleImageParam (contend_TC, paramRGB(process)));
+		//斗技 战斗胜利
+		multipleImageParamList.add (new MultipleImageParam (contend_ZDSL, paramRGB(process)));
+		//斗技 失败
+		multipleImageParamList.add (new MultipleImageParam (contend_ZDSB, paramRGB(process)));
+		multipleImagesParams.setStart_time (start_num);
+		multipleImagesParams.setEnd_time (end_num);
+		multipleImagesParams.setMultipleImageParamList (multipleImageParamList);
+		log.info ("战斗开始，等待" + begin_num + "秒");
+		sleep (begin_num * 1000);
+		log.info ("准备点击战斗胜利，点击头筹、战斗胜利，失败");
+		String thisState = imagesBackList (multipleImagesParams);
+		if (thisState.equals ("头筹")) {
+			log.info ("点击战斗胜利");
+			ImageService.imagesBack (contend_ZDSL, paramRGB(process));
+			log.info ("退出挑战");
+		}
+		log.info ("退出挑战完成");
+		return true;
 	}
 	
 }
