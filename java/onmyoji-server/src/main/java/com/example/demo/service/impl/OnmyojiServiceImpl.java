@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import static com.example.demo.model.param.ImageRecParam.*;
@@ -762,6 +764,65 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			b1= imagesBack (soul_TZ, paramRGB(process,5));
 		}
 		log.info ("结束挑战");
+	}
+	
+	/***
+	 * @description: 御灵战斗
+	 * @param process  夜神模拟器
+	 * @param num  战斗次数
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/3/1 11:14
+	 */
+	@Override
+	public void spirit (String process, int num) throws IOException, InterruptedException, AWTException {
+		log.info ("准备进入探索");
+		imagesBack (home_TS,paramSIFT (process));
+		log.info ("准备进入御灵");
+		imagesBack (spirit_YLTB,paramSIFT (process));
+		log.info ("进入御灵");
+		//判断当前是星期几，周一无法打御灵，周二神龙，周三白藏主，周四黑豹，周五孔雀，周六周日白藏主
+		Date today = new Date ();
+		Calendar c = Calendar.getInstance ();
+		c.setTime (today);
+		int weekday = c.get (Calendar.DAY_OF_WEEK);
+		//周一
+		if (weekday == 2) {
+			log.info ("无法打御灵");
+		}
+		else{
+			//周二
+			if (weekday == 3) {
+				
+				log.info ("准备进入御灵神龙");
+				imagesBack(spirit_SL,paramSIFT (process));
+				log.info ("进入御灵神龙");
+			}
+			//周三、周六和周日
+			else if (weekday == 4 || weekday == 7 || weekday == 1) {
+				log.info ("准备进入御灵白藏主");
+				imagesBack (spirit_BZZ,paramSIFT (process));
+				log.info ("进入御灵白藏主");
+			}
+			//周四
+			else if (weekday == 5) {
+				log.info ("准备进入御灵黑豹");
+				imagesBack (spirit_HB,paramSIFT (process));
+				log.info ("进入御灵黑豹");
+			}
+			//周五
+			else if (weekday == 6) {
+				log.info ("准备进入御灵孔雀");
+				imagesBack (spirit_KQ,paramSIFT (process));
+				log.info ("进入御灵孔雀");
+			}
+			log.info ("选择第三层");
+			imagesBack  (spirit_DSC,paramSIFT (process));
+			log.info ("开始挑战");
+			soulBack (process,15, num);
+		}
+		log.info("结束御灵");
+		returnHome (process);
 	}
 	
 }
