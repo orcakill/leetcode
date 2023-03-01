@@ -136,5 +136,27 @@ public interface OnmyojiService {
 	 * @date: 2023/3/1 11:14
 	 */
 	void spirit(String process,int num) throws IOException, InterruptedException, AWTException;
+	
+	/***
+	 * @description: 斗技
+	 * @param process  夜神模拟器
+     * @param num  次数
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/3/1 22:30
+	 */
+	void pvp(String process,int num) throws IOException, InterruptedException, AWTException;
+	/***
+	 * @description: 斗技战斗
+	 * @param process   夜神模拟器
+     * @param begin_num  开始时间
+     * @param start_num  开始间隔时间
+     * @param end_num    结束间隔时间
+	 * @return: boolean
+	 * @author: orcakill
+	 * @date: 2023/3/2 0:17
+	 */
+	boolean fightPVP(String process,Integer begin_num, Integer start_num, Integer end_num)
+			throws InterruptedException, IOException, AWTException;
 }
 
