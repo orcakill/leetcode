@@ -127,4 +127,14 @@ public interface OnmyojiService {
 	 */
 	
 	void soulBack (String process,int begin_time, int soulNumber) throws InterruptedException, IOException, AWTException;
+	/***
+	 * @description: 御灵战斗
+	 * @param process  夜神模拟器
+     * @param num  战斗次数
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/3/1 11:14
+	 */
+	void spirit(String process,int num) throws IOException, InterruptedException, AWTException;
 }
+
