@@ -60,6 +60,6 @@ def draw_match(img1, img2, kp1, kp2, match):
 
 if __name__ == '__main__':
     # 读取图片
-    image1 = cv.imread('D://a.jpg')
-    image2 = cv.imread('D://b.png')
+    image1 = cv.imread('D://b.jpg')
+    image2 = cv.imread('D://cs.png')
     ORB_Feature(image1, image2)
