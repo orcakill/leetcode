@@ -12,7 +12,6 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -114,13 +113,6 @@ public class ImagesOpenCVUtils {
 					Imgproc.rectangle (g_src, matchLocation,
 					                   new Point (matchLocation.x + g_tem.cols (), matchLocation.y + g_tem.rows ()),
 					                   new Scalar (0, 0, 0, 0));
-					File file_Match = new File ("D:\\match.jpg");
-					if (file_Match.exists ()) {
-						boolean deleteOrNot = file_Match.delete ();
-						if (deleteOrNot) {
-							log.info ("已删除");
-						}
-					}
 					Imgcodecs.imwrite ("D:\\match.jpg", g_src);
 				}
 				pictureIdentifyWorkPO.setX ((int) (matchLocation.x + g_tem.cols () / 2));

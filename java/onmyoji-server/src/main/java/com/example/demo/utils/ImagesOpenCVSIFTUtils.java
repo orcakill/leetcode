@@ -207,6 +207,8 @@ public class ImagesOpenCVSIFTUtils {
 		});
 	}
 	
+
+	
 	/**
 	 * 尝试把BufferedImage转换为Mat
 	 * @param im 图像
