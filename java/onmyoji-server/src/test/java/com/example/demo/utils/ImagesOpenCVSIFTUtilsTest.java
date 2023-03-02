@@ -15,7 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import static com.example.demo.model.var.CommVar.home_TS;
+import static com.example.demo.model.var.CommVar.explore_DTXGZD;
 
 /**
  * @Classname ImagesOpenCVSIFTUtilsTest
@@ -41,16 +41,18 @@ class ImagesOpenCVSIFTUtilsTest {
 		log.info ("测试开始");
 		//来源图片
 		//BufferedImage Window = ScreenshotUtils.screenshotBack ("夜神模拟器");
-		String str_tem = "D:/a.jpg";
+		String str_tem = "D:/b.jpg";
 		File file_tem = new File (str_tem);
 		BufferedImage Window = ImageIO.read (file_tem);
 		//图片集
 		String path = FolderPathMap.folderPath ("图片总路径");
 		List<PictureCollectionPO> pictureCollectionPOList =
-				ReadFileUtils.readPictureCollectionPOList (path,home_TS, "SIFT");
+				ReadFileUtils.readPictureCollectionPOList (path,explore_DTXGZD, "SIFT");
+		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 		//屏幕截图和图片对比
 		List<PictureIdentifyWorkPO> mouseXY = ImagesOpenCVSIFTUtils.findPictureIdentifyWorkPOList (Window, pictureCollectionPOList, 0.7,
 		                                                               4,true);
+		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 		assert mouseXY != null;
 		MouseClickUtils.mouseClickBack (mouseXY, "谷歌浏览器", true);
 		log.info ("测试结束");

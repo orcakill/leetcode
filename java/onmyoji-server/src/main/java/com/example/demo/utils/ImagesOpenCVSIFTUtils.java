@@ -74,7 +74,6 @@ public class ImagesOpenCVSIFTUtils {
 	                                                                   List<PictureCollectionPO> templateImageB,
 	                                                                   Double coefficient, int characteristicPoint,
 	                                                                   boolean printOrNot) {
-		long startTime = System.currentTimeMillis ();
 		//声明 坐标列表
 		List<PictureIdentifyWorkPO> mouseMessages = new ArrayList<> ();
 		//声明 识别坐标
@@ -101,7 +100,7 @@ public class ImagesOpenCVSIFTUtils {
 					sift.detect (templateImage, templateKeyPoints);
 					sift.compute (templateImage, templateKeyPoints, resT);
 					DescriptorMatcher descriptorMatcher = DescriptorMatcher.create (
-							DescriptorMatcher.BRUTEFORCE);
+							DescriptorMatcher.FLANNBASED);
 					//knnMatch方法的作用就是在给定特征描述集合中寻找最佳匹配
 					//使用KNN-matching算法，令K=2，则每个match得到两个最接近的descriptor，然后计算最接近距离和次接近距离之间的比值，当比值大于既定值时，才作为最终match。
 					descriptorMatcher.knnMatch (resT, resO, matches, 2);
