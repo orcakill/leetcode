@@ -44,6 +44,7 @@ public class CommVar {
 	public static final String login_SLTS = "登录/适龄提示";
 	public static final String login_XSJ = "登录/小三角";
 	public static final String explore_JTXGZD = "探索/静态小怪战斗";
+	public static final String explore_DTXGZD = "探索/动态小怪战斗";
 	public static final String login_XZZH_PHONE1 = "登录/选择账号/手机号1";
 	public static final String login_YHZX = "登录/用户中心";
 	public static final String login_YHZX_EMAIIL1 = "登录/选择账号/邮箱号1";
