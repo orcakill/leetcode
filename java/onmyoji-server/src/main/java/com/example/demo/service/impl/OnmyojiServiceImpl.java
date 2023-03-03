@@ -249,8 +249,8 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		}
 		Thread.sleep (2000);
 		log.info ("判断底部菜单是否打开");
-		boolean bottomMenu = ImageService.imagesBack (home_DBCD, paramSIFTNotClick (process, 1, 20));
-		if (bottomMenu) {
+		boolean bottomMenu = ImageService.imagesBack (home_DBCDDK, paramSIFTNotClick (process, 1, 20));
+		if (!bottomMenu) {
 			log.info ("打开底部菜单");
 			ImageService.imagesBack (home_DBCD, paramSIFT (process, 1, 20));
 		}
@@ -440,7 +440,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		log.info ("准备进入结界突破");
 		ImageService.imagesBack (region_JJTP, paramSIFT (process));
 		log.info ("进入结界突破，准备点击阴阳寮");
-		booleanYYL = ImageService.imagesBack (region_YYL, paramRGBNotClick (process, 5));
+		booleanYYL = ImageService.imagesBack (region_YYL, paramRGB(process, 5));
 		while (!booleanYYL) {
 			sleep (2000);
 			if (ImageService.imagesBack (region_GTRQ, paramRGBNotClick (process, 5))) {
