@@ -158,5 +158,38 @@ public interface OnmyojiService {
 	 */
 	boolean fightPVP(String process,Integer begin_num, Integer start_num, Integer end_num)
 			throws InterruptedException, IOException, AWTException;
+	/***
+	 * @description: 御魂强化
+	 * @param num 次数
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/3/3 22:59
+	 */
+	void SoulEnhancements (String process,Integer num) throws InterruptedException, IOException, AWTException;
+	/***
+	 * @description:  分割图片
+	 * @param process  夜神模拟器
+	 * @return: java.lang.String
+	 * @author: orcakill
+	 * @date: 2023/3/3 23:30
+	 */
+	
+	String soulLevelEnhancementRecognition (String process);
+	/*** 
+	 * @description: 探索
+	 * @param num 次数
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/3/3 23:49
+	 */
+	void  explore (String process,Integer num) throws IOException, InterruptedException, AWTException;
+	/***
+	 * @description: 探索-只打2个
+	 * @param num 次数
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/3/3 23:49
+	 */
+	void  exploreFast (String process,Integer num) throws IOException, InterruptedException, AWTException;
 }
 
