@@ -106,4 +106,46 @@ public class CommVar {
 	public static final String  contend_TC = "斗技/头筹";
 	public static final String  contend_ZDSL = "斗技/战斗胜利";
 	public static final String  contend_ZDSB= "斗技/战斗失败";
+	
+	public static final String arrange_SSL="scenario/御魂整理/式神录";
+	public static final String arrange_XX="scenario/御魂整理/详细";
+	public static final String arrange_YCYH_WDJ="scenario/御魂整理/右侧御魂/未点击";
+	public static final String arrange_DZL_WDJ="scenario/御魂整理/待整理/未点击";
+	public static final String arrange_GHYH="scenario/御魂整理/更换御魂";
+	public static final String arrange_ZL_WDJ="scenario/御魂整理/整理/未点击";
+	public static final String arrange_FA_WDJ="scenario/御魂整理/方案/未点击";
+	public static final String arrange_FAXQH_WDJ="scenario/御魂整理/方案下强化/未点击";
+	public static final String arrange_FASDTS_WDJ="scenario/御魂整理/方案速度提升/未点击";
+	public static final String arrange_PX="scenario/御魂整理/排序";
+	public static final String arrange_DZL_YDJ="scenario/御魂整理/待整理/已点击";
+	public static final String arrange_JRQH="scenario/御魂整理/进入强化";
+	public static final String arrange_SXQJG="scenario/御魂整理/四星青吉鬼";
+	public static final String arrange_QH="scenario/御魂整理/强化";
+	public static final String arrange_DJTS="scenario/御魂整理/等级提升";
+	public static final String arrange_ZSJYH="scenario/御魂整理/左上角御魂";
+	public static final String arrange_YHQHSX_SD="scenario/御魂整理/御魂强化属性/速度";
+	public static final String arrange_YHQHSX_XGDK="scenario/御魂整理/御魂强化属性/效果抵抗";
+	public static final String arrange_YHQHSX_XGMZ="scenario/御魂整理/御魂强化属性/效果命中";
+	public static final String arrange_YHQHSX_BJ="scenario/御魂整理/御魂强化属性/暴击";
+	public static final String arrange_YHQHSX_BJSH="scenario/御魂整理/御魂强化属性/暴击伤害";
+	public static final String arrange_YHQHSX_GJ="scenario/御魂整理/御魂强化属性/攻击";
+	public static final String arrange_YHQHSX_GJJC="scenario/御魂整理/御魂强化属性/攻击加成";
+	public static final String arrange_YHQHSX_SM="scenario/御魂整理/御魂强化属性/生命";
+	public static final String arrange_YHQHSX_SMJC="scenario/御魂整理/御魂强化属性/生命加成";
+	public static final String arrange_YHQHSX_FY="scenario/御魂整理/御魂强化属性/防御";
+	public static final String arrange_YHQHSX_FYJC="scenario/御魂整理/御魂强化属性/防御加成";
+	public static final String arrange_QD="scenario/御魂整理/确定";
+	public static final String arrange_QZ="scenario/御魂整理/弃置/未点击";
+	
+	public static final String explore_ZHYZ ="scenario/探索/困28";
+	public static final String explore_TS ="scenario/探索/探索";
+	public static final String explore_ZDLH="scenario/探索/自动轮换";
+	public static final String explore_XGZD="scenario/探索/小怪战斗";
+	public static final String explore_BOSSZD="scenario/探索/boss战";
+	public static final String explore_TCTZ="scenario/御魂/退出挑战";
+	public static final String explore_EWJL="scenario/探索/额外奖励";
+	public static final String explore_ZCBX="scenario/探索/左侧宝箱";
+	public static final String explore_QR="scenario/探索/确认";
+	public static final String explore_ZJFH="scenario/探索/章节返回";
+	public static final String explore_TSSSL="scenario/探索/探索界面式神录";
 }
