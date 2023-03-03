@@ -4,13 +4,13 @@ import com.example.demo.model.param.ImageRecParam;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.opencv.core.Core;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.awt.*;
 import java.io.IOException;
 
-import static com.example.demo.model.param.ImageRecParam.paramRGB;
-import static com.example.demo.model.var.CommVar.*;
+import static com.example.demo.model.var.CommVar.home_TS;
 
 /**
  * @Classname ImageServiceTest
@@ -21,6 +21,8 @@ import static com.example.demo.model.var.CommVar.*;
 @SpringBootTest
 @Log4j2
 class ImageServiceTest {
+	@Autowired
+	private  OnmyojiService onmyojiService;
 	@Test
 	void imageServiceTest () throws IOException, InterruptedException, AWTException {
 		long startTime = System.currentTimeMillis ();
@@ -28,7 +30,7 @@ class ImageServiceTest {
 		System.setProperty ("java.awt.headless", "false");
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		String process="夜神模拟器";
-		ImageService.imagesBack (soul_TCTZ, paramRGB(process));
+		onmyojiService.fightEnd (process,1,1,2);
 		log.info ("测试结束");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}
