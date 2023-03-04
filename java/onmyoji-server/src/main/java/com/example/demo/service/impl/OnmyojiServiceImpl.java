@@ -262,7 +262,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		log.info ("切换账号");
 		imagesBack (login_QHZH, paramSIFT (process));
 		log.info ("常用");
-		imagesBack (login_CY, paramTM_SQDIFF_NORMED (process, 3E-10));
+		imagesBack (login_CY, paramSIFT (process, 0.8, 4));
 		log.info ("选择账号");
 		if (gameUserId != null) {
 			if (gameUserId.equals ("1")) {

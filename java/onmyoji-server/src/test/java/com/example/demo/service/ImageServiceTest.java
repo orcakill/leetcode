@@ -10,7 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.awt.*;
 import java.io.IOException;
 
-import static com.example.demo.model.var.CommVar.home_TS;
+import static com.example.demo.model.param.ImageRecParam.paramSIFT;
+import static com.example.demo.model.var.CommVar.*;
+import static com.example.demo.service.ImageService.imagesBack;
 
 /**
  * @Classname ImageServiceTest
@@ -30,7 +32,7 @@ class ImageServiceTest {
 		System.setProperty ("java.awt.headless", "false");
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		String process="夜神模拟器";
-		onmyojiService.fightEnd (process,1,1,2);
+		imagesBack (login_CY, paramSIFT (process, 0.8, 4));
 		log.info ("测试结束");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}
