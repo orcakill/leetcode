@@ -2,6 +2,8 @@ package com.example.demo.utils;
 
 import com.example.demo.model.entity.PictureCollectionPO;
 import com.example.demo.model.entity.PictureIdentifyWorkPO;
+import com.sun.jna.platform.win32.User32;
+import com.sun.jna.platform.win32.WinDef;
 import lombok.extern.log4j.Log4j2;
 import org.opencv.core.Point;
 import org.opencv.core.*;
@@ -31,13 +33,19 @@ public class ImagesOpenCVUtils {
 	public static boolean imagesRecognitionOpenCv (List<PictureCollectionPO> pictureCollectionPOList, String process,
 	                                               boolean isClick, Double coefficient, String method)
 			throws AWTException, IOException {
+		//窗口句柄
+		WinDef.HWND hwnd = User32.INSTANCE.FindWindow (null, process);
+		//显示器縮放比例
+		Double bl = ComputerScalingUtils.getScale ();
+		//识别开始时间
+		long start_time=System.currentTimeMillis ();
 		//		屏幕截图
 		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
 		//		屏幕截图和图片对比
 		List<PictureIdentifyWorkPO> mouseXY =
 				FindAllImgDataOpenCv (Window, pictureCollectionPOList, coefficient, false, method);
 		//		识别+鼠标点击或仅识别
-		return MouseClickUtils.mouseClickBack (mouseXY, process, isClick);
+		return MouseClickUtils.mouseClickBack (mouseXY, hwnd, bl, isClick);
 	}
 	
 	//返回坐标

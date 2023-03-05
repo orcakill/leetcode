@@ -15,21 +15,37 @@ public class MouseClickUtils {
 	
 	//后台鼠标点击，坐标集，进程名，是否点击
 	public static boolean mouseClickBack (List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList,
-	                                      String process, boolean isClick) throws AWTException {
+	                                      HWND hwnd,double bl,boolean isClick) throws AWTException {
 		List<PictureIdentifyWorkPO> mouseXY1 = new ArrayList<> ();
 		//鼠标点击
 		if (pictureIdentifyWorkPOList.size () > 0) {
 			if (isClick) {
 				int num = RandomUtils.randomMinute (pictureIdentifyWorkPOList.size ());
 				mouseXY1.add (pictureIdentifyWorkPOList.get (num));
-				HWND hwnd = User32.INSTANCE.FindWindow (null, process);
-				mouseClickBackground (hwnd, mouseXY1);
+				mouseClickBackground (hwnd, bl,mouseXY1);
 				log.info ("点击完成");
 			}
 			return true;
 		}
 		return false;
-		
+	}
+	//后台鼠标点击，坐标集，句柄，是否点击
+	public static boolean mouseClickBack (List<PictureIdentifyWorkPO> pictureIdentifyWorkPOList,
+	                                      String process,boolean isClick) throws AWTException {
+		List<PictureIdentifyWorkPO> mouseXY1 = new ArrayList<> ();
+		//显示器縮放比例
+		Double bl = ComputerScalingUtils.getScale ();
+		//鼠标点击
+		if (pictureIdentifyWorkPOList.size () > 0) {
+			if (isClick) {
+				int num = RandomUtils.randomMinute (pictureIdentifyWorkPOList.size ());
+				mouseXY1.add (pictureIdentifyWorkPOList.get (num));
+				WinDef.HWND hwnd = User32.INSTANCE.FindWindow (null, process);
+				mouseClickBackground (hwnd,bl, mouseXY1);
+			}
+			return true;
+		}
+		return false;
 	}
 	
 	/**
@@ -43,9 +59,11 @@ public class MouseClickUtils {
 	public static void mouseClickBack (PictureIdentifyWorkPO pictureIdentifyWorkPO, String process)
 			throws AWTException {
 		HWND hwnd = User32.INSTANCE.FindWindow (null, process);
+		//显示器縮放比例
+		Double bl = ComputerScalingUtils.getScale ();
 		List<PictureIdentifyWorkPO> pictureIdentifyWorkPOS = new ArrayList<> ();
 		pictureIdentifyWorkPOS.add (pictureIdentifyWorkPO);
-		mouseClickBackground (hwnd, pictureIdentifyWorkPOS);
+		mouseClickBackground (hwnd, bl,pictureIdentifyWorkPOS);
 	}
 	
 	/***
@@ -61,18 +79,19 @@ public class MouseClickUtils {
 	                                       PictureIdentifyWorkPO pictureIdentifyWorkPO2,
 	                                       String process) throws AWTException {
 		HWND hwnd = User32.INSTANCE.FindWindow (null, process);
-		mouseClickBackgroundDrag (hwnd, pictureIdentifyWorkPO1, pictureIdentifyWorkPO2);
+		//显示器縮放比例
+		Double bl = ComputerScalingUtils.getScale ();
+		mouseClickBackgroundDrag (hwnd,bl,pictureIdentifyWorkPO1, pictureIdentifyWorkPO2);
 	}
 	
 	/**
 	 * 本方法可以向后台进程窗口发送鼠标事件从而实现后台操作游戏
 	 */
-	public static void mouseClickBackground (HWND hwnd, List<PictureIdentifyWorkPO> mouseMessages)
+	public static void mouseClickBackground (HWND hwnd,Double bl,List<PictureIdentifyWorkPO> mouseMessages)
 			throws AWTException {
-		Double bl = ComputerScalingUtils.getScale ();
 		StringBuilder X;
 		StringBuilder Y;
-		int moveTime = (int) (Math.random () * 400 + 300);
+		int moveTime = (int) (Math.random () * 10 + 10);
 		//int mousePressTime = (int) (Math.random () * 500 + 100);
 		for (PictureIdentifyWorkPO mouseMessage : mouseMessages) {
 			// 解析鼠标坐标参数,低位为X轴,高位为Y轴坐标
@@ -102,15 +121,14 @@ public class MouseClickUtils {
 		
 	}
 	
-	public static void mouseClickBackgroundDrag (HWND hwnd, PictureIdentifyWorkPO mouseMessages1,
+	public static void mouseClickBackgroundDrag (HWND hwnd,double bl,PictureIdentifyWorkPO mouseMessages1,
 	                                             PictureIdentifyWorkPO mouseMessages2)
 			throws AWTException {
-		Double bl = ComputerScalingUtils.getScale ();
 		StringBuilder X1;
 		StringBuilder Y1;
 		StringBuilder X2;
 		StringBuilder Y2;
-		int moveTime = (int) (Math.random () * 400 + 300);
+		int moveTime = (int) (Math.random () * 10 + 10);
 		//int mousePressTime = (int) (Math.random () * 500 + 100);
 		// 解析鼠标坐标参数,低位为X轴,高位为Y轴坐标
 		X1 = new StringBuilder (Integer.toHexString ((int) (mouseMessages1.getX () / bl)));

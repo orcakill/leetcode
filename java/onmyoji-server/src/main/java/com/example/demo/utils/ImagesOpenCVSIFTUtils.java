@@ -2,6 +2,8 @@ package com.example.demo.utils;
 
 import com.example.demo.model.entity.PictureCollectionPO;
 import com.example.demo.model.entity.PictureIdentifyWorkPO;
+import com.sun.jna.platform.win32.User32;
+import com.sun.jna.platform.win32.WinDef;
 import lombok.extern.log4j.Log4j2;
 import org.opencv.calib3d.Calib3d;
 import org.opencv.core.Point;
@@ -34,18 +36,24 @@ public class ImagesOpenCVSIFTUtils {
 	                                         boolean isClick,
 	                                         Double coefficient,
 	                                         int characteristicPoint) throws AWTException {
-		//		屏幕截图
+		//窗口句柄
+		WinDef.HWND hwnd = User32.INSTANCE.FindWindow (null, process);
+		//显示器縮放比例
+		Double bl = ComputerScalingUtils.getScale ();
+		//屏幕截图
 		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
 		
 		List<PictureIdentifyWorkPO> mouseXY = findPictureIdentifyWorkPOList (Window, pictureCollectionPOList, coefficient,
 		                                                               characteristicPoint, false);
-		//		识别+鼠标点击或仅识别
-		if (mouseXY != null && !mouseXY.isEmpty ()) {
-			return MouseClickUtils.mouseClickBack (mouseXY, process, isClick);
+
+		//识别+鼠标点击或仅识别
+		try {
+			assert mouseXY != null;
+			return MouseClickUtils.mouseClickBack (mouseXY, hwnd, bl, isClick);
+		}catch (Exception e){
+			log.info (e);
 		}
-		else {
-			return false;
-		}
+		return false;
 	}
 	
 	//返回坐标
@@ -53,7 +61,6 @@ public class ImagesOpenCVSIFTUtils {
 	                                                            String process,
 	                                                            double coefficient,int characteristicPoint
 	                                                            ) {
-		log.info ("应用窗口process {}",process);
 		//		屏幕截图
 		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
 		
@@ -61,11 +68,15 @@ public class ImagesOpenCVSIFTUtils {
 		                                                               characteristicPoint, false);
 		//		鼠标点击
 		PictureIdentifyWorkPO pictureIdentifyWorkPO = new PictureIdentifyWorkPO ();
-		assert mouseXY != null;
-		if (mouseXY.size () > 0) {
-			if(mouseXY.get (0).getX ()>0&&mouseXY.get (0).getY ()>0){
-				pictureIdentifyWorkPO = mouseXY.get (0);
+		try {
+			assert mouseXY != null;
+			if (mouseXY.size () > 0) {
+				if (mouseXY.get (0).getX () > 0 && mouseXY.get (0).getY () > 0) {
+					pictureIdentifyWorkPO = mouseXY.get (0);
+				}
 			}
+		}catch (Exception e){
+			log.info (e);
 		}
 		return pictureIdentifyWorkPO;
 	}
@@ -182,7 +193,7 @@ public class ImagesOpenCVSIFTUtils {
 							log.info ("已识别的序号{},图片:{}", imagesDatum.getImageNumber (),
 							          imagesDatum.getImageName ());
 							mouseMessages.add (pictureIdentifyWorkPO);
-							break;
+							return  mouseMessages;
 						}
 					}
 				} catch (Exception e) {

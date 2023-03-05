@@ -41,8 +41,8 @@ public class ImageCoreServiceImpl {
 				                                           imageRecParam.getIdentificationAlgorithmType ());
 		for (int i = 0; i < imageRecParam.getRe_num (); i++) {
 			num_time = getRandom (imageRecParam.getStart_time (), imageRecParam.getEnd_time ());
-			//每20次重新初始化数据集
-			if (i % 20 == 0 && i > 0) {
+			//每2次重新初始化数据集
+			if (i % 2 == 0 && i > 0) {
 				pictureCollectionPOList =
 						ReadFileUtils.readPictureCollectionPOList (path, folder,
 						                                           imageRecParam.getIdentificationAlgorithmType ());
@@ -86,8 +86,8 @@ public class ImageCoreServiceImpl {
 				                                           imageRecParam.getIdentificationAlgorithmType ());
 		for (int i = 0; i < imageRecParam.getRe_num (); i++) {
 			num_time = getRandom (imageRecParam.getStart_time (), imageRecParam.getEnd_time ());
-			//每20次重新初始化数据集
-			if (i % 20 == 0 && i > 0) {
+			//每2次重新初始化数据集
+			if (i % 2 == 0 && i > 0) {
 				pictureCollectionPOList =
 						ReadFileUtils.readPictureCollectionPOList (path, folder,
 						                                           imageRecParam.getIdentificationAlgorithmType ());
@@ -127,15 +127,15 @@ public class ImageCoreServiceImpl {
 		List<PictureCollectionPO> pictureCollectionPOList = new ArrayList<> ();
 		for (int i = 0; i < multipleImagesParam.getRe_num (); i++) {
 			num_time = getRandom (multipleImagesParam.getStart_time (), multipleImagesParam.getEnd_time ());
+			Thread.sleep (num_time * 1000L);
 			for (MultipleImageParam multipleImageParam : multipleImagesParam.getMultipleImageParamList ()) {
-				//每20次重新初始化数据集
-				if (i % 20 == 0) {
+				//每2次重新初始化数据集
+				if (i % 2 == 0) {
 					pictureCollectionPOList =
 							ReadFileUtils.readPictureCollectionPOList (path, multipleImageParam.getFolder (),
 							                                           multipleImageParam.getImageRecParam ()
 							                                                             .getIdentificationAlgorithmType ());
 				}
-				Thread.sleep (num_time * 1000L);
 				result = isResult (multipleImageParam.getImageRecParam ().getIdentificationAlgorithmType (),
 				                   multipleImagesParam.getProcess (),
 				                   multipleImagesParam.isClick (),
