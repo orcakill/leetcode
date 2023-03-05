@@ -30,10 +30,10 @@ public class OnmyojiController {
 		this.onmyojiService = onmyojiService;
 	}
 	
-	@ApiOperation ("大号每日任务，寮突+个突+魂十一")
+	@ApiOperation ("正式  大号每日任务，寮突+个突+魂十一")
 	@ApiOperationSupport (order = 1)
-	@GetMapping ("/dailyTask")
-	public Results<?> getArticles (
+	@GetMapping ("/dealTask1")
+	public Results<?> dealTask1 (
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
@@ -41,6 +41,20 @@ public class OnmyojiController {
 	                              ) throws InterruptedException, UnknownHostException {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		onmyojiService.onmyojiService (process,1,round);
+		return Results.ok ("任务已启动");
+	}
+	
+	@ApiOperation ("正式  大号业原火（阴阳寮+个人结界）")
+	@ApiOperationSupport (order = 3)
+	@GetMapping ("/dealTask3")
+	public Results<?> dealTask3 (
+			@ApiParam ("轮次")
+			@RequestParam (required = false, defaultValue = "1") Integer round,
+			@ApiParam ("模拟器")
+			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
+	                              ) throws InterruptedException, UnknownHostException {
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		onmyojiService.onmyojiService (process,3,round);
 		return Results.ok ("任务已启动");
 	}
 }

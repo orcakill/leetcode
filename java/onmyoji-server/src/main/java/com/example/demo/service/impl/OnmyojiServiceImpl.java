@@ -89,7 +89,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 	@Override
 	public void autoActivity (String process, Integer type, Integer round) throws IOException, InterruptedException,
 	                                                                              AWTException {
-		
+		Thread.sleep (10*1000);
 		for (int i = 0; i < round; i++) {
 			
 			//大号  阴阳寮突破+个人突破+魂十一40次+地域鬼王（每日一次）
@@ -106,6 +106,47 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				soulFight (process, 11, 40, true);
 				//  地域鬼王+领取花合战每日奖励，无未攻打则跳过
 				//  好友添加、好友删除、赠送小号红心、赠送其他人红心（待定）
+			}
+			if (type == 3) {
+				//  当前状态初始化，进入角色首页
+				initializationState (process, "1");
+				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
+				toFoster (process);
+				//  大号阴阳寮突破
+				fightHouse (process);
+				//  大号个人突破
+				borderCheck (process);
+				//  御魂战斗-业原火40
+				soulFight (process, 21, 40, true);
+			}
+			
+			
+			if(type>=100&&type<200){
+				log.info ("测试");
+				if(type==100){
+					//  当前状态初始化，进入角色首页
+					initializationState (process, "1");
+					//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
+					toFoster (process);
+				}
+				if(type==101){
+					//  当前状态初始化，进入角色首页
+					initializationState (process, "1");
+					//  大号阴阳寮突破
+					fightHouse (process);
+				}
+				if(type==102){
+					//  当前状态初始化，进入角色首页
+					initializationState (process, "1");
+					//  大号个人突破
+					borderCheck (process);
+				}
+				if(type==103){
+					//  当前状态初始化，进入角色首页
+					initializationState (process, "1");
+					//  御魂战斗-魂十一（注意喂食宠物）
+					soulFight (process, 11, 1, true);
+				}
 			}
 		}
 		
@@ -307,7 +348,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		sleep (5 * 1000L);
 		log.info ("底部菜单栏");
 		imagesBack (home_DBCD, paramSIFT (process));
-		boolean openBottom = ImageService.imagesBack (home_DBCDDK, paramSIFT (process, 1, 4));
+		boolean openBottom = ImageService.imagesBack (home_DBCDDK, paramSIFTNotClick (process, 1, 4));
 		while (!openBottom) {
 			imagesBack (home_DBCD, paramSIFT (process));
 			openBottom = ImageService.imagesBack (home_DBCDDK, paramSIFT (process, 1, 4));
@@ -342,7 +383,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		booleanKJY = imagesBack (house_KJY, paramRGBNotClick (process, 5));
 		if (booleanKJY) {
 			log.info ("进入可寄养");
-			imagesBack (house_HYBT, paramRGB (process));
+			imagesBack (house_KJY, paramRGB (process));
 			sleep (3000);
 			log.info ("已进入好友列表");
 			pictureIdentifyWorkPO1 = ImageService.imagesBackGetCoordinate (house_HYBT, paramRGB (process));
@@ -355,25 +396,28 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			//开循环，0 六星太鼓 1 五星太鼓 2 四星太鼓 3 六星斗鱼 4 五星斗鱼 5 四星斗鱼
 			while (!booleanJSJY) {
 				log.info ("当前好友结界卡是否未放置");
-				booleanWFZ = imagesBack (house_WFZ, paramRGB (process));
+				booleanWFZ = imagesBack (house_WFZ, paramRGB (process,5));
 				if (booleanWFZ) {
 					log.info ("好友未放置结界卡，退出后重新进入");
 					if (num == 0) {
-						fileJJK = house_JJK_TG_WXTG;
+						fileJJK = house_JJK_TG_LXTG;
 					}
 					if (num == 1) {
-						fileJJK = house_JJK_TG_SXTG;
+						fileJJK = house_JJK_TG_WXTG;
 					}
 					if (num == 2) {
-						fileJJK = house_JJK_DY_LXDY;
-					}
-					if (num == 3) {
-						fileJJK = house_JJK_DY_WXDY;
-					}
-					if (num == 4) {
 						fileJJK = house_JJK_DY_SXDY;
 					}
-					if (num > 4) {
+					if (num == 3) {
+						fileJJK = house_JJK_DY_LXDY;
+					}
+					if (num == 4) {
+						fileJJK = house_JJK_DY_WXDY;
+					}
+					if (num == 5) {
+						fileJJK = house_JJK_DY_SXDY;
+					}
+					if (num > 5) {
 						log.info ("无高星结界卡，开始退出");
 						break;
 					}
@@ -385,9 +429,9 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				}
 				else {
 					log.info ("存在结界卡，判断是否是高星结界卡");
-					booleanJJK = imagesBack (fileJJK, paramRGB (process, 2));
+					booleanJJK = imagesBack (fileJJK, paramRGBNotClick (process, 3));
 					if (!booleanJJK) {
-						log.info ("当前结界不是" + fileJJK + ",不可放置,滚动到下一个");
+						log.info ("当前结界不是{},不可放置,滚动到下一个",fileJJK);
 						MouseClickUtils.mouseClickBackDrag (pictureIdentifyWorkPO2, pictureIdentifyWorkPO3,
 						                                    "夜神模拟器");
 						log.info ("滚动完成,点击终止位置坐标");
@@ -455,12 +499,13 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		log.info ("进入寮突破，判断当前有无挑战次数");
 		//退出到探索
 		while (!ImageService.imagesBack (region_TZCS, paramRGB (process, 5)) && ImageService.imagesBack (region_LJJ,
-		                                                                                                 paramRGB (
+		                                                                                                 paramRGBNotClick (
 				                                                                                                 process,
 				                                                                                                 5))) {
 			log.info ("存在可攻打结界，且存在挑战次数");
 			log.info ("准备选择结界");
 			ImageService.imagesBack (region_LJJ, paramRGB (process));
+			Thread.sleep (1000);
 			log.info ("选择结界成功，准备进攻");
 			ImageService.imagesBack (region_JG, paramRGB (process));
 			log.info ("开始进攻");
@@ -532,16 +577,17 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		sleep (begin_num * 1000);
 		log.info ("准备点击角色头像、点击退出挑战、失败、宠物奖励");
 		String thisState = imagesBackList (multipleImagesParams);
-		if (thisState.equals ("角色头像")) {
+		log.info ("当前{}",thisState);
+		if (thisState.equals (soul_JSTX)) {
 			log.info ("点击角色头像");
 			ImageService.imagesBack (soul_TCTZ, paramRGB (process));
-			log.info ("退出挑战");
+			
 		}
-		if (thisState.equals ("失败")) {
+		if (thisState.equals (region_SB)) {
 			log.info ("战斗失败");
 			return false;
 		}
-		log.info ("退出挑战完成");
+		log.info ("战斗胜利");
 		return true;
 	}
 	
@@ -683,7 +729,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			imagesBack (soul_YHLX_YYH, paramSIFT (process));
 			log.info ("进入业原火");
 			log.info ("选择业原火第三层");
-			b1 = imagesBack (soul_CS_YSZHSC, paramSIFT (process));
+			b1 = imagesBack (soul_CS_YYHSC, paramSIFT (process));
 			if (!b1) {
 				log.info ("没有选择到业原火第三层");
 			}
@@ -943,7 +989,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		sleep (begin_num * 1000);
 		log.info ("准备点击战斗胜利，点击头筹、战斗胜利，失败");
 		String thisState = imagesBackList (multipleImagesParams);
-		if (thisState.equals ("头筹")) {
+		if (thisState.equals (contend_TC)) {
 			log.info ("点击战斗胜利");
 			ImageService.imagesBack (contend_ZDSL, paramRGB (process));
 			log.info ("退出挑战");
