@@ -35,7 +35,20 @@ class OnmyojiServiceTest {
 		log.info ("测试结束");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}
-	
+	//返回
+	@Test
+	void returnHome () throws IOException, InterruptedException, AWTException {
+		long startTime = System.currentTimeMillis ();
+		log.info ("测试开始");
+		System.setProperty ("java.awt.headless", "false");
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		// 阴阳师桌面图标.适龄提示,逆戟之刃首页,orcakill首页,洪荒修罗首页,炽热的惆怅物语首页,返回
+		log.info ("阴阳师-逆戟之刃-首页");
+		onmyojiService.returnHome ("夜神模拟器");
+		log.info ("测试结束");
+		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
+	}
+	//寄养
 	@Test
 	void toFoster () throws IOException, InterruptedException, AWTException {
 		long startTime = System.currentTimeMillis ();
@@ -48,7 +61,7 @@ class OnmyojiServiceTest {
 		log.info ("测试结束");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}
-	
+	//阴阳寮突破
 	@Test
 	void fightHouse () throws IOException, InterruptedException, AWTException {
 		long startTime = System.currentTimeMillis ();
@@ -64,6 +77,7 @@ class OnmyojiServiceTest {
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}
 	
+	//战斗
 	@Test
 	void fightEnd () throws IOException, InterruptedException, AWTException {
 		long startTime = System.currentTimeMillis ();
@@ -78,8 +92,7 @@ class OnmyojiServiceTest {
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}
 	
-
-	
+	//个人结界
 	@Test
 	void borderCheck () throws IOException, InterruptedException, AWTException {
 		long startTime = System.currentTimeMillis ();
@@ -93,6 +106,20 @@ class OnmyojiServiceTest {
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}
 	
+	//业原火
+	@Test
+	void soulBack11 () throws IOException, InterruptedException, AWTException {
+		long startTime = System.currentTimeMillis ();
+		log.info ("测试开始");
+		System.setProperty ("java.awt.headless", "false");
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		// 阴阳师桌面图标.适龄提示,逆戟之刃首页,orcakill首页,洪荒修罗首页,炽热的惆怅物语首页,返回
+		log.info ("阴阳师-逆戟之刃-首页");
+		onmyojiService.soulFight ("夜神模拟器",11,1,false);
+		log.info ("测试结束");
+		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
+	}
+	//业原火
 	@Test
 	void soulBack21 () throws IOException, InterruptedException, AWTException {
 		long startTime = System.currentTimeMillis ();
@@ -102,6 +129,72 @@ class OnmyojiServiceTest {
 		// 阴阳师桌面图标.适龄提示,逆戟之刃首页,orcakill首页,洪荒修罗首页,炽热的惆怅物语首页,返回
 		log.info ("阴阳师-逆戟之刃-首页");
 		onmyojiService.soulFight ("夜神模拟器",21,1,false);
+		log.info ("测试结束");
+		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
+	}
+	
+	//御灵
+	@Test
+	void spirit () throws IOException, InterruptedException, AWTException {
+		long startTime = System.currentTimeMillis ();
+		log.info ("测试开始");
+		System.setProperty ("java.awt.headless", "false");
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		// 阴阳师桌面图标.适龄提示,逆戟之刃首页,orcakill首页,洪荒修罗首页,炽热的惆怅物语首页,返回
+		log.info ("阴阳师-逆戟之刃-首页");
+		onmyojiService.spirit ("夜神模拟器",1);
+		log.info ("测试结束");
+		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
+	}
+	//斗技
+	@Test
+	void pvp () throws IOException, InterruptedException, AWTException {
+		long startTime = System.currentTimeMillis ();
+		log.info ("测试开始");
+		System.setProperty ("java.awt.headless", "false");
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		// 阴阳师桌面图标.适龄提示,逆戟之刃首页,orcakill首页,洪荒修罗首页,炽热的惆怅物语首页,返回
+		log.info ("阴阳师-逆戟之刃-首页");
+		onmyojiService.pvp ("夜神模拟器",1);
+		log.info ("测试结束");
+		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
+	}
+	
+	@Test
+	void SoulEnhancements () throws IOException, InterruptedException, AWTException {
+		long startTime = System.currentTimeMillis ();
+		log.info ("测试开始");
+		System.setProperty ("java.awt.headless", "false");
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		// 阴阳师桌面图标.适龄提示,逆戟之刃首页,orcakill首页,洪荒修罗首页,炽热的惆怅物语首页,返回
+		log.info ("阴阳师-逆戟之刃-首页");
+		onmyojiService.soulEnhancements ("夜神模拟器", 1);
+		log.info ("测试结束");
+		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
+	}
+	
+	@Test
+	void explore() throws IOException, InterruptedException, AWTException {
+		long startTime = System.currentTimeMillis ();
+		log.info ("测试开始");
+		System.setProperty ("java.awt.headless", "false");
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		// 阴阳师桌面图标.适龄提示,逆戟之刃首页,orcakill首页,洪荒修罗首页,炽热的惆怅物语首页,返回
+		log.info ("阴阳师-逆戟之刃-首页");
+		onmyojiService.explore ("夜神模拟器", 1);
+		log.info ("测试结束");
+		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
+	}
+	
+	@Test
+	void exploreFast() throws IOException, InterruptedException, AWTException {
+		long startTime = System.currentTimeMillis ();
+		log.info ("测试开始");
+		System.setProperty ("java.awt.headless", "false");
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		// 阴阳师桌面图标.适龄提示,逆戟之刃首页,orcakill首页,洪荒修罗首页,炽热的惆怅物语首页,返回
+		log.info ("阴阳师-逆戟之刃-首页");
+		onmyojiService.exploreFast("夜神模拟器", 1);
 		log.info ("测试结束");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}
