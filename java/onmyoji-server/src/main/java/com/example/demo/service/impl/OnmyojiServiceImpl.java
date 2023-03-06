@@ -308,11 +308,11 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		if (gameUserId != null) {
 			if (gameUserId.equals ("1")) {
 				log.info ("手机号178");
-				imagesBack (login_XZZH_PHONE1, paramTM_SQDIFF_NORMED (process, 2E-11));
+				imagesBack (login_XZZH_PHONE1, paramSIFT (process, 0.8, 4));
 			}
 			if (gameUserId.equals ("2")) {
 				log.info ("邮箱号1");
-				imagesBack (login_YHZX_EMAIIL1, paramTM_SQDIFF_NORMED (process, 2E-11));
+				imagesBack (login_YHZX_EMAIIL1, paramSIFT (process, 0.8, 4));
 			}
 		}
 		log.info ("登录");
@@ -324,27 +324,23 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		if (gameUserId != null) {
 			if (gameUserId.equals ("1")) {
 				log.info ("点击大号角色-缥缈之旅");
-				imagesBack (login_FWQ_PMZL, paramRGB (process));
+				imagesBack (login_FWQ_PMZL, paramSIFT(process));
 			}
 			if (gameUserId.equals ("2")) {
 				log.info ("点击小号角色1-缥缈之旅");
-				imagesBack (login_FWQ_PMZL, paramRGB (process));
+				imagesBack (login_FWQ_PMZL, paramSIFT(process));
 			}
 			if (gameUserId.equals ("3")) {
-				log.info ("点击小号角色2-缥缈之旅");
-				imagesBack (login_FWQ_PMZL, paramRGB (process));
-			}
-			if (gameUserId.equals ("4")) {
 				log.info ("点击小号角色2-两情相悦");
-				imagesBack (login_FWQ_LQXY, paramRGB (process));
+				imagesBack (login_FWQ_LQXY, paramSIFT(process));
 			}
 			if (gameUserId.equals ("4")) {
 				log.info ("点击小号角色2-桃映春馨");
-				imagesBack (login_FWQ_TYCX, paramRGB (process));
+				imagesBack (login_FWQ_TYCX, paramSIFT(process));
 			}
 		}
 		log.info ("开始游戏");
-		imagesBack (login_KSYX, paramTM_SQDIFF_NORMED (process, 3E-10));
+		imagesBack (login_KSYX, paramSIFT (process, 0.7, 4));
 		sleep (5 * 1000L);
 		log.info ("底部菜单栏");
 		imagesBack (home_DBCD, paramSIFT (process));
@@ -710,7 +706,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			
 			//选择魂十或魂十一
 			//开始挑战
-			soulBack (process, 22, soulNum);
+			soulBack (process,soul_TZLX_BQDSTZ, 22, soulNum);
 			//挑战结束
 			if (addition) {
 				//关闭加成
@@ -735,7 +731,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			}
 			log.info ("开始挑战");
 			//开始挑战
-			soulBack (process, 40, soulNum);
+			soulBack (process,soul_TZLX_YYHTZ, 40, soulNum);
 		}
 		if (soulType == 31) {
 			log.info ("进入御魂成功，准备选择日轮之陨");
@@ -748,7 +744,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			}
 			log.info ("开始挑战");
 			//开始挑战
-			soulBack (process, 15, soulNum);
+			soulBack (process,soul_TZLX_RLZYTZ,15, soulNum);
 		}
 		if (soulType == 41) {
 			log.info ("进入御魂成功，准备选择永生之海");
@@ -759,10 +755,10 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				log.info ("没有选择到永生之海四层");
 			}
 			log.info ("开启永生之海加成");
-			imagesBack (soul_JC_YSZHJC, paramRGB (process));
+			imagesBack (soul_JC_YSZHJC,paramRGB (process));
 			log.info ("开始挑战");
 			//开始挑战
-			soulBack (process, 15, soulNum);
+			soulBack (process,soul_TZLX_YSZHTZ, 15, soulNum);
 		}
 		returnHome (process);
 	}
@@ -776,7 +772,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 	 * @date: 2023/2/22 2:11
 	 */
 	@Override
-	public void soulBack (String process, int begin_time, int soulNumber) throws InterruptedException,
+	public void soulBack (String process,String fightType,int begin_time, int soulNumber) throws InterruptedException,
 	                                                                             IOException,
 	                                                                             AWTException {
 		sleep (3000);
@@ -787,32 +783,32 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			long a = System.currentTimeMillis ();//获取当前系统时间(毫秒)
 			log.info ("准备开始挑战");
 			sleep (1000);
-			b1 = imagesBack (soul_TZ, paramRGB (process, 5));
+			b1 = imagesBack (fightType, paramSIFT (process, 5));
 			while (!b1) {
 				log.info ("判断是否有宠物奖励");
 				imagesBack (soul_CWJL, paramRGB (process, 5));
 				log.info ("判断是否没退出挑战成功");
 				imagesBack (soul_TCTZ, paramRGB (process, 5));
-				b1 = imagesBack (soul_TZ, paramRGBNotClick (process, 5));
+				b1 = imagesBack (fightType, paramSIFTNotClick (process, 5));
 				if (b1) {
 					log.info ("再次点击挑战");
-					imagesBack (soul_TZ, paramRGB (process, 5));
+					imagesBack (fightType, paramSIFT (process, 5));
 				}
 			}
 			log.info ("第{}次挑战中,等待挑战完成", (i + 1));
 			fightEnd (process, begin_time, 1, 2);
 			soulNumber--;
 			log.info ("第{}次挑战完成，剩余{}次", i + 1, soulNumber);
-			long b = (System.currentTimeMillis () - a) / 1000;
-			log.info ("该次挑战使用时间为{}秒", b);
+			log.info ("该次挑战使用时间为{}秒", (System.currentTimeMillis () - a) / 1000);
 		}
-		b1 = imagesBack (soul_TZ, paramRGBNotClick (process, 1));
+		log.info ("判断当前是否可挑战");
+		b1 = imagesBack (fightType, paramSIFTNotClick (process, 1));
 		while (!b1) {
 			log.info ("判断是否有宠物奖励");
 			imagesBack (soul_CWJL, paramRGB (process, 5));
 			log.info ("判断是否没退出挑战成功");
 			imagesBack (soul_TCTZ, paramRGB (process, 5));
-			b1 = imagesBack (soul_TZ, paramRGB (process, 5));
+			b1 = imagesBack (fightType,paramSIFT (process, 5));
 		}
 		log.info ("结束挑战");
 	}
@@ -870,7 +866,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			log.info ("选择第三层");
 			imagesBack (spirit_DSC, paramSIFT (process));
 			log.info ("开始挑战");
-			soulBack (process, 15, num);
+			soulBack (process,spirit_TZ, 15, num);
 		}
 		log.info ("结束御灵");
 		returnHome (process);
@@ -1006,7 +1002,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 	 * @date: 2023/3/3 22:59
 	 */
 	@Override
-	public void SoulEnhancements (String process, Integer num) throws InterruptedException, IOException, AWTException {
+	public void soulEnhancements (String process, Integer num) throws InterruptedException, IOException, AWTException {
 		log.info ("进入式神录");
 		imagesBack (arrange_SSL, paramSIFT (process));
 		sleep (2000);

@@ -126,7 +126,8 @@ public interface OnmyojiService {
 	 * @date: 2023/2/22 2:11
 	 */
 	
-	void soulBack (String process,int begin_time, int soulNumber) throws InterruptedException, IOException, AWTException;
+	void soulBack (String process,String fightType,int begin_time, int soulNumber) throws InterruptedException,
+	                                                                                   IOException, AWTException;
 	/***
 	 * @description: 御灵战斗
 	 * @param process  夜神模拟器
@@ -165,7 +166,7 @@ public interface OnmyojiService {
 	 * @author: orcakill
 	 * @date: 2023/3/3 22:59
 	 */
-	void SoulEnhancements (String process,Integer num) throws InterruptedException, IOException, AWTException;
+	void soulEnhancements (String process, Integer num) throws InterruptedException, IOException, AWTException;
 	/***
 	 * @description:  分割图片
 	 * @param process  夜神模拟器
