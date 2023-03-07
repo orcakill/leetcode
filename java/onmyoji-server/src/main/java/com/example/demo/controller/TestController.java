@@ -35,7 +35,7 @@ public class TestController {
 	@GetMapping ("/dealTaskTest1")
 	public Results<?> dealTaskTest1 (
 			@ApiParam ("轮次")
-			@RequestParam (required = false, defaultValue = "100") Integer round,
+			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
 			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
 	                              ) throws InterruptedException, UnknownHostException {
@@ -49,7 +49,7 @@ public class TestController {
 	@GetMapping ("/dealTaskTest2")
 	public Results<?> dealTaskTest2(
 			@ApiParam ("轮次")
-			@RequestParam (required = false, defaultValue = "101") Integer round,
+			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
 			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
 	                           ) throws InterruptedException, UnknownHostException {
@@ -63,7 +63,7 @@ public class TestController {
 	@GetMapping ("/dealTaskTest3")
 	public Results<?> dealTaskTest3(
 			@ApiParam ("轮次")
-			@RequestParam (required = false, defaultValue = "102") Integer round,
+			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
 			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
 	                               ) throws InterruptedException, UnknownHostException {
@@ -77,12 +77,26 @@ public class TestController {
 	@GetMapping ("/dealTaskTest4")
 	public Results<?> dealTaskTest4(
 			@ApiParam ("轮次")
-			@RequestParam (required = false, defaultValue = "103") Integer round,
+			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
 			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
 	                               ) throws InterruptedException, UnknownHostException {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		onmyojiService.onmyojiService (process,103,round);
+		return Results.ok ("任务已启动");
+	}
+	
+	@ApiOperation ("测试 业原火")
+	@ApiOperationSupport (order = 5)
+	@GetMapping ("/dealTaskTest5")
+	public Results<?> dealTaskTest5(
+			@ApiParam ("轮次")
+			@RequestParam (required = false, defaultValue = "1") Integer round,
+			@ApiParam ("模拟器")
+			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
+	                               ) throws InterruptedException, UnknownHostException {
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		onmyojiService.onmyojiService (process,104,round);
 		return Results.ok ("任务已启动");
 	}
 	

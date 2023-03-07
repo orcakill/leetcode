@@ -15,6 +15,7 @@ import com.example.demo.service.ImageService;
 import com.example.demo.service.OnmyojiService;
 import com.example.demo.utils.ImageTesseractUtils;
 import com.example.demo.utils.MouseClickUtils;
+import com.example.demo.utils.RandomUtils;
 import com.example.demo.utils.ScreenshotUtils;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -107,6 +108,17 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				//  地域鬼王+领取花合战每日奖励，无未攻打则跳过
 				//  好友添加、好友删除、赠送小号红心、赠送其他人红心（待定）
 			}
+			//大号  个人突破+魂十一60次
+			if (type == 2) {
+				//  当前状态初始化，进入角色首页
+				initializationState (process, "1");
+				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
+				toFoster (process);
+				//  大号个人突破
+				borderCheck (process);
+				//  御魂战斗-魂十一（注意喂食宠物）
+				soulFight (process, 11, 60, true);
+			}
 			if (type == 3) {
 				//  当前状态初始化，进入角色首页
 				initializationState (process, "1");
@@ -118,6 +130,110 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				borderCheck (process);
 				//  御魂战斗-业原火40
 				soulFight (process, 21, 40, true);
+			}
+			if (type == 4) {
+				//  当前状态初始化，进入角色首页
+				initializationState (process, "1");
+				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
+				toFoster (process);
+				//  大号个人突破
+				borderCheck (process);
+				//  御魂战斗-日轮之陨
+				soulFight (process, 31, 50, true);
+			}
+			if (type == 4) {
+				//  当前状态初始化，进入角色首页
+				initializationState (process, "1");
+				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
+				toFoster (process);
+				//  大号个人突破
+				borderCheck (process);
+				//  御魂战斗-永生之海
+				soulFight (process, 41, 30, true);
+			}
+			if (type == 5) {
+				//  当前状态初始化，进入角色首页
+				initializationState (process, "1");
+				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
+				toFoster (process);
+				//  大号个人突破
+				borderCheck (process);
+				//  御灵
+				spirit (process, 60);
+			}
+			if (type == 6) {
+				//  当前状态初始化，进入角色首页
+				initializationState (process, "1");
+				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
+				toFoster (process);
+				//  斗技 10次
+				pvp (process, 10);
+			}
+			// 阴阳寮突破+ 斗技10次
+			if (type == 7) {
+				//  当前状态初始化，进入角色首页
+				initializationState (process, "1");
+				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
+				toFoster (process);
+				//  大号阴阳寮突破
+				fightHouse (process);
+				//  大号个人突破
+				borderCheck (process);
+				//  斗技 10次
+				pvp (process, 5);
+			}
+			// 阴阳寮+斗技5次
+			if (type == 8) {
+				//  当前状态初始化，进入角色首页
+				initializationState (process, "1");
+				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
+				toFoster (process);
+				//  大号阴阳寮突破
+				fightHouse (process);
+				//  大号个人突破
+				borderCheck (process);
+				//  斗技 10次
+				pvp (process, 5);
+			}
+			// 阴阳寮挑战，等待30-40分钟
+			if (type == 9) {
+				//  当前状态初始化，进入角色首页
+				initializationState (process, "1");
+				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
+				toFoster (process);
+				//  大号阴阳寮突破
+				fightHouse (process);
+				//  大号个人突破
+				borderCheck (process);
+                Thread.sleep (RandomUtils.getRandom (30, 40) * 60 * 1000L);
+			}
+			// 御魂整理 极限副属性强化
+			if (type == 9) {
+				//  当前状态初始化，进入角色首页
+				initializationState (process, "1");
+				soulEnhancements (process, 20);
+			}
+			// 个人探索 全打
+			if(type==10){
+				//  当前状态初始化，进入角色首页
+				initializationState (process, "1");
+				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
+				toFoster (process);
+				//  大号个人突破
+				borderCheck (process);
+				//  个人探索 全打
+				explore (process,20);
+			}
+			// 个人探索 全打
+			if(type==11){
+				//  当前状态初始化，进入角色首页
+				initializationState (process, "1");
+				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
+				toFoster (process);
+				//  大号个人突破
+				borderCheck (process);
+				//  个人探索 全打
+				exploreFast (process,60);
 			}
 			
 			
@@ -146,6 +262,60 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 					initializationState (process, "1");
 					//  御魂战斗-魂十一（注意喂食宠物）
 					soulFight (process, 11, 1, true);
+				}
+				if(type==104){
+					//  当前状态初始化，进入角色首页
+					initializationState (process, "1");
+					//  御魂战斗-业原火
+					soulFight (process, 21, 1, true);
+				}
+				if(type==105){
+					//  当前状态初始化，进入角色首页
+					initializationState (process, "1");
+					//  御魂战斗-日轮之陨
+					soulFight (process, 31, 1, true);
+				}
+				if(type==106){
+					//  当前状态初始化，进入角色首页
+					initializationState (process, "1");
+					//  御魂战斗-永生之海
+					soulFight (process, 41, 1, true);
+				}
+				if(type==107){
+					//  当前状态初始化，进入角色首页
+					initializationState (process, "1");
+					//  御灵战斗
+					spirit (process, 1);
+				}
+				if(type==108){
+					//  当前状态初始化，进入角色首页
+					initializationState (process, "1");
+					//  斗技战斗
+					pvp (process, 1);
+				}
+				if(type==109){
+					//  当前状态初始化，进入角色首页
+					initializationState (process, "1");
+					//  斗技战斗
+					pvp (process, 1);
+				}
+				if(type==110){
+					//  当前状态初始化，进入角色首页
+					initializationState (process, "1");
+					//  御魂整理 极限副属性
+					soulEnhancements (process, 1);
+				}
+				if(type==111){
+					//  当前状态初始化，进入角色首页
+					initializationState (process, "1");
+					//  探索 全打
+					explore (process, 1);
+				}
+				if(type==112){
+					//  当前状态初始化，进入角色首页
+					initializationState (process, "1");
+					//  探索 只打2个
+					exploreFast (process, 1);
 				}
 			}
 		}
