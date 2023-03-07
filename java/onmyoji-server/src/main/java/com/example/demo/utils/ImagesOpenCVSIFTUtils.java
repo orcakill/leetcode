@@ -48,8 +48,9 @@ public class ImagesOpenCVSIFTUtils {
 
 		//识别+鼠标点击或仅识别
 		try {
-			assert mouseXY != null;
-			return MouseClickUtils.mouseClickBack (mouseXY, hwnd, bl, isClick);
+			if(mouseXY!=null&&mouseXY.size ()>0){
+				return MouseClickUtils.mouseClickBack (mouseXY, hwnd, bl, isClick);
+			}
 		}catch (Exception e){
 			log.info (e);
 		}
@@ -193,7 +194,9 @@ public class ImagesOpenCVSIFTUtils {
 							log.info ("已识别的序号{},图片:{}", imagesDatum.getImageNumber (),
 							          imagesDatum.getImageName ());
 							mouseMessages.add (pictureIdentifyWorkPO);
-							return  mouseMessages;
+							if(mouseMessages.size ()>1){
+								return  mouseMessages;
+							}
 						}
 					}
 				} catch (Exception e) {
