@@ -347,7 +347,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		boolean openBottom = ImageService.imagesBack (home_DBCDDK, paramSIFTNotClick (process, 1, 4));
 		while (!openBottom) {
 			imagesBack (home_DBCD, paramSIFT (process));
-			openBottom = ImageService.imagesBack (home_DBCDDK, paramSIFT (process, 1, 4));
+			openBottom = ImageService.imagesBack (home_DBCD, paramSIFT (process, 1, 4));
 		}
 		sleep (2 * 1000L);
 	}
@@ -689,19 +689,19 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			if (soulType == 11) {
 				
 				log.info ("选择魂十一");
-				b1 = imagesBack (soul_CS_HSY, paramRGBNotClick (process, 30));
+				b1 = imagesBack (soul_CS_HSY, paramSIFTNotClick (process, 30));
 				if (!b1) {
 					log.info ("没有选择到魂十一");
 				}
-				imagesBack (soul_CS_HSY, paramRGB (process));
+				imagesBack (soul_CS_HSY, paramSIFT (process));
 			}
 			else {
 				log.info ("选择魂十");
-				b2 = imagesBack (soul_CS_HS, paramRGBNotClick (process, 30));
+				b2 = imagesBack (soul_CS_HS,paramSIFTNotClick (process, 30));
 				if (!b2) {
 					log.info ("没有选择到魂十");
 				}
-				imagesBack (soul_CS_HS, paramRGB (process));
+				imagesBack (soul_CS_HS, paramSIFT(process));
 			}
 			
 			//选择魂十或魂十一

@@ -79,10 +79,10 @@ public class CommVar {
 	public static final String soul_JSTX = "御魂/角色头像";
 	public static final String soul_TCTZ = "御魂/退出挑战";
 	public static final String soul_TZ = "御魂/挑战";
-	public static final String soul_TZLX_YYHTZ = "御魂/御魂类型/业原火挑战";
-	public static final String soul_TZLX_BQDSTZ = "御魂/御魂类型/八岐大蛇挑战";
-	public static final String soul_TZLX_RLZYTZ = "御魂/御魂类型/日轮之陨挑战";
-	public static final String soul_TZLX_YSZHTZ = "御魂/御魂类型/永生之海挑战";
+	public static final String soul_TZLX_YYHTZ = "御魂/挑战类型/业原火挑战";
+	public static final String soul_TZLX_BQDSTZ = "御魂/挑战类型/八岐大蛇挑战";
+	public static final String soul_TZLX_RLZYTZ = "御魂/挑战类型/日轮之陨挑战";
+	public static final String soul_TZLX_YSZHTZ = "御魂/挑战类型/永生之海挑战";
 	//御魂类型-八岐大蛇
 	public static final String soul_YHLX_BQDS = "御魂/御魂类型/八岐大蛇";
 	//御魂类型-日轮之陨
