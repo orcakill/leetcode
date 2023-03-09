@@ -3,6 +3,7 @@ package com.example.demo.model.thread;
 import com.example.demo.config.BeanContextConfig;
 import com.example.demo.model.entity.GameThreadPO;
 import com.example.demo.model.map.FolderPathMap;
+import com.example.demo.model.param.ProjectsParam;
 import com.example.demo.service.GameThreadService;
 import com.example.demo.service.OnmyojiService;
 import com.example.demo.utils.StartUpExeUtils;
@@ -20,24 +21,15 @@ import static com.example.demo.service.MailService.sendMail;
 public class SecondThread extends Thread {
 	private  String threadId;
 	
-	private  int type;
-	private  int round;
-	private  String process;
+	private ProjectsParam projectsParam;
 	
 	public void setThreadId (String threadId) {
 		this.threadId = threadId;
 	}
 	
-	public void setType (int type) {
-		this.type = type;
-	}
 	
-	public void setRound (int round) {
-		this.round = round;
-	}
-	
-	public void setProcess (String process) {
-		this.process = process;
+	public void setProjectsParam(ProjectsParam projectsParam) {
+		this.projectsParam = projectsParam;
 	}
 	
 	@SneakyThrows
@@ -52,8 +44,8 @@ public class SecondThread extends Thread {
 				StartUpExeUtils.startUpExeOnly ("CMD /C " + FolderPathMap.exeAddress ());
 			}
 			//	阴阳师自动化
-			log.info ("项目 {},轮次 {}",type,round);
-			onmyojiService.autoActivity(process,type,round);
+			log.info ("项目 {},轮次 {}",projectsParam.getProjectsName (),projectsParam.getRound ());
+			onmyojiService.autoActivity(projectsParam);
 			// 进程结束,保存进程信息
 			log.info ("运行线程，游戏进程状态更新");
 			log.info ("运行线程，游戏进程ID{}",threadId);

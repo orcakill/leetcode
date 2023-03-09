@@ -8,6 +8,8 @@ import com.example.demo.model.map.CoordinateAddressMap;
 import com.example.demo.model.map.ScreenshotPointMap;
 import com.example.demo.model.param.MultipleImageParam;
 import com.example.demo.model.param.MultipleImagesParam;
+import com.example.demo.model.param.ProjectParam;
+import com.example.demo.model.param.ProjectsParam;
 import com.example.demo.model.thread.FirstThread;
 import com.example.demo.model.thread.SecondThread;
 import com.example.demo.service.GameThreadService;
@@ -30,6 +32,7 @@ import java.util.*;
 
 import static com.example.demo.model.param.ImageRecParam.*;
 import static com.example.demo.model.var.CommVar.*;
+import static com.example.demo.model.var.ProjectVar.*;
 import static com.example.demo.service.ImageService.imagesBack;
 import static com.example.demo.service.ImageService.imagesBackList;
 import static java.lang.Thread.sleep;
@@ -50,7 +53,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 	}
 	
 	@Override
-	public void onmyojiService (String process, Integer type, Integer round) throws InterruptedException,
+	public void onmyojiService (ProjectsParam projectsParam) throws InterruptedException,
 	                                                                                UnknownHostException {
 		//游戏进程id,游戏进程信息保存
 		String threadId = IdUtil.objectId ();
@@ -66,13 +69,11 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		//监控线程
 		FirstThread t = new FirstThread ();
 		t.setThreadId (threadId);
-		t.setProcess (process);
+		t.setProcess (projectsParam.getProcess ());
 		//运行线程
 		SecondThread t1 = new SecondThread ();
-		t1.setType (type);
-		t1.setRound (round);
 		t1.setThreadId (threadId);
-		t1.setProcess (process);
+		t1.setProjectsParam (projectsParam);
 		log.info ("启动监控线程");
 		t.start ();
 		log.info ("启动运行线程");
@@ -88,235 +89,82 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 	}
 	
 	@Override
-	public void autoActivity (String process, Integer type, Integer round) throws IOException, InterruptedException,
-	                                                                              AWTException {
+	public void autoActivity (ProjectsParam projectsParam) throws IOException, InterruptedException,
+	                                                AWTException {
 		Thread.sleep (10*1000);
-		for (int i = 0; i < round; i++) {
-			
-			//大号  阴阳寮突破+个人突破+魂十一40次+地域鬼王（每日一次）
-			if (type == 1) {
-				//  当前状态初始化，进入角色首页
-				initializationState (process, "1");
-				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
-				toFoster (process);
-				//  大号阴阳寮突破
-				fightHouse (process);
-				//  大号个人突破
-				borderCheck (process);
-				//  御魂战斗-魂十一（注意喂食宠物）
-				soulFight (process, 11, 40, true);
-				//  地域鬼王+领取花合战每日奖励，无未攻打则跳过
-				//  好友添加、好友删除、赠送小号红心、赠送其他人红心（待定）
-			}
-			//大号  个人突破+魂十一60次
-			if (type == 2) {
-				//  当前状态初始化，进入角色首页
-				initializationState (process, "1");
-				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
-				toFoster (process);
-				//  大号个人突破
-				borderCheck (process);
-				//  御魂战斗-魂十一（注意喂食宠物）
-				soulFight (process, 11, 60, true);
-			}
-			if (type == 3) {
-				//  当前状态初始化，进入角色首页
-				initializationState (process, "1");
-				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
-				toFoster (process);
-				//  大号阴阳寮突破
-				fightHouse (process);
-				//  大号个人突破
-				borderCheck (process);
-				//  御魂战斗-业原火40
-				soulFight (process, 21, 40, true);
-			}
-			if (type == 4) {
-				//  当前状态初始化，进入角色首页
-				initializationState (process, "1");
-				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
-				toFoster (process);
-				//  大号个人突破
-				borderCheck (process);
-				//  御魂战斗-日轮之陨
-				soulFight (process, 31, 50, true);
-			}
-			if (type == 4) {
-				//  当前状态初始化，进入角色首页
-				initializationState (process, "1");
-				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
-				toFoster (process);
-				//  大号个人突破
-				borderCheck (process);
-				//  御魂战斗-永生之海
-				soulFight (process, 41, 30, true);
-			}
-			if (type == 5) {
-				//  当前状态初始化，进入角色首页
-				initializationState (process, "1");
-				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
-				toFoster (process);
-				//  大号个人突破
-				borderCheck (process);
-				//  御灵
-				spirit (process, 60);
-			}
-			if (type == 6) {
-				//  当前状态初始化，进入角色首页
-				initializationState (process, "1");
-				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
-				toFoster (process);
-				//  斗技 10次
-				pvp (process, 10);
-			}
-			// 阴阳寮突破+ 斗技10次
-			if (type == 7) {
-				//  当前状态初始化，进入角色首页
-				initializationState (process, "1");
-				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
-				toFoster (process);
-				//  大号阴阳寮突破
-				fightHouse (process);
-				//  大号个人突破
-				borderCheck (process);
-				//  斗技 10次
-				pvp (process, 5);
-			}
-			// 阴阳寮+斗技5次
-			if (type == 8) {
-				//  当前状态初始化，进入角色首页
-				initializationState (process, "1");
-				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
-				toFoster (process);
-				//  大号阴阳寮突破
-				fightHouse (process);
-				//  大号个人突破
-				borderCheck (process);
-				//  斗技 10次
-				pvp (process, 5);
-			}
-			// 阴阳寮挑战，等待30-40分钟
-			if (type == 9) {
-				//  当前状态初始化，进入角色首页
-				initializationState (process, "1");
-				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
-				toFoster (process);
-				//  大号阴阳寮突破
-				fightHouse (process);
-				//  大号个人突破
-				borderCheck (process);
-                Thread.sleep (RandomUtils.getRandom (30, 40) * 60 * 1000L);
-			}
-			// 御魂整理 极限副属性强化
-			if (type == 9) {
-				//  当前状态初始化，进入角色首页
-				initializationState (process, "1");
-				soulEnhancements (process, 20);
-			}
-			// 个人探索 全打
-			if(type==10){
-				//  当前状态初始化，进入角色首页
-				initializationState (process, "1");
-				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
-				toFoster (process);
-				//  大号个人突破
-				borderCheck (process);
-				//  个人探索 全打
-				explore (process,20);
-			}
-			// 个人探索 全打
-			if(type==11){
-				//  当前状态初始化，进入角色首页
-				initializationState (process, "1");
-				//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
-				toFoster (process);
-				//  大号个人突破
-				borderCheck (process);
-				//  个人探索 全打
-				exploreFast (process,60);
-			}
-			
-			
-			if(type>=100&&type<200){
-				log.info ("测试");
-				if(type==100){
-					//  当前状态初始化，进入角色首页
-					initializationState (process, "1");
-					//  寄养检查（+体力领取+经验领取+更换式神），优先六星、五星、四星太鼓，其次六星、五星、四星斗鱼
+		String process=projectsParam.getProcess ();
+		for (int i = 0; i < projectsParam.getRound (); i++) {
+			for(ProjectParam projectParam:projectsParam.getProjectParams ()){
+				//当前状态初始化
+				if(projectParam.getProjectName ().equals (project_CSH)){
+					log.info (project_CSH);
+					initializationState(process,"1");
+				}
+				//寄养检查
+				if(projectParam.getProjectName ().equals (project_JYJC)){
+					log.info (project_JYJC);
 					toFoster (process);
 				}
-				if(type==101){
-					//  当前状态初始化，进入角色首页
-					initializationState (process, "1");
-					//  大号阴阳寮突破
-					fightHouse (process);
+				//阴阳寮突破
+				if(projectParam.getProjectName ().equals (project_YYLTP)){
+					log.info (project_YYLTP);
+					fightHouse(process);
+					int waitTime= RandomUtils.getRandom (projectParam.getProjectWaitStartTime (),
+					                                     projectParam.getProjectWaitEndTime ());
+					log.info ("等待{}分钟",waitTime);
+					Thread.sleep (waitTime*60*1000L);
 				}
-				if(type==102){
-					//  当前状态初始化，进入角色首页
-					initializationState (process, "1");
-					//  大号个人突破
-					borderCheck (process);
+				//个人突破
+				if(projectParam.getProjectName ().equals (project_GRTP)){
+					log.info (project_GRTP);
+					toFoster (process);
 				}
-				if(type==103){
-					//  当前状态初始化，进入角色首页
-					initializationState (process, "1");
-					//  御魂战斗-魂十一（注意喂食宠物）
-					soulFight (process, 11, 1, true);
+				//魂十一
+				if(projectParam.getProjectName ().equals (project_HSY)){
+					log.info (project_HSY);
+					soulFight (process,project_HSY,projectParam.getProjectNum (),projectParam.isAddition ());
 				}
-				if(type==104){
-					//  当前状态初始化，进入角色首页
-					initializationState (process, "1");
-					//  御魂战斗-业原火
-					soulFight (process, 21, 1, true);
+				//业原火
+				if(projectParam.getProjectName ().equals (project_YYH)){
+					log.info (project_YYH);
+					soulFight (process,project_YYH,projectParam.getProjectNum (),false);
 				}
-				if(type==105){
-					//  当前状态初始化，进入角色首页
-					initializationState (process, "1");
-					//  御魂战斗-日轮之陨
-					soulFight (process, 31, 1, true);
+				//日轮之陨
+				if(projectParam.getProjectName ().equals (project_RLZY)){
+					log.info (project_RLZY);
+					soulFight (process,project_RLZY,projectParam.getProjectNum (),projectParam.isAddition ());
 				}
-				if(type==106){
-					//  当前状态初始化，进入角色首页
-					initializationState (process, "1");
-					//  御魂战斗-永生之海
-					soulFight (process, 41, 1, true);
+				//永生之海
+				if(projectParam.getProjectName ().equals (project_YSZH)){
+					log.info (project_YSZH);
+					soulFight (process,project_YSZH,projectParam.getProjectNum (),projectParam.isAddition ());
 				}
-				if(type==107){
-					//  当前状态初始化，进入角色首页
-					initializationState (process, "1");
-					//  御灵战斗
-					spirit (process, 1);
+				//御灵
+				if(projectParam.getProjectName ().equals (project_YL)){
+					log.info (project_YL);
+					spirit (process,projectParam.getProjectNum ());
 				}
-				if(type==108){
-					//  当前状态初始化，进入角色首页
-					initializationState (process, "1");
-					//  斗技战斗
-					pvp (process, 1);
+				//斗技
+				if(projectParam.getProjectName ().equals (project_DJ)){
+					log.info (project_DJ);
+					pvp (process,projectParam.getProjectNum ());
 				}
-				if(type==109){
-					//  当前状态初始化，进入角色首页
-					initializationState (process, "1");
-					//  斗技战斗
-					pvp (process, 1);
+				//御魂整理 极限副属性强化
+				if(projectParam.getProjectName ().equals (project_YJZL_JXFSXQH)){
+					log.info (project_YJZL_JXFSXQH);
+					pvp (process,projectParam.getProjectNum ());
 				}
-				if(type==110){
-					//  当前状态初始化，进入角色首页
-					initializationState (process, "1");
-					//  御魂整理 极限副属性
-					soulEnhancements (process, 1);
+				//探索  全打
+				if(projectParam.getProjectName ().equals (project_GRTS)){
+					log.info (project_GRTS);
+					explore (process,projectParam.getProjectNum ());
 				}
-				if(type==111){
-					//  当前状态初始化，进入角色首页
-					initializationState (process, "1");
-					//  探索 全打
-					explore (process, 1);
+				//探索  只打2个
+				if(projectParam.getProjectName ().equals (project_GRTS_FAST)){
+					log.info (project_GRTS_FAST);
+					exploreFast (process,projectParam.getProjectNum ());
 				}
-				if(type==112){
-					//  当前状态初始化，进入角色首页
-					initializationState (process, "1");
-					//  探索 只打2个
-					exploreFast (process, 1);
-				}
+				
 			}
 		}
 		
@@ -831,7 +679,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 	 * @date: 2023/2/22 1:37
 	 */
 	@Override
-	public void soulFight (String process, int soulType, int soulNum, boolean addition)
+	public void soulFight (String process, String soulType, int soulNum, boolean addition)
 			throws IOException, InterruptedException, AWTException {
 		boolean b1;
 		boolean b2;
@@ -840,7 +688,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		imagesBack (home_TS, paramSIFT (process));
 		log.info ("准备进入御魂");
 		imagesBack (soul_Icon, paramSIFT (process));
-		if (soulType == 10 || soulType == 11) {
+		if (Objects.equals (soulType, project_HSY) || Objects.equals (soulType, project_HS)) {
 			log.info ("进入御魂成功，准备选择八岐大蛇");
 			imagesBack (soul_YHLX_BQDS, paramSIFT (process));
 			log.info ("进入八岐大蛇挑战页面");
@@ -856,7 +704,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				//退出加成页面
 				log.info ("退出加成页面");
 			}
-			if (soulType == 11) {
+			if (soulType.equals (project_HSY)) {
 				
 				log.info ("选择魂十一");
 				b1 = imagesBack (soul_CS_HSY, paramSIFTNotClick (process, 30));
@@ -890,7 +738,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			}
 		}
 		//业原火
-		if (soulType == 21) {
+		if (Objects.equals (soulType, project_YYH)) {
 			log.info ("进入御魂成功，准备选择业原火");
 			imagesBack (soul_YHLX_YYH, paramSIFT (process));
 			log.info ("进入业原火");
@@ -903,7 +751,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			//开始挑战
 			soulBack (process,soul_TZLX_YYHTZ, 40, soulNum);
 		}
-		if (soulType == 31) {
+		if (Objects.equals (soulType, project_RLZY)) {
 			log.info ("进入御魂成功，准备选择日轮之陨");
 			imagesBack (soul_YHLX_RLZY, paramSIFT (process));
 			log.info ("进入日轮之陨");
@@ -916,7 +764,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			//开始挑战
 			soulBack (process,soul_TZLX_RLZYTZ,15, soulNum);
 		}
-		if (soulType == 41) {
+		if (Objects.equals (soulType, project_YSZH)){
 			log.info ("进入御魂成功，准备选择永生之海");
 			imagesBack (soul_YHLX_YSZH, paramSIFT (process));
 			log.info ("选择永生之海第四层");
