@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.param.ProjectParam;
+import com.example.demo.model.param.ProjectsParam;
 import com.example.demo.model.vo.Results;
 import com.example.demo.service.OnmyojiService;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
@@ -13,6 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.example.demo.model.var.ProjectVar.*;
+import static com.example.demo.model.var.ProjectVar.project_HSY;
 
 /**
  * @Classname TestController
@@ -40,7 +47,15 @@ public class TestController {
 			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
 	                              ) throws InterruptedException, UnknownHostException {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
-		onmyojiService.onmyojiService (process,100,round);
+		List<ProjectParam> projectParams=new ArrayList<> ();
+		ProjectsParam projectsParam=new ProjectsParam ("测试 大号寄养功能", process, round, projectParams);
+		//当前状态初始化
+		projectParams.add (new ProjectParam (project_CSH,"1"));
+		//寄养检查
+		projectParams.add (new ProjectParam (project_JYJC,"1",null,false,null,
+		                                     null));
+		projectsParam.setProjectParams (projectParams);
+		onmyojiService.onmyojiService (projectsParam);
 		return Results.ok ("任务已启动");
 	}
 	
@@ -54,7 +69,15 @@ public class TestController {
 			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
 	                           ) throws InterruptedException, UnknownHostException {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
-		onmyojiService.onmyojiService (process,101,round);
+		List<ProjectParam> projectParams=new ArrayList<> ();
+		ProjectsParam projectsParam=new ProjectsParam ("测试 大号阴阳寮突破", process, round, projectParams);
+		//当前状态初始化
+		projectParams.add (new ProjectParam (project_CSH,"1"));
+		//阴阳寮突破
+		projectParams.add (new ProjectParam (project_YYLTP,"1",null,false,null,
+		                                     null));
+		projectsParam.setProjectParams (projectParams);
+		onmyojiService.onmyojiService (projectsParam);
 		return Results.ok ("任务已启动");
 	}
 	
@@ -68,7 +91,15 @@ public class TestController {
 			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
 	                               ) throws InterruptedException, UnknownHostException {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
-		onmyojiService.onmyojiService (process,102,round);
+		List<ProjectParam> projectParams=new ArrayList<> ();
+		ProjectsParam projectsParam=new ProjectsParam ("测试 个人突破", process, round, projectParams);
+		//当前状态初始化
+		projectParams.add (new ProjectParam (project_CSH,"1"));
+		//个人突破
+		projectParams.add (new ProjectParam (project_GRTP,"1",null,false,null,
+		                                     null));
+		projectsParam.setProjectParams (projectParams);
+		onmyojiService.onmyojiService (projectsParam);
 		return Results.ok ("任务已启动");
 	}
 	
@@ -82,7 +113,15 @@ public class TestController {
 			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
 	                               ) throws InterruptedException, UnknownHostException {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
-		onmyojiService.onmyojiService (process,103,round);
+		List<ProjectParam> projectParams=new ArrayList<> ();
+		ProjectsParam projectsParam=new ProjectsParam ("测试 魂十一", process, round, projectParams);
+		//当前状态初始化
+		projectParams.add (new ProjectParam (project_CSH,"1"));
+		//魂十一
+		projectParams.add (new ProjectParam (project_HSY,"1",1,true,null,
+		                                     null));
+		projectsParam.setProjectParams (projectParams);
+		onmyojiService.onmyojiService (projectsParam);
 		return Results.ok ("任务已启动");
 	}
 	
@@ -96,7 +135,15 @@ public class TestController {
 			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
 	                               ) throws InterruptedException, UnknownHostException {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
-		onmyojiService.onmyojiService (process,104,round);
+		List<ProjectParam> projectParams=new ArrayList<> ();
+		ProjectsParam projectsParam=new ProjectsParam ("测试 业原火", process, round, projectParams);
+		//当前状态初始化
+		projectParams.add (new ProjectParam (project_CSH,"1"));
+		//业原火
+		projectParams.add (new ProjectParam (project_YYH,"1",1,false,null,
+		                                     null));
+		projectsParam.setProjectParams (projectParams);
+		onmyojiService.onmyojiService (projectsParam);
 		return Results.ok ("任务已启动");
 	}
 	

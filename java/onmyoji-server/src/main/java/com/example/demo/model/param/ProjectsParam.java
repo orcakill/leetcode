@@ -21,4 +21,11 @@ public class ProjectsParam {
 	private Integer  round;
 	// 项目信息
 	private List<ProjectParam> projectParams;
+	
+	public ProjectsParam (String projectsName, String process, Integer round, List<ProjectParam> projectParams) {
+		this.projectsName = projectsName;
+		this.process = process;
+		this.round = round;
+		this.projectParams = projectParams;
+	}
 }
