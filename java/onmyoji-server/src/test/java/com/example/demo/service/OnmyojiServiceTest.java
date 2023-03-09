@@ -9,6 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.awt.*;
 import java.io.IOException;
 
+import static com.example.demo.model.var.ProjectVar.project_HSY;
+import static com.example.demo.model.var.ProjectVar.project_YYH;
+
 /**
  * @author orcakill
  * @version 1.0.0
@@ -116,7 +119,7 @@ class OnmyojiServiceTest {
 		// 阴阳师桌面图标.适龄提示,逆戟之刃首页,orcakill首页,洪荒修罗首页,炽热的惆怅物语首页,返回
 		log.info ("阴阳师-逆戟之刃-首页");
 		onmyojiService.returnHome ("夜神模拟器");
-		onmyojiService.soulFight ("夜神模拟器",11,1,false);
+		onmyojiService.soulFight ("夜神模拟器",project_HSY,1,false);
 		log.info ("测试结束");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}
@@ -129,7 +132,7 @@ class OnmyojiServiceTest {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		// 阴阳师桌面图标.适龄提示,逆戟之刃首页,orcakill首页,洪荒修罗首页,炽热的惆怅物语首页,返回
 		log.info ("阴阳师-逆戟之刃-首页");
-		onmyojiService.soulFight ("夜神模拟器",21,1,false);
+		onmyojiService.soulFight ("夜神模拟器",project_YYH,1,false);
 		log.info ("测试结束");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}

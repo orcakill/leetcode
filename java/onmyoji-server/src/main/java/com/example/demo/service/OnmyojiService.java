@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.model.param.ProjectsParam;
 import org.springframework.scheduling.annotation.Async;
 
 import java.awt.*;
@@ -15,25 +16,23 @@ import java.net.UnknownHostException;
 public interface OnmyojiService {
 	/***
 	 * @description: 阴阳师自动战斗
-	 * @param type  类型
-	 * @param round   轮次
+	 * @param projectsParam 项目组信息
 	 * @return: java.lang.String
 	 * @author: orcakill
 	 * @date: 2023/1/25 20:58
 	 */
 	@Async
-	void onmyojiService (String process,Integer type, Integer round) throws InterruptedException, UnknownHostException;
+	void onmyojiService (ProjectsParam projectsParam) throws InterruptedException, UnknownHostException;
 	
 	/***
 	 * @description: 开启自动游戏
-	 * @param type  类型
-	 * @param round   轮次
+	 * @param projectsParam 项目组信息
 	 * @return: void
 	 * @author: orcakill
 	 * @date: 2023/1/28 23:42
 	 */
 	
-	void autoActivity (String process,Integer type, Integer round) throws IOException, InterruptedException, AWTException;
+	void autoActivity (ProjectsParam projectsParam) throws IOException, InterruptedException, AWTException;
 	
 	/***
 	 * @description: 状态初始化，登录到目标首页
@@ -114,7 +113,7 @@ public interface OnmyojiService {
 	 * @author: orcakill
 	 * @date: 2023/2/22 1:37
 	 */
-	void soulFight (String process,int soulType, int soulNum, boolean addition) throws IOException, InterruptedException,
+	void soulFight (String process,String soulType, int soulNum, boolean addition) throws IOException, InterruptedException,
 	                                                                    AWTException;
 	
 	/***
