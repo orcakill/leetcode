@@ -18,7 +18,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.demo.model.var.ProjectVar.project_CSH;
+import static com.example.demo.model.var.ProjectVar.*;
 
 /**
  * @Classname FightController
@@ -46,13 +46,46 @@ public class OnmyojiController {
 			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
 	                              ) throws InterruptedException, UnknownHostException {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
-		ProjectsParam projectsParam=new ProjectsParam ();
-		projectsParam.setProjectsName ("大号每日任务，寮突+个突+魂十一");
-		projectsParam.setProcess (process);
-		projectsParam.setRound (round);
 		List<ProjectParam> projectParams=new ArrayList<> ();
-		projectParams.add (new ProjectParam (project_CSH,"1",null,))
-		onmyojiService.onmyojiService (process,1,round);
+		ProjectsParam projectsParam=new ProjectsParam ("大号每日任务，寮突+个突+魂十一",process,round,projectParams);
+		//当前状态初始化
+		projectParams.add (new ProjectParam (project_CSH,"1"));
+		//寄养检查
+		projectParams.add (new ProjectParam (project_JYJC,"1"));
+		//阴阳寮突破
+		projectParams.add (new ProjectParam (project_YYLTP,"1"));
+		//个人突破
+		projectParams.add (new ProjectParam (project_GRTP,"1"));
+		//魂十一
+		projectParams.add (new ProjectParam (project_HSY,"1",40,true,null,
+		                                     null));
+		projectsParam.setProjectParams (projectParams);
+		onmyojiService.onmyojiService (projectsParam);
+		return Results.ok ("任务已启动");
+	}
+	@ApiOperation ("正式 大号 个突+魂十一")
+	@ApiOperationSupport (order = 2)
+	@GetMapping ("/dealTask2")
+	public Results<?> dealTask2 (
+			@ApiParam ("轮次")
+			@RequestParam (required = false, defaultValue = "1") Integer round,
+			@ApiParam ("模拟器")
+			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
+	                            ) throws InterruptedException, UnknownHostException {
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		List<ProjectParam> projectParams=new ArrayList<> ();
+		ProjectsParam projectsParam=new ProjectsParam ("正式 大号 个突+魂十一",process,round,projectParams);
+		//当前状态初始化
+		projectParams.add (new ProjectParam (project_CSH,"1"));
+		//寄养检查
+		projectParams.add (new ProjectParam (project_JYJC,"1"));
+		//个人突破
+		projectParams.add (new ProjectParam (project_GRTP,"1"));
+		//魂十一
+		projectParams.add (new ProjectParam (project_YYH,"1",60,true,null,
+		                                     null));
+		projectsParam.setProjectParams (projectParams);
+		onmyojiService.onmyojiService (projectsParam);
 		return Results.ok ("任务已启动");
 	}
 	
@@ -66,7 +99,21 @@ public class OnmyojiController {
 			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
 	                              ) throws InterruptedException, UnknownHostException {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
-		onmyojiService.onmyojiService (process,3,round);
+		List<ProjectParam> projectParams=new ArrayList<> ();
+		ProjectsParam projectsParam=new ProjectsParam ("正式  大号业原火（阴阳寮+个人结界",process,round,projectParams);
+		//当前状态初始化
+		projectParams.add (new ProjectParam (project_CSH,"1"));
+		//阴阳寮突破
+		projectParams.add (new ProjectParam (project_YYLTP,"1"));
+		//寄养检查
+		projectParams.add (new ProjectParam (project_JYJC,"1"));
+		//个人突破
+		projectParams.add (new ProjectParam (project_GRTP,"1"));
+		//业原火
+		projectParams.add (new ProjectParam (project_YYH,"1",60,false,null,
+		                                     null));
+		projectsParam.setProjectParams (projectParams);
+		onmyojiService.onmyojiService (projectsParam);
 		return Results.ok ("任务已启动");
 	}
 }

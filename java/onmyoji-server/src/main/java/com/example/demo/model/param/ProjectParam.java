@@ -18,7 +18,7 @@ public class ProjectParam {
 	//项目次数
 	private  Integer projectNum;
 	//加成
-	private boolean addition;
+	private boolean addition=false;
 	
 	//项目结束后等待时间 随机开始时间
 	private  Integer projectWaitStartTime;
@@ -33,6 +33,8 @@ public class ProjectParam {
 		this.projectWaitStartTime = projectWaitStartTime;
 		this.projectWaitEndTime = projectWaitEndTime;
 	}
-	public ProjectParam () {
+	public ProjectParam (String projectName, String projectUser) {
+		this.projectName = projectName;
+		this.projectUser = projectUser;
 	}
 }
