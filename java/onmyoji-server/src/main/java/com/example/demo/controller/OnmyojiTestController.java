@@ -9,7 +9,6 @@ import com.github.xiaoymin.knife4j.annotations.ApiSort;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import lombok.extern.log4j.Log4j2;
 import org.opencv.core.Core;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,28 +19,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.demo.model.var.ProjectVar.*;
+import static com.example.demo.model.var.ProjectVar.project_HSY;
 
 /**
- * @Classname FightController
- * @Description 自动战斗
- * @Date 2023/1/25 20:12
+ * @Classname TestController
+ * @Description 测试
+ * @Date 2023/3/5 13:08
  * @Created by orcakill
  */
-@Api (tags = "阴阳师自动化")
-@ApiSort (value = 3)
-@RestController ("/fight")
-@Log4j2
-public class OnmyojiController {
+@Api (tags = "阴阳师自动化测试")
+@ApiSort (value = 4)
+@RestController ("/test")
+public class OnmyojiTestController {
 	private final OnmyojiService onmyojiService;
 	
-	public OnmyojiController (OnmyojiService onmyojiService) {
+	public OnmyojiTestController (OnmyojiService onmyojiService) {
 		this.onmyojiService = onmyojiService;
 	}
 	
-	@ApiOperation ("正式  大号每日任务，寮突+个突+魂十一")
+	@ApiOperation ("大号寄养功能")
 	@ApiOperationSupport (order = 1)
-	@GetMapping ("/dealTask1")
-	public Results<?> dealTask1 (
+	@GetMapping ("/dealTaskTest1")
+	public Results<?> dealTaskTest1 (
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
@@ -49,244 +48,236 @@ public class OnmyojiController {
 	                              ) throws InterruptedException, UnknownHostException {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		List<ProjectParam> projectParams=new ArrayList<> ();
-		ProjectsParam projectsParam=new ProjectsParam ("大号每日任务，寮突+个突+魂十一",process,round,projectParams);
+		ProjectsParam projectsParam=new ProjectsParam ("测试 大号寄养功能", process, round, projectParams);
 		//当前状态初始化
 		projectParams.add (new ProjectParam (project_CSH,"1"));
 		//寄养检查
-		projectParams.add (new ProjectParam (project_JYJC,"1"));
-		//阴阳寮突破
-		projectParams.add (new ProjectParam (project_YYLTP,"1"));
-		//个人突破
-		projectParams.add (new ProjectParam (project_GRTP,"1"));
-		//魂十一
-		projectParams.add (new ProjectParam (project_HSY,"1",40,true,null,
+		projectParams.add (new ProjectParam (project_JYJC,"1",null,false,null,
 		                                     null));
 		projectsParam.setProjectParams (projectParams);
 		onmyojiService.onmyojiService (projectsParam);
 		return Results.ok ("任务已启动");
 	}
-	@ApiOperation ("正式 大号 个人突破+魂十一")
+	
+	@ApiOperation ("大号阴阳寮突破")
 	@ApiOperationSupport (order = 2)
-	@GetMapping ("/dealTask2")
-	public Results<?> dealTask2 (
+	@GetMapping ("/dealTaskTest2")
+	public Results<?> dealTaskTest2(
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
 			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
-	                            ) throws InterruptedException, UnknownHostException {
+	                           ) throws InterruptedException, UnknownHostException {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		List<ProjectParam> projectParams=new ArrayList<> ();
-		ProjectsParam projectsParam=new ProjectsParam ("正式 大号 个人突破+魂十一",process,round,projectParams);
-		//当前状态初始化
-		projectParams.add (new ProjectParam (project_CSH,"1"));
-		//寄养检查
-		projectParams.add (new ProjectParam (project_JYJC,"1"));
-		//个人突破
-		projectParams.add (new ProjectParam (project_GRTP,"1"));
-		//魂十一
-		projectParams.add (new ProjectParam (project_YYH,"1",60,true,null,
-		                                     null));
-		projectsParam.setProjectParams (projectParams);
-		onmyojiService.onmyojiService (projectsParam);
-		return Results.ok ("任务已启动");
-	}
-	
-	@ApiOperation ("正式  大号业原火（阴阳寮+个人结界）")
-	@ApiOperationSupport (order = 3)
-	@GetMapping ("/dealTask3")
-	public Results<?> dealTask3 (
-			@ApiParam ("轮次")
-			@RequestParam (required = false, defaultValue = "1") Integer round,
-			@ApiParam ("模拟器")
-			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
-	                              ) throws InterruptedException, UnknownHostException {
-		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
-		List<ProjectParam> projectParams=new ArrayList<> ();
-		ProjectsParam projectsParam=new ProjectsParam ("正式  大号业原火（阴阳寮+个人结界",process,round,projectParams);
+		ProjectsParam projectsParam=new ProjectsParam ("测试 大号阴阳寮突破", process, round, projectParams);
 		//当前状态初始化
 		projectParams.add (new ProjectParam (project_CSH,"1"));
 		//阴阳寮突破
-		projectParams.add (new ProjectParam (project_YYLTP,"1"));
-		//寄养检查
-		projectParams.add (new ProjectParam (project_JYJC,"1"));
-		//个人突破
-		projectParams.add (new ProjectParam (project_GRTP,"1"));
-		//业原火
-		projectParams.add (new ProjectParam (project_YYH,"1",60,false,null,
+		projectParams.add (new ProjectParam (project_YYLTP,"1",null,false,null,
 		                                     null));
 		projectsParam.setProjectParams (projectParams);
 		onmyojiService.onmyojiService (projectsParam);
 		return Results.ok ("任务已启动");
 	}
 	
-	@ApiOperation ("正式  大号日轮之陨（个人结界）")
+	@ApiOperation ("个人突破")
+	@ApiOperationSupport (order = 3)
+	@GetMapping ("/dealTaskTest3")
+	public Results<?> dealTaskTest3(
+			@ApiParam ("轮次")
+			@RequestParam (required = false, defaultValue = "1") Integer round,
+			@ApiParam ("模拟器")
+			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
+	                               ) throws InterruptedException, UnknownHostException {
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		List<ProjectParam> projectParams=new ArrayList<> ();
+		ProjectsParam projectsParam=new ProjectsParam ("测试 个人突破", process, round, projectParams);
+		//当前状态初始化
+		projectParams.add (new ProjectParam (project_CSH,"1"));
+		//个人突破
+		projectParams.add (new ProjectParam (project_GRTP,"1",null,false,null,
+		                                     null));
+		projectsParam.setProjectParams (projectParams);
+		onmyojiService.onmyojiService (projectsParam);
+		return Results.ok ("任务已启动");
+	}
+	
+	@ApiOperation ("魂十一")
 	@ApiOperationSupport (order = 4)
-	@GetMapping ("/dealTask4")
-	public Results<?> dealTask4 (
+	@GetMapping ("/dealTaskTest4")
+	public Results<?> dealTaskTest4(
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
 			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
-	                            ) throws InterruptedException, UnknownHostException {
+	                               ) throws InterruptedException, UnknownHostException {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		List<ProjectParam> projectParams=new ArrayList<> ();
-		ProjectsParam projectsParam=new ProjectsParam ("正式  大号日轮之陨（个人结界）",process,round,projectParams);
+		ProjectsParam projectsParam=new ProjectsParam ("测试 魂十一", process, round, projectParams);
 		//当前状态初始化
 		projectParams.add (new ProjectParam (project_CSH,"1"));
-		//个人突破
-		projectParams.add (new ProjectParam (project_GRTP,"1"));
-		//日轮之陨
-		projectParams.add (new ProjectParam (project_RLZY,"1",50,true,null,
+		//魂十一
+		projectParams.add (new ProjectParam (project_HSY,"1",1,true,null,
 		                                     null));
 		projectsParam.setProjectParams (projectParams);
 		onmyojiService.onmyojiService (projectsParam);
 		return Results.ok ("任务已启动");
 	}
 	
-	@ApiOperation ("正式  大号永生之海（个人结界）")
+	@ApiOperation ("业原火")
 	@ApiOperationSupport (order = 5)
-	@GetMapping ("/dealTask5")
-	public Results<?> dealTask5 (
+	@GetMapping ("/dealTaskTest5")
+	public Results<?> dealTaskTest5(
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
 			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
-	                            ) throws InterruptedException, UnknownHostException {
+	                               ) throws InterruptedException, UnknownHostException {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		List<ProjectParam> projectParams=new ArrayList<> ();
-		ProjectsParam projectsParam=new ProjectsParam ("正式  大号永生之海（个人结界）",process,round,projectParams);
+		ProjectsParam projectsParam=new ProjectsParam ("测试 业原火", process, round, projectParams);
 		//当前状态初始化
 		projectParams.add (new ProjectParam (project_CSH,"1"));
-		//个人突破
-		projectParams.add (new ProjectParam (project_GRTP,"1"));
-		//永生之海
-		projectParams.add (new ProjectParam (project_YSZH,"1",30,true,null,
+		//业原火
+		projectParams.add (new ProjectParam (project_YYH,"1",1,false,null,
 		                                     null));
 		projectsParam.setProjectParams (projectParams);
 		onmyojiService.onmyojiService (projectsParam);
 		return Results.ok ("任务已启动");
 	}
 	
-	@ApiOperation ("正式  大号御灵（个人结界）")
+	@ApiOperation ("日轮之陨")
 	@ApiOperationSupport (order = 6)
-	@GetMapping ("/dealTask6")
-	public Results<?> dealTask6 (
+	@GetMapping ("/dealTaskTest6")
+	public Results<?> dealTaskTest6(
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
 			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
-	                            ) throws InterruptedException, UnknownHostException {
+	                               ) throws InterruptedException, UnknownHostException {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		List<ProjectParam> projectParams=new ArrayList<> ();
-		ProjectsParam projectsParam=new ProjectsParam ("正式  大号御灵",process,round,projectParams);
+		ProjectsParam projectsParam=new ProjectsParam ("测试 日轮之陨", process, round, projectParams);
 		//当前状态初始化
 		projectParams.add (new ProjectParam (project_CSH,"1"));
-		//个人突破
-		projectParams.add (new ProjectParam (project_GRTP,"1"));
-		//御灵
-		log.info ("添加任务，御灵60次");
-		projectParams.add (new ProjectParam (project_YL,"1",60,false,null,
+		//日轮之陨
+		projectParams.add (new ProjectParam (project_RLZY,"1",1,false,null,
 		                                     null));
 		projectsParam.setProjectParams (projectParams);
 		onmyojiService.onmyojiService (projectsParam);
 		return Results.ok ("任务已启动");
 	}
 	
-	@ApiOperation ("正式  大号斗技")
+	@ApiOperation ("永生之海")
 	@ApiOperationSupport (order = 7)
-	@GetMapping ("/dealTask7")
-	public Results<?> dealTask7 (
+	@GetMapping ("/dealTaskTest7")
+	public Results<?> dealTaskTest7(
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
 			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
-	                            ) throws InterruptedException, UnknownHostException {
+	                               ) throws InterruptedException, UnknownHostException {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		List<ProjectParam> projectParams=new ArrayList<> ();
-		ProjectsParam projectsParam=new ProjectsParam ("正式  大号斗技",process,round,projectParams);
+		ProjectsParam projectsParam=new ProjectsParam ("测试 永生之海", process, round, projectParams);
 		//当前状态初始化
 		projectParams.add (new ProjectParam (project_CSH,"1"));
-		//个人突破
-		projectParams.add (new ProjectParam (project_GRTP,"1"));
-		//斗技
-		projectParams.add (new ProjectParam (project_DJ,"1",10,false,null,
+		//日轮之陨
+		projectParams.add (new ProjectParam (project_YSZH,"1",1,false,null,
 		                                     null));
 		projectsParam.setProjectParams (projectParams);
 		onmyojiService.onmyojiService (projectsParam);
 		return Results.ok ("任务已启动");
 	}
 	
-	@ApiOperation ("正式  大号 御魂整理 副属性极限强化")
+	@ApiOperation ("斗技")
 	@ApiOperationSupport (order = 8)
-	@GetMapping ("/dealTask8")
-	public Results<?> dealTask8 (
+	@GetMapping ("/dealTaskTest8")
+	public Results<?> dealTaskTest8(
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
 			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
-	                            ) throws InterruptedException, UnknownHostException {
+	                               ) throws InterruptedException, UnknownHostException {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		List<ProjectParam> projectParams=new ArrayList<> ();
-		ProjectsParam projectsParam=new ProjectsParam ("正式 大号 御魂整理 副属性极限强化",process,round,projectParams);
+		ProjectsParam projectsParam=new ProjectsParam ("测试 斗技", process, round, projectParams);
 		//当前状态初始化
 		projectParams.add (new ProjectParam (project_CSH,"1"));
-		//个人突破
-		projectParams.add (new ProjectParam (project_GRTP,"1"));
-		//御魂整理
-		log.info ("添加任务，御魂整理-强化20次");
-		projectParams.add (new ProjectParam (project_YJZL_JXFSXQH,"1",20,false,null,
+		//日轮之陨
+		projectParams.add (new ProjectParam (project_DJ,"1",1,false,null,
 		                                     null));
 		projectsParam.setProjectParams (projectParams);
 		onmyojiService.onmyojiService (projectsParam);
 		return Results.ok ("任务已启动");
 	}
 	
-	@ApiOperation ("正式  大号 探索")
+	@ApiOperation ("御魂整理 极限副属性强化")
 	@ApiOperationSupport (order = 9)
-	@GetMapping ("/dealTask9")
-	public Results<?> dealTask9 (
+	@GetMapping ("/dealTaskTest9")
+	public Results<?> dealTaskTest9(
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
 			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
-	                            ) throws InterruptedException, UnknownHostException {
+	                               ) throws InterruptedException, UnknownHostException {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		List<ProjectParam> projectParams=new ArrayList<> ();
-		ProjectsParam projectsParam=new ProjectsParam ("正式 大号 大号 探索",process,round,projectParams);
+		ProjectsParam projectsParam=new ProjectsParam ("测试 御魂整理 极限副属性强化", process, round, projectParams);
 		//当前状态初始化
 		projectParams.add (new ProjectParam (project_CSH,"1"));
-		//个人突破
-		projectParams.add (new ProjectParam (project_GRTP,"1"));
-		//探索
-		projectParams.add (new ProjectParam (project_GRTS,"1",20,false,null,
+		//日轮之陨
+		projectParams.add (new ProjectParam (project_YJZL_JXFSXQH,"1",1,false,null,
 		                                     null));
 		projectsParam.setProjectParams (projectParams);
 		onmyojiService.onmyojiService (projectsParam);
 		return Results.ok ("任务已启动");
 	}
 	
-	@ApiOperation ("正式  大号 探索 只打2个")
+	@ApiOperation ("个人探索")
 	@ApiOperationSupport (order = 10)
-	@GetMapping ("/dealTask10")
-	public Results<?> dealTask10 (
+	@GetMapping ("/dealTaskTest10")
+	public Results<?> dealTaskTest10(
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
 			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
-	                            ) throws InterruptedException, UnknownHostException {
+	                               ) throws InterruptedException, UnknownHostException {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		List<ProjectParam> projectParams=new ArrayList<> ();
-		ProjectsParam projectsParam=new ProjectsParam ("正式  大号 探索 只打2个",process,round,projectParams);
+		ProjectsParam projectsParam=new ProjectsParam ("测试 个人探索", process, round, projectParams);
 		//当前状态初始化
 		projectParams.add (new ProjectParam (project_CSH,"1"));
-		//个人突破
-		projectParams.add (new ProjectParam (project_GRTP,"1"));
-		//探索
-		log.info ("添加任务，探索 只打2个 60次");
-		projectParams.add (new ProjectParam (project_GRTS_FAST,"1",60,false,null,
+		//日轮之陨
+		projectParams.add (new ProjectParam (project_GRTS,"1",1,false,null,
 		                                     null));
 		projectsParam.setProjectParams (projectParams);
 		onmyojiService.onmyojiService (projectsParam);
 		return Results.ok ("任务已启动");
 	}
+	
+	@ApiOperation ("个人探索 只打2个小怪")
+	@ApiOperationSupport (order = 11)
+	@GetMapping ("/dealTaskTest11")
+	public Results<?> dealTaskTest11(
+			@ApiParam ("轮次")
+			@RequestParam (required = false, defaultValue = "1") Integer round,
+			@ApiParam ("模拟器")
+			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
+	                                ) throws InterruptedException, UnknownHostException {
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		List<ProjectParam> projectParams=new ArrayList<> ();
+		ProjectsParam projectsParam=new ProjectsParam ("测试 个人探索 只打2个小怪", process, round, projectParams);
+		//当前状态初始化
+		projectParams.add (new ProjectParam (project_CSH,"1"));
+		//日轮之陨
+		projectParams.add (new ProjectParam (project_GRTS_FAST,"1",1,false,null,
+		                                     null));
+		projectsParam.setProjectParams (projectParams);
+		onmyojiService.onmyojiService (projectsParam);
+		return Results.ok ("任务已启动");
+	}
+	
+
 }
