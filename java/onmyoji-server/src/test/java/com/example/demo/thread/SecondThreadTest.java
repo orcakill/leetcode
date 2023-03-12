@@ -24,8 +24,6 @@ class SecondThreadTest {
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		log.info ("测试开始");
 		SecondThread t1=new SecondThread ();
-		t1.setType (1);
-		t1.setRound (1);
 		t1.setThreadId ("63f64f8260a59767118e6300");
 		t1.start ();
 		boolean b=t1.isAlive ();

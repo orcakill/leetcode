@@ -12,10 +12,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.List;
 
-import static com.example.demo.model.var.CommVar.explore_DTXGZD;
+import static com.example.demo.model.var.CommVar.soul_CS_YSZHSC;
 import static com.example.demo.utils.ImagesOpenCVSIFTUtils.getMat;
 
 /**
@@ -35,23 +34,22 @@ class ImagesOpenCVSIFTUtilsTest {
 	 * @date: 2023/2/23 15:25
 	 */
 	@Test
-	void findAllImgDataOpenCvAll () throws IOException, AWTException {
+	void findAllImgDataOpenCvAll () throws AWTException {
 		long startTime = System.currentTimeMillis ();
 		System.setProperty ("java.awt.headless", "false");
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		log.info ("测试开始");
 		//来源图片
 		BufferedImage Window = ScreenshotUtils.screenshotBack ("夜神模拟器");
-		Mat mat=new Mat ();
 		Mat originalImage = getMat (Window);
-		Imgcodecs.imwrite ("D:\\match.jpg",originalImage);
+		Imgcodecs.imwrite ("D:\\source.jpg",originalImage);
 		//String str_tem = "D:/b.jpg";
 		//File file_tem = new File (str_tem);
 		//BufferedImage Window = ImageIO.read (file_tem);
 		//图片集
 		String path = FolderPathMap.folderPath ("图片总路径");
 		List<PictureCollectionPO> pictureCollectionPOList =
-				ReadFileUtils.readPictureCollectionPOList (path,explore_DTXGZD, "SIFT");
+				ReadFileUtils.readPictureCollectionPOList (path,soul_CS_YSZHSC, "SIFT");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 		//屏幕截图和图片对比
 		List<PictureIdentifyWorkPO> mouseXY = ImagesOpenCVSIFTUtils.findPictureIdentifyWorkPOList (Window, pictureCollectionPOList, 0.7,
@@ -70,7 +68,7 @@ class ImagesOpenCVSIFTUtilsTest {
 	 * @date: 2023/2/23 15:25
 	 */
 	@Test
-	void findAllImgDataOpenCvAllS () throws IOException, AWTException {
+	void findAllImgDataOpenCvAllS () throws AWTException {
 		long startTime = System.currentTimeMillis ();
 		System.setProperty ("java.awt.headless", "false");
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);

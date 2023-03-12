@@ -109,15 +109,17 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				if(projectParam.getProjectName ().equals (project_YYLTP)){
 					log.info (project_YYLTP);
 					fightHouse(process);
-					int waitTime= RandomUtils.getRandom (projectParam.getProjectWaitStartTime (),
-					                                     projectParam.getProjectWaitEndTime ());
-					log.info ("等待{}分钟",waitTime);
-					Thread.sleep (waitTime*60*1000L);
+					if(projectParam.getProjectWaitStartTime ()!=null){
+						int waitTime= RandomUtils.getRandom (projectParam.getProjectWaitStartTime (),
+						                                     projectParam.getProjectWaitEndTime ());
+						log.info ("等待{}分钟",waitTime);
+						Thread.sleep (waitTime*60*1000L);
+					}
 				}
 				//个人突破
 				if(projectParam.getProjectName ().equals (project_GRTP)){
 					log.info (project_GRTP);
-					toFoster (process);
+					borderCheck (process);
 				}
 				//魂十一
 				if(projectParam.getProjectName ().equals (project_HSY)){
@@ -149,10 +151,10 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 					log.info (project_DJ);
 					pvp (process,projectParam.getProjectNum ());
 				}
-				//御魂整理 极限副属性强化
+				//御魂整理 速度极限副属性强化
 				if(projectParam.getProjectName ().equals (project_YJZL_JXFSXQH)){
 					log.info (project_YJZL_JXFSXQH);
-					pvp (process,projectParam.getProjectNum ());
+					soulEnhancements (process,projectParam.getProjectNum ());
 				}
 				//探索  全打
 				if(projectParam.getProjectName ().equals (project_GRTS)){
@@ -179,6 +181,8 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		boolean promptForAge = false;//是否适龄提示
 		boolean targetHomePage = false;
 		boolean switchAccount;
+		log.info ("等待10秒");
+		Thread.sleep (10*1000L);
 		log.info ("当前状态初始化");
 		while (!initializeOrNot) {
 			thisPicture = thisState (process);
@@ -299,9 +303,8 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		while (!homePageOrNot) {
 			log.info ("开始返回到首页");
 			ImageService.imagesBack (return_FH, paramRGB (process, 1));
-			if (num > 20) {
-				ImageService.imagesBack (return_FH, paramSIFT (process, 1, 20));
-				num = 1;
+			if (num%2==0 ) {
+				ImageService.imagesBack (return_FH, paramSIFT (process, 1, 4));
 			}
 			num++;
 			homePageOrNot = ImageService.imagesBack (home_TS, paramSIFTNotClick (process, 1, 20));
@@ -420,7 +423,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 						fileJJK = house_JJK_TG_WXTG;
 					}
 					if (num == 2) {
-						fileJJK = house_JJK_DY_SXDY;
+						fileJJK = house_JJK_TG_SXTG;
 					}
 					if (num == 3) {
 						fileJJK = house_JJK_DY_LXDY;
@@ -535,7 +538,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				ImageService.imagesBack (return_FH, paramRGB (process));
 				log.info ("退出到探索");
 				log.info ("准备重新进入结界突破");
-				ImageService.imagesBack (region_JJTP, paramRGB (process));
+				ImageService.imagesBack (region_JJTP, paramSIFT (process));
 				log.info ("进入结界突破，准备点击阴阳寮");
 				ImageService.imagesBack (region_YYL, paramRGB (process));
 				log.info ("重新判断是否有结界可以攻打");
@@ -768,15 +771,15 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			log.info ("进入御魂成功，准备选择永生之海");
 			imagesBack (soul_YHLX_YSZH, paramSIFT (process));
 			log.info ("选择永生之海第四层");
-			b1 = imagesBack (soul_CS_YYHSC, paramSIFT (process));
+			b1 = imagesBack (soul_CS_YSZHSC, paramSIFT (process));
 			if (!b1) {
 				log.info ("没有选择到永生之海四层");
 			}
 			log.info ("开启永生之海加成");
-			imagesBack (soul_JC_YSZHJC,paramRGB (process));
+			imagesBack (soul_JC_YSZHJC,paramSIFT(process));
 			log.info ("开始挑战");
 			//开始挑战
-			soulBack (process,soul_TZLX_YSZHTZ, 15, soulNum);
+			soulBack (process,soul_TZLX_YSZHTZ, 40, soulNum);
 		}
 		returnHome (process);
 	}
@@ -1106,11 +1109,11 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				log.info ("御魂强化");
 				imagesBack (arrange_QH, paramSIFT (process));
 				log.info ("等级提升");
-				levelPromotion = imagesBack (arrange_DJTS, paramSIFT (process, 5));
+				levelPromotion = imagesBack (arrange_DJTS, paramSIFTNotClick (process, 5));
 				while (!levelPromotion) {
-					imagesBack (arrange_QD, paramSIFT (process));
+					imagesBack (arrange_QD,paramSIFT (process));
 					sleep (1000);
-					levelPromotion = imagesBack (arrange_DJTS, paramSIFT (process, 5));
+					levelPromotion = imagesBack (arrange_DJTS, paramSIFTNotClick (process, 5));
 				}
 				sleep (1000);
 				log.info ("****开始判断御魂强化结果");
