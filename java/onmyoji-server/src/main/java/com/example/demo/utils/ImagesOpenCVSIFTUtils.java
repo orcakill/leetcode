@@ -44,7 +44,7 @@ public class ImagesOpenCVSIFTUtils {
 		BufferedImage Window = ScreenshotUtils.screenshotBack (process);
 		
 		List<PictureIdentifyWorkPO> mouseXY = findPictureIdentifyWorkPOList (Window, pictureCollectionPOList, coefficient,
-		                                                               characteristicPoint, false);
+		                                                                     characteristicPoint, false);
 
 		//识别+鼠标点击或仅识别
 		try {
@@ -119,10 +119,12 @@ public class ImagesOpenCVSIFTUtils {
 					//System.out.println ("计算匹配结果");
 					goodMatchList (matches, goodMatchesList, coefficient);
 					matchesPointCount = goodMatchesList.size ();
+					if(characteristicPoint>4){
+						log.info ("{} {},特征点:{},预计特征点{}", imagesDatum.getImageNumber (),
+						          imagesDatum.getImageName (),
+						          matchesPointCount, characteristicPoint);
+					}
 					//当匹配后的特征点大于等于 4 个，则认为模板图在原图中，该值可以自行调整
-					log.info ("{} {},特征点:{},预计特征点{}", imagesDatum.getImageNumber (),
-					          imagesDatum.getImageName (),
-					          matchesPointCount, characteristicPoint);
 					if (matchesPointCount >= characteristicPoint) {
 						List<KeyPoint> templateKeyPointList = templateKeyPoints.toList ();
 						List<KeyPoint> originalKeyPointList = originalKeyPoints.toList ();

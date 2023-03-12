@@ -230,8 +230,6 @@ public class OnmyojiController {
 		ProjectsParam projectsParam=new ProjectsParam ("正式 大号 御魂整理 副属性极限强化",process,round,projectParams);
 		//当前状态初始化
 		projectParams.add (new ProjectParam (project_CSH,"1"));
-		//个人突破
-		projectParams.add (new ProjectParam (project_GRTP,"1"));
 		//御魂整理
 		log.info ("添加任务，御魂整理-强化20次");
 		projectParams.add (new ProjectParam (project_YJZL_JXFSXQH,"1",20,false,null,
