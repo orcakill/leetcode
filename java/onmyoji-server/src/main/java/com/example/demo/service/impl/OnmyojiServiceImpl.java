@@ -54,7 +54,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 	
 	@Override
 	public void onmyojiService (ProjectsParam projectsParam) throws InterruptedException,
-	                                                                                UnknownHostException {
+	                                                                UnknownHostException {
 		//游戏进程id,游戏进程信息保存
 		String threadId = IdUtil.objectId ();
 		log.info ("进程信息初始化开始");
@@ -90,81 +90,81 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 	
 	@Override
 	public void autoActivity (ProjectsParam projectsParam) throws IOException, InterruptedException,
-	                                                AWTException {
-		Thread.sleep (10*1000);
-		String process=projectsParam.getProcess ();
+	                                                              AWTException {
+		Thread.sleep (10 * 1000);
+		String process = projectsParam.getProcess ();
 		for (int i = 0; i < projectsParam.getRound (); i++) {
-			for(ProjectParam projectParam:projectsParam.getProjectParams ()){
+			for (ProjectParam projectParam : projectsParam.getProjectParams ()) {
 				//当前状态初始化
-				if(projectParam.getProjectName ().equals (project_CSH)){
+				if (projectParam.getProjectName ().equals (project_CSH)) {
 					log.info (project_CSH);
-					initializationState(process,"1");
+					initializationState (process, "1");
 				}
 				//寄养检查
-				if(projectParam.getProjectName ().equals (project_JYJC)){
+				if (projectParam.getProjectName ().equals (project_JYJC)) {
 					log.info (project_JYJC);
 					toFoster (process);
 				}
 				//阴阳寮突破
-				if(projectParam.getProjectName ().equals (project_YYLTP)){
+				if (projectParam.getProjectName ().equals (project_YYLTP)) {
 					log.info (project_YYLTP);
-					fightHouse(process);
-					if(projectParam.getProjectWaitStartTime ()!=null){
-						int waitTime= RandomUtils.getRandom (projectParam.getProjectWaitStartTime (),
-						                                     projectParam.getProjectWaitEndTime ());
-						log.info ("等待{}分钟",waitTime);
-						Thread.sleep (waitTime*60*1000L);
+					fightHouse (process);
+					if (projectParam.getProjectWaitStartTime () != null) {
+						int waitTime = RandomUtils.getRandom (projectParam.getProjectWaitStartTime (),
+						                                      projectParam.getProjectWaitEndTime ());
+						log.info ("等待{}分钟", waitTime);
+						Thread.sleep (waitTime * 60 * 1000L);
 					}
 				}
 				//个人突破
-				if(projectParam.getProjectName ().equals (project_GRTP)){
+				if (projectParam.getProjectName ().equals (project_GRTP)) {
 					log.info (project_GRTP);
 					borderCheck (process);
 				}
 				//魂十一
-				if(projectParam.getProjectName ().equals (project_HSY)){
+				if (projectParam.getProjectName ().equals (project_HSY)) {
 					log.info (project_HSY);
-					soulFight (process,project_HSY,projectParam.getProjectNum (),projectParam.isAddition ());
+					soulFight (process, project_HSY, projectParam.getProjectNum (), projectParam.isAddition ());
 				}
 				//业原火
-				if(projectParam.getProjectName ().equals (project_YYH)){
+				if (projectParam.getProjectName ().equals (project_YYH)) {
 					log.info (project_YYH);
-					soulFight (process,project_YYH,projectParam.getProjectNum (),false);
+					soulFight (process, project_YYH, projectParam.getProjectNum (), false);
 				}
 				//日轮之陨
-				if(projectParam.getProjectName ().equals (project_RLZY)){
+				if (projectParam.getProjectName ().equals (project_RLZY)) {
 					log.info (project_RLZY);
-					soulFight (process,project_RLZY,projectParam.getProjectNum (),projectParam.isAddition ());
+					soulFight (process, project_RLZY, projectParam.getProjectNum (), projectParam.isAddition ());
 				}
 				//永生之海
-				if(projectParam.getProjectName ().equals (project_YSZH)){
+				if (projectParam.getProjectName ().equals (project_YSZH)) {
 					log.info (project_YSZH);
-					soulFight (process,project_YSZH,projectParam.getProjectNum (),projectParam.isAddition ());
+					soulFight (process, project_YSZH, projectParam.getProjectNum (), projectParam.isAddition ());
 				}
 				//御灵
-				if(projectParam.getProjectName ().equals (project_YL)){
+				if (projectParam.getProjectName ().equals (project_YL)) {
 					log.info (project_YL);
-					spirit (process,projectParam.getProjectNum ());
+					spirit (process, projectParam.getProjectNum ());
 				}
 				//斗技
-				if(projectParam.getProjectName ().equals (project_DJ)){
+				if (projectParam.getProjectName ().equals (project_DJ)) {
 					log.info (project_DJ);
-					pvp (process,projectParam.getProjectNum ());
+					pvp (process, projectParam.getProjectNum ());
 				}
 				//御魂整理 速度极限副属性强化
-				if(projectParam.getProjectName ().equals (project_YJZL_JXFSXQH)){
+				if (projectParam.getProjectName ().equals (project_YJZL_JXFSXQH)) {
 					log.info (project_YJZL_JXFSXQH);
-					soulEnhancements (process,projectParam.getProjectNum ());
+					soulEnhancements (process, projectParam.getProjectNum ());
 				}
 				//探索  全打
-				if(projectParam.getProjectName ().equals (project_GRTS)){
+				if (projectParam.getProjectName ().equals (project_GRTS)) {
 					log.info (project_GRTS);
-					explore (process,projectParam.getProjectNum ());
+					explore (process, projectParam.getProjectNum ());
 				}
 				//探索  只打2个
-				if(projectParam.getProjectName ().equals (project_GRTS_FAST)){
+				if (projectParam.getProjectName ().equals (project_GRTS_FAST)) {
 					log.info (project_GRTS_FAST);
-					exploreFast (process,projectParam.getProjectNum ());
+					exploreFast (process, projectParam.getProjectNum ());
 				}
 				
 			}
@@ -182,7 +182,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		boolean targetHomePage = false;
 		boolean switchAccount;
 		log.info ("等待10秒");
-		Thread.sleep (10*1000L);
+		Thread.sleep (10 * 1000L);
 		log.info ("当前状态初始化");
 		while (!initializeOrNot) {
 			thisPicture = thisState (process);
@@ -303,7 +303,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		while (!homePageOrNot) {
 			log.info ("开始返回到首页");
 			ImageService.imagesBack (return_FH, paramRGB (process, 1));
-			if (num%2==0 ) {
+			if (num % 2 == 0) {
 				ImageService.imagesBack (return_FH, paramSIFT (process, 1, 4));
 			}
 			num++;
@@ -345,19 +345,19 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		if (gameUserId != null) {
 			if (gameUserId.equals ("1")) {
 				log.info ("点击大号角色-缥缈之旅");
-				imagesBack (login_FWQ_PMZL, paramSIFT(process));
+				imagesBack (login_FWQ_PMZL, paramSIFT (process));
 			}
 			if (gameUserId.equals ("2")) {
 				log.info ("点击小号角色1-缥缈之旅");
-				imagesBack (login_FWQ_PMZL, paramSIFT(process));
+				imagesBack (login_FWQ_PMZL, paramSIFT (process));
 			}
 			if (gameUserId.equals ("3")) {
 				log.info ("点击小号角色2-两情相悦");
-				imagesBack (login_FWQ_LQXY, paramSIFT(process));
+				imagesBack (login_FWQ_LQXY, paramSIFT (process));
 			}
 			if (gameUserId.equals ("4")) {
 				log.info ("点击小号角色2-桃映春馨");
-				imagesBack (login_FWQ_TYCX, paramSIFT(process));
+				imagesBack (login_FWQ_TYCX, paramSIFT (process));
 			}
 		}
 		log.info ("开始游戏");
@@ -413,7 +413,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			//开循环，0 六星太鼓 1 五星太鼓 2 四星太鼓 3 六星斗鱼 4 五星斗鱼 5 四星斗鱼
 			while (!booleanJSJY) {
 				log.info ("当前好友结界卡是否未放置");
-				booleanWFZ = imagesBack (house_WFZ, paramRGB (process,5));
+				booleanWFZ = imagesBack (house_WFZ, paramRGB (process, 5));
 				if (booleanWFZ) {
 					log.info ("好友未放置结界卡，退出后重新进入");
 					if (num == 0) {
@@ -448,7 +448,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 					log.info ("存在结界卡，判断是否是高星结界卡");
 					booleanJJK = imagesBack (fileJJK, paramRGBNotClick (process, 3));
 					if (!booleanJJK) {
-						log.info ("当前结界不是{},不可放置,滚动到下一个",fileJJK);
+						log.info ("当前结界不是{},不可放置,滚动到下一个", fileJJK);
 						MouseClickUtils.mouseClickBackDrag (pictureIdentifyWorkPO2, pictureIdentifyWorkPO3,
 						                                    "夜神模拟器");
 						log.info ("滚动完成,点击终止位置坐标");
@@ -501,7 +501,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		log.info ("准备进入结界突破");
 		ImageService.imagesBack (region_JJTP, paramSIFT (process));
 		log.info ("进入结界突破，准备点击阴阳寮");
-		booleanYYL = ImageService.imagesBack (region_YYL, paramRGB(process, 5));
+		booleanYYL = ImageService.imagesBack (region_YYL, paramRGB (process, 5));
 		while (!booleanYYL) {
 			sleep (2000);
 			if (ImageService.imagesBack (region_GTRQ, paramRGBNotClick (process, 5))) {
@@ -594,7 +594,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		sleep (begin_num * 1000);
 		log.info ("准备点击角色头像、点击退出挑战、失败、宠物奖励");
 		String thisState = imagesBackList (multipleImagesParams);
-		log.info ("当前{}",thisState);
+		log.info ("当前{}", thisState);
 		if (thisState.equals (soul_JSTX)) {
 			log.info ("点击角色头像");
 			ImageService.imagesBack (soul_TCTZ, paramRGB (process));
@@ -718,16 +718,16 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			}
 			else {
 				log.info ("选择魂十");
-				b2 = imagesBack (soul_CS_HS,paramSIFTNotClick (process, 30));
+				b2 = imagesBack (soul_CS_HS, paramSIFTNotClick (process, 30));
 				if (!b2) {
 					log.info ("没有选择到魂十");
 				}
-				imagesBack (soul_CS_HS, paramSIFT(process));
+				imagesBack (soul_CS_HS, paramSIFT (process));
 			}
 			
 			//选择魂十或魂十一
 			//开始挑战
-			soulBack (process,soul_TZLX_BQDSTZ, 22, soulNum);
+			soulBack (process, soul_TZLX_BQDSTZ, 22, soulNum);
 			//挑战结束
 			if (addition) {
 				//关闭加成
@@ -752,7 +752,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			}
 			log.info ("开始挑战");
 			//开始挑战
-			soulBack (process,soul_TZLX_YYHTZ, 40, soulNum);
+			soulBack (process, soul_TZLX_YYHTZ, 40, soulNum);
 		}
 		if (Objects.equals (soulType, project_RLZY)) {
 			log.info ("进入御魂成功，准备选择日轮之陨");
@@ -765,9 +765,9 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			}
 			log.info ("开始挑战");
 			//开始挑战
-			soulBack (process,soul_TZLX_RLZYTZ,15, soulNum);
+			soulBack (process, soul_TZLX_RLZYTZ, 15, soulNum);
 		}
-		if (Objects.equals (soulType, project_YSZH)){
+		if (Objects.equals (soulType, project_YSZH)) {
 			log.info ("进入御魂成功，准备选择永生之海");
 			imagesBack (soul_YHLX_YSZH, paramSIFT (process));
 			log.info ("选择永生之海第四层");
@@ -776,10 +776,10 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				log.info ("没有选择到永生之海四层");
 			}
 			log.info ("开启永生之海加成");
-			imagesBack (soul_JC_YSZHJC,paramSIFT(process));
+			imagesBack (soul_JC_YSZHJC, paramSIFT (process));
 			log.info ("开始挑战");
 			//开始挑战
-			soulBack (process,soul_TZLX_YSZHTZ, 40, soulNum);
+			soulBack (process, soul_TZLX_YSZHTZ, 40, soulNum);
 		}
 		returnHome (process);
 	}
@@ -793,9 +793,9 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 	 * @date: 2023/2/22 2:11
 	 */
 	@Override
-	public void soulBack (String process,String fightType,int begin_time, int soulNumber) throws InterruptedException,
-	                                                                             IOException,
-	                                                                             AWTException {
+	public void soulBack (String process, String fightType, int begin_time, int soulNumber) throws InterruptedException,
+	                                                                                               IOException,
+	                                                                                               AWTException {
 		sleep (3000);
 		log.info ("战斗开始");
 		boolean b1;
@@ -829,7 +829,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			imagesBack (soul_CWJL, paramRGB (process, 5));
 			log.info ("判断是否没退出挑战成功");
 			imagesBack (soul_TCTZ, paramRGB (process, 5));
-			b1 = imagesBack (fightType,paramSIFT (process, 5));
+			b1 = imagesBack (fightType, paramSIFT (process, 5));
 		}
 		log.info ("结束挑战");
 	}
@@ -887,7 +887,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			log.info ("选择第三层");
 			imagesBack (spirit_DSC, paramSIFT (process));
 			log.info ("开始挑战");
-			soulBack (process,spirit_TZ, 15, num);
+			soulBack (process, spirit_TZ, 15, num);
 		}
 		log.info ("结束御灵");
 		returnHome (process);
@@ -1111,7 +1111,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				log.info ("等级提升");
 				levelPromotion = imagesBack (arrange_DJTS, paramSIFTNotClick (process, 5));
 				while (!levelPromotion) {
-					imagesBack (arrange_QD,paramSIFT (process));
+					imagesBack (arrange_QD, paramSIFT (process));
 					sleep (1000);
 					levelPromotion = imagesBack (arrange_DJTS, paramSIFTNotClick (process, 5));
 				}
@@ -1277,9 +1277,14 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		boolean exploreState;
 		//移动次数
 		int numberOfMoves;
+		//战斗次数
+		int numberOfBattles=0;
+		//战斗结果
+		boolean battleResults;
 		log.info ("进入探索");
 		imagesBack (home_TS, paramSIFT (process));
 		log.info ("开始探索战斗");
+		long start_time=System.currentTimeMillis ();
 		for (int i = 1; i <= num; i++) {
 			log.info ("*************第{}轮挑战开始", i);
 			//初始化移动次数
@@ -1302,17 +1307,19 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			log.info ("最后一章");
 			imagesBack (explore_TS, paramRGB (process));
 			sleep (1000);
-			log.info ("当前探索中,检查是否未点击自动轮换");
-			rotationState = imagesBack (explore_ZDLH, paramRGBNotClick (process, 3));
-			if (rotationState) {
-				log.info ("自动轮换未点击");
-				imagesBack (explore_ZDLH, paramRGB (process, 3));
-				sleep (1000);
+			if (i == 1) {
+				log.info ("当前探索中,检查是否未点击自动轮换");
+				rotationState = imagesBack (explore_ZDLH, paramRGBNotClick (process, 3));
+				if (rotationState) {
+					log.info ("自动轮换未点击");
+					imagesBack (explore_ZDLH, paramRGB (process, 3));
+					sleep (1000);
+				}
 			}
 			log.info ("当前探索中,检查是否有BOSS");
-			bossState = imagesBack (explore_BOSSZD, paramRGB (process, 3));
+			bossState = imagesBack (explore_BOSSZD, paramRGB (process, 1));
 			while (!bossState) {
-				log.info ("寻找小怪");
+				log.info ("没有BOSS,寻找小怪");
 				littleMonsterState = imagesBack (explore_XGZD, paramRGB (process, 3));
 				if (littleMonsterState) {
 					log.info ("找到小怪，点击战斗");
@@ -1328,7 +1335,10 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 					}
 					sleep (4 * 1000);
 					log.info ("退出挑战");
-					imagesBack (explore_TCTZ, paramRGB (process, 5));
+					battleResults=imagesBack (explore_TCTZ, paramRGB (process, 5));
+					if(battleResults){
+						numberOfBattles++;
+					}
 					sleep (1000);
 				}
 				else {
@@ -1352,10 +1362,13 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			}
 			log.info ("小怪战斗结束，boss战");
 			imagesBack (explore_BOSSZD, paramRGB (process));
-			sleep (5000);
+			sleep (2000);
 			log.info ("退出挑战");
-			imagesBack (explore_TCTZ, paramRGB (process));
-			sleep (3000);
+			battleResults=imagesBack (explore_TCTZ, paramRGB (process));
+			if(battleResults){
+				numberOfBattles++;
+			}
+			sleep (2000);
 			log.info ("判断是否已在探索界面");
 			exploreState = imagesBack (explore_ZHYZ, paramRGB (process, 3));
 			while (!exploreState) {
@@ -1383,6 +1396,8 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			}
 			log.info ("当前已是探索界面");
 		}
+		long hostTime=System.currentTimeMillis ()-start_time;
+		log.info ("当前轮次,平均每次战斗用时{}秒",hostTime/numberOfBattles/1000);
 		returnHome (process);
 	}
 	

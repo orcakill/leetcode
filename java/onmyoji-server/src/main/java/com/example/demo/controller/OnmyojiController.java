@@ -40,8 +40,8 @@ public class OnmyojiController {
 	
 	@ApiOperation ("正式  大号每日任务，寮突+个突+魂十一")
 	@ApiOperationSupport (order = 1)
-	@GetMapping ("/dealTask1")
-	public Results<?> dealTask1 (
+	@GetMapping ("/dealTaskMRRW")
+	public Results<?> dealTaskMRRW (
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
@@ -65,10 +65,59 @@ public class OnmyojiController {
 		onmyojiService.onmyojiService (projectsParam);
 		return Results.ok ("任务已启动");
 	}
-	@ApiOperation ("正式 大号 个人突破+魂十一")
+	
+	@ApiOperation ("正式 大号 寮突")
 	@ApiOperationSupport (order = 2)
-	@GetMapping ("/dealTask2")
-	public Results<?> dealTask2 (
+	@GetMapping ("/dealTaskYYLTP")
+	public Results<?> dealTaskYYLTP (
+			@ApiParam ("轮次")
+			@RequestParam (required = false, defaultValue = "1") Integer round,
+			@ApiParam ("模拟器")
+			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
+	                               ) throws InterruptedException, UnknownHostException {
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		List<ProjectParam> projectParams=new ArrayList<> ();
+		ProjectsParam projectsParam=new ProjectsParam ("正式 大号 寮突",process,round,projectParams);
+		//当前状态初始化
+		projectParams.add (new ProjectParam (project_CSH,"1"));
+		//寄养检查
+		projectParams.add (new ProjectParam (project_JYJC,"1"));
+		//阴阳寮突破
+		projectParams.add (new ProjectParam (project_YYLTP,"1",null,false,30,
+		                                     40));
+		projectsParam.setProjectParams (projectParams);
+		onmyojiService.onmyojiService (projectsParam);
+		return Results.ok ("任务已启动");
+	}
+	
+	@ApiOperation ("正式  大号 阴阳寮+斗技5次")
+	@ApiOperationSupport (order = 3)
+	@GetMapping ("/dealTaskYYLDJ")
+	public Results<?> dealTaskYYLDJ (
+			@ApiParam ("轮次")
+			@RequestParam (required = false, defaultValue = "1") Integer round,
+			@ApiParam ("模拟器")
+			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
+	                                ) throws InterruptedException, UnknownHostException {
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		List<ProjectParam> projectParams=new ArrayList<> ();
+		ProjectsParam projectsParam=new ProjectsParam ("正式  大号斗技",process,round,projectParams);
+		//当前状态初始化
+		projectParams.add (new ProjectParam (project_CSH,"1"));
+		//阴阳寮突破
+		projectParams.add (new ProjectParam (project_YYLTP,"1"));
+		//斗技
+		projectParams.add (new ProjectParam (project_DJ,"1",5,false,null,
+		                                     null));
+		projectsParam.setProjectParams (projectParams);
+		onmyojiService.onmyojiService (projectsParam);
+		return Results.ok ("任务已启动");
+	}
+	
+	@ApiOperation ("正式 大号 个人突破+魂十一")
+	@ApiOperationSupport (order = 4)
+	@GetMapping ("/dealTaskHSY")
+	public Results<?> dealTaskHSY (
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
@@ -92,9 +141,9 @@ public class OnmyojiController {
 	}
 	
 	@ApiOperation ("正式  大号业原火（阴阳寮+个人结界）")
-	@ApiOperationSupport (order = 3)
-	@GetMapping ("/dealTask3")
-	public Results<?> dealTask3 (
+	@ApiOperationSupport (order = 5)
+	@GetMapping ("/dealTaskYYH")
+	public Results<?> dealTaskYYH (
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
@@ -120,9 +169,9 @@ public class OnmyojiController {
 	}
 	
 	@ApiOperation ("正式  大号日轮之陨（个人结界）")
-	@ApiOperationSupport (order = 4)
-	@GetMapping ("/dealTask4")
-	public Results<?> dealTask4 (
+	@ApiOperationSupport (order = 6)
+	@GetMapping ("/dealTaskRLZY")
+	public Results<?> dealTaskRLZY (
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
@@ -144,9 +193,9 @@ public class OnmyojiController {
 	}
 	
 	@ApiOperation ("正式  大号永生之海（个人结界）")
-	@ApiOperationSupport (order = 5)
-	@GetMapping ("/dealTask5")
-	public Results<?> dealTask5 (
+	@ApiOperationSupport (order = 7)
+	@GetMapping ("/dealTaskYSZH")
+	public Results<?> dealTaskYSZH (
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
@@ -168,9 +217,9 @@ public class OnmyojiController {
 	}
 	
 	@ApiOperation ("正式  大号御灵（个人结界）")
-	@ApiOperationSupport (order = 6)
-	@GetMapping ("/dealTask6")
-	public Results<?> dealTask6 (
+	@ApiOperationSupport (order = 8)
+	@GetMapping ("/dealTaskYL")
+	public Results<?> dealTaskYL (
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
@@ -192,10 +241,10 @@ public class OnmyojiController {
 		return Results.ok ("任务已启动");
 	}
 	
-	@ApiOperation ("正式  大号斗技")
-	@ApiOperationSupport (order = 7)
-	@GetMapping ("/dealTask7")
-	public Results<?> dealTask7 (
+	@ApiOperation ("正式  大号斗技10次")
+	@ApiOperationSupport (order = 9)
+	@GetMapping ("/dealTaskDJ")
+	public Results<?> dealTaskDJ(
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
@@ -206,8 +255,6 @@ public class OnmyojiController {
 		ProjectsParam projectsParam=new ProjectsParam ("正式  大号斗技",process,round,projectParams);
 		//当前状态初始化
 		projectParams.add (new ProjectParam (project_CSH,"1"));
-		//个人突破
-		projectParams.add (new ProjectParam (project_GRTP,"1"));
 		//斗技
 		projectParams.add (new ProjectParam (project_DJ,"1",10,false,null,
 		                                     null));
@@ -216,10 +263,12 @@ public class OnmyojiController {
 		return Results.ok ("任务已启动");
 	}
 	
-	@ApiOperation ("正式  大号 御魂整理 副属性极限强化")
-	@ApiOperationSupport (order = 8)
-	@GetMapping ("/dealTask8")
-	public Results<?> dealTask8 (
+
+	
+	@ApiOperation ("正式  大号 御魂整理 速度副属性极限强化")
+	@ApiOperationSupport (order = 10)
+	@GetMapping ("/dealTaskYHZLSD")
+	public Results<?> dealTaskYHZLSD (
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
@@ -240,9 +289,9 @@ public class OnmyojiController {
 	}
 	
 	@ApiOperation ("正式  大号 探索")
-	@ApiOperationSupport (order = 9)
-	@GetMapping ("/dealTask9")
-	public Results<?> dealTask9 (
+	@ApiOperationSupport (order = 11)
+	@GetMapping ("/dealTaskTS")
+	public Results<?> dealTaskTS (
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
@@ -264,9 +313,9 @@ public class OnmyojiController {
 	}
 	
 	@ApiOperation ("正式  大号 探索 只打2个")
-	@ApiOperationSupport (order = 10)
-	@GetMapping ("/dealTask10")
-	public Results<?> dealTask10 (
+	@ApiOperationSupport (order = 12)
+	@GetMapping ("/dealTaskTSFast")
+	public Results<?> dealTaskTSFast (
 			@ApiParam ("轮次")
 			@RequestParam (required = false, defaultValue = "1") Integer round,
 			@ApiParam ("模拟器")
