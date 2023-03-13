@@ -14,7 +14,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
-import static com.example.demo.model.var.CommVar.soul_CS_YSZHSC;
+import static com.example.demo.model.var.CommVar.explore_ZDLH;
 import static com.example.demo.utils.ImagesOpenCVSIFTUtils.getMat;
 
 /**
@@ -49,7 +49,7 @@ class ImagesOpenCVSIFTUtilsTest {
 		//图片集
 		String path = FolderPathMap.folderPath ("图片总路径");
 		List<PictureCollectionPO> pictureCollectionPOList =
-				ReadFileUtils.readPictureCollectionPOList (path,soul_CS_YSZHSC, "SIFT");
+				ReadFileUtils.readPictureCollectionPOList (path,explore_ZDLH, "SIFT");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 		//屏幕截图和图片对比
 		List<PictureIdentifyWorkPO> mouseXY = ImagesOpenCVSIFTUtils.findPictureIdentifyWorkPOList (Window, pictureCollectionPOList, 0.7,

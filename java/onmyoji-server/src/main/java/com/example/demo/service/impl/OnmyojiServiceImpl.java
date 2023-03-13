@@ -1267,31 +1267,29 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		boolean bossState;
 		//小怪状态
 		boolean littleMonsterState;
-		//自动轮换
-		boolean rotationState;
+		//式神录状态
+		boolean theStateOfStyleGodRecord;
 		//宝箱
 		boolean treasureChestState;
-		//额外奖励
-		boolean rewardState;
 		//探索界面判断
 		boolean exploreState;
 		//移动次数
 		int numberOfMoves;
 		//战斗次数
-		int numberOfBattles=0;
+		int numberOfBattles = 0;
 		//战斗结果
 		boolean battleResults;
 		log.info ("进入探索");
 		imagesBack (home_TS, paramSIFT (process));
 		log.info ("开始探索战斗");
-		long start_time=System.currentTimeMillis ();
+		long start_time = System.currentTimeMillis ();
 		for (int i = 1; i <= num; i++) {
 			log.info ("*************第{}轮挑战开始", i);
 			//初始化移动次数
 			numberOfMoves = 0;
 			log.info ("当前探索界面");
 			log.info ("检查左侧是否有宝箱");
-			treasureChestState = imagesBack (explore_ZCBX, paramRGB (process, 2));
+			treasureChestState = imagesBack (explore_ZCBX, paramRGB (process, 1));
 			while (treasureChestState) {
 				log.info ("有宝箱");
 				imagesBack (explore_ZCBX, paramRGB (process, 1));
@@ -1308,97 +1306,81 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			imagesBack (explore_TS, paramRGB (process));
 			sleep (1000);
 			if (i == 1) {
-				log.info ("当前探索中,检查是否未点击自动轮换");
-				rotationState = imagesBack (explore_ZDLH, paramRGBNotClick (process, 3));
-				if (rotationState) {
-					log.info ("自动轮换未点击");
-					imagesBack (explore_ZDLH, paramRGB (process, 3));
-					sleep (1000);
-				}
+				log.info ("固定阵容");
+				imagesBack (explore_GDZR, paramSIFT (process, 1, 4));
+				log.info ("点击自动轮换");
+				imagesBack (explore_ZDLH, paramSIFT (process, 1, 4));
 			}
 			log.info ("当前探索中,检查是否有BOSS");
 			bossState = imagesBack (explore_BOSSZD, paramRGB (process, 1));
 			while (!bossState) {
-				log.info ("没有BOSS,寻找小怪");
-				littleMonsterState = imagesBack (explore_XGZD, paramRGB (process, 3));
+				log.info ("没有BOSS,寻找小怪并点击");
+				littleMonsterState = imagesBack (explore_DTXGZD, paramSIFT (process, 1, 4));
 				if (littleMonsterState) {
-					log.info ("找到小怪，点击战斗");
-					imagesBack (explore_XGZD, paramRGB (process, 3));
-					sleep (3000);
-					log.info ("检查是否未点击成功");
-					littleMonsterState = imagesBack (explore_XGZD, paramRGB (process, 1));
-					while (littleMonsterState) {
-						log.info ("小怪点击不成功，重新点击");
-						imagesBack (explore_XGZD, paramRGB (process, 10));
-						sleep (1000);
-						littleMonsterState = imagesBack (explore_XGZD, paramRGB (process, 1));
-					}
-					sleep (4 * 1000);
-					log.info ("退出挑战");
-					battleResults=imagesBack (explore_TCTZ, paramRGB (process, 5));
-					if(battleResults){
-						numberOfBattles++;
-					}
 					sleep (1000);
+					log.info ("检查是否未点击成功");
+					theStateOfStyleGodRecord = imagesBack (explore_TSSSL, paramSIFTNotClick (process, 1, 4));
+					if (theStateOfStyleGodRecord) {
+						log.info ("小怪点击不成功");
+						littleMonsterState = false;
+					}
+					else {
+						sleep (5 * 1000);
+						log.info ("退出挑战");
+						battleResults = imagesBack (explore_TCTZ, paramRGB (process, 5));
+						if (battleResults) {
+							numberOfBattles++;
+						}
+					}
+					
 				}
-				else {
-					log.info ("没找到小怪，每10次改变移动方向，当前移动次数{},余数{}", numberOfMoves,
-					          numberOfMoves % 10 % 2);
-					if (Math.ceil (numberOfMoves / 10.0) % 2 == 0) {
+				if (!littleMonsterState) {
+					numberOfMoves++;
+					log.info ("没找到小怪，移动位置,每10次改变移动方向，当前移动次数{},余数{}", numberOfMoves,
+					          Math.ceil (numberOfMoves / 10.0) % 2);
+					if (Math.ceil (numberOfMoves / 10.0) % 2 == 1) {
 						pictureIdentifyWorkPO.setX (windows_width / 8 * 7);
-						pictureIdentifyWorkPO.setY (windows_height / 8 * 6);
+						pictureIdentifyWorkPO.setY (windows_height / 10 * 7);
 					}
 					else {
 						pictureIdentifyWorkPO.setX (windows_width / 8);
-						pictureIdentifyWorkPO.setY (windows_height / 8 * 6);
+						pictureIdentifyWorkPO.setY (windows_height / 10 * 7);
 					}
-					log.info ("坐标({},{})", pictureIdentifyWorkPO.getX (), pictureIdentifyWorkPO.getY ());
+					log.info ("点击坐标({},{})", pictureIdentifyWorkPO.getX (), pictureIdentifyWorkPO.getY ());
 					MouseClickUtils.mouseClickBack (pictureIdentifyWorkPO, "夜神模拟器");
-					numberOfMoves++;
+					
 				}
 				sleep (1000);
 				log.info ("小怪战斗结束，检查是否出现BOSS");
-				bossState = imagesBack (explore_BOSSZD, paramRGB (process, 2));
+				bossState = imagesBack (explore_BOSSZD, paramRGB (process, 1));
 			}
 			log.info ("小怪战斗结束，boss战");
-			imagesBack (explore_BOSSZD, paramRGB (process));
-			sleep (2000);
+			sleep (4000);
 			log.info ("退出挑战");
-			battleResults=imagesBack (explore_TCTZ, paramRGB (process));
-			if(battleResults){
+			battleResults = imagesBack (explore_TCTZ, paramRGB (process));
+			if (battleResults) {
 				numberOfBattles++;
 			}
-			sleep (2000);
+			imagesBack (explore_TCTZ, paramRGB (process, 1));
 			log.info ("判断是否已在探索界面");
-			exploreState = imagesBack (explore_ZHYZ, paramRGB (process, 3));
-			while (!exploreState) {
-				log.info ("再退出挑战一次");
-				imagesBack (explore_TCTZ, paramRGB (process, 1));
-				log.info ("判断是否有额外奖励");
-				rewardState = imagesBack (explore_TSSSL, paramRGB (process, 2));
-				if (rewardState) {
-					log.info ("未退出探索，点击返回");
-					imagesBack (return_FH, paramRGB (process));
-					sleep (1000);
-					log.info ("确认");
-					imagesBack (explore_QR, paramRGB (process, 1));
-					sleep (1000);
-				}
-				log.info ("再次判断是否回探索，因最后一章导致，返回一次");
-				rewardState = imagesBack (explore_TS, paramRGB (process, 2));
-				if (rewardState) {
-					log.info ("在最后一章探索界面，返回探索界面");
-					imagesBack (return_FH, paramRGB (process, 1));
-					sleep (1000);
-				}
-				log.info ("判断是否回到探索界面");
-				exploreState = imagesBack (explore_ZHYZ, paramRGB (process, 3));
-			}
-			log.info ("当前已是探索界面");
+			returnExplore (process);
 		}
-		long hostTime=System.currentTimeMillis ()-start_time;
-		log.info ("当前轮次,平均每次战斗用时{}秒",hostTime/numberOfBattles/1000);
+		long hostTime = System.currentTimeMillis () - start_time;
+		log.info ("************当前轮次,平均每次战斗用时{}秒", hostTime / numberOfBattles / 1000);
 		returnHome (process);
+	}
+	
+	private void returnExplore (String process) throws IOException, InterruptedException, AWTException {
+		boolean exploreState;
+		exploreState = imagesBack (explore_ZHYZ, paramRGBNotClick (process, 1));
+		while (!exploreState) {
+			log.info ("未退出探索，点击返回");
+			imagesBack (return_FH, paramRGB (process, 1));
+			log.info ("确认");
+			imagesBack (explore_QR, paramRGB (process, 1));
+			exploreState = imagesBack (explore_ZHYZ, paramRGBNotClick (process, 1));
+		}
+		log.info ("当前已是探索界面");
 	}
 	
 	/***
@@ -1416,9 +1398,12 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		boolean exitTheChallenge;
 		//探索界面
 		boolean whetherToExplore;
+		//战斗次数
+		int numberOfBattles = 0;
 		log.info ("进入探索");
 		imagesBack (home_TS, paramSIFT (process));
 		log.info ("开始探索战斗");
+		long start_time = System.currentTimeMillis ();
 		for (int i = 1; i <= num; i++) {
 			log.info ("*************第{}轮挑战开始", i);
 			log.info ("当前探索界面");
@@ -1428,43 +1413,29 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			imagesBack (explore_TS, paramRGB (process));
 			sleep (1000);
 			log.info ("当前探索中,检查是否有小怪，打2个静止不动的即可");
-			log.info ("寻找小怪");
-			littleMonsterState = imagesBack (explore_JTXGZD, paramRGB (process, 3));
+			log.info ("寻找小怪,点击战斗");
+			littleMonsterState = imagesBack (explore_JTXGZD, paramRGB (process, 1));
 			while (littleMonsterState) {
-				log.info ("找到小怪，点击战斗");
-				littleMonsterState = imagesBack (explore_JTXGZD, paramRGB (process, 3));
-				if (littleMonsterState) {
-					log.info ("点击成功，等待结束");
-					sleep (12 * 1000);
-					log.info ("退出挑战");
-					exitTheChallenge = imagesBack (explore_TCTZ, paramRGB (process, 10));
+				log.info ("点击成功，等待结束");
+				sleep (11 * 1000);
+				log.info ("退出挑战");
+				exitTheChallenge = imagesBack (explore_TCTZ, paramRGB (process, 10));
+				if (!exitTheChallenge) {
+					log.info ("未成功退出挑战，重新退出");
+					imagesBack (explore_TCTZ, paramRGB (process, 10));
 					sleep (1000);
-					while (!exitTheChallenge) {
-						log.info ("未成功退出挑战，重新退出");
-						exitTheChallenge = imagesBack (explore_TCTZ, paramRGB (process, 10));
-						sleep (1000);
-					}
 				}
+				numberOfBattles++;
 				log.info ("小怪战斗结束，检查是否还有小怪");
-				littleMonsterState = imagesBack (explore_JTXGZD, paramRGB (process, 3));
+				littleMonsterState = imagesBack (explore_JTXGZD, paramRGB (process, 1));
 			}
 			log.info ("再退出一次挑战，防止退出不成功");
-			imagesBack (explore_TCTZ, paramRGB (process, 3));
+			imagesBack (explore_TCTZ, paramRGB (process, 1));
 			log.info ("小怪战斗结束，退出");
-			log.info ("未退出探索，点击返回");
-			imagesBack (return_FH, paramRGB (process, 3));
-			log.info ("确认");
-			imagesBack (explore_QR, paramRGB (process, 3));
-			sleep (1000);
-			log.info ("在最后一章探索界面，返回探索界面");
-			imagesBack (return_FH, paramRGB (process, 3));
-			whetherToExplore = imagesBack (explore_ZHYZ, paramRGB (process, 2));
-			if (!whetherToExplore) {
-				log.info ("返回不成功，重新返回");
-				imagesBack (return_FH, paramRGB (process, 3));
-			}
-			log.info ("当前已是探索界面");
+			returnExplore (process);
 		}
+		long hostTime = System.currentTimeMillis () - start_time;
+		log.info ("************当前轮次,平均每次战斗用时{}秒", hostTime / numberOfBattles / 1000);
 		returnHome (process);
 	}
 	

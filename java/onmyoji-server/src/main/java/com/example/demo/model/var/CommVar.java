@@ -137,4 +137,6 @@ public class CommVar {
 	public static final String explore_ZCBX="探索/左侧宝箱";
 	public static final String explore_QR="探索/确认";
 	public static final String explore_TSSSL="探索/探索界面式神录";
+	public static final String explore_GDZR="探索/固定阵容";
+	
 }
