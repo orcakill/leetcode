@@ -1271,8 +1271,6 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		boolean theStateOfStyleGodRecord;
 		//宝箱
 		boolean treasureChestState;
-		//探索界面判断
-		boolean exploreState;
 		//移动次数
 		int numberOfMoves;
 		//战斗次数
@@ -1312,7 +1310,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				imagesBack (explore_ZDLH, paramSIFT (process, 1, 4));
 			}
 			log.info ("当前探索中,检查是否有BOSS");
-			bossState = imagesBack (explore_BOSSZD, paramRGB (process, 1));
+			bossState = imagesBack (explore_BOSSZD, paramSIFT (process, 1,4));
 			while (!bossState) {
 				log.info ("没有BOSS,寻找小怪并点击");
 				littleMonsterState = imagesBack (explore_DTXGZD, paramSIFT (process, 1, 4));
@@ -1355,7 +1353,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				bossState = imagesBack (explore_BOSSZD, paramRGB (process, 1));
 			}
 			log.info ("小怪战斗结束，boss战");
-			sleep (4000);
+			sleep (6000);
 			log.info ("退出挑战");
 			battleResults = imagesBack (explore_TCTZ, paramRGB (process));
 			if (battleResults) {
@@ -1396,8 +1394,6 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		boolean littleMonsterState;
 		//退出挑战
 		boolean exitTheChallenge;
-		//探索界面
-		boolean whetherToExplore;
 		//战斗次数
 		int numberOfBattles = 0;
 		log.info ("进入探索");
@@ -1435,7 +1431,9 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			returnExplore (process);
 		}
 		long hostTime = System.currentTimeMillis () - start_time;
-		log.info ("************当前轮次,平均每次战斗用时{}秒", hostTime / numberOfBattles / 1000);
+		if(numberOfBattles>0){
+			log.info ("************当前轮次,平均每次战斗用时{}秒", hostTime / numberOfBattles / 1000);
+		}
 		returnHome (process);
 	}
 	

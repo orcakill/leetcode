@@ -15,7 +15,7 @@ public class OnmyojiServerApplication {
 		
 		SpringApplicationBuilder builder = new SpringApplicationBuilder(OnmyojiServerApplication.class);
 		builder.headless(false).web (WebApplicationType.SERVLET).run (args);
-		log.info ("http://localhost:9000/api/v1/doc.html");
+		log.info ("http://localhost:8000/api/v1/doc.html");
 	}
 	
 }
