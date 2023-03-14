@@ -37,6 +37,24 @@ public class OnmyojiTestController {
 		this.onmyojiService = onmyojiService;
 	}
 	
+	@ApiOperation ("当前状态初始化")
+	@ApiOperationSupport (order = 1)
+	@GetMapping ("/dealTaskTest0")
+	public Results<?> dealTaskTestDQZTCSH (
+			@ApiParam ("轮次")
+			@RequestParam (required = false, defaultValue = "1") Integer round,
+			@ApiParam ("模拟器")
+			@RequestParam (required = false, defaultValue = "夜神模拟器") String process
+	                                ) throws InterruptedException, UnknownHostException {
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		List<ProjectParam> projectParams=new ArrayList<> ();
+		ProjectsParam projectsParam=new ProjectsParam ("当前状态初始化", process, round, projectParams);
+		//当前状态初始化
+		projectParams.add (new ProjectParam (project_CSH,"1"));
+		projectsParam.setProjectParams (projectParams);
+		onmyojiService.onmyojiService (projectsParam);
+		return Results.ok ("任务已启动");
+	}
 	@ApiOperation ("大号寄养功能")
 	@ApiOperationSupport (order = 1)
 	@GetMapping ("/dealTaskTest1")

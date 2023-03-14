@@ -23,6 +23,9 @@ public class ScreenshotPointMap {
 		screenshotPointPOS.add (new ScreenshotPointPO ("御魂等级强化第一部分", 2560, 1600, 1354, 727, 294, 462));
 		screenshotPointPOS.add (new ScreenshotPointPO ("御魂等级强化第二部分", 2560, 1600, 1627, 727, 200, 462));
 		screenshotPointPOS.add (new ScreenshotPointPO ("御魂等级强化第三部分", 2560, 1600, 1945, 727, 200, 462));
+		screenshotPointPOS.add (new ScreenshotPointPO ("御魂等级强化第一部分", 1920, 1080, 1002, 490, 265, 360));
+		screenshotPointPOS.add (new ScreenshotPointPO ("御魂等级强化第二部分", 1920, 1080, 1263, 490, 125, 360));
+		screenshotPointPOS.add (new ScreenshotPointPO ("御魂等级强化第三部分", 1920, 1080, 1455, 490, 125, 360));
 		List<ScreenshotPointPO> screenshotPointPOS1 = screenshotPointPOS.stream ().filter (
 				s -> s.getName ().equals (name) && s.getWidth () == windows_width && s.getHeight () == windows_height).collect (toList ());
 		return screenshotPointPOS1.get (0);
