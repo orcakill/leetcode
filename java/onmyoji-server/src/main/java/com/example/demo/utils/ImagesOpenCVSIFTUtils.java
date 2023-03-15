@@ -102,6 +102,7 @@ public class ImagesOpenCVSIFTUtils {
 		MatOfKeyPoint originalKeyPoints = new MatOfKeyPoint ();
 		sift.detect (originalImage, originalKeyPoints);
 		sift.compute (originalImage, originalKeyPoints, resO);
+		resO.convertTo (resO,CvType.CV_32F,1/255.0);
 		try {
 			for (PictureCollectionPO imagesDatum : templateImageB) {
 				try {
@@ -111,6 +112,7 @@ public class ImagesOpenCVSIFTUtils {
 					//获取模板图的特征点
 					sift.detect (templateImage, templateKeyPoints);
 					sift.compute (templateImage, templateKeyPoints, resT);
+					resT.convertTo (resT,CvType.CV_32F, 1/255.0);
 					DescriptorMatcher descriptorMatcher = DescriptorMatcher.create (
 							DescriptorMatcher.FLANNBASED);
 					//knnMatch方法的作用就是在给定特征描述集合中寻找最佳匹配
