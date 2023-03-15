@@ -1056,7 +1056,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		int quantityOfConsumableMaterials = 0;
 		//循环强化速度御魂
 		for (int i = 1; i <= num; i++) {
-			log.info ("第{}个御魂", i);
+			log.info ("*************第{}个御魂", i);
 			//设置强化状态
 			reinforcementState = true;
 			log.info ("进入更换御魂");
@@ -1097,8 +1097,8 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 					quantityOfConsumableMaterials = 4;
 				}
 				if (strengtheningTimes == 3) {
-					log.info ("第三次强化，强化+9,5个四星青吉鬼");
-					quantityOfConsumableMaterials = 5;
+					log.info ("第三次强化，强化+9,6个四星青吉鬼");
+					quantityOfConsumableMaterials = 6;
 				}
 				if (strengtheningTimes == 4) {
 					log.info ("第四次强化，强化+12,7个四星青吉鬼");
@@ -1132,9 +1132,9 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				log.info ("御魂强化属性为{}", soulSubduingEnhancementAttribute);
 				//如果强化属性为攻击、生命和防御，则直接弃置
 				if ((
-						    soulSubduingEnhancementAttribute.equals ("攻击") ||
-						    soulSubduingEnhancementAttribute.equals ("生命") ||
-						    soulSubduingEnhancementAttribute.equals ("防御")) && strengtheningTimes < 4) {
+						    soulSubduingEnhancementAttribute.equals ("攻 击") ||
+						    soulSubduingEnhancementAttribute.equals ("生 命") ||
+						    soulSubduingEnhancementAttribute.equals ("防 御")) && strengtheningTimes < 4) {
 					log.info ("御魂强化属性为{},直接弃置", soulSubduingEnhancementAttribute);
 					log.info ("直接弃置");
 					imagesBack (arrange_QZ, paramSIFT (process));
