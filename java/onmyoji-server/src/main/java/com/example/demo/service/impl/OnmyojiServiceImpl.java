@@ -301,17 +301,19 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		log.info ("判断是否首页");
 		boolean homePageOrNot = ImageService.imagesBack (home_TS, paramSIFTNotClick (process, 1, 20));
 		while (!homePageOrNot) {
-			log.info ("开始返回到首页");
-			ImageService.imagesBack (return_FH, paramRGB (process, 1));
+			log.info ("点击返回按钮");
+			imagesBack (return_FH, paramRGB (process, 1));
 			if (num % 2 == 0) {
 				ImageService.imagesBack (return_FH, paramSIFT (process, 1, 4));
 			}
+			log.info ("点击可能存在的退出挑战");
+			imagesBack (soul_TCTZ,paramRGB (process,1));
 			num++;
-			homePageOrNot = ImageService.imagesBack (home_TS, paramSIFTNotClick (process, 1, 20));
+			homePageOrNot = imagesBack (home_TS, paramSIFTNotClick (process, 1, 20));
 		}
 		Thread.sleep (2000);
 		log.info ("判断底部菜单是否打开");
-		boolean bottomMenu = ImageService.imagesBack (home_DBCDDK, paramSIFTNotClick (process, 1, 20));
+		boolean bottomMenu =imagesBack (home_DBCDDK, paramSIFTNotClick (process, 1, 20));
 		if (!bottomMenu) {
 			log.info ("打开底部菜单");
 			ImageService.imagesBack (home_DBCD, paramSIFT (process, 1, 20));
@@ -367,8 +369,13 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		imagesBack (home_DBCD, paramSIFT (process));
 		boolean openBottom = ImageService.imagesBack (home_DBCDDK, paramSIFTNotClick (process, 1, 4));
 		while (!openBottom) {
-			imagesBack (home_DBCD, paramSIFT (process));
-			openBottom = ImageService.imagesBack (home_DBCD, paramSIFT (process, 1, 4));
+			log.info ("未打开底部菜单栏，点击打开");
+			imagesBack (home_DBCD, paramSIFT (process,1,4));
+			log.info ("点击可能存在的返回按钮");
+			imagesBack (return_FH, paramSIFT (process,1,4));
+			log.info ("重新判断是否打开底部菜单");
+			openBottom = ImageService.imagesBack (home_DBCD, paramSIFTNotClick (process, 1, 4));
+			sleep (1000);
 		}
 		sleep (2 * 1000L);
 	}
