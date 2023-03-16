@@ -602,6 +602,10 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		log.info ("准备点击角色头像、点击退出挑战、失败、宠物奖励");
 		String thisState = imagesBackList (multipleImagesParams);
 		log.info ("当前{}", thisState);
+		if(thisState==null){
+			log.info ("未找到退出挑战");
+			return false;
+		}
 		if (thisState.equals (soul_JSTX)) {
 			log.info ("点击角色头像");
 			ImageService.imagesBack (soul_TCTZ, paramRGB (process));
@@ -660,7 +664,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 					log.info ("无需准备");
 				}
 				log.info ("进入战斗");
-				fightEnd (process, 10, 5, 10);
+				fightEnd (process, 10, 10, 15);
 				log.info ("判断是否有额外奖励");
 				whetherAdditionalReward = imagesBack (soul_TCTZ, paramRGB (process, 5));
 				if (whetherAdditionalReward) {
