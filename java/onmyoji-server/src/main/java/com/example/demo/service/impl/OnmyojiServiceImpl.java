@@ -374,7 +374,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			log.info ("点击可能存在的返回按钮");
 			imagesBack (return_FH, paramSIFT (process,1,4));
 			log.info ("重新判断是否打开底部菜单");
-			openBottom = ImageService.imagesBack (home_DBCD, paramSIFTNotClick (process, 1, 4));
+			openBottom = ImageService.imagesBack (home_DBCDDK, paramSIFTNotClick (process, 1, 4));
 			sleep (1000);
 		}
 		sleep (2 * 1000L);
