@@ -373,6 +373,8 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			imagesBack (home_DBCD, paramSIFT (process,1,4));
 			log.info ("点击可能存在的返回按钮");
 			imagesBack (return_FH, paramSIFT (process,1,4));
+			log.info ("点击可能存在的下载按钮");
+			imagesBack (home_XZ, paramSIFT (process,1,4));
 			log.info ("重新判断是否打开底部菜单");
 			openBottom = ImageService.imagesBack (home_DBCDDK, paramSIFTNotClick (process, 1, 4));
 			sleep (1000);
@@ -1097,12 +1099,12 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 					quantityOfConsumableMaterials = 2;
 				}
 				if (strengtheningTimes == 2) {
-					log.info ("第二次强化，强化+6,4个四星青吉鬼");
-					quantityOfConsumableMaterials = 4;
+					log.info ("第二次强化，强化+6,5个四星青吉鬼");
+					quantityOfConsumableMaterials = 5;
 				}
 				if (strengtheningTimes == 3) {
-					log.info ("第三次强化，强化+9,6个四星青吉鬼");
-					quantityOfConsumableMaterials = 6;
+					log.info ("第三次强化，强化+9,5个四星青吉鬼");
+					quantityOfConsumableMaterials = 5;
 				}
 				if (strengtheningTimes == 4) {
 					log.info ("第四次强化，强化+12,7个四星青吉鬼");
@@ -1114,23 +1116,30 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				}
 				log.info ("第{}次,点击{}个四星青吉鬼", strengtheningTimes, quantityOfConsumableMaterials);
 				for (int j = 1; j <= quantityOfConsumableMaterials; j++) {
-					imagesBack (arrange_SXQJG, paramSIFT (process));
+					log.info ("第{}个青吉鬼",j);
+				     boolean b=imagesBack (arrange_SXQJG, paramSIFT (process));
+					 if(!b){
+						 log.info ("本次点击不成功，可能有悬赏封印，等待10秒后重新点击");
+						 Thread.sleep (10*1000);
+						 imagesBack (arrange_SXQJG, paramSIFT (process));
+					 }
 					sleep (1000);
 				}
 				log.info ("御魂强化");
 				imagesBack (arrange_QH, paramSIFT (process));
 				log.info ("等级提升");
-				levelPromotion = imagesBack (arrange_DJTS, paramSIFTNotClick (process, 5));
-				while (!levelPromotion) {
-					imagesBack (arrange_QD, paramSIFT (process));
+				levelPromotion = imagesBack (arrange_DJTS, paramSIFTNotClick (process, 5,5));
+				if (!levelPromotion) {
+					log.info ("点击第一次可能存在的确定按钮");
+					imagesBack (arrange_QD, paramSIFT (process,1,5));
 					sleep (1000);
-					levelPromotion = imagesBack (arrange_DJTS, paramSIFTNotClick (process, 5));
+					imagesBack (arrange_DJTS, paramSIFTNotClick (process, 1,5));
 				}
 				sleep (1000);
 				log.info ("****开始判断御魂强化结果");
 				soulSubduingEnhancementAttribute = soulLevelEnhancementRecognition (process);
 				if (soulSubduingEnhancementAttribute == null) {
-					log.info ("未找到御魂强化属性，程序退出");
+					log.info ("未找到御魂强化属性,重新判断");
 					System.exit (0);
 				}
 				log.info ("御魂强化属性为{}", soulSubduingEnhancementAttribute);
