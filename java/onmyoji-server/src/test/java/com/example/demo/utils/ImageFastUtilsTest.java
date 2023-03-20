@@ -42,6 +42,8 @@ import static com.example.demo.utils.ImagesOpenCVSIFTUtils.goodMatchList;
 @SpringBootTest
 @Log4j2
 public class ImageFastUtilsTest {
+	
+	
 	/***
 	 * @description: 测试算法 多次执行速度
 	 * @return: void
@@ -108,7 +110,7 @@ public class ImageFastUtilsTest {
 		log.info (System.currentTimeMillis () - startTime);
 		sift.detect (originalImage, originalKeyPoints);
 		sift.compute (originalImage, originalKeyPoints, resO);
-		Mat mat1 =new Mat ();
+		Mat mat1 = new Mat ();
 		Features2d.drawKeypoints (originalImage, originalKeyPoints, mat1, new Scalar (0, 0, 255),
 		                          Features2d.DrawMatchesFlags_DRAW_RICH_KEYPOINTS);
 		Imgcodecs.imwrite ("D:\\mat1.jpg", mat1);
@@ -121,13 +123,13 @@ public class ImageFastUtilsTest {
 			sift.detect (templateImage, templateKeyPoints);
 			sift.compute (templateImage, templateKeyPoints, resT);
 			DescriptorMatcher descriptorMatcher = DescriptorMatcher.create (DescriptorMatcher.FLANNBASED);
-			resO.convertTo (resO,CvType.CV_32F,1/255.0);
-			resT.convertTo (resT,CvType.CV_32F, 1/255.0);
+			resO.convertTo (resO, CvType.CV_32F, 1 / 255.0);
+			resT.convertTo (resT, CvType.CV_32F, 1 / 255.0);
 			////knnMatch方法的作用就是在给定特征描述集合中寻找最佳匹配
 			////使用KNN-matching算法，令K=2，则每个match得到两个最接近的descriptor，然后计算最接近距离和次接近距离之间的比值，当比值大于既定值时，才作为最终match。
 			descriptorMatcher.knnMatch (resT, resO, matches, 2);
 			//System.out.println ("计算匹配结果");
-			goodMatchList (matches, goodMatchesList,0.7);
+			goodMatchList (matches, goodMatchesList, 0.7);
 			matchesPointCount = goodMatchesList.size ();
 			//当匹配后的特征点大于等于 4 个，则认为模板图在原图中，该值可以自行调整
 			log.info ("{} {},特征点:{},预计特征点{}", imagesDatum.getImageNumber (),
@@ -266,13 +268,13 @@ public class ImageFastUtilsTest {
 			Core.normalize (g_result, g_result, 0, 1, Core.NORM_MINMAX, -1, new Mat ());
 			Core.MinMaxLocResult core_result = Core.minMaxLoc (g_result);
 			Point matchLocation = core_result.minLoc; // 此处使用maxLoc还是minLoc取决于使用的匹配算法
-			log.info ("匹配系数{}",core_result.minVal);
+			log.info ("匹配系数{}", core_result.minVal);
 			//将匹配系数填入结果集
 			if (core_result.minVal > 0) {
 				doubleList.add (core_result.minVal);
 			}
 			//判断匹配系数大于预期，则返回坐标
-			if (core_result.minVal <= 2E-11 ) {
+			if (core_result.minVal <= 2E-11) {
 				if (true) {
 					log.info ("打印图片");
 					Imgproc.rectangle (g_src, matchLocation,
@@ -316,6 +318,78 @@ public class ImageFastUtilsTest {
 		}
 		log.info ("测试结束");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
+	}
+	
+	@Test
+	void test3 () throws IOException, AWTException {
+		log.info ("测试开始");
+		System.setProperty ("java.awt.headless", "false");
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		findORBFeatures ("D:/a.jpg", "D:/b.png");
+	}
+	
+	public static void findORBFeatures (String image1Path, String image2Path) {
+		// 加载图像
+		Mat img1 = Imgcodecs.imread(image1Path, Imgcodecs.IMREAD_GRAYSCALE);
+		Mat img2 = Imgcodecs.imread(image2Path, Imgcodecs.IMREAD_GRAYSCALE);
+		
+		// 初始化ORB检测器
+		ORB detector = ORB.create();
+		
+		// 检测图像1和2的ORB特征并计算描述符
+		MatOfKeyPoint keypoints1 = new MatOfKeyPoint();
+		Mat descriptors1 = new Mat();
+		detector.detectAndCompute(img1, new Mat(), keypoints1, descriptors1);
+		
+		MatOfKeyPoint keypoints2 = new MatOfKeyPoint();
+		Mat descriptors2 = new Mat();
+		detector.detectAndCompute(img2, new Mat(), keypoints2, descriptors2);
+		
+		// 在图像1和2之间匹配描述符
+		DescriptorMatcher matcher = DescriptorMatcher.create(DescriptorMatcher.BRUTEFORCE_HAMMING);
+		List<MatOfDMatch> matches = new ArrayList<>();
+		matcher.knnMatch(descriptors1, descriptors2, matches, 2);
+		
+		// 通过比值测试筛选匹配项
+		float ratioThresh = 0.7f;
+		List<DMatch> goodMatchesList = new ArrayList<>();
+		for (int i = 0; i < matches.size(); i++) {
+			MatOfDMatch matofDMatch = matches.get(i);
+			DMatch[] dMatchArray = matofDMatch.toArray();
+			DMatch m1 = dMatchArray[0];
+			DMatch m2 = dMatchArray[1];
+			if (m1.distance < ratioThresh * m2.distance) {
+				goodMatchesList.add(m1);
+			}
+		}
+		MatOfDMatch goodMatches = new MatOfDMatch();
+		goodMatches.fromList(goodMatchesList);
+		
+		// 找到最佳匹配的特征点对应的区域
+		double maxDist = 0.0;
+		int maxIdx = -1;
+		for (int i = 0; i < goodMatches.rows(); i++) {
+			double dist = goodMatches.toArray()[i].distance;
+			if (dist > maxDist) {
+				maxDist = dist;
+				maxIdx = i;
+			}
+		}
+		Point pt1 = keypoints1.toArray()[goodMatches.toArray()[maxIdx].queryIdx].pt;
+		Point pt2 = keypoints2.toArray()[goodMatches.toArray()[maxIdx].trainIdx].pt;
+		
+		// 计算匹配区域
+		int x = (int) Math.max(pt1.x - img1.cols() / 2, 0);
+		int y = (int) Math.max(pt1.y - img1.rows() / 2, 0);
+		int w = (int) Math.min(img1.cols(), img2.cols() - x);
+		int h = (int) Math.min(img1.rows(), img2.rows() - y);
+		
+		// 绘制匹配区域
+		Mat imgMatches = new Mat();
+		Imgproc.cvtColor(img1, imgMatches, Imgproc.COLOR_GRAY2BGR);
+		Imgproc.rectangle(imgMatches, new Point(x, y), new Point(x + w, y + h), new Scalar(0, 255, 0), 2);
+		Imgcodecs.imwrite ("D:\\match.jpg", imgMatches);
+		
 	}
 	
 }

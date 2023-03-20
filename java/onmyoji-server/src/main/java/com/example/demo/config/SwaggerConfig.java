@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
-import org.springframework.core.env.Profiles;
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -33,11 +32,11 @@ public class SwaggerConfig {
 	@Bean //等价于Spring中的bean标签用于注册bean对象的，内部有一些初始化、销毁的属性
 	public Docket docket (Environment environment) {
 		//如果在dev环境下（开发环境）就开启Swagger
-		boolean isDev = environment.acceptsProfiles (Profiles.of ("dev"));
+		//boolean isDev = environment.acceptsProfiles (Profiles.of ("dev"));
 		return new Docket (DocumentationType.SWAGGER_2)
 				.apiInfo (apiInfo ())
 				.groupName ("默认接口")
-				.enable (isDev)
+				.enable (true)
 				.select ()
 				.apis (RequestHandlerSelectors.basePackage ("com.example.demo.controller"))
 				.paths (PathSelectors.any ())

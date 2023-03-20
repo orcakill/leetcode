@@ -823,11 +823,8 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				imagesBack (soul_CWJL, paramRGB (process, 5));
 				log.info ("判断是否没退出挑战成功");
 				imagesBack (soul_TCTZ, paramRGB (process, 5));
-				b1 = imagesBack (fightType, paramSIFTNotClick (process, 5));
-				if (b1) {
-					log.info ("再次点击挑战");
-					imagesBack (fightType, paramSIFT (process, 5));
-				}
+				log.info ("重新点击调整");
+				b1=imagesBack (fightType, paramSIFT (process, 5));
 			}
 			log.info ("第{}次挑战中,等待挑战完成", (i + 1));
 			fightEnd (process, begin_time, 1, 2);
@@ -1099,11 +1096,11 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 					quantityOfConsumableMaterials = 2;
 				}
 				if (strengtheningTimes == 2) {
-					log.info ("第二次强化，强化+6,5个四星青吉鬼");
-					quantityOfConsumableMaterials = 5;
+					log.info ("第二次强化，强化+6,4个四星青吉鬼");
+					quantityOfConsumableMaterials = 4;
 				}
 				if (strengtheningTimes == 3) {
-					log.info ("第三次强化，强化+9,5个四星青吉鬼");
+					log.info ("第三次强化，强化+9,6个四星青吉鬼");
 					quantityOfConsumableMaterials = 5;
 				}
 				if (strengtheningTimes == 4) {
@@ -1187,10 +1184,9 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 							}
 							else {
 								log.info ("强化未满级，进入下一轮");
+								log.info ("御魂强化次数+1");
+								strengtheningTimes++;
 							}
-							log.info ("御魂强化次数+1");
-							strengtheningTimes++;
-							
 						}
 						else {
 							log.info ("御魂强化属性{}，御魂上次强化属性{}", soulSubduingEnhancementAttribute,
