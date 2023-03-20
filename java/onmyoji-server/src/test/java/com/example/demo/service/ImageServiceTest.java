@@ -29,8 +29,7 @@ class ImageServiceTest {
 		System.setProperty ("java.awt.headless", "false");
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		String process="夜神模拟器";
-		log.info ("未打开底部菜单栏，点击打开");
-		imagesBack (home_DBCD, paramSIFT (process,1,4));
+		imagesBack (arrange_SXQJG, paramSIFT (process));
 		log.info ("测试结束");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}

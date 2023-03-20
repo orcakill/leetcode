@@ -12,6 +12,7 @@ public class CommVar {
 	public static final String comm_QR = "通用/确认";
 	public static final String home_DBCD = "首页/底部菜单";
 	public static final String home_DBCDDK = "首页/底部菜单打开";
+	public static final String home_XZ = "首页/下载";
 	public static final String home_TS = "首页/探索";
 	public static final String home_TXYHZX = "首页/头像用户中心";
 	public static final String home_YH_NJZR = "首页/用户/逆戟之刃";

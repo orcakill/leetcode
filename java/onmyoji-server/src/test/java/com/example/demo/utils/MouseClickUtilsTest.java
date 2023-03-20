@@ -20,7 +20,7 @@ import java.util.List;
 @Log4j2
 class MouseClickUtilsTest {
 	@Test
-	void mouseTest () throws InterruptedException, AWTException {
+	void mouseTest1 () throws InterruptedException, AWTException {
 		long startTime = System.currentTimeMillis ();
 		log.info ("测试开始");
 		System.setProperty ("java.awt.headless", "false");
@@ -38,6 +38,17 @@ class MouseClickUtilsTest {
 			pictureIdentifyWorkPOS.add (pictureIdentifyWorkPO);
 			MouseClickUtils.mouseClickBack (pictureIdentifyWorkPOS, "夜神模拟器", true);
 		}
+		log.info ("测试结束");
+		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
+	}
+	
+	@Test
+	void mouseTest2 () throws InterruptedException, AWTException {
+		long startTime = System.currentTimeMillis ();
+		log.info ("测试开始");
+		System.setProperty ("java.awt.headless", "false");
+		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
+		MouseClickUtils.mouseClickBack (new PictureIdentifyWorkPO (435,440),"夜神模拟器");
 		log.info ("测试结束");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}

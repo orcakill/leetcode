@@ -195,8 +195,6 @@ public class ImagesOpenCVSIFTUtils {
 							}
 							log.info ("目标坐标为:({}，{})", pictureIdentifyWorkPO.getX (),
 							          pictureIdentifyWorkPO.getY ());
-							log.info ("已识别的序号{},图片:{}", imagesDatum.getImageNumber (),
-							          imagesDatum.getImageName ());
 							mouseMessages.add (pictureIdentifyWorkPO);
 							if(mouseMessages.size ()>1){
 								return  mouseMessages;
