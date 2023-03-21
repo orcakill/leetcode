@@ -17,7 +17,6 @@ import org.opencv.imgproc.Imgproc;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -100,9 +99,10 @@ public class ImagesOpenCVSIFTUtils {
 		Mat originalImage = getMat (originalImageB);
 		MatOfKeyPoint templateKeyPoints = new MatOfKeyPoint ();
 		MatOfKeyPoint originalKeyPoints = new MatOfKeyPoint ();
-		sift.detect (originalImage, originalKeyPoints);
-		sift.compute (originalImage, originalKeyPoints, resO);
-		resO.convertTo (resO,CvType.CV_32F,1/255.0);
+		//sift.detect (originalImage, originalKeyPoints);
+		//sift.compute (originalImage, originalKeyPoints, resO);
+		sift.detectAndCompute(originalImage, new Mat(), originalKeyPoints, resO);
+		//resO.convertTo (resO,CvType.CV_32F,1/255.0);
 		try {
 			for (PictureCollectionPO imagesDatum : templateImageB) {
 				try {
@@ -110,9 +110,10 @@ public class ImagesOpenCVSIFTUtils {
 					LinkedList<DMatch> goodMatchesList = new LinkedList<> ();
 					templateImage = getMat (imagesDatum.getImage ());
 					//获取模板图的特征点
-					sift.detect (templateImage, templateKeyPoints);
-					sift.compute (templateImage, templateKeyPoints, resT);
-					resT.convertTo (resT,CvType.CV_32F, 1/255.0);
+					//sift.detect (templateImage, templateKeyPoints);
+					//sift.compute (templateImage, templateKeyPoints, resT);
+					sift.detectAndCompute(templateImage, new Mat(), templateKeyPoints, resT);
+					//resT.convertTo (resT,CvType.CV_32F, 1/255.0);
 					DescriptorMatcher descriptorMatcher = DescriptorMatcher.create (
 							DescriptorMatcher.FLANNBASED);
 					//knnMatch方法的作用就是在给定特征描述集合中寻找最佳匹配
@@ -180,17 +181,6 @@ public class ImagesOpenCVSIFTUtils {
 								                        originalKeyPoints, goodMatches, matchOutput,
 								                        new Scalar (0, 255, 0), new Scalar (255, 0, 0),
 								                        new MatOfByte (), 2);
-								Features2d.drawMatches (templateImage, templateKeyPoints, originalImage,
-								                        originalKeyPoints, goodMatches, matchOutput,
-								                        new Scalar (0, 255, 0), new Scalar (255, 0, 0),
-								                        new MatOfByte (), 2);
-								File file_Match = new File ("D:\\match.jpg");
-								if (file_Match.exists ()) {
-									boolean deleteNot = file_Match.delete ();
-									if (deleteNot) {
-										log.info ("先删除");
-									}
-								}
 								Imgcodecs.imwrite ("D:\\match.jpg", originalImage);
 							}
 							log.info ("目标坐标为:({}，{})", pictureIdentifyWorkPO.getX (),
