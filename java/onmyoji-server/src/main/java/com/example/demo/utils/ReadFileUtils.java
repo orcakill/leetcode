@@ -2,6 +2,7 @@ package com.example.demo.utils;
 
 import com.example.demo.model.entity.PictureCollectionPO;
 import lombok.extern.log4j.Log4j2;
+import org.opencv.features2d.SIFT;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -88,6 +89,8 @@ public class ReadFileUtils {
 	public static List<PictureCollectionPO> readPictureCollectionPOList (String path, String folder,
 	                                                                     String identificationAlgorithmType) {
 		try {
+			//即当detector 又当Detector
+			SIFT sift = SIFT.create ();
 			// 判断当前目录下的指定文件夹是否存在
 			File Folder = new File (path + folder);
 			if (Folder.isDirectory ()) {

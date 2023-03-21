@@ -29,4 +29,8 @@ public class PictureCollectionPO {
 		Image = image;
 		this.twoArray = twoArray;
 	}
+	
+	public PictureCollectionPO () {
+	
+	}
 }
