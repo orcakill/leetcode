@@ -321,7 +321,7 @@ public class ImageFastUtilsTest {
 	}
 	
 	@Test
-	void test3 () throws IOException, AWTException {
+	void test3 () throws AWTException {
 		log.info ("测试开始");
 		System.setProperty ("java.awt.headless", "false");
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
