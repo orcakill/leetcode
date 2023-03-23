@@ -813,7 +813,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		log.info ("战斗开始");
 		boolean b1;
 		//开始挑战,处理剩余次数的御魂
-		for (int i = 0; soulNumber > 0; i++) {
+		for (int i = 1; soulNumber > 0; i++) {
 			long a = System.currentTimeMillis ();//获取当前系统时间(毫秒)
 			log.info ("准备开始挑战");
 			sleep (1000);
@@ -826,10 +826,17 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				log.info ("重新点击调整");
 				b1=imagesBack (fightType, paramSIFT (process, 5));
 			}
-			log.info ("第{}次挑战中,等待挑战完成", (i + 1));
+			if(fightType.equals (soul_TZLX_BQDSTZ)&&i==1){
+	            Thread.sleep (2000);
+				log.info ("喂食小三角");
+				imagesBack (soul_WSXSJ,paramSIFT (process,1,4));
+				log.info ("喂食");
+				imagesBack (soul_WS,paramSIFT (process,1,4));
+			}
+			log.info ("第{}次挑战中,等待挑战完成", i);
 			fightEnd (process, begin_time, 1, 2);
 			soulNumber--;
-			log.info ("第{}次挑战完成，剩余{}次", i + 1, soulNumber);
+			log.info ("第{}次挑战完成，剩余{}次", i, soulNumber);
 			log.info ("该次挑战使用时间为{}秒", (System.currentTimeMillis () - a) / 1000);
 		}
 		log.info ("判断当前是否可挑战");
