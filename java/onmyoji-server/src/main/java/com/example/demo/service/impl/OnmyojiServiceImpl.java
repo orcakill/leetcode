@@ -721,7 +721,6 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				log.info ("退出加成页面");
 			}
 			if (soulType.equals (project_HSY)) {
-				
 				log.info ("选择魂十一");
 				b1 = imagesBack (soul_CS_HSY, paramSIFTNotClick (process, 30));
 				if (!b1) {
