@@ -930,10 +930,10 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		imagesBack (contend_DJTB, paramSIFT (process));
 		for (int i = 1; i <= num; i++) {
 			log.info ("准备挑战");
-			boolean booleanYCQK = imagesBack (contend_KSTZ, paramSIFT (process, 1));
+			boolean booleanYCQK = imagesBack (contend_KSTZ, paramSIFT (process, 1,4));
 			while (!booleanYCQK) {
 				log.info ("判断是否段位晋升");
-				boolean b2 = imagesBack (contend_DWJS, paramSIFT (process, 1));
+				boolean b2 = imagesBack (contend_DWJS, paramSIFT (process, 1,4));
 				if (!b2) {
 					log.info ("没有段位晋升");
 				}
@@ -948,10 +948,10 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				else {
 					log.info ("存在额外奖励");
 				}
-				booleanYCQK = imagesBack (contend_KSTZ, paramSIFT (process, 1));
+				booleanYCQK = imagesBack (contend_KSTZ, paramSIFT (process, 1,4));
 			}
 			log.info ("进入挑战，准备自动选择");
-			imagesBack (contend_ZDXZ, paramSIFT (process, 1));
+			imagesBack (contend_ZDXZ, paramSIFT (process, 1,4));
 			log.info ("自动选择完成，准备自动战斗");
 			sleep (2000);
 			log.info ("等待选将");
