@@ -5,16 +5,16 @@
 <mapper namespace="com.example.demo.mapper.PictureLogMapper">
 
     <resultMap id="BaseResultMap" type="com.example.demo.model.entity.PictureLogPO">
-            <id property="logId" column="log_id" jdbcType="VARCHAR"/>
-            <result property="logType" column="log_type" jdbcType="VARCHAR"/>
-            <result property="logFolder" column="log_folder" jdbcType="VARCHAR"/>
-            <result property="logPath" column="log_path" jdbcType="VARCHAR"/>
-            <result property="logHostname" column="log_hostname" jdbcType="VARCHAR"/>
-            <result property="logIp" column="log_ip" jdbcType="VARCHAR"/>
-            <result property="createUser" column="create_user" jdbcType="VARCHAR"/>
-            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
-            <result property="updateUser" column="update_user" jdbcType="VARCHAR"/>
-            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <id property="logId" column="log_id" jdbcType="VARCHAR"/>
+        <result property="logType" column="log_type" jdbcType="VARCHAR"/>
+        <result property="logFolder" column="log_folder" jdbcType="VARCHAR"/>
+        <result property="logPath" column="log_path" jdbcType="VARCHAR"/>
+        <result property="logHostname" column="log_hostname" jdbcType="VARCHAR"/>
+        <result property="logIp" column="log_ip" jdbcType="VARCHAR"/>
+        <result property="createUser" column="create_user" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateUser" column="update_user" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -31,35 +31,44 @@
     </sql>
     <select id="findList" resultMap="BaseResultMap">
         select
-        <include refid="Base_Column_List" />
-         from picture_log
-         <where>
-             <if test="map.logId != null and map.logId.size() > 0 and map.id!=''">
-                 and log_id in
-                 <foreach item="map.logId" collection="map.logId" separator="," open="(" close=")" index="index">
-                     #{map.logId}
-                 </foreach>
-             </if>
-             <if test="map.logType != null and map.logType.size() > 0 and map.logType!=''">
-                 and log_Type in
-                 <foreach item="map.logType" collection="map.logType" separator="," open="(" close=")" index="index">
-                     #{map.logType}
-                 </foreach>
-             </if>
-             <if test="map.logFolder != null and map.logFolder.size() > 0 and map.logFolder!=''">
-                 and log_folder in
-                 <foreach item="map.logFolder" collection="map.logFolder" separator="," open="(" close=")" index="index">
-                     #{map.logFolder}
-                 </foreach>
-             </if>
-             <if test="map.createStartTime != null and  map.map.createStartTime!=''">
-                 and create_time >=#{map.createStartTime }
-             </if>
-             <if test="map.createEndTime   != null and  map.map.createEndTime!=''">
-                 and create_time &lt;=#{map.createEndTime}
-             </if>
-         </where>
-         order by create_time
-
+        <include refid="Base_Column_List"/>
+        from picture_log
+        <where>
+            <if test="map!= null">
+                <if test="map.logId != null">
+                    <if test="map.logId.size() > 0">
+                        and log_id in
+                        <foreach item="map.logId" collection="map.logId" separator="," open="(" close=")" index="index">
+                            #{map.logId}
+                        </foreach>
+                    </if>
+                </if>
+                <if test="map.logType != null">
+                    <if test="map.logType.size() > 0">
+                        and log_Type in
+                        <foreach item="map.logType" collection="map.logType" separator="," open="(" close=")"
+                                 index="index">
+                            #{map.logType}
+                        </foreach>
+                    </if>
+                </if>
+                <if test="map.logFolder != null">
+                    <if test="and map.logFolder.size() > 0">
+                        and log_folder in
+                        <foreach item="map.logFolder" collection="map.logFolder" separator="," open="(" close=")"
+                                 index="index">
+                            #{map.logFolder}
+                        </foreach>
+                    </if>
+                </if>
+                <if test="map.createStartTime != null">
+                        and create_time >=#{map.createStartTime}
+                </if>
+                <if test="map.createEndTime!= null">
+                        and create_time &lt;=#{map.createEndTime}
+                </if>
+            </if>
+        </where>
+        order by create_time
     </select>
 </mapper>

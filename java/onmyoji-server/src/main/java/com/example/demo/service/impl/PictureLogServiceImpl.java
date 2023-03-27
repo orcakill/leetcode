@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.mapper.PictureLogMapper;
 import com.example.demo.model.entity.PictureLogPO;
 import com.example.demo.service.PictureLogService;
+import lombok.SneakyThrows;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -18,6 +20,7 @@ import java.util.Objects;
 * @createDate 2023-03-24 10:02:55
 */
 @Service
+@Log4j2
 public class PictureLogServiceImpl extends ServiceImpl<PictureLogMapper, PictureLogPO>
     implements PictureLogService{
 	private final PictureLogMapper pictureLogMapper;
@@ -33,10 +36,13 @@ public class PictureLogServiceImpl extends ServiceImpl<PictureLogMapper, Picture
 	 * @author: orcakill
 	 * @date: 2023/3/27 8:58
 	 */
+	@SneakyThrows
 	@Override
 	public boolean save (PictureLogPO pictureLogPO) {
 		Date date = new Date();
 		date.setTime(System.currentTimeMillis());
+		String ip=java.net.InetAddress.getLocalHost().getHostName ();
+		String hostName=java.net.InetAddress.getLocalHost().getHostAddress();
 		PictureLogPO pictureLogPO1 = pictureLogMapper.selectById (pictureLogPO.getLogId ());
 		//    插入
 		if (Objects.isNull (pictureLogPO1)) {
@@ -45,11 +51,17 @@ public class PictureLogServiceImpl extends ServiceImpl<PictureLogMapper, Picture
 				pictureLogPO.setLogId (id);
 			}
 			pictureLogPO.setCreateTime(date);
+			pictureLogPO.setLogIp (ip);
+			pictureLogPO.setLogHostname (hostName);
+			pictureLogPO.setCreateUser ("逆戟之刃");
 			pictureLogMapper.insert(pictureLogPO);
 		}
 		//   更新
 		else{
 			pictureLogPO.setUpdateTime(date);
+			pictureLogPO.setLogIp (ip);
+			pictureLogPO.setLogHostname (hostName);
+			pictureLogPO.setUpdateUser ("逆戟之刃");
 			pictureLogMapper.updateById(pictureLogPO);
 		}
 		return  true;
@@ -64,7 +76,19 @@ public class PictureLogServiceImpl extends ServiceImpl<PictureLogMapper, Picture
 	 */
 	@Override
 	public List<PictureLogPO> findList (HashMap<?, ?> map) {
-		return null;
+		return pictureLogMapper.findList (map);
+	}
+	
+	/***
+	 * @description: 图片日志删除接口
+	 * @param logId  主键
+	 * @return: boolean
+	 * @author: orcakill
+	 * @date: 2023/3/27 8:58
+	 */
+	@Override
+	public void deleteById (String logId) {
+		pictureLogMapper.deleteById (logId);
 	}
 }
 

@@ -3,6 +3,7 @@ package com.example.demo.mapper;
 import com.example.demo.model.entity.PictureLogPO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +24,7 @@ public interface PictureLogMapper extends BaseMapper<PictureLogPO> {
 	 * @author: orcakill
 	 * @date: 2023/3/27 8:58
 	 */
-	List<PictureLogPO> findList (HashMap<?,?> map);
+	List<PictureLogPO> findList (@Param ("map") HashMap<?,?> map);
 }
 
 
