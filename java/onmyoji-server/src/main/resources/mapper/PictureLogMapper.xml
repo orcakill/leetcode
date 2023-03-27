@@ -18,9 +18,48 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        log_id,log_type,log_folder,
-        log_path,log_hostname,log_ip,
-        create_user,create_time,update_user,
+        log_id,
+        log_type,
+        log_folder,
+        log_path,
+        log_hostname,
+        log_ip,
+        create_user,
+        create_time,
+        update_user,
         update_time
     </sql>
+    <select id="findList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+         from picture_log
+         <where>
+             <if test="map.logId != null and map.logId.size() > 0 and map.id!=''">
+                 and log_id in
+                 <foreach item="map.logId" collection="map.logId" separator="," open="(" close=")" index="index">
+                     #{map.logId}
+                 </foreach>
+             </if>
+             <if test="map.logType != null and map.logType.size() > 0 and map.logType!=''">
+                 and log_Type in
+                 <foreach item="map.logType" collection="map.logType" separator="," open="(" close=")" index="index">
+                     #{map.logType}
+                 </foreach>
+             </if>
+             <if test="map.logFolder != null and map.logFolder.size() > 0 and map.logFolder!=''">
+                 and log_folder in
+                 <foreach item="map.logFolder" collection="map.logFolder" separator="," open="(" close=")" index="index">
+                     #{map.logFolder}
+                 </foreach>
+             </if>
+             <if test="map.createStartTime != null and  map.map.createStartTime!=''">
+                 and create_time >=#{map.createStartTime }
+             </if>
+             <if test="map.createEndTime   != null and  map.map.createEndTime!=''">
+                 and create_time &lt;=#{map.createEndTime}
+             </if>
+         </where>
+         order by create_time
+
+    </select>
 </mapper>
