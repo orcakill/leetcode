@@ -29,4 +29,13 @@ public interface PictureLogService extends IService<PictureLogPO> {
 	 * @date: 2023/3/27 8:58
 	 */
 	List<PictureLogPO> findList (HashMap<?,?> map);
+	
+	/***
+	 * @description: 图片日志删除接口
+	 * @param logId  主键
+	 * @return: boolean
+	 * @author: orcakill
+	 * @date: 2023/3/27 8:58
+	 */
+	void deleteById (String logId);
 }
