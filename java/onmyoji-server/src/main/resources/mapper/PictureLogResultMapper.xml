@@ -15,8 +15,49 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        result_id,log_id,recognize_result,
-        create_user,create_time,update_user,
-        update_time
+       <if test="true">
+           result_id,log_id,recognize_result,
+           create_user,create_time,update_user,
+           update_time
+       </if>
     </sql>
+    <select id="findList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+            from picture_log_result
+        <where>
+            <if test="map!=null">
+                <if test="map.resultId != null">
+                    <if test="map.resultId.size() > 0">
+                        and result_id in
+                        <foreach item="map.resultId" collection="map.resultId" separator="," open="(" close=")" index="index">
+                            #{map.resultId}
+                        </foreach>
+                    </if>
+                </if>
+                <if test="map.logId != null">
+                    <if test="map.logId.size() > 0">
+                        and log_id in
+                        <foreach item="map.logId" collection="map.logId" separator="," open="(" close=")" index="index">
+                            #{map.logId}
+                        </foreach>
+                    </if>
+                </if>
+                <if test="map.recognizeResult != null">
+                    <if test="map.recognizeResult.size() > 0">
+                        and recognize_resultin
+                        <foreach item="map.recognizeResult" collection="map.recognizeResult" separator="," open="(" close=")" index="index">
+                            #{map.recognizeResult}
+                        </foreach>
+                    </if>
+                </if>
+                <if test="map.createStartTime != null">
+                    and create_time >=#{map.createStartTime}
+                </if>
+                <if test="map.createEndTime!= null">
+                    and create_time &lt;=#{map.createEndTime}
+                </if>
+            </if>
+        </where>
+    </select>
 </mapper>

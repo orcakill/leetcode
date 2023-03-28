@@ -64,7 +64,6 @@ class PictureLogServiceTest {
 		map.put ("createEndTime",date2);
 		pictureLogPOList=pictureLogService.findList (map);
 		log.info ("测试4{}",pictureLogPOList.toString ());
-		
 	}
 	
 	@Test

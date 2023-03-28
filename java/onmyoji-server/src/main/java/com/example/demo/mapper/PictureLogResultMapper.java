@@ -1,7 +1,12 @@
 package com.example.demo.mapper;
 
-import com.example.demo.model.entity.PictureLogResultPO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.demo.model.entity.PictureLogResultPO;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.HashMap;
+import java.util.List;
 
 /**
 * @author Administrator
@@ -9,8 +14,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2023-03-24 17:00:59
 * @Entity com.example.demo.model.entity.PictureLogResultPO
 */
+@Mapper
 public interface PictureLogResultMapper extends BaseMapper<PictureLogResultPO> {
-
+    List<PictureLogResultPO>  findList(@Param ("map")HashMap<?,?> map);
 }
 
 

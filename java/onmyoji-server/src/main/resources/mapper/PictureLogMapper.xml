@@ -18,6 +18,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
+    <if test="true">
         log_id,
         log_type,
         log_folder,
@@ -28,6 +29,7 @@
         create_time,
         update_user,
         update_time
+    </if>
     </sql>
     <select id="findList" resultMap="BaseResultMap">
         select
@@ -62,10 +64,10 @@
                     </if>
                 </if>
                 <if test="map.createStartTime != null">
-                        and create_time >=#{map.createStartTime}
+                    and create_time >=#{map.createStartTime}
                 </if>
                 <if test="map.createEndTime!= null">
-                        and create_time &lt;=#{map.createEndTime}
+                    and create_time &lt;=#{map.createEndTime}
                 </if>
             </if>
         </where>
