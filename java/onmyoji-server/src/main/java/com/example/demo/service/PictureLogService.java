@@ -38,5 +38,4 @@ public interface PictureLogService extends IService<PictureLogPO> {
 	 * @date: 2023/3/27 8:58
 	 */
 	void deleteById (String logId);
-
 }

@@ -45,7 +45,7 @@
                 </if>
                 <if test="map.recognizeResult != null">
                     <if test="map.recognizeResult.size() > 0">
-                        and recognize_result in
+                        and recognize_resultin
                         <foreach item="map.recognizeResult" collection="map.recognizeResult" separator="," open="(" close=")" index="index">
                             #{map.recognizeResult}
                         </foreach>
