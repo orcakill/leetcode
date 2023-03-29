@@ -308,6 +308,8 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			}
 			log.info ("点击可能存在的退出挑战");
 			imagesBack (soul_TCTZ,paramRGB (process,1));
+			log.info ("点击可能存在的确认按钮");
+			imagesBack (explore_QR,paramRGB (process,1));
 			num++;
 			homePageOrNot = imagesBack (home_TS, paramSIFTNotClick (process, 1, 20));
 		}
@@ -1372,12 +1374,12 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				}
 				sleep (1000);
 				log.info ("小怪战斗结束，检查是否出现BOSS");
-				bossState = imagesBack (explore_BOSSZD, paramRGB (process, 1));
+				bossState = imagesBack (explore_BOSSZD, paramSIFT (process, 1,4));
 			}
 			log.info ("小怪战斗结束，boss战");
 			sleep (6000);
 			log.info ("退出挑战");
-			battleResults = imagesBack (explore_TCTZ, paramRGB (process));
+			battleResults = imagesBack (explore_TCTZ, paramRGB (process,20));
 			if (battleResults) {
 				numberOfBattles++;
 			}
