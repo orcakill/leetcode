@@ -18,7 +18,6 @@ public class PictureCollectionPO {
 	private String ImageName; /*图片名称*/
 	
 	private BufferedImage Image; /*图片BufferedImage*/
-	
 	private  int[][]  twoArray;/*图片二维数组*/
 	
 	public PictureCollectionPO (int imageNumber, String imageHome, String imageName, BufferedImage image,
