@@ -1347,7 +1347,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 					else {
 						sleep (5 * 1000);
 						log.info ("退出挑战");
-						battleResults = imagesBack (explore_TCTZ, paramRGB (process, 5));
+						battleResults = imagesBack (explore_TCTZ, paramSIFT (process, 5));
 						if (battleResults) {
 							numberOfBattles++;
 						}
@@ -1372,7 +1372,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				}
 				sleep (1000);
 				log.info ("小怪战斗结束，检查是否出现BOSS");
-				bossState = imagesBack (explore_BOSSZD, paramRGB (process, 1));
+				bossState = imagesBack (explore_BOSSZD, paramSIFT (process, 1));
 			}
 			log.info ("小怪战斗结束，boss战");
 			sleep (6000);
