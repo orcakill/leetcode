@@ -191,5 +191,14 @@ public interface OnmyojiService {
 	 * @date: 2023/3/3 23:49
 	 */
 	void  exploreFast (String process,Integer num) throws IOException, InterruptedException, AWTException;
+	/***
+	 * @description: 地域鬼王
+	 * @param process  进程
+     * @param gameUserId   账号ID
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/3/30 9:24
+	 */
+	void regionalGhostKing(String process,String gameUserId) throws IOException, InterruptedException, AWTException;
 }
 

@@ -307,13 +307,13 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				ImageService.imagesBack (return_FH, paramSIFT (process, 1, 4));
 			}
 			log.info ("点击可能存在的退出挑战");
-			imagesBack (soul_TCTZ,paramRGB (process,1));
+			imagesBack (soul_TCTZ, paramRGB (process, 1));
 			num++;
 			homePageOrNot = imagesBack (home_TS, paramSIFTNotClick (process, 1, 20));
 		}
 		Thread.sleep (2000);
 		log.info ("判断底部菜单是否打开");
-		boolean bottomMenu =imagesBack (home_DBCDDK, paramSIFTNotClick (process, 1, 20));
+		boolean bottomMenu = imagesBack (home_DBCDDK, paramSIFTNotClick (process, 1, 20));
 		if (!bottomMenu) {
 			log.info ("打开底部菜单");
 			ImageService.imagesBack (home_DBCD, paramSIFT (process, 1, 20));
@@ -370,11 +370,11 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		boolean openBottom = ImageService.imagesBack (home_DBCDDK, paramSIFTNotClick (process, 1, 4));
 		while (!openBottom) {
 			log.info ("未打开底部菜单栏，点击打开");
-			imagesBack (home_DBCD, paramSIFT (process,1,4));
+			imagesBack (home_DBCD, paramSIFT (process, 1, 4));
 			log.info ("点击可能存在的返回按钮");
-			imagesBack (return_FH, paramSIFT (process,1,4));
+			imagesBack (return_FH, paramSIFT (process, 1, 4));
 			log.info ("点击可能存在的下载按钮");
-			imagesBack (home_XZ, paramSIFT (process,1,4));
+			imagesBack (home_XZ, paramSIFT (process, 1, 4));
 			log.info ("重新判断是否打开底部菜单");
 			openBottom = ImageService.imagesBack (home_DBCDDK, paramSIFTNotClick (process, 1, 4));
 			sleep (1000);
@@ -604,7 +604,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		log.info ("准备点击角色头像、点击退出挑战、失败、宠物奖励");
 		String thisState = imagesBackList (multipleImagesParams);
 		log.info ("当前{}", thisState);
-		if(thisState==null){
+		if (thisState == null) {
 			log.info ("未找到退出挑战");
 			return false;
 		}
@@ -823,14 +823,14 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				log.info ("判断是否没退出挑战成功");
 				imagesBack (soul_TCTZ, paramRGB (process, 5));
 				log.info ("重新点击调整");
-				b1=imagesBack (fightType, paramSIFT (process, 5));
+				b1 = imagesBack (fightType, paramSIFT (process, 5));
 			}
-			if(fightType.equals (soul_TZLX_BQDSTZ)&&i==1){
-	            Thread.sleep (2000);
+			if (fightType.equals (soul_TZLX_BQDSTZ) && i == 1) {
+				Thread.sleep (2000);
 				log.info ("喂食小三角");
-				imagesBack (soul_WSXSJ,paramSIFT (process,1,4));
+				imagesBack (soul_WSXSJ, paramSIFT (process, 1, 4));
 				log.info ("喂食");
-				imagesBack (soul_WS,paramSIFT (process,1,4));
+				imagesBack (soul_WS, paramSIFT (process, 1, 4));
 			}
 			log.info ("第{}次挑战中,等待挑战完成", i);
 			fightEnd (process, begin_time, 1, 2);
@@ -930,10 +930,10 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		imagesBack (contend_DJTB, paramSIFT (process));
 		for (int i = 1; i <= num; i++) {
 			log.info ("准备挑战");
-			boolean booleanYCQK = imagesBack (contend_KSTZ, paramSIFT (process, 1,4));
+			boolean booleanYCQK = imagesBack (contend_KSTZ, paramSIFT (process, 1, 4));
 			while (!booleanYCQK) {
 				log.info ("判断是否段位晋升");
-				boolean b2 = imagesBack (contend_DWJS, paramSIFT (process, 1,4));
+				boolean b2 = imagesBack (contend_DWJS, paramSIFT (process, 1, 4));
 				if (!b2) {
 					log.info ("没有段位晋升");
 				}
@@ -948,10 +948,10 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				else {
 					log.info ("存在额外奖励");
 				}
-				booleanYCQK = imagesBack (contend_KSTZ, paramSIFT (process, 1,4));
+				booleanYCQK = imagesBack (contend_KSTZ, paramSIFT (process, 1, 4));
 			}
 			log.info ("进入挑战，准备自动选择");
-			imagesBack (contend_ZDXZ, paramSIFT (process, 1,4));
+			imagesBack (contend_ZDXZ, paramSIFT (process, 1, 4));
 			log.info ("自动选择完成，准备自动战斗");
 			sleep (2000);
 			log.info ("等待选将");
@@ -1119,24 +1119,24 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				}
 				log.info ("第{}次,点击{}个四星青吉鬼", strengtheningTimes, quantityOfConsumableMaterials);
 				for (int j = 1; j <= quantityOfConsumableMaterials; j++) {
-					log.info ("第{}个青吉鬼",j);
-				     boolean b=imagesBack (arrange_SXQJG, paramSIFT (process));
-					 if(!b){
-						 log.info ("本次点击不成功，可能有悬赏封印，等待10秒后重新点击");
-						 Thread.sleep (10*1000);
-						 imagesBack (arrange_SXQJG, paramSIFT (process));
-					 }
+					log.info ("第{}个青吉鬼", j);
+					boolean b = imagesBack (arrange_SXQJG, paramSIFT (process));
+					if (!b) {
+						log.info ("本次点击不成功，可能有悬赏封印，等待10秒后重新点击");
+						Thread.sleep (10 * 1000);
+						imagesBack (arrange_SXQJG, paramSIFT (process));
+					}
 					sleep (1000);
 				}
 				log.info ("御魂强化");
 				imagesBack (arrange_QH, paramSIFT (process));
 				log.info ("等级提升");
-				levelPromotion = imagesBack (arrange_DJTS, paramSIFTNotClick (process, 5,5));
+				levelPromotion = imagesBack (arrange_DJTS, paramSIFTNotClick (process, 5, 5));
 				if (!levelPromotion) {
 					log.info ("点击第一次可能存在的确定按钮");
-					imagesBack (arrange_QD, paramSIFT (process,1,5));
+					imagesBack (arrange_QD, paramSIFT (process, 1, 5));
 					sleep (1000);
-					imagesBack (arrange_DJTS, paramSIFTNotClick (process, 1,5));
+					imagesBack (arrange_DJTS, paramSIFTNotClick (process, 1, 5));
 				}
 				sleep (1000);
 				log.info ("****开始判断御魂强化结果");
@@ -1332,7 +1332,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				imagesBack (explore_ZDLH, paramSIFT (process, 1, 4));
 			}
 			log.info ("当前探索中,检查是否有BOSS");
-			bossState = imagesBack (explore_BOSSZD, paramSIFT (process, 1,4));
+			bossState = imagesBack (explore_BOSSZD, paramSIFT (process, 1, 4));
 			while (!bossState) {
 				log.info ("没有BOSS,寻找小怪并点击");
 				littleMonsterState = imagesBack (explore_DTXGZD, paramSIFT (process, 1, 4));
@@ -1372,7 +1372,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				}
 				sleep (1000);
 				log.info ("小怪战斗结束，检查是否出现BOSS");
-				bossState = imagesBack (explore_BOSSZD, paramSIFT (process, 1));
+				bossState = imagesBack (explore_BOSSZD, paramSIFT (process, 1, 4));
 			}
 			log.info ("小怪战斗结束，boss战");
 			sleep (6000);
@@ -1396,6 +1396,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		while (!exploreState) {
 			log.info ("未退出探索，点击返回");
 			imagesBack (return_FH, paramRGB (process, 1));
+			Thread.sleep (1000);
 			log.info ("确认");
 			imagesBack (explore_QR, paramRGB (process, 1));
 			exploreState = imagesBack (explore_ZHYZ, paramRGBNotClick (process, 1));
@@ -1453,10 +1454,45 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			returnExplore (process);
 		}
 		long hostTime = System.currentTimeMillis () - start_time;
-		if(numberOfBattles>0){
+		if (numberOfBattles > 0) {
 			log.info ("************当前轮次,平均每次战斗用时{}秒", hostTime / numberOfBattles / 1000);
 		}
 		returnHome (process);
+	}
+	
+	/***
+	 * @description: 地域鬼王
+	 * @param process  进程
+	 * @param gameUserId   账号ID
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/3/30 9:24
+	 */
+	@Override
+	public void regionalGhostKing (String process, String gameUserId)
+			throws IOException, InterruptedException, AWTException {
+		log.info ("进入探索");
+		imagesBack (explore_TS,paramSIFT (process,1,4));
+		log.info ("进入地域鬼王");
+		log.info ("点击左侧，判断是否还有未挑战");
+		log.info ("判断是否有已挑战-鸟巢");
+		log.info ("判断是否有已挑战-黄鹤楼");
+		log.info ("判断是否有已挑战-少林寺藏经阁");
+		log.info ("判断是否有已挑战-丹霞山");
+		log.info ("总结当前状态，是否有未挑战，已挑战那些");
+		log.info ("点击筛选");
+		log.info ("判断是否有筛选-鸟巢");
+		log.info ("判断是否有筛选-黄鹤楼");
+		log.info ("判断是否有筛选-少林寺藏经阁");
+		log.info ("判断是否有筛选-丹霞山");
+		log.info ("点击未挑战");
+		log.info ("根据账号类型，大号挑战极地域鬼王");
+		log.info ("根据账号类型，判断是否挑战普通鬼王，需要将等级置为1级");
+		log.info ("挑战");
+		log.info ("退出挑战");
+		log.info ("退出鬼王页面，重新判断当前状态");
+		log.info ("已完成地域鬼王挑战，返回首页");
+		
 	}
 	
 }
