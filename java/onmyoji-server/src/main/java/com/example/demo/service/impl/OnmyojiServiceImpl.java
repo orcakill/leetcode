@@ -1392,14 +1392,15 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 	
 	private void returnExplore (String process) throws IOException, InterruptedException, AWTException {
 		boolean exploreState;
-		exploreState = imagesBack (explore_ZHYZ, paramRGBNotClick (process, 1));
+		exploreState = imagesBack (explore_ZHYZ, paramSIFTNotClick (process, 1,4));
 		while (!exploreState) {
 			log.info ("未退出探索，点击返回");
 			imagesBack (return_FH, paramRGB (process, 1));
 			Thread.sleep (1000);
 			log.info ("确认");
 			imagesBack (explore_QR, paramRGB (process, 1));
-			exploreState = imagesBack (explore_ZHYZ, paramRGBNotClick (process, 1));
+			log.info ("判断是否是探索界面");
+			exploreState = imagesBack (explore_ZHYZ, paramSIFTNotClick (process, 1,4));
 		}
 		log.info ("当前已是探索界面");
 	}
