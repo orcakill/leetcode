@@ -29,7 +29,7 @@ class ImageServiceTest {
 		System.setProperty ("java.awt.headless", "false");
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		String process="夜神模拟器";
-		imagesBack (arrange_SXQJG, paramSIFT (process));
+		imagesBack (explore_QR, paramSIFT (process));
 		log.info ("测试结束");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}
