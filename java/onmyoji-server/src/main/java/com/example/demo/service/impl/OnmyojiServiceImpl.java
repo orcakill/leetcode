@@ -308,6 +308,8 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			}
 			log.info ("点击可能存在的退出挑战");
 			imagesBack (soul_TCTZ, paramRGB (process, 1));
+			log.info ("点击可能存在的确定");
+			imagesBack (explore_QR, paramSIFT (process, 1,4));
 			num++;
 			homePageOrNot = imagesBack (home_TS, paramSIFTNotClick (process, 1, 20));
 		}
@@ -1356,19 +1358,24 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				}
 				if (!littleMonsterState) {
 					numberOfMoves++;
-					log.info ("没找到小怪，移动位置,每10次改变移动方向，当前移动次数{},余数{}", numberOfMoves,
-					          Math.ceil (numberOfMoves / 10.0) % 2);
-					if (Math.ceil (numberOfMoves / 10.0) % 2 == 1) {
-						pictureIdentifyWorkPO.setX (windows_width / 8 * 7);
-						pictureIdentifyWorkPO.setY (windows_height / 10 * 7);
+					if(numberOfMoves<=30){
+						log.info ("当前移动次数{}",numberOfMoves);
+						boolean isItARecordOfStyleGods=imagesBack (explore_TSSSL,paramSIFTNotClick (process,3,4));
+						if(isItARecordOfStyleGods){
+							log.info ("没找到小怪，且当前有式神录，移动位置,每10次改变移动方向，当前移动次数{},余数{}", numberOfMoves,
+							          Math.ceil (numberOfMoves / 10.0) % 2);
+							if (Math.ceil (numberOfMoves / 10.0) % 2 == 1) {
+								pictureIdentifyWorkPO.setX (windows_width / 8 * 7);
+								pictureIdentifyWorkPO.setY (windows_height / 10 * 7);
+							}
+							else {
+								pictureIdentifyWorkPO.setX (windows_width / 8);
+								pictureIdentifyWorkPO.setY (windows_height / 10 * 7);
+							}
+							log.info ("点击坐标({},{})", pictureIdentifyWorkPO.getX (), pictureIdentifyWorkPO.getY ());
+							MouseClickUtils.mouseClickBack (pictureIdentifyWorkPO, "夜神模拟器");
+						}
 					}
-					else {
-						pictureIdentifyWorkPO.setX (windows_width / 8);
-						pictureIdentifyWorkPO.setY (windows_height / 10 * 7);
-					}
-					log.info ("点击坐标({},{})", pictureIdentifyWorkPO.getX (), pictureIdentifyWorkPO.getY ());
-					MouseClickUtils.mouseClickBack (pictureIdentifyWorkPO, "夜神模拟器");
-					
 				}
 				sleep (1000);
 				log.info ("小怪战斗结束，检查是否出现BOSS");

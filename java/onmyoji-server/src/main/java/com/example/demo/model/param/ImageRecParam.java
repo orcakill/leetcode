@@ -60,13 +60,13 @@ public class ImageRecParam {
 		ImageRecParam imageRecParam = new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType ("TM_SQDIFF_NORMED");
 		imageRecParam.setProcess(process);
-		imageRecParam.setRe_num (10);
+		imageRecParam.setRe_num (20);
 		imageRecParam.setCoefficient (coefficient);
 		return imageRecParam;
 	}
 	
 	/***
-	 * @description: RGB识别参数  算法为0  识别10次 不点击
+	 * @description: RGB识别参数  算法为0  识别20次 不点击
 	 * @return: com.example.demo.model.param.ImageRecParam
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
@@ -81,7 +81,7 @@ public class ImageRecParam {
 	}
 	
 	/***
-	 * @description: 识别参数  算法为0  识别10次
+	 * @description: 识别参数  算法为0  识别20次
 	 * @return: com.example.demo.model.param.ImageRecParam
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
@@ -90,7 +90,7 @@ public class ImageRecParam {
 		ImageRecParam imageRecParam = new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType ("RGB");
 		imageRecParam.setProcess(process);
-		imageRecParam.setRe_num (10);
+		imageRecParam.setRe_num (20);
 		return imageRecParam;
 	}
 	
@@ -109,7 +109,7 @@ public class ImageRecParam {
 	}
 	
 	/***
-	 * @description: openCV sift 特征匹配 识别参数  算法为2  识别10次
+	 * @description: openCV sift 特征匹配 识别参数  算法为2  识别20次
 	 * @return: com.example.demo.model.param.ImageRecParam
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
@@ -118,14 +118,14 @@ public class ImageRecParam {
 		ImageRecParam imageRecParam = new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType ("SIFT");
 		imageRecParam.setProcess(process);
-		imageRecParam.setRe_num (10);
+		imageRecParam.setRe_num (20);
 		imageRecParam.setClick (false);
 		imageRecParam.setCoefficient (0.7);
 		return imageRecParam;
 	}
 	
 	/***
-	 * @description: openCV sift 特征匹配  识别10次  点击
+	 * @description: openCV sift 特征匹配  识别20次  点击
 	 * @return: com.example.demo.model.param.ImageRecParam
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
@@ -134,13 +134,13 @@ public class ImageRecParam {
 		ImageRecParam imageRecParam = new ImageRecParam ();
 		imageRecParam.setIdentificationAlgorithmType ("SIFT");
 		imageRecParam.setProcess(process);
-		imageRecParam.setRe_num (10);
+		imageRecParam.setRe_num (20);
 		imageRecParam.setCoefficient (0.7);
 		return imageRecParam;
 	}
 	
 	/***
-	 * @description: openCV sift 特征匹配 特征点  默认识别 10次
+	 * @description: openCV sift 特征匹配 特征点  默认识别 20次
 	 * @return: com.example.demo.model.param.ImageRecParam
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
@@ -150,13 +150,13 @@ public class ImageRecParam {
 		imageRecParam.setIdentificationAlgorithmType ("SIFT");
 		imageRecParam.setCharacteristicPoint (characteristicPoint);
 		imageRecParam.setProcess(process);
-		imageRecParam.setRe_num (10);
+		imageRecParam.setRe_num (20);
 		imageRecParam.setCoefficient (0.7);
 		return imageRecParam;
 	}
 	
 	/***
-	 * @description: openCV sift 特征匹配 相似度+特征点  默认识别 10次
+	 * @description: openCV sift 特征匹配 相似度+特征点  默认识别 20次
 	 * @return: com.example.demo.model.param.ImageRecParam
 	 * @author: orcakill
 	 * @date: 2023/2/17 1:43
@@ -166,7 +166,7 @@ public class ImageRecParam {
 		imageRecParam.setIdentificationAlgorithmType ("SIFT");
 		imageRecParam.setProcess(process);
 		imageRecParam.setCharacteristicPoint (characteristicPoint);
-		imageRecParam.setRe_num (10);
+		imageRecParam.setRe_num (20);
 		imageRecParam.setCoefficient (coefficient);
 		return imageRecParam;
 	}
@@ -214,7 +214,7 @@ public class ImageRecParam {
 		imageRecParam.setIdentificationAlgorithmType ("SIFT");
 		imageRecParam.setProcess(process);
 		imageRecParam.setCharacteristicPoint (characteristicPoint);
-		imageRecParam.setRe_num (10);
+		imageRecParam.setRe_num (20);
 		imageRecParam.setClick (false);
 		imageRecParam.setCoefficient (0.7);
 		return imageRecParam;
