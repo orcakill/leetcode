@@ -309,7 +309,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			log.info ("点击可能存在的退出挑战");
 			imagesBack (soul_TCTZ, paramRGB (process, 1));
 			log.info ("点击可能存在的确定");
-			imagesBack (explore_QR, paramSIFT (process, 1,4));
+			imagesBack (explore_QR, paramSIFT (process, 1, 4));
 			num++;
 			homePageOrNot = imagesBack (home_TS, paramSIFTNotClick (process, 1, 20));
 		}
@@ -1317,13 +1317,18 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				imagesBack (explore_ZCBX, paramRGB (process, 1));
 				sleep (1000);
 				log.info ("点击退出挑战");
-				imagesBack (explore_TCTZ, paramRGB (process, 1));
+				imagesBack (explore_TCTZ, paramSIFT (process, 1));
 				sleep (1000);
 				treasureChestState = imagesBack (explore_ZCBX, paramRGBNotClick (process, 1));
 			}
 			sleep (1000);
 			log.info ("探索");
-			imagesBack (explore_ZHYZ, paramRGB (process));
+			boolean lastChapter = imagesBack (explore_ZHYZ, paramRGB (process));
+			while (!lastChapter) {
+				log.info ("没找到探索,重新退回探索");
+				returnExplore (process);
+				lastChapter = imagesBack (explore_ZHYZ, paramRGB (process));
+			}
 			log.info ("最后一章");
 			imagesBack (explore_TS, paramRGB (process));
 			sleep (1000);
@@ -1347,35 +1352,41 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 						littleMonsterState = false;
 					}
 					else {
-						sleep (5 * 1000);
+						sleep (8 * 1000);
 						log.info ("退出挑战");
 						battleResults = imagesBack (explore_TCTZ, paramSIFT (process, 5));
 						if (battleResults) {
 							numberOfBattles++;
 						}
+						imagesBack (explore_TCTZ, paramSIFT (process, 1, 5));
 					}
 					
 				}
 				if (!littleMonsterState) {
+					log.info ("没有小怪，开始移动");
 					numberOfMoves++;
-					if(numberOfMoves<=30){
-						log.info ("当前移动次数{}",numberOfMoves);
-						boolean isItARecordOfStyleGods=imagesBack (explore_TSSSL,paramSIFTNotClick (process,3,4));
-						if(isItARecordOfStyleGods){
-							log.info ("没找到小怪，且当前有式神录，移动位置,每10次改变移动方向，当前移动次数{},余数{}", numberOfMoves,
-							          Math.ceil (numberOfMoves / 10.0) % 2);
-							if (Math.ceil (numberOfMoves / 10.0) % 2 == 1) {
-								pictureIdentifyWorkPO.setX (windows_width / 8 * 7);
-								pictureIdentifyWorkPO.setY (windows_height / 10 * 7);
-							}
-							else {
-								pictureIdentifyWorkPO.setX (windows_width / 8);
-								pictureIdentifyWorkPO.setY (windows_height / 10 * 7);
-							}
-							log.info ("点击坐标({},{})", pictureIdentifyWorkPO.getX (), pictureIdentifyWorkPO.getY ());
-							MouseClickUtils.mouseClickBack (pictureIdentifyWorkPO, "夜神模拟器");
-						}
+					if (numberOfMoves >= 100) {
+						log.info ("移动超100次，出现异常，退出探索");
+						break;
 					}
+					log.info ("当前移动次数{}", numberOfMoves);
+					boolean isItARecordOfStyleGods = imagesBack (explore_TSSSL, paramSIFTNotClick (process, 3, 4));
+					if (isItARecordOfStyleGods) {
+						log.info ("没找到小怪，且当前有式神录，移动位置,每20次改变移动方向，当前移动次数{},余数{}",
+						          numberOfMoves,
+						          Math.ceil (numberOfMoves / 20.0) % 2);
+						if (Math.ceil (numberOfMoves / 10.0) % 2 == 1) {
+							pictureIdentifyWorkPO.setX (windows_width / 8 * 7);
+							pictureIdentifyWorkPO.setY (windows_height / 10 * 7);
+						}
+						else {
+							pictureIdentifyWorkPO.setX (windows_width / 8);
+							pictureIdentifyWorkPO.setY (windows_height / 10 * 7);
+						}
+						log.info ("点击坐标({},{})", pictureIdentifyWorkPO.getX (), pictureIdentifyWorkPO.getY ());
+						MouseClickUtils.mouseClickBack (pictureIdentifyWorkPO, "夜神模拟器");
+					}
+					
 				}
 				sleep (1000);
 				log.info ("小怪战斗结束，检查是否出现BOSS");
@@ -1384,32 +1395,19 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			log.info ("小怪战斗结束，boss战");
 			sleep (6000);
 			log.info ("退出挑战");
-			battleResults = imagesBack (explore_TCTZ, paramRGB (process));
+			battleResults = imagesBack (explore_TCTZ, paramSIFT (process));
 			if (battleResults) {
 				numberOfBattles++;
 			}
-			imagesBack (explore_TCTZ, paramRGB (process, 1));
-			log.info ("判断是否已在探索界面");
+			log.info ("再退出一次挑战");
+			imagesBack (explore_TCTZ, paramSIFT (process, 1, 4));
+			Thread.sleep (2000);
+			log.info ("返回探索界面");
 			returnExplore (process);
 		}
 		long hostTime = System.currentTimeMillis () - start_time;
 		log.info ("************当前轮次,平均每次战斗用时{}秒", hostTime / numberOfBattles / 1000);
 		returnHome (process);
-	}
-	
-	private void returnExplore (String process) throws IOException, InterruptedException, AWTException {
-		boolean exploreState;
-		exploreState = imagesBack (explore_ZHYZ, paramSIFTNotClick (process, 1,4));
-		while (!exploreState) {
-			log.info ("未退出探索，点击返回");
-			imagesBack (return_FH, paramRGB (process, 1));
-			Thread.sleep (1000);
-			log.info ("确认");
-			imagesBack (explore_QR, paramRGB (process, 1));
-			log.info ("判断是否是探索界面");
-			exploreState = imagesBack (explore_ZHYZ, paramSIFTNotClick (process, 1,4));
-		}
-		log.info ("当前已是探索界面");
 	}
 	
 	/***
@@ -1480,7 +1478,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 	public void regionalGhostKing (String process, String gameUserId)
 			throws IOException, InterruptedException, AWTException {
 		log.info ("进入探索");
-		imagesBack (explore_TS,paramSIFT (process,1,4));
+		imagesBack (explore_TS, paramSIFT (process, 1, 4));
 		log.info ("进入地域鬼王");
 		log.info ("点击左侧，判断是否还有未挑战");
 		log.info ("判断是否有已挑战-鸟巢");
@@ -1501,6 +1499,21 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		log.info ("退出鬼王页面，重新判断当前状态");
 		log.info ("已完成地域鬼王挑战，返回首页");
 		
+	}
+	
+	private void returnExplore (String process) throws IOException, InterruptedException, AWTException {
+		boolean exploreState = imagesBack (soul_Icon, paramSIFTNotClick (process, 1, 4));
+		while (!exploreState) {
+			log.info ("未退出探索，点击返回");
+			imagesBack (return_FH, paramRGB (process, 1));
+			log.info ("点击可能出现的确认");
+			imagesBack (explore_QR, paramSIFT (process, 1, 4));
+			log.info ("点击可能出现的退出挑战");
+			imagesBack (soul_TCTZ, paramSIFT (process, 1, 4));
+			log.info ("判断是否是探索界面");
+			exploreState = imagesBack (soul_Icon, paramSIFTNotClick (process, 1, 4));
+		}
+		log.info ("当前已是探索界面");
 	}
 	
 }
