@@ -649,6 +649,8 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		while (!ImageService.imagesBack (region_JJTZJS, paramRGB (process, 3))) {
 			//不为0则进行结界挑战
 			log.info ("结界劵数不为零");
+			log.info ("点击可能出现的退出挑战");
+			imagesBack (soul_TCTZ,paramSIFT (process,1,4));
 			//判断能否选择个人结界
 			booleanKXJJ = ImageService.imagesBack (region_GRJJ, paramRGBNotClick (process, 3));
 			if (booleanKXJJ) {
@@ -1480,20 +1482,16 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		log.info ("进入探索");
 		imagesBack (explore_TS, paramSIFT (process, 1, 4));
 		log.info ("进入地域鬼王");
-		log.info ("点击左侧，判断是否还有未挑战");
-		log.info ("判断是否有已挑战-鸟巢");
-		log.info ("判断是否有已挑战-黄鹤楼");
-		log.info ("判断是否有已挑战-少林寺藏经阁");
-		log.info ("判断是否有已挑战-丹霞山");
-		log.info ("总结当前状态，是否有未挑战，已挑战那些");
+		log.info ("点击今日挑战，判断是否还有未挑战");
+		log.info ("总结当前状况，是否需要挑战");
 		log.info ("点击筛选");
 		log.info ("判断是否有筛选-鸟巢");
-		log.info ("判断是否有筛选-黄鹤楼");
 		log.info ("判断是否有筛选-少林寺藏经阁");
+		log.info ("判断是否有筛选-黄鹤楼");
 		log.info ("判断是否有筛选-丹霞山");
 		log.info ("点击未挑战");
-		log.info ("根据账号类型，大号挑战极地域鬼王");
-		log.info ("根据账号类型，判断是否挑战普通鬼王，需要将等级置为1级");
+		log.info ("大号挑战极地域鬼王");
+		log.info ("其余号挑战普通鬼王，需要将等级置为1级");
 		log.info ("挑战");
 		log.info ("退出挑战");
 		log.info ("退出鬼王页面，重新判断当前状态");
