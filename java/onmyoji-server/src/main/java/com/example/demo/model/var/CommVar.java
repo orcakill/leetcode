@@ -145,5 +145,6 @@ public class CommVar {
 	public static final String ghost_DYGWTB="地域鬼王/地域鬼王图标";
 	public static final String ghost_JRTZ="地域鬼王/今日挑战";
 	public static final String ghost_WXZ="地域鬼王/未选择";
+	public static final String ghost_SX="地域鬼王/筛选";
 	
 }
