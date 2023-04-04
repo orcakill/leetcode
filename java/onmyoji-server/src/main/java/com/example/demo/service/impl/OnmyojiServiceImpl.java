@@ -1468,36 +1468,8 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		returnHome (process);
 	}
 	
-	/***
-	 * @description: 地域鬼王
-	 * @param process  进程
-	 * @param gameUserId   账号ID
-	 * @return: void
-	 * @author: orcakill
-	 * @date: 2023/3/30 9:24
-	 */
-	@Override
-	public void regionalGhostKing (String process, String gameUserId)
-			throws IOException, InterruptedException, AWTException {
-		log.info ("进入探索");
-		imagesBack (explore_TS, paramSIFT (process, 1, 4));
-		log.info ("进入地域鬼王");
-		log.info ("点击今日挑战，判断是否还有未挑战");
-		log.info ("总结当前状况，是否需要挑战");
-		log.info ("点击筛选");
-		log.info ("判断是否有筛选-鸟巢");
-		log.info ("判断是否有筛选-少林寺藏经阁");
-		log.info ("判断是否有筛选-黄鹤楼");
-		log.info ("判断是否有筛选-丹霞山");
-		log.info ("点击未挑战");
-		log.info ("大号挑战极地域鬼王");
-		log.info ("其余号挑战普通鬼王，需要将等级置为1级");
-		log.info ("挑战");
-		log.info ("退出挑战");
-		log.info ("退出鬼王页面，重新判断当前状态");
-		log.info ("已完成地域鬼王挑战，返回首页");
-		
-	}
+
+
 	
 	private void returnExplore (String process) throws IOException, InterruptedException, AWTException {
 		boolean exploreState = imagesBack (soul_Icon, paramSIFTNotClick (process, 1, 4));
@@ -1512,6 +1484,46 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			exploreState = imagesBack (soul_Icon, paramSIFTNotClick (process, 1, 4));
 		}
 		log.info ("当前已是探索界面");
+	}
+	
+	/***
+	 * @description: 地域鬼王
+	 * @param process  进程
+	 * @param gameUserId   账号ID
+	 * @return: void
+	 * @author: orcakill
+	 * @date: 2023/3/30 9:24
+	 */
+	@Override
+	public void regionalGhostKing (String process, String gameUserId) throws IOException, InterruptedException, AWTException {
+		boolean todaySChallengeStatus;//今日挑战状态
+		List<String> completedList=new ArrayList<> (); //已完成列表
+		log.info ("进入探索");
+		imagesBack (explore_TS, paramSIFT (process, 1, 4));
+		log.info ("进入地域鬼王");
+		imagesBack (ghost_DYGWTB, paramSIFT (process, 1, 4));
+		log.info ("点击今日挑战");
+		imagesBack (ghost_JRTZ, paramSIFTNotClick (process, 1, 4));
+		log.info ("判断是否有未选择");
+		todaySChallengeStatus=imagesBack (ghost_WXZ, paramSIFTNotClick (process, 1, 4));
+		while (!todaySChallengeStatus){
+			log.info ("当前有未选择");
+			log.info ("点击筛选");
+			imagesBack (ghost_SX,paramSIFT (process,1,4));
+			log.info ("判断是否有筛选-鸟巢");
+			log.info ("判断是否有筛选-少林寺藏经阁");
+			log.info ("判断是否有筛选-黄鹤楼");
+			log.info ("判断是否有筛选-丹霞山");
+			log.info ("点击未挑战");
+			log.info ("大号挑战极地域鬼王");
+			log.info ("其余号挑战普通鬼王，需要将等级置为1级");
+			log.info ("挑战");
+			log.info ("退出挑战");
+			log.info ("退出鬼王页面，重新判断当前状态");
+		}
+		log.info ("已完成地域鬼王挑战，返回首页");
+		returnHome (process);
+		
 	}
 	
 }
