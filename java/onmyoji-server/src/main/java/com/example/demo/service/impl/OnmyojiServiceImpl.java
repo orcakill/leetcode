@@ -1497,33 +1497,61 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 	@Override
 	public void regionalGhostKing (String process, String gameUserId) throws IOException, InterruptedException, AWTException {
 		boolean todaySChallengeStatus;//今日挑战状态
-		List<String> completedList=new ArrayList<> (); //已完成列表
 		log.info ("进入探索");
-		imagesBack (explore_TS, paramSIFT (process, 1, 4));
+		imagesBack (home_TS, paramSIFT (process, 1, 4));
 		log.info ("进入地域鬼王");
 		imagesBack (ghost_DYGWTB, paramSIFT (process, 1, 4));
 		log.info ("点击今日挑战");
-		imagesBack (ghost_JRTZ, paramSIFTNotClick (process, 1, 4));
+		imagesBack (ghost_JRTZ, paramSIFT (process, 1, 4));
 		log.info ("判断是否有未选择");
 		todaySChallengeStatus=imagesBack (ghost_WXZ, paramSIFTNotClick (process, 1, 4));
-		while (!todaySChallengeStatus){
+		while (todaySChallengeStatus){
 			log.info ("当前有未选择");
-			log.info ("点击筛选");
+			log.info ("丹霞山-点击筛选");
 			imagesBack (ghost_SX,paramSIFT (process,1,4));
-			log.info ("判断是否有筛选-鸟巢");
-			log.info ("判断是否有筛选-少林寺藏经阁");
-			log.info ("判断是否有筛选-黄鹤楼");
-			log.info ("判断是否有筛选-丹霞山");
-			log.info ("点击未挑战");
-			log.info ("大号挑战极地域鬼王");
-			log.info ("其余号挑战普通鬼王，需要将等级置为1级");
-			log.info ("挑战");
-			log.info ("退出挑战");
+			log.info ("丹霞山-点击收藏");
+			imagesBack (ghost_SC,paramSIFT (process,1,4));
+			log.info ("丹霞山-收藏鬼王-丹霞山");
+			doGhost (process, gameUserId, ghost_SCGW_DXS);
+			log.info ("鸟巢-点击筛选");
+			imagesBack (ghost_SX,paramSIFT (process,1,4));
+			log.info ("鸟巢-点击收藏");
+			imagesBack (ghost_SC,paramSIFT (process,1,4));
+			log.info ("鸟巢-收藏鬼王-鸟巢");
+			doGhost (process, gameUserId, ghost_SCGW_NC);
+			log.info ("少林寺藏经阁-点击筛选");
+			imagesBack (ghost_SX,paramSIFT (process,1,4));
+			log.info ("少林寺藏经阁-点击收藏");
+			imagesBack (ghost_SC,paramSIFT (process,1,4));
+			log.info ("少林寺藏经阁-收藏鬼王-少林寺藏经阁");
+			doGhost (process, gameUserId, ghost_SCGW_SLSCJG);
 			log.info ("退出鬼王页面，重新判断当前状态");
+			todaySChallengeStatus=imagesBack (ghost_WXZ, paramSIFTNotClick (process, 1, 4));
 		}
 		log.info ("已完成地域鬼王挑战，返回首页");
 		returnHome (process);
-		
+	}
+	
+	private void doGhost (String process, String gameUserId, String ghostType)
+			throws IOException, InterruptedException, AWTException {
+		boolean b1=imagesBack (ghostType, paramSIFT (process, 1, 4));
+		if(b1){
+			log.info ("判断账号类型");
+			if(!gameUserId.equals ("1")){
+				log.info ("不是大号，单击普通标志");
+				imagesBack (ghost_PTBZ,paramSIFT (process,1,4));
+			}
+			log.info ("开始挑战");
+			imagesBack (ghost_TZ,paramSIFT (process,1,4));
+			log.info ("等待挑战结束");
+			fightEnd (process,3*60*60,30,60);
+			log.info ("返回地域鬼王界面");
+			boolean regionGhostKingInterface=imagesBack (ghost_JRTZ, paramSIFTNotClick (process, 1, 4));
+			if(regionGhostKingInterface){
+				imagesBack (return_FH,paramSIFT (process,1,4));
+			}
+			log.info ("结束挑战，返回到地域鬼王界面");
+		}
 	}
 	
 }
