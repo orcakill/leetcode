@@ -1498,13 +1498,13 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 	public void regionalGhostKing (String process, String gameUserId) throws IOException, InterruptedException, AWTException {
 		boolean todaySChallengeStatus;//今日挑战状态
 		log.info ("进入探索");
-		imagesBack (home_TS, paramSIFT (process, 1, 4));
+		imagesBack (home_TS, paramSIFT (process, 10, 4));
 		log.info ("进入地域鬼王");
-		imagesBack (ghost_DYGWTB, paramSIFT (process, 1, 4));
+		imagesBack (ghost_DYGWTB, paramSIFT (process, 10, 4));
 		log.info ("点击今日挑战");
-		imagesBack (ghost_JRTZ, paramSIFT (process, 1, 4));
+		imagesBack (ghost_JRTZ, paramSIFT (process, 10, 4));
 		log.info ("判断是否有未选择");
-		todaySChallengeStatus=imagesBack (ghost_WXZ, paramSIFTNotClick (process, 1, 4));
+		todaySChallengeStatus=imagesBack (ghost_WXZ, paramSIFTNotClick (process, 10, 4));
 		while (todaySChallengeStatus){
 			log.info ("当前有未选择");
 			log.info ("丹霞山-点击筛选");
@@ -1542,9 +1542,11 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				imagesBack (ghost_PTBZ,paramSIFT (process,1,4));
 			}
 			log.info ("开始挑战");
-			imagesBack (ghost_TZ,paramSIFT (process,1,4));
+			imagesBack (ghost_TZ,paramSIFT (process,10,4));
+			Thread.sleep (2000);
+			imagesBack (ghost_ZB,paramSIFT (process,10,4));
 			log.info ("等待挑战结束");
-			fightEnd (process,3*60*60,30,60);
+			fightEnd (process,3*60,30,60);
 			log.info ("返回地域鬼王界面");
 			boolean regionGhostKingInterface=imagesBack (ghost_JRTZ, paramSIFTNotClick (process, 1, 4));
 			if(regionGhostKingInterface){
