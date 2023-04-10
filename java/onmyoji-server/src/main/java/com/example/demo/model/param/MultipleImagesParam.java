@@ -15,7 +15,7 @@ public class MultipleImagesParam {
 	//文件夹 简称
 	private String process="夜神模拟器";
 	// 识别次数
-	private Integer re_num=60;
+	private Integer re_num=20;
 	// 识别开始间隔  1s
 	private Integer start_time=1;
 	// 识别结束间隔  2s
