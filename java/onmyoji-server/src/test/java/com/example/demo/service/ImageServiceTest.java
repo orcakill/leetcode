@@ -10,8 +10,7 @@ import java.awt.*;
 import java.io.IOException;
 
 import static com.example.demo.model.param.ImageRecParam.paramSIFTNotClick;
-import static com.example.demo.model.var.CommVar.explore_ZHYZ;
-import static com.example.demo.model.var.CommVar.home_TS;
+import static com.example.demo.model.var.CommVar.*;
 import static com.example.demo.service.ImageService.imagesBack;
 
 /**
@@ -30,7 +29,7 @@ class ImageServiceTest {
 		System.setProperty ("java.awt.headless", "false");
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		String process="夜神模拟器";
-		imagesBack (explore_ZHYZ, paramSIFTNotClick (process, 1,4));
+		imagesBack (ghost_WXZ, paramSIFTNotClick (process, 1, 5));
 		log.info ("测试结束");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}

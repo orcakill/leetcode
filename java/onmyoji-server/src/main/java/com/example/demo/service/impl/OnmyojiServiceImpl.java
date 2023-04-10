@@ -166,7 +166,11 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 					log.info (project_GRTS_FAST);
 					exploreFast (process, projectParam.getProjectNum ());
 				}
-				
+				//地域鬼王  只打2个
+				if (projectParam.getProjectName ().equals (project_DYGW)) {
+					log.info (project_DYGW);
+					regionalGhostKing (process, "1");
+				}
 			}
 		}
 		
@@ -364,6 +368,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				imagesBack (login_FWQ_TYCX, paramSIFT (process));
 			}
 		}
+		sleep (2 * 1000L);
 		log.info ("开始游戏");
 		imagesBack (login_KSYX, paramSIFT (process, 0.7, 4));
 		sleep (5 * 1000L);
@@ -613,7 +618,6 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		if (thisState.equals (soul_JSTX)) {
 			log.info ("点击角色头像");
 			ImageService.imagesBack (soul_TCTZ, paramRGB (process));
-			
 		}
 		if (thisState.equals (region_SB)) {
 			log.info ("战斗失败");
@@ -1526,6 +1530,9 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			log.info ("少林寺藏经阁-收藏鬼王-少林寺藏经阁");
 			doGhost (process, gameUserId, ghost_SCGW_SLSCJG);
 			log.info ("退出鬼王页面，重新判断当前状态");
+			log.info ("点击今日挑战");
+			imagesBack (ghost_JRTZ, paramSIFT (process, 10, 4));
+			log.info ("判断是否未选择");
 			todaySChallengeStatus=imagesBack (ghost_WXZ, paramSIFTNotClick (process, 1, 4));
 		}
 		log.info ("已完成地域鬼王挑战，返回首页");
