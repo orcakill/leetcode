@@ -1,7 +1,7 @@
 import cv2 as cv
 
 
-def ORB_Feature(img1, img2):
+def orb_feature(img1, img2):
     # 初始化ORB
     orb = cv.ORB_create()
 
@@ -62,4 +62,4 @@ if __name__ == '__main__':
     # 读取图片
     image1 = cv.imread('D://b.jpg')
     image2 = cv.imread('D://cs.png')
-    ORB_Feature(image1, image2)
+    orb_feature(image1, image2)
