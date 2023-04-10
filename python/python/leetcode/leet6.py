@@ -1,6 +1,13 @@
 class Solution:
-    def convert(self, s: str, numRows: int) -> str:
-        return  s
-if __name__ == '__main__':
+    @staticmethod
+    def convert(s: str, numRows: int) -> str:
+        if numRows==1:
+            return  s
 
-    Solution.convert(0,'PAYPALISHIRING', 3)
+        i=True
+
+        return s
+
+
+if __name__ == '__main__':
+    Solution.convert("PAYPALISHIRING", 3)
