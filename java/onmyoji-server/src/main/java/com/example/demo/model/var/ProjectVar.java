@@ -18,8 +18,9 @@ public class ProjectVar {
 	public  static  final String  project_YSZH="永生之海";
 	public  static  final String  project_DJ="斗技";
 	public  static  final String  project_YJZL_JXFSXQH="御魂整理-极限副属性强化";
-	public  static  final String  project_GRTS="御魂整理-个人探索";
-	public  static  final String  project_GRTS_FAST="御魂整理-个人探索-极限速度";
-	public  static  final String  project_YL="御魂整理-御灵";
+	public  static  final String  project_GRTS="个人探索";
+	public  static  final String  project_GRTS_FAST="个人探索-极限速度";
+	public  static  final String  project_YL="御灵";
+	public  static  final String  project_DYGW="御魂整理-地域鬼王";
 	
 }
