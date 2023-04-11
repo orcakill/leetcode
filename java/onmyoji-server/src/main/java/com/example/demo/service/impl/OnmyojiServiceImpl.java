@@ -167,6 +167,11 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 					exploreFast (process, projectParam.getProjectNum ());
 				}
 				
+				//地域鬼王
+				if (projectParam.getProjectName ().equals (project_DYGW)) {
+					log.info (project_DYGW);
+					regionalGhostKing(process, projectParam.getProjectUser ());
+				}
 			}
 		}
 		
@@ -1557,11 +1562,16 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				imagesBack (ghost_PTBZ, paramSIFT (process, 1, 4));
 			}
 			log.info ("开始挑战");
+			Thread.sleep (2000);
 			imagesBack (ghost_TZ, paramSIFT (process, 10, 4));
 			Thread.sleep (2000);
+			log.info ("准备");
 			imagesBack (ghost_ZB, paramSIFT (process, 10, 4));
+			Thread.sleep (2000);
+			log.info ("再执行一次准备");
+			imagesBack (ghost_ZB, paramSIFT (process, 1, 4));
 			log.info ("等待挑战结束");
-			fightEnd (process, 3 * 60, 30, 60);
+			fightEnd (process, 5 * 60, 60, 120);
 			log.info ("返回地域鬼王界面");
 			boolean regionGhostKingInterface = imagesBack (ghost_JRTZ, paramSIFTNotClick (process, 1, 4));
 			if (regionGhostKingInterface) {
