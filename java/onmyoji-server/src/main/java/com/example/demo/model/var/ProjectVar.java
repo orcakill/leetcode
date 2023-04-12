@@ -21,6 +21,7 @@ public class ProjectVar {
 	public  static  final String  project_GRTS="个人探索";
 	public  static  final String  project_GRTS_FAST="个人探索-极限速度";
 	public  static  final String  project_YL="御灵";
-	public  static  final String  project_DYGW="御魂整理-地域鬼王";
+	
+	public  static  final String  project_DYGW="地域鬼王";
 	
 }
