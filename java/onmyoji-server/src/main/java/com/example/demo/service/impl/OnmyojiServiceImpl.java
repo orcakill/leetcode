@@ -166,10 +166,11 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 					log.info (project_GRTS_FAST);
 					exploreFast (process, projectParam.getProjectNum ());
 				}
-				//地域鬼王  只打2个
+				
+				//地域鬼王
 				if (projectParam.getProjectName ().equals (project_DYGW)) {
 					log.info (project_DYGW);
-					regionalGhostKing (process, "1");
+					regionalGhostKing(process, projectParam.getProjectUser ());
 				}
 			}
 		}
@@ -368,7 +369,6 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				imagesBack (login_FWQ_TYCX, paramSIFT (process));
 			}
 		}
-		sleep (2 * 1000L);
 		log.info ("开始游戏");
 		imagesBack (login_KSYX, paramSIFT (process, 0.7, 4));
 		sleep (5 * 1000L);
@@ -386,6 +386,9 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			openBottom = ImageService.imagesBack (home_DBCDDK, paramSIFTNotClick (process, 1, 4));
 			sleep (1000);
 		}
+		sleep (1000);
+		log.info ("再次点击可能存在的下载按钮");
+		imagesBack (home_XZ, paramSIFT (process, 1, 4));
 		sleep (2 * 1000L);
 	}
 	
@@ -618,6 +621,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		if (thisState.equals (soul_JSTX)) {
 			log.info ("点击角色头像");
 			ImageService.imagesBack (soul_TCTZ, paramRGB (process));
+			
 		}
 		if (thisState.equals (region_SB)) {
 			log.info ("战斗失败");
@@ -654,7 +658,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			//不为0则进行结界挑战
 			log.info ("结界劵数不为零");
 			log.info ("点击可能出现的退出挑战");
-			imagesBack (soul_TCTZ,paramSIFT (process,1,4));
+			imagesBack (soul_TCTZ, paramSIFT (process, 1, 4));
 			//判断能否选择个人结界
 			booleanKXJJ = ImageService.imagesBack (region_GRJJ, paramRGBNotClick (process, 3));
 			if (booleanKXJJ) {
@@ -929,75 +933,87 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 	public void pvp (String process, int num) throws IOException, InterruptedException, AWTException {
 		int num1 = 0;
 		int num2 = 0;
-		log.info ("开始斗技");
-		//	进入町中
-		imagesBack (contend_DZ, paramSIFT (process));
-		log.info ("町中武馆");
-		imagesBack (contend_DZWG, paramSIFT (process));
-		//  进入斗技
-		imagesBack (contend_DJTB, paramSIFT (process));
-		for (int i = 1; i <= num; i++) {
-			log.info ("准备挑战");
-			boolean booleanYCQK = imagesBack (contend_KSTZ, paramSIFT (process, 1, 4));
-			while (!booleanYCQK) {
-				log.info ("判断是否段位晋升");
-				boolean b2 = imagesBack (contend_DWJS, paramSIFT (process, 1, 4));
-				if (!b2) {
-					log.info ("没有段位晋升");
+		boolean processAbnormality = false;
+		while (!processAbnormality) {
+			//	进入町中
+			log.info ("进入町中");
+			boolean isMachina = imagesBack (contend_DZ, paramSIFT (process));
+			if (isMachina) {
+				log.info ("町中武馆");
+				boolean isItAMartialArtsSchool = imagesBack (contend_DZWG, paramSIFT (process));
+				if (isItAMartialArtsSchool) {
+					//  进入斗技
+					imagesBack (contend_DJTB, paramSIFT (process));
+					for (int i = 1; i <= num; i++) {
+						log.info ("准备挑战");
+						boolean booleanYCQK = imagesBack (contend_KSTZ, paramSIFT (process, 1, 4));
+						while (!booleanYCQK) {
+							log.info ("判断是否段位晋升");
+							boolean b2 = imagesBack (contend_DWJS, paramSIFT (process, 1, 4));
+							if (!b2) {
+								log.info ("没有段位晋升");
+							}
+							else {
+								log.info ("存在段位晋升");
+							}
+							log.info ("判断是否有额外奖励");
+							boolean b1 = imagesBack (contend_EWJL, paramRGB (process));
+							if (!b1) {
+								log.info ("没有额外奖励");
+							}
+							else {
+								log.info ("存在额外奖励");
+							}
+							booleanYCQK = imagesBack (contend_KSTZ, paramSIFT (process, 1, 4));
+						}
+						log.info ("进入挑战，准备自动选择");
+						imagesBack (contend_ZDXZ, paramSIFT (process, 1, 4));
+						log.info ("自动选择完成，准备自动战斗");
+						sleep (2000);
+						log.info ("等待选将");
+						sleep (30 * 1000);
+						log.info ("准备拔得头筹、战斗胜利或战斗失败");
+						boolean b = fightPVP (process, 30, 30, 60);
+						if (b) {
+							num1++;
+						}
+						else {
+							num2++;
+						}
+						log.info ("第" + i + "次挑战完成，胜利" + num1 + "次，失败" + num2 + "次，胜率" + num1 * 100 / i +
+						          "%");
+					}
+					boolean booleanFH = imagesBack (return_FH, paramRGBNotClick (process, 2));
+					while (!booleanFH) {
+						log.info ("判断斗技结束后，是否段位晋升");
+						boolean b1 = imagesBack (contend_DWJS, paramRGB (process, 1));
+						if (!b1) {
+							log.info ("没有段位晋升");
+						}
+						else {
+							log.info ("存在段位晋升");
+						}
+						log.info ("判断斗技结束后，是否有额外奖励");
+						boolean b2 = imagesBack (contend_EWJL, paramRGB (process, 1));
+						if (!b2) {
+							log.info ("没有额外奖励");
+						}
+						else {
+							log.info ("存在额外奖励");
+						}
+						booleanFH = imagesBack (return_FH, paramRGBNotClick (process, 1));
+					}
+					//返回首页
+					log.info ("斗技结束,返回首页");
+					returnHome (process);
+					processAbnormality=true;
 				}
-				else {
-					log.info ("存在段位晋升");
-				}
-				log.info ("判断是否有额外奖励");
-				boolean b1 = imagesBack (contend_EWJL, paramRGB (process));
-				if (!b1) {
-					log.info ("没有额外奖励");
-				}
-				else {
-					log.info ("存在额外奖励");
-				}
-				booleanYCQK = imagesBack (contend_KSTZ, paramSIFT (process, 1, 4));
 			}
-			log.info ("进入挑战，准备自动选择");
-			imagesBack (contend_ZDXZ, paramSIFT (process, 1, 4));
-			log.info ("自动选择完成，准备自动战斗");
-			sleep (2000);
-			log.info ("等待选将");
-			sleep (30 * 1000);
-			log.info ("准备拔得头筹、战斗胜利或战斗失败");
-			boolean b = fightPVP (process, 30, 30, 60);
-			if (b) {
-				num1++;
+			if(!processAbnormality){
+				log.info ("流程异常,返回首页重新开始");
+				returnHome (process);
 			}
-			else {
-				num2++;
-			}
-			log.info ("第" + i + "次挑战完成，胜利" + num1 + "次，失败" + num2 + "次，胜率" + num1 * 100 / i + "%");
 		}
-		boolean booleanFH = imagesBack (return_FH, paramRGBNotClick (process, 2));
-		while (!booleanFH) {
-			log.info ("判断斗技结束后，是否段位晋升");
-			boolean b1 = imagesBack (contend_DWJS, paramRGB (process, 1));
-			if (!b1) {
-				log.info ("没有段位晋升");
-			}
-			else {
-				log.info ("存在段位晋升");
-			}
-			log.info ("判断斗技结束后，是否有额外奖励");
-			boolean b2 = imagesBack (contend_EWJL, paramRGB (process, 1));
-			if (!b2) {
-				log.info ("没有额外奖励");
-			}
-			else {
-				log.info ("存在额外奖励");
-			}
-			booleanFH = imagesBack (return_FH, paramRGBNotClick (process, 1));
-		}
-		//返回首页
-		log.info ("斗技结束,返回首页");
-		returnHome (process);
-		
 	}
 	
 	/***
@@ -1018,11 +1034,11 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		List<MultipleImageParam> multipleImageParamList = new ArrayList<> ();
 		multipleImagesParams.setClick (true);
 		//斗技 头筹
-		multipleImageParamList.add (new MultipleImageParam (contend_TC, paramRGB (process)));
+		multipleImageParamList.add (new MultipleImageParam (contend_TC, paramSIFT (process)));
 		//斗技 战斗胜利
-		multipleImageParamList.add (new MultipleImageParam (contend_ZDSL, paramRGB (process)));
+		multipleImageParamList.add (new MultipleImageParam (contend_ZDSL, paramSIFT (process)));
 		//斗技 失败
-		multipleImageParamList.add (new MultipleImageParam (contend_ZDSB, paramRGB (process)));
+		multipleImageParamList.add (new MultipleImageParam (contend_ZDSB, paramSIFT (process)));
 		multipleImagesParams.setStart_time (start_num);
 		multipleImagesParams.setEnd_time (end_num);
 		multipleImagesParams.setMultipleImageParamList (multipleImageParamList);
@@ -1030,10 +1046,12 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		sleep (begin_num * 1000);
 		log.info ("准备点击战斗胜利，点击头筹、战斗胜利，失败");
 		String thisState = imagesBackList (multipleImagesParams);
-		if (thisState.equals (contend_TC)) {
-			log.info ("点击战斗胜利");
-			ImageService.imagesBack (contend_ZDSL, paramRGB (process));
-			log.info ("退出挑战");
+		if(thisState!=null){
+			if (thisState.equals (contend_TC)) {
+				log.info ("点击战斗胜利");
+				ImageService.imagesBack (contend_ZDSL, paramRGB (process));
+				log.info ("退出挑战");
+			}
 		}
 		log.info ("退出挑战完成");
 		return true;
@@ -1472,9 +1490,6 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		returnHome (process);
 	}
 	
-
-
-	
 	private void returnExplore (String process) throws IOException, InterruptedException, AWTException {
 		boolean exploreState = imagesBack (soul_Icon, paramSIFTNotClick (process, 1, 4));
 		while (!exploreState) {
@@ -1499,7 +1514,8 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 	 * @date: 2023/3/30 9:24
 	 */
 	@Override
-	public void regionalGhostKing (String process, String gameUserId) throws IOException, InterruptedException, AWTException {
+	public void regionalGhostKing (String process, String gameUserId)
+			throws IOException, InterruptedException, AWTException {
 		boolean todaySChallengeStatus;//今日挑战状态
 		log.info ("进入探索");
 		imagesBack (home_TS, paramSIFT (process, 10, 4));
@@ -1508,32 +1524,29 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		log.info ("点击今日挑战");
 		imagesBack (ghost_JRTZ, paramSIFT (process, 10, 4));
 		log.info ("判断是否有未选择");
-		todaySChallengeStatus=imagesBack (ghost_WXZ, paramSIFTNotClick (process, 10, 4));
-		while (todaySChallengeStatus){
+		todaySChallengeStatus = imagesBack (ghost_WXZ, paramSIFTNotClick (process, 10, 4));
+		while (todaySChallengeStatus) {
 			log.info ("当前有未选择");
 			log.info ("丹霞山-点击筛选");
-			imagesBack (ghost_SX,paramSIFT (process,1,4));
+			imagesBack (ghost_SX, paramSIFT (process, 1, 4));
 			log.info ("丹霞山-点击收藏");
-			imagesBack (ghost_SC,paramSIFT (process,1,4));
+			imagesBack (ghost_SC, paramSIFT (process, 1, 4));
 			log.info ("丹霞山-收藏鬼王-丹霞山");
 			doGhost (process, gameUserId, ghost_SCGW_DXS);
 			log.info ("鸟巢-点击筛选");
-			imagesBack (ghost_SX,paramSIFT (process,1,4));
+			imagesBack (ghost_SX, paramSIFT (process, 1, 4));
 			log.info ("鸟巢-点击收藏");
-			imagesBack (ghost_SC,paramSIFT (process,1,4));
+			imagesBack (ghost_SC, paramSIFT (process, 1, 4));
 			log.info ("鸟巢-收藏鬼王-鸟巢");
 			doGhost (process, gameUserId, ghost_SCGW_NC);
 			log.info ("少林寺藏经阁-点击筛选");
-			imagesBack (ghost_SX,paramSIFT (process,1,4));
+			imagesBack (ghost_SX, paramSIFT (process, 1, 4));
 			log.info ("少林寺藏经阁-点击收藏");
-			imagesBack (ghost_SC,paramSIFT (process,1,4));
+			imagesBack (ghost_SC, paramSIFT (process, 1, 4));
 			log.info ("少林寺藏经阁-收藏鬼王-少林寺藏经阁");
 			doGhost (process, gameUserId, ghost_SCGW_SLSCJG);
 			log.info ("退出鬼王页面，重新判断当前状态");
-			log.info ("点击今日挑战");
-			imagesBack (ghost_JRTZ, paramSIFT (process, 10, 4));
-			log.info ("判断是否未选择");
-			todaySChallengeStatus=imagesBack (ghost_WXZ, paramSIFTNotClick (process, 1, 4));
+			todaySChallengeStatus = imagesBack (ghost_WXZ, paramSIFTNotClick (process, 1, 4));
 		}
 		log.info ("已完成地域鬼王挑战，返回首页");
 		returnHome (process);
@@ -1541,23 +1554,28 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 	
 	private void doGhost (String process, String gameUserId, String ghostType)
 			throws IOException, InterruptedException, AWTException {
-		boolean b1=imagesBack (ghostType, paramSIFT (process, 1, 4));
-		if(b1){
+		boolean b1 = imagesBack (ghostType, paramSIFT (process, 1, 4));
+		if (b1) {
 			log.info ("判断账号类型");
-			if(!gameUserId.equals ("1")){
+			if (!gameUserId.equals ("1")) {
 				log.info ("不是大号，单击普通标志");
-				imagesBack (ghost_PTBZ,paramSIFT (process,1,4));
+				imagesBack (ghost_PTBZ, paramSIFT (process, 1, 4));
 			}
 			log.info ("开始挑战");
-			imagesBack (ghost_TZ,paramSIFT (process,10,4));
 			Thread.sleep (2000);
-			imagesBack (ghost_ZB,paramSIFT (process,10,4));
+			imagesBack (ghost_TZ, paramSIFT (process, 10, 4));
+			Thread.sleep (2000);
+			log.info ("准备");
+			imagesBack (ghost_ZB, paramSIFT (process, 10, 4));
+			Thread.sleep (2000);
+			log.info ("再执行一次准备");
+			imagesBack (ghost_ZB, paramSIFT (process, 1, 4));
 			log.info ("等待挑战结束");
-			fightEnd (process,3*60,30,60);
+			fightEnd (process, 5 * 60, 60, 120);
 			log.info ("返回地域鬼王界面");
-			boolean regionGhostKingInterface=imagesBack (ghost_JRTZ, paramSIFTNotClick (process, 1, 4));
-			if(regionGhostKingInterface){
-				imagesBack (return_FH,paramSIFT (process,1,4));
+			boolean regionGhostKingInterface = imagesBack (ghost_JRTZ, paramSIFTNotClick (process, 1, 4));
+			if (regionGhostKingInterface) {
+				imagesBack (return_FH, paramSIFT (process, 1, 4));
 			}
 			log.info ("结束挑战，返回到地域鬼王界面");
 		}
