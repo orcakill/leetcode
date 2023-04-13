@@ -1524,7 +1524,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		log.info ("点击今日挑战");
 		imagesBack (ghost_JRTZ, paramSIFT (process, 10, 4));
 		log.info ("判断是否有未选择");
-		todaySChallengeStatus = imagesBack (ghost_WXZ, paramSIFTNotClick (process, 10, 120));
+		todaySChallengeStatus = imagesBack (ghost_WXZ, paramSIFTNotClick (process, 10, 30));
 		while (todaySChallengeStatus) {
 			log.info ("当前有未选择");
 			log.info ("丹霞山-点击筛选");
@@ -1546,7 +1546,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			log.info ("少林寺藏经阁-收藏鬼王-少林寺藏经阁");
 			doGhost (process, gameUserId, ghost_SCGW_SLSCJG);
 			log.info ("退出鬼王页面，重新判断当前状态");
-			todaySChallengeStatus = imagesBack (ghost_WXZ, paramSIFTNotClick (process, 1, 120));
+			todaySChallengeStatus = imagesBack (ghost_WXZ, paramSIFTNotClick (process, 1, 30));
 		}
 		log.info ("已完成地域鬼王挑战，返回首页");
 		returnHome (process);
