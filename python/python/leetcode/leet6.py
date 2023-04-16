@@ -1,10 +1,10 @@
 class Solution:
     @staticmethod
     def convert(s: str, numRows: int) -> str:
-        if numRows==1:
-            return  s
+        if numRows == 1:
+            return s
 
-        i=True
+        i = True
 
         return s
 
