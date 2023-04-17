@@ -306,9 +306,10 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		log.info ("判断是否首页");
 		boolean homePageOrNot = ImageService.imagesBack (home_TS, paramSIFTNotClick (process, 1, 20));
 		while (!homePageOrNot) {
-			log.info ("点击返回按钮");
+			log.info ("点击返回按钮，RGB");
 			imagesBack (return_FH, paramRGB (process, 1));
 			if (num % 2 == 0) {
+				log.info ("点击返回按钮，SIFT");
 				ImageService.imagesBack (return_FH, paramSIFT (process, 1, 4));
 			}
 			log.info ("点击可能存在的退出挑战");
