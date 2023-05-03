@@ -658,8 +658,11 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		while (!ImageService.imagesBack (region_JJTZJS, paramRGB (process, 3))) {
 			//不为0则进行结界挑战
 			log.info ("结界劵数不为零");
-			log.info ("点击可能出现的退出挑战");
-			imagesBack (soul_TCTZ, paramSIFT (process, 1, 10));
+			boolean   isBoundaryBreakthrough=imagesBack (region_LJJ,paramSIFTNotClick (process,1,4));
+			if(!isBoundaryBreakthrough){
+				log.info ("点击可能出现的退出挑战");
+				imagesBack (soul_TCTZ, paramSIFT (process, 1, 10));
+			}
 			//判断能否选择个人结界
 			booleanKXJJ = ImageService.imagesBack (region_GRJJ, paramRGBNotClick (process, 3));
 			if (booleanKXJJ) {
