@@ -58,11 +58,11 @@ public class OnmyojiController {
 		projectParams.add (new ProjectParam (project_YYLTP,"1"));
 		//个人突破
 		projectParams.add (new ProjectParam (project_GRTP,"1"));
+		//地域鬼王
+		projectParams.add (new ProjectParam (project_DYGW,"1"));
 		//魂十一
 		projectParams.add (new ProjectParam (project_HSY,"1",40,true,null,
 		                                     null));
-		//地域鬼王
-		projectParams.add (new ProjectParam (project_DYGW,"1"));
 		projectsParam.setProjectParams (projectParams);
 		onmyojiService.onmyojiService (projectsParam);
 		return Results.ok ("任务已启动");
