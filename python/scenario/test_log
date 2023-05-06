@@ -35,3 +35,11 @@
 2022-12-07 15:03:24 - MainProcess | Thread-2 | main.second_thread:18 - INFO -线程2运行开始
 2022-12-07 15:03:26 - MainProcess | Thread-2 | main.second_thread:20 - INFO -线程2运行结束
 2022-12-07 15:03:26 - MainProcess | Thread-1 | main.first_thread:12 - INFO -线程1运行结束
+2023-05-06 10:21:14 - MainProcess | Thread-1 | main.first_thread:10 - INFO -线程1运行开始
+2023-05-06 10:21:14 - MainProcess | Thread-2 | main.second_thread:18 - INFO -线程2运行开始
+2023-05-06 10:21:16 - MainProcess | Thread-2 | main.second_thread:20 - INFO -线程2运行结束
+2023-05-06 10:21:16 - MainProcess | Thread-1 | main.first_thread:12 - INFO -线程1运行结束
+2023-05-06 10:22:04 - MainProcess | Thread-1 | main.first_thread:10 - INFO -线程1运行开始
+2023-05-06 10:22:04 - MainProcess | Thread-2 | main.second_thread:18 - INFO -线程2运行开始
+2023-05-06 10:22:06 - MainProcess | Thread-1 | main.first_thread:12 - INFO -线程1运行结束
+2023-05-06 10:22:06 - MainProcess | Thread-2 | main.second_thread:20 - INFO -线程2运行结束

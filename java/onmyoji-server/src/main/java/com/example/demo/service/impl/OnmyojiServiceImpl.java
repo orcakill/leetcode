@@ -408,7 +408,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		boolean booleanJSJY = false;//判断寄养是否结束
 		sleep (2000);
 		log.info ("进入阴阳寮");
-		imagesBack (house_YYLTB, paramSIFT (process));
+		imagesBack (house_YYLTB, paramSIFT (process,1,10));
 		sleep (2000);
 		log.info ("进入结界");
 		imagesBack (house_JJ, paramSIFT (process));
