@@ -10,8 +10,7 @@ import java.awt.*;
 import java.io.IOException;
 
 import static com.example.demo.model.param.ImageRecParam.paramSIFT;
-import static com.example.demo.model.var.CommVar.home_TS;
-import static com.example.demo.model.var.CommVar.soul_TCTZ;
+import static com.example.demo.model.var.CommVar.*;
 import static com.example.demo.service.ImageService.imagesBack;
 
 /**
@@ -30,7 +29,7 @@ class ImageServiceTest {
 		System.setProperty ("java.awt.headless", "false");
 		System.loadLibrary (Core.NATIVE_LIBRARY_NAME);
 		String process="夜神模拟器";
-		imagesBack (soul_TCTZ, paramSIFT (process, 1, 10));
+		imagesBack (house_YYLTB, paramSIFT (process,1,5));
 		log.info ("测试结束");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}
