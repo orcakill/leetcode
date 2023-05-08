@@ -24,7 +24,6 @@ class Solution:
         #   join连接任意数量的字符串（包括要连接的元素字符串、元组、列表、字典），用新的目标分隔符连接，返回新的字符串。
         return ''.join(ch for row in mat for ch in row if ch)
 
-
 if __name__ == '__main__':
     print(Solution.convert("PAYPALISHIRING", 3))
 
