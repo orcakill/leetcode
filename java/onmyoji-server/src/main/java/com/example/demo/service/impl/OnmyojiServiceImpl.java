@@ -229,7 +229,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 						MouseClickUtils.mouseClickBack (new PictureIdentifyWorkPO (500, 500), "夜神模拟器");
 						Thread.sleep (1000);
 						log.info ("判断是否有公告需要返回");
-						announcementOrNot = ImageService.imagesBack (return_FH, paramRGB (process));
+						announcementOrNot = ImageService.imagesBack (return_FH, paramSIFT (process,40,4));
 						if (announcementOrNot) {
 							log.info ("有公告");
 							ImageService.imagesBack (return_FH, paramSIFT (process));
@@ -524,9 +524,9 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		booleanYYL = ImageService.imagesBack (region_YYL, paramRGB (process, 5));
 		while (!booleanYYL) {
 			sleep (2000);
-			if (ImageService.imagesBack (region_GTRQ, paramRGBNotClick (process, 5))) {
+			if (ImageService.imagesBack (region_GTRQ, paramSIFTNotClick (process, 5))) {
 				log.info ("有呱太入侵");
-				ImageService.imagesBack (region_GTRQ, paramRGB (process));
+				ImageService.imagesBack (region_GTRQ, paramSIFT (process));
 				log.info ("呱太入侵点击完成");
 				
 			}
