@@ -1565,6 +1565,10 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				log.info ("不是大号，单击普通标志");
 				imagesBack (ghost_PTBZ, paramSIFT (process, 1, 4));
 			}
+			if (gameUserId.equals ("1")) {
+				log.info ("大号，单击极标志");
+				imagesBack (ghost_JBZ, paramSIFT (process, 1, 4));
+			}
 			log.info ("开始挑战");
 			Thread.sleep (2000);
 			imagesBack (ghost_TZ, paramSIFT (process, 10, 4));
