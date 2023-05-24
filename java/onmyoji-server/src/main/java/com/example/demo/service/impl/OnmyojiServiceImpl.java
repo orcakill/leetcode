@@ -186,8 +186,8 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		boolean promptForAge = false;//是否适龄提示
 		boolean targetHomePage = false;
 		boolean switchAccount;
-		log.info ("等待10秒");
-		Thread.sleep (10 * 1000L);
+		log.info ("等待20秒");
+		Thread.sleep (20 * 1000L);
 		log.info ("当前状态初始化");
 		while (!initializeOrNot) {
 			thisPicture = thisState (process);
@@ -224,20 +224,22 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 					log.info ("点击阴阳师图标");
 					ImageService.imagesBack (login_YYSTB, paramSIFT (process));
 					while (!promptForAge) {
-						Thread.sleep (15000);
+						Thread.sleep (20000);
 						log.info ("单击一下，防止有开场动画");
 						MouseClickUtils.mouseClickBack (new PictureIdentifyWorkPO (500, 500), "夜神模拟器");
 						Thread.sleep (1000);
-						log.info ("判断是否有公告需要返回");
-						announcementOrNot = ImageService.imagesBack (return_FH, paramSIFT (process,40,4));
-						if (announcementOrNot) {
-							log.info ("有公告");
-							ImageService.imagesBack (return_FH, paramSIFT (process));
-							Thread.sleep (1000);
-						}
 						promptForAge = ImageService.imagesBack (login_SLTS, paramSIFTNotClick (process));
 						if (promptForAge) {
 							log.info ("当前页面有适龄提示");
+						}
+						else{
+							log.info ("判断是否有公告需要返回");
+							announcementOrNot = ImageService.imagesBack (return_FH, paramSIFT (process,20,4));
+							if (announcementOrNot) {
+								log.info ("有公告");
+								ImageService.imagesBack (return_FH, paramSIFT (process));
+								Thread.sleep (1000);
+							}
 						}
 					}
 				}
@@ -1489,6 +1491,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		}
 		long hostTime = System.currentTimeMillis () - start_time;
 		if (numberOfBattles > 0) {
+			log.info ("************当前轮次,战斗次数{}次",  numberOfBattles);
 			log.info ("************当前轮次,平均每次战斗用时{}秒", hostTime / numberOfBattles / 1000);
 		}
 		returnHome (process);
@@ -1560,13 +1563,14 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			throws IOException, InterruptedException, AWTException {
 		boolean b1 = imagesBack (ghostType, paramSIFT (process, 1, 4));
 		if (b1) {
+			Thread.sleep (2000);
 			log.info ("判断账号类型");
 			if (!gameUserId.equals ("1")) {
 				log.info ("不是大号，单击普通标志");
 				imagesBack (ghost_PTBZ, paramSIFT (process, 1, 4));
 			}
 			if (gameUserId.equals ("1")) {
-				log.info ("大号，单击极标志");
+				log.info ("大号，点击极标志");
 				imagesBack (ghost_JBZ, paramSIFT (process, 1, 4));
 			}
 			log.info ("开始挑战");
