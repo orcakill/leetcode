@@ -1572,6 +1572,14 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			if (gameUserId.equals ("1")) {
 				log.info ("大号，点击极标志");
 				imagesBack (ghost_JBZ, paramSIFT (process, 1, 4));
+				log.info ("判断是否还有极标志");
+				boolean is_jBZ=imagesBack (ghost_JBZ, paramSIFTNotClick (process, 1, 4));
+				while (is_jBZ){
+					log.info ("还存在极标志");
+					imagesBack (ghost_JBZ, paramSIFT (process, 1, 4));
+					Thread.sleep (1000);
+					is_jBZ=imagesBack (ghost_JBZ, paramSIFTNotClick (process, 1, 4));
+				}
 			}
 			log.info ("开始挑战");
 			Thread.sleep (2000);
