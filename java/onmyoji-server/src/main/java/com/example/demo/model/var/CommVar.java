@@ -155,4 +155,6 @@ public class CommVar {
 	public static final String ghost_TZ="地域鬼王/挑战";
 	public static final String ghost_ZB="地域鬼王/准备";
 	
+	public static final String deed_TC="契灵/探查";
+	
 }

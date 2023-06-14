@@ -1591,7 +1591,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			log.info ("再执行一次准备");
 			imagesBack (ghost_ZB, paramSIFT (process, 1, 4));
 			log.info ("等待挑战结束");
-			fightEnd (process, 5 * 60, 60, 120);
+			fightEnd (process, 5 * 60, 30, 60);
 			log.info ("返回地域鬼王界面");
 			boolean regionGhostKingInterface = imagesBack (ghost_JRTZ, paramSIFTNotClick (process, 1, 4));
 			if (regionGhostKingInterface) {
