@@ -25,6 +25,8 @@ class OnmyojiServiceTest {
 	@Autowired
 	private OnmyojiService onmyojiService;
 	
+
+	
 	//当前状态初始化 首页
 	@Test
 	void initializationState () throws IOException, InterruptedException, AWTException {
@@ -227,4 +229,9 @@ class OnmyojiServiceTest {
 		log.info ("测试结束");
 		log.info ("用时{}毫秒", System.currentTimeMillis () - startTime);
 	}
+	
+
+	
+	
+	
 }
