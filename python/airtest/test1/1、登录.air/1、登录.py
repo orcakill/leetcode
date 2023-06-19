@@ -2,7 +2,8 @@
 from airtest.core.api import *
 
 auto_setup(__file__)
-exists(Template(r"tpl1686906033318.png", record_pos=(-0.465, -0.233), resolution=(1920, 1080)))
+touch(Template(r"tpl1687166999051.png", record_pos=(-0.467, -0.225), resolution=(1280, 720)))
+
 
 
 
