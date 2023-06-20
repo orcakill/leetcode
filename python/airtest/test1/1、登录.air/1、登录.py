@@ -1,14 +1,17 @@
 # -*- encoding=utf8 -*-
 from airtest.core.api import *
+import datetime
 
 auto_setup(__file__)
-touch(Template(r"tpl1687166999051.png", record_pos=(-0.467, -0.225), resolution=(1280, 720)))
+now=datetime.datetime.now()
+
+
+screen = G.DEVICE.snapshot()
+
+now1=datetime.datetime.now()
+print(1)
+print(now1-now)
 
 
 
 
-
-
-
-
-assert_exists(Template(r"tpl1686883478547.png", record_pos=(-0.452, 0.231), resolution=(1920, 1080)), "请填写测试点")
