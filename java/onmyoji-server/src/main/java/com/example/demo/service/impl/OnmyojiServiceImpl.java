@@ -109,7 +109,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 				if (projectParam.getProjectName ().equals (project_YYLTP)) {
 					log.info (project_YYLTP);
 					fightHouse (process);
-					if (projectParam.getProjectWaitStartTime () != null) {
+					if (projectParam.getProjectWaitStartTime () != null&&projectsParam.getRound()>1) {
 						int waitTime = RandomUtils.getRandom (projectParam.getProjectWaitStartTime (),
 						                                      projectParam.getProjectWaitEndTime ());
 						log.info ("等待{}分钟", waitTime);
