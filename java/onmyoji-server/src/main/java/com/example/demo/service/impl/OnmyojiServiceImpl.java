@@ -186,8 +186,8 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		boolean promptForAge = false;//是否适龄提示
 		boolean targetHomePage = false;
 		boolean switchAccount;
-		log.info ("等待20秒");
-		Thread.sleep (20 * 1000L);
+		log.info ("等待30秒");
+		Thread.sleep (30 * 1000L);
 		log.info ("当前状态初始化");
 		while (!initializeOrNot) {
 			thisPicture = thisState (process);
