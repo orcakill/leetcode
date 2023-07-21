@@ -1536,22 +1536,35 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			log.info ("当前有未选择");
 			log.info ("丹霞山-点击筛选");
 			imagesBack (ghost_SX, paramSIFT (process, 1, 4));
-			log.info ("丹霞山-点击收藏");
-			imagesBack (ghost_SC, paramSIFT (process, 1, 4));
-			log.info ("丹霞山-收藏鬼王-丹霞山");
-			doGhost (process, gameUserId, ghost_SCGW_DXS);
+			log.info ("丹霞山-筛选鬼王-丹霞山");
+			boolean is_RM=imagesBack(ghost_SXGW_DXS,paramSIFTNotClick(process,1,4));
+			if(is_RM){
+				log.info("热门有丹霞山");
+				doGhost (process, gameUserId, ghost_SXGW_DXS);
+			}
 			log.info ("鸟巢-点击筛选");
 			imagesBack (ghost_SX, paramSIFT (process, 1, 4));
-			log.info ("鸟巢-点击收藏");
-			imagesBack (ghost_SC, paramSIFT (process, 1, 4));
-			log.info ("鸟巢-收藏鬼王-鸟巢");
-			doGhost (process, gameUserId, ghost_SCGW_NC);
+			log.info ("鸟巢-筛选鬼王-鸟巢");
+			is_RM=imagesBack(ghost_SXGW_DXS,paramSIFTNotClick(process,1,4));
+			if(is_RM){
+				log.info("热门有鸟巢");
+				doGhost (process, gameUserId, ghost_SXGW_NC);
+			}
 			log.info ("少林寺藏经阁-点击筛选");
 			imagesBack (ghost_SX, paramSIFT (process, 1, 4));
-			log.info ("少林寺藏经阁-点击收藏");
-			imagesBack (ghost_SC, paramSIFT (process, 1, 4));
-			log.info ("少林寺藏经阁-收藏鬼王-少林寺藏经阁");
-			doGhost (process, gameUserId, ghost_SCGW_SLSCJG);
+			is_RM=imagesBack(ghost_SXGW_SLSCJG,paramSIFTNotClick(process,1,4));
+			if(is_RM){
+				log.info("热门有少林寺藏经阁");
+				doGhost (process, gameUserId, ghost_SXGW_SLSCJG);
+			}
+			log.info ("黄鹤楼-点击筛选");
+			imagesBack (ghost_SXGW_HHL, paramSIFT (process, 1, 4));
+			is_RM=imagesBack(ghost_SXGW_HHL,paramSIFTNotClick(process,1,4));
+			if(is_RM){
+				log.info("热门有少林寺藏经阁");
+				doGhost (process, gameUserId, ghost_SXGW_HHL);
+			}
+
 			log.info ("退出鬼王页面，重新判断当前状态");
 			todaySChallengeStatus = imagesBack (ghost_WXZ, paramSIFTNotClick (process, 1, 30));
 		}
