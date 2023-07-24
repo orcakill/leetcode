@@ -730,11 +730,11 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			pictureIdentifyWorkPOList = CoordinateAddressMap.getCoordinate ("御魂加成");
 			if (addition) {
 				log.info ("准备开启加成");
-				imagesBack (soul_JC_BQDS, paramRGB (process));
+				imagesBack (soul_JC_BQDS, paramSIFT (process));
 				log.info ("点击加成成功，准备点击御魂加成");
 				MouseClickUtils.mouseClickBack (pictureIdentifyWorkPOList, "夜神模拟器", true);
 				log.info ("点击御魂加成成功，准备退出");
-				imagesBack (soul_JC_BQDS, paramRGB (process));
+				imagesBack (soul_JC_BQDS, paramSIFT (process));
 				//退出加成页面
 				log.info ("退出加成页面");
 			}
@@ -761,11 +761,11 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			//挑战结束
 			if (addition) {
 				//关闭加成
-				imagesBack (soul_JC_BQDS, paramRGB (process));
+				imagesBack (soul_JC_BQDS, paramSIFT (process));
 				log.info ("点击加成成功，准备关闭御魂加成");
 				MouseClickUtils.mouseClickBack (pictureIdentifyWorkPOList, "夜神模拟器", true);
 				log.info ("关闭御魂加成成功，准备退出");
-				imagesBack (soul_JC_BQDS, paramRGB (process));
+				imagesBack (soul_JC_BQDS, paramSIFT (process));
 				//退出加成页面
 				log.info ("退出加成页面");
 			}

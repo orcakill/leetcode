@@ -38,7 +38,7 @@ public class OnmyojiController {
 		this.onmyojiService = onmyojiService;
 	}
 	
-	@ApiOperation ("正式  大号每日任务，寮突+个突+魂十一")
+	@ApiOperation ("正式  大号每日任务，寮突+个突+魂十一+地域鬼王")
 	@ApiOperationSupport (order = 1)
 	@GetMapping ("/dealTaskMRRW")
 	public Results<?> dealTaskMRRW (
@@ -135,7 +135,7 @@ public class OnmyojiController {
 		//个人突破
 		projectParams.add (new ProjectParam (project_GRTP,"1"));
 		//魂十一
-		projectParams.add (new ProjectParam (project_YYH,"1",60,true,null,
+		projectParams.add (new ProjectParam (project_HSY,"1",60,true,null,
 		                                     null));
 		projectsParam.setProjectParams (projectParams);
 		onmyojiService.onmyojiService (projectsParam);
