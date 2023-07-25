@@ -156,6 +156,7 @@ public class CommVar {
 	public static final String ghost_SXGW_SLSCJG="地域鬼王/筛选鬼王/少林寺藏经阁";
 	public static final String ghost_SXGW_HHL="地域鬼王/筛选鬼王/黄鹤楼";
 	public static final String ghost_PTBZ="地域鬼王/普通标志";
+	public static final String ghost_W="地域鬼王/无";
 	public static final String ghost_JBZ="地域鬼王/极标志";
 	public static final String ghost_TZ="地域鬼王/挑战";
 	public static final String ghost_ZB="地域鬼王/准备";
