@@ -1545,7 +1545,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			log.info ("鸟巢-点击筛选");
 			imagesBack (ghost_SX, paramSIFT (process, 1, 4));
 			log.info ("鸟巢-筛选鬼王-鸟巢");
-			is_RM=imagesBack(ghost_SXGW_DXS,paramSIFTNotClick(process,1,4));
+			is_RM=imagesBack(ghost_SXGW_NC,paramSIFTNotClick(process,1,4));
 			if(is_RM){
 				log.info("热门有鸟巢");
 				doGhost (process, gameUserId, ghost_SXGW_NC);
@@ -1561,12 +1561,11 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 			imagesBack (ghost_SXGW_HHL, paramSIFT (process, 1, 4));
 			is_RM=imagesBack(ghost_SXGW_HHL,paramSIFTNotClick(process,1,4));
 			if(is_RM){
-				log.info("热门有少林寺藏经阁");
+				log.info("热门有黄鹤楼");
 				doGhost (process, gameUserId, ghost_SXGW_HHL);
 			}
-
 			log.info ("退出鬼王页面，重新判断当前状态");
-			todaySChallengeStatus = imagesBack (ghost_WXZ, paramSIFTNotClick (process, 1, 30));
+			todaySChallengeStatus = imagesBack (ghost_WXZ, paramSIFTNotClick (process, 10, 4));
 		}
 		log.info ("已完成地域鬼王挑战，返回首页");
 		returnHome (process);
@@ -1577,34 +1576,38 @@ public class OnmyojiServiceImpl implements OnmyojiService {
 		boolean b1 = imagesBack (ghostType, paramSIFT (process, 1, 4));
 		if (b1) {
 			Thread.sleep (2000);
-			log.info ("判断账号类型");
-			if (!gameUserId.equals ("1")) {
-				log.info ("不是大号，单击普通标志");
-				imagesBack (ghost_PTBZ, paramSIFT (process, 1, 4));
-			}
-			if (gameUserId.equals ("1")) {
-				log.info ("大号，点击极标志");
-				imagesBack (ghost_JBZ, paramSIFT (process, 1, 4));
-				log.info ("判断是否还有极标志");
-				boolean is_jBZ=imagesBack (ghost_JBZ, paramSIFTNotClick (process, 1, 4));
-				while (is_jBZ){
-					log.info ("还存在极标志");
-					imagesBack (ghost_JBZ, paramSIFT (process, 1, 4));
-					Thread.sleep (1000);
-					is_jBZ=imagesBack (ghost_JBZ, paramSIFTNotClick (process, 1, 4));
+			log.info("判断是否有无字");
+			boolean is_no=imagesBack (ghost_W, paramSIFTNotClick (process, 1, 4));
+			if(is_no) {
+				log.info("有无字,未挑战，判断账号类型");
+				if (!gameUserId.equals("1")) {
+					log.info("不是大号，单击普通标志");
+					imagesBack(ghost_PTBZ, paramSIFT(process, 1, 4));
 				}
+				if (gameUserId.equals("1")) {
+					log.info("大号，点击极标志");
+					imagesBack(ghost_JBZ, paramSIFT(process, 1, 4));
+					log.info("判断是否还有极标志");
+					boolean is_jBZ = imagesBack(ghost_JBZ, paramSIFTNotClick(process, 1, 4));
+					while (is_jBZ) {
+						log.info("还存在极标志");
+						imagesBack(ghost_JBZ, paramSIFT(process, 1, 4));
+						Thread.sleep(1000);
+						is_jBZ = imagesBack(ghost_JBZ, paramSIFTNotClick(process, 1, 4));
+					}
+				}
+				log.info("开始挑战");
+				Thread.sleep(2000);
+				imagesBack(ghost_TZ, paramSIFT(process, 10, 4));
+				Thread.sleep(2000);
+				log.info("准备");
+				imagesBack(ghost_ZB, paramSIFT(process, 10, 4));
+				Thread.sleep(2000);
+				log.info("再执行一次准备");
+				imagesBack(ghost_ZB, paramSIFT(process, 1, 4));
+				log.info("等待挑战结束");
+				fightEnd(process, 5 * 60, 30, 60);
 			}
-			log.info ("开始挑战");
-			Thread.sleep (2000);
-			imagesBack (ghost_TZ, paramSIFT (process, 10, 4));
-			Thread.sleep (2000);
-			log.info ("准备");
-			imagesBack (ghost_ZB, paramSIFT (process, 10, 4));
-			Thread.sleep (2000);
-			log.info ("再执行一次准备");
-			imagesBack (ghost_ZB, paramSIFT (process, 1, 4));
-			log.info ("等待挑战结束");
-			fightEnd (process, 5 * 60, 30, 60);
 			log.info ("返回地域鬼王界面");
 			boolean regionGhostKingInterface = imagesBack (ghost_JRTZ, paramSIFTNotClick (process, 1, 4));
 			if (regionGhostKingInterface) {
