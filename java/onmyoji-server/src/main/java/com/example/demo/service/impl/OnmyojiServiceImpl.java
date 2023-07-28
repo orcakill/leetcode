@@ -1502,55 +1502,77 @@ public class OnmyojiServiceImpl implements OnmyojiService {
     public void regionalGhostKing(String process, String gameUserId)
             throws IOException, InterruptedException, AWTException {
         boolean todaySChallengeStatus;//今日挑战状态
+        boolean is_change;/*是否有今日挑战*/
         log.info("进入探索");
         imagesBack(home_TS, paramSIFT(process, 10, 4));
         log.info("进入地域鬼王");
         imagesBack(ghost_DYGWTB, paramSIFT(process, 10, 4));
         log.info("点击今日挑战");
-        imagesBack(ghost_JRTZ, paramSIFT(process, 10, 4));
-        log.info("判断是否有未选择");
-        todaySChallengeStatus = imagesBack(ghost_WXZ, paramSIFTNotClick(process, 10, 30));
-        while (todaySChallengeStatus) {
-            log.info("当前有未选择");
-            log.info("丹霞山-点击筛选");
-            imagesBack(ghost_SX, paramSIFT(process, 1, 4));
-            log.info("丹霞山-筛选鬼王-丹霞山");
-            boolean is_RM = imagesBack(ghost_SXGW_DXS, paramSIFTNotClick(process, 1, 4));
-            if (is_RM) {
-                log.info("热门有丹霞山");
-                doGhost(process, gameUserId, ghost_SXGW_DXS);
-            }
-            log.info("鸟巢-点击筛选");
-            imagesBack(ghost_SX, paramSIFT(process, 1, 4));
-            log.info("鸟巢-筛选鬼王-鸟巢");
-            is_RM = imagesBack(ghost_SXGW_NC, paramSIFTNotClick(process, 1, 4));
-            if (is_RM) {
-                log.info("热门有鸟巢");
-                doGhost(process, gameUserId, ghost_SXGW_NC);
-            }
-            log.info("少林寺藏经阁-点击筛选");
-            imagesBack(ghost_SX, paramSIFT(process, 1, 4));
-            is_RM = imagesBack(ghost_SXGW_SLSCJG, paramSIFTNotClick(process, 1, 4));
-            if (is_RM) {
-                log.info("热门有少林寺藏经阁");
-                doGhost(process, gameUserId, ghost_SXGW_SLSCJG);
-            }
-            log.info("黄鹤楼-点击筛选");
-            imagesBack(ghost_SXGW_HHL, paramSIFT(process, 1, 4));
-            is_RM = imagesBack(ghost_SXGW_HHL, paramSIFTNotClick(process, 1, 4));
-            if (is_RM) {
-                log.info("热门有黄鹤楼");
-                doGhost(process, gameUserId, ghost_SXGW_HHL);
+        is_change = imagesBack(ghost_JRTZ, paramSIFT(process, 10, 4));
+        if(is_change) {
+            log.info("判断是否有未选择");
+            todaySChallengeStatus = imagesBack(ghost_WXZ, paramSIFTNotClick(process, 10, 5));
+            if (todaySChallengeStatus) {
+                log.info("当前有未选择");
+                log.info("丹霞山-点击筛选");
+                imagesBack(ghost_SX, paramSIFT(process, 1, 4));
+                log.info("丹霞山-筛选鬼王-丹霞山");
+                boolean is_RM = imagesBack(ghost_SXGW_DXS, paramSIFTNotClick(process, 1, 4));
+                if (is_RM) {
+                    log.info("筛选有丹霞山");
+                    doGhost(process, gameUserId, ghost_SXGW_DXS);
+                }
             }
             log.info("点击今日挑战");
-            boolean is_change = imagesBack(ghost_JRTZ, paramSIFT(process, 10, 4));
-            if (is_change) {
-                log.info("退出鬼王页面，重新判断当前状态");
-                todaySChallengeStatus = imagesBack(ghost_WXZ, paramSIFTNotClick(process, 10, 4));
+            is_change = imagesBack(ghost_JRTZ, paramSIFT(process, 10, 4));
+            if(is_change) {
+                log.info("判断是否有未选择");
+                todaySChallengeStatus = imagesBack(ghost_WXZ, paramSIFTNotClick(process, 10, 5));
+                    if (todaySChallengeStatus) {
+                    log.info("当前有未选择");
+                    log.info("鸟巢-点击筛选");
+                    imagesBack(ghost_SX, paramSIFT(process, 1, 4));
+                    log.info("鸟巢-筛选鬼王-鸟巢");
+                    boolean is_RM = imagesBack(ghost_SXGW_NC, paramSIFTNotClick(process, 1, 4));
+                    if (is_RM) {
+                        log.info("筛选有鸟巢");
+                        doGhost(process, gameUserId, ghost_SXGW_NC);
+                    }
+                }
             }
-            else{
-                log.info("未找到今日挑战，不重新挑战");
-                todaySChallengeStatus=false;
+            log.info("点击今日挑战");
+            is_change = imagesBack(ghost_JRTZ, paramSIFT(process, 10, 4));
+            if(is_change) {
+                log.info("判断是否有未选择");
+                todaySChallengeStatus = imagesBack(ghost_WXZ, paramSIFTNotClick(process, 10, 5));
+                    if (todaySChallengeStatus) {
+                    log.info("当前有未选择");
+                    log.info("少林寺藏经阁-点击筛选");
+                    imagesBack(ghost_SX, paramSIFT(process, 1, 4));
+                    log.info("少林寺藏经阁-筛选鬼王-少林寺藏经阁");
+                    boolean is_RM = imagesBack(ghost_SXGW_SLSCJG, paramSIFTNotClick(process, 1, 4));
+                    if (is_RM) {
+                        log.info("筛选有鸟巢");
+                        doGhost(process, gameUserId, ghost_SXGW_SLSCJG);
+                    }
+                }
+            }
+            log.info("点击今日挑战");
+            is_change = imagesBack(ghost_JRTZ, paramSIFT(process, 10, 4));
+            if(is_change) {
+                log.info("判断是否有未选择");
+                todaySChallengeStatus = imagesBack(ghost_WXZ, paramSIFTNotClick(process, 10, 5));
+                    if (todaySChallengeStatus) {
+                    log.info("当前有未选择");
+                    log.info("黄鹤楼-点击筛选");
+                    imagesBack(ghost_SX, paramSIFT(process, 1, 4));
+                    log.info("黄鹤楼-筛选鬼王-黄鹤楼");
+                    boolean is_RM = imagesBack(ghost_SXGW_HHL, paramSIFTNotClick(process, 1, 4));
+                    if (is_RM) {
+                        log.info("筛选有黄鹤楼");
+                        doGhost(process, gameUserId, ghost_SXGW_HHL);
+                    }
+                }
             }
         }
         log.info("已完成地域鬼王挑战，返回首页");
@@ -1594,10 +1616,13 @@ public class OnmyojiServiceImpl implements OnmyojiService {
                 log.info("等待挑战结束");
                 fightEnd(process, 5 * 60, 30, 60);
             }
-            log.info("返回地域鬼王界面");
+            log.info("返回到地域鬼王页面");
+            imagesBack(return_FH, paramSIFT(process, 10, 4));
+            log.info("判断是否有今日挑战");
             boolean regionGhostKingInterface = imagesBack(ghost_JRTZ, paramSIFTNotClick(process, 1, 4));
-            if (regionGhostKingInterface) {
-                imagesBack(return_FH, paramSIFT(process, 1, 4));
+            if (!regionGhostKingInterface) {
+                log.info("没有今日挑战，再返回一次");
+                imagesBack(return_FH, paramSIFT(process, 10, 4));
             }
             log.info("结束挑战，返回到地域鬼王界面");
         }
