@@ -55,6 +55,7 @@ public class CommVar {
 	public static final String region_JG = "结界突破/进攻";
 	public static final String region_JJTP = "结界突破/结界突破";
 	public static final String region_JJTZJS = "结界突破/结界挑战劵数";
+	public static final String region_TCTZ = "结界突破/退出挑战";
 	public static final String region_LJJ = "结界突破/寮结界";
 	public static final String region_SB = "结界突破/失败";
 	public static final String region_TCJG = "结界突破/退出进攻";

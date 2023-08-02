@@ -656,7 +656,7 @@ public class OnmyojiServiceImpl implements OnmyojiService {
             boolean isBoundaryBreakthrough = imagesBack(region_LJJ, paramSIFTNotClick(process, 1, 4));
             if (!isBoundaryBreakthrough) {
                 log.info("没有寮结界图标,点击可能出现的退出挑战");
-                imagesBack(soul_TCTZ, paramSIFT(process, 1, 10));
+                imagesBack(region_TCTZ, paramSIFT(process, 1, 10));
             }
             //判断能否选择个人结界
             booleanKXJJ = ImageService.imagesBack(region_GRJJ, paramRGBNotClick(process, 3));
@@ -678,9 +678,9 @@ public class OnmyojiServiceImpl implements OnmyojiService {
                 log.info("进入战斗");
                 fightEnd(process, 10, 10, 15);
                 log.info("判断是否有额外奖励");
-                whetherAdditionalReward = imagesBack(soul_TCTZ, paramSIFT(process, 1,5));
+                whetherAdditionalReward = imagesBack(region_TCTZ, paramSIFT(process, 1,5));
                 if (whetherAdditionalReward) {
-                    ImageService.imagesBack(soul_TCTZ, paramSIFT(process,1,5));
+                    ImageService.imagesBack(region_TCTZ, paramSIFT(process,1,5));
                     log.info("领取额外奖励成功");
                 } else {
                     log.info("没有额外奖励");
