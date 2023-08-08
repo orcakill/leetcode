@@ -63,6 +63,8 @@ public class OnmyojiController {
 		//魂十一
 		projectParams.add (new ProjectParam (project_HSY,"1",40,true,null,
 		                                     null));
+		//个人再突破
+		projectParams.add (new ProjectParam (project_GRTP,"1"));
 		projectsParam.setProjectParams (projectParams);
 		onmyojiService.onmyojiService (projectsParam);
 		return Results.ok ("任务已启动");
