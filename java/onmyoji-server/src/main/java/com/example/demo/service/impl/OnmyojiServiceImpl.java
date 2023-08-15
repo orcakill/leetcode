@@ -1620,9 +1620,16 @@ public class OnmyojiServiceImpl implements OnmyojiService {
             imagesBack(return_FH, paramSIFT(process, 10, 4));
             log.info("判断是否有今日挑战");
             boolean regionGhostKingInterface = imagesBack(ghost_JRTZ, paramSIFTNotClick(process, 1, 4));
-            if (!regionGhostKingInterface) {
-                log.info("没有今日挑战，再返回一次");
-                imagesBack(return_FH, paramSIFT(process, 10, 4));
+            if(!regionGhostKingInterface) {
+                for(int i=0;i<3;i++){
+                    log.info("没有今日挑战，再返回一次");
+                    imagesBack(return_FH, paramSIFT(process, 10, 4));
+                    regionGhostKingInterface = imagesBack(ghost_JRTZ, paramSIFTNotClick(process, 1, 4));
+                    if(regionGhostKingInterface){
+                        log.info("有今日挑战");
+                    }
+                }
+
             }
             log.info("结束挑战，返回到地域鬼王界面");
         }
