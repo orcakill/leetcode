@@ -394,7 +394,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.3.8</version>
+            <version>5.3.19</version>
             <exclusions>
                 <exclusion>
                     <artifactId>spring-expression</artifactId>
