@@ -37,7 +37,7 @@ class MyLogger:
         return self.logger
 
 
-def kettle_data(self):
+def kettle_data():
     strPath = os.getcwd()
     folderFiles = os.walk(strPath)
     filesPath = []
@@ -82,5 +82,5 @@ def kettle_data(self):
 if __name__ == '__main__':
     # pyinstaller -F kettle_data.py 最终生成exe文件
     logger = MyLogger().get_logger()
-    kettle_data(0)
+    kettle_data()
     logger.info('执行完成')
