@@ -42,6 +42,7 @@ class Solution:
                 j = L + i - 1
                 # 如果右边界越界，就可以退出当前循环
                 if j >= n:
+
                     break
 
                 if s[i] != s[j]:
