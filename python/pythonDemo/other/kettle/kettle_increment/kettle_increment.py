@@ -35,7 +35,9 @@ def get_database_info(ini_name):
              'port': config.get(ini_name, "port"),
              'servername': config.get(ini_name, "servername"),
              'username': config.get(ini_name, "username"),
-             'password': config.get(ini_name, "password")}
+             'password': config.get(ini_name, "password"),
+             'password1': config.get(ini_name, "password1"),
+             }
     return dict1
 
 
@@ -123,7 +125,7 @@ def deal_connection(database_info):
     port = database_info['port']
     servername = database_info['servername']
     username = database_info['username']
-    password = database_info['password']
+    password = database_info['password1']
     if database_type == 'oracle':
         str_connection = ('  <connection>\n'
                           + '    <name>' + database_type + '_' + username + '</name>\n'
