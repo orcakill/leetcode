@@ -94,16 +94,12 @@ def get_tables(database_info):
     return table_info
 
 
-def create_kettle():
-    database_info1 = get_database_info('database1')
-    database_info2 = get_database_info('database2')
-    table_info = get_tables(database_info1)
-    # xml
-    str_xml = KettleStr.str_xml
-    str_info = KettleStr.str_info
-    str_connection = KettleStr.str_info
-    str_order = "'  <order>\n\r'"
+def deal_order(table_info):
+    """
+    处理排序和连接
+    """
     # 循环处理order 的内容
+    str_order = "'  <order>\n\r'"
     for table in table_info:
         table_name = table
         str_order = (str_order
@@ -113,7 +109,24 @@ def create_kettle():
                      + '      <enabled>Y</enabled>\n\r'
                      + '    </hop>\n\r'
                      )
+    return str_order
 
+
+def deal_connection(database_info1,database_info2):
+    """
+    处理数据库连接
+    """
+
+
+def create_kettle():
+    database_info1 = get_database_info('database1')
+    database_info2 = get_database_info('database2')
+    table_info = get_tables(database_info1)
+    # xml
+    str_xml = KettleStr.str_xml
+    str_info = KettleStr.str_info
+    str_connection = deal_connection(database_info1, database_info2)
+    str_order = deal_order(table_info)
     str_step = ""
     str_step_error_handling = ('  <slave-step-copy-partition-distribution>\n\r'
                                + '  </slave-step-copy-partition-distribution>\n\r'
