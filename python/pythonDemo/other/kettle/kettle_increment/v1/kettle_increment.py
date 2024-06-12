@@ -5,10 +5,11 @@
 import configparser
 import os
 
+import chardet
 import cx_Oracle
 from loguru import logger
 
-from other.kettle.kettle_increment.kettle_str import KettleStr
+from other.kettle.kettle_increment.v1.kettle_str import KettleStr
 
 
 def get_project_path():
@@ -61,15 +62,18 @@ def get_tables(database_info):
     cursor = connection.cursor()
 
     # 获取数据库中的所有表
-    cursor.execute("SELECT table_name FROM user_tables where table_name='BA_ORGANIZATION' order by table_name")
+    cursor.execute(
+        "SELECT table_name from (SELECT table_name FROM user_tables  order by table_name) where 1=1 order by table_name")
 
     tables = cursor.fetchall()
+    logger.info("来源库数据表数：{}", len(tables))
 
     # 用于存储表信息的字典
     table_info = {}
 
-    for table in tables:
-        table_name = table[0]
+    for i in range(len(tables)):
+        table_name = tables[i][0]
+        logger.info("当前数据表：第{}个,表{}", i + 1, table_name)
         sql = ('select   a.table_name as table_name,\n'
                + '       (select a1.comments\n'
                + '          from user_tab_comments a1\n'
@@ -158,131 +162,44 @@ def deal_connection(database_info):
                           + '      </attribute>\n'
                           + '      <attribute>\n'
                           + '        <code>CUSTOM_URL</code>\n'
-                          + '        <attribute>jdbc:dm://' + ip + ':' + port + '</attribute>\n'
+                          + '        <attribute>jdbc:dm://' + ip + ':' + port + '/</attribute>\n'
                           )
         str_connection = str_connection + KettleStr.str_connection_dm
     return str_connection
 
 
-def deal_order(table_info):
+def deal_order(table_infos):
     """
     处理排序和连接
     """
     # 循环处理order 的内容
-    str_order = "'  <order>\n'"
-    for table in table_info:
-        table_name = table
+    str_order = "  <order>\n"
+    for index, (key, value) in enumerate(table_infos.items(), start=1):
+        table_name = key
+        nr = "\r\n"
+        max_index = len(table_infos)
+        if index == 1 or index == max_index:
+            nr = "\n"
         str_order = (str_order
-                     + '    <hop>\n'
-                     + '      <from>' + table_name + ' 表输入</from>\n'
-                     + '      <to>' + table_name + ' 插入 / 更新</to>\n'
-                     + '      <enabled>Y</enabled>\n'
+                     + '    <hop>' + nr
+                     + '      <from>' + table_name + ' 表输入</from>' + nr
+                     + '      <to>' + table_name + ' 插入 / 更新</to>' + nr
+                     + '      <enabled>Y</enabled>' + nr
                      + '    </hop>\n'
                      )
+    str_order = (str_order + "  </order>\n")
     return str_order
 
 
-def deal_table_input(table_infos, database_info1):
-    step_table_input = ""
-    # 循环表
+def deal_step(table_infos, database_info1, database_info2):
+    str_step = ""
+    # 循环表,先插入更新再表输入
     for index, (key, value) in enumerate(table_infos.items(), start=1):
+        str_table_input = ""
+        str_table_insert = ""
+        connect_name = database_info2['database_type'] + '_' + database_info2['username']
         table_name = key
-        step_table_input = ('  <step>\n'
-                            + '    <name>' + table_name + ' 表输入</name>\n'
-                            + '    <type>TableInput</type>\n'
-                            + '    <description/>\n'
-                            + '    <distribute>Y</distribute>\n'
-                            + '    <custom_distribution/>\n'
-                            + '    <copies>1</copies>\n'
-                            + '    <partitioning>\n'
-                            + '      <method>none</method>\n'
-                            + '      <schema_name/>\n'
-                            + '    </partitioning>\n'
-                            + '    <connection>' + database_info1['database_type'] + '_' + database_info1[
-                                'username'] + '</connection>\n'
-                            + '    <sql>select '
-                            )
-        table_info = table_infos[table_name]
-        for j in range(len(table_info)):
-            if j == len(table_info) - 1:
-                step_table_input = step_table_input + '       ' + table_info[j][3] + '\n'
-            else:
-                step_table_input = step_table_input + '       ' + table_info[j][3] + ',\n'
-        step_table_input = (step_table_input + '  from ' + table_name + ' t\n')
-        table_column = []
-        for column in table_info:
-            table_column.append(column[3])
-        if 'RQ' in table_column:
-            step_table_input = (step_table_input + '  where \'${v_rq}\' is null or rq=\'${v_rq}\'\n')
-        if 'NY' in table_column:
-            step_table_input = (step_table_input + '  where \'${v_ny}\' is null or ny=\'${v_ny}\'\n')
-        step_table_input = (step_table_input + '</sql>\n'
-                            + '    <limit>0</limit>\n'
-                            + '    <lookup/>\n'
-                            + '    <execute_each_row>N</execute_each_row>\n'
-                            + '    <variables_active>Y</variables_active>\n'
-                            + '    <lazy_conversion_active>N</lazy_conversion_active>\n'
-                            + '    <cached_row_meta_active>N</cached_row_meta_active>\n'
-                            + '    <row-meta>\n')
-        for j in range(len(table_info)):
-            column_name = table_info[j][3]
-            column_type = table_info[j][7]
-            column_length = str(table_info[j][8])
-            if column_type == 'VARCHAR':
-                column_type = 'String'
-            step_table_input = (step_table_input
-                                + '      <value-meta>\n'
-                                + '        <type>' + column_type + '</type>\n'
-                                + '        <storagetype>normal</storagetype>\n'
-                                + '        <name>' + column_name + '</name>\n'
-                                + '        <length>' + column_length + '</length>\n'
-                                + '        <precision>-1</precision>\n'
-                                + '        <origin>表输入</origin>\n'
-                                + '        <comments>' + column_name + '</comments>\n'
-                                + '        <conversion_Mask/>\n'
-                                + '        <decimal_symbol>.</decimal_symbol>\n'
-                                + '        <grouping_symbol>,</grouping_symbol>\n'
-                                + '        <currency_symbol/>\n'
-                                + '        <trim_type>none</trim_type>\n'
-                                + '        <case_insensitive>N</case_insensitive>\n'
-                                + '        <collator_disabled>Y</collator_disabled>\n'
-                                + '        <collator_strength>0</collator_strength>\n'
-                                + '        <sort_descending>N</sort_descending>\n'
-                                + '        <output_padding>N</output_padding>\n'
-                                + '        <date_format_lenient>N</date_format_lenient>\n'
-                                + '        <date_format_locale>zh_CN</date_format_locale>\n'
-                                + '        <date_format_timezone>Asia/Shanghai</date_format_timezone>\n'
-                                + '        <lenient_string_to_number>N</lenient_string_to_number>\n'
-                                + '      </value-meta>\n')
-            step_table_input = (step_table_input
-                                + '    </row-meta>\n'
-                                + '    <attributes/>\n'
-                                + '    <cluster_schema/>\n'
-                                + '    <remotesteps>\n'
-                                + '      <input>\n'
-                                + '      </input>\n'
-                                + '      <output>\n'
-                                + '      </output>\n'
-                                + '    </remotesteps>\n'
-                                + '    <GUI>\n'
-                                + '      <xloc>200</xloc>\n'
-                                + '      <yloc>' + str(index * 100) + '</yloc>\n'
-                                + '      <draw>Y</draw>\n'
-                                + '    </GUI>\n'
-                                + '  </step>\n'
-                                )
-    return step_table_input
-
-
-def deal_table_insert(table_infos, database_info2):
-    """
-    处理插入更新
-    """
-    # 循环表
-    str_table_insert = ""
-    connect_name = database_info2['database_type'] + '_' + database_info2['username']
-    for index, (key, value) in enumerate(table_infos.items(), start=1):
-        table_name = key
+        # 插入更新
         str_table_insert = (str_table_insert
                             + '  <step>\n'
                             + '    <name>' + table_name + ' 插入 / 更新</name>\n'
@@ -306,7 +223,7 @@ def deal_table_insert(table_infos, database_info2):
         for j in range(len(table_info)):
             column_pk = table_info[j][5]
             column_name = table_info[j][3]
-            if column_pk:
+            if column_pk == 'Y':
                 str_table_insert = (str_table_insert
                                     + '      <key>\n'
                                     + '        <name>' + column_name + '</name>\n'
@@ -335,36 +252,148 @@ def deal_table_insert(table_infos, database_info2):
                             + '      </output>\n'
                             + '    </remotesteps>\n'
                             + '    <GUI>\n'
-                            + '      <xloc>400</xloc>\n'
+                            + '      <xloc>600</xloc>\n'
                             + '      <yloc>' + str(index * 100) + '</yloc>\n'
                             + '      <draw>Y</draw>\n'
                             + '    </GUI>\n'
                             + '  </step>\n'
                             )
-
-    return str_table_insert
+        # 表输入
+        str_table_input = (str_table_input + '  <step>\n'
+                           + '    <name>' + table_name + ' 表输入</name>\n'
+                           + '    <type>TableInput</type>\n'
+                           + '    <description/>\n'
+                           + '    <distribute>Y</distribute>\n'
+                           + '    <custom_distribution/>\n'
+                           + '    <copies>1</copies>\n'
+                           + '    <partitioning>\n'
+                           + '      <method>none</method>\n'
+                           + '      <schema_name/>\n'
+                           + '    </partitioning>\n'
+                           + '    <connection>' + database_info1['database_type'] + '_' + database_info1[
+                               'username'] + '</connection>\n'
+                           + '    <sql>select\r\n'
+                           )
+        table_info = table_infos[table_name]
+        for j in range(len(table_info)):
+            if j == len(table_info) - 1:
+                str_table_input = str_table_input + '       ' + table_info[j][3].lower() + '\n'
+            else:
+                str_table_input = str_table_input + '       ' + table_info[j][3].lower() + ',\n'
+        str_table_input = (str_table_input + '  from ' + table_name + '\n')
+        table_column = []
+        for column in table_info:
+            table_column.append(column[3])
+        if 'RQ' in table_column:
+            str_table_input = (str_table_input + '  where \'${v_rq}\' is null or rq=\'${v_rq}\'\n')
+        if 'NY' in table_column:
+            str_table_input = (str_table_input + '  where \'${v_ny}\' is null or ny=\'${v_ny}\'\n')
+        str_table_input = (str_table_input + '</sql>\n'
+                           + '    <limit>0</limit>\n'
+                           + '    <lookup/>\n'
+                           + '    <execute_each_row>N</execute_each_row>\n'
+                           + '    <variables_active>Y</variables_active>\n'
+                           + '    <lazy_conversion_active>N</lazy_conversion_active>\n'
+                           + '    <cached_row_meta_active>N</cached_row_meta_active>\n'
+                           + '    <row-meta>\n')
+        for j in range(len(table_info)):
+            column_name = table_info[j][3]
+            column_type = table_info[j][7]
+            column_length = str(table_info[j][8])
+            precision = -1
+            conversion_Mask = '        <conversion_Mask/>\n'
+            if column_type.upper() in ['NVARCHAR2', 'VARCHAR', 'VARCHAR2']:
+                if column_type in ['NVARCHAR2']:
+                    column_length = str(int(int(column_length) / 2))
+                column_type = 'String'
+            if column_type.upper() in ['NUMBER']:
+                column_type = 'Integer'
+                precision = 0
+                conversion_Mask = '        <conversion_Mask>####0;-####0</conversion_Mask>\n'
+            if column_type.upper() in ['DATE']:
+                column_type = 'Timestamp'
+                column_length = str(0)
+            if column_type.upper() in ['TIMESTAMP(6)']:
+                column_type = 'None'
+            if column_type.upper() in ['INTEGER']:
+                column_length = str(38)
+            if column_type.upper() in ['BLOB']:
+                column_type = 'Binary'
+                column_length = str(-1)
+            str_table_input = (str_table_input
+                               + '      <value-meta>\n'
+                               + '        <type>' + column_type + '</type>\n'
+                               + '        <storagetype>normal</storagetype>\n'
+                               + '        <name>' + column_name + '</name>\n'
+                               + '        <length>' + column_length + '</length>\n'
+                               + '        <precision>' + str(precision) + '</precision>\n'
+                               + '        <origin>表输入</origin>\n'
+                               + '        <comments>' + column_name + '</comments>\n'
+                               + conversion_Mask
+                               + '        <decimal_symbol>.</decimal_symbol>\n'
+                               + '        <grouping_symbol>,</grouping_symbol>\n'
+                               + '        <currency_symbol/>\n'
+                               + '        <trim_type>none</trim_type>\n'
+                               + '        <case_insensitive>N</case_insensitive>\n'
+                               + '        <collator_disabled>Y</collator_disabled>\n'
+                               + '        <collator_strength>0</collator_strength>\n'
+                               + '        <sort_descending>N</sort_descending>\n'
+                               + '        <output_padding>N</output_padding>\n'
+                               + '        <date_format_lenient>N</date_format_lenient>\n'
+                               + '        <date_format_locale>zh_CN</date_format_locale>\n'
+                               + '        <date_format_timezone>Asia/Shanghai</date_format_timezone>\n'
+                               + '        <lenient_string_to_number>N</lenient_string_to_number>\n'
+                               + '      </value-meta>\n')
+        str_table_input = (str_table_input
+                           + '    </row-meta>\n'
+                           + '    <attributes/>\n'
+                           + '    <cluster_schema/>\n'
+                           + '    <remotesteps>\n'
+                           + '      <input>\n'
+                           + '      </input>\n'
+                           + '      <output>\n'
+                           + '      </output>\n'
+                           + '    </remotesteps>\n'
+                           + '    <GUI>\n'
+                           + '      <xloc>200</xloc>\n'
+                           + '      <yloc>' + str(index * 100) + '</yloc>\n'
+                           + '      <draw>Y</draw>\n'
+                           + '    </GUI>\n'
+                           + '  </step>\n'
+                           )
+        str_step = str_step + str_table_insert + str_table_input
+    return str_step
 
 
 def create_kettle():
+    logger.info("开始")
+    logger.info("获取来源库信息")
     database_info1 = get_database_info('database1')
+    logger.info("获取目标库信息")
     database_info2 = get_database_info('database2')
+    logger.info("获取来源库表信息")
     table_infos = get_tables(database_info1)
     # xml
+    logger.info("处理ktr文件内容,每50个表一组")
+    file_numer=len(table_infos)/50
     str_xml = KettleStr.str_xml
     str_info = KettleStr.str_info
-    str_connection = deal_connection(database_info1) + deal_connection(database_info2)
+    str_connection = deal_connection(database_info2) + deal_connection(database_info1)
     str_order = deal_order(table_infos)
-    str_step = deal_table_input(table_infos, database_info1) + deal_table_insert(table_infos, database_info2)
+    str_step = deal_step(table_infos, database_info1, database_info2)
     str_step_error_handling = KettleStr.str_step_error_handling
     str_transformation = str_info + str_connection + str_order + str_step + str_step_error_handling
     str_all = str_xml + str_transformation
+    logger.info("生成ktr文件")
     # 指定文件名和后缀
     file_name = "kettle_increment"
     file_extension = ".ktr"
+    str_all = str_all.encode('utf-8')
 
     # 将字符保存到文件中
-    with open(file_name + file_extension, "w") as file:
+    with open(file_name + file_extension, "wb") as file:
         file.write(str_all)
+    logger.info("结束")
 
 
 def deal_example_ktr():
@@ -375,6 +404,32 @@ def deal_example_ktr():
             print(f"+{line.rstrip()}\\n\\r'")
 
 
+def compare_file():
+    """
+    对比2个文件
+    """
+    file1 = 'kettle_increment.ktr'
+    file2 = 'oracledm测试.ktr'
+    with open(file1, 'r', encoding='utf-8', newline='') as f1, open(file2, 'r', encoding='utf-8', newline='') as f2:
+        lines1 = f1.readlines()
+        lines2 = f2.readlines()
+        for i in range(len(lines1)):
+            if i == len(lines2) - 1:
+                break
+            line1 = repr(lines1[i])
+            line2 = repr(lines2[i])
+            if lines1[i] != lines2[i]:
+                print(str(i + 1) + "【" + line1 + "】【" + line2 + "】")
+
+
+def detect_encoding(file_path):
+    with open(file_path, 'rb') as f:
+        rawdata = f.read()
+        result = chardet.detect(rawdata)
+        return result['encoding']
+
+
 if __name__ == '__main__':
     # deal_example_ktr()
     create_kettle()
+    # compare_file()

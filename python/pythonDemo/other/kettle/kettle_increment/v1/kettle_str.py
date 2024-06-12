@@ -7,9 +7,10 @@
 
 
 class KettleStr:
-    str_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
-    str_info = ('  <info>\n'
-                + '    <name>测试</name>\n'
+    str_xml = '<?xml version="1.0" encoding="UTF-8"?>\r\n'
+    str_info = ('<transformation>\n'
+                + '  <info>\n'
+                + '    <name>oracledm测试</name>\n'
                 + '    <description/>\n'
                 + '    <extended_description/>\n'
                 + '    <trans_version/>\n'
@@ -24,7 +25,7 @@ class KettleStr:
                 + '      </parameter>\n'
                 + '      <parameter>\n'
                 + '        <name>v_rq</name>\n'
-                + '        <default_value>2024-04-01</default_value>\n'
+                + '        <default_value>2024-01-01</default_value>\n'
                 + '        <description/>\n'
                 + '      </parameter>\n'
                 + '    </parameters>\n'
@@ -544,7 +545,9 @@ class KettleStr:
                          + '      </attribute>\n'
                          + '    </attributes>\n'
                          + '  </connection>\n')
-    str_step_error_handling = ('  <slave-step-copy-partition-distribution>\n'
+    str_step_error_handling = ('  <step_error_handling>\n'
+                               + '  </step_error_handling>\n'
+                               + '  <slave-step-copy-partition-distribution>\n'
                                + '  </slave-step-copy-partition-distribution>\n'
                                + '  <slave_transformation>N</slave_transformation>\n'
                                + '  <attributes/>\n'
