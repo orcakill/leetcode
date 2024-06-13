@@ -3,6 +3,7 @@
 # @File: kettle_increment.py
 # @Description: 根据数据库配置文件获取库里所有的表，生成所有的增量更新sql,然后将增量更新sql生成ktr文件
 import configparser
+import math
 import os
 
 import chardet
@@ -63,7 +64,7 @@ def get_tables(database_info):
 
     # 获取数据库中的所有表
     cursor.execute(
-        "SELECT table_name from (SELECT table_name FROM user_tables  order by table_name) where 1=1 order by table_name")
+        "SELECT table_name from (SELECT table_name FROM user_tables  order by table_name) where table_name not like 'YXYY_%' order by table_name")
 
     tables = cursor.fetchall()
     logger.info("来源库数据表数：{}", len(tables))
@@ -285,7 +286,8 @@ def deal_step(table_infos, database_info1, database_info2):
         for column in table_info:
             table_column.append(column[3])
         if 'RQ' in table_column:
-            str_table_input = (str_table_input + '  where \'${v_rq}\' is null or rq=\'${v_rq}\'\n')
+            str_table_input = (
+                    str_table_input + '  where \'${v_rq}\' is null or rq=to_date(\'${v_rq}\',\'yyyy-mm-dd\')\n')
         if 'NY' in table_column:
             str_table_input = (str_table_input + '  where \'${v_ny}\' is null or ny=\'${v_ny}\'\n')
         str_table_input = (str_table_input + '</sql>\n'
@@ -374,25 +376,37 @@ def create_kettle():
     logger.info("获取来源库表信息")
     table_infos = get_tables(database_info1)
     # xml
-    logger.info("处理ktr文件内容,每50个表一组")
-    file_numer=len(table_infos)/50
-    str_xml = KettleStr.str_xml
-    str_info = KettleStr.str_info
-    str_connection = deal_connection(database_info2) + deal_connection(database_info1)
-    str_order = deal_order(table_infos)
-    str_step = deal_step(table_infos, database_info1, database_info2)
-    str_step_error_handling = KettleStr.str_step_error_handling
-    str_transformation = str_info + str_connection + str_order + str_step + str_step_error_handling
-    str_all = str_xml + str_transformation
-    logger.info("生成ktr文件")
-    # 指定文件名和后缀
-    file_name = "kettle_increment"
-    file_extension = ".ktr"
-    str_all = str_all.encode('utf-8')
+    file_numer = math.ceil(len(table_infos) / 50)
+    logger.info("处理ktr文件内容,每50个表一组,共{}组", file_numer)
+    # 按照每组50个数进行分组
+    table_infos_group = []
+    for i in range(file_numer):
+        grouped_dict = {}
+        for index, (key, value) in enumerate(table_infos.items(), start=1):
+            if (i) * 50 < index <= ((i + 1) * 50):
+                grouped_dict[key] = value
+        table_infos_group.append(grouped_dict)
+    for i in range(file_numer):
+        logger.info("第{}个ktr", i + 1)
+        table_infos_dict = table_infos_group[i]
+        str_xml = KettleStr.str_xml
+        str_info = KettleStr.str_info
+        str_connection = deal_connection(database_info2) + deal_connection(database_info1)
+        str_order = deal_order(table_infos_dict)
+        str_step = deal_step(table_infos_dict, database_info1, database_info2)
+        str_step_error_handling = KettleStr.str_step_error_handling
+        str_transformation = str_info + str_connection + str_order + str_step + str_step_error_handling
+        str_all = str_xml + str_transformation
+        logger.info("生成ktr文件")
+        # 指定文件名和后缀
+        file_name = "kettle_increment_" + str(i + 1)
+        file_extension = ".ktr"
+        str_all = str_all.encode('utf-8')
 
-    # 将字符保存到文件中
-    with open(file_name + file_extension, "wb") as file:
-        file.write(str_all)
+        # 将字符保存到文件中
+        with open(file_name + file_extension, "wb") as file:
+            file.write(str_all)
+
     logger.info("结束")
 
 
