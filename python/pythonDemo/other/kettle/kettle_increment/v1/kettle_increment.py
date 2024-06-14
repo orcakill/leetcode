@@ -16,7 +16,7 @@ class KettleStr:
     str_xml = '<?xml version="1.0" encoding="UTF-8"?>\r\n'
     str_info = ('<transformation>\n'
                 + '  <info>\n'
-                + '    <name>oracle数据同步</name>\n'
+                + '    <name>kettle_increment</name>\n'
                 + '    <description/>\n'
                 + '    <extended_description/>\n'
                 + '    <trans_version/>\n'
@@ -567,7 +567,7 @@ def get_project_path():
     """
     # 获取当前文件的绝对路径
     current_directory = os.path.dirname(os.path.realpath(sys.argv[0]))
-    logger.info(current_directory)
+    logger.info("文件路径：{}", current_directory)
     return current_directory
 
 
@@ -917,6 +917,39 @@ def deal_step(table_infos, database_info1, database_info2):
     return str_step
 
 
+def compare_file():
+    """
+    对比2个文件
+    """
+    file1 = 'kettle_increment.ktr'
+    file2 = 'oracledm测试.ktr'
+    with open(file1, 'r', encoding='utf-8', newline='') as f1, open(file2, 'r', encoding='utf-8', newline='') as f2:
+        lines1 = f1.readlines()
+        lines2 = f2.readlines()
+        for i in range(len(lines1)):
+            if i == len(lines2) - 1:
+                break
+            line1 = repr(lines1[i])
+            line2 = repr(lines2[i])
+            if lines1[i] != lines2[i]:
+                print(str(i + 1) + "【" + line1 + "】【" + line2 + "】")
+
+
+def detect_encoding(file_path):
+    with open(file_path, 'rb') as f:
+        rawdata = f.read()
+        result = chardet.detect(rawdata)
+        return result['encoding']
+
+
+def deal_example_ktr():
+    logger.info("读取文件")
+    file_path = "D:/测试2.txt"
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file:
+            print(f"+{line.rstrip()}\\n\\r'")
+
+
 def create_kettle():
     logger.info("开始")
     logger.info("获取来源库信息")
@@ -958,39 +991,6 @@ def create_kettle():
             file.write(str_all)
 
     logger.info("结束")
-
-
-def deal_example_ktr():
-    logger.info("读取文件")
-    file_path = "D:/测试2.txt"
-    with open(file_path, 'r', encoding='utf-8') as file:
-        for line in file:
-            print(f"+{line.rstrip()}\\n\\r'")
-
-
-def compare_file():
-    """
-    对比2个文件
-    """
-    file1 = 'kettle_increment.ktr'
-    file2 = 'oracledm测试.ktr'
-    with open(file1, 'r', encoding='utf-8', newline='') as f1, open(file2, 'r', encoding='utf-8', newline='') as f2:
-        lines1 = f1.readlines()
-        lines2 = f2.readlines()
-        for i in range(len(lines1)):
-            if i == len(lines2) - 1:
-                break
-            line1 = repr(lines1[i])
-            line2 = repr(lines2[i])
-            if lines1[i] != lines2[i]:
-                print(str(i + 1) + "【" + line1 + "】【" + line2 + "】")
-
-
-def detect_encoding(file_path):
-    with open(file_path, 'rb') as f:
-        rawdata = f.read()
-        result = chardet.detect(rawdata)
-        return result['encoding']
 
 
 if __name__ == '__main__':
