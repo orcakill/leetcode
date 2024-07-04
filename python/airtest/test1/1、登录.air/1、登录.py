@@ -7,7 +7,8 @@ import datetime
 
 auto_setup(__file__)
 now=datetime.datetime.now()
-snapshot(msg="测试")
+
+touch(Template(r"tpl1720065276467.png", record_pos=(0.37, 0.907), resolution=(445, 993)))
 
 
 
