@@ -239,7 +239,7 @@ def deal_step(table_infos, database_info1, database_info2):
         str_table_insert = (str_table_insert
                             + '  <step>\n'
                             + '    <name>' + table_name + ' 插入 / 更新</name>\n'
-                            + '    <type>InsertUpdate</type>\n'
+                            + '    <type>InsertUpdate</`type>\n'
                             + '    <description/>\n'
                             + '    <distribute>Y</distribute>\n'
                             + '    <custom_distribution/>\n'
