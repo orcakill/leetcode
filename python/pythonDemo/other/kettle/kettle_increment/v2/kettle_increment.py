@@ -12,7 +12,7 @@ import chardet
 import cx_Oracle
 from loguru import logger
 
-from other.kettle.kettle_increment.v2.kettle_str import KettleStr
+from kettle_str import KettleStr
 
 
 def get_project_path():
@@ -239,7 +239,7 @@ def deal_step(table_infos, database_info1, database_info2):
         str_table_insert = (str_table_insert
                             + '  <step>\n'
                             + '    <name>' + table_name + ' 插入 / 更新</name>\n'
-                            + '    <type>InsertUpdate</`type>\n'
+                            + '    <type>InsertUpdate</type>\n'
                             + '    <description/>\n'
                             + '    <distribute>Y</distribute>\n'
                             + '    <custom_distribution/>\n'
@@ -405,8 +405,9 @@ def compare_file():
     """
     对比2个文件
     """
-    file1 = 'kettle_increment.ktr'
-    file2 = 'oracledm测试.ktr'
+    file1 = 'ktr1.ktr'
+    file2 = 'ktr2.ktr'
+    logger.info("开始对比")
     with open(file1, 'r', encoding='utf-8', newline='') as f1, open(file2, 'r', encoding='utf-8', newline='') as f2:
         lines1 = f1.readlines()
         lines2 = f2.readlines()
@@ -417,6 +418,7 @@ def compare_file():
             line2 = repr(lines2[i])
             if lines1[i] != lines2[i]:
                 print(str(i + 1) + "【" + line1 + "】【" + line2 + "】")
+    logger.info("结束对比")
 
 
 def detect_encoding(file_path):
