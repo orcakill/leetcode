@@ -480,6 +480,7 @@ def create_kettle():
         table_infos_dict = table_infos_group[i]
         str_xml = KettleStr.str_xml
         str_info = KettleStr.str_info1 + '    <name>' + file_name + '</name>\n' + KettleStr.str_info2
+        # 处理数据库连接
         str_connection = deal_two_connection(database_info1, database_info2)
         str_order = deal_order(table_infos_dict)
         str_step = deal_step(table_infos_dict, database_info1, database_info2)
