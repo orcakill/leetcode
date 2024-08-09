@@ -41,10 +41,7 @@ def get_database_info(ini_name):
              'port': config.get(ini_name, "port"),
              'servername': config.get(ini_name, "servername"),
              'username': config.get(ini_name, "username"),
-             'password': config.get(ini_name, "password"),
-             'kettle_path': config.get(ini_name, "kettle_path"),
-             'select_table_name': config.get(ini_name, "select_table_name"),
-             'no_table_name': config.get(ini_name, "no_table_name"),
+             'password': config.get(ini_name, "password")
              }
     return dict1
 
