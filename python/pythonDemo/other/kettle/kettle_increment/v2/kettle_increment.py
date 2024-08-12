@@ -5,7 +5,6 @@
 import configparser
 import math
 import os
-import subprocess
 import sys
 
 import chardet
@@ -46,7 +45,31 @@ def get_database_info(ini_name):
     return dict1
 
 
-def get_tables(database_info):
+def get_normal_info(ini_name):
+    """
+    获取数据库常规连接信息
+    :return: 数据库连接信息
+    """
+    root_path = get_project_path()
+    config_path = root_path + "\\kettle_config.ini"
+    config = configparser.ConfigParser()
+    config.read(config_path, encoding="utf-8")
+    dict1 = {'basic_database': config.get(ini_name, "basic_database"),
+             'database_equally': config.get(ini_name, "database_equally"),
+             'database_read': config.get(ini_name, "database_read"),
+             'file_name_prefix': config.get(ini_name, "file_name_prefix"),
+             'mode_state': config.get(ini_name, "mode_state"),
+             'parameter_settings': config.get(ini_name, "parameter_settings"),
+             'default_month': config.get(ini_name, "default_month"),
+             'default_date': config.get(ini_name, "default_date"),
+             'kettle_path': config.get(ini_name, "kettle_path"),
+             'select_table_name': config.get(ini_name, "select_table_name"),
+             'no_table_name': config.get(ini_name, "no_table_name")
+             }
+    return dict1
+
+
+def get_tables(normal_info, database_info):
     """
     根据数据库连接信息，获取表、字段、是否为主键
     :return: 数据库连接信息
@@ -57,8 +80,8 @@ def get_tables(database_info):
     server_name = database_info["servername"]
     username = database_info["username"]
     password = database_info["password"]
-    select_table_name = database_info["select_table_name"]
-    no_table_name = database_info["no_table_name"]
+    select_table_name = normal_info["select_table_name"]
+    no_table_name = normal_info["no_table_name"]
     # connection = cx_Oracle.connect('用户名/密码@主机名:端口号/服务名')
     connection_txt = username + f'/' + password + '@' + ip + ':' + port + f'/' + server_name
     logger.info(connection_txt)
@@ -80,6 +103,8 @@ def get_tables(database_info):
                  + sql_no
                  + "order by a.table_name")
     cursor.execute(table_sql)
+    logger.info("获取待生成表的sql语句")
+    logger.debug(table_sql)
 
     tables = cursor.fetchall()
     logger.info("来源库数据表数：{}", len(tables))
@@ -135,275 +160,27 @@ def get_tables(database_info):
     return table_info
 
 
-def deal_two_connection(database_info1, database_info2):
+def deal_two_connection(normal_info, database_info1, database_info2):
     """
     根据字符顺序排序2个数据连接
     """
     connect_name1 = database_info1['connect_name']
-    connect_name2 = database_info1['connect_name']
+    connect_name2 = database_info2['connect_name']
+    deal_connection1 = KettleStr.deal_connection(normal_info, database_info1)
+    deal_connection2 = KettleStr.deal_connection(normal_info, database_info2)
     if connect_name1 > connect_name2:
-        str_two_connection = deal_connection(database_info1) + deal_connection(database_info2)
+        str_two_connection = deal_connection2 + deal_connection1
     else:
-        str_two_connection = deal_connection(database_info2) + deal_connection(database_info1)
+        str_two_connection = deal_connection1 + deal_connection2
     return str_two_connection
-
-
-def deal_connection(database_info):
-    """
-    处理数据库连接
-    """
-    str_connection = ""
-    connect_name = database_info['connect_name']
-    database_type = database_info['database_type']
-    ip = database_info['ip']
-    port = database_info['port']
-    servername = database_info['servername']
-    username = database_info['username']
-    password = database_info['password']
-    kettle_path = database_info['kettle_path']
-    kettle_password = deal_password(kettle_path, password)
-    if database_type == 'oracle':
-        str_connection = ('  <connection>\n'
-                          + '    <name>' + connect_name + '</name>\n'
-                          + '    <server>' + ip + '</server>\n'
-                          + '    <type>ORACLE</type>\n'
-                          + '    <access>Native</access>\n'
-                          + '    <database>' + servername + '</database>\n'
-                          + '    <port>' + port + '</port>\n'
-                          + '    <username>' + username + '</username>\n'
-                          + '    <password>' + kettle_password + '</password>\n'
-                          )
-        str_connection = str_connection + KettleStr.str_connection_oracle
-    elif database_type == 'dm':
-        str_connection = ('  <connection>\n'
-                          + '    <name>' + connect_name + '</name>\n'
-                          + '    <server/>\n'
-                          + '    <type>GENERIC</type>\n'
-                          + '    <access>Native</access>\n'
-                          + '    <database/>\n'
-                          + '    <port>1521</port>\n'
-                          + '    <username>' + username + '</username>\n'
-                          + '    <password>' + kettle_password + '</password>\n'
-                          + '    <servername/>\n'
-                          + '    <data_tablespace/>\n'
-                          + '    <index_tablespace/>\n'
-                          + '    <attributes>\n'
-                          + '      <attribute>\n'
-                          + '        <code>CUSTOM_DRIVER_CLASS</code>\n'
-                          + '        <attribute>dm.jdbc.driver.DmDriver</attribute>\n'
-                          + '      </attribute>\n'
-                          + '      <attribute>\n'
-                          + '        <code>CUSTOM_URL</code>\n'
-                          + '        <attribute>jdbc:dm://' + ip + ':' + port + '/</attribute>\n'
-                          )
-        str_connection = str_connection + KettleStr.str_connection_dm
-    return str_connection
-
-
-def deal_order(table_infos):
-    """
-    处理排序和连接
-    """
-    # 循环处理order 的内容
-    str_order = "  <order>\n"
-    for index, (key, value) in enumerate(table_infos.items(), start=1):
-        table_name = key
-        nr = "\r\n"
-        max_index = len(table_infos)
-        if index == 1 or index == max_index:
-            nr = "\n"
-        str_order = (str_order
-                     + '    <hop>' + nr
-                     + '      <from>' + table_name + ' 表输入</from>' + nr
-                     + '      <to>' + table_name + ' 插入 / 更新</to>' + nr
-                     + '      <enabled>Y</enabled>' + nr
-                     + '    </hop>\n'
-                     )
-    str_order = (str_order + "  </order>\n")
-    return str_order
-
-
-def deal_step(table_infos, database_info1, database_info2):
-    str_step = ""
-    # 循环表,先插入更新再表输入
-    for index, (key, value) in enumerate(table_infos.items(), start=1):
-        str_table_input = ""
-        str_table_insert = ""
-        connect_name1 = database_info1['connect_name']
-        connect_name2 = database_info2['connect_name']
-        table_name = key
-        # 插入更新
-        str_table_insert = (str_table_insert
-                            + '  <step>\n'
-                            + '    <name>' + table_name + ' 插入 / 更新</name>\n'
-                            + '    <type>InsertUpdate</type>\n'
-                            + '    <description/>\n'
-                            + '    <distribute>Y</distribute>\n'
-                            + '    <custom_distribution/>\n'
-                            + '    <copies>1</copies>\n'
-                            + '    <partitioning>\n'
-                            + '      <method>none</method>\n'
-                            + '      <schema_name/>\n'
-                            + '    </partitioning>\n'
-                            + '    <connection>' + connect_name2 + '</connection>\n'
-                            + '    <commit>100</commit>\n'
-                            + '    <update_bypassed>N</update_bypassed>\n'
-                            + '    <lookup>\n'
-                            + '      <schema/>\n'
-                            + '      <table>' + table_name + '</table>\n')
-        # 循环字段
-        table_info = table_infos[table_name]
-        for j in range(len(table_info)):
-            column_pk = table_info[j][5]
-            column_name = table_info[j][3]
-            if column_pk == 'Y':
-                str_table_insert = (str_table_insert
-                                    + '      <key>\n'
-                                    + '        <name>' + column_name + '</name>\n'
-                                    + '        <field>' + column_name + '</field>\n'
-                                    + '        <condition>=</condition>\n'
-                                    + '        <name2/>\n'
-                                    + '      </key>\n'
-                                    )
-        for j in range(len(table_info)):
-            column_name = table_info[j][3]
-            str_table_insert = (str_table_insert
-                                + '      <value>\n'
-                                + '        <name>' + column_name + '</name>\n'
-                                + '        <rename>' + column_name + '</rename>\n'
-                                + '        <update>Y</update>\n'
-                                + '      </value>\n'
-                                )
-        str_table_insert = (str_table_insert
-                            + '    </lookup>\n'
-                            + '    <attributes/>\n'
-                            + '    <cluster_schema/>\n'
-                            + '    <remotesteps>\n'
-                            + '      <input>\n'
-                            + '      </input>\n'
-                            + '      <output>\n'
-                            + '      </output>\n'
-                            + '    </remotesteps>\n'
-                            + '    <GUI>\n'
-                            + '      <xloc>600</xloc>\n'
-                            + '      <yloc>' + str(index * 100) + '</yloc>\n'
-                            + '      <draw>Y</draw>\n'
-                            + '    </GUI>\n'
-                            + '  </step>\n'
-                            )
-        # 表输入
-        str_table_input = (str_table_input + '  <step>\n'
-                           + '    <name>' + table_name + ' 表输入</name>\n'
-                           + '    <type>TableInput</type>\n'
-                           + '    <description/>\n'
-                           + '    <distribute>Y</distribute>\n'
-                           + '    <custom_distribution/>\n'
-                           + '    <copies>1</copies>\n'
-                           + '    <partitioning>\n'
-                           + '      <method>none</method>\n'
-                           + '      <schema_name/>\n'
-                           + '    </partitioning>\n'
-                           + '    <connection>' + connect_name1 + '</connection>\n'
-                           + '    <sql>select\r\n'
-                           )
-        table_info = table_infos[table_name]
-        for j in range(len(table_info)):
-            if j == len(table_info) - 1:
-                str_table_input = str_table_input + '       ' + table_info[j][3].lower() + '\n'
-            else:
-                str_table_input = str_table_input + '       ' + table_info[j][3].lower() + ',\n'
-        str_table_input = (str_table_input + '  from ' + table_name + '\n')
-        table_column = []
-        for column in table_info:
-            table_column.append(column[3])
-        if 'RQ' in table_column:
-            str_table_input = (
-                    str_table_input + '  where \'${v_rq}\' is null or rq=to_date(\'${v_rq}\',\'yyyy-mm-dd\')\n')
-        if 'NY' in table_column:
-            str_table_input = (str_table_input + '  where \'${v_ny}\' is null or ny=\'${v_ny}\'\n')
-        str_table_input = (str_table_input + '</sql>\n'
-                           + '    <limit>0</limit>\n'
-                           + '    <lookup/>\n'
-                           + '    <execute_each_row>N</execute_each_row>\n'
-                           + '    <variables_active>Y</variables_active>\n'
-                           + '    <lazy_conversion_active>N</lazy_conversion_active>\n'
-                           + '    <cached_row_meta_active>N</cached_row_meta_active>\n'
-                           + '    <row-meta>\n')
-        for j in range(len(table_info)):
-            column_name = table_info[j][3]
-            column_type = table_info[j][7]
-            column_length = str(table_info[j][8])
-            precision = -1
-            conversion_Mask = '        <conversion_Mask/>\n'
-            if column_type.upper() in ['NVARCHAR2', 'VARCHAR', 'VARCHAR2']:
-                if column_type in ['NVARCHAR2']:
-                    column_length = str(int(int(column_length) / 2))
-                column_type = 'String'
-            if column_type.upper() in ['NUMBER']:
-                column_type = 'Integer'
-                precision = 0
-                conversion_Mask = '        <conversion_Mask>####0;-####0</conversion_Mask>\n'
-            if column_type.upper() in ['DATE']:
-                column_type = 'Timestamp'
-                column_length = str(0)
-            if column_type.upper() in ['TIMESTAMP(6)']:
-                column_type = 'None'
-            if column_type.upper() in ['INTEGER']:
-                column_length = str(38)
-            if column_type.upper() in ['BLOB']:
-                column_type = 'Binary'
-                column_length = str(-1)
-            str_table_input = (str_table_input
-                               + '      <value-meta>\n'
-                               + '        <type>' + column_type + '</type>\n'
-                               + '        <storagetype>normal</storagetype>\n'
-                               + '        <name>' + column_name + '</name>\n'
-                               + '        <length>' + column_length + '</length>\n'
-                               + '        <precision>' + str(precision) + '</precision>\n'
-                               + '        <origin>表输入</origin>\n'
-                               + '        <comments>' + column_name + '</comments>\n'
-                               + conversion_Mask
-                               + '        <decimal_symbol>.</decimal_symbol>\n'
-                               + '        <grouping_symbol>,</grouping_symbol>\n'
-                               + '        <currency_symbol/>\n'
-                               + '        <trim_type>none</trim_type>\n'
-                               + '        <case_insensitive>N</case_insensitive>\n'
-                               + '        <collator_disabled>Y</collator_disabled>\n'
-                               + '        <collator_strength>0</collator_strength>\n'
-                               + '        <sort_descending>N</sort_descending>\n'
-                               + '        <output_padding>N</output_padding>\n'
-                               + '        <date_format_lenient>N</date_format_lenient>\n'
-                               + '        <date_format_locale>zh_CN</date_format_locale>\n'
-                               + '        <date_format_timezone>Asia/Shanghai</date_format_timezone>\n'
-                               + '        <lenient_string_to_number>N</lenient_string_to_number>\n'
-                               + '      </value-meta>\n')
-        str_table_input = (str_table_input
-                           + '    </row-meta>\n'
-                           + '    <attributes/>\n'
-                           + '    <cluster_schema/>\n'
-                           + '    <remotesteps>\n'
-                           + '      <input>\n'
-                           + '      </input>\n'
-                           + '      <output>\n'
-                           + '      </output>\n'
-                           + '    </remotesteps>\n'
-                           + '    <GUI>\n'
-                           + '      <xloc>200</xloc>\n'
-                           + '      <yloc>' + str(index * 100) + '</yloc>\n'
-                           + '      <draw>Y</draw>\n'
-                           + '    </GUI>\n'
-                           + '  </step>\n'
-                           )
-        str_step = str_step + str_table_insert + str_table_input
-    return str_step
 
 
 def compare_file():
     """
     对比2个文件
     """
-    file1 = 'ktr1.ktr'
-    file2 = 'ktr2.ktr'
+    file1 = 'kettle_increment_1.ktr'
+    file2 = '参考文件.ktr'
     logger.info("开始对比")
     with open(file1, 'r', encoding='utf-8', newline='') as f1, open(file2, 'r', encoding='utf-8', newline='') as f2:
         lines1 = f1.readlines()
@@ -433,33 +210,21 @@ def deal_example_ktr():
             print(f"+{line.rstrip()}\\n\\r'")
 
 
-def deal_password(kettle_path, password):
-    kettle_password = ""
-    # 执行命令
-    result = subprocess.run(kettle_path + "\Encr.bat -" + password, shell=True, capture_output=True, text=True)
-
-    # 获取返回结果
-    output = result.stdout
-    # 查找指定子字符串的位置
-    substring = "Encrypted"
-    start_index = output.find(substring)
-
-    if start_index != -1:
-        # 截取从指定位置及之后的部分
-        kettle_password = output[start_index:]
-    else:
-        print("未找到指定子字符串")
-    return kettle_password
-
-
 def create_kettle():
     logger.info("开始")
+    logger.info("获取常规信息")
+    normal_info = get_normal_info('normal')
     logger.info("获取来源库信息")
     database_info1 = get_database_info('database1')
     logger.info("获取目标库信息")
     database_info2 = get_database_info('database2')
-    logger.info("获取来源库表信息")
-    table_infos = get_tables(database_info1)
+    logger.info("获取库信息")
+    if normal_info['basic_database'] == 'database1':
+        logger.info("以来源库表为准")
+        table_infos = get_tables(normal_info, database_info1)
+    else:
+        logger.info("以目标库表为准")
+        table_infos = get_tables(normal_info, database_info2)
     # xml
     file_numer = math.ceil(len(table_infos) / 50)
     logger.info("处理ktr文件内容,每50个表一组,共{}组", file_numer)
@@ -471,18 +236,20 @@ def create_kettle():
             if i * 50 < index <= ((i + 1) * 50):
                 grouped_dict[key] = value
         table_infos_group.append(grouped_dict)
+    file_name_prefix = normal_info['file_name_prefix']
     for i in range(file_numer):
-        file_name = "kettle_increment_" + str(i + 1)
+        file_name = file_name_prefix + str(i + 1)
         logger.info("第{}个ktr", i + 1)
         table_infos_dict = table_infos_group[i]
         str_xml = KettleStr.str_xml
         str_info = KettleStr.str_info1 + '    <name>' + file_name + '</name>\n' + KettleStr.str_info2
+        str_parameter = KettleStr.deal_parameter(normal_info, '') + KettleStr.str_info3
         # 处理数据库连接
-        str_connection = deal_two_connection(database_info1, database_info2)
-        str_order = deal_order(table_infos_dict)
-        str_step = deal_step(table_infos_dict, database_info1, database_info2)
+        str_connection = deal_two_connection(normal_info, database_info1, database_info2)
+        str_order = KettleStr.deal_order(table_infos_dict)
+        str_step = KettleStr.deal_step(table_infos_dict, database_info1, database_info2)
         str_step_error_handling = KettleStr.str_step_error_handling
-        str_transformation = str_info + str_connection + str_order + str_step + str_step_error_handling
+        str_transformation = str_info + str_parameter + str_connection + str_order + str_step + str_step_error_handling
         str_all = str_xml + str_transformation
         logger.info("生成ktr文件")
         # 指定文件名和后缀
@@ -499,4 +266,4 @@ def create_kettle():
 if __name__ == '__main__':
     # deal_example_ktr()
     create_kettle()
-    # compare_file()
+    compare_file()

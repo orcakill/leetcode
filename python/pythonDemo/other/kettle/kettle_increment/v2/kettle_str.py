@@ -2,6 +2,11 @@
 # @Author: orcakill
 # @File: kettle_str.py
 # @Description: 存储固定字符
+import subprocess
+
+created_date = '2024/08/08 10:26:52.485'
+modified_date = '2024/08/08 10:26:52.485'
+
 
 class KettleStr:
     str_xml = '<?xml version="1.0" encoding="UTF-8"?>\r\n'
@@ -12,20 +17,8 @@ class KettleStr:
                  + '    <trans_version/>\n'
                  + '    <trans_type>Normal</trans_type>\n'
                  + '    <trans_status>0</trans_status>\n'
-                 + '    <directory>/</directory>\n'
-                 + '    <parameters>\n'
-                 + '      <parameter>\n'
-                 + '        <name>v_ny</name>\n'
-                 + '        <default_value>202401</default_value>\n'
-                 + '        <description/>\n'
-                 + '      </parameter>\n'
-                 + '      <parameter>\n'
-                 + '        <name>v_rq</name>\n'
-                 + '        <default_value>2024-01-01</default_value>\n'
-                 + '        <description/>\n'
-                 + '      </parameter>\n'
-                 + '    </parameters>\n'
-                 + '    <log>\n'
+                 + '    <directory>/</directory>\n')
+    str_info3 = ('    <log>\n'
                  + '      <trans-log-table>\n'
                  + '        <connection/>\n'
                  + '        <schema/>\n'
@@ -443,61 +436,15 @@ class KettleStr:
                  + '    <clusterschemas>\n'
                  + '    </clusterschemas>\n'
                  + '    <created_user>-</created_user>\n'
-                 + '    <created_date>2024/06/05 00:35:37.663</created_date>\n'
+                 + '    <created_date>' + created_date + '</created_date>\n'
                  + '    <modified_user>-</modified_user>\n'
-                 + '    <modified_date>2024/06/05 00:35:37.663</modified_date>\n'
+                 + '    <modified_date>' + modified_date + '</modified_date>\n'
                  + '    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>\n'
                  + '    <is_key_private>N</is_key_private>\n'
                  + '  </info>\n'
                  + '  <notepads>\n'
                  + '  </notepads>\n'
                  )
-    str_connection_oracle = ('    <servername/>\n'
-                             + '    <data_tablespace/>\n'
-                             + '    <index_tablespace/>\n'
-                             + '    <attributes>\n'
-                             + '      <attribute>\n'
-                             + '        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>\n'
-                             + '        <attribute>N</attribute>\n'
-                             + '      </attribute>\n'
-                             + '      <attribute>\n'
-                             + '        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>\n'
-                             + '        <attribute>N</attribute>\n'
-                             + '      </attribute>\n'
-                             + '      <attribute>\n'
-                             + '        <code>IS_CLUSTERED</code>\n'
-                             + '        <attribute>N</attribute>\n'
-                             + '      </attribute>\n'
-                             + '      <attribute>\n'
-                             + '        <code>PORT_NUMBER</code>\n'
-                             + '        <attribute>1521</attribute>\n'
-                             + '      </attribute>\n'
-                             + '      <attribute>\n'
-                             + '        <code>PRESERVE_RESERVED_WORD_CASE</code>\n'
-                             + '        <attribute>Y</attribute>\n'
-                             + '      </attribute>\n'
-                             + '      <attribute>\n'
-                             + '        <code>QUOTE_ALL_FIELDS</code>\n'
-                             + '        <attribute>N</attribute>\n'
-                             + '      </attribute>\n'
-                             + '      <attribute>\n'
-                             + '        <code>STRICT_NUMBER_38_INTERPRETATION</code>\n'
-                             + '        <attribute>N</attribute>\n'
-                             + '      </attribute>\n'
-                             + '      <attribute>\n'
-                             + '        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>\n'
-                             + '        <attribute>Y</attribute>\n'
-                             + '      </attribute>\n'
-                             + '      <attribute>\n'
-                             + '        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>\n'
-                             + '        <attribute>Y</attribute>\n'
-                             + '      </attribute>\n'
-                             + '      <attribute>\n'
-                             + '        <code>USE_POOLING</code>\n'
-                             + '        <attribute>N</attribute>\n'
-                             + '      </attribute>\n'
-                             + '    </attributes>\n'
-                             + '  </connection>\n')
     str_connection_dm = ('      </attribute>\n'
                          + '      <attribute>\n'
                          + '        <code>DATABASE_DIALECT_ID</code>\n'
@@ -548,3 +495,310 @@ class KettleStr:
                                + '  <slave_transformation>N</slave_transformation>\n'
                                + '  <attributes/>\n'
                                + '</transformation>')
+
+    @staticmethod
+    def deal_connection(normal_info, database_info):
+        """
+        处理数据库连接
+        """
+        str_connection = ""
+        # 常规设置
+        kettle_path = normal_info['kettle_path']
+        # 数据库设置
+        connect_name = database_info['connect_name']
+        database_type = database_info['database_type']
+        ip = database_info['ip']
+        port = database_info['port']
+        servername = database_info['servername']
+        username = database_info['username']
+        password = database_info['password']
+        kettle_password = KettleStr.deal_password(kettle_path, password)
+        if database_type == 'oracle':
+            str_connection = ('  <connection>\n'
+                              + '    <name>' + connect_name + '</name>\n'
+                              + '    <server>' + ip + '</server>\n'
+                              + '    <type>ORACLE</type>\n'
+                              + '    <access>Native</access>\n'
+                              + '    <database>' + servername + '</database>\n'
+                              + '    <port>' + port + '</port>\n'
+                              + '    <username>' + username + '</username>\n'
+                              + '    <password>' + kettle_password + '</password>\n'
+                              + KettleStr.str_connection_oracle)
+        elif database_type == 'dm':
+            str_connection = ('  <connection>\n'
+                              + '    <name>' + connect_name + '</name>\n'
+                              + '    <server/>\n'
+                              + '    <type>GENERIC</type>\n'
+                              + '    <access>Native</access>\n'
+                              + '    <database/>\n'
+                              + '    <port>1521</port>\n'
+                              + '    <username>' + username + '</username>\n'
+                              + '    <password>' + kettle_password + '</password>\n'
+                              + '    <servername/>\n'
+                              + '    <data_tablespace/>\n'
+                              + '    <index_tablespace/>\n'
+                              + '    <attributes>\n'
+                              + '      <attribute>\n'
+                              + '        <code>CUSTOM_DRIVER_CLASS</code>\n'
+                              + '        <attribute>dm.jdbc.driver.DmDriver</attribute>\n'
+                              + '      </attribute>\n'
+                              + '      <attribute>\n'
+                              + '        <code>CUSTOM_URL</code>\n'
+                              + '        <attribute>jdbc:dm://' + ip + ':' + port + '/</attribute>\n'
+                              + KettleStr.str_connection_dm)
+        return str_connection
+
+    @staticmethod
+    def deal_password(kettle_path, password):
+        kettle_password = ""
+        # 执行命令
+        result = subprocess.run(kettle_path + "/Encr.bat -" + password, shell=True, capture_output=True, text=True)
+
+        # 获取返回结果
+        output = result.stdout
+        # 查找指定子字符串的位置
+        substring = "Encrypted"
+        start_index = output.find(substring)
+
+        if start_index != -1:
+            # 截取从指定位置及之后的部分
+            kettle_password = output[start_index:].replace('\n','')
+        else:
+            print("未找到指定子字符串")
+        return kettle_password
+
+    @staticmethod
+    def deal_order(table_infos):
+        """
+        处理排序和连接
+        """
+        # 循环处理order 的内容
+        str_order = "  <order>\n"
+        for index, (key, value) in enumerate(table_infos.items(), start=1):
+            table_name = key
+            nr = "\r\n"
+            max_index = len(table_infos)
+            if index == 1 or index == max_index:
+                nr = "\n"
+            str_order = (str_order
+                         + '    <hop>' + nr
+                         + '      <from>' + table_name + ' 表输入</from>' + nr
+                         + '      <to>' + table_name + ' 插入 / 更新</to>' + nr
+                         + '      <enabled>Y</enabled>' + nr
+                         + '    </hop>\n'
+                         )
+        str_order = (str_order + "  </order>\n")
+        return str_order
+
+    @staticmethod
+    def deal_step(table_infos, database_info1, database_info2):
+        str_step = ""
+        # 循环表,先插入更新再表输入
+        for index, (key, value) in enumerate(table_infos.items(), start=1):
+            str_table_input = ""
+            str_table_insert = ""
+            connect_name1 = database_info1['connect_name']
+            connect_name2 = database_info2['connect_name']
+            table_name = key
+            # 插入更新
+            str_table_insert = (str_table_insert
+                                + '  <step>\n'
+                                + '    <name>' + table_name + ' 插入 / 更新</name>\n'
+                                + '    <type>InsertUpdate</type>\n'
+                                + '    <description/>\n'
+                                + '    <distribute>Y</distribute>\n'
+                                + '    <custom_distribution/>\n'
+                                + '    <copies>1</copies>\n'
+                                + '    <partitioning>\n'
+                                + '      <method>none</method>\n'
+                                + '      <schema_name/>\n'
+                                + '    </partitioning>\n'
+                                + '    <connection>' + connect_name2 + '</connection>\n'
+                                + '    <commit>100</commit>\n'
+                                + '    <update_bypassed>N</update_bypassed>\n'
+                                + '    <lookup>\n'
+                                + '      <schema/>\n'
+                                + '      <table>' + table_name + '</table>\n')
+            # 循环字段
+            table_info = table_infos[table_name]
+            for j in range(len(table_info)):
+                column_pk = table_info[j][5]
+                column_name = table_info[j][3]
+                if column_pk == 'Y':
+                    str_table_insert = (str_table_insert
+                                        + '      <key>\n'
+                                        + '        <name>' + column_name + '</name>\n'
+                                        + '        <field>' + column_name + '</field>\n'
+                                        + '        <condition>=</condition>\n'
+                                        + '        <name2/>\n'
+                                        + '      </key>\n'
+                                        )
+            for j in range(len(table_info)):
+                column_name = table_info[j][3]
+                str_table_insert = (str_table_insert
+                                    + '      <value>\n'
+                                    + '        <name>' + column_name + '</name>\n'
+                                    + '        <rename>' + column_name + '</rename>\n'
+                                    + '        <update>Y</update>\n'
+                                    + '      </value>\n'
+                                    )
+            str_table_insert = (str_table_insert
+                                + '    </lookup>\n'
+                                + '    <attributes/>\n'
+                                + '    <cluster_schema/>\n'
+                                + '    <remotesteps>\n'
+                                + '      <input>\n'
+                                + '      </input>\n'
+                                + '      <output>\n'
+                                + '      </output>\n'
+                                + '    </remotesteps>\n'
+                                + '    <GUI>\n'
+                                + '      <xloc>600</xloc>\n'
+                                + '      <yloc>' + str(index * 100) + '</yloc>\n'
+                                + '      <draw>Y</draw>\n'
+                                + '    </GUI>\n'
+                                + '  </step>\n'
+                                )
+            # 表输入
+            str_table_input = (str_table_input + '  <step>\n'
+                               + '    <name>' + table_name + ' 表输入</name>\n'
+                               + '    <type>TableInput</type>\n'
+                               + '    <description/>\n'
+                               + '    <distribute>Y</distribute>\n'
+                               + '    <custom_distribution/>\n'
+                               + '    <copies>1</copies>\n'
+                               + '    <partitioning>\n'
+                               + '      <method>none</method>\n'
+                               + '      <schema_name/>\n'
+                               + '    </partitioning>\n'
+                               + '    <connection>' + connect_name1 + '</connection>\n'
+                               + '    <sql>select\r\n'
+                               )
+            table_info = table_infos[table_name]
+            for j in range(len(table_info)):
+                if j == len(table_info) - 1:
+                    str_table_input = str_table_input + '       ' + table_info[j][3].lower() + '\n'
+                else:
+                    str_table_input = str_table_input + '       ' + table_info[j][3].lower() + ',\n'
+            str_table_input = (str_table_input + '  from ' + table_name + '\n')
+            table_column = []
+            for column in table_info:
+                table_column.append(column[3])
+            if 'RQ' in table_column:
+                str_table_input = (
+                        str_table_input + '  where \'${v_rq}\' is null or rq=to_date(\'${v_rq}\',\'yyyy-mm-dd\')\n')
+            if 'NY' in table_column:
+                str_table_input = (str_table_input + '  where \'${v_ny}\' is null or ny=\'${v_ny}\'\n')
+            str_table_input = (str_table_input + '</sql>\n'
+                               + '    <limit>0</limit>\n'
+                               + '    <lookup/>\n'
+                               + '    <execute_each_row>N</execute_each_row>\n'
+                               + '    <variables_active>Y</variables_active>\n'
+                               + '    <lazy_conversion_active>N</lazy_conversion_active>\n'
+                               + '    <cached_row_meta_active>N</cached_row_meta_active>\n'
+                               + '    <row-meta>\n')
+            for j in range(len(table_info)):
+                column_name = table_info[j][3]
+                column_type = table_info[j][7]
+                column_length = str(table_info[j][8])
+                precision = -1
+                conversion_Mask = '        <conversion_Mask/>\n'
+                if column_type.upper() in ['NVARCHAR2', 'VARCHAR', 'VARCHAR2']:
+                    if column_type in ['NVARCHAR2']:
+                        column_length = str(int(int(column_length) / 2))
+                    column_type = 'String'
+                if column_type.upper() in ['NUMBER']:
+                    column_type = 'Integer'
+                    precision = 0
+                    conversion_Mask = '        <conversion_Mask>####0;-####0</conversion_Mask>\n'
+                if column_type.upper() in ['DATE']:
+                    column_type = 'Timestamp'
+                    column_length = str(0)
+                if column_type.upper() in ['TIMESTAMP(6)']:
+                    column_type = 'None'
+                if column_type.upper() in ['INTEGER']:
+                    column_length = str(38)
+                if column_type.upper() in ['BLOB']:
+                    column_type = 'Binary'
+                    column_length = str(-1)
+                str_table_input = (str_table_input
+                                   + '      <value-meta>\n'
+                                   + '        <type>' + column_type + '</type>\n'
+                                   + '        <storagetype>normal</storagetype>\n'
+                                   + '        <name>' + column_name + '</name>\n'
+                                   + '        <length>' + column_length + '</length>\n'
+                                   + '        <precision>' + str(precision) + '</precision>\n'
+                                   + '        <origin>表输入</origin>\n'
+                                   + '        <comments>' + column_name + '</comments>\n'
+                                   + conversion_Mask
+                                   + '        <decimal_symbol>.</decimal_symbol>\n'
+                                   + '        <grouping_symbol>,</grouping_symbol>\n'
+                                   + '        <currency_symbol/>\n'
+                                   + '        <trim_type>none</trim_type>\n'
+                                   + '        <case_insensitive>N</case_insensitive>\n'
+                                   + '        <collator_disabled>Y</collator_disabled>\n'
+                                   + '        <collator_strength>0</collator_strength>\n'
+                                   + '        <sort_descending>N</sort_descending>\n'
+                                   + '        <output_padding>N</output_padding>\n'
+                                   + '        <date_format_lenient>N</date_format_lenient>\n'
+                                   + '        <date_format_locale>zh_CN</date_format_locale>\n'
+                                   + '        <date_format_timezone>Asia/Shanghai</date_format_timezone>\n'
+                                   + '        <lenient_string_to_number>N</lenient_string_to_number>\n'
+                                   + '      </value-meta>\n')
+            str_table_input = (str_table_input
+                               + '    </row-meta>\n'
+                               + '    <attributes/>\n'
+                               + '    <cluster_schema/>\n'
+                               + '    <remotesteps>\n'
+                               + '      <input>\n'
+                               + '      </input>\n'
+                               + '      <output>\n'
+                               + '      </output>\n'
+                               + '    </remotesteps>\n'
+                               + '    <GUI>\n'
+                               + '      <xloc>200</xloc>\n'
+                               + '      <yloc>' + str(index * 100) + '</yloc>\n'
+                               + '      <draw>Y</draw>\n'
+                               + '    </GUI>\n'
+                               + '  </step>\n'
+                               )
+            str_step = str_step + str_table_insert + str_table_input
+        return str_step
+
+    @staticmethod
+    def deal_parameter(normal_info, parameter_type):
+        str_parameter = ""
+        parameter_settings = normal_info['parameter_settings']
+        default_month = normal_info['default_month']
+        default_date = normal_info['default_date']
+        if parameter_settings in [0, '0']:
+            str_parameter = ('    <parameters>\n'
+                             + '      <parameter>\n'
+                             + '        <name>v_ny</name>\n'
+                             + '        <default_value>' + default_month + '</default_value>\n'
+                             + '        <description/>\n'
+                             + '      </parameter>\n'
+                             + '      <parameter>\n'
+                             + '        <name>v_rq</name>\n'
+                             + '        <default_value>' + default_date + '</default_value>\n'
+                             + '        <description/>\n'
+                             + '      </parameter>\n'
+                             + '    </parameters>\n')
+        if parameter_settings == 1:
+            if parameter_type == 'v_rq':
+                str_parameter = ('    <parameters>\n'
+                                 + '      <parameter>\n'
+                                 + '        <name>v_rq</name>\n'
+                                 + '        <default_value>' + default_date + '</default_value>\n'
+                                 + '        <description/>\n'
+                                 + '      </parameter>\n'
+                                 + '    </parameters>\n')
+            if parameter_type == 'v_ny':
+                str_parameter = ('    <parameters>\n'
+                                 + '      <parameter>\n'
+                                 + '        <name>v_ny</name>\n'
+                                 + '        <default_value>' + default_month + '</default_value>\n'
+                                 + '        <description/>\n'
+                                 + '      </parameter>\n'
+                                 + '    </parameters>\n')
+        return str_parameter
