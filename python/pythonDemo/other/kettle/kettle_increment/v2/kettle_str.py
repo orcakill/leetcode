@@ -445,49 +445,6 @@ class KettleStr:
                  + '  <notepads>\n'
                  + '  </notepads>\n'
                  )
-    str_connection_dm = ('      </attribute>\n'
-                         + '      <attribute>\n'
-                         + '        <code>DATABASE_DIALECT_ID</code>\n'
-                         + '        <attribute>Generic database</attribute>\n'
-                         + '      </attribute>\n'
-                         + '      <attribute>\n'
-                         + '        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>\n'
-                         + '        <attribute>N</attribute>\n'
-                         + '      </attribute>\n'
-                         + '      <attribute>\n'
-                         + '        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>\n'
-                         + '        <attribute>N</attribute>\n'
-                         + '      </attribute>\n'
-                         + '      <attribute>\n'
-                         + '        <code>IS_CLUSTERED</code>\n'
-                         + '        <attribute>N</attribute>\n'
-                         + '      </attribute>\n'
-                         + '      <attribute>\n'
-                         + '        <code>PORT_NUMBER</code>\n'
-                         + '        <attribute>1521</attribute>\n'
-                         + '      </attribute>\n'
-                         + '      <attribute>\n'
-                         + '        <code>PRESERVE_RESERVED_WORD_CASE</code>\n'
-                         + '        <attribute>Y</attribute>\n'
-                         + '      </attribute>\n'
-                         + '      <attribute>\n'
-                         + '        <code>QUOTE_ALL_FIELDS</code>\n'
-                         + '        <attribute>N</attribute>\n'
-                         + '      </attribute>\n'
-                         + '      <attribute>\n'
-                         + '        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>\n'
-                         + '        <attribute>Y</attribute>\n'
-                         + '      </attribute>\n'
-                         + '      <attribute>\n'
-                         + '        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>\n'
-                         + '        <attribute>Y</attribute>\n'
-                         + '      </attribute>\n'
-                         + '      <attribute>\n'
-                         + '        <code>USE_POOLING</code>\n'
-                         + '        <attribute>N</attribute>\n'
-                         + '      </attribute>\n'
-                         + '    </attributes>\n'
-                         + '  </connection>\n')
     str_step_error_handling = ('  <step_error_handling>\n'
                                + '  </step_error_handling>\n'
                                + '  <slave-step-copy-partition-distribution>\n'
@@ -497,7 +454,7 @@ class KettleStr:
                                + '</transformation>')
 
     @staticmethod
-    def deal_connection(normal_info, database_info):
+    def deal_connection(normal_info, database_info, source):
         """
         处理数据库连接
         """
@@ -513,6 +470,19 @@ class KettleStr:
         username = database_info['username']
         password = database_info['password']
         kettle_password = KettleStr.deal_password(kettle_path, password)
+        str_read = ''
+        str_pooling = 'N'
+        if normal_info['database_read'] == 'true' and source == True:
+            str_read = ('      <attribute>\n'
+                        + '        <code>POOLING_defaultReadOnly</code>\n'
+                        + '        <attribute>true</attribute>\n'
+                        + '      </attribute>\n')
+            str_pooling = 'Y'
+        if normal_info['database_read'] == 'true' and source == True:
+            str_read = ('      <attribute>\n'
+                        + '        <code>POOLING_defaultReadOnly</code>\n'
+                        + '        <attribute>true</attribute>\n'
+                        + '      </attribute>\n')
         if database_type == 'oracle':
             str_connection = ('  <connection>\n'
                               + '    <name>' + connect_name + '</name>\n'
@@ -523,7 +493,53 @@ class KettleStr:
                               + '    <port>' + port + '</port>\n'
                               + '    <username>' + username + '</username>\n'
                               + '    <password>' + kettle_password + '</password>\n'
-                              + KettleStr.str_connection_oracle)
+                              + '    <servername/>\n'
+                              + '    <data_tablespace/>\n'
+                              + '    <index_tablespace/>\n'
+                              + '    <attributes>\n'
+                              + '      <attribute>\n'
+                              + '        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>\n'
+                              + '        <attribute>N</attribute>\n'
+                              + '      </attribute>\n'
+                              + '      <attribute>\n'
+                              + '        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>\n'
+                              + '        <attribute>N</attribute>\n'
+                              + '      </attribute>\n'
+                              + '      <attribute>\n'
+                              + '        <code>IS_CLUSTERED</code>\n'
+                              + '        <attribute>N</attribute>\n'
+                              + '      </attribute>\n'
+                              + str_read
+                              + '      <attribute>\n'
+                              + '        <code>PORT_NUMBER</code>\n'
+                              + '        <attribute>1521</attribute>\n'
+                              + '      </attribute>\n'
+                              + '      <attribute>\n'
+                              + '        <code>PRESERVE_RESERVED_WORD_CASE</code>\n'
+                              + '        <attribute>Y</attribute>\n'
+                              + '      </attribute>\n'
+                              + '      <attribute>\n'
+                              + '        <code>QUOTE_ALL_FIELDS</code>\n'
+                              + '        <attribute>N</attribute>\n'
+                              + '      </attribute>\n'
+                              + '      <attribute>\n'
+                              + '        <code>STRICT_NUMBER_38_INTERPRETATION</code>\n'
+                              + '        <attribute>N</attribute>\n'
+                              + '      </attribute>\n'
+                              + '      <attribute>\n'
+                              + '        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>\n'
+                              + '        <attribute>Y</attribute>\n'
+                              + '      </attribute>\n'
+                              + '      <attribute>\n'
+                              + '        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>\n'
+                              + '        <attribute>Y</attribute>\n'
+                              + '      </attribute>\n'
+                              + '      <attribute>\n'
+                              + '        <code>USE_POOLING</code>\n'
+                              + '        <attribute>' + str_pooling + '</attribute>\n'
+                              + '      </attribute>\n'
+                              + '    </attributes>\n'
+                              + '  </connection>\n')
         elif database_type == 'dm':
             str_connection = ('  <connection>\n'
                               + '    <name>' + connect_name + '</name>\n'
@@ -545,7 +561,49 @@ class KettleStr:
                               + '      <attribute>\n'
                               + '        <code>CUSTOM_URL</code>\n'
                               + '        <attribute>jdbc:dm://' + ip + ':' + port + '/</attribute>\n'
-                              + KettleStr.str_connection_dm)
+                              + '      </attribute>\n'
+                              + '      <attribute>\n'
+                              + '        <code>DATABASE_DIALECT_ID</code>\n'
+                              + '        <attribute>Generic database</attribute>\n'
+                              + '      </attribute>\n'
+                              + '      <attribute>\n'
+                              + '        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>\n'
+                              + '        <attribute>N</attribute>\n'
+                              + '      </attribute>\n'
+                              + '      <attribute>\n'
+                              + '        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>\n'
+                              + '        <attribute>N</attribute>\n'
+                              + '      </attribute>\n'
+                              + '      <attribute>\n'
+                              + '        <code>IS_CLUSTERED</code>\n'
+                              + '        <attribute>N</attribute>\n'
+                              + '      </attribute>\n'
+                              + '      <attribute>\n'
+                              + '        <code>PORT_NUMBER</code>\n'
+                              + '        <attribute>1521</attribute>\n'
+                              + '      </attribute>\n'
+                              + '      <attribute>\n'
+                              + '        <code>PRESERVE_RESERVED_WORD_CASE</code>\n'
+                              + '        <attribute>Y</attribute>\n'
+                              + '      </attribute>\n'
+                              + '      <attribute>\n'
+                              + '        <code>QUOTE_ALL_FIELDS</code>\n'
+                              + '        <attribute>N</attribute>\n'
+                              + '      </attribute>\n'
+                              + '      <attribute>\n'
+                              + '        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>\n'
+                              + '        <attribute>Y</attribute>\n'
+                              + '      </attribute>\n'
+                              + '      <attribute>\n'
+                              + '        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>\n'
+                              + '        <attribute>Y</attribute>\n'
+                              + '      </attribute>\n'
+                              + '      <attribute>\n'
+                              + '        <code>USE_POOLING</code>\n'
+                              + '        <attribute>N</attribute>\n'
+                              + '      </attribute>\n'
+                              + '    </attributes>\n'
+                              + '  </connection>\n')
         return str_connection
 
     @staticmethod
@@ -562,7 +620,7 @@ class KettleStr:
 
         if start_index != -1:
             # 截取从指定位置及之后的部分
-            kettle_password = output[start_index:].replace('\n','')
+            kettle_password = output[start_index:].replace('\n', '')
         else:
             print("未找到指定子字符串")
         return kettle_password
@@ -582,8 +640,8 @@ class KettleStr:
                 nr = "\n"
             str_order = (str_order
                          + '    <hop>' + nr
-                         + '      <from>' + table_name + ' 表输入</from>' + nr
-                         + '      <to>' + table_name + ' 插入 / 更新</to>' + nr
+                         + '      <from>表输入-' + table_name + '</from>' + nr
+                         + '      <to>插入 / 更新-' + table_name + '</to>' + nr
                          + '      <enabled>Y</enabled>' + nr
                          + '    </hop>\n'
                          )
@@ -603,7 +661,7 @@ class KettleStr:
             # 插入更新
             str_table_insert = (str_table_insert
                                 + '  <step>\n'
-                                + '    <name>' + table_name + ' 插入 / 更新</name>\n'
+                                + '    <name>插入 / 更新-' + table_name + '</name>\n'
                                 + '    <type>InsertUpdate</type>\n'
                                 + '    <description/>\n'
                                 + '    <distribute>Y</distribute>\n'
@@ -661,7 +719,7 @@ class KettleStr:
                                 )
             # 表输入
             str_table_input = (str_table_input + '  <step>\n'
-                               + '    <name>' + table_name + ' 表输入</name>\n'
+                               + '    <name>表输入-' + table_name + '</name>\n'
                                + '    <type>TableInput</type>\n'
                                + '    <description/>\n'
                                + '    <distribute>Y</distribute>\n'
@@ -676,10 +734,14 @@ class KettleStr:
                                )
             table_info = table_infos[table_name]
             for j in range(len(table_info)):
+                column_lower = table_info[j][3].lower()
+                column_comment = table_info[j][4]
+                if column_comment is None:
+                    column_comment = ''
                 if j == len(table_info) - 1:
-                    str_table_input = str_table_input + '       ' + table_info[j][3].lower() + '\n'
+                    str_table_input = str_table_input + '       ' + column_lower + '    /*' + column_comment + '*/' + '\n'
                 else:
-                    str_table_input = str_table_input + '       ' + table_info[j][3].lower() + ',\n'
+                    str_table_input = str_table_input + '       ' + column_lower + ',   /*' + column_comment + '*/' + '\n'
             str_table_input = (str_table_input + '  from ' + table_name + '\n')
             table_column = []
             for column in table_info:
@@ -703,21 +765,26 @@ class KettleStr:
                 column_length = str(table_info[j][8])
                 precision = -1
                 conversion_Mask = '        <conversion_Mask/>\n'
-                if column_type.upper() in ['NVARCHAR2', 'VARCHAR', 'VARCHAR2']:
+                if column_type.upper() in ['NVARCHAR2', 'VARCHAR', 'VARCHAR2', 'CHAR']:
                     if column_type in ['NVARCHAR2']:
                         column_length = str(int(int(column_length) / 2))
                     column_type = 'String'
                 if column_type.upper() in ['NUMBER']:
-                    column_type = 'Integer'
-                    precision = 0
-                    conversion_Mask = '        <conversion_Mask>####0;-####0</conversion_Mask>\n'
+                    precision = str(table_info[j][9])
+                    if precision == '0':
+                        column_type = 'Integer'
+                        conversion_Mask = '        <conversion_Mask>####0;-####0</conversion_Mask>\n'
+                    else:
+                        column_type = 'Number'
+                        conversion_Mask = ('        <conversion_Mask>####0.0#########;-####0.0#########'
+                                           + '</conversion_Mask>\n')
                 if column_type.upper() in ['DATE']:
                     column_type = 'Timestamp'
                     column_length = str(0)
-                if column_type.upper() in ['TIMESTAMP(6)']:
-                    column_type = 'None'
+                if column_type.upper() in ['TIMESTAMP(6)', 'TIMESTAMP']:
+                    column_type = 'Timestamp'
                 if column_type.upper() in ['INTEGER']:
-                    column_length = str(38)
+                    column_length = str(column_length)
                 if column_type.upper() in ['BLOB']:
                     column_type = 'Binary'
                     column_length = str(-1)
@@ -728,7 +795,7 @@ class KettleStr:
                                    + '        <name>' + column_name + '</name>\n'
                                    + '        <length>' + column_length + '</length>\n'
                                    + '        <precision>' + str(precision) + '</precision>\n'
-                                   + '        <origin>表输入</origin>\n'
+                                   + '        <origin>表输入-' + table_name + '</origin>\n'
                                    + '        <comments>' + column_name + '</comments>\n'
                                    + conversion_Mask
                                    + '        <decimal_symbol>.</decimal_symbol>\n'

@@ -166,10 +166,12 @@ def deal_two_connection(normal_info, database_info1, database_info2):
     """
     connect_name1 = database_info1['connect_name']
     connect_name2 = database_info2['connect_name']
-    deal_connection1 = KettleStr.deal_connection(normal_info, database_info1)
-    deal_connection2 = KettleStr.deal_connection(normal_info, database_info2)
+    deal_connection1 = KettleStr.deal_connection(normal_info, database_info1, True)
+    deal_connection2 = KettleStr.deal_connection(normal_info, database_info2, False)
     if connect_name1 > connect_name2:
         str_two_connection = deal_connection2 + deal_connection1
+    elif connect_name1 == connect_name2:
+        str_two_connection = deal_connection2
     else:
         str_two_connection = deal_connection1 + deal_connection2
     return str_two_connection
@@ -180,7 +182,7 @@ def compare_file():
     对比2个文件
     """
     file1 = 'kettle_increment_1.ktr'
-    file2 = '参考文件.ktr'
+    file2 = '参考文件3.ktr'
     logger.info("开始对比")
     with open(file1, 'r', encoding='utf-8', newline='') as f1, open(file2, 'r', encoding='utf-8', newline='') as f2:
         lines1 = f1.readlines()
@@ -219,7 +221,8 @@ def create_kettle():
     logger.info("获取目标库信息")
     database_info2 = get_database_info('database2')
     logger.info("获取库信息")
-    if normal_info['basic_database'] == 'database1':
+    if (normal_info['basic_database'] == 'database1'
+            and database_info1['connect_name'] != database_info2['connect_name']):
         logger.info("以来源库表为准")
         table_infos = get_tables(normal_info, database_info1)
     else:
