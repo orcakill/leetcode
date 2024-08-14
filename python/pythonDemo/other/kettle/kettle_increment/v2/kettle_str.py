@@ -626,25 +626,49 @@ class KettleStr:
         return kettle_password
 
     @staticmethod
-    def deal_order(table_infos):
+    def deal_order(table_infos,mode_state):
         """
         处理排序和连接
         """
         # 循环处理order 的内容
         str_order = "  <order>\n"
+
         for index, (key, value) in enumerate(table_infos.items(), start=1):
             table_name = key
             nr = "\r\n"
             max_index = len(table_infos)
             if index == 1 or index == max_index:
                 nr = "\n"
-            str_order = (str_order
-                         + '    <hop>' + nr
-                         + '      <from>表输入-' + table_name + '</from>' + nr
-                         + '      <to>插入 / 更新-' + table_name + '</to>' + nr
-                         + '      <enabled>Y</enabled>' + nr
-                         + '    </hop>\n'
-                         )
+            if mode_state in [0, "0"]:
+                str_order = (str_order
+                             + '    <hop>' + nr
+                             + '      <from>表输入-' + table_name + '</from>' + nr
+                             + '      <to>插入 / 更新-' + table_name + '</to>' + nr
+                             + '      <enabled>Y</enabled>' + nr
+                             + '    </hop>\n'
+                             )
+            else:
+                str_order = (str_order
+                             + '    <hop>' + nr
+                             + '      <from>执行SQL脚本-删除' + table_name + '当前数据</from>' + nr
+                             + '      <to>表输入-' + table_name + '</to>' + nr
+                             + '      <enabled>Y</enabled>' + nr
+                             + '    </hop>\n'
+                             + '    <hop>' + nr
+                             + '      <from>表输入-' + table_name + '</from>' + nr
+                             + '      <to>表输出-' + table_name + '</to>' + nr
+                             + '      <enabled>Y</enabled>' + nr
+                             + '    </hop>\n'
+                             + '    <hop>' + nr
+                             + '      <from>表输出-' + table_name + '</from>' + nr
+                             + '      <to>JS代码-' + table_name + '错误信息</to>' + nr
+                             + '      <enabled>Y</enabled>' + nr
+                             + '    </hop>\n'
+                             + '    <hop>' + nr
+                             + '      <from>JS代码-' + table_name + '错误信息</from>' + nr
+                             + '      <to>表输出-' + table_name + '错误日志</to>' + nr
+                             + '      <enabled>Y</enabled>' + nr
+                             )
         str_order = (str_order + "  </order>\n")
         return str_order
 
@@ -653,71 +677,16 @@ class KettleStr:
         str_step = ""
         # 循环表,先插入更新再表输入
         for index, (key, value) in enumerate(table_infos.items(), start=1):
+            # 表输入
             str_table_input = ""
+            # 插入更新
             str_table_insert = ""
+            # 删除已有数据
             connect_name1 = database_info1['connect_name']
             connect_name2 = database_info2['connect_name']
             table_name = key
-            # 插入更新
-            str_table_insert = (str_table_insert
-                                + '  <step>\n'
-                                + '    <name>插入 / 更新-' + table_name + '</name>\n'
-                                + '    <type>InsertUpdate</type>\n'
-                                + '    <description/>\n'
-                                + '    <distribute>Y</distribute>\n'
-                                + '    <custom_distribution/>\n'
-                                + '    <copies>1</copies>\n'
-                                + '    <partitioning>\n'
-                                + '      <method>none</method>\n'
-                                + '      <schema_name/>\n'
-                                + '    </partitioning>\n'
-                                + '    <connection>' + connect_name2 + '</connection>\n'
-                                + '    <commit>100</commit>\n'
-                                + '    <update_bypassed>N</update_bypassed>\n'
-                                + '    <lookup>\n'
-                                + '      <schema/>\n'
-                                + '      <table>' + table_name + '</table>\n')
-            # 循环字段
-            table_info = table_infos[table_name]
-            for j in range(len(table_info)):
-                column_pk = table_info[j][5]
-                column_name = table_info[j][3]
-                if column_pk == 'Y':
-                    str_table_insert = (str_table_insert
-                                        + '      <key>\n'
-                                        + '        <name>' + column_name + '</name>\n'
-                                        + '        <field>' + column_name + '</field>\n'
-                                        + '        <condition>=</condition>\n'
-                                        + '        <name2/>\n'
-                                        + '      </key>\n'
-                                        )
-            for j in range(len(table_info)):
-                column_name = table_info[j][3]
-                str_table_insert = (str_table_insert
-                                    + '      <value>\n'
-                                    + '        <name>' + column_name + '</name>\n'
-                                    + '        <rename>' + column_name + '</rename>\n'
-                                    + '        <update>Y</update>\n'
-                                    + '      </value>\n'
-                                    )
-            str_table_insert = (str_table_insert
-                                + '    </lookup>\n'
-                                + '    <attributes/>\n'
-                                + '    <cluster_schema/>\n'
-                                + '    <remotesteps>\n'
-                                + '      <input>\n'
-                                + '      </input>\n'
-                                + '      <output>\n'
-                                + '      </output>\n'
-                                + '    </remotesteps>\n'
-                                + '    <GUI>\n'
-                                + '      <xloc>600</xloc>\n'
-                                + '      <yloc>' + str(index * 100) + '</yloc>\n'
-                                + '      <draw>Y</draw>\n'
-                                + '    </GUI>\n'
-                                + '  </step>\n'
-                                )
-            # 表输入
+            # 复杂模式，处理
+            # 表输入，开始
             str_table_input = (str_table_input + '  <step>\n'
                                + '    <name>表输入-' + table_name + '</name>\n'
                                + '    <type>TableInput</type>\n'
@@ -829,6 +798,67 @@ class KettleStr:
                                + '    </GUI>\n'
                                + '  </step>\n'
                                )
+            # 表输入，结束
+            # 插入更新,开始
+            str_table_insert = (str_table_insert
+                                + '  <step>\n'
+                                + '    <name>插入 / 更新-' + table_name + '</name>\n'
+                                + '    <type>InsertUpdate</type>\n'
+                                + '    <description/>\n'
+                                + '    <distribute>Y</distribute>\n'
+                                + '    <custom_distribution/>\n'
+                                + '    <copies>1</copies>\n'
+                                + '    <partitioning>\n'
+                                + '      <method>none</method>\n'
+                                + '      <schema_name/>\n'
+                                + '    </partitioning>\n'
+                                + '    <connection>' + connect_name2 + '</connection>\n'
+                                + '    <commit>100</commit>\n'
+                                + '    <update_bypassed>N</update_bypassed>\n'
+                                + '    <lookup>\n'
+                                + '      <schema/>\n'
+                                + '      <table>' + table_name + '</table>\n')
+            # 循环字段
+            table_info = table_infos[table_name]
+            for j in range(len(table_info)):
+                column_pk = table_info[j][5]
+                column_name = table_info[j][3]
+                if column_pk == 'Y':
+                    str_table_insert = (str_table_insert
+                                        + '      <key>\n'
+                                        + '        <name>' + column_name + '</name>\n'
+                                        + '        <field>' + column_name + '</field>\n'
+                                        + '        <condition>=</condition>\n'
+                                        + '        <name2/>\n'
+                                        + '      </key>\n'
+                                        )
+            for j in range(len(table_info)):
+                column_name = table_info[j][3]
+                str_table_insert = (str_table_insert
+                                    + '      <value>\n'
+                                    + '        <name>' + column_name + '</name>\n'
+                                    + '        <rename>' + column_name + '</rename>\n'
+                                    + '        <update>Y</update>\n'
+                                    + '      </value>\n'
+                                    )
+            str_table_insert = (str_table_insert
+                                + '    </lookup>\n'
+                                + '    <attributes/>\n'
+                                + '    <cluster_schema/>\n'
+                                + '    <remotesteps>\n'
+                                + '      <input>\n'
+                                + '      </input>\n'
+                                + '      <output>\n'
+                                + '      </output>\n'
+                                + '    </remotesteps>\n'
+                                + '    <GUI>\n'
+                                + '      <xloc>600</xloc>\n'
+                                + '      <yloc>' + str(index * 100) + '</yloc>\n'
+                                + '      <draw>Y</draw>\n'
+                                + '    </GUI>\n'
+                                + '  </step>\n'
+                                )
+            # 插入更新,结束
             str_step = str_step + str_table_insert + str_table_input
         return str_step
 
