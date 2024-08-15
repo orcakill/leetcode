@@ -445,13 +445,6 @@ class KettleStr:
                  + '  <notepads>\n'
                  + '  </notepads>\n'
                  )
-    str_step_error_handling = ('  <step_error_handling>\n'
-                               + '  </step_error_handling>\n'
-                               + '  <slave-step-copy-partition-distribution>\n'
-                               + '  </slave-step-copy-partition-distribution>\n'
-                               + '  <slave_transformation>N</slave_transformation>\n'
-                               + '  <attributes/>\n'
-                               + '</transformation>')
 
     @staticmethod
     def deal_connection(normal_info, database_info, source):
@@ -626,7 +619,7 @@ class KettleStr:
         return kettle_password
 
     @staticmethod
-    def deal_order(table_infos,mode_state):
+    def deal_order(table_infos, mode_state):
         """
         处理排序和连接
         """
@@ -647,7 +640,7 @@ class KettleStr:
                              + '      <enabled>Y</enabled>' + nr
                              + '    </hop>\n'
                              )
-            else:
+            elif mode_state in [1, "1"]:
                 str_order = (str_order
                              + '    <hop>' + nr
                              + '      <from>执行SQL脚本-删除' + table_name + '当前数据</from>' + nr
@@ -668,13 +661,53 @@ class KettleStr:
                              + '      <from>JS代码-' + table_name + '错误信息</from>' + nr
                              + '      <to>表输出-' + table_name + '错误日志</to>' + nr
                              + '      <enabled>Y</enabled>' + nr
+                             + '    </hop>\n'
                              )
         str_order = (str_order + "  </order>\n")
         return str_order
 
     @staticmethod
-    def deal_step(table_infos, database_info1, database_info2):
+    def deal_parameter(normal_info, parameter_type):
+        str_parameter = ""
+        parameter_settings = normal_info['parameter_settings']
+        default_month = normal_info['default_month']
+        default_date = normal_info['default_date']
+        if parameter_settings in [0, '0']:
+            str_parameter = ('    <parameters>\n'
+                             + '      <parameter>\n'
+                             + '        <name>v_ny</name>\n'
+                             + '        <default_value>' + default_month + '</default_value>\n'
+                             + '        <description/>\n'
+                             + '      </parameter>\n'
+                             + '      <parameter>\n'
+                             + '        <name>v_rq</name>\n'
+                             + '        <default_value>' + default_date + '</default_value>\n'
+                             + '        <description/>\n'
+                             + '      </parameter>\n'
+                             + '    </parameters>\n')
+        if parameter_settings == 1:
+            if parameter_type == 'v_rq':
+                str_parameter = ('    <parameters>\n'
+                                 + '      <parameter>\n'
+                                 + '        <name>v_rq</name>\n'
+                                 + '        <default_value>' + default_date + '</default_value>\n'
+                                 + '        <description/>\n'
+                                 + '      </parameter>\n'
+                                 + '    </parameters>\n')
+            if parameter_type == 'v_ny':
+                str_parameter = ('    <parameters>\n'
+                                 + '      <parameter>\n'
+                                 + '        <name>v_ny</name>\n'
+                                 + '        <default_value>' + default_month + '</default_value>\n'
+                                 + '        <description/>\n'
+                                 + '      </parameter>\n'
+                                 + '    </parameters>\n')
+        return str_parameter
+
+    @staticmethod
+    def deal_step(table_infos, normal_info, database_info1, database_info2):
         str_step = ""
+        mode_state = normal_info['mode_state']
         # 循环表,先插入更新再表输入
         for index, (key, value) in enumerate(table_infos.items(), start=1):
             # 表输入
@@ -682,10 +715,19 @@ class KettleStr:
             # 插入更新
             str_table_insert = ""
             # 删除已有数据
+            str_delete_sql = ""
+            # 表输出
+            str_table_output = ""
+            # js错误信息
+            str_error_info = ""
+            # 表输出-错误日志
+            str_error_log = ""
+            # where 条件sql
+            str_where_sql = ""
+            # 表名
             connect_name1 = database_info1['connect_name']
             connect_name2 = database_info2['connect_name']
             table_name = key
-            # 复杂模式，处理
             # 表输入，开始
             str_table_input = (str_table_input + '  <step>\n'
                                + '    <name>表输入-' + table_name + '</name>\n'
@@ -702,6 +744,13 @@ class KettleStr:
                                + '    <sql>select\r\n'
                                )
             table_info = table_infos[table_name]
+            # 主键信息
+            column_pk_info = []
+            for j in range(len(table_info)):
+                column = table_info[j]
+                column_pk = table_info[j][5]
+                if column_pk == 'Y':
+                    column_pk_info.append(column)
             for j in range(len(table_info)):
                 column_lower = table_info[j][3].lower()
                 column_comment = table_info[j][4]
@@ -716,10 +765,10 @@ class KettleStr:
             for column in table_info:
                 table_column.append(column[3])
             if 'RQ' in table_column:
-                str_table_input = (
-                        str_table_input + '  where \'${v_rq}\' is null or rq=to_date(\'${v_rq}\',\'yyyy-mm-dd\')\n')
+                str_where_sql = ('  where \'${v_rq}\' is null or rq=to_date(\'${v_rq}\',\'yyyy-mm-dd\')\n')
             if 'NY' in table_column:
-                str_table_input = (str_table_input + '  where \'${v_ny}\' is null or ny=\'${v_ny}\'\n')
+                str_where_sql = ('  where \'${v_ny}\' is null or ny=\'${v_ny}\'\n')
+            str_table_input = str_table_input + str_where_sql
             str_table_input = (str_table_input + '</sql>\n'
                                + '    <limit>0</limit>\n'
                                + '    <lookup/>\n'
@@ -792,7 +841,7 @@ class KettleStr:
                                + '      </output>\n'
                                + '    </remotesteps>\n'
                                + '    <GUI>\n'
-                               + '      <xloc>200</xloc>\n'
+                               + '      <xloc>400</xloc>\n'
                                + '      <yloc>' + str(index * 100) + '</yloc>\n'
                                + '      <draw>Y</draw>\n'
                                + '    </GUI>\n'
@@ -859,43 +908,349 @@ class KettleStr:
                                 + '  </step>\n'
                                 )
             # 插入更新,结束
-            str_step = str_step + str_table_insert + str_table_input
+            # 删除已有数据 开始
+            str_delete_sql = ('  <step>\n'
+                              + '    <name>执行SQL脚本-删除' + table_name + '当前数据</name>\n'
+                              + '    <type>ExecSQL</type>\n'
+                              + '    <description/>\n'
+                              + '    <distribute>Y</distribute>\n'
+                              + '    <custom_distribution/>\n'
+                              + '    <copies>1</copies>\n'
+                              + '    <partitioning>\n'
+                              + '      <method>none</method>\n'
+                              + '      <schema_name/>\n'
+                              + '    </partitioning>\n'
+                              + '    <connection>' + connect_name2 + '</connection>\n'
+                              + '    <execute_each_row>N</execute_each_row>\n'
+                              + '    <single_statement>N</single_statement>\n'
+                              + '    <replace_variables>Y</replace_variables>\n'
+                              + '    <quoteString>N</quoteString>\n'
+                              + '    <sql>delete  from  ' + table_name + str_where_sql.replace("\n",'') + '</sql>\n'
+                              + '    <set_params>N</set_params>\n'
+                              + '    <insert_field/>\n'
+                              + '    <update_field/>\n'
+                              + '    <delete_field/>\n'
+                              + '    <read_field/>\n'
+                              + '    <arguments>\n'
+                              + '    </arguments>\n'
+                              + '    <attributes/>\n'
+                              + '    <cluster_schema/>\n'
+                              + '    <remotesteps>\n'
+                              + '      <input>\n'
+                              + '      </input>\n'
+                              + '      <output>\n'
+                              + '      </output>\n'
+                              + '    </remotesteps>\n'
+                              + '    <GUI>\n'
+                              + '      <xloc>200</xloc>\n'
+                              + '      <yloc>' + str(index * 100) + '</yloc>\n'
+                              + '      <draw>Y</draw>\n'
+                              + '    </GUI>\n'
+                              + '  </step>\n')
+            # 删除已有数据 结束
+            # 表输出 开始
+            str_table_output = (str_table_output
+                                + '  <step>\n'
+                                + '    <name>表输出-' + table_name + '</name>\n'
+                                + '    <type>TableOutput</type>\n'
+                                + '    <description/>\n'
+                                + '    <distribute>Y</distribute>\n'
+                                + '    <custom_distribution/>\n'
+                                + '    <copies>1</copies>\n'
+                                + '    <partitioning>\n'
+                                + '      <method>none</method>\n'
+                                + '      <schema_name/>\n'
+                                + '    </partitioning>\n'
+                                + '    <connection>' + connect_name2 + '</connection>\n'
+                                + '    <schema/>\n'
+                                + '    <table>' + table_name + '</table>\n'
+                                + '    <commit>1000</commit>\n'
+                                + '    <truncate>N</truncate>\n'
+                                + '    <ignore_errors>N</ignore_errors>\n'
+                                + '    <use_batch>Y</use_batch>\n'
+                                + '    <specify_fields>Y</specify_fields>\n'
+                                + '    <partitioning_enabled>N</partitioning_enabled>\n'
+                                + '    <partitioning_field/>\n'
+                                + '    <partitioning_daily>N</partitioning_daily>\n'
+                                + '    <partitioning_monthly>Y</partitioning_monthly>\n'
+                                + '    <tablename_in_field>N</tablename_in_field>\n'
+                                + '    <tablename_field/>\n'
+                                + '    <tablename_in_table>Y</tablename_in_table>\n'
+                                + '    <return_keys>N</return_keys>\n'
+                                + '    <return_field/>\n'
+                                + '    <fields>\n')
+            for j in range(len(table_info)):
+                column_name = table_info[j][3]
+                str_table_output = (str_table_output
+                                    + '      <field>\n'
+                                    + '        <column_name>' + column_name + '</column_name>\n'
+                                    + '        <stream_name>' + column_name + '</stream_name>\n'
+                                    + '      </field>\n'
+                                    )
+            str_table_output = (str_table_output
+                                + '    </fields>\n'
+                                + '    <attributes/>\n'
+                                + '    <cluster_schema/>\n'
+                                + '    <remotesteps>\n'
+                                + '      <input>\n'
+                                + '      </input>\n'
+                                + '      <output>\n'
+                                + '      </output>\n'
+                                + '    </remotesteps>\n'
+                                + '    <GUI>\n'
+                                + '      <xloc>600</xloc>\n'
+                                + '      <yloc>' + str(index * 100) + '</yloc>\n'
+                                + '      <draw>Y</draw>\n'
+                                + '    </GUI>\n'
+                                + '  </step>\n')
+            # 表输出 结束
+            # 错误处理信息 开始
+            str_error_info = (str_error_info
+                              + '  <step>\n'
+                              + '    <name>JS代码-' + table_name + '错误信息</name>\n'
+                              + '    <type>ScriptValueMod</type>\n'
+                              + '    <description/>\n'
+                              + '    <distribute>Y</distribute>\n'
+                              + '    <custom_distribution/>\n'
+                              + '    <copies>1</copies>\n'
+                              + '    <partitioning>\n'
+                              + '      <method>none</method>\n'
+                              + '      <schema_name/>\n'
+                              + '    </partitioning>\n'
+                              + '    <compatible>N</compatible>\n'
+                              + '    <optimizationLevel>9</optimizationLevel>\n'
+                              + '    <jsScripts>\n'
+                              + '      <jsScript>\n'
+                              + '        <jsScript_type>0</jsScript_type>\n'
+                              + '        <jsScript_name>Script 1</jsScript_name>\n'
+                              + '        <jsScript_script>//Script here\n'
+                              + '//Script here\n'
+                              + 'function fGetTransPath(){\n'
+                              + '	var VprogramPath  = replace(getVariable("Internal.Transformation.Filename.Directory",""),"file://","");\n'
+                              + '	var FILE_NAME  = getVariable("Internal.Transformation.Filename.Name","");\n'
+                              + '\n'
+                              + '		// 操作系统\n'
+                              + '		var vOsSys = null;\n'
+                              + '		// 如处理后的字符串包含 冒号 , 则视为windows系统,  否则视为linux系统\n'
+                              + '		if( isRegExp(VprogramPath,"^.*:.*$" ) == 1  ){\n'
+                              + '		   vOsSys = "Windows";\n'
+                              + '		}else {\n'
+                              + '		    vOsSys = "Linux";\n'
+                              + '		}\n'
+                              + '\n'
+                              + '		if(vOsSys == "Windows"){\n'
+                              + '		   VprogramPath =  VprogramPath.replace(/\//,"");\n'
+                              + '		}\n'
+                              + '\n'
+                              + '       return VprogramPath+"/"+FILE_NAME;\n'
+                              + '}\n'
+                              + '\n'
+                              + 'var FILE_PATH  = fGetTransPath();\n'
+                              + 'var TABLE_NAME = "'+table_name+'";\n'
+                              + 'var ERROR_INFO   = '
+                              )
+            for j in range(len(column_pk_info)):
+                column_name = column_pk_info[j][3]
+                column_comment = column_pk_info[j][4]
+                if j == 0 and j==len(column_pk_info)-1:
+                    str_error_info = (str_error_info
+                                      + '"' + column_name + '(' + column_comment + ')=" + ' + column_name + ';\n'
+                                      )
+                elif j == 0:
+                    str_error_info = (str_error_info
+                                      + '"' + column_name + '(' + column_comment + ')="+' + column_name
+                                      )
+                elif j == len(column_pk_info)-1:
+                    str_error_info = (str_error_info
+                                      + '+"\\n' + column_name + '(' + column_comment + ')=" + ' + column_name + ';\n'
+                                      )
+                else:
+                    str_error_info = (str_error_info
+                                      + '+"\\n' + column_name + '(' + column_comment + ')=" + ' + column_name + '\n'
+                                      )
+
+            str_error_info = (str_error_info
+                              + 'var ERROR_DATE = new Date();\n'
+                              + '</jsScript_script>\n'
+                              + '      </jsScript>\n'
+                              + '    </jsScripts>\n'
+                              + '    <fields>\n'
+                              + '      <field>\n'
+                              + '        <name>fGetTransPath</name>\n'
+                              + '        <rename>fGetTransPath</rename>\n'
+                              + '        <type>String</type>\n'
+                              + '        <length>-1</length>\n'
+                              + '        <precision>-1</precision>\n'
+                              + '        <replace>N</replace>\n'
+                              + '      </field>\n'
+                              + '      <field>\n'
+                              + '        <name>FILE_PATH</name>\n'
+                              + '        <rename>FILE_PATH</rename>\n'
+                              + '        <type>String</type>\n'
+                              + '        <length>-1</length>\n'
+                              + '        <precision>-1</precision>\n'
+                              + '        <replace>N</replace>\n'
+                              + '      </field>\n'
+                              + '      <field>\n'
+                              + '        <name>TABLE_NAME</name>\n'
+                              + '        <rename>TABLE_NAME</rename>\n'
+                              + '        <type>String</type>\n'
+                              + '        <length>-1</length>\n'
+                              + '        <precision>-1</precision>\n'
+                              + '        <replace>N</replace>\n'
+                              + '      </field>\n'
+                              + '      <field>\n'
+                              + '        <name>ERROR_INFO</name>\n'
+                              + '        <rename>ERROR_INFO</rename>\n'
+                              + '        <type>String</type>\n'
+                              + '        <length>-1</length>\n'
+                              + '        <precision>-1</precision>\n'
+                              + '        <replace>N</replace>\n'
+                              + '      </field>\n'
+                              + '      <field>\n'
+                              + '        <name>ERROR_DATE</name>\n'
+                              + '        <rename>ERROR_DATE</rename>\n'
+                              + '        <type>Date</type>\n'
+                              + '        <length>-1</length>\n'
+                              + '        <precision>-1</precision>\n'
+                              + '        <replace>N</replace>\n'
+                              + '      </field>\n'
+                              + '    </fields>\n'
+                              + '    <attributes/>\n'
+                              + '    <cluster_schema/>\n'
+                              + '    <remotesteps>\n'
+                              + '      <input>\n'
+                              + '      </input>\n'
+                              + '      <output>\n'
+                              + '      </output>\n'
+                              + '    </remotesteps>\n'
+                              + '    <GUI>\n'
+                              + '      <xloc>800</xloc>\n'
+                              + '      <yloc>' + str(index * 100) + '</yloc>\n'
+                              + '      <draw>Y</draw>\n'
+                              + '    </GUI>\n'
+                              + '  </step>\n'
+                              )
+            # 错误处理信息 结束
+            # 错误日志  开始
+            str_error_log = (str_error_log
+                             + '  <step>\n'
+                             + '    <name>表输出-' + table_name + '错误日志</name>\n'
+                             + '    <type>TableOutput</type>\n'
+                             + '    <description/>\n'
+                             + '    <distribute>Y</distribute>\n'
+                             + '    <custom_distribution/>\n'
+                             + '    <copies>1</copies>\n'
+                             + '    <partitioning>\n'
+                             + '      <method>none</method>\n'
+                             + '      <schema_name/>\n'
+                             + '    </partitioning>\n'
+                             + '    <connection>' + connect_name2 + '</connection>\n'
+                             + '    <schema/>\n'
+                             + '    <table>log_etl_error</table>\n'
+                             + '    <commit>1000</commit>\n'
+                             + '    <truncate>N</truncate>\n'
+                             + '    <ignore_errors>N</ignore_errors>\n'
+                             + '    <use_batch>Y</use_batch>\n'
+                             + '    <specify_fields>Y</specify_fields>\n'
+                             + '    <partitioning_enabled>N</partitioning_enabled>\n'
+                             + '    <partitioning_field/>\n'
+                             + '    <partitioning_daily>N</partitioning_daily>\n'
+                             + '    <partitioning_monthly>N</partitioning_monthly>\n'
+                             + '    <tablename_in_field>N</tablename_in_field>\n'
+                             + '    <tablename_field/>\n'
+                             + '    <tablename_in_table>N</tablename_in_table>\n'
+                             + '    <return_keys>N</return_keys>\n'
+                             + '    <return_field/>\n'
+                             + '    <fields>\n'
+                             + '      <field>\n'
+                             + '        <column_name>ERROR_NUM_COL</column_name>\n'
+                             + '        <stream_name>ERROR_NUM_COL</stream_name>\n'
+                             + '      </field>\n'
+                             + '      <field>\n'
+                             + '        <column_name>ERROR_DESC_COL</column_name>\n'
+                             + '        <stream_name>ERROR_DESC_COL</stream_name>\n'
+                             + '      </field>\n'
+                             + '      <field>\n'
+                             + '        <column_name>ERROR_COL_NAME</column_name>\n'
+                             + '        <stream_name>ERROR_COL_NAME</stream_name>\n'
+                             + '      </field>\n'
+                             + '      <field>\n'
+                             + '        <column_name>ERROR_CODE_COL</column_name>\n'
+                             + '        <stream_name>ERROR_CODE_COL</stream_name>\n'
+                             + '      </field>\n'
+                             + '      <field>\n'
+                             + '        <column_name>FILE_PATH</column_name>\n'
+                             + '        <stream_name>FILE_PATH</stream_name>\n'
+                             + '      </field>\n'
+                             + '      <field>\n'
+                             + '        <column_name>TABLE_NAME</column_name>\n'
+                             + '        <stream_name>TABLE_NAME</stream_name>\n'
+                             + '      </field>\n'
+                             + '      <field>\n'
+                             + '        <column_name>ERROR_INFO</column_name>\n'
+                             + '        <stream_name>ERROR_INFO</stream_name>\n'
+                             + '      </field>\n'
+                             + '      <field>\n'
+                             + '        <column_name>ERROR_DATE</column_name>\n'
+                             + '        <stream_name>ERROR_DATE</stream_name>\n'
+                             + '      </field>\n'
+                             + '    </fields>\n'
+                             + '    <attributes/>\n'
+                             + '    <cluster_schema/>\n'
+                             + '    <remotesteps>\n'
+                             + '      <input>\n'
+                             + '      </input>\n'
+                             + '      <output>\n'
+                             + '      </output>\n'
+                             + '    </remotesteps>\n'
+                             + '    <GUI>\n'
+                             + '      <xloc>1000</xloc>\n'
+                             + '      <yloc>' + str(index * 100) + '</yloc>\n'
+                             + '      <draw>Y</draw>\n'
+                             + '    </GUI>\n'
+                             + '  </step>\n'
+                             )
+            # 错误日志  结束
+            # 根据不同模式组合步骤
+            if mode_state in [0, '0']:
+                str_step = str_step + str_table_insert + str_table_input
+            elif mode_state in [1, '1']:
+                str_step = str_step + str_error_info + str_delete_sql + str_table_input + str_table_output + str_error_log
         return str_step
 
     @staticmethod
-    def deal_parameter(normal_info, parameter_type):
-        str_parameter = ""
-        parameter_settings = normal_info['parameter_settings']
-        default_month = normal_info['default_month']
-        default_date = normal_info['default_date']
-        if parameter_settings in [0, '0']:
-            str_parameter = ('    <parameters>\n'
-                             + '      <parameter>\n'
-                             + '        <name>v_ny</name>\n'
-                             + '        <default_value>' + default_month + '</default_value>\n'
-                             + '        <description/>\n'
-                             + '      </parameter>\n'
-                             + '      <parameter>\n'
-                             + '        <name>v_rq</name>\n'
-                             + '        <default_value>' + default_date + '</default_value>\n'
-                             + '        <description/>\n'
-                             + '      </parameter>\n'
-                             + '    </parameters>\n')
-        if parameter_settings == 1:
-            if parameter_type == 'v_rq':
-                str_parameter = ('    <parameters>\n'
-                                 + '      <parameter>\n'
-                                 + '        <name>v_rq</name>\n'
-                                 + '        <default_value>' + default_date + '</default_value>\n'
-                                 + '        <description/>\n'
-                                 + '      </parameter>\n'
-                                 + '    </parameters>\n')
-            if parameter_type == 'v_ny':
-                str_parameter = ('    <parameters>\n'
-                                 + '      <parameter>\n'
-                                 + '        <name>v_ny</name>\n'
-                                 + '        <default_value>' + default_month + '</default_value>\n'
-                                 + '        <description/>\n'
-                                 + '      </parameter>\n'
-                                 + '    </parameters>\n')
-        return str_parameter
+    def deal_step_error_handling(table_infos, normal_info, database_info2):
+        str_step_error_handling = '  <step_error_handling>\n'
+        str_error = ''
+        mode_state = normal_info['mode_state']
+        # 循环表,先插入更新再表输入
+        for index, (key, value) in enumerate(table_infos.items(), start=1):
+            connect_name2 = database_info2['connect_name']
+            table_name = key
+            str_error = (str_error
+                         + '    <error>\n'
+                         + '      <source_step>表输出-' + table_name + '</source_step>\n'
+                         + '      <target_step>JS代码-' + table_name + '错误信息</target_step>\n'
+                         + '      <is_enabled>Y</is_enabled>\n'
+                         + '      <nr_valuename>ERROR_NUM_COL</nr_valuename>\n'
+                         + '      <descriptions_valuename>ERROR_DESC_COL</descriptions_valuename>\n'
+                         + '      <fields_valuename>ERROR_COL_NAME</fields_valuename>\n'
+                         + '      <codes_valuename>ERROR_CODE_COL</codes_valuename>\n'
+                         + '      <max_errors/>\n'
+                         + '      <max_pct_errors/>\n'
+                         + '      <min_pct_rows/>\n'
+                         + '    </error>\n'
+                         )
+        if mode_state in [0, '0']:
+            str_error = ''
+        str_step_error_handling = (str_step_error_handling
+                                   + str_error
+                                   + '  </step_error_handling>\n'
+                                   + '  <slave-step-copy-partition-distribution>\n'
+                                   + '  </slave-step-copy-partition-distribution>\n'
+                                   + '  <slave_transformation>N</slave_transformation>\n'
+                                   + '  <attributes/>\n'
+                                   + '</transformation>\n'
+                                   )
+        return str_step_error_handling

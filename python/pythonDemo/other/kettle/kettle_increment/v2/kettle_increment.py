@@ -209,7 +209,7 @@ def deal_example_ktr():
     file_path = "D:/测试2.txt"
     with open(file_path, 'r', encoding='utf-8') as file:
         for line in file:
-            print(f"+{line.rstrip()}\\n\\r'")
+            print(f"+'{line.rstrip()}\\n\\r'")
 
 
 def create_kettle():
@@ -240,7 +240,7 @@ def create_kettle():
                 grouped_dict[key] = value
         table_infos_group.append(grouped_dict)
     file_name_prefix = normal_info['file_name_prefix']
-    mode_state= normal_info['mode_state']
+    mode_state = normal_info['mode_state']
     for i in range(file_numer):
         file_name = file_name_prefix + str(i + 1)
         logger.info("第{}个ktr", i + 1)
@@ -250,9 +250,9 @@ def create_kettle():
         str_parameter = KettleStr.deal_parameter(normal_info, '') + KettleStr.str_info3
         # 处理数据库连接
         str_connection = deal_two_connection(normal_info, database_info1, database_info2)
-        str_order = KettleStr.deal_order(table_infos_dict,mode_state)
-        str_step = KettleStr.deal_step(table_infos_dict, database_info1, database_info2)
-        str_step_error_handling = KettleStr.str_step_error_handling
+        str_order = KettleStr.deal_order(table_infos_dict, mode_state)
+        str_step = KettleStr.deal_step(table_infos_dict, normal_info, database_info1, database_info2)
+        str_step_error_handling = KettleStr.deal_step_error_handling(table_infos_dict, normal_info, database_info2)
         str_transformation = str_info + str_parameter + str_connection + str_order + str_step + str_step_error_handling
         str_all = str_xml + str_transformation
         logger.info("生成ktr文件")
