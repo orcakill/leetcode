@@ -728,9 +728,13 @@ class KettleStr:
             connect_name1 = database_info1['connect_name']
             connect_name2 = database_info2['connect_name']
             table_name = key
+            table_length = 10
+            if mode_state in [0, "0"]:
+                table_length = 0
             # 表输入，开始
+            name_table_input='表输入-' + table_name
             str_table_input = (str_table_input + '  <step>\n'
-                               + '    <name>表输入-' + table_name + '</name>\n'
+                               + '    <name>' + name_table_input + '</name>\n'
                                + '    <type>TableInput</type>\n'
                                + '    <description/>\n'
                                + '    <distribute>Y</distribute>\n'
@@ -789,13 +793,18 @@ class KettleStr:
                     column_type = 'String'
                 if column_type.upper() in ['NUMBER']:
                     precision = str(table_info[j][9])
-                    if precision == '0':
-                        column_type = 'Integer'
-                        conversion_Mask = '        <conversion_Mask>####0;-####0</conversion_Mask>\n'
+                    if column_length == 'None':
+                        column_type = 'BigNumber'
+                        column_length = str(-1)
                     else:
-                        column_type = 'Number'
-                        conversion_Mask = ('        <conversion_Mask>####0.0#########;-####0.0#########'
-                                           + '</conversion_Mask>\n')
+                        if precision == '0':
+                            column_type = 'Integer'
+                            conversion_Mask = '        <conversion_Mask>####0;-####0</conversion_Mask>\n'
+                        else:
+                            column_type = 'Number'
+                            conversion_Mask = ('        <conversion_Mask>####0.0#########;-####0.0#########'
+                                               + '</conversion_Mask>\n')
+
                 if column_type.upper() in ['DATE']:
                     column_type = 'Timestamp'
                     column_length = str(0)
@@ -841,7 +850,7 @@ class KettleStr:
                                + '      </output>\n'
                                + '    </remotesteps>\n'
                                + '    <GUI>\n'
-                               + '      <xloc>400</xloc>\n'
+                               + '      <xloc>' + str(table_length*len(name_table_input)+400) + '</xloc>\n'
                                + '      <yloc>' + str(index * 100) + '</yloc>\n'
                                + '      <draw>Y</draw>\n'
                                + '    </GUI>\n'
@@ -849,9 +858,10 @@ class KettleStr:
                                )
             # 表输入，结束
             # 插入更新,开始
+            name_table_insert='插入 / 更新-' + table_name
             str_table_insert = (str_table_insert
                                 + '  <step>\n'
-                                + '    <name>插入 / 更新-' + table_name + '</name>\n'
+                                + '    <name>'+name_table_insert+'</name>\n'
                                 + '    <type>InsertUpdate</type>\n'
                                 + '    <description/>\n'
                                 + '    <distribute>Y</distribute>\n'
@@ -901,16 +911,17 @@ class KettleStr:
                                 + '      </output>\n'
                                 + '    </remotesteps>\n'
                                 + '    <GUI>\n'
-                                + '      <xloc>600</xloc>\n'
+                                + '      <xloc>' + str(table_length*len(name_table_input)+600) + '</xloc>\n'
                                 + '      <yloc>' + str(index * 100) + '</yloc>\n'
                                 + '      <draw>Y</draw>\n'
                                 + '    </GUI>\n'
                                 + '  </step>\n'
                                 )
             # 插入更新,结束
-            # 删除已有数据 开始
+            # 删除已有数据 开始`
+            name_delete_sql='执行SQL脚本-删除' + table_name + '当前数据'
             str_delete_sql = ('  <step>\n'
-                              + '    <name>执行SQL脚本-删除' + table_name + '当前数据</name>\n'
+                              + '    <name>'+name_delete_sql+'</name>\n'
                               + '    <type>ExecSQL</type>\n'
                               + '    <description/>\n'
                               + '    <distribute>Y</distribute>\n'
@@ -925,7 +936,7 @@ class KettleStr:
                               + '    <single_statement>N</single_statement>\n'
                               + '    <replace_variables>Y</replace_variables>\n'
                               + '    <quoteString>N</quoteString>\n'
-                              + '    <sql>delete  from  ' + table_name + str_where_sql.replace("\n",'') + '</sql>\n'
+                              + '    <sql>delete  from  ' + table_name + str_where_sql.replace("\n", '') + '</sql>\n'
                               + '    <set_params>N</set_params>\n'
                               + '    <insert_field/>\n'
                               + '    <update_field/>\n'
@@ -949,9 +960,10 @@ class KettleStr:
                               + '  </step>\n')
             # 删除已有数据 结束
             # 表输出 开始
+            name__table_output='表输出-' + table_name
             str_table_output = (str_table_output
                                 + '  <step>\n'
-                                + '    <name>表输出-' + table_name + '</name>\n'
+                                + '    <name>' + name__table_output+ '</name>\n'
                                 + '    <type>TableOutput</type>\n'
                                 + '    <description/>\n'
                                 + '    <distribute>Y</distribute>\n'
@@ -998,7 +1010,7 @@ class KettleStr:
                                 + '      </output>\n'
                                 + '    </remotesteps>\n'
                                 + '    <GUI>\n'
-                                + '      <xloc>600</xloc>\n'
+                                + '      <xloc>'  + str(table_length*len(name_table_input)+600) + '</xloc>\n'
                                 + '      <yloc>' + str(index * 100) + '</yloc>\n'
                                 + '      <draw>Y</draw>\n'
                                 + '    </GUI>\n'
@@ -1046,29 +1058,29 @@ class KettleStr:
                               + '}\n'
                               + '\n'
                               + 'var FILE_PATH  = fGetTransPath();\n'
-                              + 'var TABLE_NAME = "'+table_name+'";\n'
+                              + 'var TABLE_NAME = "' + table_name + '";\n'
                               + 'var ERROR_INFO   = '
                               )
-            for j in range(len(column_pk_info)):
-                column_name = column_pk_info[j][3]
-                column_comment = column_pk_info[j][4]
-                if j == 0 and j==len(column_pk_info)-1:
-                    str_error_info = (str_error_info
-                                      + '"' + column_name + '(' + column_comment + ')=" + ' + column_name + ';\n'
-                                      )
-                elif j == 0:
-                    str_error_info = (str_error_info
-                                      + '"' + column_name + '(' + column_comment + ')="+' + column_name
-                                      )
-                elif j == len(column_pk_info)-1:
-                    str_error_info = (str_error_info
-                                      + '+"\\n' + column_name + '(' + column_comment + ')=" + ' + column_name + ';\n'
-                                      )
-                else:
-                    str_error_info = (str_error_info
-                                      + '+"\\n' + column_name + '(' + column_comment + ')=" + ' + column_name + '\n'
-                                      )
-
+            if column_pk_info and len(column_pk_info) > 0:
+                for j in range(len(column_pk_info)):
+                    column_name = column_pk_info[j][3] if column_pk_info[j][3] is not None else ''
+                    column_comment = column_pk_info[j][4] if column_pk_info[j][4] is not None else ''
+                    if j == 0 and j == len(column_pk_info) - 1:
+                        str_error_info = (str_error_info
+                                          + '"' + column_name + '(' + column_comment + ')=" + ' + column_name + ';\n'
+                                          )
+                    elif j == 0:
+                        str_error_info = (str_error_info
+                                          + '"' + column_name + '(' + column_comment + ')="+' + column_name
+                                          )
+                    elif j == len(column_pk_info) - 1:
+                        str_error_info = (str_error_info
+                                          + '+"\\n' + column_name + '(' + column_comment + ')=" + ' + column_name + ';\n'
+                                          )
+                    else:
+                        str_error_info = (str_error_info
+                                          + '+"\\n' + column_name + '(' + column_comment + ')=" + ' + column_name + '\n'
+                                          )
             str_error_info = (str_error_info
                               + 'var ERROR_DATE = new Date();\n'
                               + '</jsScript_script>\n'
@@ -1125,7 +1137,7 @@ class KettleStr:
                               + '      </output>\n'
                               + '    </remotesteps>\n'
                               + '    <GUI>\n'
-                              + '      <xloc>800</xloc>\n'
+                              + '      <xloc>' + str(table_length+800) + '</xloc>\n'
                               + '      <yloc>' + str(index * 100) + '</yloc>\n'
                               + '      <draw>Y</draw>\n'
                               + '    </GUI>\n'
@@ -1205,7 +1217,7 @@ class KettleStr:
                              + '      </output>\n'
                              + '    </remotesteps>\n'
                              + '    <GUI>\n'
-                             + '      <xloc>1000</xloc>\n'
+                             + '      <xloc>' + str(table_length+1000) + '</xloc>\n'
                              + '      <yloc>' + str(index * 100) + '</yloc>\n'
                              + '      <draw>Y</draw>\n'
                              + '    </GUI>\n'

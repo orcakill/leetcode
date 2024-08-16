@@ -182,7 +182,7 @@ def compare_file():
     对比2个文件
     """
     file1 = 'kettle_increment_1.ktr'
-    file2 = '参考文件3.ktr'
+    file2 = '参考文件4.ktr'
     logger.info("开始对比")
     with open(file1, 'r', encoding='utf-8', newline='') as f1, open(file2, 'r', encoding='utf-8', newline='') as f2:
         lines1 = f1.readlines()
