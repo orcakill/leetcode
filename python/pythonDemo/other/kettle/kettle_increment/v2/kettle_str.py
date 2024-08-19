@@ -2,6 +2,7 @@
 # @Author: orcakill
 # @File: kettle_str.py
 # @Description: 存储固定字符
+import math
 import subprocess
 
 created_date = '2024/08/08 10:26:52.485'
@@ -603,7 +604,7 @@ class KettleStr:
     def deal_password(kettle_path, password):
         kettle_password = ""
         # 执行命令
-        result = subprocess.run(kettle_path + "/Encr.bat -" + password, shell=True, capture_output=True, text=True)
+        result = subprocess.run(kettle_path + "/Encr.bat " + password, shell=True, capture_output=True, text=True)
 
         # 获取返回结果
         output = result.stdout
@@ -728,11 +729,37 @@ class KettleStr:
             connect_name1 = database_info1['connect_name']
             connect_name2 = database_info2['connect_name']
             table_name = key
-            table_length = 10
+            table_length = 12
             if mode_state in [0, "0"]:
                 table_length = 0
-            # 表输入，开始
+            name_delete_sql = '执行SQL脚本-删除' + table_name + '当前数据'
             name_table_input = '表输入-' + table_name
+            name_table_insert = '插入 / 更新-' + table_name
+            name_table_output = '表输出-' + table_name
+            name_error_info = 'JS代码-' + table_name + '错误信息'
+            name_error_log = '表输出-' + table_name + '错误日志'
+            num_x = 50
+            add_x = 100
+            if len(table_name) > 10:
+                add_x = 0
+            x_delete_sql = 200
+            x_table_input = add_x + x_delete_sql + math.floor(
+                (len(name_delete_sql) + len(name_table_input)) * table_length * 1 / 2 / num_x) * num_x
+            x_table_insert = add_x + x_table_input + math.floor(
+                (len(name_table_input) + len(name_table_insert)) * table_length * 1 / 2 / num_x) * num_x
+            x_table_output = add_x + x_table_input + math.floor(
+                (len(name_table_input) + len(name_table_output)) * table_length * 1 / 2 / num_x) * num_x
+            x_error_info = add_x + x_table_insert + math.floor(
+                (len(name_table_insert) + len(name_error_info)) * table_length * 1 / 2 / num_x) * num_x
+            x_error_log = add_x + x_error_info + math.floor(
+                (len(name_error_info) + len(name_error_log)) * table_length * 1 / 2 / num_x) * num_x
+            print(x_delete_sql)
+            print(x_table_input)
+            print(x_table_insert)
+            print(x_table_output)
+            print(x_error_info)
+            print(x_error_log)
+            # 表输入，开始
             str_table_input = (str_table_input + '  <step>\n'
                                + '    <name>' + name_table_input + '</name>\n'
                                + '    <type>TableInput</type>\n'
@@ -804,7 +831,6 @@ class KettleStr:
                             column_type = 'Number'
                             conversion_Mask = ('        <conversion_Mask>####0.0#########;-####0.0#########'
                                                + '</conversion_Mask>\n')
-
                 if column_type.upper() in ['DATE']:
                     column_type = 'Timestamp'
                     column_length = str(0)
@@ -850,7 +876,7 @@ class KettleStr:
                                + '      </output>\n'
                                + '    </remotesteps>\n'
                                + '    <GUI>\n'
-                               + '      <xloc>' + str(table_length * len(name_table_input)) + '</xloc>\n'
+                               + '      <xloc>' + str(x_table_input) + '</xloc>\n'
                                + '      <yloc>' + str(index * 100) + '</yloc>\n'
                                + '      <draw>Y</draw>\n'
                                + '    </GUI>\n'
@@ -858,7 +884,6 @@ class KettleStr:
                                )
             # 表输入，结束
             # 插入更新,开始
-            name_table_insert = '插入 / 更新-' + table_name
             str_table_insert = (str_table_insert
                                 + '  <step>\n'
                                 + '    <name>' + name_table_insert + '</name>\n'
@@ -911,7 +936,7 @@ class KettleStr:
                                 + '      </output>\n'
                                 + '    </remotesteps>\n'
                                 + '    <GUI>\n'
-                                + '      <xloc>' + str(table_length * len(name_table_input)) + '</xloc>\n'
+                                + '      <xloc>' + str(x_table_insert) + '</xloc>\n'
                                 + '      <yloc>' + str(index * 100) + '</yloc>\n'
                                 + '      <draw>Y</draw>\n'
                                 + '    </GUI>\n'
@@ -919,7 +944,6 @@ class KettleStr:
                                 )
             # 插入更新,结束
             # 删除已有数据 开始`
-            name_delete_sql = '执行SQL脚本-删除' + table_name + '当前数据'
             str_delete_sql = ('  <step>\n'
                               + '    <name>' + name_delete_sql + '</name>\n'
                               + '    <type>ExecSQL</type>\n'
@@ -953,17 +977,16 @@ class KettleStr:
                               + '      </output>\n'
                               + '    </remotesteps>\n'
                               + '    <GUI>\n'
-                              + '      <xloc>200</xloc>\n'
+                              + '      <xloc>' + str(x_delete_sql) + '</xloc>\n'
                               + '      <yloc>' + str(index * 100) + '</yloc>\n'
                               + '      <draw>Y</draw>\n'
                               + '    </GUI>\n'
                               + '  </step>\n')
             # 删除已有数据 结束
             # 表输出 开始
-            name__table_output = '表输出-' + table_name
             str_table_output = (str_table_output
                                 + '  <step>\n'
-                                + '    <name>' + name__table_output + '</name>\n'
+                                + '    <name>' + name_table_output + '</name>\n'
                                 + '    <type>TableOutput</type>\n'
                                 + '    <description/>\n'
                                 + '    <distribute>Y</distribute>\n'
@@ -1010,17 +1033,16 @@ class KettleStr:
                                 + '      </output>\n'
                                 + '    </remotesteps>\n'
                                 + '    <GUI>\n'
-                                + '      <xloc>' + str(table_length * len(name_table_input)) + '</xloc>\n'
+                                + '      <xloc>' + str(x_table_output) + '</xloc>\n'
                                 + '      <yloc>' + str(index * 100) + '</yloc>\n'
                                 + '      <draw>Y</draw>\n'
                                 + '    </GUI>\n'
                                 + '  </step>\n')
             # 表输出 结束
             # 错误处理信息 开始
-            name_error_info = 'JS代码-' + table_name + '错误信息'
             str_error_info = (str_error_info
                               + '  <step>\n'
-                              + '    <name>' + name_error_info + '错误信息</name>\n'
+                              + '    <name>' + name_error_info + '</name>\n'
                               + '    <type>ScriptValueMod</type>\n'
                               + '    <description/>\n'
                               + '    <distribute>Y</distribute>\n'
@@ -1138,7 +1160,7 @@ class KettleStr:
                               + '      </output>\n'
                               + '    </remotesteps>\n'
                               + '    <GUI>\n'
-                              + '      <xloc>' + str(table_length * len(name_error_info) ) + '</xloc>\n'
+                              + '      <xloc>' + str(x_error_info) + '</xloc>\n'
                               + '      <yloc>' + str(index * 100) + '</yloc>\n'
                               + '      <draw>Y</draw>\n'
                               + '    </GUI>\n'
@@ -1146,7 +1168,6 @@ class KettleStr:
                               )
             # 错误处理信息 结束
             # 错误日志  开始
-            name_error_log = '表输出-' + table_name + '错误日志'
             str_error_log = (str_error_log
                              + '  <step>\n'
                              + '    <name>' + name_error_log + '</name>\n'
@@ -1219,7 +1240,7 @@ class KettleStr:
                              + '      </output>\n'
                              + '    </remotesteps>\n'
                              + '    <GUI>\n'
-                             + '      <xloc>' + str(table_length * len(name_error_log)) + '</xloc>\n'
+                             + '      <xloc>' + str(x_error_log) + '</xloc>\n'
                              + '      <yloc>' + str(index * 100) + '</yloc>\n'
                              + '      <draw>Y</draw>\n'
                              + '    </GUI>\n'
