@@ -62,6 +62,7 @@ def get_normal_info(ini_name):
              'parameter_settings': config.get(ini_name, "parameter_settings"),
              'default_month': config.get(ini_name, "default_month"),
              'default_date': config.get(ini_name, "default_date"),
+             'group_number': config.get(ini_name, "group_number"),
              'kettle_path': config.get(ini_name, "kettle_path"),
              'select_table_name': config.get(ini_name, "select_table_name"),
              'no_table_name': config.get(ini_name, "no_table_name")
@@ -229,7 +230,7 @@ def create_kettle():
         logger.info("以目标库表为准")
         table_infos = get_tables(normal_info, database_info2)
     # xml
-    file_numer = math.ceil(len(table_infos) / 50)
+    file_numer = math.ceil(len(table_infos) / normal_info['group_number'])
     logger.info("处理ktr文件内容,每50个表一组,共{}组", file_numer)
     # 按照每组50个数进行分组
     table_infos_group = []
