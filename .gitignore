@@ -9,4 +9,7 @@ gen
 
 *.log
 .target
-
+*.properties
+*.ini
+*.txt
+*.rar
